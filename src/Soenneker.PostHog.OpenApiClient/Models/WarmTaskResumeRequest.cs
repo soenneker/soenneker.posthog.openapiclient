@@ -18,36 +18,41 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("initial_permission_mode") is { } nullNodeInitialPermissionMode && nullNodeInitialPermissionMode.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) InitialPermissionMode = null;
-            if (parseNode.GetChildNode("model") is { } nullNodeModel && nullNodeModel.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Model = null;
-            if (parseNode.GetChildNode("reasoning_effort") is { } nullNodeReasoningEffort && nullNodeReasoningEffort.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ReasoningEffort = null;
-            if (parseNode.GetChildNode("resume_from_run_id") is { } nullNodeResumeFromRunId && nullNodeResumeFromRunId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ResumeFromRunId = null;
-            if (parseNode.GetChildNode("runtime_adapter") is { } nullNodeRuntimeAdapter && nullNodeRuntimeAdapter.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) RuntimeAdapter = null;
+            if (parseNode.GetChildNode("initial_permission_mode") is null) { _explicitNullValueInitialPermissionMode = default!; _explicitNullProperties?.Remove("initial_permission_mode"); }
+            else if (parseNode.GetChildNode("initial_permission_mode") is { } nullNodeInitialPermissionMode && nullNodeInitialPermissionMode.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) InitialPermissionMode = null;
+            if (parseNode.GetChildNode("model") is null) { _explicitNullValueModel = default!; _explicitNullProperties?.Remove("model"); }
+            else if (parseNode.GetChildNode("model") is { } nullNodeModel && nullNodeModel.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Model = null;
+            if (parseNode.GetChildNode("reasoning_effort") is null) { _explicitNullValueReasoningEffort = default!; _explicitNullProperties?.Remove("reasoning_effort"); }
+            else if (parseNode.GetChildNode("reasoning_effort") is { } nullNodeReasoningEffort && nullNodeReasoningEffort.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ReasoningEffort = null;
+            if (parseNode.GetChildNode("resume_from_run_id") is null) { _explicitNullValueResumeFromRunId = default!; _explicitNullProperties?.Remove("resume_from_run_id"); }
+            else if (parseNode.GetChildNode("resume_from_run_id") is { } nullNodeResumeFromRunId && nullNodeResumeFromRunId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ResumeFromRunId = null;
+            if (parseNode.GetChildNode("runtime_adapter") is null) { _explicitNullValueRuntimeAdapter = default!; _explicitNullProperties?.Remove("runtime_adapter"); }
+            else if (parseNode.GetChildNode("runtime_adapter") is { } nullNodeRuntimeAdapter && nullNodeRuntimeAdapter.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) RuntimeAdapter = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>* `default` - default* `acceptEdits` - acceptEdits* `plan` - plan* `bypassPermissions` - bypassPermissions* `auto` - auto* `read-only` - read-only* `full-access` - full-access</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.WarmTaskResumeRequestInitialPermissionMode? InitialPermissionMode { get => _explicitNullValueInitialPermissionMode; set { _explicitNullValueInitialPermissionMode = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("initial_permission_mode"); else _explicitNullProperties?.Remove("initial_permission_mode"); } }
+        public global::Soenneker.PostHog.OpenApiClient.Models.WarmTaskResumeRequestInitialPermissionMode? InitialPermissionMode { get => _explicitNullValueInitialPermissionMode; set { _explicitNullValueInitialPermissionMode = value; AdditionalData?.Remove("initial_permission_mode"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("initial_permission_mode"); else _explicitNullProperties?.Remove("initial_permission_mode"); } }
         private global::Soenneker.PostHog.OpenApiClient.Models.WarmTaskResumeRequestInitialPermissionMode? _explicitNullValueInitialPermissionMode = default!;
         /// <summary>LLM model to start before the next message is submitted.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Model { get => _explicitNullValueModel; set { _explicitNullValueModel = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("model"); else _explicitNullProperties?.Remove("model"); } }
+        public string? Model { get => _explicitNullValueModel; set { _explicitNullValueModel = value; AdditionalData?.Remove("model"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("model"); else _explicitNullProperties?.Remove("model"); } }
         private string? _explicitNullValueModel = default!;
 #nullable restore
 #else
-        public string Model { get => _explicitNullValueModel; set { _explicitNullValueModel = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("model"); else _explicitNullProperties?.Remove("model"); } }
+        public string Model { get => _explicitNullValueModel; set { _explicitNullValueModel = value; AdditionalData?.Remove("model"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("model"); else _explicitNullProperties?.Remove("model"); } }
         private string _explicitNullValueModel = default!;
 #endif
         /// <summary>* `low` - low* `medium` - medium* `high` - high* `xhigh` - xhigh* `max` - max* `ultracode` - ultracode</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.WarmTaskResumeRequestReasoningEffort? ReasoningEffort { get => _explicitNullValueReasoningEffort; set { _explicitNullValueReasoningEffort = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("reasoning_effort"); else _explicitNullProperties?.Remove("reasoning_effort"); } }
+        public global::Soenneker.PostHog.OpenApiClient.Models.WarmTaskResumeRequestReasoningEffort? ReasoningEffort { get => _explicitNullValueReasoningEffort; set { _explicitNullValueReasoningEffort = value; AdditionalData?.Remove("reasoning_effort"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("reasoning_effort"); else _explicitNullProperties?.Remove("reasoning_effort"); } }
         private global::Soenneker.PostHog.OpenApiClient.Models.WarmTaskResumeRequestReasoningEffort? _explicitNullValueReasoningEffort = default!;
         /// <summary>ID of the task&apos;s latest terminal run whose snapshot and conversation should be resumed.</summary>
-        public Guid? ResumeFromRunId { get => _explicitNullValueResumeFromRunId; set { _explicitNullValueResumeFromRunId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("resume_from_run_id"); else _explicitNullProperties?.Remove("resume_from_run_id"); } }
+        public Guid? ResumeFromRunId { get => _explicitNullValueResumeFromRunId; set { _explicitNullValueResumeFromRunId = value; AdditionalData?.Remove("resume_from_run_id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("resume_from_run_id"); else _explicitNullProperties?.Remove("resume_from_run_id"); } }
         private Guid? _explicitNullValueResumeFromRunId = default!;
         /// <summary>* `claude` - claude* `codex` - codex</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.WarmTaskResumeRequestRuntimeAdapter? RuntimeAdapter { get => _explicitNullValueRuntimeAdapter; set { _explicitNullValueRuntimeAdapter = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("runtime_adapter"); else _explicitNullProperties?.Remove("runtime_adapter"); } }
+        public global::Soenneker.PostHog.OpenApiClient.Models.WarmTaskResumeRequestRuntimeAdapter? RuntimeAdapter { get => _explicitNullValueRuntimeAdapter; set { _explicitNullValueRuntimeAdapter = value; AdditionalData?.Remove("runtime_adapter"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("runtime_adapter"); else _explicitNullProperties?.Remove("runtime_adapter"); } }
         private global::Soenneker.PostHog.OpenApiClient.Models.WarmTaskResumeRequestRuntimeAdapter? _explicitNullValueRuntimeAdapter = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.WarmTaskResumeRequest"/> and sets the default values.
@@ -74,11 +79,11 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "initial_permission_mode", n => { InitialPermissionMode = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.WarmTaskResumeRequestInitialPermissionMode>(); } },
+                { "initial_permission_mode", n => { var parsed = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.WarmTaskResumeRequestInitialPermissionMode>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValueInitialPermissionMode = default; _explicitNullProperties?.Remove("initial_permission_mode"); AdditionalData["initial_permission_mode"] = unknown; } else { InitialPermissionMode = parsed; AdditionalData.Remove("initial_permission_mode"); } } },
                 { "model", n => { Model = n.GetStringValue(); } },
-                { "reasoning_effort", n => { ReasoningEffort = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.WarmTaskResumeRequestReasoningEffort>(); } },
+                { "reasoning_effort", n => { var parsed = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.WarmTaskResumeRequestReasoningEffort>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValueReasoningEffort = default; _explicitNullProperties?.Remove("reasoning_effort"); AdditionalData["reasoning_effort"] = unknown; } else { ReasoningEffort = parsed; AdditionalData.Remove("reasoning_effort"); } } },
                 { "resume_from_run_id", n => { ResumeFromRunId = n.GetGuidValue(); } },
-                { "runtime_adapter", n => { RuntimeAdapter = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.WarmTaskResumeRequestRuntimeAdapter>(); } },
+                { "runtime_adapter", n => { var parsed = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.WarmTaskResumeRequestRuntimeAdapter>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValueRuntimeAdapter = default; _explicitNullProperties?.Remove("runtime_adapter"); AdditionalData["runtime_adapter"] = unknown; } else { RuntimeAdapter = parsed; AdditionalData.Remove("runtime_adapter"); } } },
             };
         }
         /// <summary>

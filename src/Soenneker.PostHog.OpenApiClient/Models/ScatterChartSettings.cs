@@ -17,9 +17,12 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("showBestFit") is { } nullNodeShowBestFit && nullNodeShowBestFit.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ShowBestFit = null;
-            if (parseNode.GetChildNode("xScale") is { } nullNodeXScale && nullNodeXScale.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) XScale = null;
-            if (parseNode.GetChildNode("xStartAtZero") is { } nullNodeXStartAtZero && nullNodeXStartAtZero.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) XStartAtZero = null;
+            if (parseNode.GetChildNode("showBestFit") is null) { _explicitNullValueShowBestFit = default!; _explicitNullProperties?.Remove("showBestFit"); }
+            else if (parseNode.GetChildNode("showBestFit") is { } nullNodeShowBestFit && nullNodeShowBestFit.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ShowBestFit = null;
+            if (parseNode.GetChildNode("xScale") is null) { _explicitNullValueXScale = default!; _explicitNullProperties?.Remove("xScale"); }
+            else if (parseNode.GetChildNode("xScale") is { } nullNodeXScale && nullNodeXScale.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) XScale = null;
+            if (parseNode.GetChildNode("xStartAtZero") is null) { _explicitNullValueXStartAtZero = default!; _explicitNullProperties?.Remove("xStartAtZero"); }
+            else if (parseNode.GetChildNode("xStartAtZero") is { } nullNodeXStartAtZero && nullNodeXStartAtZero.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) XStartAtZero = null;
         }
 
         /// <summary>Whether to draw a least-squares fit line through each series&apos; points.</summary>

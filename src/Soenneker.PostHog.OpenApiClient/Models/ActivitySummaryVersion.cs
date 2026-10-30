@@ -17,15 +17,24 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("computed") is { } nullNodeComputed && nullNodeComputed.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Computed = null;
-            if (parseNode.GetChildNode("generated_at") is { } nullNodeGeneratedAt && nullNodeGeneratedAt.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) GeneratedAt = null;
-            if (parseNode.GetChildNode("headline") is { } nullNodeHeadline && nullNodeHeadline.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Headline = null;
-            if (parseNode.GetChildNode("modes") is { } nullNodeModes && nullNodeModes.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Modes = null;
-            if (parseNode.GetChildNode("profile") is { } nullNodeProfile && nullNodeProfile.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Profile = null;
-            if (parseNode.GetChildNode("prompt_version") is { } nullNodePromptVersion && nullNodePromptVersion.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) PromptVersion = null;
-            if (parseNode.GetChildNode("recent_shift") is { } nullNodeRecentShift && nullNodeRecentShift.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) RecentShift = null;
-            if (parseNode.GetChildNode("themes") is { } nullNodeThemes && nullNodeThemes.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Themes = null;
-            if (parseNode.GetChildNode("version") is { } nullNodeVersion && nullNodeVersion.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Version = null;
+            if (parseNode.GetChildNode("computed") is null) { _explicitNullValueComputed = default!; _explicitNullProperties?.Remove("computed"); }
+            else if (parseNode.GetChildNode("computed") is { } nullNodeComputed && nullNodeComputed.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Computed = null;
+            if (parseNode.GetChildNode("generated_at") is null) { _explicitNullValueGeneratedAt = default!; _explicitNullProperties?.Remove("generated_at"); }
+            else if (parseNode.GetChildNode("generated_at") is { } nullNodeGeneratedAt && nullNodeGeneratedAt.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) GeneratedAt = null;
+            if (parseNode.GetChildNode("headline") is null) { _explicitNullValueHeadline = default!; _explicitNullProperties?.Remove("headline"); }
+            else if (parseNode.GetChildNode("headline") is { } nullNodeHeadline && nullNodeHeadline.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Headline = null;
+            if (parseNode.GetChildNode("modes") is null) { _explicitNullValueModes = default!; _explicitNullProperties?.Remove("modes"); }
+            else if (parseNode.GetChildNode("modes") is { } nullNodeModes && nullNodeModes.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Modes = null;
+            if (parseNode.GetChildNode("profile") is null) { _explicitNullValueProfile = default!; _explicitNullProperties?.Remove("profile"); }
+            else if (parseNode.GetChildNode("profile") is { } nullNodeProfile && nullNodeProfile.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Profile = null;
+            if (parseNode.GetChildNode("prompt_version") is null) { _explicitNullValuePromptVersion = default!; _explicitNullProperties?.Remove("prompt_version"); }
+            else if (parseNode.GetChildNode("prompt_version") is { } nullNodePromptVersion && nullNodePromptVersion.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) PromptVersion = null;
+            if (parseNode.GetChildNode("recent_shift") is null) { _explicitNullValueRecentShift = default!; _explicitNullProperties?.Remove("recent_shift"); }
+            else if (parseNode.GetChildNode("recent_shift") is { } nullNodeRecentShift && nullNodeRecentShift.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) RecentShift = null;
+            if (parseNode.GetChildNode("themes") is null) { _explicitNullValueThemes = default!; _explicitNullProperties?.Remove("themes"); }
+            else if (parseNode.GetChildNode("themes") is { } nullNodeThemes && nullNodeThemes.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Themes = null;
+            if (parseNode.GetChildNode("version") is null) { _explicitNullValueVersion = default!; _explicitNullProperties?.Remove("version"); }
+            else if (parseNode.GetChildNode("version") is { } nullNodeVersion && nullNodeVersion.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Version = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -33,71 +42,71 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Exact fields that code computed from the user&apos;s activity, with ids. The theme refs point into them. Set only when the request asks for one version with `version`.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.ActivitySummaryComputed? Computed { get => _explicitNullValueComputed; set { _explicitNullValueComputed = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("computed"); else _explicitNullProperties?.Remove("computed"); } }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ActivitySummaryComputed? Computed { get => _explicitNullValueComputed; set { _explicitNullValueComputed = value; AdditionalData?.Remove("computed"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("computed"); else _explicitNullProperties?.Remove("computed"); } }
         private global::Soenneker.PostHog.OpenApiClient.Models.ActivitySummaryComputed? _explicitNullValueComputed = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ActivitySummaryComputed Computed { get => _explicitNullValueComputed; set { _explicitNullValueComputed = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("computed"); else _explicitNullProperties?.Remove("computed"); } }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ActivitySummaryComputed Computed { get => _explicitNullValueComputed; set { _explicitNullValueComputed = value; AdditionalData?.Remove("computed"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("computed"); else _explicitNullProperties?.Remove("computed"); } }
         private global::Soenneker.PostHog.OpenApiClient.Models.ActivitySummaryComputed _explicitNullValueComputed = default!;
 #endif
         /// <summary>When this version was written.</summary>
-        public DateTimeOffset? GeneratedAt { get => _explicitNullValueGeneratedAt; set { _explicitNullValueGeneratedAt = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("generated_at"); else _explicitNullProperties?.Remove("generated_at"); } }
+        public DateTimeOffset? GeneratedAt { get => _explicitNullValueGeneratedAt; set { _explicitNullValueGeneratedAt = value; AdditionalData?.Remove("generated_at"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("generated_at"); else _explicitNullProperties?.Remove("generated_at"); } }
         private DateTimeOffset? _explicitNullValueGeneratedAt = default!;
         /// <summary>One or two sentences about what the user works on and cares about in this project.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Headline { get => _explicitNullValueHeadline; set { _explicitNullValueHeadline = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("headline"); else _explicitNullProperties?.Remove("headline"); } }
+        public string? Headline { get => _explicitNullValueHeadline; set { _explicitNullValueHeadline = value; AdditionalData?.Remove("headline"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("headline"); else _explicitNullProperties?.Remove("headline"); } }
         private string? _explicitNullValueHeadline = default!;
 #nullable restore
 #else
-        public string Headline { get => _explicitNullValueHeadline; set { _explicitNullValueHeadline = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("headline"); else _explicitNullProperties?.Remove("headline"); } }
+        public string Headline { get => _explicitNullValueHeadline; set { _explicitNullValueHeadline = value; AdditionalData?.Remove("headline"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("headline"); else _explicitNullProperties?.Remove("headline"); } }
         private string _explicitNullValueHeadline = default!;
 #endif
         /// <summary>How the user works in this project overall, the main mode first.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.ActivitySummaryModeEnum?>? Modes { get => _explicitNullValueModes; set { _explicitNullValueModes = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("modes"); else _explicitNullProperties?.Remove("modes"); } }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.ActivitySummaryModeEnum?>? Modes { get => _explicitNullValueModes; set { _explicitNullValueModes = value; AdditionalData?.Remove("modes"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("modes"); else _explicitNullProperties?.Remove("modes"); } }
         private List<global::Soenneker.PostHog.OpenApiClient.Models.ActivitySummaryModeEnum?>? _explicitNullValueModes = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.ActivitySummaryModeEnum?> Modes { get => _explicitNullValueModes; set { _explicitNullValueModes = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("modes"); else _explicitNullProperties?.Remove("modes"); } }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.ActivitySummaryModeEnum?> Modes { get => _explicitNullValueModes; set { _explicitNullValueModes = value; AdditionalData?.Remove("modes"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("modes"); else _explicitNullProperties?.Remove("modes"); } }
         private List<global::Soenneker.PostHog.OpenApiClient.Models.ActivitySummaryModeEnum?> _explicitNullValueModes = default!;
 #endif
         /// <summary>The one-page markdown profile. Set only when the request asks for one version with `version`.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Profile { get => _explicitNullValueProfile; set { _explicitNullValueProfile = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("profile"); else _explicitNullProperties?.Remove("profile"); } }
+        public string? Profile { get => _explicitNullValueProfile; set { _explicitNullValueProfile = value; AdditionalData?.Remove("profile"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("profile"); else _explicitNullProperties?.Remove("profile"); } }
         private string? _explicitNullValueProfile = default!;
 #nullable restore
 #else
-        public string Profile { get => _explicitNullValueProfile; set { _explicitNullValueProfile = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("profile"); else _explicitNullProperties?.Remove("profile"); } }
+        public string Profile { get => _explicitNullValueProfile; set { _explicitNullValueProfile = value; AdditionalData?.Remove("profile"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("profile"); else _explicitNullProperties?.Remove("profile"); } }
         private string _explicitNullValueProfile = default!;
 #endif
         /// <summary>The version of the prompt that wrote this version.</summary>
-        public int? PromptVersion { get => _explicitNullValuePromptVersion; set { _explicitNullValuePromptVersion = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("prompt_version"); else _explicitNullProperties?.Remove("prompt_version"); } }
+        public int? PromptVersion { get => _explicitNullValuePromptVersion; set { _explicitNullValuePromptVersion = value; AdditionalData?.Remove("prompt_version"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("prompt_version"); else _explicitNullProperties?.Remove("prompt_version"); } }
         private int? _explicitNullValuePromptVersion = default!;
         /// <summary>What changed since the version before this one, or null when nothing changed.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? RecentShift { get => _explicitNullValueRecentShift; set { _explicitNullValueRecentShift = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("recent_shift"); else _explicitNullProperties?.Remove("recent_shift"); } }
+        public string? RecentShift { get => _explicitNullValueRecentShift; set { _explicitNullValueRecentShift = value; AdditionalData?.Remove("recent_shift"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("recent_shift"); else _explicitNullProperties?.Remove("recent_shift"); } }
         private string? _explicitNullValueRecentShift = default!;
 #nullable restore
 #else
-        public string RecentShift { get => _explicitNullValueRecentShift; set { _explicitNullValueRecentShift = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("recent_shift"); else _explicitNullProperties?.Remove("recent_shift"); } }
+        public string RecentShift { get => _explicitNullValueRecentShift; set { _explicitNullValueRecentShift = value; AdditionalData?.Remove("recent_shift"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("recent_shift"); else _explicitNullProperties?.Remove("recent_shift"); } }
         private string _explicitNullValueRecentShift = default!;
 #endif
         /// <summary>The main threads of the user&apos;s work.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.ActivitySummaryTheme>? Themes { get => _explicitNullValueThemes; set { _explicitNullValueThemes = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("themes"); else _explicitNullProperties?.Remove("themes"); } }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.ActivitySummaryTheme>? Themes { get => _explicitNullValueThemes; set { _explicitNullValueThemes = value; AdditionalData?.Remove("themes"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("themes"); else _explicitNullProperties?.Remove("themes"); } }
         private List<global::Soenneker.PostHog.OpenApiClient.Models.ActivitySummaryTheme>? _explicitNullValueThemes = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.ActivitySummaryTheme> Themes { get => _explicitNullValueThemes; set { _explicitNullValueThemes = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("themes"); else _explicitNullProperties?.Remove("themes"); } }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.ActivitySummaryTheme> Themes { get => _explicitNullValueThemes; set { _explicitNullValueThemes = value; AdditionalData?.Remove("themes"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("themes"); else _explicitNullProperties?.Remove("themes"); } }
         private List<global::Soenneker.PostHog.OpenApiClient.Models.ActivitySummaryTheme> _explicitNullValueThemes = default!;
 #endif
         /// <summary>The number of this version. Higher numbers are newer.</summary>
-        public int? Version { get => _explicitNullValueVersion; set { _explicitNullValueVersion = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("version"); else _explicitNullProperties?.Remove("version"); } }
+        public int? Version { get => _explicitNullValueVersion; set { _explicitNullValueVersion = value; AdditionalData?.Remove("version"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("version"); else _explicitNullProperties?.Remove("version"); } }
         private int? _explicitNullValueVersion = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ActivitySummaryVersion"/> and sets the default values.

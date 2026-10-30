@@ -17,8 +17,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("ActionsPie") is { } nullNodeActionsPie && nullNodeActionsPie.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ActionsPie = null;
-            if (parseNode.GetChildNode("RETENTION") is { } nullNodeRETENTION && nullNodeRETENTION.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) RETENTION = null;
+            if (parseNode.GetChildNode("ActionsPie") is null) { _explicitNullValueActionsPie = default!; _explicitNullProperties?.Remove("ActionsPie"); }
+            else if (parseNode.GetChildNode("ActionsPie") is { } nullNodeActionsPie && nullNodeActionsPie.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ActionsPie = null;
+            if (parseNode.GetChildNode("RETENTION") is null) { _explicitNullValueRETENTION = default!; _explicitNullProperties?.Remove("RETENTION"); }
+            else if (parseNode.GetChildNode("RETENTION") is { } nullNodeRETENTION && nullNodeRETENTION.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) RETENTION = null;
         }
 
         /// <summary>The ActionsPie property</summary>

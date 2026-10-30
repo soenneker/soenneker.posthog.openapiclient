@@ -17,34 +17,37 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("group_type_index") is { } nullNodeGroupTypeIndex && nullNodeGroupTypeIndex.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) GroupTypeIndex = null;
-            if (parseNode.GetChildNode("name_plural") is { } nullNodeNamePlural && nullNodeNamePlural.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) NamePlural = null;
-            if (parseNode.GetChildNode("name_singular") is { } nullNodeNameSingular && nullNodeNameSingular.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) NameSingular = null;
+            if (parseNode.GetChildNode("group_type_index") is null) { _explicitNullValueGroupTypeIndex = default!; _explicitNullProperties?.Remove("group_type_index"); }
+            else if (parseNode.GetChildNode("group_type_index") is { } nullNodeGroupTypeIndex && nullNodeGroupTypeIndex.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) GroupTypeIndex = null;
+            if (parseNode.GetChildNode("name_plural") is null) { _explicitNullValueNamePlural = default!; _explicitNullProperties?.Remove("name_plural"); }
+            else if (parseNode.GetChildNode("name_plural") is { } nullNodeNamePlural && nullNodeNamePlural.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) NamePlural = null;
+            if (parseNode.GetChildNode("name_singular") is null) { _explicitNullValueNameSingular = default!; _explicitNullProperties?.Remove("name_singular"); }
+            else if (parseNode.GetChildNode("name_singular") is { } nullNodeNameSingular && nullNodeNameSingular.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) NameSingular = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Index of the group type to update.</summary>
-        public int? GroupTypeIndex { get => _explicitNullValueGroupTypeIndex; set { _explicitNullValueGroupTypeIndex = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("group_type_index"); else _explicitNullProperties?.Remove("group_type_index"); } }
+        public int? GroupTypeIndex { get => _explicitNullValueGroupTypeIndex; set { _explicitNullValueGroupTypeIndex = value; AdditionalData?.Remove("group_type_index"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("group_type_index"); else _explicitNullProperties?.Remove("group_type_index"); } }
         private int? _explicitNullValueGroupTypeIndex = default!;
         /// <summary>Plural display name of the group type.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? NamePlural { get => _explicitNullValueNamePlural; set { _explicitNullValueNamePlural = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("name_plural"); else _explicitNullProperties?.Remove("name_plural"); } }
+        public string? NamePlural { get => _explicitNullValueNamePlural; set { _explicitNullValueNamePlural = value; AdditionalData?.Remove("name_plural"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("name_plural"); else _explicitNullProperties?.Remove("name_plural"); } }
         private string? _explicitNullValueNamePlural = default!;
 #nullable restore
 #else
-        public string NamePlural { get => _explicitNullValueNamePlural; set { _explicitNullValueNamePlural = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("name_plural"); else _explicitNullProperties?.Remove("name_plural"); } }
+        public string NamePlural { get => _explicitNullValueNamePlural; set { _explicitNullValueNamePlural = value; AdditionalData?.Remove("name_plural"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("name_plural"); else _explicitNullProperties?.Remove("name_plural"); } }
         private string _explicitNullValueNamePlural = default!;
 #endif
         /// <summary>Singular display name of the group type.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? NameSingular { get => _explicitNullValueNameSingular; set { _explicitNullValueNameSingular = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("name_singular"); else _explicitNullProperties?.Remove("name_singular"); } }
+        public string? NameSingular { get => _explicitNullValueNameSingular; set { _explicitNullValueNameSingular = value; AdditionalData?.Remove("name_singular"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("name_singular"); else _explicitNullProperties?.Remove("name_singular"); } }
         private string? _explicitNullValueNameSingular = default!;
 #nullable restore
 #else
-        public string NameSingular { get => _explicitNullValueNameSingular; set { _explicitNullValueNameSingular = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("name_singular"); else _explicitNullProperties?.Remove("name_singular"); } }
+        public string NameSingular { get => _explicitNullValueNameSingular; set { _explicitNullValueNameSingular = value; AdditionalData?.Remove("name_singular"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("name_singular"); else _explicitNullProperties?.Remove("name_singular"); } }
         private string _explicitNullValueNameSingular = default!;
 #endif
         /// <summary>

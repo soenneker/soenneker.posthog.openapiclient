@@ -17,8 +17,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("includeNonIntegrated") is { } nullNodeIncludeNonIntegrated && nullNodeIncludeNonIntegrated.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) IncludeNonIntegrated = null;
-            if (parseNode.GetChildNode("integrationSourceIds") is { } nullNodeIntegrationSourceIds && nullNodeIntegrationSourceIds.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) IntegrationSourceIds = null;
+            if (parseNode.GetChildNode("includeNonIntegrated") is null) { _explicitNullValueIncludeNonIntegrated = default!; _explicitNullProperties?.Remove("includeNonIntegrated"); }
+            else if (parseNode.GetChildNode("includeNonIntegrated") is { } nullNodeIncludeNonIntegrated && nullNodeIncludeNonIntegrated.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) IncludeNonIntegrated = null;
+            if (parseNode.GetChildNode("integrationSourceIds") is null) { _explicitNullValueIntegrationSourceIds = default!; _explicitNullProperties?.Remove("integrationSourceIds"); }
+            else if (parseNode.GetChildNode("integrationSourceIds") is { } nullNodeIntegrationSourceIds && nullNodeIntegrationSourceIds.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) IntegrationSourceIds = null;
         }
 
         /// <summary>Keep rows that no integration reports cost for, such as organic, email or an unmapped source. Defaults to true.</summary>

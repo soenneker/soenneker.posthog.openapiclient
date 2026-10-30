@@ -8,6 +8,9 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     public enum PropertyItemType
     #pragma warning restore CS1591
     {
+        [EnumMember(Value = "")]
+        EmptyString,
+
         [EnumMember(Value = "event")]
         #pragma warning disable CS1591
         EventValue,

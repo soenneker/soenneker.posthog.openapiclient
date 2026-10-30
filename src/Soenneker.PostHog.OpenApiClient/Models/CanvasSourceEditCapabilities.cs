@@ -18,9 +18,12 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("connectors") is { } nullNodeConnectors && nullNodeConnectors.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Connectors = null;
-            if (parseNode.GetChildNode("network") is { } nullNodeNetwork && nullNodeNetwork.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Network = null;
-            if (parseNode.GetChildNode("posthog") is { } nullNodePosthog && nullNodePosthog.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Posthog = null;
+            if (parseNode.GetChildNode("connectors") is null) { _explicitNullValueConnectors = default!; _explicitNullProperties?.Remove("connectors"); }
+            else if (parseNode.GetChildNode("connectors") is { } nullNodeConnectors && nullNodeConnectors.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Connectors = null;
+            if (parseNode.GetChildNode("network") is null) { _explicitNullValueNetwork = default!; _explicitNullProperties?.Remove("network"); }
+            else if (parseNode.GetChildNode("network") is { } nullNodeNetwork && nullNodeNetwork.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Network = null;
+            if (parseNode.GetChildNode("posthog") is null) { _explicitNullValuePosthog = default!; _explicitNullProperties?.Remove("posthog"); }
+            else if (parseNode.GetChildNode("posthog") is { } nullNodePosthog && nullNodePosthog.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Posthog = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -28,31 +31,31 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Third-party providers the canvas reads through ph.connectors, each with the tools it may call. Every call runs with the viewer&apos;s own connection; declaring one shows it in the promote review.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.CanvasConnectorDeclaration>? Connectors { get => _explicitNullValueConnectors; set { _explicitNullValueConnectors = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("connectors"); else _explicitNullProperties?.Remove("connectors"); } }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.CanvasConnectorDeclaration>? Connectors { get => _explicitNullValueConnectors; set { _explicitNullValueConnectors = value; AdditionalData?.Remove("connectors"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("connectors"); else _explicitNullProperties?.Remove("connectors"); } }
         private List<global::Soenneker.PostHog.OpenApiClient.Models.CanvasConnectorDeclaration>? _explicitNullValueConnectors = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.CanvasConnectorDeclaration> Connectors { get => _explicitNullValueConnectors; set { _explicitNullValueConnectors = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("connectors"); else _explicitNullProperties?.Remove("connectors"); } }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.CanvasConnectorDeclaration> Connectors { get => _explicitNullValueConnectors; set { _explicitNullValueConnectors = value; AdditionalData?.Remove("connectors"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("connectors"); else _explicitNullProperties?.Remove("connectors"); } }
         private List<global::Soenneker.PostHog.OpenApiClient.Models.CanvasConnectorDeclaration> _explicitNullValueConnectors = default!;
 #endif
         /// <summary>The network property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.CanvasNetworkCapabilities? Network { get => _explicitNullValueNetwork; set { _explicitNullValueNetwork = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("network"); else _explicitNullProperties?.Remove("network"); } }
+        public global::Soenneker.PostHog.OpenApiClient.Models.CanvasNetworkCapabilities? Network { get => _explicitNullValueNetwork; set { _explicitNullValueNetwork = value; AdditionalData?.Remove("network"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("network"); else _explicitNullProperties?.Remove("network"); } }
         private global::Soenneker.PostHog.OpenApiClient.Models.CanvasNetworkCapabilities? _explicitNullValueNetwork = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.CanvasNetworkCapabilities Network { get => _explicitNullValueNetwork; set { _explicitNullValueNetwork = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("network"); else _explicitNullProperties?.Remove("network"); } }
+        public global::Soenneker.PostHog.OpenApiClient.Models.CanvasNetworkCapabilities Network { get => _explicitNullValueNetwork; set { _explicitNullValueNetwork = value; AdditionalData?.Remove("network"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("network"); else _explicitNullProperties?.Remove("network"); } }
         private global::Soenneker.PostHog.OpenApiClient.Models.CanvasNetworkCapabilities _explicitNullValueNetwork = default!;
 #endif
         /// <summary>The posthog property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.CanvasPostHogCapabilities? Posthog { get => _explicitNullValuePosthog; set { _explicitNullValuePosthog = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("posthog"); else _explicitNullProperties?.Remove("posthog"); } }
+        public global::Soenneker.PostHog.OpenApiClient.Models.CanvasPostHogCapabilities? Posthog { get => _explicitNullValuePosthog; set { _explicitNullValuePosthog = value; AdditionalData?.Remove("posthog"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("posthog"); else _explicitNullProperties?.Remove("posthog"); } }
         private global::Soenneker.PostHog.OpenApiClient.Models.CanvasPostHogCapabilities? _explicitNullValuePosthog = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.CanvasPostHogCapabilities Posthog { get => _explicitNullValuePosthog; set { _explicitNullValuePosthog = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("posthog"); else _explicitNullProperties?.Remove("posthog"); } }
+        public global::Soenneker.PostHog.OpenApiClient.Models.CanvasPostHogCapabilities Posthog { get => _explicitNullValuePosthog; set { _explicitNullValuePosthog = value; AdditionalData?.Remove("posthog"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("posthog"); else _explicitNullProperties?.Remove("posthog"); } }
         private global::Soenneker.PostHog.OpenApiClient.Models.CanvasPostHogCapabilities _explicitNullValuePosthog = default!;
 #endif
         /// <summary>

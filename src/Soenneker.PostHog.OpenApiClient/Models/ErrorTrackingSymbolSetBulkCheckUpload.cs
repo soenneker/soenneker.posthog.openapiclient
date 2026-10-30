@@ -17,27 +17,30 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("force") is { } nullNodeForce && nullNodeForce.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Force = null;
-            if (parseNode.GetChildNode("skip_on_conflict") is { } nullNodeSkipOnConflict && nullNodeSkipOnConflict.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SkipOnConflict = null;
-            if (parseNode.GetChildNode("symbol_sets") is { } nullNodeSymbolSets && nullNodeSymbolSets.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SymbolSets = null;
+            if (parseNode.GetChildNode("force") is null) { _explicitNullValueForce = default!; _explicitNullProperties?.Remove("force"); }
+            else if (parseNode.GetChildNode("force") is { } nullNodeForce && nullNodeForce.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Force = null;
+            if (parseNode.GetChildNode("skip_on_conflict") is null) { _explicitNullValueSkipOnConflict = default!; _explicitNullProperties?.Remove("skip_on_conflict"); }
+            else if (parseNode.GetChildNode("skip_on_conflict") is { } nullNodeSkipOnConflict && nullNodeSkipOnConflict.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SkipOnConflict = null;
+            if (parseNode.GetChildNode("symbol_sets") is null) { _explicitNullValueSymbolSets = default!; _explicitNullProperties?.Remove("symbol_sets"); }
+            else if (parseNode.GetChildNode("symbol_sets") is { } nullNodeSymbolSets && nullNodeSymbolSets.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SymbolSets = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Whether to overwrite uploaded symbol sets whose content hash changed.</summary>
-        public bool? Force { get => _explicitNullValueForce; set { _explicitNullValueForce = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("force"); else _explicitNullProperties?.Remove("force"); } }
+        public bool? Force { get => _explicitNullValueForce; set { _explicitNullValueForce = value; AdditionalData?.Remove("force"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("force"); else _explicitNullProperties?.Remove("force"); } }
         private bool? _explicitNullValueForce = default!;
         /// <summary>Whether to skip uploaded symbol sets whose content hash changed instead of failing.</summary>
-        public bool? SkipOnConflict { get => _explicitNullValueSkipOnConflict; set { _explicitNullValueSkipOnConflict = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("skip_on_conflict"); else _explicitNullProperties?.Remove("skip_on_conflict"); } }
+        public bool? SkipOnConflict { get => _explicitNullValueSkipOnConflict; set { _explicitNullValueSkipOnConflict = value; AdditionalData?.Remove("skip_on_conflict"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("skip_on_conflict"); else _explicitNullProperties?.Remove("skip_on_conflict"); } }
         private bool? _explicitNullValueSkipOnConflict = default!;
         /// <summary>Symbol sets the client intends to upload, with per-symbol release IDs and content hashes. Send at most 1000 per request.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingSymbolSetUpload>? SymbolSets { get => _explicitNullValueSymbolSets; set { _explicitNullValueSymbolSets = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("symbol_sets"); else _explicitNullProperties?.Remove("symbol_sets"); } }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingSymbolSetUpload>? SymbolSets { get => _explicitNullValueSymbolSets; set { _explicitNullValueSymbolSets = value; AdditionalData?.Remove("symbol_sets"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("symbol_sets"); else _explicitNullProperties?.Remove("symbol_sets"); } }
         private List<global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingSymbolSetUpload>? _explicitNullValueSymbolSets = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingSymbolSetUpload> SymbolSets { get => _explicitNullValueSymbolSets; set { _explicitNullValueSymbolSets = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("symbol_sets"); else _explicitNullProperties?.Remove("symbol_sets"); } }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingSymbolSetUpload> SymbolSets { get => _explicitNullValueSymbolSets; set { _explicitNullValueSymbolSets = value; AdditionalData?.Remove("symbol_sets"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("symbol_sets"); else _explicitNullProperties?.Remove("symbol_sets"); } }
         private List<global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingSymbolSetUpload> _explicitNullValueSymbolSets = default!;
 #endif
         /// <summary>

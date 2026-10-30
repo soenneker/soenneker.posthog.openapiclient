@@ -18,17 +18,19 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("corrections_id") is { } nullNodeCorrectionsId && nullNodeCorrectionsId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CorrectionsId = null;
-            if (parseNode.GetChildNode("reviewers_id") is { } nullNodeReviewersId && nullNodeReviewersId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ReviewersId = null;
+            if (parseNode.GetChildNode("corrections_id") is null) { _explicitNullValueCorrectionsId = default!; _explicitNullProperties?.Remove("corrections_id"); }
+            else if (parseNode.GetChildNode("corrections_id") is { } nullNodeCorrectionsId && nullNodeCorrectionsId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CorrectionsId = null;
+            if (parseNode.GetChildNode("reviewers_id") is null) { _explicitNullValueReviewersId = default!; _explicitNullProperties?.Remove("reviewers_id"); }
+            else if (parseNode.GetChildNode("reviewers_id") is { } nullNodeReviewersId && nullNodeReviewersId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ReviewersId = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Current corrections artefact ID, or null before corrections are stored.</summary>
-        public Guid? CorrectionsId { get => _explicitNullValueCorrectionsId; set { _explicitNullValueCorrectionsId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("corrections_id"); else _explicitNullProperties?.Remove("corrections_id"); } }
+        public Guid? CorrectionsId { get => _explicitNullValueCorrectionsId; set { _explicitNullValueCorrectionsId = value; AdditionalData?.Remove("corrections_id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("corrections_id"); else _explicitNullProperties?.Remove("corrections_id"); } }
         private Guid? _explicitNullValueCorrectionsId = default!;
         /// <summary>Current reviewer artefact ID, or null before the first list.</summary>
-        public Guid? ReviewersId { get => _explicitNullValueReviewersId; set { _explicitNullValueReviewersId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("reviewers_id"); else _explicitNullProperties?.Remove("reviewers_id"); } }
+        public Guid? ReviewersId { get => _explicitNullValueReviewersId; set { _explicitNullValueReviewersId = value; AdditionalData?.Remove("reviewers_id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("reviewers_id"); else _explicitNullProperties?.Remove("reviewers_id"); } }
         private Guid? _explicitNullValueReviewersId = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.SignalReportArtefactWriteExpectedReviewers"/> and sets the default values.

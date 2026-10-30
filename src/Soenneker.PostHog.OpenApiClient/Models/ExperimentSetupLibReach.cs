@@ -17,36 +17,41 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("anonymous_share") is { } nullNodeAnonymousShare && nullNodeAnonymousShare.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AnonymousShare = null;
-            if (parseNode.GetChildNode("category") is { } nullNodeCategory && nullNodeCategory.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Category = null;
-            if (parseNode.GetChildNode("device_id_share") is { } nullNodeDeviceIdShare && nullNodeDeviceIdShare.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) DeviceIdShare = null;
-            if (parseNode.GetChildNode("lib") is { } nullNodeLib && nullNodeLib.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Lib = null;
-            if (parseNode.GetChildNode("unique_persons") is { } nullNodeUniquePersons && nullNodeUniquePersons.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) UniquePersons = null;
+            if (parseNode.GetChildNode("anonymous_share") is null) { _explicitNullValueAnonymousShare = default!; _explicitNullProperties?.Remove("anonymous_share"); }
+            else if (parseNode.GetChildNode("anonymous_share") is { } nullNodeAnonymousShare && nullNodeAnonymousShare.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AnonymousShare = null;
+            if (parseNode.GetChildNode("category") is null) { _explicitNullValueCategory = default!; _explicitNullProperties?.Remove("category"); }
+            else if (parseNode.GetChildNode("category") is { } nullNodeCategory && nullNodeCategory.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Category = null;
+            if (parseNode.GetChildNode("device_id_share") is null) { _explicitNullValueDeviceIdShare = default!; _explicitNullProperties?.Remove("device_id_share"); }
+            else if (parseNode.GetChildNode("device_id_share") is { } nullNodeDeviceIdShare && nullNodeDeviceIdShare.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) DeviceIdShare = null;
+            if (parseNode.GetChildNode("lib") is null) { _explicitNullValueLib = default!; _explicitNullProperties?.Remove("lib"); }
+            else if (parseNode.GetChildNode("lib") is { } nullNodeLib && nullNodeLib.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Lib = null;
+            if (parseNode.GetChildNode("unique_persons") is null) { _explicitNullValueUniquePersons = default!; _explicitNullProperties?.Remove("unique_persons"); }
+            else if (parseNode.GetChildNode("unique_persons") is { } nullNodeUniquePersons && nullNodeUniquePersons.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) UniquePersons = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Among this SDK&apos;s distinct ids that report whether they are identified, the share that was anonymous. Null when no target event from this SDK reported it.</summary>
-        public double? AnonymousShare { get => _explicitNullValueAnonymousShare; set { _explicitNullValueAnonymousShare = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("anonymous_share"); else _explicitNullProperties?.Remove("anonymous_share"); } }
+        public double? AnonymousShare { get => _explicitNullValueAnonymousShare; set { _explicitNullValueAnonymousShare = value; AdditionalData?.Remove("anonymous_share"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("anonymous_share"); else _explicitNullProperties?.Remove("anonymous_share"); } }
         private double? _explicitNullValueAnonymousShare = default!;
         /// <summary>* `web` - Web* `mobile` - Mobile* `server` - Server* `other` - Other</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentSetupLibReachCategory? Category { get => _explicitNullValueCategory; set { _explicitNullValueCategory = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("category"); else _explicitNullProperties?.Remove("category"); } }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentSetupLibReachCategory? Category { get => _explicitNullValueCategory; set { _explicitNullValueCategory = value; AdditionalData?.Remove("category"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("category"); else _explicitNullProperties?.Remove("category"); } }
         private global::Soenneker.PostHog.OpenApiClient.Models.ExperimentSetupLibReachCategory? _explicitNullValueCategory = default!;
         /// <summary>Share of this SDK&apos;s target events that carry a $device_id. 0 when it never sends one.</summary>
-        public double? DeviceIdShare { get => _explicitNullValueDeviceIdShare; set { _explicitNullValueDeviceIdShare = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("device_id_share"); else _explicitNullProperties?.Remove("device_id_share"); } }
+        public double? DeviceIdShare { get => _explicitNullValueDeviceIdShare; set { _explicitNullValueDeviceIdShare = value; AdditionalData?.Remove("device_id_share"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("device_id_share"); else _explicitNullProperties?.Remove("device_id_share"); } }
         private double? _explicitNullValueDeviceIdShare = default!;
         /// <summary>The $lib value that sent the target events.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Lib { get => _explicitNullValueLib; set { _explicitNullValueLib = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("lib"); else _explicitNullProperties?.Remove("lib"); } }
+        public string? Lib { get => _explicitNullValueLib; set { _explicitNullValueLib = value; AdditionalData?.Remove("lib"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("lib"); else _explicitNullProperties?.Remove("lib"); } }
         private string? _explicitNullValueLib = default!;
 #nullable restore
 #else
-        public string Lib { get => _explicitNullValueLib; set { _explicitNullValueLib = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("lib"); else _explicitNullProperties?.Remove("lib"); } }
+        public string Lib { get => _explicitNullValueLib; set { _explicitNullValueLib = value; AdditionalData?.Remove("lib"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("lib"); else _explicitNullProperties?.Remove("lib"); } }
         private string _explicitNullValueLib = default!;
 #endif
         /// <summary>Persons who sent the target event from this SDK.</summary>
-        public int? UniquePersons { get => _explicitNullValueUniquePersons; set { _explicitNullValueUniquePersons = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("unique_persons"); else _explicitNullProperties?.Remove("unique_persons"); } }
+        public int? UniquePersons { get => _explicitNullValueUniquePersons; set { _explicitNullValueUniquePersons = value; AdditionalData?.Remove("unique_persons"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("unique_persons"); else _explicitNullProperties?.Remove("unique_persons"); } }
         private int? _explicitNullValueUniquePersons = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ExperimentSetupLibReach"/> and sets the default values.
@@ -74,7 +79,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "anonymous_share", n => { AnonymousShare = n.GetDoubleValue(); } },
-                { "category", n => { Category = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentSetupLibReachCategory>(); } },
+                { "category", n => { var parsed = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentSetupLibReachCategory>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValueCategory = default; _explicitNullProperties?.Remove("category"); AdditionalData["category"] = unknown; } else { Category = parsed; AdditionalData.Remove("category"); } } },
                 { "device_id_share", n => { DeviceIdShare = n.GetDoubleValue(); } },
                 { "lib", n => { Lib = n.GetStringValue(); } },
                 { "unique_persons", n => { UniquePersons = n.GetIntValue(); } },

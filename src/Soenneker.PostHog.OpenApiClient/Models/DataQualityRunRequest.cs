@@ -18,9 +18,12 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("check_ids") is { } nullNodeCheckIds && nullNodeCheckIds.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CheckIds = null;
-            if (parseNode.GetChildNode("subject_type") is { } nullNodeSubjectType && nullNodeSubjectType.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SubjectType = null;
-            if (parseNode.GetChildNode("subject_uuid") is { } nullNodeSubjectUuid && nullNodeSubjectUuid.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SubjectUuid = null;
+            if (parseNode.GetChildNode("check_ids") is null) { _explicitNullValueCheckIds = default!; _explicitNullProperties?.Remove("check_ids"); }
+            else if (parseNode.GetChildNode("check_ids") is { } nullNodeCheckIds && nullNodeCheckIds.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CheckIds = null;
+            if (parseNode.GetChildNode("subject_type") is null) { _explicitNullValueSubjectType = default!; _explicitNullProperties?.Remove("subject_type"); }
+            else if (parseNode.GetChildNode("subject_type") is { } nullNodeSubjectType && nullNodeSubjectType.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SubjectType = null;
+            if (parseNode.GetChildNode("subject_uuid") is null) { _explicitNullValueSubjectUuid = default!; _explicitNullProperties?.Remove("subject_uuid"); }
+            else if (parseNode.GetChildNode("subject_uuid") is { } nullNodeSubjectUuid && nullNodeSubjectUuid.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SubjectUuid = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -28,18 +31,18 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Ids of the checks to run. Omit to run every enabled check in the project.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<Guid?>? CheckIds { get => _explicitNullValueCheckIds; set { _explicitNullValueCheckIds = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("check_ids"); else _explicitNullProperties?.Remove("check_ids"); } }
+        public List<Guid?>? CheckIds { get => _explicitNullValueCheckIds; set { _explicitNullValueCheckIds = value; AdditionalData?.Remove("check_ids"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("check_ids"); else _explicitNullProperties?.Remove("check_ids"); } }
         private List<Guid?>? _explicitNullValueCheckIds = default!;
 #nullable restore
 #else
-        public List<Guid?> CheckIds { get => _explicitNullValueCheckIds; set { _explicitNullValueCheckIds = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("check_ids"); else _explicitNullProperties?.Remove("check_ids"); } }
+        public List<Guid?> CheckIds { get => _explicitNullValueCheckIds; set { _explicitNullValueCheckIds = value; AdditionalData?.Remove("check_ids"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("check_ids"); else _explicitNullProperties?.Remove("check_ids"); } }
         private List<Guid?> _explicitNullValueCheckIds = default!;
 #endif
         /// <summary>* `table` - table* `view` - view* `metric` - metric* `posthog_table` - posthog_table</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.DataQualityRunRequestSubjectType? SubjectType { get => _explicitNullValueSubjectType; set { _explicitNullValueSubjectType = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("subject_type"); else _explicitNullProperties?.Remove("subject_type"); } }
+        public global::Soenneker.PostHog.OpenApiClient.Models.DataQualityRunRequestSubjectType? SubjectType { get => _explicitNullValueSubjectType; set { _explicitNullValueSubjectType = value; AdditionalData?.Remove("subject_type"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("subject_type"); else _explicitNullProperties?.Remove("subject_type"); } }
         private global::Soenneker.PostHog.OpenApiClient.Models.DataQualityRunRequestSubjectType? _explicitNullValueSubjectType = default!;
         /// <summary>Id of the subject to run every enabled check on. Pass subject_type with it.</summary>
-        public Guid? SubjectUuid { get => _explicitNullValueSubjectUuid; set { _explicitNullValueSubjectUuid = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("subject_uuid"); else _explicitNullProperties?.Remove("subject_uuid"); } }
+        public Guid? SubjectUuid { get => _explicitNullValueSubjectUuid; set { _explicitNullValueSubjectUuid = value; AdditionalData?.Remove("subject_uuid"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("subject_uuid"); else _explicitNullProperties?.Remove("subject_uuid"); } }
         private Guid? _explicitNullValueSubjectUuid = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.DataQualityRunRequest"/> and sets the default values.
@@ -67,7 +70,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "check_ids", n => { CheckIds = n.GetCollectionOfPrimitiveValues<Guid?>()?.AsList(); } },
-                { "subject_type", n => { SubjectType = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.DataQualityRunRequestSubjectType>(); } },
+                { "subject_type", n => { var parsed = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.DataQualityRunRequestSubjectType>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValueSubjectType = default; _explicitNullProperties?.Remove("subject_type"); AdditionalData["subject_type"] = unknown; } else { SubjectType = parsed; AdditionalData.Remove("subject_type"); } } },
                 { "subject_uuid", n => { SubjectUuid = n.GetGuidValue(); } },
             };
         }

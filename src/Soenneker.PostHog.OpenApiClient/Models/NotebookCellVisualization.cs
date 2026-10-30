@@ -17,10 +17,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("display") is { } nullNodeDisplay && nullNodeDisplay.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Display = null;
-            if (parseNode.GetChildNode("series_breakdown") is { } nullNodeSeriesBreakdown && nullNodeSeriesBreakdown.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SeriesBreakdown = null;
-            if (parseNode.GetChildNode("x_axis") is { } nullNodeXAxis && nullNodeXAxis.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) XAxis = null;
-            if (parseNode.GetChildNode("y_axis") is { } nullNodeYAxis && nullNodeYAxis.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) YAxis = null;
+            if (parseNode.GetChildNode("display") is null) { _explicitNullValueDisplay = default!; _explicitNullProperties?.Remove("display"); }
+            else if (parseNode.GetChildNode("display") is { } nullNodeDisplay && nullNodeDisplay.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Display = null;
+            if (parseNode.GetChildNode("series_breakdown") is null) { _explicitNullValueSeriesBreakdown = default!; _explicitNullProperties?.Remove("series_breakdown"); }
+            else if (parseNode.GetChildNode("series_breakdown") is { } nullNodeSeriesBreakdown && nullNodeSeriesBreakdown.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SeriesBreakdown = null;
+            if (parseNode.GetChildNode("x_axis") is null) { _explicitNullValueXAxis = default!; _explicitNullProperties?.Remove("x_axis"); }
+            else if (parseNode.GetChildNode("x_axis") is { } nullNodeXAxis && nullNodeXAxis.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) XAxis = null;
+            if (parseNode.GetChildNode("y_axis") is null) { _explicitNullValueYAxis = default!; _explicitNullProperties?.Remove("y_axis"); }
+            else if (parseNode.GetChildNode("y_axis") is { } nullNodeYAxis && nullNodeYAxis.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) YAxis = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -28,41 +32,41 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Chart type the cell opens on, a chart display value such as &apos;ActionsBar&apos; or &apos;ActionsLineGraph&apos;.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Display { get => _explicitNullValueDisplay; set { _explicitNullValueDisplay = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("display"); else _explicitNullProperties?.Remove("display"); } }
+        public string? Display { get => _explicitNullValueDisplay; set { _explicitNullValueDisplay = value; AdditionalData?.Remove("display"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("display"); else _explicitNullProperties?.Remove("display"); } }
         private string? _explicitNullValueDisplay = default!;
 #nullable restore
 #else
-        public string Display { get => _explicitNullValueDisplay; set { _explicitNullValueDisplay = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("display"); else _explicitNullProperties?.Remove("display"); } }
+        public string Display { get => _explicitNullValueDisplay; set { _explicitNullValueDisplay = value; AdditionalData?.Remove("display"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("display"); else _explicitNullProperties?.Remove("display"); } }
         private string _explicitNullValueDisplay = default!;
 #endif
         /// <summary>Column that splits the Y series into one series per value, or null.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? SeriesBreakdown { get => _explicitNullValueSeriesBreakdown; set { _explicitNullValueSeriesBreakdown = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("series_breakdown"); else _explicitNullProperties?.Remove("series_breakdown"); } }
+        public string? SeriesBreakdown { get => _explicitNullValueSeriesBreakdown; set { _explicitNullValueSeriesBreakdown = value; AdditionalData?.Remove("series_breakdown"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("series_breakdown"); else _explicitNullProperties?.Remove("series_breakdown"); } }
         private string? _explicitNullValueSeriesBreakdown = default!;
 #nullable restore
 #else
-        public string SeriesBreakdown { get => _explicitNullValueSeriesBreakdown; set { _explicitNullValueSeriesBreakdown = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("series_breakdown"); else _explicitNullProperties?.Remove("series_breakdown"); } }
+        public string SeriesBreakdown { get => _explicitNullValueSeriesBreakdown; set { _explicitNullValueSeriesBreakdown = value; AdditionalData?.Remove("series_breakdown"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("series_breakdown"); else _explicitNullProperties?.Remove("series_breakdown"); } }
         private string _explicitNullValueSeriesBreakdown = default!;
 #endif
         /// <summary>Column on the X axis. Null means the chart picks it: the first date column, or the first column the Y series do not use when there is no date column.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? XAxis { get => _explicitNullValueXAxis; set { _explicitNullValueXAxis = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("x_axis"); else _explicitNullProperties?.Remove("x_axis"); } }
+        public string? XAxis { get => _explicitNullValueXAxis; set { _explicitNullValueXAxis = value; AdditionalData?.Remove("x_axis"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("x_axis"); else _explicitNullProperties?.Remove("x_axis"); } }
         private string? _explicitNullValueXAxis = default!;
 #nullable restore
 #else
-        public string XAxis { get => _explicitNullValueXAxis; set { _explicitNullValueXAxis = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("x_axis"); else _explicitNullProperties?.Remove("x_axis"); } }
+        public string XAxis { get => _explicitNullValueXAxis; set { _explicitNullValueXAxis = value; AdditionalData?.Remove("x_axis"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("x_axis"); else _explicitNullProperties?.Remove("x_axis"); } }
         private string _explicitNullValueXAxis = default!;
 #endif
         /// <summary>Columns plotted as Y series. Null means the chart picks them: every numeric column. An empty list means the author removed every series, so the chart plots nothing.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<string>? YAxis { get => _explicitNullValueYAxis; set { _explicitNullValueYAxis = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("y_axis"); else _explicitNullProperties?.Remove("y_axis"); } }
+        public List<string>? YAxis { get => _explicitNullValueYAxis; set { _explicitNullValueYAxis = value; AdditionalData?.Remove("y_axis"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("y_axis"); else _explicitNullProperties?.Remove("y_axis"); } }
         private List<string>? _explicitNullValueYAxis = default!;
 #nullable restore
 #else
-        public List<string> YAxis { get => _explicitNullValueYAxis; set { _explicitNullValueYAxis = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("y_axis"); else _explicitNullProperties?.Remove("y_axis"); } }
+        public List<string> YAxis { get => _explicitNullValueYAxis; set { _explicitNullValueYAxis = value; AdditionalData?.Remove("y_axis"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("y_axis"); else _explicitNullProperties?.Remove("y_axis"); } }
         private List<string> _explicitNullValueYAxis = default!;
 #endif
         /// <summary>

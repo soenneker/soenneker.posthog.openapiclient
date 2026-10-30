@@ -17,8 +17,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("disableHoverOffset") is { } nullNodeDisableHoverOffset && nullNodeDisableHoverOffset.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) DisableHoverOffset = null;
-            if (parseNode.GetChildNode("hideAggregation") is { } nullNodeHideAggregation && nullNodeHideAggregation.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) HideAggregation = null;
+            if (parseNode.GetChildNode("disableHoverOffset") is null) { _explicitNullValueDisableHoverOffset = default!; _explicitNullProperties?.Remove("disableHoverOffset"); }
+            else if (parseNode.GetChildNode("disableHoverOffset") is { } nullNodeDisableHoverOffset && nullNodeDisableHoverOffset.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) DisableHoverOffset = null;
+            if (parseNode.GetChildNode("hideAggregation") is null) { _explicitNullValueHideAggregation = default!; _explicitNullProperties?.Remove("hideAggregation"); }
+            else if (parseNode.GetChildNode("hideAggregation") is { } nullNodeHideAggregation && nullNodeHideAggregation.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) HideAggregation = null;
         }
 
         /// <summary>The disableHoverOffset property</summary>

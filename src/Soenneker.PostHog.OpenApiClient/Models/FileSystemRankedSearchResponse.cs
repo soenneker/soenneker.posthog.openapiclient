@@ -17,53 +17,59 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("counts_capped") is { } nullNodeCountsCapped && nullNodeCountsCapped.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CountsCapped = null;
-            if (parseNode.GetChildNode("matched_all_words") is { } nullNodeMatchedAllWords && nullNodeMatchedAllWords.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MatchedAllWords = null;
-            if (parseNode.GetChildNode("matched_with_typos") is { } nullNodeMatchedWithTypos && nullNodeMatchedWithTypos.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MatchedWithTypos = null;
-            if (parseNode.GetChildNode("matched_words") is { } nullNodeMatchedWords && nullNodeMatchedWords.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MatchedWords = null;
-            if (parseNode.GetChildNode("results") is { } nullNodeResults && nullNodeResults.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Results = null;
-            if (parseNode.GetChildNode("type_counts") is { } nullNodeTypeCounts && nullNodeTypeCounts.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TypeCounts = null;
+            if (parseNode.GetChildNode("counts_capped") is null) { _explicitNullValueCountsCapped = default!; _explicitNullProperties?.Remove("counts_capped"); }
+            else if (parseNode.GetChildNode("counts_capped") is { } nullNodeCountsCapped && nullNodeCountsCapped.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CountsCapped = null;
+            if (parseNode.GetChildNode("matched_all_words") is null) { _explicitNullValueMatchedAllWords = default!; _explicitNullProperties?.Remove("matched_all_words"); }
+            else if (parseNode.GetChildNode("matched_all_words") is { } nullNodeMatchedAllWords && nullNodeMatchedAllWords.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MatchedAllWords = null;
+            if (parseNode.GetChildNode("matched_with_typos") is null) { _explicitNullValueMatchedWithTypos = default!; _explicitNullProperties?.Remove("matched_with_typos"); }
+            else if (parseNode.GetChildNode("matched_with_typos") is { } nullNodeMatchedWithTypos && nullNodeMatchedWithTypos.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MatchedWithTypos = null;
+            if (parseNode.GetChildNode("matched_words") is null) { _explicitNullValueMatchedWords = default!; _explicitNullProperties?.Remove("matched_words"); }
+            else if (parseNode.GetChildNode("matched_words") is { } nullNodeMatchedWords && nullNodeMatchedWords.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MatchedWords = null;
+            if (parseNode.GetChildNode("results") is null) { _explicitNullValueResults = default!; _explicitNullProperties?.Remove("results"); }
+            else if (parseNode.GetChildNode("results") is { } nullNodeResults && nullNodeResults.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Results = null;
+            if (parseNode.GetChildNode("type_counts") is null) { _explicitNullValueTypeCounts = default!; _explicitNullProperties?.Remove("type_counts"); }
+            else if (parseNode.GetChildNode("type_counts") is { } nullNodeTypeCounts && nullNodeTypeCounts.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TypeCounts = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>True when the search stopped at its candidate limit, so type_counts are lower bounds.</summary>
-        public bool? CountsCapped { get => _explicitNullValueCountsCapped; set { _explicitNullValueCountsCapped = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("counts_capped"); else _explicitNullProperties?.Remove("counts_capped"); } }
+        public bool? CountsCapped { get => _explicitNullValueCountsCapped; set { _explicitNullValueCountsCapped = value; AdditionalData?.Remove("counts_capped"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("counts_capped"); else _explicitNullProperties?.Remove("counts_capped"); } }
         private bool? _explicitNullValueCountsCapped = default!;
         /// <summary>True when every result contains every search word. False when no entry matched every word and the results match only some words.</summary>
-        public bool? MatchedAllWords { get => _explicitNullValueMatchedAllWords; set { _explicitNullValueMatchedAllWords = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("matched_all_words"); else _explicitNullProperties?.Remove("matched_all_words"); } }
+        public bool? MatchedAllWords { get => _explicitNullValueMatchedAllWords; set { _explicitNullValueMatchedAllWords = value; AdditionalData?.Remove("matched_all_words"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("matched_all_words"); else _explicitNullProperties?.Remove("matched_all_words"); } }
         private bool? _explicitNullValueMatchedAllWords = default!;
         /// <summary>True when no entry matched the words as typed, so every result is a close spelling.</summary>
-        public bool? MatchedWithTypos { get => _explicitNullValueMatchedWithTypos; set { _explicitNullValueMatchedWithTypos = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("matched_with_typos"); else _explicitNullProperties?.Remove("matched_with_typos"); } }
+        public bool? MatchedWithTypos { get => _explicitNullValueMatchedWithTypos; set { _explicitNullValueMatchedWithTypos = value; AdditionalData?.Remove("matched_with_typos"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("matched_with_typos"); else _explicitNullProperties?.Remove("matched_with_typos"); } }
         private bool? _explicitNullValueMatchedWithTypos = default!;
         /// <summary>Search words that the best result matched. Use it to tell the user which words were dropped when matched_all_words is false.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<string>? MatchedWords { get => _explicitNullValueMatchedWords; set { _explicitNullValueMatchedWords = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("matched_words"); else _explicitNullProperties?.Remove("matched_words"); } }
+        public List<string>? MatchedWords { get => _explicitNullValueMatchedWords; set { _explicitNullValueMatchedWords = value; AdditionalData?.Remove("matched_words"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("matched_words"); else _explicitNullProperties?.Remove("matched_words"); } }
         private List<string>? _explicitNullValueMatchedWords = default!;
 #nullable restore
 #else
-        public List<string> MatchedWords { get => _explicitNullValueMatchedWords; set { _explicitNullValueMatchedWords = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("matched_words"); else _explicitNullProperties?.Remove("matched_words"); } }
+        public List<string> MatchedWords { get => _explicitNullValueMatchedWords; set { _explicitNullValueMatchedWords = value; AdditionalData?.Remove("matched_words"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("matched_words"); else _explicitNullProperties?.Remove("matched_words"); } }
         private List<string> _explicitNullValueMatchedWords = default!;
 #endif
         /// <summary>Matches, best first.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.FileSystemRankedSearchItem>? Results { get => _explicitNullValueResults; set { _explicitNullValueResults = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("results"); else _explicitNullProperties?.Remove("results"); } }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.FileSystemRankedSearchItem>? Results { get => _explicitNullValueResults; set { _explicitNullValueResults = value; AdditionalData?.Remove("results"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("results"); else _explicitNullProperties?.Remove("results"); } }
         private List<global::Soenneker.PostHog.OpenApiClient.Models.FileSystemRankedSearchItem>? _explicitNullValueResults = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.FileSystemRankedSearchItem> Results { get => _explicitNullValueResults; set { _explicitNullValueResults = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("results"); else _explicitNullProperties?.Remove("results"); } }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.FileSystemRankedSearchItem> Results { get => _explicitNullValueResults; set { _explicitNullValueResults = value; AdditionalData?.Remove("results"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("results"); else _explicitNullProperties?.Remove("results"); } }
         private List<global::Soenneker.PostHog.OpenApiClient.Models.FileSystemRankedSearchItem> _explicitNullValueResults = default!;
 #endif
         /// <summary>Number of matches for each type, largest first.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.FileSystemRankedSearchTypeCount>? TypeCounts { get => _explicitNullValueTypeCounts; set { _explicitNullValueTypeCounts = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("type_counts"); else _explicitNullProperties?.Remove("type_counts"); } }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.FileSystemRankedSearchTypeCount>? TypeCounts { get => _explicitNullValueTypeCounts; set { _explicitNullValueTypeCounts = value; AdditionalData?.Remove("type_counts"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("type_counts"); else _explicitNullProperties?.Remove("type_counts"); } }
         private List<global::Soenneker.PostHog.OpenApiClient.Models.FileSystemRankedSearchTypeCount>? _explicitNullValueTypeCounts = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.FileSystemRankedSearchTypeCount> TypeCounts { get => _explicitNullValueTypeCounts; set { _explicitNullValueTypeCounts = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("type_counts"); else _explicitNullProperties?.Remove("type_counts"); } }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.FileSystemRankedSearchTypeCount> TypeCounts { get => _explicitNullValueTypeCounts; set { _explicitNullValueTypeCounts = value; AdditionalData?.Remove("type_counts"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("type_counts"); else _explicitNullProperties?.Remove("type_counts"); } }
         private List<global::Soenneker.PostHog.OpenApiClient.Models.FileSystemRankedSearchTypeCount> _explicitNullValueTypeCounts = default!;
 #endif
         /// <summary>

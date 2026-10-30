@@ -17,17 +17,19 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("window_end") is { } nullNodeWindowEnd && nullNodeWindowEnd.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) WindowEnd = null;
-            if (parseNode.GetChildNode("window_start") is { } nullNodeWindowStart && nullNodeWindowStart.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) WindowStart = null;
+            if (parseNode.GetChildNode("window_end") is null) { _explicitNullValueWindowEnd = default!; _explicitNullProperties?.Remove("window_end"); }
+            else if (parseNode.GetChildNode("window_end") is { } nullNodeWindowEnd && nullNodeWindowEnd.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) WindowEnd = null;
+            if (parseNode.GetChildNode("window_start") is null) { _explicitNullValueWindowStart = default!; _explicitNullProperties?.Remove("window_start"); }
+            else if (parseNode.GetChildNode("window_start") is { } nullNodeWindowStart && nullNodeWindowStart.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) WindowStart = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Exclusive upper bound of the window; clamped server-side to now, and for an experiment scanner to the experiment&apos;s end date.</summary>
-        public DateTimeOffset? WindowEnd { get => _explicitNullValueWindowEnd; set { _explicitNullValueWindowEnd = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("window_end"); else _explicitNullProperties?.Remove("window_end"); } }
+        public DateTimeOffset? WindowEnd { get => _explicitNullValueWindowEnd; set { _explicitNullValueWindowEnd = value; AdditionalData?.Remove("window_end"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("window_end"); else _explicitNullProperties?.Remove("window_end"); } }
         private DateTimeOffset? _explicitNullValueWindowEnd = default!;
         /// <summary>Inclusive lower bound of the historical window to scan.</summary>
-        public DateTimeOffset? WindowStart { get => _explicitNullValueWindowStart; set { _explicitNullValueWindowStart = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("window_start"); else _explicitNullProperties?.Remove("window_start"); } }
+        public DateTimeOffset? WindowStart { get => _explicitNullValueWindowStart; set { _explicitNullValueWindowStart = value; AdditionalData?.Remove("window_start"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("window_start"); else _explicitNullProperties?.Remove("window_start"); } }
         private DateTimeOffset? _explicitNullValueWindowStart = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.BackfillWindow"/> and sets the default values.

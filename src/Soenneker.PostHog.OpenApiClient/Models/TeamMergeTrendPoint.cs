@@ -17,25 +17,29 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("average_seconds") is { } nullNodeAverageSeconds && nullNodeAverageSeconds.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AverageSeconds = null;
-            if (parseNode.GetChildNode("day") is { } nullNodeDay && nullNodeDay.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Day = null;
-            if (parseNode.GetChildNode("median_seconds") is { } nullNodeMedianSeconds && nullNodeMedianSeconds.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MedianSeconds = null;
-            if (parseNode.GetChildNode("merged_count") is { } nullNodeMergedCount && nullNodeMergedCount.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MergedCount = null;
+            if (parseNode.GetChildNode("average_seconds") is null) { _explicitNullValueAverageSeconds = default!; _explicitNullProperties?.Remove("average_seconds"); }
+            else if (parseNode.GetChildNode("average_seconds") is { } nullNodeAverageSeconds && nullNodeAverageSeconds.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AverageSeconds = null;
+            if (parseNode.GetChildNode("day") is null) { _explicitNullValueDay = default!; _explicitNullProperties?.Remove("day"); }
+            else if (parseNode.GetChildNode("day") is { } nullNodeDay && nullNodeDay.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Day = null;
+            if (parseNode.GetChildNode("median_seconds") is null) { _explicitNullValueMedianSeconds = default!; _explicitNullProperties?.Remove("median_seconds"); }
+            else if (parseNode.GetChildNode("median_seconds") is { } nullNodeMedianSeconds && nullNodeMedianSeconds.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MedianSeconds = null;
+            if (parseNode.GetChildNode("merged_count") is null) { _explicitNullValueMergedCount = default!; _explicitNullProperties?.Remove("merged_count"); }
+            else if (parseNode.GetChildNode("merged_count") is { } nullNodeMergedCount && nullNodeMergedCount.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MergedCount = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Average open→merge seconds over the same merges; diverges above the median when a few long-running PRs drag the mean. Null on a day the team merged nothing.</summary>
-        public double? AverageSeconds { get => _explicitNullValueAverageSeconds; set { _explicitNullValueAverageSeconds = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("average_seconds"); else _explicitNullProperties?.Remove("average_seconds"); } }
+        public double? AverageSeconds { get => _explicitNullValueAverageSeconds; set { _explicitNullValueAverageSeconds = value; AdditionalData?.Remove("average_seconds"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("average_seconds"); else _explicitNullProperties?.Remove("average_seconds"); } }
         private double? _explicitNullValueAverageSeconds = default!;
         /// <summary>Start of the day bucket (team timezone), keyed on merged_at.</summary>
-        public DateTimeOffset? Day { get => _explicitNullValueDay; set { _explicitNullValueDay = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("day"); else _explicitNullProperties?.Remove("day"); } }
+        public DateTimeOffset? Day { get => _explicitNullValueDay; set { _explicitNullValueDay = value; AdditionalData?.Remove("day"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("day"); else _explicitNullProperties?.Remove("day"); } }
         private DateTimeOffset? _explicitNullValueDay = default!;
         /// <summary>Median open→merge seconds of the PRs this team&apos;s members merged that day; null on a day the team merged nothing.</summary>
-        public double? MedianSeconds { get => _explicitNullValueMedianSeconds; set { _explicitNullValueMedianSeconds = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("median_seconds"); else _explicitNullProperties?.Remove("median_seconds"); } }
+        public double? MedianSeconds { get => _explicitNullValueMedianSeconds; set { _explicitNullValueMedianSeconds = value; AdditionalData?.Remove("median_seconds"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("median_seconds"); else _explicitNullProperties?.Remove("median_seconds"); } }
         private double? _explicitNullValueMedianSeconds = default!;
         /// <summary>Merged PRs behind that day&apos;s median and average.</summary>
-        public int? MergedCount { get => _explicitNullValueMergedCount; set { _explicitNullValueMergedCount = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("merged_count"); else _explicitNullProperties?.Remove("merged_count"); } }
+        public int? MergedCount { get => _explicitNullValueMergedCount; set { _explicitNullValueMergedCount = value; AdditionalData?.Remove("merged_count"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("merged_count"); else _explicitNullProperties?.Remove("merged_count"); } }
         private int? _explicitNullValueMergedCount = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.TeamMergeTrendPoint"/> and sets the default values.

@@ -18,10 +18,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("agent_instructions") is { } nullNodeAgentInstructions && nullNodeAgentInstructions.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AgentInstructions = null;
-            if (parseNode.GetChildNode("ai_run_preferences") is { } nullNodeAiRunPreferences && nullNodeAiRunPreferences.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AiRunPreferences = null;
-            if (parseNode.GetChildNode("resolved_ai_run_defaults") is { } nullNodeResolvedAiRunDefaults && nullNodeResolvedAiRunDefaults.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ResolvedAiRunDefaults = null;
-            if (parseNode.GetChildNode("task_defaults") is { } nullNodeTaskDefaults && nullNodeTaskDefaults.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TaskDefaults = null;
+            if (parseNode.GetChildNode("agent_instructions") is null) { _explicitNullValueAgentInstructions = default!; _explicitNullProperties?.Remove("agent_instructions"); }
+            else if (parseNode.GetChildNode("agent_instructions") is { } nullNodeAgentInstructions && nullNodeAgentInstructions.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AgentInstructions = null;
+            if (parseNode.GetChildNode("ai_run_preferences") is null) { _explicitNullValueAiRunPreferences = default!; _explicitNullProperties?.Remove("ai_run_preferences"); }
+            else if (parseNode.GetChildNode("ai_run_preferences") is { } nullNodeAiRunPreferences && nullNodeAiRunPreferences.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AiRunPreferences = null;
+            if (parseNode.GetChildNode("resolved_ai_run_defaults") is null) { _explicitNullValueResolvedAiRunDefaults = default!; _explicitNullProperties?.Remove("resolved_ai_run_defaults"); }
+            else if (parseNode.GetChildNode("resolved_ai_run_defaults") is { } nullNodeResolvedAiRunDefaults && nullNodeResolvedAiRunDefaults.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ResolvedAiRunDefaults = null;
+            if (parseNode.GetChildNode("task_defaults") is null) { _explicitNullValueTaskDefaults = default!; _explicitNullProperties?.Remove("task_defaults"); }
+            else if (parseNode.GetChildNode("task_defaults") is { } nullNodeTaskDefaults && nullNodeTaskDefaults.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TaskDefaults = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -29,41 +33,41 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Your personal instructions, which PostHog cloud agents read in Tasks runs you start, after the project instructions. Anyone who continues a task you started can see them. Empty when unset.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? AgentInstructions { get => _explicitNullValueAgentInstructions; set { _explicitNullValueAgentInstructions = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("agent_instructions"); else _explicitNullProperties?.Remove("agent_instructions"); } }
+        public string? AgentInstructions { get => _explicitNullValueAgentInstructions; set { _explicitNullValueAgentInstructions = value; AdditionalData?.Remove("agent_instructions"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("agent_instructions"); else _explicitNullProperties?.Remove("agent_instructions"); } }
         private string? _explicitNullValueAgentInstructions = default!;
 #nullable restore
 #else
-        public string AgentInstructions { get => _explicitNullValueAgentInstructions; set { _explicitNullValueAgentInstructions = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("agent_instructions"); else _explicitNullProperties?.Remove("agent_instructions"); } }
+        public string AgentInstructions { get => _explicitNullValueAgentInstructions; set { _explicitNullValueAgentInstructions = value; AdditionalData?.Remove("agent_instructions"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("agent_instructions"); else _explicitNullProperties?.Remove("agent_instructions"); } }
         private string _explicitNullValueAgentInstructions = default!;
 #endif
         /// <summary>The requesting user&apos;s per-project default AI run triple; all fields null when unset.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.TasksUserConfigResponseAiRunPreferences? AiRunPreferences { get => _explicitNullValueAiRunPreferences; set { _explicitNullValueAiRunPreferences = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("ai_run_preferences"); else _explicitNullProperties?.Remove("ai_run_preferences"); } }
+        public global::Soenneker.PostHog.OpenApiClient.Models.TasksUserConfigResponseAiRunPreferences? AiRunPreferences { get => _explicitNullValueAiRunPreferences; set { _explicitNullValueAiRunPreferences = value; AdditionalData?.Remove("ai_run_preferences"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("ai_run_preferences"); else _explicitNullProperties?.Remove("ai_run_preferences"); } }
         private global::Soenneker.PostHog.OpenApiClient.Models.TasksUserConfigResponseAiRunPreferences? _explicitNullValueAiRunPreferences = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.TasksUserConfigResponseAiRunPreferences AiRunPreferences { get => _explicitNullValueAiRunPreferences; set { _explicitNullValueAiRunPreferences = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("ai_run_preferences"); else _explicitNullProperties?.Remove("ai_run_preferences"); } }
+        public global::Soenneker.PostHog.OpenApiClient.Models.TasksUserConfigResponseAiRunPreferences AiRunPreferences { get => _explicitNullValueAiRunPreferences; set { _explicitNullValueAiRunPreferences = value; AdditionalData?.Remove("ai_run_preferences"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("ai_run_preferences"); else _explicitNullProperties?.Remove("ai_run_preferences"); } }
         private global::Soenneker.PostHog.OpenApiClient.Models.TasksUserConfigResponseAiRunPreferences _explicitNullValueAiRunPreferences = default!;
 #endif
         /// <summary>The defaults a new run will use when no explicit runtime selection is sent.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.TasksUserConfigResponseResolvedAiRunDefaults? ResolvedAiRunDefaults { get => _explicitNullValueResolvedAiRunDefaults; set { _explicitNullValueResolvedAiRunDefaults = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("resolved_ai_run_defaults"); else _explicitNullProperties?.Remove("resolved_ai_run_defaults"); } }
+        public global::Soenneker.PostHog.OpenApiClient.Models.TasksUserConfigResponseResolvedAiRunDefaults? ResolvedAiRunDefaults { get => _explicitNullValueResolvedAiRunDefaults; set { _explicitNullValueResolvedAiRunDefaults = value; AdditionalData?.Remove("resolved_ai_run_defaults"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("resolved_ai_run_defaults"); else _explicitNullProperties?.Remove("resolved_ai_run_defaults"); } }
         private global::Soenneker.PostHog.OpenApiClient.Models.TasksUserConfigResponseResolvedAiRunDefaults? _explicitNullValueResolvedAiRunDefaults = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.TasksUserConfigResponseResolvedAiRunDefaults ResolvedAiRunDefaults { get => _explicitNullValueResolvedAiRunDefaults; set { _explicitNullValueResolvedAiRunDefaults = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("resolved_ai_run_defaults"); else _explicitNullProperties?.Remove("resolved_ai_run_defaults"); } }
+        public global::Soenneker.PostHog.OpenApiClient.Models.TasksUserConfigResponseResolvedAiRunDefaults ResolvedAiRunDefaults { get => _explicitNullValueResolvedAiRunDefaults; set { _explicitNullValueResolvedAiRunDefaults = value; AdditionalData?.Remove("resolved_ai_run_defaults"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("resolved_ai_run_defaults"); else _explicitNullProperties?.Remove("resolved_ai_run_defaults"); } }
         private global::Soenneker.PostHog.OpenApiClient.Models.TasksUserConfigResponseResolvedAiRunDefaults _explicitNullValueResolvedAiRunDefaults = default!;
 #endif
         /// <summary>Your per-project defaults for new tasks. Unset defaults are false.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.TasksUserConfigResponseTaskDefaults? TaskDefaults { get => _explicitNullValueTaskDefaults; set { _explicitNullValueTaskDefaults = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("task_defaults"); else _explicitNullProperties?.Remove("task_defaults"); } }
+        public global::Soenneker.PostHog.OpenApiClient.Models.TasksUserConfigResponseTaskDefaults? TaskDefaults { get => _explicitNullValueTaskDefaults; set { _explicitNullValueTaskDefaults = value; AdditionalData?.Remove("task_defaults"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("task_defaults"); else _explicitNullProperties?.Remove("task_defaults"); } }
         private global::Soenneker.PostHog.OpenApiClient.Models.TasksUserConfigResponseTaskDefaults? _explicitNullValueTaskDefaults = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.TasksUserConfigResponseTaskDefaults TaskDefaults { get => _explicitNullValueTaskDefaults; set { _explicitNullValueTaskDefaults = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("task_defaults"); else _explicitNullProperties?.Remove("task_defaults"); } }
+        public global::Soenneker.PostHog.OpenApiClient.Models.TasksUserConfigResponseTaskDefaults TaskDefaults { get => _explicitNullValueTaskDefaults; set { _explicitNullValueTaskDefaults = value; AdditionalData?.Remove("task_defaults"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("task_defaults"); else _explicitNullProperties?.Remove("task_defaults"); } }
         private global::Soenneker.PostHog.OpenApiClient.Models.TasksUserConfigResponseTaskDefaults _explicitNullValueTaskDefaults = default!;
 #endif
         /// <summary>

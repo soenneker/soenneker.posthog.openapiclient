@@ -17,9 +17,12 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("referenced_by") is { } nullNodeReferencedBy && nullNodeReferencedBy.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ReferencedBy = null;
-            if (parseNode.GetChildNode("set_by") is { } nullNodeSetBy && nullNodeSetBy.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SetBy = null;
-            if (parseNode.GetChildNode("variable") is { } nullNodeVariable && nullNodeVariable.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Variable = null;
+            if (parseNode.GetChildNode("referenced_by") is null) { _explicitNullValueReferencedBy = default!; _explicitNullProperties?.Remove("referenced_by"); }
+            else if (parseNode.GetChildNode("referenced_by") is { } nullNodeReferencedBy && nullNodeReferencedBy.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ReferencedBy = null;
+            if (parseNode.GetChildNode("set_by") is null) { _explicitNullValueSetBy = default!; _explicitNullProperties?.Remove("set_by"); }
+            else if (parseNode.GetChildNode("set_by") is { } nullNodeSetBy && nullNodeSetBy.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SetBy = null;
+            if (parseNode.GetChildNode("variable") is null) { _explicitNullValueVariable = default!; _explicitNullProperties?.Remove("variable"); }
+            else if (parseNode.GetChildNode("variable") is { } nullNodeVariable && nullNodeVariable.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Variable = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -27,31 +30,31 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Ids of steps whose content references the variable.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<string>? ReferencedBy { get => _explicitNullValueReferencedBy; set { _explicitNullValueReferencedBy = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("referenced_by"); else _explicitNullProperties?.Remove("referenced_by"); } }
+        public List<string>? ReferencedBy { get => _explicitNullValueReferencedBy; set { _explicitNullValueReferencedBy = value; AdditionalData?.Remove("referenced_by"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("referenced_by"); else _explicitNullProperties?.Remove("referenced_by"); } }
         private List<string>? _explicitNullValueReferencedBy = default!;
 #nullable restore
 #else
-        public List<string> ReferencedBy { get => _explicitNullValueReferencedBy; set { _explicitNullValueReferencedBy = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("referenced_by"); else _explicitNullProperties?.Remove("referenced_by"); } }
+        public List<string> ReferencedBy { get => _explicitNullValueReferencedBy; set { _explicitNullValueReferencedBy = value; AdditionalData?.Remove("referenced_by"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("referenced_by"); else _explicitNullProperties?.Remove("referenced_by"); } }
         private List<string> _explicitNullValueReferencedBy = default!;
 #endif
         /// <summary>Id of the new action that sets it; null when the draft newly declares it as a workflow variable.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? SetBy { get => _explicitNullValueSetBy; set { _explicitNullValueSetBy = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("set_by"); else _explicitNullProperties?.Remove("set_by"); } }
+        public string? SetBy { get => _explicitNullValueSetBy; set { _explicitNullValueSetBy = value; AdditionalData?.Remove("set_by"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("set_by"); else _explicitNullProperties?.Remove("set_by"); } }
         private string? _explicitNullValueSetBy = default!;
 #nullable restore
 #else
-        public string SetBy { get => _explicitNullValueSetBy; set { _explicitNullValueSetBy = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("set_by"); else _explicitNullProperties?.Remove("set_by"); } }
+        public string SetBy { get => _explicitNullValueSetBy; set { _explicitNullValueSetBy = value; AdditionalData?.Remove("set_by"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("set_by"); else _explicitNullProperties?.Remove("set_by"); } }
         private string _explicitNullValueSetBy = default!;
 #endif
         /// <summary>Variable that renders empty for runs already past its producer.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Variable { get => _explicitNullValueVariable; set { _explicitNullValueVariable = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("variable"); else _explicitNullProperties?.Remove("variable"); } }
+        public string? Variable { get => _explicitNullValueVariable; set { _explicitNullValueVariable = value; AdditionalData?.Remove("variable"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("variable"); else _explicitNullProperties?.Remove("variable"); } }
         private string? _explicitNullValueVariable = default!;
 #nullable restore
 #else
-        public string Variable { get => _explicitNullValueVariable; set { _explicitNullValueVariable = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("variable"); else _explicitNullProperties?.Remove("variable"); } }
+        public string Variable { get => _explicitNullValueVariable; set { _explicitNullValueVariable = value; AdditionalData?.Remove("variable"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("variable"); else _explicitNullProperties?.Remove("variable"); } }
         private string _explicitNullValueVariable = default!;
 #endif
         /// <summary>

@@ -18,13 +18,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("sync_frequency") is { } nullNodeSyncFrequency && nullNodeSyncFrequency.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SyncFrequency = null;
+            if (parseNode.GetChildNode("sync_frequency") is null) { _explicitNullValueSyncFrequency = default!; _explicitNullProperties?.Remove("sync_frequency"); }
+            else if (parseNode.GetChildNode("sync_frequency") is { } nullNodeSyncFrequency && nullNodeSyncFrequency.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SyncFrequency = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>* `15min` - 15min* `30min` - 30min* `1hour` - 1hour* `6hour` - 6hour* `12hour` - 12hour* `24hour` - 24hour* `7day` - 7day* `30day` - 30day</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.SavedQueryMaterializeSyncFrequency? SyncFrequency { get => _explicitNullValueSyncFrequency; set { _explicitNullValueSyncFrequency = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("sync_frequency"); else _explicitNullProperties?.Remove("sync_frequency"); } }
+        public global::Soenneker.PostHog.OpenApiClient.Models.SavedQueryMaterializeSyncFrequency? SyncFrequency { get => _explicitNullValueSyncFrequency; set { _explicitNullValueSyncFrequency = value; AdditionalData?.Remove("sync_frequency"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("sync_frequency"); else _explicitNullProperties?.Remove("sync_frequency"); } }
         private global::Soenneker.PostHog.OpenApiClient.Models.SavedQueryMaterializeSyncFrequency? _explicitNullValueSyncFrequency = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.SavedQueryMaterialize"/> and sets the default values.
@@ -51,7 +52,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "sync_frequency", n => { SyncFrequency = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.SavedQueryMaterializeSyncFrequency>(); } },
+                { "sync_frequency", n => { var parsed = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.SavedQueryMaterializeSyncFrequency>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValueSyncFrequency = default; _explicitNullProperties?.Remove("sync_frequency"); AdditionalData["sync_frequency"] = unknown; } else { SyncFrequency = parsed; AdditionalData.Remove("sync_frequency"); } } },
             };
         }
         /// <summary>

@@ -17,36 +17,41 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("available") is { } nullNodeAvailable && nullNodeAvailable.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Available = null;
-            if (parseNode.GetChildNode("data") is { } nullNodeData && nullNodeData.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Data = null;
-            if (parseNode.GetChildNode("id") is { } nullNodeId && nullNodeId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Id = null;
-            if (parseNode.GetChildNode("payload_expires_at") is { } nullNodePayloadExpiresAt && nullNodePayloadExpiresAt.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) PayloadExpiresAt = null;
-            if (parseNode.GetChildNode("payload_state") is { } nullNodePayloadState && nullNodePayloadState.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) PayloadState = null;
+            if (parseNode.GetChildNode("available") is null) { _explicitNullValueAvailable = default!; _explicitNullProperties?.Remove("available"); }
+            else if (parseNode.GetChildNode("available") is { } nullNodeAvailable && nullNodeAvailable.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Available = null;
+            if (parseNode.GetChildNode("data") is null) { _explicitNullValueData = default!; _explicitNullProperties?.Remove("data"); }
+            else if (parseNode.GetChildNode("data") is { } nullNodeData && nullNodeData.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Data = null;
+            if (parseNode.GetChildNode("id") is null) { _explicitNullValueId = default!; _explicitNullProperties?.Remove("id"); }
+            else if (parseNode.GetChildNode("id") is { } nullNodeId && nullNodeId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Id = null;
+            if (parseNode.GetChildNode("payload_expires_at") is null) { _explicitNullValuePayloadExpiresAt = default!; _explicitNullProperties?.Remove("payload_expires_at"); }
+            else if (parseNode.GetChildNode("payload_expires_at") is { } nullNodePayloadExpiresAt && nullNodePayloadExpiresAt.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) PayloadExpiresAt = null;
+            if (parseNode.GetChildNode("payload_state") is null) { _explicitNullValuePayloadState = default!; _explicitNullProperties?.Remove("payload_state"); }
+            else if (parseNode.GetChildNode("payload_state") is { } nullNodePayloadState && nullNodePayloadState.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) PayloadState = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Whether the stored payload is currently available.</summary>
-        public bool? Available { get => _explicitNullValueAvailable; set { _explicitNullValueAvailable = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("available"); else _explicitNullProperties?.Remove("available"); } }
+        public bool? Available { get => _explicitNullValueAvailable; set { _explicitNullValueAvailable = value; AdditionalData?.Remove("available"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("available"); else _explicitNullProperties?.Remove("available"); } }
         private bool? _explicitNullValueAvailable = default!;
         /// <summary>Stored reasoning/error payload; null if unavailable.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.OfflineEvaluationResultPayloadInput? Data { get => _explicitNullValueData; set { _explicitNullValueData = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("data"); else _explicitNullProperties?.Remove("data"); } }
+        public global::Soenneker.PostHog.OpenApiClient.Models.OfflineEvaluationResultPayloadInput? Data { get => _explicitNullValueData; set { _explicitNullValueData = value; AdditionalData?.Remove("data"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("data"); else _explicitNullProperties?.Remove("data"); } }
         private global::Soenneker.PostHog.OpenApiClient.Models.OfflineEvaluationResultPayloadInput? _explicitNullValueData = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.OfflineEvaluationResultPayloadInput Data { get => _explicitNullValueData; set { _explicitNullValueData = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("data"); else _explicitNullProperties?.Remove("data"); } }
+        public global::Soenneker.PostHog.OpenApiClient.Models.OfflineEvaluationResultPayloadInput Data { get => _explicitNullValueData; set { _explicitNullValueData = value; AdditionalData?.Remove("data"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("data"); else _explicitNullProperties?.Remove("data"); } }
         private global::Soenneker.PostHog.OpenApiClient.Models.OfflineEvaluationResultPayloadInput _explicitNullValueData = default!;
 #endif
         /// <summary>Owning result UUID.</summary>
-        public Guid? Id { get => _explicitNullValueId; set { _explicitNullValueId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("id"); else _explicitNullProperties?.Remove("id"); } }
+        public Guid? Id { get => _explicitNullValueId; set { _explicitNullValueId = value; AdditionalData?.Remove("id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("id"); else _explicitNullProperties?.Remove("id"); } }
         private Guid? _explicitNullValueId = default!;
         /// <summary>Payload retention deadline.</summary>
-        public DateTimeOffset? PayloadExpiresAt { get => _explicitNullValuePayloadExpiresAt; set { _explicitNullValuePayloadExpiresAt = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("payload_expires_at"); else _explicitNullProperties?.Remove("payload_expires_at"); } }
+        public DateTimeOffset? PayloadExpiresAt { get => _explicitNullValuePayloadExpiresAt; set { _explicitNullValuePayloadExpiresAt = value; AdditionalData?.Remove("payload_expires_at"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("payload_expires_at"); else _explicitNullProperties?.Remove("payload_expires_at"); } }
         private DateTimeOffset? _explicitNullValuePayloadExpiresAt = default!;
         /// <summary>* `not_provided` - Not provided* `available` - Available* `expired` - Expired</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.OfflineResultPayloadReadPayloadState? PayloadState { get => _explicitNullValuePayloadState; set { _explicitNullValuePayloadState = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("payload_state"); else _explicitNullProperties?.Remove("payload_state"); } }
+        public global::Soenneker.PostHog.OpenApiClient.Models.OfflineResultPayloadReadPayloadState? PayloadState { get => _explicitNullValuePayloadState; set { _explicitNullValuePayloadState = value; AdditionalData?.Remove("payload_state"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("payload_state"); else _explicitNullProperties?.Remove("payload_state"); } }
         private global::Soenneker.PostHog.OpenApiClient.Models.OfflineResultPayloadReadPayloadState? _explicitNullValuePayloadState = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.OfflineResultPayloadRead"/> and sets the default values.
@@ -77,7 +82,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "data", n => { Data = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.OfflineEvaluationResultPayloadInput>(global::Soenneker.PostHog.OpenApiClient.Models.OfflineEvaluationResultPayloadInput.CreateFromDiscriminatorValue); } },
                 { "id", n => { Id = n.GetGuidValue(); } },
                 { "payload_expires_at", n => { PayloadExpiresAt = n.GetDateTimeOffsetValue(); } },
-                { "payload_state", n => { PayloadState = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.OfflineResultPayloadReadPayloadState>(); } },
+                { "payload_state", n => { var parsed = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.OfflineResultPayloadReadPayloadState>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValuePayloadState = default; _explicitNullProperties?.Remove("payload_state"); AdditionalData["payload_state"] = unknown; } else { PayloadState = parsed; AdditionalData.Remove("payload_state"); } } },
             };
         }
         /// <summary>

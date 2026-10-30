@@ -18,17 +18,19 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("flash") is { } nullNodeFlash && nullNodeFlash.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Flash = null;
-            if (parseNode.GetChildNode("reason") is { } nullNodeReason && nullNodeReason.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Reason = null;
+            if (parseNode.GetChildNode("flash") is null) { _explicitNullValueFlash = default!; _explicitNullProperties?.Remove("flash"); }
+            else if (parseNode.GetChildNode("flash") is { } nullNodeFlash && nullNodeFlash.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Flash = null;
+            if (parseNode.GetChildNode("reason") is null) { _explicitNullValueReason = default!; _explicitNullProperties?.Remove("reason"); }
+            else if (parseNode.GetChildNode("reason") is { } nullNodeReason && nullNodeReason.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Reason = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Whether the requesting user&apos;s own pull requests get automatic Standard reviews in this repository.</summary>
-        public bool? Flash { get => _explicitNullValueFlash; set { _explicitNullValueFlash = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("flash"); else _explicitNullProperties?.Remove("flash"); } }
+        public bool? Flash { get => _explicitNullValueFlash; set { _explicitNullValueFlash = value; AdditionalData?.Remove("flash"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("flash"); else _explicitNullProperties?.Remove("flash"); } }
         private bool? _explicitNullValueFlash = default!;
         /// <summary>* `own_repository_choice` - Own choice for this repository* `own_default` - Own default* `repository_everyone` - The repository exception reviews everyone* `repository_excepted` - Excepted by the repository exception* `repository_listed` - Listed by the repository exception* `repository_not_listed` - Not listed by the repository exception* `repository_opt_in` - The repository exception reviews only people who opt in* `project_everyone` - The project reviews everyone* `project_excepted` - Excepted by the project* `project_listed` - Listed by the project* `project_not_listed` - Not listed by the project* `project_opt_in` - The project reviews only people who opt in* `bot_reviewed` - The project reviews bot pull requests* `bot_skipped` - The project does not review bot pull requests* `not_in_project` - This project does not review the repository</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.AutomaticReviewDecisionReason? Reason { get => _explicitNullValueReason; set { _explicitNullValueReason = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("reason"); else _explicitNullProperties?.Remove("reason"); } }
+        public global::Soenneker.PostHog.OpenApiClient.Models.AutomaticReviewDecisionReason? Reason { get => _explicitNullValueReason; set { _explicitNullValueReason = value; AdditionalData?.Remove("reason"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("reason"); else _explicitNullProperties?.Remove("reason"); } }
         private global::Soenneker.PostHog.OpenApiClient.Models.AutomaticReviewDecisionReason? _explicitNullValueReason = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ReviewRepositoryOverviewEntryMyResult"/> and sets the default values.
@@ -56,7 +58,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "flash", n => { Flash = n.GetBoolValue(); } },
-                { "reason", n => { Reason = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.AutomaticReviewDecisionReason>(); } },
+                { "reason", n => { var parsed = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.AutomaticReviewDecisionReason>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValueReason = default; _explicitNullProperties?.Remove("reason"); AdditionalData["reason"] = unknown; } else { Reason = parsed; AdditionalData.Remove("reason"); } } },
             };
         }
         /// <summary>

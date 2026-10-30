@@ -17,8 +17,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("results") is { } nullNodeResults && nullNodeResults.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Results = null;
-            if (parseNode.GetChildNode("scorer_versions") is { } nullNodeScorerVersions && nullNodeScorerVersions.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ScorerVersions = null;
+            if (parseNode.GetChildNode("results") is null) { _explicitNullValueResults = default!; _explicitNullProperties?.Remove("results"); }
+            else if (parseNode.GetChildNode("results") is { } nullNodeResults && nullNodeResults.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Results = null;
+            if (parseNode.GetChildNode("scorer_versions") is null) { _explicitNullValueScorerVersions = default!; _explicitNullProperties?.Remove("scorer_versions"); }
+            else if (parseNode.GetChildNode("scorer_versions") is { } nullNodeScorerVersions && nullNodeScorerVersions.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ScorerVersions = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -26,21 +28,21 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Submitted results for the exact selected items and versions; at most 1,000 cells.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.OfflineResultCell>? Results { get => _explicitNullValueResults; set { _explicitNullValueResults = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("results"); else _explicitNullProperties?.Remove("results"); } }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.OfflineResultCell>? Results { get => _explicitNullValueResults; set { _explicitNullValueResults = value; AdditionalData?.Remove("results"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("results"); else _explicitNullProperties?.Remove("results"); } }
         private List<global::Soenneker.PostHog.OpenApiClient.Models.OfflineResultCell>? _explicitNullValueResults = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.OfflineResultCell> Results { get => _explicitNullValueResults; set { _explicitNullValueResults = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("results"); else _explicitNullProperties?.Remove("results"); } }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.OfflineResultCell> Results { get => _explicitNullValueResults; set { _explicitNullValueResults = value; AdditionalData?.Remove("results"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("results"); else _explicitNullProperties?.Remove("results"); } }
         private List<global::Soenneker.PostHog.OpenApiClient.Models.OfflineResultCell> _explicitNullValueResults = default!;
 #endif
         /// <summary>Selected authorized versions, including versions with no results for these items.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.OfflineScorerVersionRead>? ScorerVersions { get => _explicitNullValueScorerVersions; set { _explicitNullValueScorerVersions = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("scorer_versions"); else _explicitNullProperties?.Remove("scorer_versions"); } }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.OfflineScorerVersionRead>? ScorerVersions { get => _explicitNullValueScorerVersions; set { _explicitNullValueScorerVersions = value; AdditionalData?.Remove("scorer_versions"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("scorer_versions"); else _explicitNullProperties?.Remove("scorer_versions"); } }
         private List<global::Soenneker.PostHog.OpenApiClient.Models.OfflineScorerVersionRead>? _explicitNullValueScorerVersions = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.OfflineScorerVersionRead> ScorerVersions { get => _explicitNullValueScorerVersions; set { _explicitNullValueScorerVersions = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("scorer_versions"); else _explicitNullProperties?.Remove("scorer_versions"); } }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.OfflineScorerVersionRead> ScorerVersions { get => _explicitNullValueScorerVersions; set { _explicitNullValueScorerVersions = value; AdditionalData?.Remove("scorer_versions"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("scorer_versions"); else _explicitNullProperties?.Remove("scorer_versions"); } }
         private List<global::Soenneker.PostHog.OpenApiClient.Models.OfflineScorerVersionRead> _explicitNullValueScorerVersions = default!;
 #endif
         /// <summary>

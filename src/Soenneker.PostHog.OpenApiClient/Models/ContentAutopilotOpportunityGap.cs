@@ -18,112 +18,124 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("checks") is { } nullNodeChecks && nullNodeChecks.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Checks = null;
-            if (parseNode.GetChildNode("citation_rate") is { } nullNodeCitationRate && nullNodeCitationRate.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CitationRate = null;
-            if (parseNode.GetChildNode("cited_checks") is { } nullNodeCitedChecks && nullNodeCitedChecks.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CitedChecks = null;
-            if (parseNode.GetChildNode("competitor_domains") is { } nullNodeCompetitorDomains && nullNodeCompetitorDomains.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CompetitorDomains = null;
-            if (parseNode.GetChildNode("competitor_urls") is { } nullNodeCompetitorUrls && nullNodeCompetitorUrls.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CompetitorUrls = null;
-            if (parseNode.GetChildNode("engines") is { } nullNodeEngines && nullNodeEngines.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Engines = null;
-            if (parseNode.GetChildNode("engine_search_queries") is { } nullNodeEngineSearchQueries && nullNodeEngineSearchQueries.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) EngineSearchQueries = null;
-            if (parseNode.GetChildNode("engines_not_citing") is { } nullNodeEnginesNotCiting && nullNodeEnginesNotCiting.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) EnginesNotCiting = null;
-            if (parseNode.GetChildNode("last_checked_at") is { } nullNodeLastCheckedAt && nullNodeLastCheckedAt.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) LastCheckedAt = null;
-            if (parseNode.GetChildNode("latest_answers") is { } nullNodeLatestAnswers && nullNodeLatestAnswers.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) LatestAnswers = null;
-            if (parseNode.GetChildNode("mentioned_checks") is { } nullNodeMentionedChecks && nullNodeMentionedChecks.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MentionedChecks = null;
-            if (parseNode.GetChildNode("our_cited_urls") is { } nullNodeOurCitedUrls && nullNodeOurCitedUrls.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) OurCitedUrls = null;
+            if (parseNode.GetChildNode("checks") is null) { _explicitNullValueChecks = default!; _explicitNullProperties?.Remove("checks"); }
+            else if (parseNode.GetChildNode("checks") is { } nullNodeChecks && nullNodeChecks.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Checks = null;
+            if (parseNode.GetChildNode("citation_rate") is null) { _explicitNullValueCitationRate = default!; _explicitNullProperties?.Remove("citation_rate"); }
+            else if (parseNode.GetChildNode("citation_rate") is { } nullNodeCitationRate && nullNodeCitationRate.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CitationRate = null;
+            if (parseNode.GetChildNode("cited_checks") is null) { _explicitNullValueCitedChecks = default!; _explicitNullProperties?.Remove("cited_checks"); }
+            else if (parseNode.GetChildNode("cited_checks") is { } nullNodeCitedChecks && nullNodeCitedChecks.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CitedChecks = null;
+            if (parseNode.GetChildNode("competitor_domains") is null) { _explicitNullValueCompetitorDomains = default!; _explicitNullProperties?.Remove("competitor_domains"); }
+            else if (parseNode.GetChildNode("competitor_domains") is { } nullNodeCompetitorDomains && nullNodeCompetitorDomains.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CompetitorDomains = null;
+            if (parseNode.GetChildNode("competitor_urls") is null) { _explicitNullValueCompetitorUrls = default!; _explicitNullProperties?.Remove("competitor_urls"); }
+            else if (parseNode.GetChildNode("competitor_urls") is { } nullNodeCompetitorUrls && nullNodeCompetitorUrls.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CompetitorUrls = null;
+            if (parseNode.GetChildNode("engines") is null) { _explicitNullValueEngines = default!; _explicitNullProperties?.Remove("engines"); }
+            else if (parseNode.GetChildNode("engines") is { } nullNodeEngines && nullNodeEngines.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Engines = null;
+            if (parseNode.GetChildNode("engine_search_queries") is null) { _explicitNullValueEngineSearchQueries = default!; _explicitNullProperties?.Remove("engine_search_queries"); }
+            else if (parseNode.GetChildNode("engine_search_queries") is { } nullNodeEngineSearchQueries && nullNodeEngineSearchQueries.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) EngineSearchQueries = null;
+            if (parseNode.GetChildNode("engines_not_citing") is null) { _explicitNullValueEnginesNotCiting = default!; _explicitNullProperties?.Remove("engines_not_citing"); }
+            else if (parseNode.GetChildNode("engines_not_citing") is { } nullNodeEnginesNotCiting && nullNodeEnginesNotCiting.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) EnginesNotCiting = null;
+            if (parseNode.GetChildNode("last_checked_at") is null) { _explicitNullValueLastCheckedAt = default!; _explicitNullProperties?.Remove("last_checked_at"); }
+            else if (parseNode.GetChildNode("last_checked_at") is { } nullNodeLastCheckedAt && nullNodeLastCheckedAt.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) LastCheckedAt = null;
+            if (parseNode.GetChildNode("latest_answers") is null) { _explicitNullValueLatestAnswers = default!; _explicitNullProperties?.Remove("latest_answers"); }
+            else if (parseNode.GetChildNode("latest_answers") is { } nullNodeLatestAnswers && nullNodeLatestAnswers.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) LatestAnswers = null;
+            if (parseNode.GetChildNode("mentioned_checks") is null) { _explicitNullValueMentionedChecks = default!; _explicitNullProperties?.Remove("mentioned_checks"); }
+            else if (parseNode.GetChildNode("mentioned_checks") is { } nullNodeMentionedChecks && nullNodeMentionedChecks.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MentionedChecks = null;
+            if (parseNode.GetChildNode("our_cited_urls") is null) { _explicitNullValueOurCitedUrls = default!; _explicitNullProperties?.Remove("our_cited_urls"); }
+            else if (parseNode.GetChildNode("our_cited_urls") is { } nullNodeOurCitedUrls && nullNodeOurCitedUrls.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) OurCitedUrls = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Successful citation checks in the lookback window.</summary>
-        public int? Checks { get => _explicitNullValueChecks; set { _explicitNullValueChecks = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("checks"); else _explicitNullProperties?.Remove("checks"); } }
+        public int? Checks { get => _explicitNullValueChecks; set { _explicitNullValueChecks = value; AdditionalData?.Remove("checks"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("checks"); else _explicitNullProperties?.Remove("checks"); } }
         private int? _explicitNullValueChecks = default!;
         /// <summary>Share of checks that cited the site, from 0 to 1.</summary>
-        public double? CitationRate { get => _explicitNullValueCitationRate; set { _explicitNullValueCitationRate = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("citation_rate"); else _explicitNullProperties?.Remove("citation_rate"); } }
+        public double? CitationRate { get => _explicitNullValueCitationRate; set { _explicitNullValueCitationRate = value; AdditionalData?.Remove("citation_rate"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("citation_rate"); else _explicitNullProperties?.Remove("citation_rate"); } }
         private double? _explicitNullValueCitationRate = default!;
         /// <summary>Checks whose answer cited the site.</summary>
-        public int? CitedChecks { get => _explicitNullValueCitedChecks; set { _explicitNullValueCitedChecks = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("cited_checks"); else _explicitNullProperties?.Remove("cited_checks"); } }
+        public int? CitedChecks { get => _explicitNullValueCitedChecks; set { _explicitNullValueCitedChecks = value; AdditionalData?.Remove("cited_checks"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("cited_checks"); else _explicitNullProperties?.Remove("cited_checks"); } }
         private int? _explicitNullValueCitedChecks = default!;
         /// <summary>Domains the engines cited instead, most frequent first.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<string>? CompetitorDomains { get => _explicitNullValueCompetitorDomains; set { _explicitNullValueCompetitorDomains = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("competitor_domains"); else _explicitNullProperties?.Remove("competitor_domains"); } }
+        public List<string>? CompetitorDomains { get => _explicitNullValueCompetitorDomains; set { _explicitNullValueCompetitorDomains = value; AdditionalData?.Remove("competitor_domains"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("competitor_domains"); else _explicitNullProperties?.Remove("competitor_domains"); } }
         private List<string>? _explicitNullValueCompetitorDomains = default!;
 #nullable restore
 #else
-        public List<string> CompetitorDomains { get => _explicitNullValueCompetitorDomains; set { _explicitNullValueCompetitorDomains = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("competitor_domains"); else _explicitNullProperties?.Remove("competitor_domains"); } }
+        public List<string> CompetitorDomains { get => _explicitNullValueCompetitorDomains; set { _explicitNullValueCompetitorDomains = value; AdditionalData?.Remove("competitor_domains"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("competitor_domains"); else _explicitNullProperties?.Remove("competitor_domains"); } }
         private List<string> _explicitNullValueCompetitorDomains = default!;
 #endif
         /// <summary>Other sites&apos; pages the engines cited, most frequent first.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<string>? CompetitorUrls { get => _explicitNullValueCompetitorUrls; set { _explicitNullValueCompetitorUrls = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("competitor_urls"); else _explicitNullProperties?.Remove("competitor_urls"); } }
+        public List<string>? CompetitorUrls { get => _explicitNullValueCompetitorUrls; set { _explicitNullValueCompetitorUrls = value; AdditionalData?.Remove("competitor_urls"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("competitor_urls"); else _explicitNullProperties?.Remove("competitor_urls"); } }
         private List<string>? _explicitNullValueCompetitorUrls = default!;
 #nullable restore
 #else
-        public List<string> CompetitorUrls { get => _explicitNullValueCompetitorUrls; set { _explicitNullValueCompetitorUrls = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("competitor_urls"); else _explicitNullProperties?.Remove("competitor_urls"); } }
+        public List<string> CompetitorUrls { get => _explicitNullValueCompetitorUrls; set { _explicitNullValueCompetitorUrls = value; AdditionalData?.Remove("competitor_urls"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("competitor_urls"); else _explicitNullProperties?.Remove("competitor_urls"); } }
         private List<string> _explicitNullValueCompetitorUrls = default!;
 #endif
         /// <summary>Engines that answered the prompt.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<string>? Engines { get => _explicitNullValueEngines; set { _explicitNullValueEngines = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("engines"); else _explicitNullProperties?.Remove("engines"); } }
+        public List<string>? Engines { get => _explicitNullValueEngines; set { _explicitNullValueEngines = value; AdditionalData?.Remove("engines"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("engines"); else _explicitNullProperties?.Remove("engines"); } }
         private List<string>? _explicitNullValueEngines = default!;
 #nullable restore
 #else
-        public List<string> Engines { get => _explicitNullValueEngines; set { _explicitNullValueEngines = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("engines"); else _explicitNullProperties?.Remove("engines"); } }
+        public List<string> Engines { get => _explicitNullValueEngines; set { _explicitNullValueEngines = value; AdditionalData?.Remove("engines"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("engines"); else _explicitNullProperties?.Remove("engines"); } }
         private List<string> _explicitNullValueEngines = default!;
 #endif
         /// <summary>Web searches the engines ran while answering.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<string>? EngineSearchQueries { get => _explicitNullValueEngineSearchQueries; set { _explicitNullValueEngineSearchQueries = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("engine_search_queries"); else _explicitNullProperties?.Remove("engine_search_queries"); } }
+        public List<string>? EngineSearchQueries { get => _explicitNullValueEngineSearchQueries; set { _explicitNullValueEngineSearchQueries = value; AdditionalData?.Remove("engine_search_queries"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("engine_search_queries"); else _explicitNullProperties?.Remove("engine_search_queries"); } }
         private List<string>? _explicitNullValueEngineSearchQueries = default!;
 #nullable restore
 #else
-        public List<string> EngineSearchQueries { get => _explicitNullValueEngineSearchQueries; set { _explicitNullValueEngineSearchQueries = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("engine_search_queries"); else _explicitNullProperties?.Remove("engine_search_queries"); } }
+        public List<string> EngineSearchQueries { get => _explicitNullValueEngineSearchQueries; set { _explicitNullValueEngineSearchQueries = value; AdditionalData?.Remove("engine_search_queries"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("engine_search_queries"); else _explicitNullProperties?.Remove("engine_search_queries"); } }
         private List<string> _explicitNullValueEngineSearchQueries = default!;
 #endif
         /// <summary>Engines that never cited the site in the window.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<string>? EnginesNotCiting { get => _explicitNullValueEnginesNotCiting; set { _explicitNullValueEnginesNotCiting = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("engines_not_citing"); else _explicitNullProperties?.Remove("engines_not_citing"); } }
+        public List<string>? EnginesNotCiting { get => _explicitNullValueEnginesNotCiting; set { _explicitNullValueEnginesNotCiting = value; AdditionalData?.Remove("engines_not_citing"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("engines_not_citing"); else _explicitNullProperties?.Remove("engines_not_citing"); } }
         private List<string>? _explicitNullValueEnginesNotCiting = default!;
 #nullable restore
 #else
-        public List<string> EnginesNotCiting { get => _explicitNullValueEnginesNotCiting; set { _explicitNullValueEnginesNotCiting = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("engines_not_citing"); else _explicitNullProperties?.Remove("engines_not_citing"); } }
+        public List<string> EnginesNotCiting { get => _explicitNullValueEnginesNotCiting; set { _explicitNullValueEnginesNotCiting = value; AdditionalData?.Remove("engines_not_citing"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("engines_not_citing"); else _explicitNullProperties?.Remove("engines_not_citing"); } }
         private List<string> _explicitNullValueEnginesNotCiting = default!;
 #endif
         /// <summary>When the prompt was last checked, in ISO 8601.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? LastCheckedAt { get => _explicitNullValueLastCheckedAt; set { _explicitNullValueLastCheckedAt = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("last_checked_at"); else _explicitNullProperties?.Remove("last_checked_at"); } }
+        public string? LastCheckedAt { get => _explicitNullValueLastCheckedAt; set { _explicitNullValueLastCheckedAt = value; AdditionalData?.Remove("last_checked_at"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("last_checked_at"); else _explicitNullProperties?.Remove("last_checked_at"); } }
         private string? _explicitNullValueLastCheckedAt = default!;
 #nullable restore
 #else
-        public string LastCheckedAt { get => _explicitNullValueLastCheckedAt; set { _explicitNullValueLastCheckedAt = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("last_checked_at"); else _explicitNullProperties?.Remove("last_checked_at"); } }
+        public string LastCheckedAt { get => _explicitNullValueLastCheckedAt; set { _explicitNullValueLastCheckedAt = value; AdditionalData?.Remove("last_checked_at"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("last_checked_at"); else _explicitNullProperties?.Remove("last_checked_at"); } }
         private string _explicitNullValueLastCheckedAt = default!;
 #endif
         /// <summary>Most recent answer per engine.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.ContentAutopilotEngineAnswer>? LatestAnswers { get => _explicitNullValueLatestAnswers; set { _explicitNullValueLatestAnswers = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("latest_answers"); else _explicitNullProperties?.Remove("latest_answers"); } }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.ContentAutopilotEngineAnswer>? LatestAnswers { get => _explicitNullValueLatestAnswers; set { _explicitNullValueLatestAnswers = value; AdditionalData?.Remove("latest_answers"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("latest_answers"); else _explicitNullProperties?.Remove("latest_answers"); } }
         private List<global::Soenneker.PostHog.OpenApiClient.Models.ContentAutopilotEngineAnswer>? _explicitNullValueLatestAnswers = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.ContentAutopilotEngineAnswer> LatestAnswers { get => _explicitNullValueLatestAnswers; set { _explicitNullValueLatestAnswers = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("latest_answers"); else _explicitNullProperties?.Remove("latest_answers"); } }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.ContentAutopilotEngineAnswer> LatestAnswers { get => _explicitNullValueLatestAnswers; set { _explicitNullValueLatestAnswers = value; AdditionalData?.Remove("latest_answers"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("latest_answers"); else _explicitNullProperties?.Remove("latest_answers"); } }
         private List<global::Soenneker.PostHog.OpenApiClient.Models.ContentAutopilotEngineAnswer> _explicitNullValueLatestAnswers = default!;
 #endif
         /// <summary>Checks whose answer named the site&apos;s brand or cited the site.</summary>
-        public int? MentionedChecks { get => _explicitNullValueMentionedChecks; set { _explicitNullValueMentionedChecks = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("mentioned_checks"); else _explicitNullProperties?.Remove("mentioned_checks"); } }
+        public int? MentionedChecks { get => _explicitNullValueMentionedChecks; set { _explicitNullValueMentionedChecks = value; AdditionalData?.Remove("mentioned_checks"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("mentioned_checks"); else _explicitNullProperties?.Remove("mentioned_checks"); } }
         private int? _explicitNullValueMentionedChecks = default!;
         /// <summary>Site pages the engines cited when they did cite the site.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<string>? OurCitedUrls { get => _explicitNullValueOurCitedUrls; set { _explicitNullValueOurCitedUrls = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("our_cited_urls"); else _explicitNullProperties?.Remove("our_cited_urls"); } }
+        public List<string>? OurCitedUrls { get => _explicitNullValueOurCitedUrls; set { _explicitNullValueOurCitedUrls = value; AdditionalData?.Remove("our_cited_urls"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("our_cited_urls"); else _explicitNullProperties?.Remove("our_cited_urls"); } }
         private List<string>? _explicitNullValueOurCitedUrls = default!;
 #nullable restore
 #else
-        public List<string> OurCitedUrls { get => _explicitNullValueOurCitedUrls; set { _explicitNullValueOurCitedUrls = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("our_cited_urls"); else _explicitNullProperties?.Remove("our_cited_urls"); } }
+        public List<string> OurCitedUrls { get => _explicitNullValueOurCitedUrls; set { _explicitNullValueOurCitedUrls = value; AdditionalData?.Remove("our_cited_urls"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("our_cited_urls"); else _explicitNullProperties?.Remove("our_cited_urls"); } }
         private List<string> _explicitNullValueOurCitedUrls = default!;
 #endif
         /// <summary>

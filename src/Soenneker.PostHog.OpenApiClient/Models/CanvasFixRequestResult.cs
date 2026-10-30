@@ -18,17 +18,19 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("dispatch_outcome") is { } nullNodeDispatchOutcome && nullNodeDispatchOutcome.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) DispatchOutcome = null;
-            if (parseNode.GetChildNode("task_id") is { } nullNodeTaskId && nullNodeTaskId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TaskId = null;
+            if (parseNode.GetChildNode("dispatch_outcome") is null) { _explicitNullValueDispatchOutcome = default!; _explicitNullProperties?.Remove("dispatch_outcome"); }
+            else if (parseNode.GetChildNode("dispatch_outcome") is { } nullNodeDispatchOutcome && nullNodeDispatchOutcome.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) DispatchOutcome = null;
+            if (parseNode.GetChildNode("task_id") is null) { _explicitNullValueTaskId = default!; _explicitNullProperties?.Remove("task_id"); }
+            else if (parseNode.GetChildNode("task_id") is { } nullNodeTaskId && nullNodeTaskId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TaskId = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>* `signaled` - signaled* `new_run` - new_run* `already_queued` - already_queued</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.CanvasFixRequestResultDispatchOutcome? DispatchOutcome { get => _explicitNullValueDispatchOutcome; set { _explicitNullValueDispatchOutcome = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("dispatch_outcome"); else _explicitNullProperties?.Remove("dispatch_outcome"); } }
+        public global::Soenneker.PostHog.OpenApiClient.Models.CanvasFixRequestResultDispatchOutcome? DispatchOutcome { get => _explicitNullValueDispatchOutcome; set { _explicitNullValueDispatchOutcome = value; AdditionalData?.Remove("dispatch_outcome"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("dispatch_outcome"); else _explicitNullProperties?.Remove("dispatch_outcome"); } }
         private global::Soenneker.PostHog.OpenApiClient.Models.CanvasFixRequestResultDispatchOutcome? _explicitNullValueDispatchOutcome = default!;
         /// <summary>The authoring task the fix was routed to.</summary>
-        public Guid? TaskId { get => _explicitNullValueTaskId; set { _explicitNullValueTaskId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("task_id"); else _explicitNullProperties?.Remove("task_id"); } }
+        public Guid? TaskId { get => _explicitNullValueTaskId; set { _explicitNullValueTaskId = value; AdditionalData?.Remove("task_id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("task_id"); else _explicitNullProperties?.Remove("task_id"); } }
         private Guid? _explicitNullValueTaskId = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.CanvasFixRequestResult"/> and sets the default values.
@@ -55,7 +57,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "dispatch_outcome", n => { DispatchOutcome = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.CanvasFixRequestResultDispatchOutcome>(); } },
+                { "dispatch_outcome", n => { var parsed = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.CanvasFixRequestResultDispatchOutcome>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValueDispatchOutcome = default; _explicitNullProperties?.Remove("dispatch_outcome"); AdditionalData["dispatch_outcome"] = unknown; } else { DispatchOutcome = parsed; AdditionalData.Remove("dispatch_outcome"); } } },
                 { "task_id", n => { TaskId = n.GetGuidValue(); } },
             };
         }

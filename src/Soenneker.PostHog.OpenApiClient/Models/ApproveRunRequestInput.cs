@@ -17,7 +17,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("snapshots") is { } nullNodeSnapshots && nullNodeSnapshots.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Snapshots = null;
+            if (parseNode.GetChildNode("snapshots") is null) { _explicitNullValueSnapshots = default!; _explicitNullProperties?.Remove("snapshots"); }
+            else if (parseNode.GetChildNode("snapshots") is { } nullNodeSnapshots && nullNodeSnapshots.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Snapshots = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -25,11 +26,11 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Snapshots to mark reviewed, each with `identifier` and `new_hash`. This only records the review in the database (the per-snapshot &quot;Accept change&quot; action) — it does not change the baseline or the GitHub gate. Commit the baseline and green the gate with the finalize endpoint.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.ApproveSnapshotInput>? Snapshots { get => _explicitNullValueSnapshots; set { _explicitNullValueSnapshots = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("snapshots"); else _explicitNullProperties?.Remove("snapshots"); } }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.ApproveSnapshotInput>? Snapshots { get => _explicitNullValueSnapshots; set { _explicitNullValueSnapshots = value; AdditionalData?.Remove("snapshots"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("snapshots"); else _explicitNullProperties?.Remove("snapshots"); } }
         private List<global::Soenneker.PostHog.OpenApiClient.Models.ApproveSnapshotInput>? _explicitNullValueSnapshots = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.ApproveSnapshotInput> Snapshots { get => _explicitNullValueSnapshots; set { _explicitNullValueSnapshots = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("snapshots"); else _explicitNullProperties?.Remove("snapshots"); } }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.ApproveSnapshotInput> Snapshots { get => _explicitNullValueSnapshots; set { _explicitNullValueSnapshots = value; AdditionalData?.Remove("snapshots"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("snapshots"); else _explicitNullProperties?.Remove("snapshots"); } }
         private List<global::Soenneker.PostHog.OpenApiClient.Models.ApproveSnapshotInput> _explicitNullValueSnapshots = default!;
 #endif
         /// <summary>

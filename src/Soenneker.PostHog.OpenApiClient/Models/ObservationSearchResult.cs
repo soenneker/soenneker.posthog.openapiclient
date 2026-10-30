@@ -17,34 +17,37 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("distance") is { } nullNodeDistance && nullNodeDistance.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Distance = null;
-            if (parseNode.GetChildNode("matched_content") is { } nullNodeMatchedContent && nullNodeMatchedContent.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MatchedContent = null;
-            if (parseNode.GetChildNode("observation") is { } nullNodeObservation && nullNodeObservation.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Observation = null;
+            if (parseNode.GetChildNode("distance") is null) { _explicitNullValueDistance = default!; _explicitNullProperties?.Remove("distance"); }
+            else if (parseNode.GetChildNode("distance") is { } nullNodeDistance && nullNodeDistance.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Distance = null;
+            if (parseNode.GetChildNode("matched_content") is null) { _explicitNullValueMatchedContent = default!; _explicitNullProperties?.Remove("matched_content"); }
+            else if (parseNode.GetChildNode("matched_content") is { } nullNodeMatchedContent && nullNodeMatchedContent.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MatchedContent = null;
+            if (parseNode.GetChildNode("observation") is null) { _explicitNullValueObservation = default!; _explicitNullProperties?.Remove("observation"); }
+            else if (parseNode.GetChildNode("observation") is { } nullNodeObservation && nullNodeObservation.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Observation = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Cosine distance between the search text and the observation&apos;s closest embedding. Lower is a closer match. Only comparable to other results in the same response.</summary>
-        public double? Distance { get => _explicitNullValueDistance; set { _explicitNullValueDistance = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("distance"); else _explicitNullProperties?.Remove("distance"); } }
+        public double? Distance { get => _explicitNullValueDistance; set { _explicitNullValueDistance = value; AdditionalData?.Remove("distance"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("distance"); else _explicitNullProperties?.Remove("distance"); } }
         private double? _explicitNullValueDistance = default!;
         /// <summary>Excerpt of the observation text that best matched the search, truncated. Empty for observations analyzed before excerpts were stored.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? MatchedContent { get => _explicitNullValueMatchedContent; set { _explicitNullValueMatchedContent = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("matched_content"); else _explicitNullProperties?.Remove("matched_content"); } }
+        public string? MatchedContent { get => _explicitNullValueMatchedContent; set { _explicitNullValueMatchedContent = value; AdditionalData?.Remove("matched_content"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("matched_content"); else _explicitNullProperties?.Remove("matched_content"); } }
         private string? _explicitNullValueMatchedContent = default!;
 #nullable restore
 #else
-        public string MatchedContent { get => _explicitNullValueMatchedContent; set { _explicitNullValueMatchedContent = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("matched_content"); else _explicitNullProperties?.Remove("matched_content"); } }
+        public string MatchedContent { get => _explicitNullValueMatchedContent; set { _explicitNullValueMatchedContent = value; AdditionalData?.Remove("matched_content"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("matched_content"); else _explicitNullProperties?.Remove("matched_content"); } }
         private string _explicitNullValueMatchedContent = default!;
 #endif
         /// <summary>The matching observation.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.ObservationSearchResultObservation? Observation { get => _explicitNullValueObservation; set { _explicitNullValueObservation = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("observation"); else _explicitNullProperties?.Remove("observation"); } }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ObservationSearchResultObservation? Observation { get => _explicitNullValueObservation; set { _explicitNullValueObservation = value; AdditionalData?.Remove("observation"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("observation"); else _explicitNullProperties?.Remove("observation"); } }
         private global::Soenneker.PostHog.OpenApiClient.Models.ObservationSearchResultObservation? _explicitNullValueObservation = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ObservationSearchResultObservation Observation { get => _explicitNullValueObservation; set { _explicitNullValueObservation = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("observation"); else _explicitNullProperties?.Remove("observation"); } }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ObservationSearchResultObservation Observation { get => _explicitNullValueObservation; set { _explicitNullValueObservation = value; AdditionalData?.Remove("observation"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("observation"); else _explicitNullProperties?.Remove("observation"); } }
         private global::Soenneker.PostHog.OpenApiClient.Models.ObservationSearchResultObservation _explicitNullValueObservation = default!;
 #endif
         /// <summary>

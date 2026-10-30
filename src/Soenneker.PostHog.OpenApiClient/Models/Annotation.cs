@@ -17,15 +17,24 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("content") is { } nullNodeContent && nullNodeContent.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Content = null;
-            if (parseNode.GetChildNode("creation_type") is { } nullNodeCreationType && nullNodeCreationType.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CreationType = null;
-            if (parseNode.GetChildNode("dashboard_id") is { } nullNodeDashboardId && nullNodeDashboardId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) DashboardId = null;
-            if (parseNode.GetChildNode("dashboard_item") is { } nullNodeDashboardItem && nullNodeDashboardItem.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) DashboardItem = null;
-            if (parseNode.GetChildNode("date_marker") is { } nullNodeDateMarker && nullNodeDateMarker.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) DateMarker = null;
-            if (parseNode.GetChildNode("deleted") is { } nullNodeDeleted && nullNodeDeleted.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Deleted = null;
-            if (parseNode.GetChildNode("emoji") is { } nullNodeEmoji && nullNodeEmoji.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Emoji = null;
-            if (parseNode.GetChildNode("hidden_in_user_interface") is { } nullNodeHiddenInUserInterface && nullNodeHiddenInUserInterface.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) HiddenInUserInterface = null;
-            if (parseNode.GetChildNode("scope") is { } nullNodeScope && nullNodeScope.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Scope = null;
+            if (parseNode.GetChildNode("content") is null) { _explicitNullValueContent = default!; _explicitNullProperties?.Remove("content"); }
+            else if (parseNode.GetChildNode("content") is { } nullNodeContent && nullNodeContent.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Content = null;
+            if (parseNode.GetChildNode("creation_type") is null) { _explicitNullValueCreationType = default!; _explicitNullProperties?.Remove("creation_type"); }
+            else if (parseNode.GetChildNode("creation_type") is { } nullNodeCreationType && nullNodeCreationType.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CreationType = null;
+            if (parseNode.GetChildNode("dashboard_id") is null) { _explicitNullValueDashboardId = default!; _explicitNullProperties?.Remove("dashboard_id"); }
+            else if (parseNode.GetChildNode("dashboard_id") is { } nullNodeDashboardId && nullNodeDashboardId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) DashboardId = null;
+            if (parseNode.GetChildNode("dashboard_item") is null) { _explicitNullValueDashboardItem = default!; _explicitNullProperties?.Remove("dashboard_item"); }
+            else if (parseNode.GetChildNode("dashboard_item") is { } nullNodeDashboardItem && nullNodeDashboardItem.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) DashboardItem = null;
+            if (parseNode.GetChildNode("date_marker") is null) { _explicitNullValueDateMarker = default!; _explicitNullProperties?.Remove("date_marker"); }
+            else if (parseNode.GetChildNode("date_marker") is { } nullNodeDateMarker && nullNodeDateMarker.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) DateMarker = null;
+            if (parseNode.GetChildNode("deleted") is null) { _explicitNullValueDeleted = default!; _explicitNullProperties?.Remove("deleted"); }
+            else if (parseNode.GetChildNode("deleted") is { } nullNodeDeleted && nullNodeDeleted.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Deleted = null;
+            if (parseNode.GetChildNode("emoji") is null) { _explicitNullValueEmoji = default!; _explicitNullProperties?.Remove("emoji"); }
+            else if (parseNode.GetChildNode("emoji") is { } nullNodeEmoji && nullNodeEmoji.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Emoji = null;
+            if (parseNode.GetChildNode("hidden_in_user_interface") is null) { _explicitNullValueHiddenInUserInterface = default!; _explicitNullProperties?.Remove("hidden_in_user_interface"); }
+            else if (parseNode.GetChildNode("hidden_in_user_interface") is { } nullNodeHiddenInUserInterface && nullNodeHiddenInUserInterface.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) HiddenInUserInterface = null;
+            if (parseNode.GetChildNode("scope") is null) { _explicitNullValueScope = default!; _explicitNullProperties?.Remove("scope"); }
+            else if (parseNode.GetChildNode("scope") is { } nullNodeScope && nullNodeScope.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Scope = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -33,11 +42,11 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Annotation text shown on charts to describe the change, release, or incident.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Content { get => _explicitNullValueContent; set { _explicitNullValueContent = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("content"); else _explicitNullProperties?.Remove("content"); } }
+        public string? Content { get => _explicitNullValueContent; set { _explicitNullValueContent = value; AdditionalData?.Remove("content"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("content"); else _explicitNullProperties?.Remove("content"); } }
         private string? _explicitNullValueContent = default!;
 #nullable restore
 #else
-        public string Content { get => _explicitNullValueContent; set { _explicitNullValueContent = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("content"); else _explicitNullProperties?.Remove("content"); } }
+        public string Content { get => _explicitNullValueContent; set { _explicitNullValueContent = value; AdditionalData?.Remove("content"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("content"); else _explicitNullProperties?.Remove("content"); } }
         private string _explicitNullValueContent = default!;
 #endif
         /// <summary>The created_at property</summary>
@@ -51,13 +60,13 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public global::Soenneker.PostHog.OpenApiClient.Models.AnnotationCreatedBy CreatedBy { get; private set; }
 #endif
         /// <summary>* `USR` - user* `GIT` - GitHub</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.AnnotationCreationType? CreationType { get => _explicitNullValueCreationType; set { _explicitNullValueCreationType = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("creation_type"); else _explicitNullProperties?.Remove("creation_type"); } }
+        public global::Soenneker.PostHog.OpenApiClient.Models.AnnotationCreationType? CreationType { get => _explicitNullValueCreationType; set { _explicitNullValueCreationType = value; AdditionalData?.Remove("creation_type"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("creation_type"); else _explicitNullProperties?.Remove("creation_type"); } }
         private global::Soenneker.PostHog.OpenApiClient.Models.AnnotationCreationType? _explicitNullValueCreationType = default!;
         /// <summary>Optional dashboard ID to attach this annotation to. Must belong to the current project.</summary>
-        public int? DashboardId { get => _explicitNullValueDashboardId; set { _explicitNullValueDashboardId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("dashboard_id"); else _explicitNullProperties?.Remove("dashboard_id"); } }
+        public int? DashboardId { get => _explicitNullValueDashboardId; set { _explicitNullValueDashboardId = value; AdditionalData?.Remove("dashboard_id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("dashboard_id"); else _explicitNullProperties?.Remove("dashboard_id"); } }
         private int? _explicitNullValueDashboardId = default!;
         /// <summary>Optional insight ID to attach this annotation to. Must belong to the current project.</summary>
-        public int? DashboardItem { get => _explicitNullValueDashboardItem; set { _explicitNullValueDashboardItem = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("dashboard_item"); else _explicitNullProperties?.Remove("dashboard_item"); } }
+        public int? DashboardItem { get => _explicitNullValueDashboardItem; set { _explicitNullValueDashboardItem = value; AdditionalData?.Remove("dashboard_item"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("dashboard_item"); else _explicitNullProperties?.Remove("dashboard_item"); } }
         private int? _explicitNullValueDashboardItem = default!;
         /// <summary>The dashboard_name property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -68,23 +77,23 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public string DashboardName { get; private set; }
 #endif
         /// <summary>When this annotation happened (ISO 8601 timestamp). Used to position it on charts.</summary>
-        public DateTimeOffset? DateMarker { get => _explicitNullValueDateMarker; set { _explicitNullValueDateMarker = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("date_marker"); else _explicitNullProperties?.Remove("date_marker"); } }
+        public DateTimeOffset? DateMarker { get => _explicitNullValueDateMarker; set { _explicitNullValueDateMarker = value; AdditionalData?.Remove("date_marker"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("date_marker"); else _explicitNullProperties?.Remove("date_marker"); } }
         private DateTimeOffset? _explicitNullValueDateMarker = default!;
         /// <summary>Soft-delete flag. Set to true to hide the annotation, or false to restore it.</summary>
-        public bool? Deleted { get => _explicitNullValueDeleted; set { _explicitNullValueDeleted = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("deleted"); else _explicitNullProperties?.Remove("deleted"); } }
+        public bool? Deleted { get => _explicitNullValueDeleted; set { _explicitNullValueDeleted = value; AdditionalData?.Remove("deleted"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("deleted"); else _explicitNullProperties?.Remove("deleted"); } }
         private bool? _explicitNullValueDeleted = default!;
         /// <summary>Optional emoji shown in place of the default badge when this annotation is surfaced on a chart.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Emoji { get => _explicitNullValueEmoji; set { _explicitNullValueEmoji = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("emoji"); else _explicitNullProperties?.Remove("emoji"); } }
+        public string? Emoji { get => _explicitNullValueEmoji; set { _explicitNullValueEmoji = value; AdditionalData?.Remove("emoji"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("emoji"); else _explicitNullProperties?.Remove("emoji"); } }
         private string? _explicitNullValueEmoji = default!;
 #nullable restore
 #else
-        public string Emoji { get => _explicitNullValueEmoji; set { _explicitNullValueEmoji = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("emoji"); else _explicitNullProperties?.Remove("emoji"); } }
+        public string Emoji { get => _explicitNullValueEmoji; set { _explicitNullValueEmoji = value; AdditionalData?.Remove("emoji"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("emoji"); else _explicitNullProperties?.Remove("emoji"); } }
         private string _explicitNullValueEmoji = default!;
 #endif
         /// <summary>When true, the annotation is hidden from the PostHog UI (charts and the annotations list) but still readable over the API and MCP. Use for high-frequency markers like deployments that would otherwise crowd the UI. Null (the default) means the annotation is shown.</summary>
-        public bool? HiddenInUserInterface { get => _explicitNullValueHiddenInUserInterface; set { _explicitNullValueHiddenInUserInterface = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("hidden_in_user_interface"); else _explicitNullProperties?.Remove("hidden_in_user_interface"); } }
+        public bool? HiddenInUserInterface { get => _explicitNullValueHiddenInUserInterface; set { _explicitNullValueHiddenInUserInterface = value; AdditionalData?.Remove("hidden_in_user_interface"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("hidden_in_user_interface"); else _explicitNullProperties?.Remove("hidden_in_user_interface"); } }
         private bool? _explicitNullValueHiddenInUserInterface = default!;
         /// <summary>The id property</summary>
         public int? Id { get; private set; }
@@ -113,7 +122,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public string InsightShortId { get; private set; }
 #endif
         /// <summary>* `dashboard_item` - insight* `dashboard` - dashboard* `project` - project* `organization` - organization* `recording` - recording</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.AnnotationScopeComposed? Scope { get => _explicitNullValueScope; set { _explicitNullValueScope = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("scope"); else _explicitNullProperties?.Remove("scope"); } }
+        public global::Soenneker.PostHog.OpenApiClient.Models.AnnotationScopeComposed? Scope { get => _explicitNullValueScope; set { _explicitNullValueScope = value; AdditionalData?.Remove("scope"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("scope"); else _explicitNullProperties?.Remove("scope"); } }
         private global::Soenneker.PostHog.OpenApiClient.Models.AnnotationScopeComposed? _explicitNullValueScope = default!;
         /// <summary>The updated_at property</summary>
         public DateTimeOffset? UpdatedAt { get; private set; }
@@ -145,7 +154,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "content", n => { Content = n.GetStringValue(); } },
                 { "created_at", n => { CreatedAt = n.GetDateTimeOffsetValue(); } },
                 { "created_by", n => { CreatedBy = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.AnnotationCreatedBy>(global::Soenneker.PostHog.OpenApiClient.Models.AnnotationCreatedBy.CreateFromDiscriminatorValue); } },
-                { "creation_type", n => { CreationType = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.AnnotationCreationType>(); } },
+                { "creation_type", n => { var parsed = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.AnnotationCreationType>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValueCreationType = default; _explicitNullProperties?.Remove("creation_type"); AdditionalData["creation_type"] = unknown; } else { CreationType = parsed; AdditionalData.Remove("creation_type"); } } },
                 { "dashboard_id", n => { DashboardId = n.GetIntValue(); } },
                 { "dashboard_item", n => { DashboardItem = n.GetIntValue(); } },
                 { "dashboard_name", n => { DashboardName = n.GetStringValue(); } },
@@ -157,7 +166,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "insight_derived_name", n => { InsightDerivedName = n.GetStringValue(); } },
                 { "insight_name", n => { InsightName = n.GetStringValue(); } },
                 { "insight_short_id", n => { InsightShortId = n.GetStringValue(); } },
-                { "scope", n => { Scope = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.AnnotationScopeComposed>(); } },
+                { "scope", n => { var parsed = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.AnnotationScopeComposed>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValueScope = default; _explicitNullProperties?.Remove("scope"); AdditionalData["scope"] = unknown; } else { Scope = parsed; AdditionalData.Remove("scope"); } } },
                 { "updated_at", n => { UpdatedAt = n.GetDateTimeOffsetValue(); } },
             };
         }

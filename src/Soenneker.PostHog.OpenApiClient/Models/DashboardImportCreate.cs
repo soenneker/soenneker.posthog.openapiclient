@@ -17,10 +17,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("grafana_json") is { } nullNodeGrafanaJson && nullNodeGrafanaJson.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) GrafanaJson = null;
-            if (parseNode.GetChildNode("image_base64") is { } nullNodeImageBase64 && nullNodeImageBase64.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ImageBase64 = null;
-            if (parseNode.GetChildNode("name") is { } nullNodeName && nullNodeName.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Name = null;
-            if (parseNode.GetChildNode("source") is { } nullNodeSource && nullNodeSource.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Source = null;
+            if (parseNode.GetChildNode("grafana_json") is null) { _explicitNullValueGrafanaJson = default!; _explicitNullProperties?.Remove("grafana_json"); }
+            else if (parseNode.GetChildNode("grafana_json") is { } nullNodeGrafanaJson && nullNodeGrafanaJson.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) GrafanaJson = null;
+            if (parseNode.GetChildNode("image_base64") is null) { _explicitNullValueImageBase64 = default!; _explicitNullProperties?.Remove("image_base64"); }
+            else if (parseNode.GetChildNode("image_base64") is { } nullNodeImageBase64 && nullNodeImageBase64.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ImageBase64 = null;
+            if (parseNode.GetChildNode("name") is null) { _explicitNullValueName = default!; _explicitNullProperties?.Remove("name"); }
+            else if (parseNode.GetChildNode("name") is { } nullNodeName && nullNodeName.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Name = null;
+            if (parseNode.GetChildNode("source") is null) { _explicitNullValueSource = default!; _explicitNullProperties?.Remove("source"); }
+            else if (parseNode.GetChildNode("source") is { } nullNodeSource && nullNodeSource.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Source = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -28,35 +32,35 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The Grafana dashboard JSON model as text, from Dashboard settings &gt; JSON Model or from an export. Required when source is &apos;grafana&apos;.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? GrafanaJson { get => _explicitNullValueGrafanaJson; set { _explicitNullValueGrafanaJson = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("grafana_json"); else _explicitNullProperties?.Remove("grafana_json"); } }
+        public string? GrafanaJson { get => _explicitNullValueGrafanaJson; set { _explicitNullValueGrafanaJson = value; AdditionalData?.Remove("grafana_json"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("grafana_json"); else _explicitNullProperties?.Remove("grafana_json"); } }
         private string? _explicitNullValueGrafanaJson = default!;
 #nullable restore
 #else
-        public string GrafanaJson { get => _explicitNullValueGrafanaJson; set { _explicitNullValueGrafanaJson = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("grafana_json"); else _explicitNullProperties?.Remove("grafana_json"); } }
+        public string GrafanaJson { get => _explicitNullValueGrafanaJson; set { _explicitNullValueGrafanaJson = value; AdditionalData?.Remove("grafana_json"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("grafana_json"); else _explicitNullProperties?.Remove("grafana_json"); } }
         private string _explicitNullValueGrafanaJson = default!;
 #endif
         /// <summary>The screenshot as base64, without a data URL prefix. PNG, JPEG, WebP or GIF, at most 5 MB. Required when source is &apos;screenshot&apos;.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? ImageBase64 { get => _explicitNullValueImageBase64; set { _explicitNullValueImageBase64 = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("image_base64"); else _explicitNullProperties?.Remove("image_base64"); } }
+        public string? ImageBase64 { get => _explicitNullValueImageBase64; set { _explicitNullValueImageBase64 = value; AdditionalData?.Remove("image_base64"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("image_base64"); else _explicitNullProperties?.Remove("image_base64"); } }
         private string? _explicitNullValueImageBase64 = default!;
 #nullable restore
 #else
-        public string ImageBase64 { get => _explicitNullValueImageBase64; set { _explicitNullValueImageBase64 = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("image_base64"); else _explicitNullProperties?.Remove("image_base64"); } }
+        public string ImageBase64 { get => _explicitNullValueImageBase64; set { _explicitNullValueImageBase64 = value; AdditionalData?.Remove("image_base64"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("image_base64"); else _explicitNullProperties?.Remove("image_base64"); } }
         private string _explicitNullValueImageBase64 = default!;
 #endif
         /// <summary>Name of the new dashboard. Defaults to the Grafana dashboard title, or to &apos;Imported dashboard&apos;.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Name { get => _explicitNullValueName; set { _explicitNullValueName = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("name"); else _explicitNullProperties?.Remove("name"); } }
+        public string? Name { get => _explicitNullValueName; set { _explicitNullValueName = value; AdditionalData?.Remove("name"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("name"); else _explicitNullProperties?.Remove("name"); } }
         private string? _explicitNullValueName = default!;
 #nullable restore
 #else
-        public string Name { get => _explicitNullValueName; set { _explicitNullValueName = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("name"); else _explicitNullProperties?.Remove("name"); } }
+        public string Name { get => _explicitNullValueName; set { _explicitNullValueName = value; AdditionalData?.Remove("name"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("name"); else _explicitNullProperties?.Remove("name"); } }
         private string _explicitNullValueName = default!;
 #endif
         /// <summary>* `grafana` - Grafana* `screenshot` - Screenshot</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.DashboardImportCreateSource? Source { get => _explicitNullValueSource; set { _explicitNullValueSource = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("source"); else _explicitNullProperties?.Remove("source"); } }
+        public global::Soenneker.PostHog.OpenApiClient.Models.DashboardImportCreateSource? Source { get => _explicitNullValueSource; set { _explicitNullValueSource = value; AdditionalData?.Remove("source"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("source"); else _explicitNullProperties?.Remove("source"); } }
         private global::Soenneker.PostHog.OpenApiClient.Models.DashboardImportCreateSource? _explicitNullValueSource = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.DashboardImportCreate"/> and sets the default values.
@@ -86,7 +90,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "grafana_json", n => { GrafanaJson = n.GetStringValue(); } },
                 { "image_base64", n => { ImageBase64 = n.GetStringValue(); } },
                 { "name", n => { Name = n.GetStringValue(); } },
-                { "source", n => { Source = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.DashboardImportCreateSource>(); } },
+                { "source", n => { var parsed = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.DashboardImportCreateSource>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValueSource = default; _explicitNullProperties?.Remove("source"); AdditionalData["source"] = unknown; } else { Source = parsed; AdditionalData.Remove("source"); } } },
             };
         }
         /// <summary>

@@ -17,19 +17,32 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("description") is { } nullNodeDescription && nullNodeDescription.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Description = null;
-            if (parseNode.GetChildNode("instructions") is { } nullNodeInstructions && nullNodeInstructions.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Instructions = null;
-            if (parseNode.GetChildNode("instructions_truncated") is { } nullNodeInstructionsTruncated && nullNodeInstructionsTruncated.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) InstructionsTruncated = null;
-            if (parseNode.GetChildNode("reference_files") is { } nullNodeReferenceFiles && nullNodeReferenceFiles.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ReferenceFiles = null;
-            if (parseNode.GetChildNode("reference_files_truncated") is { } nullNodeReferenceFilesTruncated && nullNodeReferenceFilesTruncated.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ReferenceFilesTruncated = null;
-            if (parseNode.GetChildNode("reference_limits") is { } nullNodeReferenceLimits && nullNodeReferenceLimits.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ReferenceLimits = null;
-            if (parseNode.GetChildNode("reference_texts") is { } nullNodeReferenceTexts && nullNodeReferenceTexts.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ReferenceTexts = null;
-            if (parseNode.GetChildNode("report_channel") is { } nullNodeReportChannel && nullNodeReportChannel.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ReportChannel = null;
-            if (parseNode.GetChildNode("report_disposition_instructions") is { } nullNodeReportDispositionInstructions && nullNodeReportDispositionInstructions.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ReportDispositionInstructions = null;
-            if (parseNode.GetChildNode("schema_version") is { } nullNodeSchemaVersion && nullNodeSchemaVersion.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SchemaVersion = null;
-            if (parseNode.GetChildNode("skill_id") is { } nullNodeSkillId && nullNodeSkillId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SkillId = null;
-            if (parseNode.GetChildNode("skill_name") is { } nullNodeSkillName && nullNodeSkillName.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SkillName = null;
-            if (parseNode.GetChildNode("skill_version") is { } nullNodeSkillVersion && nullNodeSkillVersion.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SkillVersion = null;
+            if (parseNode.GetChildNode("description") is null) { _explicitNullValueDescription = default!; _explicitNullProperties?.Remove("description"); }
+            else if (parseNode.GetChildNode("description") is { } nullNodeDescription && nullNodeDescription.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Description = null;
+            if (parseNode.GetChildNode("instructions") is null) { _explicitNullValueInstructions = default!; _explicitNullProperties?.Remove("instructions"); }
+            else if (parseNode.GetChildNode("instructions") is { } nullNodeInstructions && nullNodeInstructions.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Instructions = null;
+            if (parseNode.GetChildNode("instructions_truncated") is null) { _explicitNullValueInstructionsTruncated = default!; _explicitNullProperties?.Remove("instructions_truncated"); }
+            else if (parseNode.GetChildNode("instructions_truncated") is { } nullNodeInstructionsTruncated && nullNodeInstructionsTruncated.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) InstructionsTruncated = null;
+            if (parseNode.GetChildNode("reference_files") is null) { _explicitNullValueReferenceFiles = default!; _explicitNullProperties?.Remove("reference_files"); }
+            else if (parseNode.GetChildNode("reference_files") is { } nullNodeReferenceFiles && nullNodeReferenceFiles.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ReferenceFiles = null;
+            if (parseNode.GetChildNode("reference_files_truncated") is null) { _explicitNullValueReferenceFilesTruncated = default!; _explicitNullProperties?.Remove("reference_files_truncated"); }
+            else if (parseNode.GetChildNode("reference_files_truncated") is { } nullNodeReferenceFilesTruncated && nullNodeReferenceFilesTruncated.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ReferenceFilesTruncated = null;
+            if (parseNode.GetChildNode("reference_limits") is null) { _explicitNullValueReferenceLimits = default!; _explicitNullProperties?.Remove("reference_limits"); }
+            else if (parseNode.GetChildNode("reference_limits") is { } nullNodeReferenceLimits && nullNodeReferenceLimits.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ReferenceLimits = null;
+            if (parseNode.GetChildNode("reference_texts") is null) { _explicitNullValueReferenceTexts = default!; _explicitNullProperties?.Remove("reference_texts"); }
+            else if (parseNode.GetChildNode("reference_texts") is { } nullNodeReferenceTexts && nullNodeReferenceTexts.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ReferenceTexts = null;
+            if (parseNode.GetChildNode("report_channel") is null) { _explicitNullValueReportChannel = default!; _explicitNullProperties?.Remove("report_channel"); }
+            else if (parseNode.GetChildNode("report_channel") is { } nullNodeReportChannel && nullNodeReportChannel.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ReportChannel = null;
+            if (parseNode.GetChildNode("report_disposition_instructions") is null) { _explicitNullValueReportDispositionInstructions = default!; _explicitNullProperties?.Remove("report_disposition_instructions"); }
+            else if (parseNode.GetChildNode("report_disposition_instructions") is { } nullNodeReportDispositionInstructions && nullNodeReportDispositionInstructions.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ReportDispositionInstructions = null;
+            if (parseNode.GetChildNode("schema_version") is null) { _explicitNullValueSchemaVersion = default!; _explicitNullProperties?.Remove("schema_version"); }
+            else if (parseNode.GetChildNode("schema_version") is { } nullNodeSchemaVersion && nullNodeSchemaVersion.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SchemaVersion = null;
+            if (parseNode.GetChildNode("skill_id") is null) { _explicitNullValueSkillId = default!; _explicitNullProperties?.Remove("skill_id"); }
+            else if (parseNode.GetChildNode("skill_id") is { } nullNodeSkillId && nullNodeSkillId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SkillId = null;
+            if (parseNode.GetChildNode("skill_name") is null) { _explicitNullValueSkillName = default!; _explicitNullProperties?.Remove("skill_name"); }
+            else if (parseNode.GetChildNode("skill_name") is { } nullNodeSkillName && nullNodeSkillName.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SkillName = null;
+            if (parseNode.GetChildNode("skill_version") is null) { _explicitNullValueSkillVersion = default!; _explicitNullProperties?.Remove("skill_version"); }
+            else if (parseNode.GetChildNode("skill_version") is { } nullNodeSkillVersion && nullNodeSkillVersion.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SkillVersion = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -37,97 +50,97 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Scout description captured for this reference.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Description { get => _explicitNullValueDescription; set { _explicitNullValueDescription = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("description"); else _explicitNullProperties?.Remove("description"); } }
+        public string? Description { get => _explicitNullValueDescription; set { _explicitNullValueDescription = value; AdditionalData?.Remove("description"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("description"); else _explicitNullProperties?.Remove("description"); } }
         private string? _explicitNullValueDescription = default!;
 #nullable restore
 #else
-        public string Description { get => _explicitNullValueDescription; set { _explicitNullValueDescription = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("description"); else _explicitNullProperties?.Remove("description"); } }
+        public string Description { get => _explicitNullValueDescription; set { _explicitNullValueDescription = value; AdditionalData?.Remove("description"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("description"); else _explicitNullProperties?.Remove("description"); } }
         private string _explicitNullValueDescription = default!;
 #endif
         /// <summary>Saved scout instructions used for judging.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Instructions { get => _explicitNullValueInstructions; set { _explicitNullValueInstructions = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("instructions"); else _explicitNullProperties?.Remove("instructions"); } }
+        public string? Instructions { get => _explicitNullValueInstructions; set { _explicitNullValueInstructions = value; AdditionalData?.Remove("instructions"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("instructions"); else _explicitNullProperties?.Remove("instructions"); } }
         private string? _explicitNullValueInstructions = default!;
 #nullable restore
 #else
-        public string Instructions { get => _explicitNullValueInstructions; set { _explicitNullValueInstructions = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("instructions"); else _explicitNullProperties?.Remove("instructions"); } }
+        public string Instructions { get => _explicitNullValueInstructions; set { _explicitNullValueInstructions = value; AdditionalData?.Remove("instructions"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("instructions"); else _explicitNullProperties?.Remove("instructions"); } }
         private string _explicitNullValueInstructions = default!;
 #endif
         /// <summary>Whether the saved instructions were truncated.</summary>
-        public bool? InstructionsTruncated { get => _explicitNullValueInstructionsTruncated; set { _explicitNullValueInstructionsTruncated = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("instructions_truncated"); else _explicitNullProperties?.Remove("instructions_truncated"); } }
+        public bool? InstructionsTruncated { get => _explicitNullValueInstructionsTruncated; set { _explicitNullValueInstructionsTruncated = value; AdditionalData?.Remove("instructions_truncated"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("instructions_truncated"); else _explicitNullProperties?.Remove("instructions_truncated"); } }
         private bool? _explicitNullValueInstructionsTruncated = default!;
         /// <summary>Reference-file inventory captured for this reference.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<string>? ReferenceFiles { get => _explicitNullValueReferenceFiles; set { _explicitNullValueReferenceFiles = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("reference_files"); else _explicitNullProperties?.Remove("reference_files"); } }
+        public List<string>? ReferenceFiles { get => _explicitNullValueReferenceFiles; set { _explicitNullValueReferenceFiles = value; AdditionalData?.Remove("reference_files"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("reference_files"); else _explicitNullProperties?.Remove("reference_files"); } }
         private List<string>? _explicitNullValueReferenceFiles = default!;
 #nullable restore
 #else
-        public List<string> ReferenceFiles { get => _explicitNullValueReferenceFiles; set { _explicitNullValueReferenceFiles = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("reference_files"); else _explicitNullProperties?.Remove("reference_files"); } }
+        public List<string> ReferenceFiles { get => _explicitNullValueReferenceFiles; set { _explicitNullValueReferenceFiles = value; AdditionalData?.Remove("reference_files"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("reference_files"); else _explicitNullProperties?.Remove("reference_files"); } }
         private List<string> _explicitNullValueReferenceFiles = default!;
 #endif
         /// <summary>Whether the reference-file inventory was truncated.</summary>
-        public bool? ReferenceFilesTruncated { get => _explicitNullValueReferenceFilesTruncated; set { _explicitNullValueReferenceFilesTruncated = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("reference_files_truncated"); else _explicitNullProperties?.Remove("reference_files_truncated"); } }
+        public bool? ReferenceFilesTruncated { get => _explicitNullValueReferenceFilesTruncated; set { _explicitNullValueReferenceFilesTruncated = value; AdditionalData?.Remove("reference_files_truncated"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("reference_files_truncated"); else _explicitNullProperties?.Remove("reference_files_truncated"); } }
         private bool? _explicitNullValueReferenceFilesTruncated = default!;
         /// <summary>Missing or truncated text in the saved reference.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.ScoutRubricReferenceContextDocumentReferenceLimits? ReferenceLimits { get => _explicitNullValueReferenceLimits; set { _explicitNullValueReferenceLimits = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("reference_limits"); else _explicitNullProperties?.Remove("reference_limits"); } }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ScoutRubricReferenceContextDocumentReferenceLimits? ReferenceLimits { get => _explicitNullValueReferenceLimits; set { _explicitNullValueReferenceLimits = value; AdditionalData?.Remove("reference_limits"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("reference_limits"); else _explicitNullProperties?.Remove("reference_limits"); } }
         private global::Soenneker.PostHog.OpenApiClient.Models.ScoutRubricReferenceContextDocumentReferenceLimits? _explicitNullValueReferenceLimits = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ScoutRubricReferenceContextDocumentReferenceLimits ReferenceLimits { get => _explicitNullValueReferenceLimits; set { _explicitNullValueReferenceLimits = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("reference_limits"); else _explicitNullProperties?.Remove("reference_limits"); } }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ScoutRubricReferenceContextDocumentReferenceLimits ReferenceLimits { get => _explicitNullValueReferenceLimits; set { _explicitNullValueReferenceLimits = value; AdditionalData?.Remove("reference_limits"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("reference_limits"); else _explicitNullProperties?.Remove("reference_limits"); } }
         private global::Soenneker.PostHog.OpenApiClient.Models.ScoutRubricReferenceContextDocumentReferenceLimits _explicitNullValueReferenceLimits = default!;
 #endif
         /// <summary>Saved reference texts used for judging.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.ScoutRubricReferenceTextDocument>? ReferenceTexts { get => _explicitNullValueReferenceTexts; set { _explicitNullValueReferenceTexts = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("reference_texts"); else _explicitNullProperties?.Remove("reference_texts"); } }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.ScoutRubricReferenceTextDocument>? ReferenceTexts { get => _explicitNullValueReferenceTexts; set { _explicitNullValueReferenceTexts = value; AdditionalData?.Remove("reference_texts"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("reference_texts"); else _explicitNullProperties?.Remove("reference_texts"); } }
         private List<global::Soenneker.PostHog.OpenApiClient.Models.ScoutRubricReferenceTextDocument>? _explicitNullValueReferenceTexts = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.ScoutRubricReferenceTextDocument> ReferenceTexts { get => _explicitNullValueReferenceTexts; set { _explicitNullValueReferenceTexts = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("reference_texts"); else _explicitNullProperties?.Remove("reference_texts"); } }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.ScoutRubricReferenceTextDocument> ReferenceTexts { get => _explicitNullValueReferenceTexts; set { _explicitNullValueReferenceTexts = value; AdditionalData?.Remove("reference_texts"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("reference_texts"); else _explicitNullProperties?.Remove("reference_texts"); } }
         private List<global::Soenneker.PostHog.OpenApiClient.Models.ScoutRubricReferenceTextDocument> _explicitNullValueReferenceTexts = default!;
 #endif
         /// <summary>* `none` - None* `emit` - Emit* `edit` - Edit* `both` - Both</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.ScoutRubricReferenceContextDocumentReportChannel? ReportChannel { get => _explicitNullValueReportChannel; set { _explicitNullValueReportChannel = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("report_channel"); else _explicitNullProperties?.Remove("report_channel"); } }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ScoutRubricReferenceContextDocumentReportChannel? ReportChannel { get => _explicitNullValueReportChannel; set { _explicitNullValueReportChannel = value; AdditionalData?.Remove("report_channel"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("report_channel"); else _explicitNullProperties?.Remove("report_channel"); } }
         private global::Soenneker.PostHog.OpenApiClient.Models.ScoutRubricReferenceContextDocumentReportChannel? _explicitNullValueReportChannel = default!;
         /// <summary>Report-disposition rules captured for this reference.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? ReportDispositionInstructions { get => _explicitNullValueReportDispositionInstructions; set { _explicitNullValueReportDispositionInstructions = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("report_disposition_instructions"); else _explicitNullProperties?.Remove("report_disposition_instructions"); } }
+        public string? ReportDispositionInstructions { get => _explicitNullValueReportDispositionInstructions; set { _explicitNullValueReportDispositionInstructions = value; AdditionalData?.Remove("report_disposition_instructions"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("report_disposition_instructions"); else _explicitNullProperties?.Remove("report_disposition_instructions"); } }
         private string? _explicitNullValueReportDispositionInstructions = default!;
 #nullable restore
 #else
-        public string ReportDispositionInstructions { get => _explicitNullValueReportDispositionInstructions; set { _explicitNullValueReportDispositionInstructions = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("report_disposition_instructions"); else _explicitNullProperties?.Remove("report_disposition_instructions"); } }
+        public string ReportDispositionInstructions { get => _explicitNullValueReportDispositionInstructions; set { _explicitNullValueReportDispositionInstructions = value; AdditionalData?.Remove("report_disposition_instructions"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("report_disposition_instructions"); else _explicitNullProperties?.Remove("report_disposition_instructions"); } }
         private string _explicitNullValueReportDispositionInstructions = default!;
 #endif
         /// <summary>Version of the saved reference-context format.</summary>
-        public int? SchemaVersion { get => _explicitNullValueSchemaVersion; set { _explicitNullValueSchemaVersion = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("schema_version"); else _explicitNullProperties?.Remove("schema_version"); } }
+        public int? SchemaVersion { get => _explicitNullValueSchemaVersion; set { _explicitNullValueSchemaVersion = value; AdditionalData?.Remove("schema_version"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("schema_version"); else _explicitNullProperties?.Remove("schema_version"); } }
         private int? _explicitNullValueSchemaVersion = default!;
         /// <summary>Exact skill record used for generation.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? SkillId { get => _explicitNullValueSkillId; set { _explicitNullValueSkillId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("skill_id"); else _explicitNullProperties?.Remove("skill_id"); } }
+        public string? SkillId { get => _explicitNullValueSkillId; set { _explicitNullValueSkillId = value; AdditionalData?.Remove("skill_id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("skill_id"); else _explicitNullProperties?.Remove("skill_id"); } }
         private string? _explicitNullValueSkillId = default!;
 #nullable restore
 #else
-        public string SkillId { get => _explicitNullValueSkillId; set { _explicitNullValueSkillId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("skill_id"); else _explicitNullProperties?.Remove("skill_id"); } }
+        public string SkillId { get => _explicitNullValueSkillId; set { _explicitNullValueSkillId = value; AdditionalData?.Remove("skill_id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("skill_id"); else _explicitNullProperties?.Remove("skill_id"); } }
         private string _explicitNullValueSkillId = default!;
 #endif
         /// <summary>Name of the skill used for generation.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? SkillName { get => _explicitNullValueSkillName; set { _explicitNullValueSkillName = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("skill_name"); else _explicitNullProperties?.Remove("skill_name"); } }
+        public string? SkillName { get => _explicitNullValueSkillName; set { _explicitNullValueSkillName = value; AdditionalData?.Remove("skill_name"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("skill_name"); else _explicitNullProperties?.Remove("skill_name"); } }
         private string? _explicitNullValueSkillName = default!;
 #nullable restore
 #else
-        public string SkillName { get => _explicitNullValueSkillName; set { _explicitNullValueSkillName = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("skill_name"); else _explicitNullProperties?.Remove("skill_name"); } }
+        public string SkillName { get => _explicitNullValueSkillName; set { _explicitNullValueSkillName = value; AdditionalData?.Remove("skill_name"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("skill_name"); else _explicitNullProperties?.Remove("skill_name"); } }
         private string _explicitNullValueSkillName = default!;
 #endif
         /// <summary>Skill version used for generation.</summary>
-        public int? SkillVersion { get => _explicitNullValueSkillVersion; set { _explicitNullValueSkillVersion = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("skill_version"); else _explicitNullProperties?.Remove("skill_version"); } }
+        public int? SkillVersion { get => _explicitNullValueSkillVersion; set { _explicitNullValueSkillVersion = value; AdditionalData?.Remove("skill_version"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("skill_version"); else _explicitNullProperties?.Remove("skill_version"); } }
         private int? _explicitNullValueSkillVersion = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ScoutRubricReferenceContextDocument"/> and sets the default values.
@@ -161,7 +174,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "reference_files_truncated", n => { ReferenceFilesTruncated = n.GetBoolValue(); } },
                 { "reference_limits", n => { ReferenceLimits = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ScoutRubricReferenceContextDocumentReferenceLimits>(global::Soenneker.PostHog.OpenApiClient.Models.ScoutRubricReferenceContextDocumentReferenceLimits.CreateFromDiscriminatorValue); } },
                 { "reference_texts", n => { ReferenceTexts = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.ScoutRubricReferenceTextDocument>(global::Soenneker.PostHog.OpenApiClient.Models.ScoutRubricReferenceTextDocument.CreateFromDiscriminatorValue)?.AsList(); } },
-                { "report_channel", n => { ReportChannel = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ScoutRubricReferenceContextDocumentReportChannel>(); } },
+                { "report_channel", n => { var parsed = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ScoutRubricReferenceContextDocumentReportChannel>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValueReportChannel = default; _explicitNullProperties?.Remove("report_channel"); AdditionalData["report_channel"] = unknown; } else { ReportChannel = parsed; AdditionalData.Remove("report_channel"); } } },
                 { "report_disposition_instructions", n => { ReportDispositionInstructions = n.GetStringValue(); } },
                 { "schema_version", n => { SchemaVersion = n.GetIntValue(); } },
                 { "skill_id", n => { SkillId = n.GetStringValue(); } },

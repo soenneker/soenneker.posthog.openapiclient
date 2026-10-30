@@ -17,7 +17,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("primary_properties") is { } nullNodePrimaryProperties && nullNodePrimaryProperties.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) PrimaryProperties = null;
+            if (parseNode.GetChildNode("primary_properties") is null) { _explicitNullValuePrimaryProperties = default!; _explicitNullProperties?.Remove("primary_properties"); }
+            else if (parseNode.GetChildNode("primary_properties") is { } nullNodePrimaryProperties && nullNodePrimaryProperties.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) PrimaryProperties = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -25,11 +26,11 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Mapping from event name to the team-configured primary property for that event. Names without a configured primary property are omitted; callers should fall back to the core taxonomy defaults for those.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.PrimaryPropertiesResponsePrimaryPropertiesProperty? PrimaryProperties { get => _explicitNullValuePrimaryProperties; set { _explicitNullValuePrimaryProperties = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("primary_properties"); else _explicitNullProperties?.Remove("primary_properties"); } }
+        public global::Soenneker.PostHog.OpenApiClient.Models.PrimaryPropertiesResponsePrimaryPropertiesProperty? PrimaryProperties { get => _explicitNullValuePrimaryProperties; set { _explicitNullValuePrimaryProperties = value; AdditionalData?.Remove("primary_properties"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("primary_properties"); else _explicitNullProperties?.Remove("primary_properties"); } }
         private global::Soenneker.PostHog.OpenApiClient.Models.PrimaryPropertiesResponsePrimaryPropertiesProperty? _explicitNullValuePrimaryProperties = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.PrimaryPropertiesResponsePrimaryPropertiesProperty PrimaryProperties { get => _explicitNullValuePrimaryProperties; set { _explicitNullValuePrimaryProperties = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("primary_properties"); else _explicitNullProperties?.Remove("primary_properties"); } }
+        public global::Soenneker.PostHog.OpenApiClient.Models.PrimaryPropertiesResponsePrimaryPropertiesProperty PrimaryProperties { get => _explicitNullValuePrimaryProperties; set { _explicitNullValuePrimaryProperties = value; AdditionalData?.Remove("primary_properties"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("primary_properties"); else _explicitNullProperties?.Remove("primary_properties"); } }
         private global::Soenneker.PostHog.OpenApiClient.Models.PrimaryPropertiesResponsePrimaryPropertiesProperty _explicitNullValuePrimaryProperties = default!;
 #endif
         /// <summary>

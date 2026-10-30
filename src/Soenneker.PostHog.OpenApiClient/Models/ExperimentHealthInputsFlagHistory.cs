@@ -17,13 +17,20 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("changes") is { } nullNodeChanges && nullNodeChanges.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Changes = null;
-            if (parseNode.GetChildNode("checked") is { } nullNodeChecked && nullNodeChecked.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Checked = null;
-            if (parseNode.GetChildNode("exposed_before_first") is { } nullNodeExposedBeforeFirst && nullNodeExposedBeforeFirst.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ExposedBeforeFirst = null;
-            if (parseNode.GetChildNode("exposed_between") is { } nullNodeExposedBetween && nullNodeExposedBetween.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ExposedBetween = null;
-            if (parseNode.GetChildNode("launched_at") is { } nullNodeLaunchedAt && nullNodeLaunchedAt.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) LaunchedAt = null;
-            if (parseNode.GetChildNode("not_checked_reason") is { } nullNodeNotCheckedReason && nullNodeNotCheckedReason.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) NotCheckedReason = null;
-            if (parseNode.GetChildNode("team_timezone") is { } nullNodeTeamTimezone && nullNodeTeamTimezone.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TeamTimezone = null;
+            if (parseNode.GetChildNode("changes") is null) { _explicitNullValueChanges = default!; _explicitNullProperties?.Remove("changes"); }
+            else if (parseNode.GetChildNode("changes") is { } nullNodeChanges && nullNodeChanges.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Changes = null;
+            if (parseNode.GetChildNode("checked") is null) { _explicitNullValueChecked = default!; _explicitNullProperties?.Remove("checked"); }
+            else if (parseNode.GetChildNode("checked") is { } nullNodeChecked && nullNodeChecked.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Checked = null;
+            if (parseNode.GetChildNode("exposed_before_first") is null) { _explicitNullValueExposedBeforeFirst = default!; _explicitNullProperties?.Remove("exposed_before_first"); }
+            else if (parseNode.GetChildNode("exposed_before_first") is { } nullNodeExposedBeforeFirst && nullNodeExposedBeforeFirst.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ExposedBeforeFirst = null;
+            if (parseNode.GetChildNode("exposed_between") is null) { _explicitNullValueExposedBetween = default!; _explicitNullProperties?.Remove("exposed_between"); }
+            else if (parseNode.GetChildNode("exposed_between") is { } nullNodeExposedBetween && nullNodeExposedBetween.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ExposedBetween = null;
+            if (parseNode.GetChildNode("launched_at") is null) { _explicitNullValueLaunchedAt = default!; _explicitNullProperties?.Remove("launched_at"); }
+            else if (parseNode.GetChildNode("launched_at") is { } nullNodeLaunchedAt && nullNodeLaunchedAt.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) LaunchedAt = null;
+            if (parseNode.GetChildNode("not_checked_reason") is null) { _explicitNullValueNotCheckedReason = default!; _explicitNullProperties?.Remove("not_checked_reason"); }
+            else if (parseNode.GetChildNode("not_checked_reason") is { } nullNodeNotCheckedReason && nullNodeNotCheckedReason.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) NotCheckedReason = null;
+            if (parseNode.GetChildNode("team_timezone") is null) { _explicitNullValueTeamTimezone = default!; _explicitNullProperties?.Remove("team_timezone"); }
+            else if (parseNode.GetChildNode("team_timezone") is { } nullNodeTeamTimezone && nullNodeTeamTimezone.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TeamTimezone = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -31,50 +38,50 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Every change since launch that can move exposed people, of every kind, in time order. A bucketing change is one per setting and save. A rollout change alone is no release-condition change. Empty for &apos;no_history_access&apos;, which does not read them.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentHealthInputsFlagChange>? Changes { get => _explicitNullValueChanges; set { _explicitNullValueChanges = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("changes"); else _explicitNullProperties?.Remove("changes"); } }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentHealthInputsFlagChange>? Changes { get => _explicitNullValueChanges; set { _explicitNullValueChanges = value; AdditionalData?.Remove("changes"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("changes"); else _explicitNullProperties?.Remove("changes"); } }
         private List<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentHealthInputsFlagChange>? _explicitNullValueChanges = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentHealthInputsFlagChange> Changes { get => _explicitNullValueChanges; set { _explicitNullValueChanges = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("changes"); else _explicitNullProperties?.Remove("changes"); } }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentHealthInputsFlagChange> Changes { get => _explicitNullValueChanges; set { _explicitNullValueChanges = value; AdditionalData?.Remove("changes"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("changes"); else _explicitNullProperties?.Remove("changes"); } }
         private List<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentHealthInputsFlagChange> _explicitNullValueChanges = default!;
 #endif
         /// <summary>Whether the changes were compared with the exposures. False when not_checked_reason is set.</summary>
-        public bool? Checked { get => _explicitNullValueChecked; set { _explicitNullValueChecked = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("checked"); else _explicitNullProperties?.Remove("checked"); } }
+        public bool? Checked { get => _explicitNullValueChecked; set { _explicitNullValueChecked = value; AdditionalData?.Remove("checked"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("checked"); else _explicitNullProperties?.Remove("checked"); } }
         private bool? _explicitNullValueChecked = default!;
         /// <summary>Whether anyone was exposed before the first counted change. Null when unknown or not checked.</summary>
-        public bool? ExposedBeforeFirst { get => _explicitNullValueExposedBeforeFirst; set { _explicitNullValueExposedBeforeFirst = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("exposed_before_first"); else _explicitNullProperties?.Remove("exposed_before_first"); } }
+        public bool? ExposedBeforeFirst { get => _explicitNullValueExposedBeforeFirst; set { _explicitNullValueExposedBeforeFirst = value; AdditionalData?.Remove("exposed_before_first"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("exposed_before_first"); else _explicitNullProperties?.Remove("exposed_before_first"); } }
         private bool? _explicitNullValueExposedBeforeFirst = default!;
         /// <summary>One entry for each kind of change with a counted change, in the order of the kinds.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentHealthInputsExposedBetween>? ExposedBetween { get => _explicitNullValueExposedBetween; set { _explicitNullValueExposedBetween = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("exposed_between"); else _explicitNullProperties?.Remove("exposed_between"); } }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentHealthInputsExposedBetween>? ExposedBetween { get => _explicitNullValueExposedBetween; set { _explicitNullValueExposedBetween = value; AdditionalData?.Remove("exposed_between"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("exposed_between"); else _explicitNullProperties?.Remove("exposed_between"); } }
         private List<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentHealthInputsExposedBetween>? _explicitNullValueExposedBetween = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentHealthInputsExposedBetween> ExposedBetween { get => _explicitNullValueExposedBetween; set { _explicitNullValueExposedBetween = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("exposed_between"); else _explicitNullProperties?.Remove("exposed_between"); } }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentHealthInputsExposedBetween> ExposedBetween { get => _explicitNullValueExposedBetween; set { _explicitNullValueExposedBetween = value; AdditionalData?.Remove("exposed_between"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("exposed_between"); else _explicitNullProperties?.Remove("exposed_between"); } }
         private List<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentHealthInputsExposedBetween> _explicitNullValueExposedBetween = default!;
 #endif
         /// <summary>When the experiment launched.</summary>
-        public DateTimeOffset? LaunchedAt { get => _explicitNullValueLaunchedAt; set { _explicitNullValueLaunchedAt = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("launched_at"); else _explicitNullProperties?.Remove("launched_at"); } }
+        public DateTimeOffset? LaunchedAt { get => _explicitNullValueLaunchedAt; set { _explicitNullValueLaunchedAt = value; AdditionalData?.Remove("launched_at"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("launched_at"); else _explicitNullProperties?.Remove("launched_at"); } }
         private DateTimeOffset? _explicitNullValueLaunchedAt = default!;
         /// <summary>Why the changes were not compared with the exposures: &apos;no_history_access&apos;, &apos;no_query_access&apos;, &apos;exposure_filters&apos;, &apos;exposure_action&apos; or &apos;exposure_criteria&apos;. Null when they were.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? NotCheckedReason { get => _explicitNullValueNotCheckedReason; set { _explicitNullValueNotCheckedReason = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("not_checked_reason"); else _explicitNullProperties?.Remove("not_checked_reason"); } }
+        public string? NotCheckedReason { get => _explicitNullValueNotCheckedReason; set { _explicitNullValueNotCheckedReason = value; AdditionalData?.Remove("not_checked_reason"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("not_checked_reason"); else _explicitNullProperties?.Remove("not_checked_reason"); } }
         private string? _explicitNullValueNotCheckedReason = default!;
 #nullable restore
 #else
-        public string NotCheckedReason { get => _explicitNullValueNotCheckedReason; set { _explicitNullValueNotCheckedReason = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("not_checked_reason"); else _explicitNullProperties?.Remove("not_checked_reason"); } }
+        public string NotCheckedReason { get => _explicitNullValueNotCheckedReason; set { _explicitNullValueNotCheckedReason = value; AdditionalData?.Remove("not_checked_reason"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("not_checked_reason"); else _explicitNullProperties?.Remove("not_checked_reason"); } }
         private string _explicitNullValueNotCheckedReason = default!;
 #endif
         /// <summary>The project&apos;s time zone, which the findings use for times.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? TeamTimezone { get => _explicitNullValueTeamTimezone; set { _explicitNullValueTeamTimezone = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("team_timezone"); else _explicitNullProperties?.Remove("team_timezone"); } }
+        public string? TeamTimezone { get => _explicitNullValueTeamTimezone; set { _explicitNullValueTeamTimezone = value; AdditionalData?.Remove("team_timezone"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("team_timezone"); else _explicitNullProperties?.Remove("team_timezone"); } }
         private string? _explicitNullValueTeamTimezone = default!;
 #nullable restore
 #else
-        public string TeamTimezone { get => _explicitNullValueTeamTimezone; set { _explicitNullValueTeamTimezone = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("team_timezone"); else _explicitNullProperties?.Remove("team_timezone"); } }
+        public string TeamTimezone { get => _explicitNullValueTeamTimezone; set { _explicitNullValueTeamTimezone = value; AdditionalData?.Remove("team_timezone"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("team_timezone"); else _explicitNullProperties?.Remove("team_timezone"); } }
         private string _explicitNullValueTeamTimezone = default!;
 #endif
         /// <summary>

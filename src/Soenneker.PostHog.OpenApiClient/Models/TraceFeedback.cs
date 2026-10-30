@@ -17,11 +17,16 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("responses") is { } nullNodeResponses && nullNodeResponses.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Responses = null;
-            if (parseNode.GetChildNode("scores") is { } nullNodeScores && nullNodeScores.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Scores = null;
-            if (parseNode.GetChildNode("summary") is { } nullNodeSummary && nullNodeSummary.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Summary = null;
-            if (parseNode.GetChildNode("surveyResponsesStatus") is { } nullNodeSurveyResponsesStatus && nullNodeSurveyResponsesStatus.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SurveyResponsesStatus = null;
-            if (parseNode.GetChildNode("unanswered") is { } nullNodeUnanswered && nullNodeUnanswered.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Unanswered = null;
+            if (parseNode.GetChildNode("responses") is null) { _explicitNullValueResponses = default!; _explicitNullProperties?.Remove("responses"); }
+            else if (parseNode.GetChildNode("responses") is { } nullNodeResponses && nullNodeResponses.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Responses = null;
+            if (parseNode.GetChildNode("scores") is null) { _explicitNullValueScores = default!; _explicitNullProperties?.Remove("scores"); }
+            else if (parseNode.GetChildNode("scores") is { } nullNodeScores && nullNodeScores.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Scores = null;
+            if (parseNode.GetChildNode("summary") is null) { _explicitNullValueSummary = default!; _explicitNullProperties?.Remove("summary"); }
+            else if (parseNode.GetChildNode("summary") is { } nullNodeSummary && nullNodeSummary.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Summary = null;
+            if (parseNode.GetChildNode("surveyResponsesStatus") is null) { _explicitNullValueSurveyResponsesStatus = default!; _explicitNullProperties?.Remove("surveyResponsesStatus"); }
+            else if (parseNode.GetChildNode("surveyResponsesStatus") is { } nullNodeSurveyResponsesStatus && nullNodeSurveyResponsesStatus.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SurveyResponsesStatus = null;
+            if (parseNode.GetChildNode("unanswered") is null) { _explicitNullValueUnanswered = default!; _explicitNullProperties?.Remove("unanswered"); }
+            else if (parseNode.GetChildNode("unanswered") is { } nullNodeUnanswered && nullNodeUnanswered.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Unanswered = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -29,44 +34,44 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>What users said, oldest first.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.TraceFeedbackResponsesItem>? Responses { get => _explicitNullValueResponses; set { _explicitNullValueResponses = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("responses"); else _explicitNullProperties?.Remove("responses"); } }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.TraceFeedbackResponsesItem>? Responses { get => _explicitNullValueResponses; set { _explicitNullValueResponses = value; AdditionalData?.Remove("responses"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("responses"); else _explicitNullProperties?.Remove("responses"); } }
         private List<global::Soenneker.PostHog.OpenApiClient.Models.TraceFeedbackResponsesItem>? _explicitNullValueResponses = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.TraceFeedbackResponsesItem> Responses { get => _explicitNullValueResponses; set { _explicitNullValueResponses = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("responses"); else _explicitNullProperties?.Remove("responses"); } }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.TraceFeedbackResponsesItem> Responses { get => _explicitNullValueResponses; set { _explicitNullValueResponses = value; AdditionalData?.Remove("responses"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("responses"); else _explicitNullProperties?.Remove("responses"); } }
         private List<global::Soenneker.PostHog.OpenApiClient.Models.TraceFeedbackResponsesItem> _explicitNullValueResponses = default!;
 #endif
         /// <summary>Oldest first.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.TraceFeedbackScore>? Scores { get => _explicitNullValueScores; set { _explicitNullValueScores = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("scores"); else _explicitNullProperties?.Remove("scores"); } }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.TraceFeedbackScore>? Scores { get => _explicitNullValueScores; set { _explicitNullValueScores = value; AdditionalData?.Remove("scores"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("scores"); else _explicitNullProperties?.Remove("scores"); } }
         private List<global::Soenneker.PostHog.OpenApiClient.Models.TraceFeedbackScore>? _explicitNullValueScores = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.TraceFeedbackScore> Scores { get => _explicitNullValueScores; set { _explicitNullValueScores = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("scores"); else _explicitNullProperties?.Remove("scores"); } }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.TraceFeedbackScore> Scores { get => _explicitNullValueScores; set { _explicitNullValueScores = value; AdditionalData?.Remove("scores"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("scores"); else _explicitNullProperties?.Remove("scores"); } }
         private List<global::Soenneker.PostHog.OpenApiClient.Models.TraceFeedbackScore> _explicitNullValueScores = default!;
 #endif
         /// <summary>The summary property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.TraceFeedbackSummary? Summary { get => _explicitNullValueSummary; set { _explicitNullValueSummary = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("summary"); else _explicitNullProperties?.Remove("summary"); } }
+        public global::Soenneker.PostHog.OpenApiClient.Models.TraceFeedbackSummary? Summary { get => _explicitNullValueSummary; set { _explicitNullValueSummary = value; AdditionalData?.Remove("summary"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("summary"); else _explicitNullProperties?.Remove("summary"); } }
         private global::Soenneker.PostHog.OpenApiClient.Models.TraceFeedbackSummary? _explicitNullValueSummary = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.TraceFeedbackSummary Summary { get => _explicitNullValueSummary; set { _explicitNullValueSummary = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("summary"); else _explicitNullProperties?.Remove("summary"); } }
+        public global::Soenneker.PostHog.OpenApiClient.Models.TraceFeedbackSummary Summary { get => _explicitNullValueSummary; set { _explicitNullValueSummary = value; AdditionalData?.Remove("summary"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("summary"); else _explicitNullProperties?.Remove("summary"); } }
         private global::Soenneker.PostHog.OpenApiClient.Models.TraceFeedbackSummary _explicitNullValueSummary = default!;
 #endif
         /// <summary>ok when survey responses are included, failed when the survey read failed, not_permitted when the token lacks the survey:read and query:read scopes.</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.TraceFeedbackSurveyResponsesStatus? SurveyResponsesStatus { get => _explicitNullValueSurveyResponsesStatus; set { _explicitNullValueSurveyResponsesStatus = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("surveyResponsesStatus"); else _explicitNullProperties?.Remove("surveyResponsesStatus"); } }
+        public global::Soenneker.PostHog.OpenApiClient.Models.TraceFeedbackSurveyResponsesStatus? SurveyResponsesStatus { get => _explicitNullValueSurveyResponsesStatus; set { _explicitNullValueSurveyResponsesStatus = value; AdditionalData?.Remove("surveyResponsesStatus"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("surveyResponsesStatus"); else _explicitNullProperties?.Remove("surveyResponsesStatus"); } }
         private global::Soenneker.PostHog.OpenApiClient.Models.TraceFeedbackSurveyResponsesStatus? _explicitNullValueSurveyResponsesStatus = default!;
         /// <summary>Surveys shown with the trace and not answered, oldest first.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.TraceUnansweredSurvey>? Unanswered { get => _explicitNullValueUnanswered; set { _explicitNullValueUnanswered = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("unanswered"); else _explicitNullProperties?.Remove("unanswered"); } }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.TraceUnansweredSurvey>? Unanswered { get => _explicitNullValueUnanswered; set { _explicitNullValueUnanswered = value; AdditionalData?.Remove("unanswered"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("unanswered"); else _explicitNullProperties?.Remove("unanswered"); } }
         private List<global::Soenneker.PostHog.OpenApiClient.Models.TraceUnansweredSurvey>? _explicitNullValueUnanswered = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.TraceUnansweredSurvey> Unanswered { get => _explicitNullValueUnanswered; set { _explicitNullValueUnanswered = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("unanswered"); else _explicitNullProperties?.Remove("unanswered"); } }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.TraceUnansweredSurvey> Unanswered { get => _explicitNullValueUnanswered; set { _explicitNullValueUnanswered = value; AdditionalData?.Remove("unanswered"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("unanswered"); else _explicitNullProperties?.Remove("unanswered"); } }
         private List<global::Soenneker.PostHog.OpenApiClient.Models.TraceUnansweredSurvey> _explicitNullValueUnanswered = default!;
 #endif
         /// <summary>
@@ -97,7 +102,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "responses", n => { Responses = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.TraceFeedbackResponsesItem>(global::Soenneker.PostHog.OpenApiClient.Models.TraceFeedbackResponsesItem.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "scores", n => { Scores = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.TraceFeedbackScore>(global::Soenneker.PostHog.OpenApiClient.Models.TraceFeedbackScore.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "summary", n => { Summary = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TraceFeedbackSummary>(global::Soenneker.PostHog.OpenApiClient.Models.TraceFeedbackSummary.CreateFromDiscriminatorValue); } },
-                { "surveyResponsesStatus", n => { SurveyResponsesStatus = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.TraceFeedbackSurveyResponsesStatus>(); } },
+                { "surveyResponsesStatus", n => { var parsed = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.TraceFeedbackSurveyResponsesStatus>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValueSurveyResponsesStatus = default; _explicitNullProperties?.Remove("surveyResponsesStatus"); AdditionalData["surveyResponsesStatus"] = unknown; } else { SurveyResponsesStatus = parsed; AdditionalData.Remove("surveyResponsesStatus"); } } },
                 { "unanswered", n => { Unanswered = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.TraceUnansweredSurvey>(global::Soenneker.PostHog.OpenApiClient.Models.TraceUnansweredSurvey.CreateFromDiscriminatorValue)?.AsList(); } },
             };
         }

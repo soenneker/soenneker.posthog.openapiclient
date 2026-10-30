@@ -17,8 +17,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("detail_fields") is { } nullNodeDetailFields && nullNodeDetailFields.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) DetailFields = null;
-            if (parseNode.GetChildNode("static_filters") is { } nullNodeStaticFilters && nullNodeStaticFilters.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) StaticFilters = null;
+            if (parseNode.GetChildNode("detail_fields") is null) { _explicitNullValueDetailFields = default!; _explicitNullProperties?.Remove("detail_fields"); }
+            else if (parseNode.GetChildNode("detail_fields") is { } nullNodeDetailFields && nullNodeDetailFields.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) DetailFields = null;
+            if (parseNode.GetChildNode("static_filters") is null) { _explicitNullValueStaticFilters = default!; _explicitNullProperties?.Remove("static_filters"); }
+            else if (parseNode.GetChildNode("static_filters") is { } nullNodeStaticFilters && nullNodeStaticFilters.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) StaticFilters = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -26,21 +28,21 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Discovered detail fields and their value distributions.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.AvailableFiltersResponseDetailFieldsProperty? DetailFields { get => _explicitNullValueDetailFields; set { _explicitNullValueDetailFields = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("detail_fields"); else _explicitNullProperties?.Remove("detail_fields"); } }
+        public global::Soenneker.PostHog.OpenApiClient.Models.AvailableFiltersResponseDetailFieldsProperty? DetailFields { get => _explicitNullValueDetailFields; set { _explicitNullValueDetailFields = value; AdditionalData?.Remove("detail_fields"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("detail_fields"); else _explicitNullProperties?.Remove("detail_fields"); } }
         private global::Soenneker.PostHog.OpenApiClient.Models.AvailableFiltersResponseDetailFieldsProperty? _explicitNullValueDetailFields = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.AvailableFiltersResponseDetailFieldsProperty DetailFields { get => _explicitNullValueDetailFields; set { _explicitNullValueDetailFields = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("detail_fields"); else _explicitNullProperties?.Remove("detail_fields"); } }
+        public global::Soenneker.PostHog.OpenApiClient.Models.AvailableFiltersResponseDetailFieldsProperty DetailFields { get => _explicitNullValueDetailFields; set { _explicitNullValueDetailFields = value; AdditionalData?.Remove("detail_fields"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("detail_fields"); else _explicitNullProperties?.Remove("detail_fields"); } }
         private global::Soenneker.PostHog.OpenApiClient.Models.AvailableFiltersResponseDetailFieldsProperty _explicitNullValueDetailFields = default!;
 #endif
         /// <summary>Pre-computed filter options for scopes, activities, and users.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.AvailableFiltersResponseStaticFilters? StaticFilters { get => _explicitNullValueStaticFilters; set { _explicitNullValueStaticFilters = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("static_filters"); else _explicitNullProperties?.Remove("static_filters"); } }
+        public global::Soenneker.PostHog.OpenApiClient.Models.AvailableFiltersResponseStaticFilters? StaticFilters { get => _explicitNullValueStaticFilters; set { _explicitNullValueStaticFilters = value; AdditionalData?.Remove("static_filters"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("static_filters"); else _explicitNullProperties?.Remove("static_filters"); } }
         private global::Soenneker.PostHog.OpenApiClient.Models.AvailableFiltersResponseStaticFilters? _explicitNullValueStaticFilters = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.AvailableFiltersResponseStaticFilters StaticFilters { get => _explicitNullValueStaticFilters; set { _explicitNullValueStaticFilters = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("static_filters"); else _explicitNullProperties?.Remove("static_filters"); } }
+        public global::Soenneker.PostHog.OpenApiClient.Models.AvailableFiltersResponseStaticFilters StaticFilters { get => _explicitNullValueStaticFilters; set { _explicitNullValueStaticFilters = value; AdditionalData?.Remove("static_filters"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("static_filters"); else _explicitNullProperties?.Remove("static_filters"); } }
         private global::Soenneker.PostHog.OpenApiClient.Models.AvailableFiltersResponseStaticFilters _explicitNullValueStaticFilters = default!;
 #endif
         /// <summary>

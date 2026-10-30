@@ -17,21 +17,24 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("run_id") is { } nullNodeRunId && nullNodeRunId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) RunId = null;
-            if (parseNode.GetChildNode("sandbox_hourly_price") is { } nullNodeSandboxHourlyPrice && nullNodeSandboxHourlyPrice.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SandboxHourlyPrice = null;
-            if (parseNode.GetChildNode("starts_sandbox") is { } nullNodeStartsSandbox && nullNodeStartsSandbox.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) StartsSandbox = null;
+            if (parseNode.GetChildNode("run_id") is null) { _explicitNullValueRunId = default!; _explicitNullProperties?.Remove("run_id"); }
+            else if (parseNode.GetChildNode("run_id") is { } nullNodeRunId && nullNodeRunId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) RunId = null;
+            if (parseNode.GetChildNode("sandbox_hourly_price") is null) { _explicitNullValueSandboxHourlyPrice = default!; _explicitNullProperties?.Remove("sandbox_hourly_price"); }
+            else if (parseNode.GetChildNode("sandbox_hourly_price") is { } nullNodeSandboxHourlyPrice && nullNodeSandboxHourlyPrice.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SandboxHourlyPrice = null;
+            if (parseNode.GetChildNode("starts_sandbox") is null) { _explicitNullValueStartsSandbox = default!; _explicitNullProperties?.Remove("starts_sandbox"); }
+            else if (parseNode.GetChildNode("starts_sandbox") is { } nullNodeStartsSandbox && nullNodeStartsSandbox.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) StartsSandbox = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Identifier of the dispatched run. Poll the run result endpoint with it until the status is terminal.</summary>
-        public Guid? RunId { get => _explicitNullValueRunId; set { _explicitNullValueRunId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("run_id"); else _explicitNullProperties?.Remove("run_id"); } }
+        public Guid? RunId { get => _explicitNullValueRunId; set { _explicitNullValueRunId = value; AdditionalData?.Remove("run_id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("run_id"); else _explicitNullProperties?.Remove("run_id"); } }
         private Guid? _explicitNullValueRunId = default!;
         /// <summary>What the sandbox this run provisions costs per hour in USD. Null when the run needs no new sandbox, or when the backend is not charged.</summary>
-        public double? SandboxHourlyPrice { get => _explicitNullValueSandboxHourlyPrice; set { _explicitNullValueSandboxHourlyPrice = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("sandbox_hourly_price"); else _explicitNullProperties?.Remove("sandbox_hourly_price"); } }
+        public double? SandboxHourlyPrice { get => _explicitNullValueSandboxHourlyPrice; set { _explicitNullValueSandboxHourlyPrice = value; AdditionalData?.Remove("sandbox_hourly_price"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("sandbox_hourly_price"); else _explicitNullProperties?.Remove("sandbox_hourly_price"); } }
         private double? _explicitNullValueSandboxHourlyPrice = default!;
         /// <summary>True when this run has to provision a sandbox because none is live for the caller, checked here rather than inferred from a client&apos;s cached kernel status. Tell the user what that costs.</summary>
-        public bool? StartsSandbox { get => _explicitNullValueStartsSandbox; set { _explicitNullValueStartsSandbox = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("starts_sandbox"); else _explicitNullProperties?.Remove("starts_sandbox"); } }
+        public bool? StartsSandbox { get => _explicitNullValueStartsSandbox; set { _explicitNullValueStartsSandbox = value; AdditionalData?.Remove("starts_sandbox"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("starts_sandbox"); else _explicitNullProperties?.Remove("starts_sandbox"); } }
         private bool? _explicitNullValueStartsSandbox = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.NotebookSqlv2RunResponse"/> and sets the default values.

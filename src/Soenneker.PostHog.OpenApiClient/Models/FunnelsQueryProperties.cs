@@ -8,7 +8,7 @@ using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
     /// <summary>
-    /// Composed type wrapper for classes <see cref="global::Soenneker.PostHog.OpenApiClient.Models.FunnelsQueryPropertiesMember1"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.PropertyGroupFilter"/>, List&lt;global::Soenneker.PostHog.OpenApiClient.Models.FunnelsQueryPropertiesAnyOf1Item&gt;
+    /// Composed type wrapper for classes <see cref="global::Soenneker.PostHog.OpenApiClient.Models.FunnelsQueryPropertiesMember1"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.PropertyGroupFilter"/>, List&lt;global::Soenneker.PostHog.OpenApiClient.Models.ActionsNodeFixedPropertiesItem&gt;
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class FunnelsQueryProperties : IComposedTypeWrapper, IParsable
@@ -18,13 +18,13 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode UnrecognizedValue { get; set; } = null!;
         public global::System.Collections.Generic.IDictionary<string, object> AdditionalData { get; set; } = new global::System.Collections.Generic.Dictionary<string, object>();
 
-        /// <summary>Composed type representation for type List&lt;global::Soenneker.PostHog.OpenApiClient.Models.FunnelsQueryPropertiesAnyOf1Item&gt;</summary>
+        /// <summary>Composed type representation for type List&lt;global::Soenneker.PostHog.OpenApiClient.Models.ActionsNodeFixedPropertiesItem&gt;</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.FunnelsQueryPropertiesAnyOf1Item>? FunnelsQueryPropertiesAnyOf1Item { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.ActionsNodeFixedPropertiesItem>? ActionsNodeFixedPropertiesItem { get; set; }
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.FunnelsQueryPropertiesAnyOf1Item> FunnelsQueryPropertiesAnyOf1Item { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.ActionsNodeFixedPropertiesItem> ActionsNodeFixedPropertiesItem { get; set; }
 #endif
         /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.FunnelsQueryPropertiesMember1"/></summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -51,9 +51,9 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             if(ReferenceEquals(parseNode, null)) throw new ArgumentNullException(nameof(parseNode));
             var result = new global::Soenneker.PostHog.OpenApiClient.Models.FunnelsQueryProperties();
-            if(parseNode.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is global::Microsoft.Kiota.Abstractions.Serialization.UntypedArray && parseNode.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.FunnelsQueryPropertiesAnyOf1Item>(global::Soenneker.PostHog.OpenApiClient.Models.FunnelsQueryPropertiesAnyOf1Item.CreateFromDiscriminatorValue)?.AsList() is List<global::Soenneker.PostHog.OpenApiClient.Models.FunnelsQueryPropertiesAnyOf1Item> funnelsQueryPropertiesAnyOf1ItemValue)
+            if(parseNode.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is global::Microsoft.Kiota.Abstractions.Serialization.UntypedArray && global::System.Linq.Enumerable.All(((global::Microsoft.Kiota.Abstractions.Serialization.UntypedArray)parseNode.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue)).GetValue(), item => item is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject) && parseNode.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.ActionsNodeFixedPropertiesItem>(global::Soenneker.PostHog.OpenApiClient.Models.ActionsNodeFixedPropertiesItem.CreateFromDiscriminatorValue)?.AsList() is List<global::Soenneker.PostHog.OpenApiClient.Models.ActionsNodeFixedPropertiesItem> actionsNodeFixedPropertiesItemValue)
             {
-                result.FunnelsQueryPropertiesAnyOf1Item = funnelsQueryPropertiesAnyOf1ItemValue;
+                result.ActionsNodeFixedPropertiesItem = actionsNodeFixedPropertiesItemValue;
             }
             else {
                 
@@ -61,10 +61,12 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             }
             
             var unionPayload = parseNode.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue);
-            bool matchesUnionBranch0 = unionPayload is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject && ((global::System.Func<bool>)(() => parseNode.GetChildNode("type") != null && (parseNode.GetChildNode("type")?.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString tag1 && ("AND".Equals(tag1.GetValue(), global::System.StringComparison.Ordinal) || "OR".Equals(tag1.GetValue(), global::System.StringComparison.Ordinal))) && parseNode.GetChildNode("values") != null))();
-            if (result.FunnelsQueryPropertiesAnyOf1Item == null && result.FunnelsQueryPropertiesMember1 == null && result.PropertyGroupFilter == null && matchesUnionBranch0) result.PropertyGroupFilter = global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.PropertyGroupFilter(), parseNode);
-            if (result.FunnelsQueryPropertiesAnyOf1Item == null && result.FunnelsQueryPropertiesMember1 == null && result.PropertyGroupFilter == null && unionPayload is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject) result.PropertyGroupFilter = global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.PropertyGroupFilter(), parseNode);
-            if (result.FunnelsQueryPropertiesAnyOf1Item == null && result.FunnelsQueryPropertiesMember1 == null && result.PropertyGroupFilter == null) result.UnrecognizedValue = unionPayload;
+            bool matchesUnionBranch0 = unionPayload is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject && ((global::System.Func<bool>)(() => ((unionPayload is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject)) && (unionPayload is not global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject shapeObject0 || (shapeObject0.GetValue() is var shapeMembers1 && (shapeMembers1.ContainsKey("type") && shapeMembers1.ContainsKey("values") && (!shapeMembers1.ContainsKey("type") || (((shapeMembers1["type"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString)) && ((shapeMembers1["type"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString literal2 && "AND".Equals(literal2.GetValue(), global::System.StringComparison.Ordinal)) || (shapeMembers1["type"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString literal3 && "OR".Equals(literal3.GetValue(), global::System.StringComparison.Ordinal))))) && (!shapeMembers1.ContainsKey("values") || (((shapeMembers1["values"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedArray)))) && global::System.Linq.Enumerable.All(shapeMembers1.Keys, key => key == "type" || key == "values"))))))();
+            int matchingUnionBranches = 0;
+            if (matchesUnionBranch0) matchingUnionBranches++;
+            bool noSelectedUnionBranch = result.ActionsNodeFixedPropertiesItem == null && result.FunnelsQueryPropertiesMember1 == null && result.PropertyGroupFilter == null;
+            if (noSelectedUnionBranch && matchesUnionBranch0 && matchingUnionBranches == 1) result.PropertyGroupFilter = global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.PropertyGroupFilter(), parseNode);
+            if (result.ActionsNodeFixedPropertiesItem == null && result.FunnelsQueryPropertiesMember1 == null && result.PropertyGroupFilter == null) result.UnrecognizedValue = unionPayload;
 return result;
         }
         /// <summary>
@@ -73,6 +75,8 @@ return result;
         /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
         public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
         {
+            if (UnrecognizedValue is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject rawFields) { var fields = new global::System.Collections.Generic.Dictionary<string, global::System.Action<IParseNode>>(); foreach (var entry in rawFields.GetValue()) fields[entry.Key] = _ => { }; return fields; }
+
             if(FunnelsQueryPropertiesMember1 != null || PropertyGroupFilter != null)
             {
                 return ParseNodeHelper.MergeDeserializersForIntersectionWrapper(FunnelsQueryPropertiesMember1, PropertyGroupFilter);
@@ -86,14 +90,18 @@ return result;
         public virtual void Serialize(ISerializationWriter writer)
         {
             if (global::System.Object.ReferenceEquals(writer, null)) throw new global::System.ArgumentNullException(nameof(writer));
-            if (FunnelsQueryPropertiesAnyOf1Item == null && FunnelsQueryPropertiesMember1 == null && PropertyGroupFilter == null) { if (UnrecognizedValue is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject rawObject) writer.WriteObjectValue(null, new global::Soenneker.OpenApi.Generated.OpenApiUnionAdditionalData(AdditionalData, rawObject)); else if (UnrecognizedValue != null) writer.WriteObjectValue(null, UnrecognizedValue); else if (AdditionalData.Count > 0) writer.WriteObjectValue(null, new global::Soenneker.OpenApi.Generated.OpenApiUnionAdditionalData(AdditionalData)); else writer.WriteNullValue(null); return; }
-            if (FunnelsQueryPropertiesMember1 != null && FunnelsQueryPropertiesAnyOf1Item == null && PropertyGroupFilter == null) { if (FunnelsQueryPropertiesMember1 is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder selectedData) foreach (var entry in AdditionalData) selectedData.AdditionalData[entry.Key] = entry.Value; writer.WriteObjectValue(null, FunnelsQueryPropertiesMember1); return; }
-            if (PropertyGroupFilter != null && FunnelsQueryPropertiesAnyOf1Item == null && FunnelsQueryPropertiesMember1 == null) { if (PropertyGroupFilter is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder selectedData) foreach (var entry in AdditionalData) selectedData.AdditionalData[entry.Key] = entry.Value; writer.WriteObjectValue(null, PropertyGroupFilter); return; }
+            if (ActionsNodeFixedPropertiesItem == null && FunnelsQueryPropertiesMember1 == null && PropertyGroupFilter == null) { if (UnrecognizedValue is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject rawObject) writer.WriteObjectValue(null, new global::Soenneker.OpenApi.Generated.OpenApiUnionAdditionalData(AdditionalData, rawObject)); else if (UnrecognizedValue != null) writer.WriteObjectValue(null, UnrecognizedValue); else if (AdditionalData.Count > 0) writer.WriteObjectValue(null, new global::Soenneker.OpenApi.Generated.OpenApiUnionAdditionalData(AdditionalData)); else writer.WriteNullValue(null); return; }
+            int selectedUnionBranches = 0;
+            if (ActionsNodeFixedPropertiesItem != null) selectedUnionBranches++;
+            if (FunnelsQueryPropertiesMember1 != null) selectedUnionBranches++;
+            if (PropertyGroupFilter != null) selectedUnionBranches++;
+            if (FunnelsQueryPropertiesMember1 != null && selectedUnionBranches == 1) { if (FunnelsQueryPropertiesMember1 is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder selectedData) foreach (var entry in AdditionalData) selectedData.AdditionalData[entry.Key] = entry.Value; writer.WriteObjectValue(null, FunnelsQueryPropertiesMember1); return; }
+            if (PropertyGroupFilter != null && selectedUnionBranches == 1) { if (PropertyGroupFilter is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder selectedData) foreach (var entry in AdditionalData) selectedData.AdditionalData[entry.Key] = entry.Value; writer.WriteObjectValue(null, PropertyGroupFilter); return; }
 
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            if(FunnelsQueryPropertiesAnyOf1Item != null)
+            if(ActionsNodeFixedPropertiesItem != null)
             {
-                writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.FunnelsQueryPropertiesAnyOf1Item>(null, FunnelsQueryPropertiesAnyOf1Item);
+                writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.ActionsNodeFixedPropertiesItem>(null, ActionsNodeFixedPropertiesItem);
             }
             else {
                 writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.FunnelsQueryPropertiesMember1>(null, FunnelsQueryPropertiesMember1, PropertyGroupFilter);

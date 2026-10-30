@@ -17,8 +17,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("tile") is { } nullNodeTile && nullNodeTile.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Tile = null;
-            if (parseNode.GetChildNode("to_dashboard") is { } nullNodeToDashboard && nullNodeToDashboard.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ToDashboard = null;
+            if (parseNode.GetChildNode("tile") is null) { _explicitNullValueTile = default!; _explicitNullProperties?.Remove("tile"); }
+            else if (parseNode.GetChildNode("tile") is { } nullNodeTile && nullNodeTile.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Tile = null;
+            if (parseNode.GetChildNode("to_dashboard") is null) { _explicitNullValueToDashboard = default!; _explicitNullProperties?.Remove("to_dashboard"); }
+            else if (parseNode.GetChildNode("to_dashboard") is { } nullNodeToDashboard && nullNodeToDashboard.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ToDashboard = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -26,15 +28,15 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Tile to move, identified by its dashboard tile ID.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.MoveTileRequestTile? Tile { get => _explicitNullValueTile; set { _explicitNullValueTile = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("tile"); else _explicitNullProperties?.Remove("tile"); } }
+        public global::Soenneker.PostHog.OpenApiClient.Models.MoveTileRequestTile? Tile { get => _explicitNullValueTile; set { _explicitNullValueTile = value; AdditionalData?.Remove("tile"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("tile"); else _explicitNullProperties?.Remove("tile"); } }
         private global::Soenneker.PostHog.OpenApiClient.Models.MoveTileRequestTile? _explicitNullValueTile = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.MoveTileRequestTile Tile { get => _explicitNullValueTile; set { _explicitNullValueTile = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("tile"); else _explicitNullProperties?.Remove("tile"); } }
+        public global::Soenneker.PostHog.OpenApiClient.Models.MoveTileRequestTile Tile { get => _explicitNullValueTile; set { _explicitNullValueTile = value; AdditionalData?.Remove("tile"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("tile"); else _explicitNullProperties?.Remove("tile"); } }
         private global::Soenneker.PostHog.OpenApiClient.Models.MoveTileRequestTile _explicitNullValueTile = default!;
 #endif
         /// <summary>Destination dashboard ID.</summary>
-        public int? ToDashboard { get => _explicitNullValueToDashboard; set { _explicitNullValueToDashboard = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("to_dashboard"); else _explicitNullProperties?.Remove("to_dashboard"); } }
+        public int? ToDashboard { get => _explicitNullValueToDashboard; set { _explicitNullValueToDashboard = value; AdditionalData?.Remove("to_dashboard"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("to_dashboard"); else _explicitNullProperties?.Remove("to_dashboard"); } }
         private int? _explicitNullValueToDashboard = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.MoveTileRequest"/> and sets the default values.

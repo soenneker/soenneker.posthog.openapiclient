@@ -18,7 +18,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("creators") is { } nullNodeCreators && nullNodeCreators.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Creators = null;
+            if (parseNode.GetChildNode("creators") is null) { _explicitNullValueCreators = default!; _explicitNullProperties?.Remove("creators"); }
+            else if (parseNode.GetChildNode("creators") is { } nullNodeCreators && nullNodeCreators.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Creators = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -26,11 +27,11 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Users who created at least one scanner on this team. Returned regardless of pagination state so the dropdown stays stable across pages.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.UserBasic>? Creators { get => _explicitNullValueCreators; set { _explicitNullValueCreators = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("creators"); else _explicitNullProperties?.Remove("creators"); } }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.UserBasic>? Creators { get => _explicitNullValueCreators; set { _explicitNullValueCreators = value; AdditionalData?.Remove("creators"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("creators"); else _explicitNullProperties?.Remove("creators"); } }
         private List<global::Soenneker.PostHog.OpenApiClient.Models.UserBasic>? _explicitNullValueCreators = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.UserBasic> Creators { get => _explicitNullValueCreators; set { _explicitNullValueCreators = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("creators"); else _explicitNullProperties?.Remove("creators"); } }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.UserBasic> Creators { get => _explicitNullValueCreators; set { _explicitNullValueCreators = value; AdditionalData?.Remove("creators"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("creators"); else _explicitNullProperties?.Remove("creators"); } }
         private List<global::Soenneker.PostHog.OpenApiClient.Models.UserBasic> _explicitNullValueCreators = default!;
 #endif
         /// <summary>

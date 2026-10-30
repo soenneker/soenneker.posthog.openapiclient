@@ -18,17 +18,19 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("days") is { } nullNodeDays && nullNodeDays.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Days = null;
-            if (parseNode.GetChildNode("period_type") is { } nullNodePeriodType && nullNodePeriodType.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) PeriodType = null;
+            if (parseNode.GetChildNode("days") is null) { _explicitNullValueDays = default!; _explicitNullProperties?.Remove("days"); }
+            else if (parseNode.GetChildNode("days") is { } nullNodeDays && nullNodeDays.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Days = null;
+            if (parseNode.GetChildNode("period_type") is null) { _explicitNullValuePeriodType = default!; _explicitNullProperties?.Remove("period_type"); }
+            else if (parseNode.GetChildNode("period_type") is { } nullNodePeriodType && nullNodePeriodType.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) PeriodType = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Lookback length in days. Required and used only when period_type is last_n_days.</summary>
-        public int? Days { get => _explicitNullValueDays; set { _explicitNullValueDays = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("days"); else _explicitNullProperties?.Remove("days"); } }
+        public int? Days { get => _explicitNullValueDays; set { _explicitNullValueDays = value; AdditionalData?.Remove("days"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("days"); else _explicitNullProperties?.Remove("days"); } }
         private int? _explicitNullValueDays = default!;
         /// <summary>* `last_n_days` - last_n_days* `since_last_run` - since_last_run</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.PeriodPeriodType? PeriodType { get => _explicitNullValuePeriodType; set { _explicitNullValuePeriodType = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("period_type"); else _explicitNullProperties?.Remove("period_type"); } }
+        public global::Soenneker.PostHog.OpenApiClient.Models.PeriodPeriodType? PeriodType { get => _explicitNullValuePeriodType; set { _explicitNullValuePeriodType = value; AdditionalData?.Remove("period_type"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("period_type"); else _explicitNullProperties?.Remove("period_type"); } }
         private global::Soenneker.PostHog.OpenApiClient.Models.PeriodPeriodType? _explicitNullValuePeriodType = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ProductBriefListPeriod"/> and sets the default values.
@@ -56,7 +58,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "days", n => { Days = n.GetIntValue(); } },
-                { "period_type", n => { PeriodType = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.PeriodPeriodType>(); } },
+                { "period_type", n => { var parsed = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.PeriodPeriodType>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValuePeriodType = default; _explicitNullProperties?.Remove("period_type"); AdditionalData["period_type"] = unknown; } else { PeriodType = parsed; AdditionalData.Remove("period_type"); } } },
             };
         }
         /// <summary>

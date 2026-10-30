@@ -18,9 +18,12 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("banner_message") is { } nullNodeBannerMessage && nullNodeBannerMessage.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) BannerMessage = null;
-            if (parseNode.GetChildNode("enrolled") is { } nullNodeEnrolled && nullNodeEnrolled.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Enrolled = null;
-            if (parseNode.GetChildNode("limits") is { } nullNodeLimits && nullNodeLimits.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Limits = null;
+            if (parseNode.GetChildNode("banner_message") is null) { _explicitNullValueBannerMessage = default!; _explicitNullProperties?.Remove("banner_message"); }
+            else if (parseNode.GetChildNode("banner_message") is { } nullNodeBannerMessage && nullNodeBannerMessage.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) BannerMessage = null;
+            if (parseNode.GetChildNode("enrolled") is null) { _explicitNullValueEnrolled = default!; _explicitNullProperties?.Remove("enrolled"); }
+            else if (parseNode.GetChildNode("enrolled") is { } nullNodeEnrolled && nullNodeEnrolled.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Enrolled = null;
+            if (parseNode.GetChildNode("limits") is null) { _explicitNullValueLimits = default!; _explicitNullProperties?.Remove("limits"); }
+            else if (parseNode.GetChildNode("limits") is { } nullNodeLimits && nullNodeLimits.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Limits = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -28,24 +31,24 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Free-form announcement banner to show above the scout UI (e.g. alpha run-limit notice), or null when unset.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? BannerMessage { get => _explicitNullValueBannerMessage; set { _explicitNullValueBannerMessage = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("banner_message"); else _explicitNullProperties?.Remove("banner_message"); } }
+        public string? BannerMessage { get => _explicitNullValueBannerMessage; set { _explicitNullValueBannerMessage = value; AdditionalData?.Remove("banner_message"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("banner_message"); else _explicitNullProperties?.Remove("banner_message"); } }
         private string? _explicitNullValueBannerMessage = default!;
 #nullable restore
 #else
-        public string BannerMessage { get => _explicitNullValueBannerMessage; set { _explicitNullValueBannerMessage = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("banner_message"); else _explicitNullProperties?.Remove("banner_message"); } }
+        public string BannerMessage { get => _explicitNullValueBannerMessage; set { _explicitNullValueBannerMessage = value; AdditionalData?.Remove("banner_message"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("banner_message"); else _explicitNullProperties?.Remove("banner_message"); } }
         private string _explicitNullValueBannerMessage = default!;
 #endif
         /// <summary>Whether this project runs scouts. True when the project is in the signals-scout flag&apos;s enrollment set — either listed explicitly in guaranteed_team_ids or covered by the &quot;*&quot; wildcard (every project that turns scouts on) — and not in skip_team_ids.</summary>
-        public bool? Enrolled { get => _explicitNullValueEnrolled; set { _explicitNullValueEnrolled = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("enrolled"); else _explicitNullProperties?.Remove("enrolled"); } }
+        public bool? Enrolled { get => _explicitNullValueEnrolled; set { _explicitNullValueEnrolled = value; AdditionalData?.Remove("enrolled"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("enrolled"); else _explicitNullProperties?.Remove("enrolled"); } }
         private bool? _explicitNullValueEnrolled = default!;
         /// <summary>The team&apos;s enforced scout run caps and current usage.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.ScoutMetadataLimits? Limits { get => _explicitNullValueLimits; set { _explicitNullValueLimits = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("limits"); else _explicitNullProperties?.Remove("limits"); } }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ScoutMetadataLimits? Limits { get => _explicitNullValueLimits; set { _explicitNullValueLimits = value; AdditionalData?.Remove("limits"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("limits"); else _explicitNullProperties?.Remove("limits"); } }
         private global::Soenneker.PostHog.OpenApiClient.Models.ScoutMetadataLimits? _explicitNullValueLimits = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ScoutMetadataLimits Limits { get => _explicitNullValueLimits; set { _explicitNullValueLimits = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("limits"); else _explicitNullProperties?.Remove("limits"); } }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ScoutMetadataLimits Limits { get => _explicitNullValueLimits; set { _explicitNullValueLimits = value; AdditionalData?.Remove("limits"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("limits"); else _explicitNullProperties?.Remove("limits"); } }
         private global::Soenneker.PostHog.OpenApiClient.Models.ScoutMetadataLimits _explicitNullValueLimits = default!;
 #endif
         /// <summary>

@@ -18,23 +18,25 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("scan_outcome") is { } nullNodeScanOutcome && nullNodeScanOutcome.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ScanOutcome = null;
-            if (parseNode.GetChildNode("session_id") is { } nullNodeSessionId && nullNodeSessionId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SessionId = null;
+            if (parseNode.GetChildNode("scan_outcome") is null) { _explicitNullValueScanOutcome = default!; _explicitNullProperties?.Remove("scan_outcome"); }
+            else if (parseNode.GetChildNode("scan_outcome") is { } nullNodeScanOutcome && nullNodeScanOutcome.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ScanOutcome = null;
+            if (parseNode.GetChildNode("session_id") is null) { _explicitNullValueSessionId = default!; _explicitNullProperties?.Remove("session_id"); }
+            else if (parseNode.GetChildNode("session_id") is { } nullNodeSessionId && nullNodeSessionId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SessionId = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>* `started` - Started* `already_running` - Already running* `already_scanned` - Already scanned* `skipped_limit` - Skipped, in-flight limit reached* `skipped_quota` - Skipped, the org&apos;s credit quota for this period was reached* `skipped_scanner_limit` - Skipped, scanner&apos;s own credit limit reached* `failed` - Failed to start</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.BulkObserveResultScanOutcome? ScanOutcome { get => _explicitNullValueScanOutcome; set { _explicitNullValueScanOutcome = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("scan_outcome"); else _explicitNullProperties?.Remove("scan_outcome"); } }
+        public global::Soenneker.PostHog.OpenApiClient.Models.BulkObserveResultScanOutcome? ScanOutcome { get => _explicitNullValueScanOutcome; set { _explicitNullValueScanOutcome = value; AdditionalData?.Remove("scan_outcome"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("scan_outcome"); else _explicitNullProperties?.Remove("scan_outcome"); } }
         private global::Soenneker.PostHog.OpenApiClient.Models.BulkObserveResultScanOutcome? _explicitNullValueScanOutcome = default!;
         /// <summary>The session recording this outcome is for.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? SessionId { get => _explicitNullValueSessionId; set { _explicitNullValueSessionId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("session_id"); else _explicitNullProperties?.Remove("session_id"); } }
+        public string? SessionId { get => _explicitNullValueSessionId; set { _explicitNullValueSessionId = value; AdditionalData?.Remove("session_id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("session_id"); else _explicitNullProperties?.Remove("session_id"); } }
         private string? _explicitNullValueSessionId = default!;
 #nullable restore
 #else
-        public string SessionId { get => _explicitNullValueSessionId; set { _explicitNullValueSessionId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("session_id"); else _explicitNullProperties?.Remove("session_id"); } }
+        public string SessionId { get => _explicitNullValueSessionId; set { _explicitNullValueSessionId = value; AdditionalData?.Remove("session_id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("session_id"); else _explicitNullProperties?.Remove("session_id"); } }
         private string _explicitNullValueSessionId = default!;
 #endif
         /// <summary>
@@ -62,7 +64,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "scan_outcome", n => { ScanOutcome = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.BulkObserveResultScanOutcome>(); } },
+                { "scan_outcome", n => { var parsed = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.BulkObserveResultScanOutcome>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValueScanOutcome = default; _explicitNullProperties?.Remove("scan_outcome"); AdditionalData["scan_outcome"] = unknown; } else { ScanOutcome = parsed; AdditionalData.Remove("scan_outcome"); } } },
                 { "session_id", n => { SessionId = n.GetStringValue(); } },
             };
         }

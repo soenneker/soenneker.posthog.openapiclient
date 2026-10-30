@@ -17,23 +17,25 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("flash_for") is { } nullNodeFlashFor && nullNodeFlashFor.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) FlashFor = null;
-            if (parseNode.GetChildNode("people") is { } nullNodePeople && nullNodePeople.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) People = null;
+            if (parseNode.GetChildNode("flash_for") is null) { _explicitNullValueFlashFor = default!; _explicitNullProperties?.Remove("flash_for"); }
+            else if (parseNode.GetChildNode("flash_for") is { } nullNodeFlashFor && nullNodeFlashFor.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) FlashFor = null;
+            if (parseNode.GetChildNode("people") is null) { _explicitNullValuePeople = default!; _explicitNullProperties?.Remove("people"); }
+            else if (parseNode.GetChildNode("people") is { } nullNodePeople && nullNodePeople.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) People = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>* `everyone` - Automatic Flash for everyone* `listed` - Automatic Flash for these people* `off` - Automatic Flash opt-in only</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.ReviewRepositoryExceptionFlashFor? FlashFor { get => _explicitNullValueFlashFor; set { _explicitNullValueFlashFor = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("flash_for"); else _explicitNullProperties?.Remove("flash_for"); } }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ReviewRepositoryExceptionFlashFor? FlashFor { get => _explicitNullValueFlashFor; set { _explicitNullValueFlashFor = value; AdditionalData?.Remove("flash_for"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("flash_for"); else _explicitNullProperties?.Remove("flash_for"); } }
         private global::Soenneker.PostHog.OpenApiClient.Models.ReviewRepositoryExceptionFlashFor? _explicitNullValueFlashFor = default!;
         /// <summary>The people on the exception&apos;s two lists.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.ReviewRepositoryPerson>? People { get => _explicitNullValuePeople; set { _explicitNullValuePeople = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("people"); else _explicitNullProperties?.Remove("people"); } }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.ReviewRepositoryPerson>? People { get => _explicitNullValuePeople; set { _explicitNullValuePeople = value; AdditionalData?.Remove("people"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("people"); else _explicitNullProperties?.Remove("people"); } }
         private List<global::Soenneker.PostHog.OpenApiClient.Models.ReviewRepositoryPerson>? _explicitNullValuePeople = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.ReviewRepositoryPerson> People { get => _explicitNullValuePeople; set { _explicitNullValuePeople = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("people"); else _explicitNullProperties?.Remove("people"); } }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.ReviewRepositoryPerson> People { get => _explicitNullValuePeople; set { _explicitNullValuePeople = value; AdditionalData?.Remove("people"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("people"); else _explicitNullProperties?.Remove("people"); } }
         private List<global::Soenneker.PostHog.OpenApiClient.Models.ReviewRepositoryPerson> _explicitNullValuePeople = default!;
 #endif
         /// <summary>
@@ -61,7 +63,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "flash_for", n => { FlashFor = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ReviewRepositoryExceptionFlashFor>(); } },
+                { "flash_for", n => { var parsed = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ReviewRepositoryExceptionFlashFor>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValueFlashFor = default; _explicitNullProperties?.Remove("flash_for"); AdditionalData["flash_for"] = unknown; } else { FlashFor = parsed; AdditionalData.Remove("flash_for"); } } },
                 { "people", n => { People = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.ReviewRepositoryPerson>(global::Soenneker.PostHog.OpenApiClient.Models.ReviewRepositoryPerson.CreateFromDiscriminatorValue)?.AsList(); } },
             };
         }

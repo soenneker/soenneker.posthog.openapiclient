@@ -17,7 +17,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("context_name") is { } nullNodeContextName && nullNodeContextName.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ContextName = null;
+            if (parseNode.GetChildNode("context_name") is null) { _explicitNullValueContextName = default!; _explicitNullProperties?.Remove("context_name"); }
+            else if (parseNode.GetChildNode("context_name") is { } nullNodeContextName && nullNodeContextName.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ContextName = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -25,11 +26,11 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Name of the evaluation context to hide from (POST) or restore to (DELETE) the flag editor&apos;s suggestion list. Case-insensitive and whitespace-trimmed.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? ContextName { get => _explicitNullValueContextName; set { _explicitNullValueContextName = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("context_name"); else _explicitNullProperties?.Remove("context_name"); } }
+        public string? ContextName { get => _explicitNullValueContextName; set { _explicitNullValueContextName = value; AdditionalData?.Remove("context_name"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("context_name"); else _explicitNullProperties?.Remove("context_name"); } }
         private string? _explicitNullValueContextName = default!;
 #nullable restore
 #else
-        public string ContextName { get => _explicitNullValueContextName; set { _explicitNullValueContextName = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("context_name"); else _explicitNullProperties?.Remove("context_name"); } }
+        public string ContextName { get => _explicitNullValueContextName; set { _explicitNullValueContextName = value; AdditionalData?.Remove("context_name"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("context_name"); else _explicitNullProperties?.Remove("context_name"); } }
         private string _explicitNullValueContextName = default!;
 #endif
         /// <summary>

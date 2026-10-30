@@ -18,8 +18,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("by_scope") is { } nullNodeByScope && nullNodeByScope.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ByScope = null;
-            if (parseNode.GetChildNode("window_days") is { } nullNodeWindowDays && nullNodeWindowDays.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) WindowDays = null;
+            if (parseNode.GetChildNode("by_scope") is null) { _explicitNullValueByScope = default!; _explicitNullProperties?.Remove("by_scope"); }
+            else if (parseNode.GetChildNode("by_scope") is { } nullNodeByScope && nullNodeByScope.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ByScope = null;
+            if (parseNode.GetChildNode("window_days") is null) { _explicitNullValueWindowDays = default!; _explicitNullProperties?.Remove("window_days"); }
+            else if (parseNode.GetChildNode("window_days") is { } nullNodeWindowDays && nullNodeWindowDays.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) WindowDays = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -27,15 +29,15 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Per-scope activity rows, busiest scope first. Triage which entity type the team has worked in lately.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.ScopeActivityEntry>? ByScope { get => _explicitNullValueByScope; set { _explicitNullValueByScope = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("by_scope"); else _explicitNullProperties?.Remove("by_scope"); } }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.ScopeActivityEntry>? ByScope { get => _explicitNullValueByScope; set { _explicitNullValueByScope = value; AdditionalData?.Remove("by_scope"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("by_scope"); else _explicitNullProperties?.Remove("by_scope"); } }
         private List<global::Soenneker.PostHog.OpenApiClient.Models.ScopeActivityEntry>? _explicitNullValueByScope = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.ScopeActivityEntry> ByScope { get => _explicitNullValueByScope; set { _explicitNullValueByScope = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("by_scope"); else _explicitNullProperties?.Remove("by_scope"); } }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.ScopeActivityEntry> ByScope { get => _explicitNullValueByScope; set { _explicitNullValueByScope = value; AdditionalData?.Remove("by_scope"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("by_scope"); else _explicitNullProperties?.Remove("by_scope"); } }
         private List<global::Soenneker.PostHog.OpenApiClient.Models.ScopeActivityEntry> _explicitNullValueByScope = default!;
 #endif
         /// <summary>Lookback window in days the per-scope counts cover.</summary>
-        public int? WindowDays { get => _explicitNullValueWindowDays; set { _explicitNullValueWindowDays = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("window_days"); else _explicitNullProperties?.Remove("window_days"); } }
+        public int? WindowDays { get => _explicitNullValueWindowDays; set { _explicitNullValueWindowDays = value; AdditionalData?.Remove("window_days"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("window_days"); else _explicitNullProperties?.Remove("window_days"); } }
         private int? _explicitNullValueWindowDays = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ProjectProfileInventoryRecentActivity"/> and sets the default values.

@@ -18,8 +18,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("by_status") is { } nullNodeByStatus && nullNodeByStatus.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ByStatus = null;
-            if (parseNode.GetChildNode("total") is { } nullNodeTotal && nullNodeTotal.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Total = null;
+            if (parseNode.GetChildNode("by_status") is null) { _explicitNullValueByStatus = default!; _explicitNullProperties?.Remove("by_status"); }
+            else if (parseNode.GetChildNode("by_status") is { } nullNodeByStatus && nullNodeByStatus.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ByStatus = null;
+            if (parseNode.GetChildNode("total") is null) { _explicitNullValueTotal = default!; _explicitNullProperties?.Remove("total"); }
+            else if (parseNode.GetChildNode("total") is { } nullNodeTotal && nullNodeTotal.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Total = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -27,15 +29,15 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Per-status breakdown of inbox reports.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.InboxReportStatusBucket>? ByStatus { get => _explicitNullValueByStatus; set { _explicitNullValueByStatus = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("by_status"); else _explicitNullProperties?.Remove("by_status"); } }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.InboxReportStatusBucket>? ByStatus { get => _explicitNullValueByStatus; set { _explicitNullValueByStatus = value; AdditionalData?.Remove("by_status"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("by_status"); else _explicitNullProperties?.Remove("by_status"); } }
         private List<global::Soenneker.PostHog.OpenApiClient.Models.InboxReportStatusBucket>? _explicitNullValueByStatus = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.InboxReportStatusBucket> ByStatus { get => _explicitNullValueByStatus; set { _explicitNullValueByStatus = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("by_status"); else _explicitNullProperties?.Remove("by_status"); } }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.InboxReportStatusBucket> ByStatus { get => _explicitNullValueByStatus; set { _explicitNullValueByStatus = value; AdditionalData?.Remove("by_status"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("by_status"); else _explicitNullProperties?.Remove("by_status"); } }
         private List<global::Soenneker.PostHog.OpenApiClient.Models.InboxReportStatusBucket> _explicitNullValueByStatus = default!;
 #endif
         /// <summary>Total non-deleted, non-suppressed reports for this team.</summary>
-        public int? Total { get => _explicitNullValueTotal; set { _explicitNullValueTotal = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("total"); else _explicitNullProperties?.Remove("total"); } }
+        public int? Total { get => _explicitNullValueTotal; set { _explicitNullValueTotal = value; AdditionalData?.Remove("total"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("total"); else _explicitNullProperties?.Remove("total"); } }
         private int? _explicitNullValueTotal = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ProjectProfileInventoryExistingInboxReports"/> and sets the default values.

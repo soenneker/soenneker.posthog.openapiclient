@@ -156,10 +156,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Why refunding this report&apos;s PR would be rejected right now, or null when a refund would be accepted (see the field&apos;s schema for the reason values).</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.SignalReportRefundIneligibilityReason? RefundIneligibilityReason { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.SignalReportListRefundIneligibilityReason? RefundIneligibilityReason { get; private set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.SignalReportRefundIneligibilityReason RefundIneligibilityReason { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.SignalReportListRefundIneligibilityReason RefundIneligibilityReason { get; private set; }
 #endif
         /// <summary>`organization/repository` the report&apos;s work targets, from the latest repo-selection artefact (when present). Lets list cards show repository context without a per-card fetch.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -258,10 +258,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Who or what suppressed the report. Null unless status is suppressed. `dismissed`: a person or agent dismissed it, it was merged into another report, or its pull request closed without merging; dismissal_reason says which when one was given. `safety_judge`: the safety judge marked it unsafe. `not_actionable`: the actionability judge marked it not actionable. `system`: suppressed by the pipeline for another reason. Every value except `dismissed` is a verdict nobody has reviewed, listed by the `held_back` inbox view.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.SignalReportSuppressionSource? SuppressionSource { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.SignalReportListSuppressionSource? SuppressionSource { get; private set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.SignalReportSuppressionSource SuppressionSource { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.SignalReportListSuppressionSource SuppressionSource { get; private set; }
 #endif
         /// <summary>Free-form lowercase kebab-case slug tags for grouping and filtering reports, at most 10. Empty when the report has no tags.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -359,7 +359,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "pull_requests", n => { PullRequests = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.SignalReportPullRequest>(global::Soenneker.PostHog.OpenApiClient.Models.SignalReportPullRequest.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "ranking", n => { Ranking = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SignalReportRanking>(global::Soenneker.PostHog.OpenApiClient.Models.SignalReportRanking.CreateFromDiscriminatorValue); } },
                 { "refund", n => { Refund = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SignalReportRefund>(global::Soenneker.PostHog.OpenApiClient.Models.SignalReportRefund.CreateFromDiscriminatorValue); } },
-                { "refund_ineligibility_reason", n => { RefundIneligibilityReason = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SignalReportRefundIneligibilityReason>(global::Soenneker.PostHog.OpenApiClient.Models.SignalReportRefundIneligibilityReason.CreateFromDiscriminatorValue); } },
+                { "refund_ineligibility_reason", n => { RefundIneligibilityReason = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SignalReportListRefundIneligibilityReason>(global::Soenneker.PostHog.OpenApiClient.Models.SignalReportListRefundIneligibilityReason.CreateFromDiscriminatorValue); } },
                 { "repo_slug", n => { RepoSlug = n.GetStringValue(); } },
                 { "research_context", n => { ResearchContext = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ReportResearchContext>(global::Soenneker.PostHog.OpenApiClient.Models.ReportResearchContext.CreateFromDiscriminatorValue); } },
                 { "reviewer_assignment", n => { ReviewerAssignment = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ReviewerControlResponse>(global::Soenneker.PostHog.OpenApiClient.Models.ReviewerControlResponse.CreateFromDiscriminatorValue); } },
@@ -374,7 +374,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "summary", n => { Summary = n.GetStringValue(); } },
                 { "summary_lead", n => { SummaryLead = n.GetStringValue(); } },
                 { "suppression_explanation", n => { SuppressionExplanation = n.GetStringValue(); } },
-                { "suppression_source", n => { SuppressionSource = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SignalReportSuppressionSource>(global::Soenneker.PostHog.OpenApiClient.Models.SignalReportSuppressionSource.CreateFromDiscriminatorValue); } },
+                { "suppression_source", n => { SuppressionSource = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SignalReportListSuppressionSource>(global::Soenneker.PostHog.OpenApiClient.Models.SignalReportListSuppressionSource.CreateFromDiscriminatorValue); } },
                 { "tags", n => { Tags = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
                 { "title", n => { Title = n.GetStringValue(); } },
                 { "total_weight", n => { TotalWeight = n.GetDoubleValue(); } },

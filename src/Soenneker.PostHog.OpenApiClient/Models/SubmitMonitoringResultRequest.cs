@@ -17,11 +17,16 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("evidence_reason") is { } nullNodeEvidenceReason && nullNodeEvidenceReason.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) EvidenceReason = null;
-            if (parseNode.GetChildNode("evidence_refs") is { } nullNodeEvidenceRefs && nullNodeEvidenceRefs.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) EvidenceRefs = null;
-            if (parseNode.GetChildNode("evidence_status") is { } nullNodeEvidenceStatus && nullNodeEvidenceStatus.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) EvidenceStatus = null;
-            if (parseNode.GetChildNode("expectation_matches") is { } nullNodeExpectationMatches && nullNodeExpectationMatches.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ExpectationMatches = null;
-            if (parseNode.GetChildNode("explanation") is { } nullNodeExplanation && nullNodeExplanation.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Explanation = null;
+            if (parseNode.GetChildNode("evidence_reason") is null) { _explicitNullValueEvidenceReason = default!; _explicitNullProperties?.Remove("evidence_reason"); }
+            else if (parseNode.GetChildNode("evidence_reason") is { } nullNodeEvidenceReason && nullNodeEvidenceReason.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) EvidenceReason = null;
+            if (parseNode.GetChildNode("evidence_refs") is null) { _explicitNullValueEvidenceRefs = default!; _explicitNullProperties?.Remove("evidence_refs"); }
+            else if (parseNode.GetChildNode("evidence_refs") is { } nullNodeEvidenceRefs && nullNodeEvidenceRefs.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) EvidenceRefs = null;
+            if (parseNode.GetChildNode("evidence_status") is null) { _explicitNullValueEvidenceStatus = default!; _explicitNullProperties?.Remove("evidence_status"); }
+            else if (parseNode.GetChildNode("evidence_status") is { } nullNodeEvidenceStatus && nullNodeEvidenceStatus.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) EvidenceStatus = null;
+            if (parseNode.GetChildNode("expectation_matches") is null) { _explicitNullValueExpectationMatches = default!; _explicitNullProperties?.Remove("expectation_matches"); }
+            else if (parseNode.GetChildNode("expectation_matches") is { } nullNodeExpectationMatches && nullNodeExpectationMatches.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ExpectationMatches = null;
+            if (parseNode.GetChildNode("explanation") is null) { _explicitNullValueExplanation = default!; _explicitNullProperties?.Remove("explanation"); }
+            else if (parseNode.GetChildNode("explanation") is { } nullNodeExplanation && nullNodeExplanation.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Explanation = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -29,37 +34,37 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Explain why the evidence supports this qualification. Must not be blank.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? EvidenceReason { get => _explicitNullValueEvidenceReason; set { _explicitNullValueEvidenceReason = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("evidence_reason"); else _explicitNullProperties?.Remove("evidence_reason"); } }
+        public string? EvidenceReason { get => _explicitNullValueEvidenceReason; set { _explicitNullValueEvidenceReason = value; AdditionalData?.Remove("evidence_reason"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("evidence_reason"); else _explicitNullProperties?.Remove("evidence_reason"); } }
         private string? _explicitNullValueEvidenceReason = default!;
 #nullable restore
 #else
-        public string EvidenceReason { get => _explicitNullValueEvidenceReason; set { _explicitNullValueEvidenceReason = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("evidence_reason"); else _explicitNullProperties?.Remove("evidence_reason"); } }
+        public string EvidenceReason { get => _explicitNullValueEvidenceReason; set { _explicitNullValueEvidenceReason = value; AdditionalData?.Remove("evidence_reason"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("evidence_reason"); else _explicitNullProperties?.Remove("evidence_reason"); } }
         private string _explicitNullValueEvidenceReason = default!;
 #endif
         /// <summary>Evidence references supporting the conclusion, or an empty list when none are available.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<string>? EvidenceRefs { get => _explicitNullValueEvidenceRefs; set { _explicitNullValueEvidenceRefs = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("evidence_refs"); else _explicitNullProperties?.Remove("evidence_refs"); } }
+        public List<string>? EvidenceRefs { get => _explicitNullValueEvidenceRefs; set { _explicitNullValueEvidenceRefs = value; AdditionalData?.Remove("evidence_refs"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("evidence_refs"); else _explicitNullProperties?.Remove("evidence_refs"); } }
         private List<string>? _explicitNullValueEvidenceRefs = default!;
 #nullable restore
 #else
-        public List<string> EvidenceRefs { get => _explicitNullValueEvidenceRefs; set { _explicitNullValueEvidenceRefs = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("evidence_refs"); else _explicitNullProperties?.Remove("evidence_refs"); } }
+        public List<string> EvidenceRefs { get => _explicitNullValueEvidenceRefs; set { _explicitNullValueEvidenceRefs = value; AdditionalData?.Remove("evidence_refs"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("evidence_refs"); else _explicitNullProperties?.Remove("evidence_refs"); } }
         private List<string> _explicitNullValueEvidenceRefs = default!;
 #endif
         /// <summary>* `sufficient` - Sufficient* `insufficient` - Insufficient* `unsupported` - Unsupported* `errored` - Errored</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.SubmitMonitoringResultRequestEvidenceStatus? EvidenceStatus { get => _explicitNullValueEvidenceStatus; set { _explicitNullValueEvidenceStatus = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("evidence_status"); else _explicitNullProperties?.Remove("evidence_status"); } }
+        public global::Soenneker.PostHog.OpenApiClient.Models.SubmitMonitoringResultRequestEvidenceStatus? EvidenceStatus { get => _explicitNullValueEvidenceStatus; set { _explicitNullValueEvidenceStatus = value; AdditionalData?.Remove("evidence_status"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("evidence_status"); else _explicitNullProperties?.Remove("evidence_status"); } }
         private global::Soenneker.PostHog.OpenApiClient.Models.SubmitMonitoringResultRequestEvidenceStatus? _explicitNullValueEvidenceStatus = default!;
         /// <summary>Whether the authored expectation holds: a boolean for sufficient evidence, null for unsupported or errored evidence.</summary>
-        public bool? ExpectationMatches { get => _explicitNullValueExpectationMatches; set { _explicitNullValueExpectationMatches = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("expectation_matches"); else _explicitNullProperties?.Remove("expectation_matches"); } }
+        public bool? ExpectationMatches { get => _explicitNullValueExpectationMatches; set { _explicitNullValueExpectationMatches = value; AdditionalData?.Remove("expectation_matches"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("expectation_matches"); else _explicitNullProperties?.Remove("expectation_matches"); } }
         private bool? _explicitNullValueExpectationMatches = default!;
         /// <summary>Explain the conclusion using evidence from the assignment&apos;s fixed window.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Explanation { get => _explicitNullValueExplanation; set { _explicitNullValueExplanation = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("explanation"); else _explicitNullProperties?.Remove("explanation"); } }
+        public string? Explanation { get => _explicitNullValueExplanation; set { _explicitNullValueExplanation = value; AdditionalData?.Remove("explanation"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("explanation"); else _explicitNullProperties?.Remove("explanation"); } }
         private string? _explicitNullValueExplanation = default!;
 #nullable restore
 #else
-        public string Explanation { get => _explicitNullValueExplanation; set { _explicitNullValueExplanation = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("explanation"); else _explicitNullProperties?.Remove("explanation"); } }
+        public string Explanation { get => _explicitNullValueExplanation; set { _explicitNullValueExplanation = value; AdditionalData?.Remove("explanation"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("explanation"); else _explicitNullProperties?.Remove("explanation"); } }
         private string _explicitNullValueExplanation = default!;
 #endif
         /// <summary>
@@ -89,7 +94,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             {
                 { "evidence_reason", n => { EvidenceReason = n.GetStringValue(); } },
                 { "evidence_refs", n => { EvidenceRefs = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
-                { "evidence_status", n => { EvidenceStatus = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.SubmitMonitoringResultRequestEvidenceStatus>(); } },
+                { "evidence_status", n => { var parsed = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.SubmitMonitoringResultRequestEvidenceStatus>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValueEvidenceStatus = default; _explicitNullProperties?.Remove("evidence_status"); AdditionalData["evidence_status"] = unknown; } else { EvidenceStatus = parsed; AdditionalData.Remove("evidence_status"); } } },
                 { "expectation_matches", n => { ExpectationMatches = n.GetBoolValue(); } },
                 { "explanation", n => { Explanation = n.GetStringValue(); } },
             };

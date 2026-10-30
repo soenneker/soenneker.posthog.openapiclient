@@ -18,21 +18,26 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("access_level") is { } nullNodeAccessLevel && nullNodeAccessLevel.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AccessLevel = null;
-            if (parseNode.GetChildNode("name") is { } nullNodeName && nullNodeName.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Name = null;
-            if (parseNode.GetChildNode("resource") is { } nullNodeResource && nullNodeResource.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Resource = null;
-            if (parseNode.GetChildNode("resource_id") is { } nullNodeResourceId && nullNodeResourceId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ResourceId = null;
-            if (parseNode.GetChildNode("short_id") is { } nullNodeShortId && nullNodeShortId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ShortId = null;
+            if (parseNode.GetChildNode("access_level") is null) { _explicitNullValueAccessLevel = default!; _explicitNullProperties?.Remove("access_level"); }
+            else if (parseNode.GetChildNode("access_level") is { } nullNodeAccessLevel && nullNodeAccessLevel.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AccessLevel = null;
+            if (parseNode.GetChildNode("name") is null) { _explicitNullValueName = default!; _explicitNullProperties?.Remove("name"); }
+            else if (parseNode.GetChildNode("name") is { } nullNodeName && nullNodeName.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Name = null;
+            if (parseNode.GetChildNode("resource") is null) { _explicitNullValueResource = default!; _explicitNullProperties?.Remove("resource"); }
+            else if (parseNode.GetChildNode("resource") is { } nullNodeResource && nullNodeResource.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Resource = null;
+            if (parseNode.GetChildNode("resource_id") is null) { _explicitNullValueResourceId = default!; _explicitNullProperties?.Remove("resource_id"); }
+            else if (parseNode.GetChildNode("resource_id") is { } nullNodeResourceId && nullNodeResourceId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ResourceId = null;
+            if (parseNode.GetChildNode("short_id") is null) { _explicitNullValueShortId = default!; _explicitNullProperties?.Remove("short_id"); }
+            else if (parseNode.GetChildNode("short_id") is { } nullNodeShortId && nullNodeShortId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ShortId = null;
         }
 
         /// <summary>The level the rule grants or restricts to.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? AccessLevel { get => _explicitNullValueAccessLevel; set { _explicitNullValueAccessLevel = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("access_level"); else _explicitNullProperties?.Remove("access_level"); } }
+        public string? AccessLevel { get => _explicitNullValueAccessLevel; set { _explicitNullValueAccessLevel = value; AdditionalData?.Remove("access_level"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("access_level"); else _explicitNullProperties?.Remove("access_level"); } }
         private string? _explicitNullValueAccessLevel = default!;
 #nullable restore
 #else
-        public string AccessLevel { get => _explicitNullValueAccessLevel; set { _explicitNullValueAccessLevel = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("access_level"); else _explicitNullProperties?.Remove("access_level"); } }
+        public string AccessLevel { get => _explicitNullValueAccessLevel; set { _explicitNullValueAccessLevel = value; AdditionalData?.Remove("access_level"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("access_level"); else _explicitNullProperties?.Remove("access_level"); } }
         private string _explicitNullValueAccessLevel = default!;
 #endif
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -40,34 +45,34 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The object&apos;s display name. Falls back to the id when it has no name.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Name { get => _explicitNullValueName; set { _explicitNullValueName = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("name"); else _explicitNullProperties?.Remove("name"); } }
+        public string? Name { get => _explicitNullValueName; set { _explicitNullValueName = value; AdditionalData?.Remove("name"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("name"); else _explicitNullProperties?.Remove("name"); } }
         private string? _explicitNullValueName = default!;
 #nullable restore
 #else
-        public string Name { get => _explicitNullValueName; set { _explicitNullValueName = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("name"); else _explicitNullProperties?.Remove("name"); } }
+        public string Name { get => _explicitNullValueName; set { _explicitNullValueName = value; AdditionalData?.Remove("name"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("name"); else _explicitNullProperties?.Remove("name"); } }
         private string _explicitNullValueName = default!;
 #endif
         /// <summary>* `action` - action* `access_control` - access_control* `account` - account* `activity_log` - activity_log* `alert` - alert* `annotation` - annotation* `approvals` - approvals* `autoresearch` - autoresearch* `batch_export` - batch_export* `batch_import` - batch_import* `batch_import_support` - batch_import_support* `billing` - billing* `business_knowledge` - business_knowledge* `canvas` - canvas* `cohort` - cohort* `comment` - comment* `conversation` - conversation* `cross_project_dashboard` - cross_project_dashboard* `customer_analytics` - customer_analytics* `customer_task` - customer_task* `customer_journey` - customer_journey* `customer_profile_config` - customer_profile_config* `data_catalog` - data_catalog* `data_catalog_approval` - data_catalog_approval* `data_deletion` - data_deletion* `dashboard` - dashboard* `event_filter` - event_filter* `dashboard_template` - dashboard_template* `dataset` - dataset* `early_access_feature` - early_access_feature* `endpoint` - endpoint* `engineering_analytics` - engineering_analytics* `error_tracking` - error_tracking* `evaluation` - evaluation* `element` - element* `event_definition` - event_definition* `experiment` - experiment* `experiment_holdout` - experiment_holdout* `experiment_saved_metric` - experiment_saved_metric* `export` - export* `external_data_schema` - external_data_schema* `external_data_source` - external_data_source* `feature_flag` - feature_flag* `file_system` - file_system* `file_system_shortcut` - file_system_shortcut* `group` - group* `health_issue` - health_issue* `heatmap` - heatmap* `hog_flow` - hog_flow* `hog_function` - hog_function* `inbox` - inbox* `ingestion_warning` - ingestion_warning* `insight` - insight* `insight_variable` - insight_variable* `integration` - integration* `legal_document` - legal_document* `link` - link* `live_debugger` - live_debugger* `llm_analytics` - llm_analytics* `ai_observability_clusters` - ai_observability_clusters* `llm_gateway` - llm_gateway* `llm_playground` - llm_playground* `llm_prompt` - llm_prompt* `llm_provider_key` - llm_provider_key* `llm_skill` - llm_skill* `logs` - logs* `loop` - loop* `marketing_analytics` - marketing_analytics* `mcp_analytics` - mcp_analytics* `mcp_registry` - mcp_registry* `metrics` - metrics* `notebook` - notebook* `offline_evaluation_ingestion` - offline_evaluation_ingestion* `organization` - organization* `organization_integration` - organization_integration* `organization_member` - organization_member* `person` - person* `plugin` - plugin* `product_enablement` - product_enablement* `product_tour` - product_tour* `project` - project* `property_definition` - property_definition* `query` - query* `query_performance` - query_performance* `replay_scanner` - replay_scanner* `review_hog` - review_hog* `revenue_analytics` - revenue_analytics* `session_recording` - session_recording* `session_recording_playlist` - session_recording_playlist* `sharing_configuration` - sharing_configuration* `signal_scout` - signal_scout* `stamphog` - stamphog* `streamlit_app` - streamlit_app* `subscription` - subscription* `support_ticket` - support_ticket* `survey` - survey* `tagger` - tagger* `ticket` - ticket* `task` - task* `today` - today* `toolbar` - toolbar* `tracing` - tracing* `field_note` - field_note* `uploaded_media` - uploaded_media* `usage_metric` - usage_metric* `user` - user* `user_interview` - user_interview* `vision_action` - vision_action* `vision_alert` - vision_alert* `visual_review` - visual_review* `warehouse_objects` - warehouse_objects* `warehouse_table` - warehouse_table* `warehouse_view` - warehouse_view* `web_analytics` - web_analytics* `webhook` - webhook* `wizard_session` - wizard_session* `wizard_run` - wizard_run</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.AccessControlObjectRuleResourceComposed? Resource { get => _explicitNullValueResource; set { _explicitNullValueResource = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("resource"); else _explicitNullProperties?.Remove("resource"); } }
+        public global::Soenneker.PostHog.OpenApiClient.Models.AccessControlObjectRuleResourceComposed? Resource { get => _explicitNullValueResource; set { _explicitNullValueResource = value; AdditionalData?.Remove("resource"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("resource"); else _explicitNullProperties?.Remove("resource"); } }
         private global::Soenneker.PostHog.OpenApiClient.Models.AccessControlObjectRuleResourceComposed? _explicitNullValueResource = default!;
         /// <summary>The object&apos;s primary key.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? ResourceId { get => _explicitNullValueResourceId; set { _explicitNullValueResourceId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("resource_id"); else _explicitNullProperties?.Remove("resource_id"); } }
+        public string? ResourceId { get => _explicitNullValueResourceId; set { _explicitNullValueResourceId = value; AdditionalData?.Remove("resource_id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("resource_id"); else _explicitNullProperties?.Remove("resource_id"); } }
         private string? _explicitNullValueResourceId = default!;
 #nullable restore
 #else
-        public string ResourceId { get => _explicitNullValueResourceId; set { _explicitNullValueResourceId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("resource_id"); else _explicitNullProperties?.Remove("resource_id"); } }
+        public string ResourceId { get => _explicitNullValueResourceId; set { _explicitNullValueResourceId = value; AdditionalData?.Remove("resource_id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("resource_id"); else _explicitNullProperties?.Remove("resource_id"); } }
         private string _explicitNullValueResourceId = default!;
 #endif
         /// <summary>The object&apos;s short id, for models that link by one (insights, notebooks).</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? ShortId { get => _explicitNullValueShortId; set { _explicitNullValueShortId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("short_id"); else _explicitNullProperties?.Remove("short_id"); } }
+        public string? ShortId { get => _explicitNullValueShortId; set { _explicitNullValueShortId = value; AdditionalData?.Remove("short_id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("short_id"); else _explicitNullProperties?.Remove("short_id"); } }
         private string? _explicitNullValueShortId = default!;
 #nullable restore
 #else
-        public string ShortId { get => _explicitNullValueShortId; set { _explicitNullValueShortId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("short_id"); else _explicitNullProperties?.Remove("short_id"); } }
+        public string ShortId { get => _explicitNullValueShortId; set { _explicitNullValueShortId = value; AdditionalData?.Remove("short_id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("short_id"); else _explicitNullProperties?.Remove("short_id"); } }
         private string _explicitNullValueShortId = default!;
 #endif
         /// <summary>
@@ -97,7 +102,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             {
                 { "access_level", n => { AccessLevel = n.GetStringValue(); } },
                 { "name", n => { Name = n.GetStringValue(); } },
-                { "resource", n => { Resource = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.AccessControlObjectRuleResourceComposed>(); } },
+                { "resource", n => { var parsed = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.AccessControlObjectRuleResourceComposed>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValueResource = default; _explicitNullProperties?.Remove("resource"); AdditionalData["resource"] = unknown; } else { Resource = parsed; AdditionalData.Remove("resource"); } } },
                 { "resource_id", n => { ResourceId = n.GetStringValue(); } },
                 { "short_id", n => { ShortId = n.GetStringValue(); } },
             };

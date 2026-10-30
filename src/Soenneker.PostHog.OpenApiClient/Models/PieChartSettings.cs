@@ -17,9 +17,12 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("showTotal") is { } nullNodeShowTotal && nullNodeShowTotal.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ShowTotal = null;
-            if (parseNode.GetChildNode("sliceContent") is { } nullNodeSliceContent && nullNodeSliceContent.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SliceContent = null;
-            if (parseNode.GetChildNode("valueDisplay") is { } nullNodeValueDisplay && nullNodeValueDisplay.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ValueDisplay = null;
+            if (parseNode.GetChildNode("showTotal") is null) { _explicitNullValueShowTotal = default!; _explicitNullProperties?.Remove("showTotal"); }
+            else if (parseNode.GetChildNode("showTotal") is { } nullNodeShowTotal && nullNodeShowTotal.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ShowTotal = null;
+            if (parseNode.GetChildNode("sliceContent") is null) { _explicitNullValueSliceContent = default!; _explicitNullProperties?.Remove("sliceContent"); }
+            else if (parseNode.GetChildNode("sliceContent") is { } nullNodeSliceContent && nullNodeSliceContent.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SliceContent = null;
+            if (parseNode.GetChildNode("valueDisplay") is null) { _explicitNullValueValueDisplay = default!; _explicitNullProperties?.Remove("valueDisplay"); }
+            else if (parseNode.GetChildNode("valueDisplay") is { } nullNodeValueDisplay && nullNodeValueDisplay.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ValueDisplay = null;
         }
 
         /// <summary>Whether to show the aggregation total. Defaults to on only when slices show values.</summary>

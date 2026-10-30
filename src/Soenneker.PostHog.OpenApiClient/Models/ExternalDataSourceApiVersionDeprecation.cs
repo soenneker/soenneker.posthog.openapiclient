@@ -18,9 +18,12 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("default_version") is { } nullNodeDefaultVersion && nullNodeDefaultVersion.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) DefaultVersion = null;
-            if (parseNode.GetChildNode("sunset_at") is { } nullNodeSunsetAt && nullNodeSunsetAt.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SunsetAt = null;
-            if (parseNode.GetChildNode("version") is { } nullNodeVersion && nullNodeVersion.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Version = null;
+            if (parseNode.GetChildNode("default_version") is null) { _explicitNullValueDefaultVersion = default!; _explicitNullProperties?.Remove("default_version"); }
+            else if (parseNode.GetChildNode("default_version") is { } nullNodeDefaultVersion && nullNodeDefaultVersion.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) DefaultVersion = null;
+            if (parseNode.GetChildNode("sunset_at") is null) { _explicitNullValueSunsetAt = default!; _explicitNullProperties?.Remove("sunset_at"); }
+            else if (parseNode.GetChildNode("sunset_at") is { } nullNodeSunsetAt && nullNodeSunsetAt.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SunsetAt = null;
+            if (parseNode.GetChildNode("version") is null) { _explicitNullValueVersion = default!; _explicitNullProperties?.Remove("version"); }
+            else if (parseNode.GetChildNode("version") is { } nullNodeVersion && nullNodeVersion.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Version = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -28,24 +31,24 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The source&apos;s current default vendor API version — the migration target.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? DefaultVersion { get => _explicitNullValueDefaultVersion; set { _explicitNullValueDefaultVersion = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("default_version"); else _explicitNullProperties?.Remove("default_version"); } }
+        public string? DefaultVersion { get => _explicitNullValueDefaultVersion; set { _explicitNullValueDefaultVersion = value; AdditionalData?.Remove("default_version"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("default_version"); else _explicitNullProperties?.Remove("default_version"); } }
         private string? _explicitNullValueDefaultVersion = default!;
 #nullable restore
 #else
-        public string DefaultVersion { get => _explicitNullValueDefaultVersion; set { _explicitNullValueDefaultVersion = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("default_version"); else _explicitNullProperties?.Remove("default_version"); } }
+        public string DefaultVersion { get => _explicitNullValueDefaultVersion; set { _explicitNullValueDefaultVersion = value; AdditionalData?.Remove("default_version"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("default_version"); else _explicitNullProperties?.Remove("default_version"); } }
         private string _explicitNullValueDefaultVersion = default!;
 #endif
         /// <summary>Date the vendor stops serving this version; null if not announced.</summary>
-        public Date? SunsetAt { get => _explicitNullValueSunsetAt; set { _explicitNullValueSunsetAt = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("sunset_at"); else _explicitNullProperties?.Remove("sunset_at"); } }
+        public Date? SunsetAt { get => _explicitNullValueSunsetAt; set { _explicitNullValueSunsetAt = value; AdditionalData?.Remove("sunset_at"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("sunset_at"); else _explicitNullProperties?.Remove("sunset_at"); } }
         private Date? _explicitNullValueSunsetAt = default!;
         /// <summary>The deprecated vendor API version this source is pinned to.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Version { get => _explicitNullValueVersion; set { _explicitNullValueVersion = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("version"); else _explicitNullProperties?.Remove("version"); } }
+        public string? Version { get => _explicitNullValueVersion; set { _explicitNullValueVersion = value; AdditionalData?.Remove("version"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("version"); else _explicitNullProperties?.Remove("version"); } }
         private string? _explicitNullValueVersion = default!;
 #nullable restore
 #else
-        public string Version { get => _explicitNullValueVersion; set { _explicitNullValueVersion = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("version"); else _explicitNullProperties?.Remove("version"); } }
+        public string Version { get => _explicitNullValueVersion; set { _explicitNullValueVersion = value; AdditionalData?.Remove("version"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("version"); else _explicitNullProperties?.Remove("version"); } }
         private string _explicitNullValueVersion = default!;
 #endif
         /// <summary>

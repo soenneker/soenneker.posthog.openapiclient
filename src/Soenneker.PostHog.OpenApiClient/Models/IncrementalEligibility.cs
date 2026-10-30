@@ -18,12 +18,18 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("blockers") is { } nullNodeBlockers && nullNodeBlockers.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Blockers = null;
-            if (parseNode.GetChildNode("eligible") is { } nullNodeEligible && nullNodeEligible.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Eligible = null;
-            if (parseNode.GetChildNode("key_candidates") is { } nullNodeKeyCandidates && nullNodeKeyCandidates.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) KeyCandidates = null;
-            if (parseNode.GetChildNode("key_candidate_types") is { } nullNodeKeyCandidateTypes && nullNodeKeyCandidateTypes.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) KeyCandidateTypes = null;
-            if (parseNode.GetChildNode("unique_key_candidates") is { } nullNodeUniqueKeyCandidates && nullNodeUniqueKeyCandidates.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) UniqueKeyCandidates = null;
-            if (parseNode.GetChildNode("warnings") is { } nullNodeWarnings && nullNodeWarnings.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Warnings = null;
+            if (parseNode.GetChildNode("blockers") is null) { _explicitNullValueBlockers = default!; _explicitNullProperties?.Remove("blockers"); }
+            else if (parseNode.GetChildNode("blockers") is { } nullNodeBlockers && nullNodeBlockers.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Blockers = null;
+            if (parseNode.GetChildNode("eligible") is null) { _explicitNullValueEligible = default!; _explicitNullProperties?.Remove("eligible"); }
+            else if (parseNode.GetChildNode("eligible") is { } nullNodeEligible && nullNodeEligible.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Eligible = null;
+            if (parseNode.GetChildNode("key_candidates") is null) { _explicitNullValueKeyCandidates = default!; _explicitNullProperties?.Remove("key_candidates"); }
+            else if (parseNode.GetChildNode("key_candidates") is { } nullNodeKeyCandidates && nullNodeKeyCandidates.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) KeyCandidates = null;
+            if (parseNode.GetChildNode("key_candidate_types") is null) { _explicitNullValueKeyCandidateTypes = default!; _explicitNullProperties?.Remove("key_candidate_types"); }
+            else if (parseNode.GetChildNode("key_candidate_types") is { } nullNodeKeyCandidateTypes && nullNodeKeyCandidateTypes.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) KeyCandidateTypes = null;
+            if (parseNode.GetChildNode("unique_key_candidates") is null) { _explicitNullValueUniqueKeyCandidates = default!; _explicitNullProperties?.Remove("unique_key_candidates"); }
+            else if (parseNode.GetChildNode("unique_key_candidates") is { } nullNodeUniqueKeyCandidates && nullNodeUniqueKeyCandidates.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) UniqueKeyCandidates = null;
+            if (parseNode.GetChildNode("warnings") is null) { _explicitNullValueWarnings = default!; _explicitNullProperties?.Remove("warnings"); }
+            else if (parseNode.GetChildNode("warnings") is { } nullNodeWarnings && nullNodeWarnings.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Warnings = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -31,54 +37,54 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Reasons this query cannot be incremental. Each names the construct responsible.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<string>? Blockers { get => _explicitNullValueBlockers; set { _explicitNullValueBlockers = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("blockers"); else _explicitNullProperties?.Remove("blockers"); } }
+        public List<string>? Blockers { get => _explicitNullValueBlockers; set { _explicitNullValueBlockers = value; AdditionalData?.Remove("blockers"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("blockers"); else _explicitNullProperties?.Remove("blockers"); } }
         private List<string>? _explicitNullValueBlockers = default!;
 #nullable restore
 #else
-        public List<string> Blockers { get => _explicitNullValueBlockers; set { _explicitNullValueBlockers = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("blockers"); else _explicitNullProperties?.Remove("blockers"); } }
+        public List<string> Blockers { get => _explicitNullValueBlockers; set { _explicitNullValueBlockers = value; AdditionalData?.Remove("blockers"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("blockers"); else _explicitNullProperties?.Remove("blockers"); } }
         private List<string> _explicitNullValueBlockers = default!;
 #endif
         /// <summary>True when nothing blocks incremental materialization.</summary>
-        public bool? Eligible { get => _explicitNullValueEligible; set { _explicitNullValueEligible = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("eligible"); else _explicitNullProperties?.Remove("eligible"); } }
+        public bool? Eligible { get => _explicitNullValueEligible; set { _explicitNullValueEligible = value; AdditionalData?.Remove("eligible"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("eligible"); else _explicitNullProperties?.Remove("eligible"); } }
         private bool? _explicitNullValueEligible = default!;
         /// <summary>Output columns that could be used as the incremental key. Excludes aggregates, columns whose type cannot serve as an advancing watermark (strings, booleans, arrays), and for a union only includes columns every branch produces.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<string>? KeyCandidates { get => _explicitNullValueKeyCandidates; set { _explicitNullValueKeyCandidates = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("key_candidates"); else _explicitNullProperties?.Remove("key_candidates"); } }
+        public List<string>? KeyCandidates { get => _explicitNullValueKeyCandidates; set { _explicitNullValueKeyCandidates = value; AdditionalData?.Remove("key_candidates"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("key_candidates"); else _explicitNullProperties?.Remove("key_candidates"); } }
         private List<string>? _explicitNullValueKeyCandidates = default!;
 #nullable restore
 #else
-        public List<string> KeyCandidates { get => _explicitNullValueKeyCandidates; set { _explicitNullValueKeyCandidates = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("key_candidates"); else _explicitNullProperties?.Remove("key_candidates"); } }
+        public List<string> KeyCandidates { get => _explicitNullValueKeyCandidates; set { _explicitNullValueKeyCandidates = value; AdditionalData?.Remove("key_candidates"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("key_candidates"); else _explicitNullProperties?.Remove("key_candidates"); } }
         private List<string> _explicitNullValueKeyCandidates = default!;
 #endif
         /// <summary>Coarse type per candidate, keyed by column name: datetime, date, integer, decimal, float, string, or uuid. A candidate with no entry has a type the check could not determine.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.IncrementalEligibilityKeyCandidateTypesProperty? KeyCandidateTypes { get => _explicitNullValueKeyCandidateTypes; set { _explicitNullValueKeyCandidateTypes = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("key_candidate_types"); else _explicitNullProperties?.Remove("key_candidate_types"); } }
+        public global::Soenneker.PostHog.OpenApiClient.Models.IncrementalEligibilityKeyCandidateTypesProperty? KeyCandidateTypes { get => _explicitNullValueKeyCandidateTypes; set { _explicitNullValueKeyCandidateTypes = value; AdditionalData?.Remove("key_candidate_types"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("key_candidate_types"); else _explicitNullProperties?.Remove("key_candidate_types"); } }
         private global::Soenneker.PostHog.OpenApiClient.Models.IncrementalEligibilityKeyCandidateTypesProperty? _explicitNullValueKeyCandidateTypes = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.IncrementalEligibilityKeyCandidateTypesProperty KeyCandidateTypes { get => _explicitNullValueKeyCandidateTypes; set { _explicitNullValueKeyCandidateTypes = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("key_candidate_types"); else _explicitNullProperties?.Remove("key_candidate_types"); } }
+        public global::Soenneker.PostHog.OpenApiClient.Models.IncrementalEligibilityKeyCandidateTypesProperty KeyCandidateTypes { get => _explicitNullValueKeyCandidateTypes; set { _explicitNullValueKeyCandidateTypes = value; AdditionalData?.Remove("key_candidate_types"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("key_candidate_types"); else _explicitNullProperties?.Remove("key_candidate_types"); } }
         private global::Soenneker.PostHog.OpenApiClient.Models.IncrementalEligibilityKeyCandidateTypesProperty _explicitNullValueKeyCandidateTypes = default!;
 #endif
         /// <summary>Output columns the unique key may be built from. A superset of key_candidates: identifying a row only needs equality, so strings qualify here even though they cannot be the incremental key.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<string>? UniqueKeyCandidates { get => _explicitNullValueUniqueKeyCandidates; set { _explicitNullValueUniqueKeyCandidates = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("unique_key_candidates"); else _explicitNullProperties?.Remove("unique_key_candidates"); } }
+        public List<string>? UniqueKeyCandidates { get => _explicitNullValueUniqueKeyCandidates; set { _explicitNullValueUniqueKeyCandidates = value; AdditionalData?.Remove("unique_key_candidates"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("unique_key_candidates"); else _explicitNullProperties?.Remove("unique_key_candidates"); } }
         private List<string>? _explicitNullValueUniqueKeyCandidates = default!;
 #nullable restore
 #else
-        public List<string> UniqueKeyCandidates { get => _explicitNullValueUniqueKeyCandidates; set { _explicitNullValueUniqueKeyCandidates = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("unique_key_candidates"); else _explicitNullProperties?.Remove("unique_key_candidates"); } }
+        public List<string> UniqueKeyCandidates { get => _explicitNullValueUniqueKeyCandidates; set { _explicitNullValueUniqueKeyCandidates = value; AdditionalData?.Remove("unique_key_candidates"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("unique_key_candidates"); else _explicitNullProperties?.Remove("unique_key_candidates"); } }
         private List<string> _explicitNullValueUniqueKeyCandidates = default!;
 #endif
         /// <summary>Things that still work but are worth knowing, such as a filter that cannot be pushed down so each run reads as much data as a full refresh.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<string>? Warnings { get => _explicitNullValueWarnings; set { _explicitNullValueWarnings = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("warnings"); else _explicitNullProperties?.Remove("warnings"); } }
+        public List<string>? Warnings { get => _explicitNullValueWarnings; set { _explicitNullValueWarnings = value; AdditionalData?.Remove("warnings"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("warnings"); else _explicitNullProperties?.Remove("warnings"); } }
         private List<string>? _explicitNullValueWarnings = default!;
 #nullable restore
 #else
-        public List<string> Warnings { get => _explicitNullValueWarnings; set { _explicitNullValueWarnings = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("warnings"); else _explicitNullProperties?.Remove("warnings"); } }
+        public List<string> Warnings { get => _explicitNullValueWarnings; set { _explicitNullValueWarnings = value; AdditionalData?.Remove("warnings"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("warnings"); else _explicitNullProperties?.Remove("warnings"); } }
         private List<string> _explicitNullValueWarnings = default!;
 #endif
         /// <summary>

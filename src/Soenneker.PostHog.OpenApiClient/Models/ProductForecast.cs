@@ -17,14 +17,22 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("addons") is { } nullNodeAddons && nullNodeAddons.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Addons = null;
-            if (parseNode.GetChildNode("key") is { } nullNodeKey && nullNodeKey.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Key = null;
-            if (parseNode.GetChildNode("kind") is { } nullNodeKind && nullNodeKind.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Kind = null;
-            if (parseNode.GetChildNode("projected_amount_usd") is { } nullNodeProjectedAmountUsd && nullNodeProjectedAmountUsd.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ProjectedAmountUsd = null;
-            if (parseNode.GetChildNode("projected_amount_usd_with_limit") is { } nullNodeProjectedAmountUsdWithLimit && nullNodeProjectedAmountUsdWithLimit.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ProjectedAmountUsdWithLimit = null;
-            if (parseNode.GetChildNode("projected_usage") is { } nullNodeProjectedUsage && nullNodeProjectedUsage.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ProjectedUsage = null;
-            if (parseNode.GetChildNode("tier_forecast") is { } nullNodeTierForecast && nullNodeTierForecast.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TierForecast = null;
-            if (parseNode.GetChildNode("usage_key") is { } nullNodeUsageKey && nullNodeUsageKey.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) UsageKey = null;
+            if (parseNode.GetChildNode("addons") is null) { _explicitNullValueAddons = default!; _explicitNullProperties?.Remove("addons"); }
+            else if (parseNode.GetChildNode("addons") is { } nullNodeAddons && nullNodeAddons.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Addons = null;
+            if (parseNode.GetChildNode("key") is null) { _explicitNullValueKey = default!; _explicitNullProperties?.Remove("key"); }
+            else if (parseNode.GetChildNode("key") is { } nullNodeKey && nullNodeKey.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Key = null;
+            if (parseNode.GetChildNode("kind") is null) { _explicitNullValueKind = default!; _explicitNullProperties?.Remove("kind"); }
+            else if (parseNode.GetChildNode("kind") is { } nullNodeKind && nullNodeKind.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Kind = null;
+            if (parseNode.GetChildNode("projected_amount_usd") is null) { _explicitNullValueProjectedAmountUsd = default!; _explicitNullProperties?.Remove("projected_amount_usd"); }
+            else if (parseNode.GetChildNode("projected_amount_usd") is { } nullNodeProjectedAmountUsd && nullNodeProjectedAmountUsd.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ProjectedAmountUsd = null;
+            if (parseNode.GetChildNode("projected_amount_usd_with_limit") is null) { _explicitNullValueProjectedAmountUsdWithLimit = default!; _explicitNullProperties?.Remove("projected_amount_usd_with_limit"); }
+            else if (parseNode.GetChildNode("projected_amount_usd_with_limit") is { } nullNodeProjectedAmountUsdWithLimit && nullNodeProjectedAmountUsdWithLimit.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ProjectedAmountUsdWithLimit = null;
+            if (parseNode.GetChildNode("projected_usage") is null) { _explicitNullValueProjectedUsage = default!; _explicitNullProperties?.Remove("projected_usage"); }
+            else if (parseNode.GetChildNode("projected_usage") is { } nullNodeProjectedUsage && nullNodeProjectedUsage.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ProjectedUsage = null;
+            if (parseNode.GetChildNode("tier_forecast") is null) { _explicitNullValueTierForecast = default!; _explicitNullProperties?.Remove("tier_forecast"); }
+            else if (parseNode.GetChildNode("tier_forecast") is { } nullNodeTierForecast && nullNodeTierForecast.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TierForecast = null;
+            if (parseNode.GetChildNode("usage_key") is null) { _explicitNullValueUsageKey = default!; _explicitNullProperties?.Remove("usage_key"); }
+            else if (parseNode.GetChildNode("usage_key") is { } nullNodeUsageKey && nullNodeUsageKey.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) UsageKey = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -32,67 +40,67 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The addons property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.ForecastItem>? Addons { get => _explicitNullValueAddons; set { _explicitNullValueAddons = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("addons"); else _explicitNullProperties?.Remove("addons"); } }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.ForecastItem>? Addons { get => _explicitNullValueAddons; set { _explicitNullValueAddons = value; AdditionalData?.Remove("addons"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("addons"); else _explicitNullProperties?.Remove("addons"); } }
         private List<global::Soenneker.PostHog.OpenApiClient.Models.ForecastItem>? _explicitNullValueAddons = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.ForecastItem> Addons { get => _explicitNullValueAddons; set { _explicitNullValueAddons = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("addons"); else _explicitNullProperties?.Remove("addons"); } }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.ForecastItem> Addons { get => _explicitNullValueAddons; set { _explicitNullValueAddons = value; AdditionalData?.Remove("addons"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("addons"); else _explicitNullProperties?.Remove("addons"); } }
         private List<global::Soenneker.PostHog.OpenApiClient.Models.ForecastItem> _explicitNullValueAddons = default!;
 #endif
         /// <summary>The key property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Key { get => _explicitNullValueKey; set { _explicitNullValueKey = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("key"); else _explicitNullProperties?.Remove("key"); } }
+        public string? Key { get => _explicitNullValueKey; set { _explicitNullValueKey = value; AdditionalData?.Remove("key"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("key"); else _explicitNullProperties?.Remove("key"); } }
         private string? _explicitNullValueKey = default!;
 #nullable restore
 #else
-        public string Key { get => _explicitNullValueKey; set { _explicitNullValueKey = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("key"); else _explicitNullProperties?.Remove("key"); } }
+        public string Key { get => _explicitNullValueKey; set { _explicitNullValueKey = value; AdditionalData?.Remove("key"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("key"); else _explicitNullProperties?.Remove("key"); } }
         private string _explicitNullValueKey = default!;
 #endif
         /// <summary>* `product` - Product* `addon` - Addon</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.CatalogKindEnum? Kind { get => _explicitNullValueKind; set { _explicitNullValueKind = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("kind"); else _explicitNullProperties?.Remove("kind"); } }
+        public global::Soenneker.PostHog.OpenApiClient.Models.CatalogKindEnum? Kind { get => _explicitNullValueKind; set { _explicitNullValueKind = value; AdditionalData?.Remove("kind"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("kind"); else _explicitNullProperties?.Remove("kind"); } }
         private global::Soenneker.PostHog.OpenApiClient.Models.CatalogKindEnum? _explicitNullValueKind = default!;
         /// <summary>The projected_amount_usd property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? ProjectedAmountUsd { get => _explicitNullValueProjectedAmountUsd; set { _explicitNullValueProjectedAmountUsd = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("projected_amount_usd"); else _explicitNullProperties?.Remove("projected_amount_usd"); } }
+        public string? ProjectedAmountUsd { get => _explicitNullValueProjectedAmountUsd; set { _explicitNullValueProjectedAmountUsd = value; AdditionalData?.Remove("projected_amount_usd"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("projected_amount_usd"); else _explicitNullProperties?.Remove("projected_amount_usd"); } }
         private string? _explicitNullValueProjectedAmountUsd = default!;
 #nullable restore
 #else
-        public string ProjectedAmountUsd { get => _explicitNullValueProjectedAmountUsd; set { _explicitNullValueProjectedAmountUsd = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("projected_amount_usd"); else _explicitNullProperties?.Remove("projected_amount_usd"); } }
+        public string ProjectedAmountUsd { get => _explicitNullValueProjectedAmountUsd; set { _explicitNullValueProjectedAmountUsd = value; AdditionalData?.Remove("projected_amount_usd"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("projected_amount_usd"); else _explicitNullProperties?.Remove("projected_amount_usd"); } }
         private string _explicitNullValueProjectedAmountUsd = default!;
 #endif
         /// <summary>The projected_amount_usd_with_limit property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? ProjectedAmountUsdWithLimit { get => _explicitNullValueProjectedAmountUsdWithLimit; set { _explicitNullValueProjectedAmountUsdWithLimit = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("projected_amount_usd_with_limit"); else _explicitNullProperties?.Remove("projected_amount_usd_with_limit"); } }
+        public string? ProjectedAmountUsdWithLimit { get => _explicitNullValueProjectedAmountUsdWithLimit; set { _explicitNullValueProjectedAmountUsdWithLimit = value; AdditionalData?.Remove("projected_amount_usd_with_limit"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("projected_amount_usd_with_limit"); else _explicitNullProperties?.Remove("projected_amount_usd_with_limit"); } }
         private string? _explicitNullValueProjectedAmountUsdWithLimit = default!;
 #nullable restore
 #else
-        public string ProjectedAmountUsdWithLimit { get => _explicitNullValueProjectedAmountUsdWithLimit; set { _explicitNullValueProjectedAmountUsdWithLimit = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("projected_amount_usd_with_limit"); else _explicitNullProperties?.Remove("projected_amount_usd_with_limit"); } }
+        public string ProjectedAmountUsdWithLimit { get => _explicitNullValueProjectedAmountUsdWithLimit; set { _explicitNullValueProjectedAmountUsdWithLimit = value; AdditionalData?.Remove("projected_amount_usd_with_limit"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("projected_amount_usd_with_limit"); else _explicitNullProperties?.Remove("projected_amount_usd_with_limit"); } }
         private string _explicitNullValueProjectedAmountUsdWithLimit = default!;
 #endif
         /// <summary>The projected_usage property</summary>
-        public int? ProjectedUsage { get => _explicitNullValueProjectedUsage; set { _explicitNullValueProjectedUsage = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("projected_usage"); else _explicitNullProperties?.Remove("projected_usage"); } }
+        public int? ProjectedUsage { get => _explicitNullValueProjectedUsage; set { _explicitNullValueProjectedUsage = value; AdditionalData?.Remove("projected_usage"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("projected_usage"); else _explicitNullProperties?.Remove("projected_usage"); } }
         private int? _explicitNullValueProjectedUsage = default!;
         /// <summary>The tier_forecast property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.TierForecast>? TierForecast { get => _explicitNullValueTierForecast; set { _explicitNullValueTierForecast = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("tier_forecast"); else _explicitNullProperties?.Remove("tier_forecast"); } }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.TierForecast>? TierForecast { get => _explicitNullValueTierForecast; set { _explicitNullValueTierForecast = value; AdditionalData?.Remove("tier_forecast"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("tier_forecast"); else _explicitNullProperties?.Remove("tier_forecast"); } }
         private List<global::Soenneker.PostHog.OpenApiClient.Models.TierForecast>? _explicitNullValueTierForecast = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.TierForecast> TierForecast { get => _explicitNullValueTierForecast; set { _explicitNullValueTierForecast = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("tier_forecast"); else _explicitNullProperties?.Remove("tier_forecast"); } }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.TierForecast> TierForecast { get => _explicitNullValueTierForecast; set { _explicitNullValueTierForecast = value; AdditionalData?.Remove("tier_forecast"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("tier_forecast"); else _explicitNullProperties?.Remove("tier_forecast"); } }
         private List<global::Soenneker.PostHog.OpenApiClient.Models.TierForecast> _explicitNullValueTierForecast = default!;
 #endif
         /// <summary>The usage_key property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? UsageKey { get => _explicitNullValueUsageKey; set { _explicitNullValueUsageKey = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("usage_key"); else _explicitNullProperties?.Remove("usage_key"); } }
+        public string? UsageKey { get => _explicitNullValueUsageKey; set { _explicitNullValueUsageKey = value; AdditionalData?.Remove("usage_key"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("usage_key"); else _explicitNullProperties?.Remove("usage_key"); } }
         private string? _explicitNullValueUsageKey = default!;
 #nullable restore
 #else
-        public string UsageKey { get => _explicitNullValueUsageKey; set { _explicitNullValueUsageKey = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("usage_key"); else _explicitNullProperties?.Remove("usage_key"); } }
+        public string UsageKey { get => _explicitNullValueUsageKey; set { _explicitNullValueUsageKey = value; AdditionalData?.Remove("usage_key"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("usage_key"); else _explicitNullProperties?.Remove("usage_key"); } }
         private string _explicitNullValueUsageKey = default!;
 #endif
         /// <summary>
@@ -122,7 +130,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             {
                 { "addons", n => { Addons = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.ForecastItem>(global::Soenneker.PostHog.OpenApiClient.Models.ForecastItem.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "key", n => { Key = n.GetStringValue(); } },
-                { "kind", n => { Kind = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.CatalogKindEnum>(); } },
+                { "kind", n => { var parsed = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.CatalogKindEnum>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValueKind = default; _explicitNullProperties?.Remove("kind"); AdditionalData["kind"] = unknown; } else { Kind = parsed; AdditionalData.Remove("kind"); } } },
                 { "projected_amount_usd", n => { ProjectedAmountUsd = n.GetStringValue(); } },
                 { "projected_amount_usd_with_limit", n => { ProjectedAmountUsdWithLimit = n.GetStringValue(); } },
                 { "projected_usage", n => { ProjectedUsage = n.GetIntValue(); } },

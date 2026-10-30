@@ -17,13 +17,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("timestamp_hint") is { } nullNodeTimestampHint && nullNodeTimestampHint.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TimestampHint = null;
+            if (parseNode.GetChildNode("timestamp_hint") is null) { _explicitNullValueTimestampHint = default!; _explicitNullProperties?.Remove("timestamp_hint"); }
+            else if (parseNode.GetChildNode("timestamp_hint") is { } nullNodeTimestampHint && nullNodeTimestampHint.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TimestampHint = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>When the trace happened, as carried by links into it. Lets a trace older than the AI events retention load from the shared events table.</summary>
-        public DateTimeOffset? TimestampHint { get => _explicitNullValueTimestampHint; set { _explicitNullValueTimestampHint = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("timestamp_hint"); else _explicitNullProperties?.Remove("timestamp_hint"); } }
+        public DateTimeOffset? TimestampHint { get => _explicitNullValueTimestampHint; set { _explicitNullValueTimestampHint = value; AdditionalData?.Remove("timestamp_hint"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("timestamp_hint"); else _explicitNullProperties?.Remove("timestamp_hint"); } }
         private DateTimeOffset? _explicitNullValueTimestampHint = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.TraceExportCreate"/> and sets the default values.

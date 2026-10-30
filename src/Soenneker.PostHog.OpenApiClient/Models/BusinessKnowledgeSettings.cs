@@ -17,13 +17,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("learn_from_support_enabled") is { } nullNodeLearnFromSupportEnabled && nullNodeLearnFromSupportEnabled.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) LearnFromSupportEnabled = null;
+            if (parseNode.GetChildNode("learn_from_support_enabled") is null) { _explicitNullValueLearnFromSupportEnabled = default!; _explicitNullProperties?.Remove("learn_from_support_enabled"); }
+            else if (parseNode.GetChildNode("learn_from_support_enabled") is { } nullNodeLearnFromSupportEnabled && nullNodeLearnFromSupportEnabled.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) LearnFromSupportEnabled = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>When true, PostHog learns reusable knowledge from public human replies on resolved support tickets. Requires Support to be enabled for this environment.</summary>
-        public bool? LearnFromSupportEnabled { get => _explicitNullValueLearnFromSupportEnabled; set { _explicitNullValueLearnFromSupportEnabled = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("learn_from_support_enabled"); else _explicitNullProperties?.Remove("learn_from_support_enabled"); } }
+        public bool? LearnFromSupportEnabled { get => _explicitNullValueLearnFromSupportEnabled; set { _explicitNullValueLearnFromSupportEnabled = value; AdditionalData?.Remove("learn_from_support_enabled"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("learn_from_support_enabled"); else _explicitNullProperties?.Remove("learn_from_support_enabled"); } }
         private bool? _explicitNullValueLearnFromSupportEnabled = default!;
         /// <summary>Whether Support is enabled for this environment. Learning cannot be turned on while this is false.</summary>
         public bool? SupportEnabled { get; private set; }

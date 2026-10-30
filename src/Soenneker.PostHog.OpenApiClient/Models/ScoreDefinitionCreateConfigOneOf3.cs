@@ -17,9 +17,12 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("false_label") is { } nullNodeFalseLabel && nullNodeFalseLabel.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) FalseLabel = null;
-            if (parseNode.GetChildNode("true_is_failure") is { } nullNodeTrueIsFailure && nullNodeTrueIsFailure.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TrueIsFailure = null;
-            if (parseNode.GetChildNode("true_label") is { } nullNodeTrueLabel && nullNodeTrueLabel.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TrueLabel = null;
+            if (parseNode.GetChildNode("false_label") is null) { _explicitNullValueFalseLabel = default!; _explicitNullProperties?.Remove("false_label"); }
+            else if (parseNode.GetChildNode("false_label") is { } nullNodeFalseLabel && nullNodeFalseLabel.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) FalseLabel = null;
+            if (parseNode.GetChildNode("true_is_failure") is null) { _explicitNullValueTrueIsFailure = default!; _explicitNullProperties?.Remove("true_is_failure"); }
+            else if (parseNode.GetChildNode("true_is_failure") is { } nullNodeTrueIsFailure && nullNodeTrueIsFailure.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TrueIsFailure = null;
+            if (parseNode.GetChildNode("true_label") is null) { _explicitNullValueTrueLabel = default!; _explicitNullProperties?.Remove("true_label"); }
+            else if (parseNode.GetChildNode("true_label") is { } nullNodeTrueLabel && nullNodeTrueLabel.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TrueLabel = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -27,24 +30,24 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Optional label for a false value.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? FalseLabel { get => _explicitNullValueFalseLabel; set { _explicitNullValueFalseLabel = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("false_label"); else _explicitNullProperties?.Remove("false_label"); } }
+        public string? FalseLabel { get => _explicitNullValueFalseLabel; set { _explicitNullValueFalseLabel = value; AdditionalData?.Remove("false_label"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("false_label"); else _explicitNullProperties?.Remove("false_label"); } }
         private string? _explicitNullValueFalseLabel = default!;
 #nullable restore
 #else
-        public string FalseLabel { get => _explicitNullValueFalseLabel; set { _explicitNullValueFalseLabel = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("false_label"); else _explicitNullProperties?.Remove("false_label"); } }
+        public string FalseLabel { get => _explicitNullValueFalseLabel; set { _explicitNullValueFalseLabel = value; AdditionalData?.Remove("false_label"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("false_label"); else _explicitNullProperties?.Remove("false_label"); } }
         private string _explicitNullValueFalseLabel = default!;
 #endif
         /// <summary>Whether true means failure. False, omitted, or null means true passes in offline evaluations.</summary>
-        public bool? TrueIsFailure { get => _explicitNullValueTrueIsFailure; set { _explicitNullValueTrueIsFailure = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("true_is_failure"); else _explicitNullProperties?.Remove("true_is_failure"); } }
+        public bool? TrueIsFailure { get => _explicitNullValueTrueIsFailure; set { _explicitNullValueTrueIsFailure = value; AdditionalData?.Remove("true_is_failure"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("true_is_failure"); else _explicitNullProperties?.Remove("true_is_failure"); } }
         private bool? _explicitNullValueTrueIsFailure = default!;
         /// <summary>Optional label for a true value.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? TrueLabel { get => _explicitNullValueTrueLabel; set { _explicitNullValueTrueLabel = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("true_label"); else _explicitNullProperties?.Remove("true_label"); } }
+        public string? TrueLabel { get => _explicitNullValueTrueLabel; set { _explicitNullValueTrueLabel = value; AdditionalData?.Remove("true_label"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("true_label"); else _explicitNullProperties?.Remove("true_label"); } }
         private string? _explicitNullValueTrueLabel = default!;
 #nullable restore
 #else
-        public string TrueLabel { get => _explicitNullValueTrueLabel; set { _explicitNullValueTrueLabel = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("true_label"); else _explicitNullProperties?.Remove("true_label"); } }
+        public string TrueLabel { get => _explicitNullValueTrueLabel; set { _explicitNullValueTrueLabel = value; AdditionalData?.Remove("true_label"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("true_label"); else _explicitNullProperties?.Remove("true_label"); } }
         private string _explicitNullValueTrueLabel = default!;
 #endif
         /// <summary>

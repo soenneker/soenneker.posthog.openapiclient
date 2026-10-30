@@ -18,7 +18,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("destination_ids") is { } nullNodeDestinationIds && nullNodeDestinationIds.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) DestinationIds = null;
+            if (parseNode.GetChildNode("destination_ids") is null) { _explicitNullValueDestinationIds = default!; _explicitNullProperties?.Remove("destination_ids"); }
+            else if (parseNode.GetChildNode("destination_ids") is { } nullNodeDestinationIds && nullNodeDestinationIds.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) DestinationIds = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -26,11 +27,11 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Destinations every table on this source syncs to.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<Guid?>? DestinationIds { get => _explicitNullValueDestinationIds; set { _explicitNullValueDestinationIds = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("destination_ids"); else _explicitNullProperties?.Remove("destination_ids"); } }
+        public List<Guid?>? DestinationIds { get => _explicitNullValueDestinationIds; set { _explicitNullValueDestinationIds = value; AdditionalData?.Remove("destination_ids"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("destination_ids"); else _explicitNullProperties?.Remove("destination_ids"); } }
         private List<Guid?>? _explicitNullValueDestinationIds = default!;
 #nullable restore
 #else
-        public List<Guid?> DestinationIds { get => _explicitNullValueDestinationIds; set { _explicitNullValueDestinationIds = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("destination_ids"); else _explicitNullProperties?.Remove("destination_ids"); } }
+        public List<Guid?> DestinationIds { get => _explicitNullValueDestinationIds; set { _explicitNullValueDestinationIds = value; AdditionalData?.Remove("destination_ids"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("destination_ids"); else _explicitNullProperties?.Remove("destination_ids"); } }
         private List<Guid?> _explicitNullValueDestinationIds = default!;
 #endif
         /// <summary>

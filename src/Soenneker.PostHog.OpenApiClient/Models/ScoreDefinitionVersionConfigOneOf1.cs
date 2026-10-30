@@ -17,43 +17,48 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("max_selections") is { } nullNodeMaxSelections && nullNodeMaxSelections.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MaxSelections = null;
-            if (parseNode.GetChildNode("min_selections") is { } nullNodeMinSelections && nullNodeMinSelections.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MinSelections = null;
-            if (parseNode.GetChildNode("options") is { } nullNodeOptions && nullNodeOptions.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Options = null;
-            if (parseNode.GetChildNode("passing_rule") is { } nullNodePassingRule && nullNodePassingRule.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) PassingRule = null;
-            if (parseNode.GetChildNode("selection_mode") is { } nullNodeSelectionMode && nullNodeSelectionMode.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SelectionMode = null;
+            if (parseNode.GetChildNode("max_selections") is null) { _explicitNullValueMaxSelections = default!; _explicitNullProperties?.Remove("max_selections"); }
+            else if (parseNode.GetChildNode("max_selections") is { } nullNodeMaxSelections && nullNodeMaxSelections.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MaxSelections = null;
+            if (parseNode.GetChildNode("min_selections") is null) { _explicitNullValueMinSelections = default!; _explicitNullProperties?.Remove("min_selections"); }
+            else if (parseNode.GetChildNode("min_selections") is { } nullNodeMinSelections && nullNodeMinSelections.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MinSelections = null;
+            if (parseNode.GetChildNode("options") is null) { _explicitNullValueOptions = default!; _explicitNullProperties?.Remove("options"); }
+            else if (parseNode.GetChildNode("options") is { } nullNodeOptions && nullNodeOptions.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Options = null;
+            if (parseNode.GetChildNode("passing_rule") is null) { _explicitNullValuePassingRule = default!; _explicitNullProperties?.Remove("passing_rule"); }
+            else if (parseNode.GetChildNode("passing_rule") is { } nullNodePassingRule && nullNodePassingRule.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) PassingRule = null;
+            if (parseNode.GetChildNode("selection_mode") is null) { _explicitNullValueSelectionMode = default!; _explicitNullProperties?.Remove("selection_mode"); }
+            else if (parseNode.GetChildNode("selection_mode") is { } nullNodeSelectionMode && nullNodeSelectionMode.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SelectionMode = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Optional maximum number of options that can be selected when `selection_mode` is `multiple`.</summary>
-        public int? MaxSelections { get => _explicitNullValueMaxSelections; set { _explicitNullValueMaxSelections = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("max_selections"); else _explicitNullProperties?.Remove("max_selections"); } }
+        public int? MaxSelections { get => _explicitNullValueMaxSelections; set { _explicitNullValueMaxSelections = value; AdditionalData?.Remove("max_selections"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("max_selections"); else _explicitNullProperties?.Remove("max_selections"); } }
         private int? _explicitNullValueMaxSelections = default!;
         /// <summary>Optional minimum number of options that can be selected when `selection_mode` is `multiple`.</summary>
-        public int? MinSelections { get => _explicitNullValueMinSelections; set { _explicitNullValueMinSelections = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("min_selections"); else _explicitNullProperties?.Remove("min_selections"); } }
+        public int? MinSelections { get => _explicitNullValueMinSelections; set { _explicitNullValueMinSelections = value; AdditionalData?.Remove("min_selections"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("min_selections"); else _explicitNullProperties?.Remove("min_selections"); } }
         private int? _explicitNullValueMinSelections = default!;
         /// <summary>Ordered categorical options available to the scorer.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.CategoricalScoreOption>? Options { get => _explicitNullValueOptions; set { _explicitNullValueOptions = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("options"); else _explicitNullProperties?.Remove("options"); } }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.CategoricalScoreOption>? Options { get => _explicitNullValueOptions; set { _explicitNullValueOptions = value; AdditionalData?.Remove("options"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("options"); else _explicitNullProperties?.Remove("options"); } }
         private List<global::Soenneker.PostHog.OpenApiClient.Models.CategoricalScoreOption>? _explicitNullValueOptions = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.CategoricalScoreOption> Options { get => _explicitNullValueOptions; set { _explicitNullValueOptions = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("options"); else _explicitNullProperties?.Remove("options"); } }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.CategoricalScoreOption> Options { get => _explicitNullValueOptions; set { _explicitNullValueOptions = value; AdditionalData?.Remove("options"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("options"); else _explicitNullProperties?.Remove("options"); } }
         private List<global::Soenneker.PostHog.OpenApiClient.Models.CategoricalScoreOption> _explicitNullValueOptions = default!;
 #endif
         /// <summary>Optional passing categories. Omit or set null for neutral scores. Each scorer version keeps its own rule.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.CategoricalScorePassingRule? PassingRule { get => _explicitNullValuePassingRule; set { _explicitNullValuePassingRule = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("passing_rule"); else _explicitNullProperties?.Remove("passing_rule"); } }
+        public global::Soenneker.PostHog.OpenApiClient.Models.CategoricalScorePassingRule? PassingRule { get => _explicitNullValuePassingRule; set { _explicitNullValuePassingRule = value; AdditionalData?.Remove("passing_rule"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("passing_rule"); else _explicitNullProperties?.Remove("passing_rule"); } }
         private global::Soenneker.PostHog.OpenApiClient.Models.CategoricalScorePassingRule? _explicitNullValuePassingRule = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.CategoricalScorePassingRule PassingRule { get => _explicitNullValuePassingRule; set { _explicitNullValuePassingRule = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("passing_rule"); else _explicitNullProperties?.Remove("passing_rule"); } }
+        public global::Soenneker.PostHog.OpenApiClient.Models.CategoricalScorePassingRule PassingRule { get => _explicitNullValuePassingRule; set { _explicitNullValuePassingRule = value; AdditionalData?.Remove("passing_rule"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("passing_rule"); else _explicitNullProperties?.Remove("passing_rule"); } }
         private global::Soenneker.PostHog.OpenApiClient.Models.CategoricalScorePassingRule _explicitNullValuePassingRule = default!;
 #endif
         /// <summary>* `single` - single* `multiple` - multiple</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.CategoricalScoreDefinitionConfigSelectionMode? SelectionMode { get => _explicitNullValueSelectionMode; set { _explicitNullValueSelectionMode = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("selection_mode"); else _explicitNullProperties?.Remove("selection_mode"); } }
+        public global::Soenneker.PostHog.OpenApiClient.Models.CategoricalScoreDefinitionConfigSelectionMode? SelectionMode { get => _explicitNullValueSelectionMode; set { _explicitNullValueSelectionMode = value; AdditionalData?.Remove("selection_mode"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("selection_mode"); else _explicitNullProperties?.Remove("selection_mode"); } }
         private global::Soenneker.PostHog.OpenApiClient.Models.CategoricalScoreDefinitionConfigSelectionMode? _explicitNullValueSelectionMode = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ScoreDefinitionVersionConfigOneOf1"/> and sets the default values.
@@ -84,7 +89,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "min_selections", n => { MinSelections = n.GetIntValue(); } },
                 { "options", n => { Options = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.CategoricalScoreOption>(global::Soenneker.PostHog.OpenApiClient.Models.CategoricalScoreOption.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "passing_rule", n => { PassingRule = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.CategoricalScorePassingRule>(global::Soenneker.PostHog.OpenApiClient.Models.CategoricalScorePassingRule.CreateFromDiscriminatorValue); } },
-                { "selection_mode", n => { SelectionMode = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.CategoricalScoreDefinitionConfigSelectionMode>(); } },
+                { "selection_mode", n => { var parsed = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.CategoricalScoreDefinitionConfigSelectionMode>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValueSelectionMode = default; _explicitNullProperties?.Remove("selection_mode"); AdditionalData["selection_mode"] = unknown; } else { SelectionMode = parsed; AdditionalData.Remove("selection_mode"); } } },
             };
         }
         /// <summary>

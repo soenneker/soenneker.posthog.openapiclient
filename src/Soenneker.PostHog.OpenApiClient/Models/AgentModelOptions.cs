@@ -17,10 +17,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("default_model") is { } nullNodeDefaultModel && nullNodeDefaultModel.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) DefaultModel = null;
-            if (parseNode.GetChildNode("default_model_label") is { } nullNodeDefaultModelLabel && nullNodeDefaultModelLabel.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) DefaultModelLabel = null;
-            if (parseNode.GetChildNode("default_reasoning_effort") is { } nullNodeDefaultReasoningEffort && nullNodeDefaultReasoningEffort.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) DefaultReasoningEffort = null;
-            if (parseNode.GetChildNode("models") is { } nullNodeModels && nullNodeModels.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Models = null;
+            if (parseNode.GetChildNode("default_model") is null) { _explicitNullValueDefaultModel = default!; _explicitNullProperties?.Remove("default_model"); }
+            else if (parseNode.GetChildNode("default_model") is { } nullNodeDefaultModel && nullNodeDefaultModel.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) DefaultModel = null;
+            if (parseNode.GetChildNode("default_model_label") is null) { _explicitNullValueDefaultModelLabel = default!; _explicitNullProperties?.Remove("default_model_label"); }
+            else if (parseNode.GetChildNode("default_model_label") is { } nullNodeDefaultModelLabel && nullNodeDefaultModelLabel.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) DefaultModelLabel = null;
+            if (parseNode.GetChildNode("default_reasoning_effort") is null) { _explicitNullValueDefaultReasoningEffort = default!; _explicitNullProperties?.Remove("default_reasoning_effort"); }
+            else if (parseNode.GetChildNode("default_reasoning_effort") is { } nullNodeDefaultReasoningEffort && nullNodeDefaultReasoningEffort.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) DefaultReasoningEffort = null;
+            if (parseNode.GetChildNode("models") is null) { _explicitNullValueModels = default!; _explicitNullProperties?.Remove("models"); }
+            else if (parseNode.GetChildNode("models") is { } nullNodeModels && nullNodeModels.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Models = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -28,41 +32,41 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Model a pipeline with a null agent_model trains on.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? DefaultModel { get => _explicitNullValueDefaultModel; set { _explicitNullValueDefaultModel = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("default_model"); else _explicitNullProperties?.Remove("default_model"); } }
+        public string? DefaultModel { get => _explicitNullValueDefaultModel; set { _explicitNullValueDefaultModel = value; AdditionalData?.Remove("default_model"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("default_model"); else _explicitNullProperties?.Remove("default_model"); } }
         private string? _explicitNullValueDefaultModel = default!;
 #nullable restore
 #else
-        public string DefaultModel { get => _explicitNullValueDefaultModel; set { _explicitNullValueDefaultModel = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("default_model"); else _explicitNullProperties?.Remove("default_model"); } }
+        public string DefaultModel { get => _explicitNullValueDefaultModel; set { _explicitNullValueDefaultModel = value; AdditionalData?.Remove("default_model"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("default_model"); else _explicitNullProperties?.Remove("default_model"); } }
         private string _explicitNullValueDefaultModel = default!;
 #endif
         /// <summary>Display name of default_model.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? DefaultModelLabel { get => _explicitNullValueDefaultModelLabel; set { _explicitNullValueDefaultModelLabel = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("default_model_label"); else _explicitNullProperties?.Remove("default_model_label"); } }
+        public string? DefaultModelLabel { get => _explicitNullValueDefaultModelLabel; set { _explicitNullValueDefaultModelLabel = value; AdditionalData?.Remove("default_model_label"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("default_model_label"); else _explicitNullProperties?.Remove("default_model_label"); } }
         private string? _explicitNullValueDefaultModelLabel = default!;
 #nullable restore
 #else
-        public string DefaultModelLabel { get => _explicitNullValueDefaultModelLabel; set { _explicitNullValueDefaultModelLabel = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("default_model_label"); else _explicitNullProperties?.Remove("default_model_label"); } }
+        public string DefaultModelLabel { get => _explicitNullValueDefaultModelLabel; set { _explicitNullValueDefaultModelLabel = value; AdditionalData?.Remove("default_model_label"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("default_model_label"); else _explicitNullProperties?.Remove("default_model_label"); } }
         private string _explicitNullValueDefaultModelLabel = default!;
 #endif
         /// <summary>Reasoning effort a pipeline with a null agent_reasoning_effort trains at.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? DefaultReasoningEffort { get => _explicitNullValueDefaultReasoningEffort; set { _explicitNullValueDefaultReasoningEffort = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("default_reasoning_effort"); else _explicitNullProperties?.Remove("default_reasoning_effort"); } }
+        public string? DefaultReasoningEffort { get => _explicitNullValueDefaultReasoningEffort; set { _explicitNullValueDefaultReasoningEffort = value; AdditionalData?.Remove("default_reasoning_effort"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("default_reasoning_effort"); else _explicitNullProperties?.Remove("default_reasoning_effort"); } }
         private string? _explicitNullValueDefaultReasoningEffort = default!;
 #nullable restore
 #else
-        public string DefaultReasoningEffort { get => _explicitNullValueDefaultReasoningEffort; set { _explicitNullValueDefaultReasoningEffort = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("default_reasoning_effort"); else _explicitNullProperties?.Remove("default_reasoning_effort"); } }
+        public string DefaultReasoningEffort { get => _explicitNullValueDefaultReasoningEffort; set { _explicitNullValueDefaultReasoningEffort = value; AdditionalData?.Remove("default_reasoning_effort"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("default_reasoning_effort"); else _explicitNullProperties?.Remove("default_reasoning_effort"); } }
         private string _explicitNullValueDefaultReasoningEffort = default!;
 #endif
         /// <summary>Models a pipeline may set as agent_model.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.AgentModelOption>? Models { get => _explicitNullValueModels; set { _explicitNullValueModels = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("models"); else _explicitNullProperties?.Remove("models"); } }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.AgentModelOption>? Models { get => _explicitNullValueModels; set { _explicitNullValueModels = value; AdditionalData?.Remove("models"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("models"); else _explicitNullProperties?.Remove("models"); } }
         private List<global::Soenneker.PostHog.OpenApiClient.Models.AgentModelOption>? _explicitNullValueModels = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.AgentModelOption> Models { get => _explicitNullValueModels; set { _explicitNullValueModels = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("models"); else _explicitNullProperties?.Remove("models"); } }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.AgentModelOption> Models { get => _explicitNullValueModels; set { _explicitNullValueModels = value; AdditionalData?.Remove("models"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("models"); else _explicitNullProperties?.Remove("models"); } }
         private List<global::Soenneker.PostHog.OpenApiClient.Models.AgentModelOption> _explicitNullValueModels = default!;
 #endif
         /// <summary>

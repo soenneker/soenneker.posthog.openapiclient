@@ -17,8 +17,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("snoozed") is { } nullNodeSnoozed && nullNodeSnoozed.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Snoozed = null;
-            if (parseNode.GetChildNode("unsnoozed") is { } nullNodeUnsnoozed && nullNodeUnsnoozed.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Unsnoozed = null;
+            if (parseNode.GetChildNode("snoozed") is null) { _explicitNullValueSnoozed = default!; _explicitNullProperties?.Remove("snoozed"); }
+            else if (parseNode.GetChildNode("snoozed") is { } nullNodeSnoozed && nullNodeSnoozed.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Snoozed = null;
+            if (parseNode.GetChildNode("unsnoozed") is null) { _explicitNullValueUnsnoozed = default!; _explicitNullProperties?.Remove("unsnoozed"); }
+            else if (parseNode.GetChildNode("unsnoozed") is { } nullNodeUnsnoozed && nullNodeUnsnoozed.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Unsnoozed = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -26,21 +28,21 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Counts for active, non-dismissed issues whose snooze has not expired yet. Reported separately so callers can decide for themselves whether a snoozed issue is worth surfacing.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.HealthIssueSummarySnoozed? Snoozed { get => _explicitNullValueSnoozed; set { _explicitNullValueSnoozed = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("snoozed"); else _explicitNullProperties?.Remove("snoozed"); } }
+        public global::Soenneker.PostHog.OpenApiClient.Models.HealthIssueSummarySnoozed? Snoozed { get => _explicitNullValueSnoozed; set { _explicitNullValueSnoozed = value; AdditionalData?.Remove("snoozed"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("snoozed"); else _explicitNullProperties?.Remove("snoozed"); } }
         private global::Soenneker.PostHog.OpenApiClient.Models.HealthIssueSummarySnoozed? _explicitNullValueSnoozed = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.HealthIssueSummarySnoozed Snoozed { get => _explicitNullValueSnoozed; set { _explicitNullValueSnoozed = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("snoozed"); else _explicitNullProperties?.Remove("snoozed"); } }
+        public global::Soenneker.PostHog.OpenApiClient.Models.HealthIssueSummarySnoozed Snoozed { get => _explicitNullValueSnoozed; set { _explicitNullValueSnoozed = value; AdditionalData?.Remove("snoozed"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("snoozed"); else _explicitNullProperties?.Remove("snoozed"); } }
         private global::Soenneker.PostHog.OpenApiClient.Models.HealthIssueSummarySnoozed _explicitNullValueSnoozed = default!;
 #endif
         /// <summary>Counts for active, non-dismissed issues that are not currently snoozed.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.HealthIssueSummaryUnsnoozed? Unsnoozed { get => _explicitNullValueUnsnoozed; set { _explicitNullValueUnsnoozed = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("unsnoozed"); else _explicitNullProperties?.Remove("unsnoozed"); } }
+        public global::Soenneker.PostHog.OpenApiClient.Models.HealthIssueSummaryUnsnoozed? Unsnoozed { get => _explicitNullValueUnsnoozed; set { _explicitNullValueUnsnoozed = value; AdditionalData?.Remove("unsnoozed"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("unsnoozed"); else _explicitNullProperties?.Remove("unsnoozed"); } }
         private global::Soenneker.PostHog.OpenApiClient.Models.HealthIssueSummaryUnsnoozed? _explicitNullValueUnsnoozed = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.HealthIssueSummaryUnsnoozed Unsnoozed { get => _explicitNullValueUnsnoozed; set { _explicitNullValueUnsnoozed = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("unsnoozed"); else _explicitNullProperties?.Remove("unsnoozed"); } }
+        public global::Soenneker.PostHog.OpenApiClient.Models.HealthIssueSummaryUnsnoozed Unsnoozed { get => _explicitNullValueUnsnoozed; set { _explicitNullValueUnsnoozed = value; AdditionalData?.Remove("unsnoozed"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("unsnoozed"); else _explicitNullProperties?.Remove("unsnoozed"); } }
         private global::Soenneker.PostHog.OpenApiClient.Models.HealthIssueSummaryUnsnoozed _explicitNullValueUnsnoozed = default!;
 #endif
         /// <summary>

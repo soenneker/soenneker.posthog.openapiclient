@@ -17,8 +17,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("conversion_goals") is { } nullNodeConversionGoals && nullNodeConversionGoals.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ConversionGoals = null;
-            if (parseNode.GetChildNode("goal") is { } nullNodeGoal && nullNodeGoal.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Goal = null;
+            if (parseNode.GetChildNode("conversion_goals") is null) { _explicitNullValueConversionGoals = default!; _explicitNullProperties?.Remove("conversion_goals"); }
+            else if (parseNode.GetChildNode("conversion_goals") is { } nullNodeConversionGoals && nullNodeConversionGoals.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ConversionGoals = null;
+            if (parseNode.GetChildNode("goal") is null) { _explicitNullValueGoal = default!; _explicitNullProperties?.Remove("goal"); }
+            else if (parseNode.GetChildNode("goal") is { } nullNodeGoal && nullNodeGoal.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Goal = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -26,21 +28,21 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>List wrapper for OpenAPI schema generation - the response carries every configured goal.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.ConversionGoalWrittenListItem>? ConversionGoals { get => _explicitNullValueConversionGoals; set { _explicitNullValueConversionGoals = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("conversion_goals"); else _explicitNullProperties?.Remove("conversion_goals"); } }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.ConversionGoalWrittenListItem>? ConversionGoals { get => _explicitNullValueConversionGoals; set { _explicitNullValueConversionGoals = value; AdditionalData?.Remove("conversion_goals"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("conversion_goals"); else _explicitNullProperties?.Remove("conversion_goals"); } }
         private List<global::Soenneker.PostHog.OpenApiClient.Models.ConversionGoalWrittenListItem>? _explicitNullValueConversionGoals = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.ConversionGoalWrittenListItem> ConversionGoals { get => _explicitNullValueConversionGoals; set { _explicitNullValueConversionGoals = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("conversion_goals"); else _explicitNullProperties?.Remove("conversion_goals"); } }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.ConversionGoalWrittenListItem> ConversionGoals { get => _explicitNullValueConversionGoals; set { _explicitNullValueConversionGoals = value; AdditionalData?.Remove("conversion_goals"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("conversion_goals"); else _explicitNullProperties?.Remove("conversion_goals"); } }
         private List<global::Soenneker.PostHog.OpenApiClient.Models.ConversionGoalWrittenListItem> _explicitNullValueConversionGoals = default!;
 #endif
         /// <summary>The goal as stored after the write</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.ConversionGoalWriteResponseGoal? Goal { get => _explicitNullValueGoal; set { _explicitNullValueGoal = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("goal"); else _explicitNullProperties?.Remove("goal"); } }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ConversionGoalWriteResponseGoal? Goal { get => _explicitNullValueGoal; set { _explicitNullValueGoal = value; AdditionalData?.Remove("goal"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("goal"); else _explicitNullProperties?.Remove("goal"); } }
         private global::Soenneker.PostHog.OpenApiClient.Models.ConversionGoalWriteResponseGoal? _explicitNullValueGoal = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ConversionGoalWriteResponseGoal Goal { get => _explicitNullValueGoal; set { _explicitNullValueGoal = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("goal"); else _explicitNullProperties?.Remove("goal"); } }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ConversionGoalWriteResponseGoal Goal { get => _explicitNullValueGoal; set { _explicitNullValueGoal = value; AdditionalData?.Remove("goal"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("goal"); else _explicitNullProperties?.Remove("goal"); } }
         private global::Soenneker.PostHog.OpenApiClient.Models.ConversionGoalWriteResponseGoal _explicitNullValueGoal = default!;
 #endif
         /// <summary>

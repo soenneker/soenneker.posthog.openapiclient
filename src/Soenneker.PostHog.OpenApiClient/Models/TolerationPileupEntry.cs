@@ -17,42 +17,47 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("automatic_count") is { } nullNodeAutomaticCount && nullNodeAutomaticCount.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AutomaticCount = null;
-            if (parseNode.GetChildNode("identifier") is { } nullNodeIdentifier && nullNodeIdentifier.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Identifier = null;
-            if (parseNode.GetChildNode("intentional_count") is { } nullNodeIntentionalCount && nullNodeIntentionalCount.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) IntentionalCount = null;
-            if (parseNode.GetChildNode("is_quarantined") is { } nullNodeIsQuarantined && nullNodeIsQuarantined.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) IsQuarantined = null;
-            if (parseNode.GetChildNode("run_type") is { } nullNodeRunType && nullNodeRunType.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) RunType = null;
+            if (parseNode.GetChildNode("automatic_count") is null) { _explicitNullValueAutomaticCount = default!; _explicitNullProperties?.Remove("automatic_count"); }
+            else if (parseNode.GetChildNode("automatic_count") is { } nullNodeAutomaticCount && nullNodeAutomaticCount.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AutomaticCount = null;
+            if (parseNode.GetChildNode("identifier") is null) { _explicitNullValueIdentifier = default!; _explicitNullProperties?.Remove("identifier"); }
+            else if (parseNode.GetChildNode("identifier") is { } nullNodeIdentifier && nullNodeIdentifier.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Identifier = null;
+            if (parseNode.GetChildNode("intentional_count") is null) { _explicitNullValueIntentionalCount = default!; _explicitNullProperties?.Remove("intentional_count"); }
+            else if (parseNode.GetChildNode("intentional_count") is { } nullNodeIntentionalCount && nullNodeIntentionalCount.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) IntentionalCount = null;
+            if (parseNode.GetChildNode("is_quarantined") is null) { _explicitNullValueIsQuarantined = default!; _explicitNullProperties?.Remove("is_quarantined"); }
+            else if (parseNode.GetChildNode("is_quarantined") is { } nullNodeIsQuarantined && nullNodeIsQuarantined.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) IsQuarantined = null;
+            if (parseNode.GetChildNode("run_type") is null) { _explicitNullValueRunType = default!; _explicitNullProperties?.Remove("run_type"); }
+            else if (parseNode.GetChildNode("run_type") is { } nullNodeRunType && nullNodeRunType.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) RunType = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Automatic tolerations in the window: renderings that came in under both diff thresholds.</summary>
-        public int? AutomaticCount { get => _explicitNullValueAutomaticCount; set { _explicitNullValueAutomaticCount = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("automatic_count"); else _explicitNullProperties?.Remove("automatic_count"); } }
+        public int? AutomaticCount { get => _explicitNullValueAutomaticCount; set { _explicitNullValueAutomaticCount = value; AdditionalData?.Remove("automatic_count"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("automatic_count"); else _explicitNullProperties?.Remove("automatic_count"); } }
         private int? _explicitNullValueAutomaticCount = default!;
         /// <summary>Snapshot identifier, for example a Storybook story id plus theme.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Identifier { get => _explicitNullValueIdentifier; set { _explicitNullValueIdentifier = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("identifier"); else _explicitNullProperties?.Remove("identifier"); } }
+        public string? Identifier { get => _explicitNullValueIdentifier; set { _explicitNullValueIdentifier = value; AdditionalData?.Remove("identifier"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("identifier"); else _explicitNullProperties?.Remove("identifier"); } }
         private string? _explicitNullValueIdentifier = default!;
 #nullable restore
 #else
-        public string Identifier { get => _explicitNullValueIdentifier; set { _explicitNullValueIdentifier = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("identifier"); else _explicitNullProperties?.Remove("identifier"); } }
+        public string Identifier { get => _explicitNullValueIdentifier; set { _explicitNullValueIdentifier = value; AdditionalData?.Remove("identifier"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("identifier"); else _explicitNullProperties?.Remove("identifier"); } }
         private string _explicitNullValueIdentifier = default!;
 #endif
         /// <summary>Tolerations a person or agent recorded for this snapshot in the window, across every baseline. Each one accepted a different exact rendering, so a high count means the snapshot renders differently from run to run.</summary>
-        public int? IntentionalCount { get => _explicitNullValueIntentionalCount; set { _explicitNullValueIntentionalCount = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("intentional_count"); else _explicitNullProperties?.Remove("intentional_count"); } }
+        public int? IntentionalCount { get => _explicitNullValueIntentionalCount; set { _explicitNullValueIntentionalCount = value; AdditionalData?.Remove("intentional_count"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("intentional_count"); else _explicitNullProperties?.Remove("intentional_count"); } }
         private int? _explicitNullValueIntentionalCount = default!;
         /// <summary>Whether an active quarantine already covers this snapshot, so it no longer blocks pull requests.</summary>
-        public bool? IsQuarantined { get => _explicitNullValueIsQuarantined; set { _explicitNullValueIsQuarantined = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("is_quarantined"); else _explicitNullProperties?.Remove("is_quarantined"); } }
+        public bool? IsQuarantined { get => _explicitNullValueIsQuarantined; set { _explicitNullValueIsQuarantined = value; AdditionalData?.Remove("is_quarantined"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("is_quarantined"); else _explicitNullProperties?.Remove("is_quarantined"); } }
         private bool? _explicitNullValueIsQuarantined = default!;
         /// <summary>Run type the snapshot belongs to, for example `storybook`.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? RunType { get => _explicitNullValueRunType; set { _explicitNullValueRunType = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("run_type"); else _explicitNullProperties?.Remove("run_type"); } }
+        public string? RunType { get => _explicitNullValueRunType; set { _explicitNullValueRunType = value; AdditionalData?.Remove("run_type"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("run_type"); else _explicitNullProperties?.Remove("run_type"); } }
         private string? _explicitNullValueRunType = default!;
 #nullable restore
 #else
-        public string RunType { get => _explicitNullValueRunType; set { _explicitNullValueRunType = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("run_type"); else _explicitNullProperties?.Remove("run_type"); } }
+        public string RunType { get => _explicitNullValueRunType; set { _explicitNullValueRunType = value; AdditionalData?.Remove("run_type"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("run_type"); else _explicitNullProperties?.Remove("run_type"); } }
         private string _explicitNullValueRunType = default!;
 #endif
         /// <summary>

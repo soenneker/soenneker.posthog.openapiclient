@@ -17,14 +17,22 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("category") is { } nullNodeCategory && nullNodeCategory.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Category = null;
-            if (parseNode.GetChildNode("checked_at") is { } nullNodeCheckedAt && nullNodeCheckedAt.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CheckedAt = null;
-            if (parseNode.GetChildNode("generated_at") is { } nullNodeGeneratedAt && nullNodeGeneratedAt.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) GeneratedAt = null;
-            if (parseNode.GetChildNode("likely_cause") is { } nullNodeLikelyCause && nullNodeLikelyCause.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) LikelyCause = null;
-            if (parseNode.GetChildNode("model") is { } nullNodeModel && nullNodeModel.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Model = null;
-            if (parseNode.GetChildNode("suggested_next_step") is { } nullNodeSuggestedNextStep && nullNodeSuggestedNextStep.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SuggestedNextStep = null;
-            if (parseNode.GetChildNode("what_happened") is { } nullNodeWhatHappened && nullNodeWhatHappened.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) WhatHappened = null;
-            if (parseNode.GetChildNode("who_is_affected") is { } nullNodeWhoIsAffected && nullNodeWhoIsAffected.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) WhoIsAffected = null;
+            if (parseNode.GetChildNode("category") is null) { _explicitNullValueCategory = default!; _explicitNullProperties?.Remove("category"); }
+            else if (parseNode.GetChildNode("category") is { } nullNodeCategory && nullNodeCategory.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Category = null;
+            if (parseNode.GetChildNode("checked_at") is null) { _explicitNullValueCheckedAt = default!; _explicitNullProperties?.Remove("checked_at"); }
+            else if (parseNode.GetChildNode("checked_at") is { } nullNodeCheckedAt && nullNodeCheckedAt.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CheckedAt = null;
+            if (parseNode.GetChildNode("generated_at") is null) { _explicitNullValueGeneratedAt = default!; _explicitNullProperties?.Remove("generated_at"); }
+            else if (parseNode.GetChildNode("generated_at") is { } nullNodeGeneratedAt && nullNodeGeneratedAt.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) GeneratedAt = null;
+            if (parseNode.GetChildNode("likely_cause") is null) { _explicitNullValueLikelyCause = default!; _explicitNullProperties?.Remove("likely_cause"); }
+            else if (parseNode.GetChildNode("likely_cause") is { } nullNodeLikelyCause && nullNodeLikelyCause.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) LikelyCause = null;
+            if (parseNode.GetChildNode("model") is null) { _explicitNullValueModel = default!; _explicitNullProperties?.Remove("model"); }
+            else if (parseNode.GetChildNode("model") is { } nullNodeModel && nullNodeModel.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Model = null;
+            if (parseNode.GetChildNode("suggested_next_step") is null) { _explicitNullValueSuggestedNextStep = default!; _explicitNullProperties?.Remove("suggested_next_step"); }
+            else if (parseNode.GetChildNode("suggested_next_step") is { } nullNodeSuggestedNextStep && nullNodeSuggestedNextStep.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SuggestedNextStep = null;
+            if (parseNode.GetChildNode("what_happened") is null) { _explicitNullValueWhatHappened = default!; _explicitNullProperties?.Remove("what_happened"); }
+            else if (parseNode.GetChildNode("what_happened") is { } nullNodeWhatHappened && nullNodeWhatHappened.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) WhatHappened = null;
+            if (parseNode.GetChildNode("who_is_affected") is null) { _explicitNullValueWhoIsAffected = default!; _explicitNullProperties?.Remove("who_is_affected"); }
+            else if (parseNode.GetChildNode("who_is_affected") is { } nullNodeWhoIsAffected && nullNodeWhoIsAffected.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) WhoIsAffected = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -32,67 +40,67 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Broad source of the issue, or null when the category model did not answer.* `own_code` - Own Code* `third_party` - Third Party* `network` - Network* `bots` - Bots* `expected` - Expected* `unclear` - Unclear</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingStoredIssueSummaryCategory? Category { get => _explicitNullValueCategory; set { _explicitNullValueCategory = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("category"); else _explicitNullProperties?.Remove("category"); } }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingStoredIssueSummaryCategory? Category { get => _explicitNullValueCategory; set { _explicitNullValueCategory = value; AdditionalData?.Remove("category"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("category"); else _explicitNullProperties?.Remove("category"); } }
         private global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingStoredIssueSummaryCategory? _explicitNullValueCategory = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingStoredIssueSummaryCategory Category { get => _explicitNullValueCategory; set { _explicitNullValueCategory = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("category"); else _explicitNullProperties?.Remove("category"); } }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingStoredIssueSummaryCategory Category { get => _explicitNullValueCategory; set { _explicitNullValueCategory = value; AdditionalData?.Remove("category"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("category"); else _explicitNullProperties?.Remove("category"); } }
         private global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingStoredIssueSummaryCategory _explicitNullValueCategory = default!;
 #endif
         /// <summary>When generation last wrote the summary or confirmed it unchanged. The regenerate interval runs from it.</summary>
-        public DateTimeOffset? CheckedAt { get => _explicitNullValueCheckedAt; set { _explicitNullValueCheckedAt = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("checked_at"); else _explicitNullProperties?.Remove("checked_at"); } }
+        public DateTimeOffset? CheckedAt { get => _explicitNullValueCheckedAt; set { _explicitNullValueCheckedAt = value; AdditionalData?.Remove("checked_at"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("checked_at"); else _explicitNullProperties?.Remove("checked_at"); } }
         private DateTimeOffset? _explicitNullValueCheckedAt = default!;
         /// <summary>When the summary was written.</summary>
-        public DateTimeOffset? GeneratedAt { get => _explicitNullValueGeneratedAt; set { _explicitNullValueGeneratedAt = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("generated_at"); else _explicitNullProperties?.Remove("generated_at"); } }
+        public DateTimeOffset? GeneratedAt { get => _explicitNullValueGeneratedAt; set { _explicitNullValueGeneratedAt = value; AdditionalData?.Remove("generated_at"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("generated_at"); else _explicitNullProperties?.Remove("generated_at"); } }
         private DateTimeOffset? _explicitNullValueGeneratedAt = default!;
         /// <summary>The model&apos;s hypothesis about the cause. Not a confirmed finding. Can be empty.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? LikelyCause { get => _explicitNullValueLikelyCause; set { _explicitNullValueLikelyCause = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("likely_cause"); else _explicitNullProperties?.Remove("likely_cause"); } }
+        public string? LikelyCause { get => _explicitNullValueLikelyCause; set { _explicitNullValueLikelyCause = value; AdditionalData?.Remove("likely_cause"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("likely_cause"); else _explicitNullProperties?.Remove("likely_cause"); } }
         private string? _explicitNullValueLikelyCause = default!;
 #nullable restore
 #else
-        public string LikelyCause { get => _explicitNullValueLikelyCause; set { _explicitNullValueLikelyCause = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("likely_cause"); else _explicitNullProperties?.Remove("likely_cause"); } }
+        public string LikelyCause { get => _explicitNullValueLikelyCause; set { _explicitNullValueLikelyCause = value; AdditionalData?.Remove("likely_cause"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("likely_cause"); else _explicitNullProperties?.Remove("likely_cause"); } }
         private string _explicitNullValueLikelyCause = default!;
 #endif
         /// <summary>Model that wrote the summary.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Model { get => _explicitNullValueModel; set { _explicitNullValueModel = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("model"); else _explicitNullProperties?.Remove("model"); } }
+        public string? Model { get => _explicitNullValueModel; set { _explicitNullValueModel = value; AdditionalData?.Remove("model"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("model"); else _explicitNullProperties?.Remove("model"); } }
         private string? _explicitNullValueModel = default!;
 #nullable restore
 #else
-        public string Model { get => _explicitNullValueModel; set { _explicitNullValueModel = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("model"); else _explicitNullProperties?.Remove("model"); } }
+        public string Model { get => _explicitNullValueModel; set { _explicitNullValueModel = value; AdditionalData?.Remove("model"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("model"); else _explicitNullProperties?.Remove("model"); } }
         private string _explicitNullValueModel = default!;
 #endif
         /// <summary>One concrete step to investigate or fix the issue.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? SuggestedNextStep { get => _explicitNullValueSuggestedNextStep; set { _explicitNullValueSuggestedNextStep = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("suggested_next_step"); else _explicitNullProperties?.Remove("suggested_next_step"); } }
+        public string? SuggestedNextStep { get => _explicitNullValueSuggestedNextStep; set { _explicitNullValueSuggestedNextStep = value; AdditionalData?.Remove("suggested_next_step"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("suggested_next_step"); else _explicitNullProperties?.Remove("suggested_next_step"); } }
         private string? _explicitNullValueSuggestedNextStep = default!;
 #nullable restore
 #else
-        public string SuggestedNextStep { get => _explicitNullValueSuggestedNextStep; set { _explicitNullValueSuggestedNextStep = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("suggested_next_step"); else _explicitNullProperties?.Remove("suggested_next_step"); } }
+        public string SuggestedNextStep { get => _explicitNullValueSuggestedNextStep; set { _explicitNullValueSuggestedNextStep = value; AdditionalData?.Remove("suggested_next_step"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("suggested_next_step"); else _explicitNullProperties?.Remove("suggested_next_step"); } }
         private string _explicitNullValueSuggestedNextStep = default!;
 #endif
         /// <summary>What the exception is and where it happens.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? WhatHappened { get => _explicitNullValueWhatHappened; set { _explicitNullValueWhatHappened = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("what_happened"); else _explicitNullProperties?.Remove("what_happened"); } }
+        public string? WhatHappened { get => _explicitNullValueWhatHappened; set { _explicitNullValueWhatHappened = value; AdditionalData?.Remove("what_happened"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("what_happened"); else _explicitNullProperties?.Remove("what_happened"); } }
         private string? _explicitNullValueWhatHappened = default!;
 #nullable restore
 #else
-        public string WhatHappened { get => _explicitNullValueWhatHappened; set { _explicitNullValueWhatHappened = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("what_happened"); else _explicitNullProperties?.Remove("what_happened"); } }
+        public string WhatHappened { get => _explicitNullValueWhatHappened; set { _explicitNullValueWhatHappened = value; AdditionalData?.Remove("what_happened"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("what_happened"); else _explicitNullProperties?.Remove("what_happened"); } }
         private string _explicitNullValueWhatHappened = default!;
 #endif
         /// <summary>Which users, sessions or environments see the issue.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? WhoIsAffected { get => _explicitNullValueWhoIsAffected; set { _explicitNullValueWhoIsAffected = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("who_is_affected"); else _explicitNullProperties?.Remove("who_is_affected"); } }
+        public string? WhoIsAffected { get => _explicitNullValueWhoIsAffected; set { _explicitNullValueWhoIsAffected = value; AdditionalData?.Remove("who_is_affected"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("who_is_affected"); else _explicitNullProperties?.Remove("who_is_affected"); } }
         private string? _explicitNullValueWhoIsAffected = default!;
 #nullable restore
 #else
-        public string WhoIsAffected { get => _explicitNullValueWhoIsAffected; set { _explicitNullValueWhoIsAffected = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("who_is_affected"); else _explicitNullProperties?.Remove("who_is_affected"); } }
+        public string WhoIsAffected { get => _explicitNullValueWhoIsAffected; set { _explicitNullValueWhoIsAffected = value; AdditionalData?.Remove("who_is_affected"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("who_is_affected"); else _explicitNullProperties?.Remove("who_is_affected"); } }
         private string _explicitNullValueWhoIsAffected = default!;
 #endif
         /// <summary>

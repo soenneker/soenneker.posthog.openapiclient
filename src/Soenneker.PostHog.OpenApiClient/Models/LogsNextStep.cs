@@ -17,10 +17,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("baselineDateRange") is { } nullNodeBaselineDateRange && nullNodeBaselineDateRange.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) BaselineDateRange = null;
-            if (parseNode.GetChildNode("query") is { } nullNodeQuery && nullNodeQuery.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Query = null;
-            if (parseNode.GetChildNode("tool") is { } nullNodeTool && nullNodeTool.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Tool = null;
-            if (parseNode.GetChildNode("why") is { } nullNodeWhy && nullNodeWhy.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Why = null;
+            if (parseNode.GetChildNode("baselineDateRange") is null) { _explicitNullValueBaselineDateRange = default!; _explicitNullProperties?.Remove("baselineDateRange"); }
+            else if (parseNode.GetChildNode("baselineDateRange") is { } nullNodeBaselineDateRange && nullNodeBaselineDateRange.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) BaselineDateRange = null;
+            if (parseNode.GetChildNode("query") is null) { _explicitNullValueQuery = default!; _explicitNullProperties?.Remove("query"); }
+            else if (parseNode.GetChildNode("query") is { } nullNodeQuery && nullNodeQuery.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Query = null;
+            if (parseNode.GetChildNode("tool") is null) { _explicitNullValueTool = default!; _explicitNullProperties?.Remove("tool"); }
+            else if (parseNode.GetChildNode("tool") is { } nullNodeTool && nullNodeTool.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Tool = null;
+            if (parseNode.GetChildNode("why") is null) { _explicitNullValueWhy = default!; _explicitNullProperties?.Remove("why"); }
+            else if (parseNode.GetChildNode("why") is { } nullNodeWhy && nullNodeWhy.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Why = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -28,41 +32,41 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Prefilled sibling `baselineDateRange` argument, for tools that take one.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.LogsNextStepBaselineDateRangeProperty? BaselineDateRange { get => _explicitNullValueBaselineDateRange; set { _explicitNullValueBaselineDateRange = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("baselineDateRange"); else _explicitNullProperties?.Remove("baselineDateRange"); } }
+        public global::Soenneker.PostHog.OpenApiClient.Models.LogsNextStepBaselineDateRangeProperty? BaselineDateRange { get => _explicitNullValueBaselineDateRange; set { _explicitNullValueBaselineDateRange = value; AdditionalData?.Remove("baselineDateRange"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("baselineDateRange"); else _explicitNullProperties?.Remove("baselineDateRange"); } }
         private global::Soenneker.PostHog.OpenApiClient.Models.LogsNextStepBaselineDateRangeProperty? _explicitNullValueBaselineDateRange = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.LogsNextStepBaselineDateRangeProperty BaselineDateRange { get => _explicitNullValueBaselineDateRange; set { _explicitNullValueBaselineDateRange = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("baselineDateRange"); else _explicitNullProperties?.Remove("baselineDateRange"); } }
+        public global::Soenneker.PostHog.OpenApiClient.Models.LogsNextStepBaselineDateRangeProperty BaselineDateRange { get => _explicitNullValueBaselineDateRange; set { _explicitNullValueBaselineDateRange = value; AdditionalData?.Remove("baselineDateRange"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("baselineDateRange"); else _explicitNullProperties?.Remove("baselineDateRange"); } }
         private global::Soenneker.PostHog.OpenApiClient.Models.LogsNextStepBaselineDateRangeProperty _explicitNullValueBaselineDateRange = default!;
 #endif
         /// <summary>Prefilled `query` for that tool.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.LogsNextStepQueryProperty? Query { get => _explicitNullValueQuery; set { _explicitNullValueQuery = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("query"); else _explicitNullProperties?.Remove("query"); } }
+        public global::Soenneker.PostHog.OpenApiClient.Models.LogsNextStepQueryProperty? Query { get => _explicitNullValueQuery; set { _explicitNullValueQuery = value; AdditionalData?.Remove("query"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("query"); else _explicitNullProperties?.Remove("query"); } }
         private global::Soenneker.PostHog.OpenApiClient.Models.LogsNextStepQueryProperty? _explicitNullValueQuery = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.LogsNextStepQueryProperty Query { get => _explicitNullValueQuery; set { _explicitNullValueQuery = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("query"); else _explicitNullProperties?.Remove("query"); } }
+        public global::Soenneker.PostHog.OpenApiClient.Models.LogsNextStepQueryProperty Query { get => _explicitNullValueQuery; set { _explicitNullValueQuery = value; AdditionalData?.Remove("query"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("query"); else _explicitNullProperties?.Remove("query"); } }
         private global::Soenneker.PostHog.OpenApiClient.Models.LogsNextStepQueryProperty _explicitNullValueQuery = default!;
 #endif
         /// <summary>MCP tool to call next.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Tool { get => _explicitNullValueTool; set { _explicitNullValueTool = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("tool"); else _explicitNullProperties?.Remove("tool"); } }
+        public string? Tool { get => _explicitNullValueTool; set { _explicitNullValueTool = value; AdditionalData?.Remove("tool"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("tool"); else _explicitNullProperties?.Remove("tool"); } }
         private string? _explicitNullValueTool = default!;
 #nullable restore
 #else
-        public string Tool { get => _explicitNullValueTool; set { _explicitNullValueTool = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("tool"); else _explicitNullProperties?.Remove("tool"); } }
+        public string Tool { get => _explicitNullValueTool; set { _explicitNullValueTool = value; AdditionalData?.Remove("tool"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("tool"); else _explicitNullProperties?.Remove("tool"); } }
         private string _explicitNullValueTool = default!;
 #endif
         /// <summary>What the call answers.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Why { get => _explicitNullValueWhy; set { _explicitNullValueWhy = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("why"); else _explicitNullProperties?.Remove("why"); } }
+        public string? Why { get => _explicitNullValueWhy; set { _explicitNullValueWhy = value; AdditionalData?.Remove("why"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("why"); else _explicitNullProperties?.Remove("why"); } }
         private string? _explicitNullValueWhy = default!;
 #nullable restore
 #else
-        public string Why { get => _explicitNullValueWhy; set { _explicitNullValueWhy = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("why"); else _explicitNullProperties?.Remove("why"); } }
+        public string Why { get => _explicitNullValueWhy; set { _explicitNullValueWhy = value; AdditionalData?.Remove("why"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("why"); else _explicitNullProperties?.Remove("why"); } }
         private string _explicitNullValueWhy = default!;
 #endif
         /// <summary>

@@ -17,25 +17,29 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("clean") is { } nullNodeClean && nullNodeClean.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Clean = null;
-            if (parseNode.GetChildNode("needs_review") is { } nullNodeNeedsReview && nullNodeNeedsReview.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) NeedsReview = null;
-            if (parseNode.GetChildNode("processing") is { } nullNodeProcessing && nullNodeProcessing.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Processing = null;
-            if (parseNode.GetChildNode("stale") is { } nullNodeStale && nullNodeStale.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Stale = null;
+            if (parseNode.GetChildNode("clean") is null) { _explicitNullValueClean = default!; _explicitNullProperties?.Remove("clean"); }
+            else if (parseNode.GetChildNode("clean") is { } nullNodeClean && nullNodeClean.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Clean = null;
+            if (parseNode.GetChildNode("needs_review") is null) { _explicitNullValueNeedsReview = default!; _explicitNullProperties?.Remove("needs_review"); }
+            else if (parseNode.GetChildNode("needs_review") is { } nullNodeNeedsReview && nullNodeNeedsReview.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) NeedsReview = null;
+            if (parseNode.GetChildNode("processing") is null) { _explicitNullValueProcessing = default!; _explicitNullProperties?.Remove("processing"); }
+            else if (parseNode.GetChildNode("processing") is { } nullNodeProcessing && nullNodeProcessing.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Processing = null;
+            if (parseNode.GetChildNode("stale") is null) { _explicitNullValueStale = default!; _explicitNullProperties?.Remove("stale"); }
+            else if (parseNode.GetChildNode("stale") is { } nullNodeStale && nullNodeStale.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Stale = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The clean property</summary>
-        public int? Clean { get => _explicitNullValueClean; set { _explicitNullValueClean = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("clean"); else _explicitNullProperties?.Remove("clean"); } }
+        public int? Clean { get => _explicitNullValueClean; set { _explicitNullValueClean = value; AdditionalData?.Remove("clean"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("clean"); else _explicitNullProperties?.Remove("clean"); } }
         private int? _explicitNullValueClean = default!;
         /// <summary>The needs_review property</summary>
-        public int? NeedsReview { get => _explicitNullValueNeedsReview; set { _explicitNullValueNeedsReview = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("needs_review"); else _explicitNullProperties?.Remove("needs_review"); } }
+        public int? NeedsReview { get => _explicitNullValueNeedsReview; set { _explicitNullValueNeedsReview = value; AdditionalData?.Remove("needs_review"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("needs_review"); else _explicitNullProperties?.Remove("needs_review"); } }
         private int? _explicitNullValueNeedsReview = default!;
         /// <summary>The processing property</summary>
-        public int? Processing { get => _explicitNullValueProcessing; set { _explicitNullValueProcessing = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("processing"); else _explicitNullProperties?.Remove("processing"); } }
+        public int? Processing { get => _explicitNullValueProcessing; set { _explicitNullValueProcessing = value; AdditionalData?.Remove("processing"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("processing"); else _explicitNullProperties?.Remove("processing"); } }
         private int? _explicitNullValueProcessing = default!;
         /// <summary>The stale property</summary>
-        public int? Stale { get => _explicitNullValueStale; set { _explicitNullValueStale = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("stale"); else _explicitNullProperties?.Remove("stale"); } }
+        public int? Stale { get => _explicitNullValueStale; set { _explicitNullValueStale = value; AdditionalData?.Remove("stale"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("stale"); else _explicitNullProperties?.Remove("stale"); } }
         private int? _explicitNullValueStale = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ReviewStateCounts"/> and sets the default values.

@@ -17,76 +17,86 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("enabled") is { } nullNodeEnabled && nullNodeEnabled.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Enabled = null;
-            if (parseNode.GetChildNode("hog_function_ids") is { } nullNodeHogFunctionIds && nullNodeHogFunctionIds.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) HogFunctionIds = null;
-            if (parseNode.GetChildNode("message_customized") is { } nullNodeMessageCustomized && nullNodeMessageCustomized.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MessageCustomized = null;
-            if (parseNode.GetChildNode("pagerduty_region") is { } nullNodePagerdutyRegion && nullNodePagerdutyRegion.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) PagerdutyRegion = null;
-            if (parseNode.GetChildNode("pagerduty_routing_key") is { } nullNodePagerdutyRoutingKey && nullNodePagerdutyRoutingKey.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) PagerdutyRoutingKey = null;
-            if (parseNode.GetChildNode("pagerduty_severity") is { } nullNodePagerdutySeverity && nullNodePagerdutySeverity.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) PagerdutySeverity = null;
-            if (parseNode.GetChildNode("slack_channel_id") is { } nullNodeSlackChannelId && nullNodeSlackChannelId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SlackChannelId = null;
-            if (parseNode.GetChildNode("slack_workspace_id") is { } nullNodeSlackWorkspaceId && nullNodeSlackWorkspaceId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SlackWorkspaceId = null;
-            if (parseNode.GetChildNode("type") is { } nullNodeType && nullNodeType.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Type = null;
-            if (parseNode.GetChildNode("webhook_url") is { } nullNodeWebhookUrl && nullNodeWebhookUrl.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) WebhookUrl = null;
+            if (parseNode.GetChildNode("enabled") is null) { _explicitNullValueEnabled = default!; _explicitNullProperties?.Remove("enabled"); }
+            else if (parseNode.GetChildNode("enabled") is { } nullNodeEnabled && nullNodeEnabled.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Enabled = null;
+            if (parseNode.GetChildNode("hog_function_ids") is null) { _explicitNullValueHogFunctionIds = default!; _explicitNullProperties?.Remove("hog_function_ids"); }
+            else if (parseNode.GetChildNode("hog_function_ids") is { } nullNodeHogFunctionIds && nullNodeHogFunctionIds.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) HogFunctionIds = null;
+            if (parseNode.GetChildNode("message_customized") is null) { _explicitNullValueMessageCustomized = default!; _explicitNullProperties?.Remove("message_customized"); }
+            else if (parseNode.GetChildNode("message_customized") is { } nullNodeMessageCustomized && nullNodeMessageCustomized.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MessageCustomized = null;
+            if (parseNode.GetChildNode("pagerduty_region") is null) { _explicitNullValuePagerdutyRegion = default!; _explicitNullProperties?.Remove("pagerduty_region"); }
+            else if (parseNode.GetChildNode("pagerduty_region") is { } nullNodePagerdutyRegion && nullNodePagerdutyRegion.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) PagerdutyRegion = null;
+            if (parseNode.GetChildNode("pagerduty_routing_key") is null) { _explicitNullValuePagerdutyRoutingKey = default!; _explicitNullProperties?.Remove("pagerduty_routing_key"); }
+            else if (parseNode.GetChildNode("pagerduty_routing_key") is { } nullNodePagerdutyRoutingKey && nullNodePagerdutyRoutingKey.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) PagerdutyRoutingKey = null;
+            if (parseNode.GetChildNode("pagerduty_severity") is null) { _explicitNullValuePagerdutySeverity = default!; _explicitNullProperties?.Remove("pagerduty_severity"); }
+            else if (parseNode.GetChildNode("pagerduty_severity") is { } nullNodePagerdutySeverity && nullNodePagerdutySeverity.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) PagerdutySeverity = null;
+            if (parseNode.GetChildNode("slack_channel_id") is null) { _explicitNullValueSlackChannelId = default!; _explicitNullProperties?.Remove("slack_channel_id"); }
+            else if (parseNode.GetChildNode("slack_channel_id") is { } nullNodeSlackChannelId && nullNodeSlackChannelId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SlackChannelId = null;
+            if (parseNode.GetChildNode("slack_workspace_id") is null) { _explicitNullValueSlackWorkspaceId = default!; _explicitNullProperties?.Remove("slack_workspace_id"); }
+            else if (parseNode.GetChildNode("slack_workspace_id") is { } nullNodeSlackWorkspaceId && nullNodeSlackWorkspaceId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SlackWorkspaceId = null;
+            if (parseNode.GetChildNode("type") is null) { _explicitNullValueType = default!; _explicitNullProperties?.Remove("type"); }
+            else if (parseNode.GetChildNode("type") is { } nullNodeType && nullNodeType.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Type = null;
+            if (parseNode.GetChildNode("webhook_url") is null) { _explicitNullValueWebhookUrl = default!; _explicitNullProperties?.Remove("webhook_url"); }
+            else if (parseNode.GetChildNode("webhook_url") is { } nullNodeWebhookUrl && nullNodeWebhookUrl.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) WebhookUrl = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Whether every HogFunction in the group is enabled, so the destination notifies for all alert event kinds. This is the stored setting: a destination PostHog stopped delivering to after repeated failures still reads as true.</summary>
-        public bool? Enabled { get => _explicitNullValueEnabled; set { _explicitNullValueEnabled = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("enabled"); else _explicitNullProperties?.Remove("enabled"); } }
+        public bool? Enabled { get => _explicitNullValueEnabled; set { _explicitNullValueEnabled = value; AdditionalData?.Remove("enabled"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("enabled"); else _explicitNullProperties?.Remove("enabled"); } }
         private bool? _explicitNullValueEnabled = default!;
         /// <summary>The hog_function_ids property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<Guid?>? HogFunctionIds { get => _explicitNullValueHogFunctionIds; set { _explicitNullValueHogFunctionIds = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("hog_function_ids"); else _explicitNullProperties?.Remove("hog_function_ids"); } }
+        public List<Guid?>? HogFunctionIds { get => _explicitNullValueHogFunctionIds; set { _explicitNullValueHogFunctionIds = value; AdditionalData?.Remove("hog_function_ids"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("hog_function_ids"); else _explicitNullProperties?.Remove("hog_function_ids"); } }
         private List<Guid?>? _explicitNullValueHogFunctionIds = default!;
 #nullable restore
 #else
-        public List<Guid?> HogFunctionIds { get => _explicitNullValueHogFunctionIds; set { _explicitNullValueHogFunctionIds = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("hog_function_ids"); else _explicitNullProperties?.Remove("hog_function_ids"); } }
+        public List<Guid?> HogFunctionIds { get => _explicitNullValueHogFunctionIds; set { _explicitNullValueHogFunctionIds = value; AdditionalData?.Remove("hog_function_ids"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("hog_function_ids"); else _explicitNullProperties?.Remove("hog_function_ids"); } }
         private List<Guid?> _explicitNullValueHogFunctionIds = default!;
 #endif
         /// <summary>Whether any HogFunction in the group sends something other than the stock message, such as an edited body, headers, method or code. A customized destination sends exactly what its HogFunctions build.</summary>
-        public bool? MessageCustomized { get => _explicitNullValueMessageCustomized; set { _explicitNullValueMessageCustomized = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("message_customized"); else _explicitNullProperties?.Remove("message_customized"); } }
+        public bool? MessageCustomized { get => _explicitNullValueMessageCustomized; set { _explicitNullValueMessageCustomized = value; AdditionalData?.Remove("message_customized"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("message_customized"); else _explicitNullProperties?.Remove("message_customized"); } }
         private bool? _explicitNullValueMessageCustomized = default!;
         /// <summary>* `us` - us* `eu` - eu</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.LogsAlertDestinationConfigPagerdutyRegion? PagerdutyRegion { get => _explicitNullValuePagerdutyRegion; set { _explicitNullValuePagerdutyRegion = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("pagerduty_region"); else _explicitNullProperties?.Remove("pagerduty_region"); } }
+        public global::Soenneker.PostHog.OpenApiClient.Models.LogsAlertDestinationConfigPagerdutyRegion? PagerdutyRegion { get => _explicitNullValuePagerdutyRegion; set { _explicitNullValuePagerdutyRegion = value; AdditionalData?.Remove("pagerduty_region"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("pagerduty_region"); else _explicitNullProperties?.Remove("pagerduty_region"); } }
         private global::Soenneker.PostHog.OpenApiClient.Models.LogsAlertDestinationConfigPagerdutyRegion? _explicitNullValuePagerdutyRegion = default!;
         /// <summary>PagerDuty integration key reduced to its last four characters.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? PagerdutyRoutingKey { get => _explicitNullValuePagerdutyRoutingKey; set { _explicitNullValuePagerdutyRoutingKey = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("pagerduty_routing_key"); else _explicitNullProperties?.Remove("pagerduty_routing_key"); } }
+        public string? PagerdutyRoutingKey { get => _explicitNullValuePagerdutyRoutingKey; set { _explicitNullValuePagerdutyRoutingKey = value; AdditionalData?.Remove("pagerduty_routing_key"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("pagerduty_routing_key"); else _explicitNullProperties?.Remove("pagerduty_routing_key"); } }
         private string? _explicitNullValuePagerdutyRoutingKey = default!;
 #nullable restore
 #else
-        public string PagerdutyRoutingKey { get => _explicitNullValuePagerdutyRoutingKey; set { _explicitNullValuePagerdutyRoutingKey = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("pagerduty_routing_key"); else _explicitNullProperties?.Remove("pagerduty_routing_key"); } }
+        public string PagerdutyRoutingKey { get => _explicitNullValuePagerdutyRoutingKey; set { _explicitNullValuePagerdutyRoutingKey = value; AdditionalData?.Remove("pagerduty_routing_key"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("pagerduty_routing_key"); else _explicitNullProperties?.Remove("pagerduty_routing_key"); } }
         private string _explicitNullValuePagerdutyRoutingKey = default!;
 #endif
         /// <summary>* `critical` - critical* `error` - error* `warning` - warning* `info` - info</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.LogsAlertDestinationConfigPagerdutySeverity? PagerdutySeverity { get => _explicitNullValuePagerdutySeverity; set { _explicitNullValuePagerdutySeverity = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("pagerduty_severity"); else _explicitNullProperties?.Remove("pagerduty_severity"); } }
+        public global::Soenneker.PostHog.OpenApiClient.Models.LogsAlertDestinationConfigPagerdutySeverity? PagerdutySeverity { get => _explicitNullValuePagerdutySeverity; set { _explicitNullValuePagerdutySeverity = value; AdditionalData?.Remove("pagerduty_severity"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("pagerduty_severity"); else _explicitNullProperties?.Remove("pagerduty_severity"); } }
         private global::Soenneker.PostHog.OpenApiClient.Models.LogsAlertDestinationConfigPagerdutySeverity? _explicitNullValuePagerdutySeverity = default!;
         /// <summary>The slack_channel_id property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? SlackChannelId { get => _explicitNullValueSlackChannelId; set { _explicitNullValueSlackChannelId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("slack_channel_id"); else _explicitNullProperties?.Remove("slack_channel_id"); } }
+        public string? SlackChannelId { get => _explicitNullValueSlackChannelId; set { _explicitNullValueSlackChannelId = value; AdditionalData?.Remove("slack_channel_id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("slack_channel_id"); else _explicitNullProperties?.Remove("slack_channel_id"); } }
         private string? _explicitNullValueSlackChannelId = default!;
 #nullable restore
 #else
-        public string SlackChannelId { get => _explicitNullValueSlackChannelId; set { _explicitNullValueSlackChannelId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("slack_channel_id"); else _explicitNullProperties?.Remove("slack_channel_id"); } }
+        public string SlackChannelId { get => _explicitNullValueSlackChannelId; set { _explicitNullValueSlackChannelId = value; AdditionalData?.Remove("slack_channel_id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("slack_channel_id"); else _explicitNullProperties?.Remove("slack_channel_id"); } }
         private string _explicitNullValueSlackChannelId = default!;
 #endif
         /// <summary>The slack_workspace_id property</summary>
-        public int? SlackWorkspaceId { get => _explicitNullValueSlackWorkspaceId; set { _explicitNullValueSlackWorkspaceId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("slack_workspace_id"); else _explicitNullProperties?.Remove("slack_workspace_id"); } }
+        public int? SlackWorkspaceId { get => _explicitNullValueSlackWorkspaceId; set { _explicitNullValueSlackWorkspaceId = value; AdditionalData?.Remove("slack_workspace_id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("slack_workspace_id"); else _explicitNullProperties?.Remove("slack_workspace_id"); } }
         private int? _explicitNullValueSlackWorkspaceId = default!;
         /// <summary>* `slack` - slack* `webhook` - webhook* `teams` - teams* `pagerduty` - pagerduty</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.LogsAlertDestinationConfigType? Type { get => _explicitNullValueType; set { _explicitNullValueType = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("type"); else _explicitNullProperties?.Remove("type"); } }
+        public global::Soenneker.PostHog.OpenApiClient.Models.LogsAlertDestinationConfigType? Type { get => _explicitNullValueType; set { _explicitNullValueType = value; AdditionalData?.Remove("type"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("type"); else _explicitNullProperties?.Remove("type"); } }
         private global::Soenneker.PostHog.OpenApiClient.Models.LogsAlertDestinationConfigType? _explicitNullValueType = default!;
         /// <summary>Webhook endpoint reduced to scheme and host. The path, query and userinfo carry the secret.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? WebhookUrl { get => _explicitNullValueWebhookUrl; set { _explicitNullValueWebhookUrl = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("webhook_url"); else _explicitNullProperties?.Remove("webhook_url"); } }
+        public string? WebhookUrl { get => _explicitNullValueWebhookUrl; set { _explicitNullValueWebhookUrl = value; AdditionalData?.Remove("webhook_url"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("webhook_url"); else _explicitNullProperties?.Remove("webhook_url"); } }
         private string? _explicitNullValueWebhookUrl = default!;
 #nullable restore
 #else
-        public string WebhookUrl { get => _explicitNullValueWebhookUrl; set { _explicitNullValueWebhookUrl = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("webhook_url"); else _explicitNullProperties?.Remove("webhook_url"); } }
+        public string WebhookUrl { get => _explicitNullValueWebhookUrl; set { _explicitNullValueWebhookUrl = value; AdditionalData?.Remove("webhook_url"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("webhook_url"); else _explicitNullProperties?.Remove("webhook_url"); } }
         private string _explicitNullValueWebhookUrl = default!;
 #endif
         /// <summary>
@@ -117,12 +127,12 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "enabled", n => { Enabled = n.GetBoolValue(); } },
                 { "hog_function_ids", n => { HogFunctionIds = n.GetCollectionOfPrimitiveValues<Guid?>()?.AsList(); } },
                 { "message_customized", n => { MessageCustomized = n.GetBoolValue(); } },
-                { "pagerduty_region", n => { PagerdutyRegion = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.LogsAlertDestinationConfigPagerdutyRegion>(); } },
+                { "pagerduty_region", n => { var parsed = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.LogsAlertDestinationConfigPagerdutyRegion>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValuePagerdutyRegion = default; _explicitNullProperties?.Remove("pagerduty_region"); AdditionalData["pagerduty_region"] = unknown; } else { PagerdutyRegion = parsed; AdditionalData.Remove("pagerduty_region"); } } },
                 { "pagerduty_routing_key", n => { PagerdutyRoutingKey = n.GetStringValue(); } },
-                { "pagerduty_severity", n => { PagerdutySeverity = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.LogsAlertDestinationConfigPagerdutySeverity>(); } },
+                { "pagerduty_severity", n => { var parsed = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.LogsAlertDestinationConfigPagerdutySeverity>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValuePagerdutySeverity = default; _explicitNullProperties?.Remove("pagerduty_severity"); AdditionalData["pagerduty_severity"] = unknown; } else { PagerdutySeverity = parsed; AdditionalData.Remove("pagerduty_severity"); } } },
                 { "slack_channel_id", n => { SlackChannelId = n.GetStringValue(); } },
                 { "slack_workspace_id", n => { SlackWorkspaceId = n.GetIntValue(); } },
-                { "type", n => { Type = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.LogsAlertDestinationConfigType>(); } },
+                { "type", n => { var parsed = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.LogsAlertDestinationConfigType>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValueType = default; _explicitNullProperties?.Remove("type"); AdditionalData["type"] = unknown; } else { Type = parsed; AdditionalData.Remove("type"); } } },
                 { "webhook_url", n => { WebhookUrl = n.GetStringValue(); } },
             };
         }

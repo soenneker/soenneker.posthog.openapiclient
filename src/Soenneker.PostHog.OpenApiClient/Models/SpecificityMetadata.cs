@@ -17,9 +17,12 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("pr_title") is { } nullNodePrTitle && nullNodePrTitle.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) PrTitle = null;
-            if (parseNode.GetChildNode("reason") is { } nullNodeReason && nullNodeReason.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Reason = null;
-            if (parseNode.GetChildNode("specific_enough") is { } nullNodeSpecificEnough && nullNodeSpecificEnough.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SpecificEnough = null;
+            if (parseNode.GetChildNode("pr_title") is null) { _explicitNullValuePrTitle = default!; _explicitNullProperties?.Remove("pr_title"); }
+            else if (parseNode.GetChildNode("pr_title") is { } nullNodePrTitle && nullNodePrTitle.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) PrTitle = null;
+            if (parseNode.GetChildNode("reason") is null) { _explicitNullValueReason = default!; _explicitNullProperties?.Remove("reason"); }
+            else if (parseNode.GetChildNode("reason") is { } nullNodeReason && nullNodeReason.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Reason = null;
+            if (parseNode.GetChildNode("specific_enough") is null) { _explicitNullValueSpecificEnough = default!; _explicitNullProperties?.Remove("specific_enough"); }
+            else if (parseNode.GetChildNode("specific_enough") is { } nullNodeSpecificEnough && nullNodeSpecificEnough.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SpecificEnough = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -27,25 +30,25 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Title of the PR the specificity gate evaluated.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? PrTitle { get => _explicitNullValuePrTitle; set { _explicitNullValuePrTitle = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("pr_title"); else _explicitNullProperties?.Remove("pr_title"); } }
+        public string? PrTitle { get => _explicitNullValuePrTitle; set { _explicitNullValuePrTitle = value; AdditionalData?.Remove("pr_title"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("pr_title"); else _explicitNullProperties?.Remove("pr_title"); } }
         private string? _explicitNullValuePrTitle = default!;
 #nullable restore
 #else
-        public string PrTitle { get => _explicitNullValuePrTitle; set { _explicitNullValuePrTitle = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("pr_title"); else _explicitNullProperties?.Remove("pr_title"); } }
+        public string PrTitle { get => _explicitNullValuePrTitle; set { _explicitNullValuePrTitle = value; AdditionalData?.Remove("pr_title"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("pr_title"); else _explicitNullProperties?.Remove("pr_title"); } }
         private string _explicitNullValuePrTitle = default!;
 #endif
         /// <summary>The gate&apos;s reasoning.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Reason { get => _explicitNullValueReason; set { _explicitNullValueReason = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("reason"); else _explicitNullProperties?.Remove("reason"); } }
+        public string? Reason { get => _explicitNullValueReason; set { _explicitNullValueReason = value; AdditionalData?.Remove("reason"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("reason"); else _explicitNullProperties?.Remove("reason"); } }
         private string? _explicitNullValueReason = default!;
 #nullable restore
 #else
-        public string Reason { get => _explicitNullValueReason; set { _explicitNullValueReason = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("reason"); else _explicitNullProperties?.Remove("reason"); } }
+        public string Reason { get => _explicitNullValueReason; set { _explicitNullValueReason = value; AdditionalData?.Remove("reason"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("reason"); else _explicitNullProperties?.Remove("reason"); } }
         private string _explicitNullValueReason = default!;
 #endif
         /// <summary>Whether the report passed the PR-specificity gate.</summary>
-        public bool? SpecificEnough { get => _explicitNullValueSpecificEnough; set { _explicitNullValueSpecificEnough = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("specific_enough"); else _explicitNullProperties?.Remove("specific_enough"); } }
+        public bool? SpecificEnough { get => _explicitNullValueSpecificEnough; set { _explicitNullValueSpecificEnough = value; AdditionalData?.Remove("specific_enough"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("specific_enough"); else _explicitNullProperties?.Remove("specific_enough"); } }
         private bool? _explicitNullValueSpecificEnough = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.SpecificityMetadata"/> and sets the default values.

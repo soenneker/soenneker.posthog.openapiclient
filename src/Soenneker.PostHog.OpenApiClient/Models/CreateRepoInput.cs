@@ -17,23 +17,25 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("repo_external_id") is { } nullNodeRepoExternalId && nullNodeRepoExternalId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) RepoExternalId = null;
-            if (parseNode.GetChildNode("repo_full_name") is { } nullNodeRepoFullName && nullNodeRepoFullName.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) RepoFullName = null;
+            if (parseNode.GetChildNode("repo_external_id") is null) { _explicitNullValueRepoExternalId = default!; _explicitNullProperties?.Remove("repo_external_id"); }
+            else if (parseNode.GetChildNode("repo_external_id") is { } nullNodeRepoExternalId && nullNodeRepoExternalId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) RepoExternalId = null;
+            if (parseNode.GetChildNode("repo_full_name") is null) { _explicitNullValueRepoFullName = default!; _explicitNullProperties?.Remove("repo_full_name"); }
+            else if (parseNode.GetChildNode("repo_full_name") is { } nullNodeRepoFullName && nullNodeRepoFullName.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) RepoFullName = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The repo_external_id property</summary>
-        public int? RepoExternalId { get => _explicitNullValueRepoExternalId; set { _explicitNullValueRepoExternalId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("repo_external_id"); else _explicitNullProperties?.Remove("repo_external_id"); } }
+        public int? RepoExternalId { get => _explicitNullValueRepoExternalId; set { _explicitNullValueRepoExternalId = value; AdditionalData?.Remove("repo_external_id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("repo_external_id"); else _explicitNullProperties?.Remove("repo_external_id"); } }
         private int? _explicitNullValueRepoExternalId = default!;
         /// <summary>The repo_full_name property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? RepoFullName { get => _explicitNullValueRepoFullName; set { _explicitNullValueRepoFullName = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("repo_full_name"); else _explicitNullProperties?.Remove("repo_full_name"); } }
+        public string? RepoFullName { get => _explicitNullValueRepoFullName; set { _explicitNullValueRepoFullName = value; AdditionalData?.Remove("repo_full_name"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("repo_full_name"); else _explicitNullProperties?.Remove("repo_full_name"); } }
         private string? _explicitNullValueRepoFullName = default!;
 #nullable restore
 #else
-        public string RepoFullName { get => _explicitNullValueRepoFullName; set { _explicitNullValueRepoFullName = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("repo_full_name"); else _explicitNullProperties?.Remove("repo_full_name"); } }
+        public string RepoFullName { get => _explicitNullValueRepoFullName; set { _explicitNullValueRepoFullName = value; AdditionalData?.Remove("repo_full_name"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("repo_full_name"); else _explicitNullProperties?.Remove("repo_full_name"); } }
         private string _explicitNullValueRepoFullName = default!;
 #endif
         /// <summary>

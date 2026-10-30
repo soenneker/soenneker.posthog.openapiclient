@@ -18,14 +18,22 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("customer_quote") is { } nullNodeCustomerQuote && nullNodeCustomerQuote.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CustomerQuote = null;
-            if (parseNode.GetChildNode("evidence_id") is { } nullNodeEvidenceId && nullNodeEvidenceId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) EvidenceId = null;
-            if (parseNode.GetChildNode("evidence_source") is { } nullNodeEvidenceSource && nullNodeEvidenceSource.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) EvidenceSource = null;
-            if (parseNode.GetChildNode("expected_version") is { } nullNodeExpectedVersion && nullNodeExpectedVersion.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ExpectedVersion = null;
-            if (parseNode.GetChildNode("image_ids") is { } nullNodeImageIds && nullNodeImageIds.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ImageIds = null;
-            if (parseNode.GetChildNode("requested_on") is { } nullNodeRequestedOn && nullNodeRequestedOn.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) RequestedOn = null;
-            if (parseNode.GetChildNode("source_url") is { } nullNodeSourceUrl && nullNodeSourceUrl.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SourceUrl = null;
-            if (parseNode.GetChildNode("summary") is { } nullNodeSummary && nullNodeSummary.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Summary = null;
+            if (parseNode.GetChildNode("customer_quote") is null) { _explicitNullValueCustomerQuote = default!; _explicitNullProperties?.Remove("customer_quote"); }
+            else if (parseNode.GetChildNode("customer_quote") is { } nullNodeCustomerQuote && nullNodeCustomerQuote.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CustomerQuote = null;
+            if (parseNode.GetChildNode("evidence_id") is null) { _explicitNullValueEvidenceId = default!; _explicitNullProperties?.Remove("evidence_id"); }
+            else if (parseNode.GetChildNode("evidence_id") is { } nullNodeEvidenceId && nullNodeEvidenceId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) EvidenceId = null;
+            if (parseNode.GetChildNode("evidence_source") is null) { _explicitNullValueEvidenceSource = default!; _explicitNullProperties?.Remove("evidence_source"); }
+            else if (parseNode.GetChildNode("evidence_source") is { } nullNodeEvidenceSource && nullNodeEvidenceSource.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) EvidenceSource = null;
+            if (parseNode.GetChildNode("expected_version") is null) { _explicitNullValueExpectedVersion = default!; _explicitNullProperties?.Remove("expected_version"); }
+            else if (parseNode.GetChildNode("expected_version") is { } nullNodeExpectedVersion && nullNodeExpectedVersion.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ExpectedVersion = null;
+            if (parseNode.GetChildNode("image_ids") is null) { _explicitNullValueImageIds = default!; _explicitNullProperties?.Remove("image_ids"); }
+            else if (parseNode.GetChildNode("image_ids") is { } nullNodeImageIds && nullNodeImageIds.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ImageIds = null;
+            if (parseNode.GetChildNode("requested_on") is null) { _explicitNullValueRequestedOn = default!; _explicitNullProperties?.Remove("requested_on"); }
+            else if (parseNode.GetChildNode("requested_on") is { } nullNodeRequestedOn && nullNodeRequestedOn.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) RequestedOn = null;
+            if (parseNode.GetChildNode("source_url") is null) { _explicitNullValueSourceUrl = default!; _explicitNullProperties?.Remove("source_url"); }
+            else if (parseNode.GetChildNode("source_url") is { } nullNodeSourceUrl && nullNodeSourceUrl.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SourceUrl = null;
+            if (parseNode.GetChildNode("summary") is null) { _explicitNullValueSummary = default!; _explicitNullProperties?.Remove("summary"); }
+            else if (parseNode.GetChildNode("summary") is { } nullNodeSummary && nullNodeSummary.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Summary = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -33,60 +41,60 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Customer quote kept with this evidence item.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? CustomerQuote { get => _explicitNullValueCustomerQuote; set { _explicitNullValueCustomerQuote = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("customer_quote"); else _explicitNullProperties?.Remove("customer_quote"); } }
+        public string? CustomerQuote { get => _explicitNullValueCustomerQuote; set { _explicitNullValueCustomerQuote = value; AdditionalData?.Remove("customer_quote"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("customer_quote"); else _explicitNullProperties?.Remove("customer_quote"); } }
         private string? _explicitNullValueCustomerQuote = default!;
 #nullable restore
 #else
-        public string CustomerQuote { get => _explicitNullValueCustomerQuote; set { _explicitNullValueCustomerQuote = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("customer_quote"); else _explicitNullProperties?.Remove("customer_quote"); } }
+        public string CustomerQuote { get => _explicitNullValueCustomerQuote; set { _explicitNullValueCustomerQuote = value; AdditionalData?.Remove("customer_quote"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("customer_quote"); else _explicitNullProperties?.Remove("customer_quote"); } }
         private string _explicitNullValueCustomerQuote = default!;
 #endif
         /// <summary>Evidence item to replace.</summary>
-        public Guid? EvidenceId { get => _explicitNullValueEvidenceId; set { _explicitNullValueEvidenceId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("evidence_id"); else _explicitNullProperties?.Remove("evidence_id"); } }
+        public Guid? EvidenceId { get => _explicitNullValueEvidenceId; set { _explicitNullValueEvidenceId = value; AdditionalData?.Remove("evidence_id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("evidence_id"); else _explicitNullProperties?.Remove("evidence_id"); } }
         private Guid? _explicitNullValueEvidenceId = default!;
         /// <summary>Free-form name of the source where this evidence was recorded.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? EvidenceSource { get => _explicitNullValueEvidenceSource; set { _explicitNullValueEvidenceSource = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("evidence_source"); else _explicitNullProperties?.Remove("evidence_source"); } }
+        public string? EvidenceSource { get => _explicitNullValueEvidenceSource; set { _explicitNullValueEvidenceSource = value; AdditionalData?.Remove("evidence_source"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("evidence_source"); else _explicitNullProperties?.Remove("evidence_source"); } }
         private string? _explicitNullValueEvidenceSource = default!;
 #nullable restore
 #else
-        public string EvidenceSource { get => _explicitNullValueEvidenceSource; set { _explicitNullValueEvidenceSource = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("evidence_source"); else _explicitNullProperties?.Remove("evidence_source"); } }
+        public string EvidenceSource { get => _explicitNullValueEvidenceSource; set { _explicitNullValueEvidenceSource = value; AdditionalData?.Remove("evidence_source"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("evidence_source"); else _explicitNullProperties?.Remove("evidence_source"); } }
         private string _explicitNullValueEvidenceSource = default!;
 #endif
         /// <summary>Request version loaded by the editor. Stale versions return 409 Conflict.</summary>
-        public int? ExpectedVersion { get => _explicitNullValueExpectedVersion; set { _explicitNullValueExpectedVersion = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("expected_version"); else _explicitNullProperties?.Remove("expected_version"); } }
+        public int? ExpectedVersion { get => _explicitNullValueExpectedVersion; set { _explicitNullValueExpectedVersion = value; AdditionalData?.Remove("expected_version"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("expected_version"); else _explicitNullProperties?.Remove("expected_version"); } }
         private int? _explicitNullValueExpectedVersion = default!;
         /// <summary>Uploaded image IDs from this project to attach in display order.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<Guid?>? ImageIds { get => _explicitNullValueImageIds; set { _explicitNullValueImageIds = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("image_ids"); else _explicitNullProperties?.Remove("image_ids"); } }
+        public List<Guid?>? ImageIds { get => _explicitNullValueImageIds; set { _explicitNullValueImageIds = value; AdditionalData?.Remove("image_ids"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("image_ids"); else _explicitNullProperties?.Remove("image_ids"); } }
         private List<Guid?>? _explicitNullValueImageIds = default!;
 #nullable restore
 #else
-        public List<Guid?> ImageIds { get => _explicitNullValueImageIds; set { _explicitNullValueImageIds = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("image_ids"); else _explicitNullProperties?.Remove("image_ids"); } }
+        public List<Guid?> ImageIds { get => _explicitNullValueImageIds; set { _explicitNullValueImageIds = value; AdditionalData?.Remove("image_ids"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("image_ids"); else _explicitNullProperties?.Remove("image_ids"); } }
         private List<Guid?> _explicitNullValueImageIds = default!;
 #endif
         /// <summary>Date the account made the request, or null when unknown.</summary>
-        public Date? RequestedOn { get => _explicitNullValueRequestedOn; set { _explicitNullValueRequestedOn = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("requested_on"); else _explicitNullProperties?.Remove("requested_on"); } }
+        public Date? RequestedOn { get => _explicitNullValueRequestedOn; set { _explicitNullValueRequestedOn = value; AdditionalData?.Remove("requested_on"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("requested_on"); else _explicitNullProperties?.Remove("requested_on"); } }
         private Date? _explicitNullValueRequestedOn = default!;
         /// <summary>Optional HTTP or HTTPS link to the source.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.FeatureRequestEvidenceUpdateSourceUrl? SourceUrl { get => _explicitNullValueSourceUrl; set { _explicitNullValueSourceUrl = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("source_url"); else _explicitNullProperties?.Remove("source_url"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.FeatureRequestEvidenceUpdateSourceUrl? _explicitNullValueSourceUrl = default!;
+        public global::Soenneker.PostHog.OpenApiClient.Models.FeatureRequestEvidenceCreateSourceUrl? SourceUrl { get => _explicitNullValueSourceUrl; set { _explicitNullValueSourceUrl = value; AdditionalData?.Remove("source_url"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("source_url"); else _explicitNullProperties?.Remove("source_url"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.FeatureRequestEvidenceCreateSourceUrl? _explicitNullValueSourceUrl = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.FeatureRequestEvidenceUpdateSourceUrl SourceUrl { get => _explicitNullValueSourceUrl; set { _explicitNullValueSourceUrl = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("source_url"); else _explicitNullProperties?.Remove("source_url"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.FeatureRequestEvidenceUpdateSourceUrl _explicitNullValueSourceUrl = default!;
+        public global::Soenneker.PostHog.OpenApiClient.Models.FeatureRequestEvidenceCreateSourceUrl SourceUrl { get => _explicitNullValueSourceUrl; set { _explicitNullValueSourceUrl = value; AdditionalData?.Remove("source_url"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("source_url"); else _explicitNullProperties?.Remove("source_url"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.FeatureRequestEvidenceCreateSourceUrl _explicitNullValueSourceUrl = default!;
 #endif
         /// <summary>Internal summary of this account&apos;s request evidence.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Summary { get => _explicitNullValueSummary; set { _explicitNullValueSummary = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("summary"); else _explicitNullProperties?.Remove("summary"); } }
+        public string? Summary { get => _explicitNullValueSummary; set { _explicitNullValueSummary = value; AdditionalData?.Remove("summary"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("summary"); else _explicitNullProperties?.Remove("summary"); } }
         private string? _explicitNullValueSummary = default!;
 #nullable restore
 #else
-        public string Summary { get => _explicitNullValueSummary; set { _explicitNullValueSummary = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("summary"); else _explicitNullProperties?.Remove("summary"); } }
+        public string Summary { get => _explicitNullValueSummary; set { _explicitNullValueSummary = value; AdditionalData?.Remove("summary"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("summary"); else _explicitNullProperties?.Remove("summary"); } }
         private string _explicitNullValueSummary = default!;
 #endif
         /// <summary>
@@ -120,7 +128,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "expected_version", n => { ExpectedVersion = n.GetIntValue(); } },
                 { "image_ids", n => { ImageIds = n.GetCollectionOfPrimitiveValues<Guid?>()?.AsList(); } },
                 { "requested_on", n => { RequestedOn = n.GetDateValue(); } },
-                { "source_url", n => { SourceUrl = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.FeatureRequestEvidenceUpdateSourceUrl>(global::Soenneker.PostHog.OpenApiClient.Models.FeatureRequestEvidenceUpdateSourceUrl.CreateFromDiscriminatorValue); } },
+                { "source_url", n => { SourceUrl = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.FeatureRequestEvidenceCreateSourceUrl>(global::Soenneker.PostHog.OpenApiClient.Models.FeatureRequestEvidenceCreateSourceUrl.CreateFromDiscriminatorValue); } },
                 { "summary", n => { Summary = n.GetStringValue(); } },
             };
         }
@@ -137,7 +145,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteIntValue("expected_version", ExpectedVersion);
             writer.WriteCollectionOfPrimitiveValues<Guid?>("image_ids", ImageIds);
             writer.WriteDateValue("requested_on", RequestedOn);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.FeatureRequestEvidenceUpdateSourceUrl>("source_url", SourceUrl);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.FeatureRequestEvidenceCreateSourceUrl>("source_url", SourceUrl);
             writer.WriteStringValue("summary", Summary);
             if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);

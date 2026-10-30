@@ -17,7 +17,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("fingerprints") is { } nullNodeFingerprints && nullNodeFingerprints.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Fingerprints = null;
+            if (parseNode.GetChildNode("fingerprints") is null) { _explicitNullValueFingerprints = default!; _explicitNullProperties?.Remove("fingerprints"); }
+            else if (parseNode.GetChildNode("fingerprints") is { } nullNodeFingerprints && nullNodeFingerprints.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Fingerprints = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -25,11 +26,11 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Fingerprints to split into new issues. Each fingerprint becomes its own new issue.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingIssueSplitFingerprint>? Fingerprints { get => _explicitNullValueFingerprints; set { _explicitNullValueFingerprints = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("fingerprints"); else _explicitNullProperties?.Remove("fingerprints"); } }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingIssueSplitFingerprint>? Fingerprints { get => _explicitNullValueFingerprints; set { _explicitNullValueFingerprints = value; AdditionalData?.Remove("fingerprints"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("fingerprints"); else _explicitNullProperties?.Remove("fingerprints"); } }
         private List<global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingIssueSplitFingerprint>? _explicitNullValueFingerprints = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingIssueSplitFingerprint> Fingerprints { get => _explicitNullValueFingerprints; set { _explicitNullValueFingerprints = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("fingerprints"); else _explicitNullProperties?.Remove("fingerprints"); } }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingIssueSplitFingerprint> Fingerprints { get => _explicitNullValueFingerprints; set { _explicitNullValueFingerprints = value; AdditionalData?.Remove("fingerprints"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("fingerprints"); else _explicitNullProperties?.Remove("fingerprints"); } }
         private List<global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingIssueSplitFingerprint> _explicitNullValueFingerprints = default!;
 #endif
         /// <summary>

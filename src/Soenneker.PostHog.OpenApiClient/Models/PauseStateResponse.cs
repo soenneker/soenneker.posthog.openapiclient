@@ -17,13 +17,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("paused_until") is { } nullNodePausedUntil && nullNodePausedUntil.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) PausedUntil = null;
+            if (parseNode.GetChildNode("paused_until") is null) { _explicitNullValuePausedUntil = default!; _explicitNullProperties?.Remove("paused_until"); }
+            else if (parseNode.GetChildNode("paused_until") is { } nullNodePausedUntil && nullNodePausedUntil.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) PausedUntil = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The timestamp the pipeline is paused until, or null if not paused/not running.</summary>
-        public DateTimeOffset? PausedUntil { get => _explicitNullValuePausedUntil; set { _explicitNullValuePausedUntil = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("paused_until"); else _explicitNullProperties?.Remove("paused_until"); } }
+        public DateTimeOffset? PausedUntil { get => _explicitNullValuePausedUntil; set { _explicitNullValuePausedUntil = value; AdditionalData?.Remove("paused_until"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("paused_until"); else _explicitNullProperties?.Remove("paused_until"); } }
         private DateTimeOffset? _explicitNullValuePausedUntil = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.PauseStateResponse"/> and sets the default values.

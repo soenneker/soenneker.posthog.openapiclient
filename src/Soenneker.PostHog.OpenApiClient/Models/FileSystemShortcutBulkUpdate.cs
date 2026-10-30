@@ -17,18 +17,20 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("add") is { } nullNodeAdd && nullNodeAdd.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Add = null;
-            if (parseNode.GetChildNode("remove_ids") is { } nullNodeRemoveIds && nullNodeRemoveIds.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) RemoveIds = null;
+            if (parseNode.GetChildNode("add") is null) { _explicitNullValueAdd = default!; _explicitNullProperties?.Remove("add"); }
+            else if (parseNode.GetChildNode("add") is { } nullNodeAdd && nullNodeAdd.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Add = null;
+            if (parseNode.GetChildNode("remove_ids") is null) { _explicitNullValueRemoveIds = default!; _explicitNullProperties?.Remove("remove_ids"); }
+            else if (parseNode.GetChildNode("remove_ids") is { } nullNodeRemoveIds && nullNodeRemoveIds.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) RemoveIds = null;
         }
 
         /// <summary>Shortcuts to create, appended to the end of the current order in the given sequence. An item identical to a shortcut the user already has is skipped.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.FileSystemShortcutBulkItem>? Add { get => _explicitNullValueAdd; set { _explicitNullValueAdd = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("add"); else _explicitNullProperties?.Remove("add"); } }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.FileSystemShortcutBulkItem>? Add { get => _explicitNullValueAdd; set { _explicitNullValueAdd = value; AdditionalData?.Remove("add"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("add"); else _explicitNullProperties?.Remove("add"); } }
         private List<global::Soenneker.PostHog.OpenApiClient.Models.FileSystemShortcutBulkItem>? _explicitNullValueAdd = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.FileSystemShortcutBulkItem> Add { get => _explicitNullValueAdd; set { _explicitNullValueAdd = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("add"); else _explicitNullProperties?.Remove("add"); } }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.FileSystemShortcutBulkItem> Add { get => _explicitNullValueAdd; set { _explicitNullValueAdd = value; AdditionalData?.Remove("add"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("add"); else _explicitNullProperties?.Remove("add"); } }
         private List<global::Soenneker.PostHog.OpenApiClient.Models.FileSystemShortcutBulkItem> _explicitNullValueAdd = default!;
 #endif
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -36,11 +38,11 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>IDs of the current user&apos;s shortcuts to delete.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<Guid?>? RemoveIds { get => _explicitNullValueRemoveIds; set { _explicitNullValueRemoveIds = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("remove_ids"); else _explicitNullProperties?.Remove("remove_ids"); } }
+        public List<Guid?>? RemoveIds { get => _explicitNullValueRemoveIds; set { _explicitNullValueRemoveIds = value; AdditionalData?.Remove("remove_ids"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("remove_ids"); else _explicitNullProperties?.Remove("remove_ids"); } }
         private List<Guid?>? _explicitNullValueRemoveIds = default!;
 #nullable restore
 #else
-        public List<Guid?> RemoveIds { get => _explicitNullValueRemoveIds; set { _explicitNullValueRemoveIds = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("remove_ids"); else _explicitNullProperties?.Remove("remove_ids"); } }
+        public List<Guid?> RemoveIds { get => _explicitNullValueRemoveIds; set { _explicitNullValueRemoveIds = value; AdditionalData?.Remove("remove_ids"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("remove_ids"); else _explicitNullProperties?.Remove("remove_ids"); } }
         private List<Guid?> _explicitNullValueRemoveIds = default!;
 #endif
         /// <summary>

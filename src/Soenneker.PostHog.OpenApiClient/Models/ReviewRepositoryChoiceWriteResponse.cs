@@ -17,8 +17,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("choice") is { } nullNodeChoice && nullNodeChoice.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Choice = null;
-            if (parseNode.GetChildNode("my_result") is { } nullNodeMyResult && nullNodeMyResult.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MyResult = null;
+            if (parseNode.GetChildNode("choice") is null) { _explicitNullValueChoice = default!; _explicitNullProperties?.Remove("choice"); }
+            else if (parseNode.GetChildNode("choice") is { } nullNodeChoice && nullNodeChoice.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Choice = null;
+            if (parseNode.GetChildNode("my_result") is null) { _explicitNullValueMyResult = default!; _explicitNullProperties?.Remove("my_result"); }
+            else if (parseNode.GetChildNode("my_result") is { } nullNodeMyResult && nullNodeMyResult.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MyResult = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -26,21 +28,21 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The stored choice. Null when the value equals the inherited one.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.ReviewRepositoryChoice? Choice { get => _explicitNullValueChoice; set { _explicitNullValueChoice = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("choice"); else _explicitNullProperties?.Remove("choice"); } }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ReviewRepositoryChoice? Choice { get => _explicitNullValueChoice; set { _explicitNullValueChoice = value; AdditionalData?.Remove("choice"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("choice"); else _explicitNullProperties?.Remove("choice"); } }
         private global::Soenneker.PostHog.OpenApiClient.Models.ReviewRepositoryChoice? _explicitNullValueChoice = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ReviewRepositoryChoice Choice { get => _explicitNullValueChoice; set { _explicitNullValueChoice = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("choice"); else _explicitNullProperties?.Remove("choice"); } }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ReviewRepositoryChoice Choice { get => _explicitNullValueChoice; set { _explicitNullValueChoice = value; AdditionalData?.Remove("choice"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("choice"); else _explicitNullProperties?.Remove("choice"); } }
         private global::Soenneker.PostHog.OpenApiClient.Models.ReviewRepositoryChoice _explicitNullValueChoice = default!;
 #endif
         /// <summary>What the requesting user&apos;s own pull requests get in this repository after the write.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.ReviewRepositoryChoiceWriteResponseMyResult? MyResult { get => _explicitNullValueMyResult; set { _explicitNullValueMyResult = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("my_result"); else _explicitNullProperties?.Remove("my_result"); } }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ReviewRepositoryChoiceWriteResponseMyResult? MyResult { get => _explicitNullValueMyResult; set { _explicitNullValueMyResult = value; AdditionalData?.Remove("my_result"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("my_result"); else _explicitNullProperties?.Remove("my_result"); } }
         private global::Soenneker.PostHog.OpenApiClient.Models.ReviewRepositoryChoiceWriteResponseMyResult? _explicitNullValueMyResult = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ReviewRepositoryChoiceWriteResponseMyResult MyResult { get => _explicitNullValueMyResult; set { _explicitNullValueMyResult = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("my_result"); else _explicitNullProperties?.Remove("my_result"); } }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ReviewRepositoryChoiceWriteResponseMyResult MyResult { get => _explicitNullValueMyResult; set { _explicitNullValueMyResult = value; AdditionalData?.Remove("my_result"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("my_result"); else _explicitNullProperties?.Remove("my_result"); } }
         private global::Soenneker.PostHog.OpenApiClient.Models.ReviewRepositoryChoiceWriteResponseMyResult _explicitNullValueMyResult = default!;
 #endif
         /// <summary>

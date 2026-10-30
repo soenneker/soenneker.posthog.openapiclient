@@ -17,9 +17,12 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("projected_amount_usd") is { } nullNodeProjectedAmountUsd && nullNodeProjectedAmountUsd.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ProjectedAmountUsd = null;
-            if (parseNode.GetChildNode("projected_usage") is { } nullNodeProjectedUsage && nullNodeProjectedUsage.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ProjectedUsage = null;
-            if (parseNode.GetChildNode("up_to") is { } nullNodeUpTo && nullNodeUpTo.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) UpTo = null;
+            if (parseNode.GetChildNode("projected_amount_usd") is null) { _explicitNullValueProjectedAmountUsd = default!; _explicitNullProperties?.Remove("projected_amount_usd"); }
+            else if (parseNode.GetChildNode("projected_amount_usd") is { } nullNodeProjectedAmountUsd && nullNodeProjectedAmountUsd.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ProjectedAmountUsd = null;
+            if (parseNode.GetChildNode("projected_usage") is null) { _explicitNullValueProjectedUsage = default!; _explicitNullProperties?.Remove("projected_usage"); }
+            else if (parseNode.GetChildNode("projected_usage") is { } nullNodeProjectedUsage && nullNodeProjectedUsage.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ProjectedUsage = null;
+            if (parseNode.GetChildNode("up_to") is null) { _explicitNullValueUpTo = default!; _explicitNullProperties?.Remove("up_to"); }
+            else if (parseNode.GetChildNode("up_to") is { } nullNodeUpTo && nullNodeUpTo.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) UpTo = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -27,18 +30,18 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The projected_amount_usd property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? ProjectedAmountUsd { get => _explicitNullValueProjectedAmountUsd; set { _explicitNullValueProjectedAmountUsd = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("projected_amount_usd"); else _explicitNullProperties?.Remove("projected_amount_usd"); } }
+        public string? ProjectedAmountUsd { get => _explicitNullValueProjectedAmountUsd; set { _explicitNullValueProjectedAmountUsd = value; AdditionalData?.Remove("projected_amount_usd"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("projected_amount_usd"); else _explicitNullProperties?.Remove("projected_amount_usd"); } }
         private string? _explicitNullValueProjectedAmountUsd = default!;
 #nullable restore
 #else
-        public string ProjectedAmountUsd { get => _explicitNullValueProjectedAmountUsd; set { _explicitNullValueProjectedAmountUsd = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("projected_amount_usd"); else _explicitNullProperties?.Remove("projected_amount_usd"); } }
+        public string ProjectedAmountUsd { get => _explicitNullValueProjectedAmountUsd; set { _explicitNullValueProjectedAmountUsd = value; AdditionalData?.Remove("projected_amount_usd"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("projected_amount_usd"); else _explicitNullProperties?.Remove("projected_amount_usd"); } }
         private string _explicitNullValueProjectedAmountUsd = default!;
 #endif
         /// <summary>The projected_usage property</summary>
-        public int? ProjectedUsage { get => _explicitNullValueProjectedUsage; set { _explicitNullValueProjectedUsage = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("projected_usage"); else _explicitNullProperties?.Remove("projected_usage"); } }
+        public int? ProjectedUsage { get => _explicitNullValueProjectedUsage; set { _explicitNullValueProjectedUsage = value; AdditionalData?.Remove("projected_usage"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("projected_usage"); else _explicitNullProperties?.Remove("projected_usage"); } }
         private int? _explicitNullValueProjectedUsage = default!;
         /// <summary>The up_to property</summary>
-        public int? UpTo { get => _explicitNullValueUpTo; set { _explicitNullValueUpTo = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("up_to"); else _explicitNullProperties?.Remove("up_to"); } }
+        public int? UpTo { get => _explicitNullValueUpTo; set { _explicitNullValueUpTo = value; AdditionalData?.Remove("up_to"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("up_to"); else _explicitNullProperties?.Remove("up_to"); } }
         private int? _explicitNullValueUpTo = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.TierForecast"/> and sets the default values.

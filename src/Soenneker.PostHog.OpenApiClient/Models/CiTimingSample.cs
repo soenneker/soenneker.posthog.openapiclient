@@ -17,96 +17,109 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("ci_engine") is { } nullNodeCiEngine && nullNodeCiEngine.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CiEngine = null;
-            if (parseNode.GetChildNode("completed_at") is { } nullNodeCompletedAt && nullNodeCompletedAt.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CompletedAt = null;
-            if (parseNode.GetChildNode("duration_seconds") is { } nullNodeDurationSeconds && nullNodeDurationSeconds.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) DurationSeconds = null;
-            if (parseNode.GetChildNode("head_sha") is { } nullNodeHeadSha && nullNodeHeadSha.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) HeadSha = null;
-            if (parseNode.GetChildNode("job_id") is { } nullNodeJobId && nullNodeJobId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) JobId = null;
-            if (parseNode.GetChildNode("native_attempt_id") is { } nullNodeNativeAttemptId && nullNodeNativeAttemptId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) NativeAttemptId = null;
-            if (parseNode.GetChildNode("native_job_id") is { } nullNodeNativeJobId && nullNodeNativeJobId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) NativeJobId = null;
-            if (parseNode.GetChildNode("native_run_id") is { } nullNodeNativeRunId && nullNodeNativeRunId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) NativeRunId = null;
-            if (parseNode.GetChildNode("native_workflow_run_id") is { } nullNodeNativeWorkflowRunId && nullNodeNativeWorkflowRunId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) NativeWorkflowRunId = null;
-            if (parseNode.GetChildNode("run_attempt") is { } nullNodeRunAttempt && nullNodeRunAttempt.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) RunAttempt = null;
-            if (parseNode.GetChildNode("run_id") is { } nullNodeRunId && nullNodeRunId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) RunId = null;
-            if (parseNode.GetChildNode("status") is { } nullNodeStatus && nullNodeStatus.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Status = null;
-            if (parseNode.GetChildNode("step_number") is { } nullNodeStepNumber && nullNodeStepNumber.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) StepNumber = null;
+            if (parseNode.GetChildNode("ci_engine") is null) { _explicitNullValueCiEngine = default!; _explicitNullProperties?.Remove("ci_engine"); }
+            else if (parseNode.GetChildNode("ci_engine") is { } nullNodeCiEngine && nullNodeCiEngine.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CiEngine = null;
+            if (parseNode.GetChildNode("completed_at") is null) { _explicitNullValueCompletedAt = default!; _explicitNullProperties?.Remove("completed_at"); }
+            else if (parseNode.GetChildNode("completed_at") is { } nullNodeCompletedAt && nullNodeCompletedAt.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CompletedAt = null;
+            if (parseNode.GetChildNode("duration_seconds") is null) { _explicitNullValueDurationSeconds = default!; _explicitNullProperties?.Remove("duration_seconds"); }
+            else if (parseNode.GetChildNode("duration_seconds") is { } nullNodeDurationSeconds && nullNodeDurationSeconds.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) DurationSeconds = null;
+            if (parseNode.GetChildNode("head_sha") is null) { _explicitNullValueHeadSha = default!; _explicitNullProperties?.Remove("head_sha"); }
+            else if (parseNode.GetChildNode("head_sha") is { } nullNodeHeadSha && nullNodeHeadSha.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) HeadSha = null;
+            if (parseNode.GetChildNode("job_id") is null) { _explicitNullValueJobId = default!; _explicitNullProperties?.Remove("job_id"); }
+            else if (parseNode.GetChildNode("job_id") is { } nullNodeJobId && nullNodeJobId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) JobId = null;
+            if (parseNode.GetChildNode("native_attempt_id") is null) { _explicitNullValueNativeAttemptId = default!; _explicitNullProperties?.Remove("native_attempt_id"); }
+            else if (parseNode.GetChildNode("native_attempt_id") is { } nullNodeNativeAttemptId && nullNodeNativeAttemptId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) NativeAttemptId = null;
+            if (parseNode.GetChildNode("native_job_id") is null) { _explicitNullValueNativeJobId = default!; _explicitNullProperties?.Remove("native_job_id"); }
+            else if (parseNode.GetChildNode("native_job_id") is { } nullNodeNativeJobId && nullNodeNativeJobId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) NativeJobId = null;
+            if (parseNode.GetChildNode("native_run_id") is null) { _explicitNullValueNativeRunId = default!; _explicitNullProperties?.Remove("native_run_id"); }
+            else if (parseNode.GetChildNode("native_run_id") is { } nullNodeNativeRunId && nullNodeNativeRunId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) NativeRunId = null;
+            if (parseNode.GetChildNode("native_workflow_run_id") is null) { _explicitNullValueNativeWorkflowRunId = default!; _explicitNullProperties?.Remove("native_workflow_run_id"); }
+            else if (parseNode.GetChildNode("native_workflow_run_id") is { } nullNodeNativeWorkflowRunId && nullNodeNativeWorkflowRunId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) NativeWorkflowRunId = null;
+            if (parseNode.GetChildNode("run_attempt") is null) { _explicitNullValueRunAttempt = default!; _explicitNullProperties?.Remove("run_attempt"); }
+            else if (parseNode.GetChildNode("run_attempt") is { } nullNodeRunAttempt && nullNodeRunAttempt.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) RunAttempt = null;
+            if (parseNode.GetChildNode("run_id") is null) { _explicitNullValueRunId = default!; _explicitNullProperties?.Remove("run_id"); }
+            else if (parseNode.GetChildNode("run_id") is { } nullNodeRunId && nullNodeRunId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) RunId = null;
+            if (parseNode.GetChildNode("status") is null) { _explicitNullValueStatus = default!; _explicitNullProperties?.Remove("status"); }
+            else if (parseNode.GetChildNode("status") is { } nullNodeStatus && nullNodeStatus.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Status = null;
+            if (parseNode.GetChildNode("step_number") is null) { _explicitNullValueStepNumber = default!; _explicitNullProperties?.Remove("step_number"); }
+            else if (parseNode.GetChildNode("step_number") is { } nullNodeStepNumber && nullNodeStepNumber.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) StepNumber = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>* `github_actions` - GitHub Actions* `depot_ci` - Depot CI</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.CiTimingSampleCiEngine? CiEngine { get => _explicitNullValueCiEngine; set { _explicitNullValueCiEngine = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("ci_engine"); else _explicitNullProperties?.Remove("ci_engine"); } }
+        public global::Soenneker.PostHog.OpenApiClient.Models.CiTimingSampleCiEngine? CiEngine { get => _explicitNullValueCiEngine; set { _explicitNullValueCiEngine = value; AdditionalData?.Remove("ci_engine"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("ci_engine"); else _explicitNullProperties?.Remove("ci_engine"); } }
         private global::Soenneker.PostHog.OpenApiClient.Models.CiTimingSampleCiEngine? _explicitNullValueCiEngine = default!;
         /// <summary>When the last matched job finished.</summary>
-        public DateTimeOffset? CompletedAt { get => _explicitNullValueCompletedAt; set { _explicitNullValueCompletedAt = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("completed_at"); else _explicitNullProperties?.Remove("completed_at"); } }
+        public DateTimeOffset? CompletedAt { get => _explicitNullValueCompletedAt; set { _explicitNullValueCompletedAt = value; AdditionalData?.Remove("completed_at"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("completed_at"); else _explicitNullProperties?.Remove("completed_at"); } }
         private DateTimeOffset? _explicitNullValueCompletedAt = default!;
         /// <summary>For a workflow, matrix or job: seconds from the first matched job&apos;s start to the last one&apos;s end. For a step: the step&apos;s own duration.</summary>
-        public double? DurationSeconds { get => _explicitNullValueDurationSeconds; set { _explicitNullValueDurationSeconds = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("duration_seconds"); else _explicitNullProperties?.Remove("duration_seconds"); } }
+        public double? DurationSeconds { get => _explicitNullValueDurationSeconds; set { _explicitNullValueDurationSeconds = value; AdditionalData?.Remove("duration_seconds"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("duration_seconds"); else _explicitNullProperties?.Remove("duration_seconds"); } }
         private double? _explicitNullValueDurationSeconds = default!;
         /// <summary>Commit SHA the sampled run ran on.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? HeadSha { get => _explicitNullValueHeadSha; set { _explicitNullValueHeadSha = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("head_sha"); else _explicitNullProperties?.Remove("head_sha"); } }
+        public string? HeadSha { get => _explicitNullValueHeadSha; set { _explicitNullValueHeadSha = value; AdditionalData?.Remove("head_sha"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("head_sha"); else _explicitNullProperties?.Remove("head_sha"); } }
         private string? _explicitNullValueHeadSha = default!;
 #nullable restore
 #else
-        public string HeadSha { get => _explicitNullValueHeadSha; set { _explicitNullValueHeadSha = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("head_sha"); else _explicitNullProperties?.Remove("head_sha"); } }
+        public string HeadSha { get => _explicitNullValueHeadSha; set { _explicitNullValueHeadSha = value; AdditionalData?.Remove("head_sha"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("head_sha"); else _explicitNullProperties?.Remove("head_sha"); } }
         private string _explicitNullValueHeadSha = default!;
 #endif
         /// <summary>Job id of the matched job. Null for a workflow or matrix sample, which spans jobs.</summary>
-        public int? JobId { get => _explicitNullValueJobId; set { _explicitNullValueJobId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("job_id"); else _explicitNullProperties?.Remove("job_id"); } }
+        public int? JobId { get => _explicitNullValueJobId; set { _explicitNullValueJobId = value; AdditionalData?.Remove("job_id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("job_id"); else _explicitNullProperties?.Remove("job_id"); } }
         private int? _explicitNullValueJobId = default!;
         /// <summary>Source-native job attempt id of the matched job. Null for a workflow or matrix sample.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? NativeAttemptId { get => _explicitNullValueNativeAttemptId; set { _explicitNullValueNativeAttemptId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("native_attempt_id"); else _explicitNullProperties?.Remove("native_attempt_id"); } }
+        public string? NativeAttemptId { get => _explicitNullValueNativeAttemptId; set { _explicitNullValueNativeAttemptId = value; AdditionalData?.Remove("native_attempt_id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("native_attempt_id"); else _explicitNullProperties?.Remove("native_attempt_id"); } }
         private string? _explicitNullValueNativeAttemptId = default!;
 #nullable restore
 #else
-        public string NativeAttemptId { get => _explicitNullValueNativeAttemptId; set { _explicitNullValueNativeAttemptId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("native_attempt_id"); else _explicitNullProperties?.Remove("native_attempt_id"); } }
+        public string NativeAttemptId { get => _explicitNullValueNativeAttemptId; set { _explicitNullValueNativeAttemptId = value; AdditionalData?.Remove("native_attempt_id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("native_attempt_id"); else _explicitNullProperties?.Remove("native_attempt_id"); } }
         private string _explicitNullValueNativeAttemptId = default!;
 #endif
         /// <summary>Source-native job id of the matched job. Null for a workflow or matrix sample.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? NativeJobId { get => _explicitNullValueNativeJobId; set { _explicitNullValueNativeJobId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("native_job_id"); else _explicitNullProperties?.Remove("native_job_id"); } }
+        public string? NativeJobId { get => _explicitNullValueNativeJobId; set { _explicitNullValueNativeJobId = value; AdditionalData?.Remove("native_job_id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("native_job_id"); else _explicitNullProperties?.Remove("native_job_id"); } }
         private string? _explicitNullValueNativeJobId = default!;
 #nullable restore
 #else
-        public string NativeJobId { get => _explicitNullValueNativeJobId; set { _explicitNullValueNativeJobId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("native_job_id"); else _explicitNullProperties?.Remove("native_job_id"); } }
+        public string NativeJobId { get => _explicitNullValueNativeJobId; set { _explicitNullValueNativeJobId = value; AdditionalData?.Remove("native_job_id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("native_job_id"); else _explicitNullProperties?.Remove("native_job_id"); } }
         private string _explicitNullValueNativeJobId = default!;
 #endif
         /// <summary>Source-native run id; use with ci_engine to link to the run.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? NativeRunId { get => _explicitNullValueNativeRunId; set { _explicitNullValueNativeRunId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("native_run_id"); else _explicitNullProperties?.Remove("native_run_id"); } }
+        public string? NativeRunId { get => _explicitNullValueNativeRunId; set { _explicitNullValueNativeRunId = value; AdditionalData?.Remove("native_run_id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("native_run_id"); else _explicitNullProperties?.Remove("native_run_id"); } }
         private string? _explicitNullValueNativeRunId = default!;
 #nullable restore
 #else
-        public string NativeRunId { get => _explicitNullValueNativeRunId; set { _explicitNullValueNativeRunId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("native_run_id"); else _explicitNullProperties?.Remove("native_run_id"); } }
+        public string NativeRunId { get => _explicitNullValueNativeRunId; set { _explicitNullValueNativeRunId = value; AdditionalData?.Remove("native_run_id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("native_run_id"); else _explicitNullProperties?.Remove("native_run_id"); } }
         private string _explicitNullValueNativeRunId = default!;
 #endif
         /// <summary>Source-native workflow run id; use with ci_engine to link to the run.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? NativeWorkflowRunId { get => _explicitNullValueNativeWorkflowRunId; set { _explicitNullValueNativeWorkflowRunId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("native_workflow_run_id"); else _explicitNullProperties?.Remove("native_workflow_run_id"); } }
+        public string? NativeWorkflowRunId { get => _explicitNullValueNativeWorkflowRunId; set { _explicitNullValueNativeWorkflowRunId = value; AdditionalData?.Remove("native_workflow_run_id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("native_workflow_run_id"); else _explicitNullProperties?.Remove("native_workflow_run_id"); } }
         private string? _explicitNullValueNativeWorkflowRunId = default!;
 #nullable restore
 #else
-        public string NativeWorkflowRunId { get => _explicitNullValueNativeWorkflowRunId; set { _explicitNullValueNativeWorkflowRunId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("native_workflow_run_id"); else _explicitNullProperties?.Remove("native_workflow_run_id"); } }
+        public string NativeWorkflowRunId { get => _explicitNullValueNativeWorkflowRunId; set { _explicitNullValueNativeWorkflowRunId = value; AdditionalData?.Remove("native_workflow_run_id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("native_workflow_run_id"); else _explicitNullProperties?.Remove("native_workflow_run_id"); } }
         private string _explicitNullValueNativeWorkflowRunId = default!;
 #endif
         /// <summary>Run attempt the sample was taken from, which is the run&apos;s latest.</summary>
-        public int? RunAttempt { get => _explicitNullValueRunAttempt; set { _explicitNullValueRunAttempt = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("run_attempt"); else _explicitNullProperties?.Remove("run_attempt"); } }
+        public int? RunAttempt { get => _explicitNullValueRunAttempt; set { _explicitNullValueRunAttempt = value; AdditionalData?.Remove("run_attempt"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("run_attempt"); else _explicitNullProperties?.Remove("run_attempt"); } }
         private int? _explicitNullValueRunAttempt = default!;
         /// <summary>Integer run id of the sampled run; unique only together with ci_engine.</summary>
-        public int? RunId { get => _explicitNullValueRunId; set { _explicitNullValueRunId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("run_id"); else _explicitNullProperties?.Remove("run_id"); } }
+        public int? RunId { get => _explicitNullValueRunId; set { _explicitNullValueRunId = value; AdditionalData?.Remove("run_id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("run_id"); else _explicitNullProperties?.Remove("run_id"); } }
         private int? _explicitNullValueRunId = default!;
         /// <summary>* `success` - Success* `failure` - Failure</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.CiTimingSampleStatus? Status { get => _explicitNullValueStatus; set { _explicitNullValueStatus = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("status"); else _explicitNullProperties?.Remove("status"); } }
+        public global::Soenneker.PostHog.OpenApiClient.Models.CiTimingSampleStatus? Status { get => _explicitNullValueStatus; set { _explicitNullValueStatus = value; AdditionalData?.Remove("status"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("status"); else _explicitNullProperties?.Remove("status"); } }
         private global::Soenneker.PostHog.OpenApiClient.Models.CiTimingSampleStatus? _explicitNullValueStatus = default!;
         /// <summary>Number of the matched step in the sampled job. Steps match by name, so it can differ from the selected step&apos;s number. Null unless kind is &apos;step&apos;.</summary>
-        public int? StepNumber { get => _explicitNullValueStepNumber; set { _explicitNullValueStepNumber = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("step_number"); else _explicitNullProperties?.Remove("step_number"); } }
+        public int? StepNumber { get => _explicitNullValueStepNumber; set { _explicitNullValueStepNumber = value; AdditionalData?.Remove("step_number"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("step_number"); else _explicitNullProperties?.Remove("step_number"); } }
         private int? _explicitNullValueStepNumber = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.CiTimingSample"/> and sets the default values.
@@ -133,7 +146,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "ci_engine", n => { CiEngine = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.CiTimingSampleCiEngine>(); } },
+                { "ci_engine", n => { var parsed = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.CiTimingSampleCiEngine>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValueCiEngine = default; _explicitNullProperties?.Remove("ci_engine"); AdditionalData["ci_engine"] = unknown; } else { CiEngine = parsed; AdditionalData.Remove("ci_engine"); } } },
                 { "completed_at", n => { CompletedAt = n.GetDateTimeOffsetValue(); } },
                 { "duration_seconds", n => { DurationSeconds = n.GetDoubleValue(); } },
                 { "head_sha", n => { HeadSha = n.GetStringValue(); } },
@@ -144,7 +157,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "native_workflow_run_id", n => { NativeWorkflowRunId = n.GetStringValue(); } },
                 { "run_attempt", n => { RunAttempt = n.GetIntValue(); } },
                 { "run_id", n => { RunId = n.GetIntValue(); } },
-                { "status", n => { Status = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.CiTimingSampleStatus>(); } },
+                { "status", n => { var parsed = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.CiTimingSampleStatus>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValueStatus = default; _explicitNullProperties?.Remove("status"); AdditionalData["status"] = unknown; } else { Status = parsed; AdditionalData.Remove("status"); } } },
                 { "step_number", n => { StepNumber = n.GetIntValue(); } },
             };
         }

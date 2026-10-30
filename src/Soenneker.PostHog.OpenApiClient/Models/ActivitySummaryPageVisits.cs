@@ -17,10 +17,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("last_at") is { } nullNodeLastAt && nullNodeLastAt.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) LastAt = null;
-            if (parseNode.GetChildNode("open_days") is { } nullNodeOpenDays && nullNodeOpenDays.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) OpenDays = null;
-            if (parseNode.GetChildNode("product") is { } nullNodeProduct && nullNodeProduct.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Product = null;
-            if (parseNode.GetChildNode("ref") is { } nullNodeRef && nullNodeRef.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Ref = null;
+            if (parseNode.GetChildNode("last_at") is null) { _explicitNullValueLastAt = default!; _explicitNullProperties?.Remove("last_at"); }
+            else if (parseNode.GetChildNode("last_at") is { } nullNodeLastAt && nullNodeLastAt.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) LastAt = null;
+            if (parseNode.GetChildNode("open_days") is null) { _explicitNullValueOpenDays = default!; _explicitNullProperties?.Remove("open_days"); }
+            else if (parseNode.GetChildNode("open_days") is { } nullNodeOpenDays && nullNodeOpenDays.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) OpenDays = null;
+            if (parseNode.GetChildNode("product") is null) { _explicitNullValueProduct = default!; _explicitNullProperties?.Remove("product"); }
+            else if (parseNode.GetChildNode("product") is { } nullNodeProduct && nullNodeProduct.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Product = null;
+            if (parseNode.GetChildNode("ref") is null) { _explicitNullValueRef = default!; _explicitNullProperties?.Remove("ref"); }
+            else if (parseNode.GetChildNode("ref") is { } nullNodeRef && nullNodeRef.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Ref = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -28,27 +32,27 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The last day the user opened its pages, as YYYY-MM-DD.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? LastAt { get => _explicitNullValueLastAt; set { _explicitNullValueLastAt = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("last_at"); else _explicitNullProperties?.Remove("last_at"); } }
+        public string? LastAt { get => _explicitNullValueLastAt; set { _explicitNullValueLastAt = value; AdditionalData?.Remove("last_at"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("last_at"); else _explicitNullProperties?.Remove("last_at"); } }
         private string? _explicitNullValueLastAt = default!;
 #nullable restore
 #else
-        public string LastAt { get => _explicitNullValueLastAt; set { _explicitNullValueLastAt = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("last_at"); else _explicitNullProperties?.Remove("last_at"); } }
+        public string LastAt { get => _explicitNullValueLastAt; set { _explicitNullValueLastAt = value; AdditionalData?.Remove("last_at"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("last_at"); else _explicitNullProperties?.Remove("last_at"); } }
         private string _explicitNullValueLastAt = default!;
 #endif
         /// <summary>The number of distinct days the user opened its pages.</summary>
-        public int? OpenDays { get => _explicitNullValueOpenDays; set { _explicitNullValueOpenDays = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("open_days"); else _explicitNullProperties?.Remove("open_days"); } }
+        public int? OpenDays { get => _explicitNullValueOpenDays; set { _explicitNullValueOpenDays = value; AdditionalData?.Remove("open_days"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("open_days"); else _explicitNullProperties?.Remove("open_days"); } }
         private int? _explicitNullValueOpenDays = default!;
         /// <summary>* `product_analytics` - Product Analytics* `dashboards` - Dashboards* `web_analytics` - Web Analytics* `session_replay` - Session Replay* `heatmaps` - Heatmaps* `error_tracking` - Error Tracking* `experiments` - Experiments* `feature_flags` - Feature Flags* `early_access_features` - Early Access Features* `surveys` - Surveys* `product_tours` - Product Tours* `notebooks` - Notebooks* `cohorts` - Cohorts* `persons` - Persons* `data_management` - Data Management* `data_warehouse` - Data Warehouse* `data_pipelines` - Data Pipelines* `workflows` - Workflows* `ai_observability` - Ai Observability* `mcp_analytics` - Mcp Analytics* `logs` - Logs* `tracing` - Tracing* `endpoints` - Endpoints* `revenue_analytics` - Revenue Analytics* `customer_analytics` - Customer Analytics* `inbox` - Inbox* `canvases` - Canvases* `support` - Support</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.ActivitySummaryPageVisitsProduct? Product { get => _explicitNullValueProduct; set { _explicitNullValueProduct = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("product"); else _explicitNullProperties?.Remove("product"); } }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ActivitySummaryPageVisitsProduct? Product { get => _explicitNullValueProduct; set { _explicitNullValueProduct = value; AdditionalData?.Remove("product"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("product"); else _explicitNullProperties?.Remove("product"); } }
         private global::Soenneker.PostHog.OpenApiClient.Models.ActivitySummaryPageVisitsProduct? _explicitNullValueProduct = default!;
         /// <summary>The ref that themes cite, such as `p1`.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Ref { get => _explicitNullValueRef; set { _explicitNullValueRef = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("ref"); else _explicitNullProperties?.Remove("ref"); } }
+        public string? Ref { get => _explicitNullValueRef; set { _explicitNullValueRef = value; AdditionalData?.Remove("ref"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("ref"); else _explicitNullProperties?.Remove("ref"); } }
         private string? _explicitNullValueRef = default!;
 #nullable restore
 #else
-        public string Ref { get => _explicitNullValueRef; set { _explicitNullValueRef = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("ref"); else _explicitNullProperties?.Remove("ref"); } }
+        public string Ref { get => _explicitNullValueRef; set { _explicitNullValueRef = value; AdditionalData?.Remove("ref"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("ref"); else _explicitNullProperties?.Remove("ref"); } }
         private string _explicitNullValueRef = default!;
 #endif
         /// <summary>
@@ -78,7 +82,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             {
                 { "last_at", n => { LastAt = n.GetStringValue(); } },
                 { "open_days", n => { OpenDays = n.GetIntValue(); } },
-                { "product", n => { Product = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ActivitySummaryPageVisitsProduct>(); } },
+                { "product", n => { var parsed = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ActivitySummaryPageVisitsProduct>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValueProduct = default; _explicitNullProperties?.Remove("product"); AdditionalData["product"] = unknown; } else { Product = parsed; AdditionalData.Remove("product"); } } },
                 { "ref", n => { Ref = n.GetStringValue(); } },
             };
         }

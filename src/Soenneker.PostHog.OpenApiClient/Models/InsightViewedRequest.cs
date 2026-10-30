@@ -17,7 +17,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("insight_ids") is { } nullNodeInsightIds && nullNodeInsightIds.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) InsightIds = null;
+            if (parseNode.GetChildNode("insight_ids") is null) { _explicitNullValueInsightIds = default!; _explicitNullProperties?.Remove("insight_ids"); }
+            else if (parseNode.GetChildNode("insight_ids") is { } nullNodeInsightIds && nullNodeInsightIds.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) InsightIds = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -25,11 +26,11 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Insight IDs that were just viewed by the current user. At most 2500 ids per request.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<int?>? InsightIds { get => _explicitNullValueInsightIds; set { _explicitNullValueInsightIds = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("insight_ids"); else _explicitNullProperties?.Remove("insight_ids"); } }
+        public List<int?>? InsightIds { get => _explicitNullValueInsightIds; set { _explicitNullValueInsightIds = value; AdditionalData?.Remove("insight_ids"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("insight_ids"); else _explicitNullProperties?.Remove("insight_ids"); } }
         private List<int?>? _explicitNullValueInsightIds = default!;
 #nullable restore
 #else
-        public List<int?> InsightIds { get => _explicitNullValueInsightIds; set { _explicitNullValueInsightIds = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("insight_ids"); else _explicitNullProperties?.Remove("insight_ids"); } }
+        public List<int?> InsightIds { get => _explicitNullValueInsightIds; set { _explicitNullValueInsightIds = value; AdditionalData?.Remove("insight_ids"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("insight_ids"); else _explicitNullProperties?.Remove("insight_ids"); } }
         private List<int?> _explicitNullValueInsightIds = default!;
 #endif
         /// <summary>

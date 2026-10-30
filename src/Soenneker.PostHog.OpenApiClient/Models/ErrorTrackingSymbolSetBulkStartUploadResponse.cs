@@ -17,7 +17,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("id_map") is { } nullNodeIdMap && nullNodeIdMap.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) IdMap = null;
+            if (parseNode.GetChildNode("id_map") is null) { _explicitNullValueIdMap = default!; _explicitNullProperties?.Remove("id_map"); }
+            else if (parseNode.GetChildNode("id_map") is { } nullNodeIdMap && nullNodeIdMap.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) IdMap = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -25,11 +26,11 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Map of chunk ID to upload details. Chunks skipped because their content is unchanged are omitted.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingSymbolSetBulkStartUploadResponseIdMapProperty? IdMap { get => _explicitNullValueIdMap; set { _explicitNullValueIdMap = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("id_map"); else _explicitNullProperties?.Remove("id_map"); } }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingSymbolSetBulkStartUploadResponseIdMapProperty? IdMap { get => _explicitNullValueIdMap; set { _explicitNullValueIdMap = value; AdditionalData?.Remove("id_map"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("id_map"); else _explicitNullProperties?.Remove("id_map"); } }
         private global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingSymbolSetBulkStartUploadResponseIdMapProperty? _explicitNullValueIdMap = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingSymbolSetBulkStartUploadResponseIdMapProperty IdMap { get => _explicitNullValueIdMap; set { _explicitNullValueIdMap = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("id_map"); else _explicitNullProperties?.Remove("id_map"); } }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingSymbolSetBulkStartUploadResponseIdMapProperty IdMap { get => _explicitNullValueIdMap; set { _explicitNullValueIdMap = value; AdditionalData?.Remove("id_map"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("id_map"); else _explicitNullProperties?.Remove("id_map"); } }
         private global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingSymbolSetBulkStartUploadResponseIdMapProperty _explicitNullValueIdMap = default!;
 #endif
         /// <summary>

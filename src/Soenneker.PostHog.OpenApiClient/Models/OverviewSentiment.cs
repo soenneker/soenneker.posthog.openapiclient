@@ -17,9 +17,12 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("evaluationId") is { } nullNodeEvaluationId && nullNodeEvaluationId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) EvaluationId = null;
-            if (parseNode.GetChildNode("negativeShare") is { } nullNodeNegativeShare && nullNodeNegativeShare.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) NegativeShare = null;
-            if (parseNode.GetChildNode("previousShare") is { } nullNodePreviousShare && nullNodePreviousShare.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) PreviousShare = null;
+            if (parseNode.GetChildNode("evaluationId") is null) { _explicitNullValueEvaluationId = default!; _explicitNullProperties?.Remove("evaluationId"); }
+            else if (parseNode.GetChildNode("evaluationId") is { } nullNodeEvaluationId && nullNodeEvaluationId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) EvaluationId = null;
+            if (parseNode.GetChildNode("negativeShare") is null) { _explicitNullValueNegativeShare = default!; _explicitNullProperties?.Remove("negativeShare"); }
+            else if (parseNode.GetChildNode("negativeShare") is { } nullNodeNegativeShare && nullNodeNegativeShare.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) NegativeShare = null;
+            if (parseNode.GetChildNode("previousShare") is null) { _explicitNullValuePreviousShare = default!; _explicitNullProperties?.Remove("previousShare"); }
+            else if (parseNode.GetChildNode("previousShare") is { } nullNodePreviousShare && nullNodePreviousShare.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) PreviousShare = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -27,18 +30,18 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The evaluationId property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? EvaluationId { get => _explicitNullValueEvaluationId; set { _explicitNullValueEvaluationId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("evaluationId"); else _explicitNullProperties?.Remove("evaluationId"); } }
+        public string? EvaluationId { get => _explicitNullValueEvaluationId; set { _explicitNullValueEvaluationId = value; AdditionalData?.Remove("evaluationId"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("evaluationId"); else _explicitNullProperties?.Remove("evaluationId"); } }
         private string? _explicitNullValueEvaluationId = default!;
 #nullable restore
 #else
-        public string EvaluationId { get => _explicitNullValueEvaluationId; set { _explicitNullValueEvaluationId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("evaluationId"); else _explicitNullProperties?.Remove("evaluationId"); } }
+        public string EvaluationId { get => _explicitNullValueEvaluationId; set { _explicitNullValueEvaluationId = value; AdditionalData?.Remove("evaluationId"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("evaluationId"); else _explicitNullProperties?.Remove("evaluationId"); } }
         private string _explicitNullValueEvaluationId = default!;
 #endif
         /// <summary>The negativeShare property</summary>
-        public double? NegativeShare { get => _explicitNullValueNegativeShare; set { _explicitNullValueNegativeShare = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("negativeShare"); else _explicitNullProperties?.Remove("negativeShare"); } }
+        public double? NegativeShare { get => _explicitNullValueNegativeShare; set { _explicitNullValueNegativeShare = value; AdditionalData?.Remove("negativeShare"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("negativeShare"); else _explicitNullProperties?.Remove("negativeShare"); } }
         private double? _explicitNullValueNegativeShare = default!;
         /// <summary>The previousShare property</summary>
-        public double? PreviousShare { get => _explicitNullValuePreviousShare; set { _explicitNullValuePreviousShare = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("previousShare"); else _explicitNullProperties?.Remove("previousShare"); } }
+        public double? PreviousShare { get => _explicitNullValuePreviousShare; set { _explicitNullValuePreviousShare = value; AdditionalData?.Remove("previousShare"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("previousShare"); else _explicitNullProperties?.Remove("previousShare"); } }
         private double? _explicitNullValuePreviousShare = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.OverviewSentiment"/> and sets the default values.

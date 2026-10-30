@@ -17,11 +17,16 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("available_providers") is { } nullNodeAvailableProviders && nullNodeAvailableProviders.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AvailableProviders = null;
-            if (parseNode.GetChildNode("dns_host") is { } nullNodeDnsHost && nullNodeDnsHost.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) DnsHost = null;
-            if (parseNode.GetChildNode("existing_email_tools") is { } nullNodeExistingEmailTools && nullNodeExistingEmailTools.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ExistingEmailTools = null;
-            if (parseNode.GetChildNode("provider_name") is { } nullNodeProviderName && nullNodeProviderName.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ProviderName = null;
-            if (parseNode.GetChildNode("supported") is { } nullNodeSupported && nullNodeSupported.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Supported = null;
+            if (parseNode.GetChildNode("available_providers") is null) { _explicitNullValueAvailableProviders = default!; _explicitNullProperties?.Remove("available_providers"); }
+            else if (parseNode.GetChildNode("available_providers") is { } nullNodeAvailableProviders && nullNodeAvailableProviders.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AvailableProviders = null;
+            if (parseNode.GetChildNode("dns_host") is null) { _explicitNullValueDnsHost = default!; _explicitNullProperties?.Remove("dns_host"); }
+            else if (parseNode.GetChildNode("dns_host") is { } nullNodeDnsHost && nullNodeDnsHost.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) DnsHost = null;
+            if (parseNode.GetChildNode("existing_email_tools") is null) { _explicitNullValueExistingEmailTools = default!; _explicitNullProperties?.Remove("existing_email_tools"); }
+            else if (parseNode.GetChildNode("existing_email_tools") is { } nullNodeExistingEmailTools && nullNodeExistingEmailTools.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ExistingEmailTools = null;
+            if (parseNode.GetChildNode("provider_name") is null) { _explicitNullValueProviderName = default!; _explicitNullProperties?.Remove("provider_name"); }
+            else if (parseNode.GetChildNode("provider_name") is { } nullNodeProviderName && nullNodeProviderName.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ProviderName = null;
+            if (parseNode.GetChildNode("supported") is null) { _explicitNullValueSupported = default!; _explicitNullProperties?.Remove("supported"); }
+            else if (parseNode.GetChildNode("supported") is { } nullNodeSupported && nullNodeSupported.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Supported = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -29,45 +34,45 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Providers the user can pick manually when automatic detection fails. Empty when supported.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.EmailDomainConnectProvider>? AvailableProviders { get => _explicitNullValueAvailableProviders; set { _explicitNullValueAvailableProviders = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("available_providers"); else _explicitNullProperties?.Remove("available_providers"); } }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.EmailDomainConnectProvider>? AvailableProviders { get => _explicitNullValueAvailableProviders; set { _explicitNullValueAvailableProviders = value; AdditionalData?.Remove("available_providers"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("available_providers"); else _explicitNullProperties?.Remove("available_providers"); } }
         private List<global::Soenneker.PostHog.OpenApiClient.Models.EmailDomainConnectProvider>? _explicitNullValueAvailableProviders = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.EmailDomainConnectProvider> AvailableProviders { get => _explicitNullValueAvailableProviders; set { _explicitNullValueAvailableProviders = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("available_providers"); else _explicitNullProperties?.Remove("available_providers"); } }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.EmailDomainConnectProvider> AvailableProviders { get => _explicitNullValueAvailableProviders; set { _explicitNullValueAvailableProviders = value; AdditionalData?.Remove("available_providers"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("available_providers"); else _explicitNullProperties?.Remove("available_providers"); } }
         private List<global::Soenneker.PostHog.OpenApiClient.Models.EmailDomainConnectProvider> _explicitNullValueAvailableProviders = default!;
 #endif
         /// <summary>The detected DNS host of the root domain, from its nameservers. Null when unknown.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.EmailDomainDnsHost? DnsHost { get => _explicitNullValueDnsHost; set { _explicitNullValueDnsHost = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("dns_host"); else _explicitNullProperties?.Remove("dns_host"); } }
+        public global::Soenneker.PostHog.OpenApiClient.Models.EmailDomainDnsHost? DnsHost { get => _explicitNullValueDnsHost; set { _explicitNullValueDnsHost = value; AdditionalData?.Remove("dns_host"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("dns_host"); else _explicitNullProperties?.Remove("dns_host"); } }
         private global::Soenneker.PostHog.OpenApiClient.Models.EmailDomainDnsHost? _explicitNullValueDnsHost = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.EmailDomainDnsHost DnsHost { get => _explicitNullValueDnsHost; set { _explicitNullValueDnsHost = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("dns_host"); else _explicitNullProperties?.Remove("dns_host"); } }
+        public global::Soenneker.PostHog.OpenApiClient.Models.EmailDomainDnsHost DnsHost { get => _explicitNullValueDnsHost; set { _explicitNullValueDnsHost = value; AdditionalData?.Remove("dns_host"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("dns_host"); else _explicitNullProperties?.Remove("dns_host"); } }
         private global::Soenneker.PostHog.OpenApiClient.Models.EmailDomainDnsHost _explicitNullValueDnsHost = default!;
 #endif
         /// <summary>Email tools that already send for the root domain, detected from SPF and DKIM records. Best effort, empty when none are found or when include_email_setup is off.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<string>? ExistingEmailTools { get => _explicitNullValueExistingEmailTools; set { _explicitNullValueExistingEmailTools = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("existing_email_tools"); else _explicitNullProperties?.Remove("existing_email_tools"); } }
+        public List<string>? ExistingEmailTools { get => _explicitNullValueExistingEmailTools; set { _explicitNullValueExistingEmailTools = value; AdditionalData?.Remove("existing_email_tools"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("existing_email_tools"); else _explicitNullProperties?.Remove("existing_email_tools"); } }
         private List<string>? _explicitNullValueExistingEmailTools = default!;
 #nullable restore
 #else
-        public List<string> ExistingEmailTools { get => _explicitNullValueExistingEmailTools; set { _explicitNullValueExistingEmailTools = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("existing_email_tools"); else _explicitNullProperties?.Remove("existing_email_tools"); } }
+        public List<string> ExistingEmailTools { get => _explicitNullValueExistingEmailTools; set { _explicitNullValueExistingEmailTools = value; AdditionalData?.Remove("existing_email_tools"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("existing_email_tools"); else _explicitNullProperties?.Remove("existing_email_tools"); } }
         private List<string> _explicitNullValueExistingEmailTools = default!;
 #endif
         /// <summary>Domain Connect provider that hosts the domain. Null when not supported.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? ProviderName { get => _explicitNullValueProviderName; set { _explicitNullValueProviderName = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("provider_name"); else _explicitNullProperties?.Remove("provider_name"); } }
+        public string? ProviderName { get => _explicitNullValueProviderName; set { _explicitNullValueProviderName = value; AdditionalData?.Remove("provider_name"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("provider_name"); else _explicitNullProperties?.Remove("provider_name"); } }
         private string? _explicitNullValueProviderName = default!;
 #nullable restore
 #else
-        public string ProviderName { get => _explicitNullValueProviderName; set { _explicitNullValueProviderName = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("provider_name"); else _explicitNullProperties?.Remove("provider_name"); } }
+        public string ProviderName { get => _explicitNullValueProviderName; set { _explicitNullValueProviderName = value; AdditionalData?.Remove("provider_name"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("provider_name"); else _explicitNullProperties?.Remove("provider_name"); } }
         private string _explicitNullValueProviderName = default!;
 #endif
         /// <summary>Whether the domain&apos;s DNS provider supports automatic setup through Domain Connect.</summary>
-        public bool? Supported { get => _explicitNullValueSupported; set { _explicitNullValueSupported = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("supported"); else _explicitNullProperties?.Remove("supported"); } }
+        public bool? Supported { get => _explicitNullValueSupported; set { _explicitNullValueSupported = value; AdditionalData?.Remove("supported"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("supported"); else _explicitNullProperties?.Remove("supported"); } }
         private bool? _explicitNullValueSupported = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.EmailDomainConnectCheck"/> and sets the default values.

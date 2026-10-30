@@ -17,42 +17,47 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("baseline_variant_id") is { } nullNodeBaselineVariantId && nullNodeBaselineVariantId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) BaselineVariantId = null;
-            if (parseNode.GetChildNode("comparison_id") is { } nullNodeComparisonId && nullNodeComparisonId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ComparisonId = null;
-            if (parseNode.GetChildNode("expected_skill_version") is { } nullNodeExpectedSkillVersion && nullNodeExpectedSkillVersion.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ExpectedSkillVersion = null;
-            if (parseNode.GetChildNode("note") is { } nullNodeNote && nullNodeNote.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Note = null;
-            if (parseNode.GetChildNode("variants") is { } nullNodeVariants && nullNodeVariants.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Variants = null;
+            if (parseNode.GetChildNode("baseline_variant_id") is null) { _explicitNullValueBaselineVariantId = default!; _explicitNullProperties?.Remove("baseline_variant_id"); }
+            else if (parseNode.GetChildNode("baseline_variant_id") is { } nullNodeBaselineVariantId && nullNodeBaselineVariantId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) BaselineVariantId = null;
+            if (parseNode.GetChildNode("comparison_id") is null) { _explicitNullValueComparisonId = default!; _explicitNullProperties?.Remove("comparison_id"); }
+            else if (parseNode.GetChildNode("comparison_id") is { } nullNodeComparisonId && nullNodeComparisonId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ComparisonId = null;
+            if (parseNode.GetChildNode("expected_skill_version") is null) { _explicitNullValueExpectedSkillVersion = default!; _explicitNullProperties?.Remove("expected_skill_version"); }
+            else if (parseNode.GetChildNode("expected_skill_version") is { } nullNodeExpectedSkillVersion && nullNodeExpectedSkillVersion.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ExpectedSkillVersion = null;
+            if (parseNode.GetChildNode("note") is null) { _explicitNullValueNote = default!; _explicitNullProperties?.Remove("note"); }
+            else if (parseNode.GetChildNode("note") is { } nullNodeNote && nullNodeNote.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Note = null;
+            if (parseNode.GetChildNode("variants") is null) { _explicitNullValueVariants = default!; _explicitNullProperties?.Remove("variants"); }
+            else if (parseNode.GetChildNode("variants") is { } nullNodeVariants && nullNodeVariants.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Variants = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Variant used as the comparison baseline.</summary>
-        public Guid? BaselineVariantId { get => _explicitNullValueBaselineVariantId; set { _explicitNullValueBaselineVariantId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("baseline_variant_id"); else _explicitNullProperties?.Remove("baseline_variant_id"); } }
+        public Guid? BaselineVariantId { get => _explicitNullValueBaselineVariantId; set { _explicitNullValueBaselineVariantId = value; AdditionalData?.Remove("baseline_variant_id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("baseline_variant_id"); else _explicitNullProperties?.Remove("baseline_variant_id"); } }
         private Guid? _explicitNullValueBaselineVariantId = default!;
         /// <summary>Stable comparison ID. Reuse for an exact request retry.</summary>
-        public Guid? ComparisonId { get => _explicitNullValueComparisonId; set { _explicitNullValueComparisonId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("comparison_id"); else _explicitNullProperties?.Remove("comparison_id"); } }
+        public Guid? ComparisonId { get => _explicitNullValueComparisonId; set { _explicitNullValueComparisonId = value; AdditionalData?.Remove("comparison_id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("comparison_id"); else _explicitNullProperties?.Remove("comparison_id"); } }
         private Guid? _explicitNullValueComparisonId = default!;
         /// <summary>Source version shown in the editor. Refuse a new trial if the instructions changed since setup.</summary>
-        public int? ExpectedSkillVersion { get => _explicitNullValueExpectedSkillVersion; set { _explicitNullValueExpectedSkillVersion = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("expected_skill_version"); else _explicitNullProperties?.Remove("expected_skill_version"); } }
+        public int? ExpectedSkillVersion { get => _explicitNullValueExpectedSkillVersion; set { _explicitNullValueExpectedSkillVersion = value; AdditionalData?.Remove("expected_skill_version"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("expected_skill_version"); else _explicitNullProperties?.Remove("expected_skill_version"); } }
         private int? _explicitNullValueExpectedSkillVersion = default!;
         /// <summary>Shared investigation note.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Note { get => _explicitNullValueNote; set { _explicitNullValueNote = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("note"); else _explicitNullProperties?.Remove("note"); } }
+        public string? Note { get => _explicitNullValueNote; set { _explicitNullValueNote = value; AdditionalData?.Remove("note"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("note"); else _explicitNullProperties?.Remove("note"); } }
         private string? _explicitNullValueNote = default!;
 #nullable restore
 #else
-        public string Note { get => _explicitNullValueNote; set { _explicitNullValueNote = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("note"); else _explicitNullProperties?.Remove("note"); } }
+        public string Note { get => _explicitNullValueNote; set { _explicitNullValueNote = value; AdditionalData?.Remove("note"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("note"); else _explicitNullProperties?.Remove("note"); } }
         private string _explicitNullValueNote = default!;
 #endif
         /// <summary>Up to 20 variants, each with up to 20 scout runs.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.ScoutTrialComparisonVariantRequest>? Variants { get => _explicitNullValueVariants; set { _explicitNullValueVariants = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("variants"); else _explicitNullProperties?.Remove("variants"); } }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.ScoutTrialComparisonVariantRequest>? Variants { get => _explicitNullValueVariants; set { _explicitNullValueVariants = value; AdditionalData?.Remove("variants"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("variants"); else _explicitNullProperties?.Remove("variants"); } }
         private List<global::Soenneker.PostHog.OpenApiClient.Models.ScoutTrialComparisonVariantRequest>? _explicitNullValueVariants = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.ScoutTrialComparisonVariantRequest> Variants { get => _explicitNullValueVariants; set { _explicitNullValueVariants = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("variants"); else _explicitNullProperties?.Remove("variants"); } }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.ScoutTrialComparisonVariantRequest> Variants { get => _explicitNullValueVariants; set { _explicitNullValueVariants = value; AdditionalData?.Remove("variants"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("variants"); else _explicitNullProperties?.Remove("variants"); } }
         private List<global::Soenneker.PostHog.OpenApiClient.Models.ScoutTrialComparisonVariantRequest> _explicitNullValueVariants = default!;
 #endif
         /// <summary>

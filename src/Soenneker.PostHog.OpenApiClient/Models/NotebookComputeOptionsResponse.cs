@@ -17,14 +17,22 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("allowed_cpu_cores") is { } nullNodeAllowedCpuCores && nullNodeAllowedCpuCores.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AllowedCpuCores = null;
-            if (parseNode.GetChildNode("allowed_idle_timeout_seconds") is { } nullNodeAllowedIdleTimeoutSeconds && nullNodeAllowedIdleTimeoutSeconds.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AllowedIdleTimeoutSeconds = null;
-            if (parseNode.GetChildNode("allowed_memory_gb") is { } nullNodeAllowedMemoryGb && nullNodeAllowedMemoryGb.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AllowedMemoryGb = null;
-            if (parseNode.GetChildNode("cpu_rate_per_core_hour") is { } nullNodeCpuRatePerCoreHour && nullNodeCpuRatePerCoreHour.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CpuRatePerCoreHour = null;
-            if (parseNode.GetChildNode("currency") is { } nullNodeCurrency && nullNodeCurrency.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Currency = null;
-            if (parseNode.GetChildNode("default_preset_key") is { } nullNodeDefaultPresetKey && nullNodeDefaultPresetKey.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) DefaultPresetKey = null;
-            if (parseNode.GetChildNode("memory_rate_per_gb_hour") is { } nullNodeMemoryRatePerGbHour && nullNodeMemoryRatePerGbHour.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MemoryRatePerGbHour = null;
-            if (parseNode.GetChildNode("presets") is { } nullNodePresets && nullNodePresets.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Presets = null;
+            if (parseNode.GetChildNode("allowed_cpu_cores") is null) { _explicitNullValueAllowedCpuCores = default!; _explicitNullProperties?.Remove("allowed_cpu_cores"); }
+            else if (parseNode.GetChildNode("allowed_cpu_cores") is { } nullNodeAllowedCpuCores && nullNodeAllowedCpuCores.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AllowedCpuCores = null;
+            if (parseNode.GetChildNode("allowed_idle_timeout_seconds") is null) { _explicitNullValueAllowedIdleTimeoutSeconds = default!; _explicitNullProperties?.Remove("allowed_idle_timeout_seconds"); }
+            else if (parseNode.GetChildNode("allowed_idle_timeout_seconds") is { } nullNodeAllowedIdleTimeoutSeconds && nullNodeAllowedIdleTimeoutSeconds.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AllowedIdleTimeoutSeconds = null;
+            if (parseNode.GetChildNode("allowed_memory_gb") is null) { _explicitNullValueAllowedMemoryGb = default!; _explicitNullProperties?.Remove("allowed_memory_gb"); }
+            else if (parseNode.GetChildNode("allowed_memory_gb") is { } nullNodeAllowedMemoryGb && nullNodeAllowedMemoryGb.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AllowedMemoryGb = null;
+            if (parseNode.GetChildNode("cpu_rate_per_core_hour") is null) { _explicitNullValueCpuRatePerCoreHour = default!; _explicitNullProperties?.Remove("cpu_rate_per_core_hour"); }
+            else if (parseNode.GetChildNode("cpu_rate_per_core_hour") is { } nullNodeCpuRatePerCoreHour && nullNodeCpuRatePerCoreHour.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CpuRatePerCoreHour = null;
+            if (parseNode.GetChildNode("currency") is null) { _explicitNullValueCurrency = default!; _explicitNullProperties?.Remove("currency"); }
+            else if (parseNode.GetChildNode("currency") is { } nullNodeCurrency && nullNodeCurrency.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Currency = null;
+            if (parseNode.GetChildNode("default_preset_key") is null) { _explicitNullValueDefaultPresetKey = default!; _explicitNullProperties?.Remove("default_preset_key"); }
+            else if (parseNode.GetChildNode("default_preset_key") is { } nullNodeDefaultPresetKey && nullNodeDefaultPresetKey.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) DefaultPresetKey = null;
+            if (parseNode.GetChildNode("memory_rate_per_gb_hour") is null) { _explicitNullValueMemoryRatePerGbHour = default!; _explicitNullProperties?.Remove("memory_rate_per_gb_hour"); }
+            else if (parseNode.GetChildNode("memory_rate_per_gb_hour") is { } nullNodeMemoryRatePerGbHour && nullNodeMemoryRatePerGbHour.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MemoryRatePerGbHour = null;
+            if (parseNode.GetChildNode("presets") is null) { _explicitNullValuePresets = default!; _explicitNullProperties?.Remove("presets"); }
+            else if (parseNode.GetChildNode("presets") is { } nullNodePresets && nullNodePresets.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Presets = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -32,67 +40,67 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>CPU core counts the kernel config endpoint accepts.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<double?>? AllowedCpuCores { get => _explicitNullValueAllowedCpuCores; set { _explicitNullValueAllowedCpuCores = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("allowed_cpu_cores"); else _explicitNullProperties?.Remove("allowed_cpu_cores"); } }
+        public List<double?>? AllowedCpuCores { get => _explicitNullValueAllowedCpuCores; set { _explicitNullValueAllowedCpuCores = value; AdditionalData?.Remove("allowed_cpu_cores"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("allowed_cpu_cores"); else _explicitNullProperties?.Remove("allowed_cpu_cores"); } }
         private List<double?>? _explicitNullValueAllowedCpuCores = default!;
 #nullable restore
 #else
-        public List<double?> AllowedCpuCores { get => _explicitNullValueAllowedCpuCores; set { _explicitNullValueAllowedCpuCores = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("allowed_cpu_cores"); else _explicitNullProperties?.Remove("allowed_cpu_cores"); } }
+        public List<double?> AllowedCpuCores { get => _explicitNullValueAllowedCpuCores; set { _explicitNullValueAllowedCpuCores = value; AdditionalData?.Remove("allowed_cpu_cores"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("allowed_cpu_cores"); else _explicitNullProperties?.Remove("allowed_cpu_cores"); } }
         private List<double?> _explicitNullValueAllowedCpuCores = default!;
 #endif
         /// <summary>Maximum sandbox lifetimes in seconds that the kernel config endpoint accepts.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<int?>? AllowedIdleTimeoutSeconds { get => _explicitNullValueAllowedIdleTimeoutSeconds; set { _explicitNullValueAllowedIdleTimeoutSeconds = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("allowed_idle_timeout_seconds"); else _explicitNullProperties?.Remove("allowed_idle_timeout_seconds"); } }
+        public List<int?>? AllowedIdleTimeoutSeconds { get => _explicitNullValueAllowedIdleTimeoutSeconds; set { _explicitNullValueAllowedIdleTimeoutSeconds = value; AdditionalData?.Remove("allowed_idle_timeout_seconds"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("allowed_idle_timeout_seconds"); else _explicitNullProperties?.Remove("allowed_idle_timeout_seconds"); } }
         private List<int?>? _explicitNullValueAllowedIdleTimeoutSeconds = default!;
 #nullable restore
 #else
-        public List<int?> AllowedIdleTimeoutSeconds { get => _explicitNullValueAllowedIdleTimeoutSeconds; set { _explicitNullValueAllowedIdleTimeoutSeconds = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("allowed_idle_timeout_seconds"); else _explicitNullProperties?.Remove("allowed_idle_timeout_seconds"); } }
+        public List<int?> AllowedIdleTimeoutSeconds { get => _explicitNullValueAllowedIdleTimeoutSeconds; set { _explicitNullValueAllowedIdleTimeoutSeconds = value; AdditionalData?.Remove("allowed_idle_timeout_seconds"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("allowed_idle_timeout_seconds"); else _explicitNullProperties?.Remove("allowed_idle_timeout_seconds"); } }
         private List<int?> _explicitNullValueAllowedIdleTimeoutSeconds = default!;
 #endif
         /// <summary>Memory sizes in GB the kernel config endpoint accepts.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<double?>? AllowedMemoryGb { get => _explicitNullValueAllowedMemoryGb; set { _explicitNullValueAllowedMemoryGb = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("allowed_memory_gb"); else _explicitNullProperties?.Remove("allowed_memory_gb"); } }
+        public List<double?>? AllowedMemoryGb { get => _explicitNullValueAllowedMemoryGb; set { _explicitNullValueAllowedMemoryGb = value; AdditionalData?.Remove("allowed_memory_gb"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("allowed_memory_gb"); else _explicitNullProperties?.Remove("allowed_memory_gb"); } }
         private List<double?>? _explicitNullValueAllowedMemoryGb = default!;
 #nullable restore
 #else
-        public List<double?> AllowedMemoryGb { get => _explicitNullValueAllowedMemoryGb; set { _explicitNullValueAllowedMemoryGb = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("allowed_memory_gb"); else _explicitNullProperties?.Remove("allowed_memory_gb"); } }
+        public List<double?> AllowedMemoryGb { get => _explicitNullValueAllowedMemoryGb; set { _explicitNullValueAllowedMemoryGb = value; AdditionalData?.Remove("allowed_memory_gb"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("allowed_memory_gb"); else _explicitNullProperties?.Remove("allowed_memory_gb"); } }
         private List<double?> _explicitNullValueAllowedMemoryGb = default!;
 #endif
         /// <summary>Price of one CPU core for one hour, in USD.</summary>
-        public double? CpuRatePerCoreHour { get => _explicitNullValueCpuRatePerCoreHour; set { _explicitNullValueCpuRatePerCoreHour = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("cpu_rate_per_core_hour"); else _explicitNullProperties?.Remove("cpu_rate_per_core_hour"); } }
+        public double? CpuRatePerCoreHour { get => _explicitNullValueCpuRatePerCoreHour; set { _explicitNullValueCpuRatePerCoreHour = value; AdditionalData?.Remove("cpu_rate_per_core_hour"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("cpu_rate_per_core_hour"); else _explicitNullProperties?.Remove("cpu_rate_per_core_hour"); } }
         private double? _explicitNullValueCpuRatePerCoreHour = default!;
         /// <summary>Currency of every price in this response. Always &apos;USD&apos;.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Currency { get => _explicitNullValueCurrency; set { _explicitNullValueCurrency = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("currency"); else _explicitNullProperties?.Remove("currency"); } }
+        public string? Currency { get => _explicitNullValueCurrency; set { _explicitNullValueCurrency = value; AdditionalData?.Remove("currency"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("currency"); else _explicitNullProperties?.Remove("currency"); } }
         private string? _explicitNullValueCurrency = default!;
 #nullable restore
 #else
-        public string Currency { get => _explicitNullValueCurrency; set { _explicitNullValueCurrency = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("currency"); else _explicitNullProperties?.Remove("currency"); } }
+        public string Currency { get => _explicitNullValueCurrency; set { _explicitNullValueCurrency = value; AdditionalData?.Remove("currency"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("currency"); else _explicitNullProperties?.Remove("currency"); } }
         private string _explicitNullValueCurrency = default!;
 #endif
         /// <summary>Preset a sandbox starts with when the notebook sets no compute config.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? DefaultPresetKey { get => _explicitNullValueDefaultPresetKey; set { _explicitNullValueDefaultPresetKey = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("default_preset_key"); else _explicitNullProperties?.Remove("default_preset_key"); } }
+        public string? DefaultPresetKey { get => _explicitNullValueDefaultPresetKey; set { _explicitNullValueDefaultPresetKey = value; AdditionalData?.Remove("default_preset_key"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("default_preset_key"); else _explicitNullProperties?.Remove("default_preset_key"); } }
         private string? _explicitNullValueDefaultPresetKey = default!;
 #nullable restore
 #else
-        public string DefaultPresetKey { get => _explicitNullValueDefaultPresetKey; set { _explicitNullValueDefaultPresetKey = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("default_preset_key"); else _explicitNullProperties?.Remove("default_preset_key"); } }
+        public string DefaultPresetKey { get => _explicitNullValueDefaultPresetKey; set { _explicitNullValueDefaultPresetKey = value; AdditionalData?.Remove("default_preset_key"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("default_preset_key"); else _explicitNullProperties?.Remove("default_preset_key"); } }
         private string _explicitNullValueDefaultPresetKey = default!;
 #endif
         /// <summary>Price of one GB of memory for one hour, in USD.</summary>
-        public double? MemoryRatePerGbHour { get => _explicitNullValueMemoryRatePerGbHour; set { _explicitNullValueMemoryRatePerGbHour = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("memory_rate_per_gb_hour"); else _explicitNullProperties?.Remove("memory_rate_per_gb_hour"); } }
+        public double? MemoryRatePerGbHour { get => _explicitNullValueMemoryRatePerGbHour; set { _explicitNullValueMemoryRatePerGbHour = value; AdditionalData?.Remove("memory_rate_per_gb_hour"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("memory_rate_per_gb_hour"); else _explicitNullProperties?.Remove("memory_rate_per_gb_hour"); } }
         private double? _explicitNullValueMemoryRatePerGbHour = default!;
         /// <summary>Sandbox shapes offered as one-click options.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.NotebookComputePreset>? Presets { get => _explicitNullValuePresets; set { _explicitNullValuePresets = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("presets"); else _explicitNullProperties?.Remove("presets"); } }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.NotebookComputePreset>? Presets { get => _explicitNullValuePresets; set { _explicitNullValuePresets = value; AdditionalData?.Remove("presets"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("presets"); else _explicitNullProperties?.Remove("presets"); } }
         private List<global::Soenneker.PostHog.OpenApiClient.Models.NotebookComputePreset>? _explicitNullValuePresets = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.NotebookComputePreset> Presets { get => _explicitNullValuePresets; set { _explicitNullValuePresets = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("presets"); else _explicitNullProperties?.Remove("presets"); } }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.NotebookComputePreset> Presets { get => _explicitNullValuePresets; set { _explicitNullValuePresets = value; AdditionalData?.Remove("presets"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("presets"); else _explicitNullProperties?.Remove("presets"); } }
         private List<global::Soenneker.PostHog.OpenApiClient.Models.NotebookComputePreset> _explicitNullValuePresets = default!;
 #endif
         /// <summary>

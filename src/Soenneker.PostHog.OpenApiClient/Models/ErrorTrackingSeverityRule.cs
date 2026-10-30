@@ -17,10 +17,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("disabled_data") is { } nullNodeDisabledData && nullNodeDisabledData.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) DisabledData = null;
-            if (parseNode.GetChildNode("filters") is { } nullNodeFilters && nullNodeFilters.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Filters = null;
-            if (parseNode.GetChildNode("order_key") is { } nullNodeOrderKey && nullNodeOrderKey.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) OrderKey = null;
-            if (parseNode.GetChildNode("severity") is { } nullNodeSeverity && nullNodeSeverity.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Severity = null;
+            if (parseNode.GetChildNode("disabled_data") is null) { _explicitNullValueDisabledData = default!; _explicitNullProperties?.Remove("disabled_data"); }
+            else if (parseNode.GetChildNode("disabled_data") is { } nullNodeDisabledData && nullNodeDisabledData.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) DisabledData = null;
+            if (parseNode.GetChildNode("filters") is null) { _explicitNullValueFilters = default!; _explicitNullProperties?.Remove("filters"); }
+            else if (parseNode.GetChildNode("filters") is { } nullNodeFilters && nullNodeFilters.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Filters = null;
+            if (parseNode.GetChildNode("order_key") is null) { _explicitNullValueOrderKey = default!; _explicitNullProperties?.Remove("order_key"); }
+            else if (parseNode.GetChildNode("order_key") is { } nullNodeOrderKey && nullNodeOrderKey.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) OrderKey = null;
+            if (parseNode.GetChildNode("severity") is null) { _explicitNullValueSeverity = default!; _explicitNullProperties?.Remove("severity"); }
+            else if (parseNode.GetChildNode("severity") is { } nullNodeSeverity && nullNodeSeverity.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Severity = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -30,30 +34,30 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Diagnostic details when ingestion automatically disables the rule, otherwise null.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingSeverityRuleDisabledData? DisabledData { get => _explicitNullValueDisabledData; set { _explicitNullValueDisabledData = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("disabled_data"); else _explicitNullProperties?.Remove("disabled_data"); } }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingSeverityRuleDisabledData? DisabledData { get => _explicitNullValueDisabledData; set { _explicitNullValueDisabledData = value; AdditionalData?.Remove("disabled_data"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("disabled_data"); else _explicitNullProperties?.Remove("disabled_data"); } }
         private global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingSeverityRuleDisabledData? _explicitNullValueDisabledData = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingSeverityRuleDisabledData DisabledData { get => _explicitNullValueDisabledData; set { _explicitNullValueDisabledData = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("disabled_data"); else _explicitNullProperties?.Remove("disabled_data"); } }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingSeverityRuleDisabledData DisabledData { get => _explicitNullValueDisabledData; set { _explicitNullValueDisabledData = value; AdditionalData?.Remove("disabled_data"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("disabled_data"); else _explicitNullProperties?.Remove("disabled_data"); } }
         private global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingSeverityRuleDisabledData _explicitNullValueDisabledData = default!;
 #endif
         /// <summary>Property-group filters evaluated against the event that creates an issue.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingSeverityRuleFilters? Filters { get => _explicitNullValueFilters; set { _explicitNullValueFilters = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("filters"); else _explicitNullProperties?.Remove("filters"); } }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingSeverityRuleFilters? Filters { get => _explicitNullValueFilters; set { _explicitNullValueFilters = value; AdditionalData?.Remove("filters"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("filters"); else _explicitNullProperties?.Remove("filters"); } }
         private global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingSeverityRuleFilters? _explicitNullValueFilters = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingSeverityRuleFilters Filters { get => _explicitNullValueFilters; set { _explicitNullValueFilters = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("filters"); else _explicitNullProperties?.Remove("filters"); } }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingSeverityRuleFilters Filters { get => _explicitNullValueFilters; set { _explicitNullValueFilters = value; AdditionalData?.Remove("filters"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("filters"); else _explicitNullProperties?.Remove("filters"); } }
         private global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingSeverityRuleFilters _explicitNullValueFilters = default!;
 #endif
         /// <summary>Unique identifier of the severity rule.</summary>
         public Guid? Id { get; private set; }
         /// <summary>Evaluation priority. Lower values run first, and the first matching rule wins.</summary>
-        public int? OrderKey { get => _explicitNullValueOrderKey; set { _explicitNullValueOrderKey = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("order_key"); else _explicitNullProperties?.Remove("order_key"); } }
+        public int? OrderKey { get => _explicitNullValueOrderKey; set { _explicitNullValueOrderKey = value; AdditionalData?.Remove("order_key"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("order_key"); else _explicitNullProperties?.Remove("order_key"); } }
         private int? _explicitNullValueOrderKey = default!;
         /// <summary>* `low` - low* `medium` - medium* `high` - high* `critical` - critical</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingSeverityRuleSeverity? Severity { get => _explicitNullValueSeverity; set { _explicitNullValueSeverity = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("severity"); else _explicitNullProperties?.Remove("severity"); } }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingSeverityRuleSeverity? Severity { get => _explicitNullValueSeverity; set { _explicitNullValueSeverity = value; AdditionalData?.Remove("severity"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("severity"); else _explicitNullProperties?.Remove("severity"); } }
         private global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingSeverityRuleSeverity? _explicitNullValueSeverity = default!;
         /// <summary>When the rule was last updated.</summary>
         public DateTimeOffset? UpdatedAt { get; private set; }
@@ -87,7 +91,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "filters", n => { Filters = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingSeverityRuleFilters>(global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingSeverityRuleFilters.CreateFromDiscriminatorValue); } },
                 { "id", n => { Id = n.GetGuidValue(); } },
                 { "order_key", n => { OrderKey = n.GetIntValue(); } },
-                { "severity", n => { Severity = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingSeverityRuleSeverity>(); } },
+                { "severity", n => { var parsed = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingSeverityRuleSeverity>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValueSeverity = default; _explicitNullProperties?.Remove("severity"); AdditionalData["severity"] = unknown; } else { Severity = parsed; AdditionalData.Remove("severity"); } } },
                 { "updated_at", n => { UpdatedAt = n.GetDateTimeOffsetValue(); } },
             };
         }

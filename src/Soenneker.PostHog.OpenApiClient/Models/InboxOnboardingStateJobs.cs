@@ -18,17 +18,19 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("recommendations") is { } nullNodeRecommendations && nullNodeRecommendations.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Recommendations = null;
-            if (parseNode.GetChildNode("scout") is { } nullNodeScout && nullNodeScout.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Scout = null;
+            if (parseNode.GetChildNode("recommendations") is null) { _explicitNullValueRecommendations = default!; _explicitNullProperties?.Remove("recommendations"); }
+            else if (parseNode.GetChildNode("recommendations") is { } nullNodeRecommendations && nullNodeRecommendations.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Recommendations = null;
+            if (parseNode.GetChildNode("scout") is null) { _explicitNullValueScout = default!; _explicitNullProperties?.Remove("scout"); }
+            else if (parseNode.GetChildNode("scout") is { } nullNodeScout && nullNodeScout.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Scout = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>* `pending` - Pending* `started` - Started* `skipped` - Unavailable* `failed` - Failed</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.InboxOnboardingJobsRecommendations? Recommendations { get => _explicitNullValueRecommendations; set { _explicitNullValueRecommendations = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("recommendations"); else _explicitNullProperties?.Remove("recommendations"); } }
+        public global::Soenneker.PostHog.OpenApiClient.Models.InboxOnboardingJobsRecommendations? Recommendations { get => _explicitNullValueRecommendations; set { _explicitNullValueRecommendations = value; AdditionalData?.Remove("recommendations"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("recommendations"); else _explicitNullProperties?.Remove("recommendations"); } }
         private global::Soenneker.PostHog.OpenApiClient.Models.InboxOnboardingJobsRecommendations? _explicitNullValueRecommendations = default!;
         /// <summary>* `pending` - Pending* `started` - Started* `skipped` - Unavailable* `failed` - Failed</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.InboxOnboardingJobsScout? Scout { get => _explicitNullValueScout; set { _explicitNullValueScout = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("scout"); else _explicitNullProperties?.Remove("scout"); } }
+        public global::Soenneker.PostHog.OpenApiClient.Models.InboxOnboardingJobsScout? Scout { get => _explicitNullValueScout; set { _explicitNullValueScout = value; AdditionalData?.Remove("scout"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("scout"); else _explicitNullProperties?.Remove("scout"); } }
         private global::Soenneker.PostHog.OpenApiClient.Models.InboxOnboardingJobsScout? _explicitNullValueScout = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.InboxOnboardingStateJobs"/> and sets the default values.
@@ -55,8 +57,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "recommendations", n => { Recommendations = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.InboxOnboardingJobsRecommendations>(); } },
-                { "scout", n => { Scout = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.InboxOnboardingJobsScout>(); } },
+                { "recommendations", n => { var parsed = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.InboxOnboardingJobsRecommendations>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValueRecommendations = default; _explicitNullProperties?.Remove("recommendations"); AdditionalData["recommendations"] = unknown; } else { Recommendations = parsed; AdditionalData.Remove("recommendations"); } } },
+                { "scout", n => { var parsed = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.InboxOnboardingJobsScout>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValueScout = default; _explicitNullProperties?.Remove("scout"); AdditionalData["scout"] = unknown; } else { Scout = parsed; AdditionalData.Remove("scout"); } } },
             };
         }
         /// <summary>

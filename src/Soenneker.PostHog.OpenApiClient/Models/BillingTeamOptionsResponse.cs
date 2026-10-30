@@ -17,7 +17,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("team_id_options") is { } nullNodeTeamIdOptions && nullNodeTeamIdOptions.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TeamIdOptions = null;
+            if (parseNode.GetChildNode("team_id_options") is null) { _explicitNullValueTeamIdOptions = default!; _explicitNullProperties?.Remove("team_id_options"); }
+            else if (parseNode.GetChildNode("team_id_options") is { } nullNodeTeamIdOptions && nullNodeTeamIdOptions.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TeamIdOptions = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -25,11 +26,11 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Project ids that appear in the organization&apos;s usage reports.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<int?>? TeamIdOptions { get => _explicitNullValueTeamIdOptions; set { _explicitNullValueTeamIdOptions = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("team_id_options"); else _explicitNullProperties?.Remove("team_id_options"); } }
+        public List<int?>? TeamIdOptions { get => _explicitNullValueTeamIdOptions; set { _explicitNullValueTeamIdOptions = value; AdditionalData?.Remove("team_id_options"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("team_id_options"); else _explicitNullProperties?.Remove("team_id_options"); } }
         private List<int?>? _explicitNullValueTeamIdOptions = default!;
 #nullable restore
 #else
-        public List<int?> TeamIdOptions { get => _explicitNullValueTeamIdOptions; set { _explicitNullValueTeamIdOptions = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("team_id_options"); else _explicitNullProperties?.Remove("team_id_options"); } }
+        public List<int?> TeamIdOptions { get => _explicitNullValueTeamIdOptions; set { _explicitNullValueTeamIdOptions = value; AdditionalData?.Remove("team_id_options"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("team_id_options"); else _explicitNullProperties?.Remove("team_id_options"); } }
         private List<int?> _explicitNullValueTeamIdOptions = default!;
 #endif
         /// <summary>

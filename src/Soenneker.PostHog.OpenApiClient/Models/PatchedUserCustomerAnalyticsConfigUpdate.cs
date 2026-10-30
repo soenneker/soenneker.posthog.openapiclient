@@ -17,19 +17,22 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("account_detail_tabs") is { } nullNodeAccountDetailTabs && nullNodeAccountDetailTabs.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AccountDetailTabs = null;
-            if (parseNode.GetChildNode("pinned_properties") is { } nullNodePinnedProperties && nullNodePinnedProperties.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) PinnedProperties = null;
-            if (parseNode.GetChildNode("task_digest") is { } nullNodeTaskDigest && nullNodeTaskDigest.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TaskDigest = null;
+            if (parseNode.GetChildNode("account_detail_tabs") is null) { _explicitNullValueAccountDetailTabs = default!; _explicitNullProperties?.Remove("account_detail_tabs"); }
+            else if (parseNode.GetChildNode("account_detail_tabs") is { } nullNodeAccountDetailTabs && nullNodeAccountDetailTabs.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AccountDetailTabs = null;
+            if (parseNode.GetChildNode("pinned_properties") is null) { _explicitNullValuePinnedProperties = default!; _explicitNullProperties?.Remove("pinned_properties"); }
+            else if (parseNode.GetChildNode("pinned_properties") is { } nullNodePinnedProperties && nullNodePinnedProperties.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) PinnedProperties = null;
+            if (parseNode.GetChildNode("task_digest") is null) { _explicitNullValueTaskDigest = default!; _explicitNullProperties?.Remove("task_digest"); }
+            else if (parseNode.GetChildNode("task_digest") is { } nullNodeTaskDigest && nullNodeTaskDigest.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TaskDigest = null;
         }
 
         /// <summary>Complete personal account tab configuration. Omit to keep it unchanged.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedUserCustomerAnalyticsConfigUpdateAccountDetailTabs? AccountDetailTabs { get => _explicitNullValueAccountDetailTabs; set { _explicitNullValueAccountDetailTabs = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("account_detail_tabs"); else _explicitNullProperties?.Remove("account_detail_tabs"); } }
+        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedUserCustomerAnalyticsConfigUpdateAccountDetailTabs? AccountDetailTabs { get => _explicitNullValueAccountDetailTabs; set { _explicitNullValueAccountDetailTabs = value; AdditionalData?.Remove("account_detail_tabs"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("account_detail_tabs"); else _explicitNullProperties?.Remove("account_detail_tabs"); } }
         private global::Soenneker.PostHog.OpenApiClient.Models.PatchedUserCustomerAnalyticsConfigUpdateAccountDetailTabs? _explicitNullValueAccountDetailTabs = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedUserCustomerAnalyticsConfigUpdateAccountDetailTabs AccountDetailTabs { get => _explicitNullValueAccountDetailTabs; set { _explicitNullValueAccountDetailTabs = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("account_detail_tabs"); else _explicitNullProperties?.Remove("account_detail_tabs"); } }
+        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedUserCustomerAnalyticsConfigUpdateAccountDetailTabs AccountDetailTabs { get => _explicitNullValueAccountDetailTabs; set { _explicitNullValueAccountDetailTabs = value; AdditionalData?.Remove("account_detail_tabs"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("account_detail_tabs"); else _explicitNullProperties?.Remove("account_detail_tabs"); } }
         private global::Soenneker.PostHog.OpenApiClient.Models.PatchedUserCustomerAnalyticsConfigUpdateAccountDetailTabs _explicitNullValueAccountDetailTabs = default!;
 #endif
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -37,21 +40,21 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Complete ordered list of account properties to pin. Omit to keep the current pins; pass an empty list to clear them.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.PinnedAccountProperty>? PinnedProperties { get => _explicitNullValuePinnedProperties; set { _explicitNullValuePinnedProperties = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("pinned_properties"); else _explicitNullProperties?.Remove("pinned_properties"); } }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.PinnedAccountProperty>? PinnedProperties { get => _explicitNullValuePinnedProperties; set { _explicitNullValuePinnedProperties = value; AdditionalData?.Remove("pinned_properties"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("pinned_properties"); else _explicitNullProperties?.Remove("pinned_properties"); } }
         private List<global::Soenneker.PostHog.OpenApiClient.Models.PinnedAccountProperty>? _explicitNullValuePinnedProperties = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.PinnedAccountProperty> PinnedProperties { get => _explicitNullValuePinnedProperties; set { _explicitNullValuePinnedProperties = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("pinned_properties"); else _explicitNullProperties?.Remove("pinned_properties"); } }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.PinnedAccountProperty> PinnedProperties { get => _explicitNullValuePinnedProperties; set { _explicitNullValuePinnedProperties = value; AdditionalData?.Remove("pinned_properties"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("pinned_properties"); else _explicitNullProperties?.Remove("pinned_properties"); } }
         private List<global::Soenneker.PostHog.OpenApiClient.Models.PinnedAccountProperty> _explicitNullValuePinnedProperties = default!;
 #endif
         /// <summary>Task digest email preferences to change. Omit the object to keep them all; omit a field inside it to keep that one.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedUserCustomerAnalyticsConfigUpdateTaskDigest? TaskDigest { get => _explicitNullValueTaskDigest; set { _explicitNullValueTaskDigest = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("task_digest"); else _explicitNullProperties?.Remove("task_digest"); } }
+        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedUserCustomerAnalyticsConfigUpdateTaskDigest? TaskDigest { get => _explicitNullValueTaskDigest; set { _explicitNullValueTaskDigest = value; AdditionalData?.Remove("task_digest"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("task_digest"); else _explicitNullProperties?.Remove("task_digest"); } }
         private global::Soenneker.PostHog.OpenApiClient.Models.PatchedUserCustomerAnalyticsConfigUpdateTaskDigest? _explicitNullValueTaskDigest = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedUserCustomerAnalyticsConfigUpdateTaskDigest TaskDigest { get => _explicitNullValueTaskDigest; set { _explicitNullValueTaskDigest = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("task_digest"); else _explicitNullProperties?.Remove("task_digest"); } }
+        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedUserCustomerAnalyticsConfigUpdateTaskDigest TaskDigest { get => _explicitNullValueTaskDigest; set { _explicitNullValueTaskDigest = value; AdditionalData?.Remove("task_digest"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("task_digest"); else _explicitNullProperties?.Remove("task_digest"); } }
         private global::Soenneker.PostHog.OpenApiClient.Models.PatchedUserCustomerAnalyticsConfigUpdateTaskDigest _explicitNullValueTaskDigest = default!;
 #endif
         /// <summary>

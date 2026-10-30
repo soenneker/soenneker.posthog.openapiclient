@@ -18,23 +18,40 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("breakdown_colors") is { } nullNodeBreakdownColors && nullNodeBreakdownColors.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) BreakdownColors = null;
-            if (parseNode.GetChildNode("data_color_theme_id") is { } nullNodeDataColorThemeId && nullNodeDataColorThemeId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) DataColorThemeId = null;
-            if (parseNode.GetChildNode("delete_insights") is { } nullNodeDeleteInsights && nullNodeDeleteInsights.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) DeleteInsights = null;
-            if (parseNode.GetChildNode("description") is { } nullNodeDescription && nullNodeDescription.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Description = null;
-            if (parseNode.GetChildNode("filters") is { } nullNodeFilters && nullNodeFilters.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Filters = null;
-            if (parseNode.GetChildNode("grid_spacing") is { } nullNodeGridSpacing && nullNodeGridSpacing.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) GridSpacing = null;
-            if (parseNode.GetChildNode("group_display") is { } nullNodeGroupDisplay && nullNodeGroupDisplay.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) GroupDisplay = null;
-            if (parseNode.GetChildNode("groups") is { } nullNodeGroups && nullNodeGroups.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Groups = null;
-            if (parseNode.GetChildNode("group_titles") is { } nullNodeGroupTitles && nullNodeGroupTitles.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) GroupTitles = null;
-            if (parseNode.GetChildNode("layout_compaction") is { } nullNodeLayoutCompaction && nullNodeLayoutCompaction.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) LayoutCompaction = null;
-            if (parseNode.GetChildNode("name") is { } nullNodeName && nullNodeName.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Name = null;
-            if (parseNode.GetChildNode("pinned") is { } nullNodePinned && nullNodePinned.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Pinned = null;
-            if (parseNode.GetChildNode("quick_filter_ids") is { } nullNodeQuickFilterIds && nullNodeQuickFilterIds.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) QuickFilterIds = null;
-            if (parseNode.GetChildNode("tags") is { } nullNodeTags && nullNodeTags.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Tags = null;
-            if (parseNode.GetChildNode("tiles") is { } nullNodeTiles && nullNodeTiles.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Tiles = null;
-            if (parseNode.GetChildNode("use_dashboard") is { } nullNodeUseDashboard && nullNodeUseDashboard.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) UseDashboard = null;
-            if (parseNode.GetChildNode("use_template") is { } nullNodeUseTemplate && nullNodeUseTemplate.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) UseTemplate = null;
+            if (parseNode.GetChildNode("breakdown_colors") is null) { _explicitNullValueBreakdownColors = default!; _explicitNullProperties?.Remove("breakdown_colors"); }
+            else if (parseNode.GetChildNode("breakdown_colors") is { } nullNodeBreakdownColors && nullNodeBreakdownColors.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) BreakdownColors = null;
+            if (parseNode.GetChildNode("data_color_theme_id") is null) { _explicitNullValueDataColorThemeId = default!; _explicitNullProperties?.Remove("data_color_theme_id"); }
+            else if (parseNode.GetChildNode("data_color_theme_id") is { } nullNodeDataColorThemeId && nullNodeDataColorThemeId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) DataColorThemeId = null;
+            if (parseNode.GetChildNode("delete_insights") is null) { _explicitNullValueDeleteInsights = default!; _explicitNullProperties?.Remove("delete_insights"); }
+            else if (parseNode.GetChildNode("delete_insights") is { } nullNodeDeleteInsights && nullNodeDeleteInsights.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) DeleteInsights = null;
+            if (parseNode.GetChildNode("description") is null) { _explicitNullValueDescription = default!; _explicitNullProperties?.Remove("description"); }
+            else if (parseNode.GetChildNode("description") is { } nullNodeDescription && nullNodeDescription.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Description = null;
+            if (parseNode.GetChildNode("filters") is null) { _explicitNullValueFilters = default!; _explicitNullProperties?.Remove("filters"); }
+            else if (parseNode.GetChildNode("filters") is { } nullNodeFilters && nullNodeFilters.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Filters = null;
+            if (parseNode.GetChildNode("grid_spacing") is null) { _explicitNullValueGridSpacing = default!; _explicitNullProperties?.Remove("grid_spacing"); }
+            else if (parseNode.GetChildNode("grid_spacing") is { } nullNodeGridSpacing && nullNodeGridSpacing.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) GridSpacing = null;
+            if (parseNode.GetChildNode("group_display") is null) { _explicitNullValueGroupDisplay = default!; _explicitNullProperties?.Remove("group_display"); }
+            else if (parseNode.GetChildNode("group_display") is { } nullNodeGroupDisplay && nullNodeGroupDisplay.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) GroupDisplay = null;
+            if (parseNode.GetChildNode("groups") is null) { _explicitNullValueGroups = default!; _explicitNullProperties?.Remove("groups"); }
+            else if (parseNode.GetChildNode("groups") is { } nullNodeGroups && nullNodeGroups.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Groups = null;
+            if (parseNode.GetChildNode("group_titles") is null) { _explicitNullValueGroupTitles = default!; _explicitNullProperties?.Remove("group_titles"); }
+            else if (parseNode.GetChildNode("group_titles") is { } nullNodeGroupTitles && nullNodeGroupTitles.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) GroupTitles = null;
+            if (parseNode.GetChildNode("layout_compaction") is null) { _explicitNullValueLayoutCompaction = default!; _explicitNullProperties?.Remove("layout_compaction"); }
+            else if (parseNode.GetChildNode("layout_compaction") is { } nullNodeLayoutCompaction && nullNodeLayoutCompaction.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) LayoutCompaction = null;
+            if (parseNode.GetChildNode("name") is null) { _explicitNullValueName = default!; _explicitNullProperties?.Remove("name"); }
+            else if (parseNode.GetChildNode("name") is { } nullNodeName && nullNodeName.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Name = null;
+            if (parseNode.GetChildNode("pinned") is null) { _explicitNullValuePinned = default!; _explicitNullProperties?.Remove("pinned"); }
+            else if (parseNode.GetChildNode("pinned") is { } nullNodePinned && nullNodePinned.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Pinned = null;
+            if (parseNode.GetChildNode("quick_filter_ids") is null) { _explicitNullValueQuickFilterIds = default!; _explicitNullProperties?.Remove("quick_filter_ids"); }
+            else if (parseNode.GetChildNode("quick_filter_ids") is { } nullNodeQuickFilterIds && nullNodeQuickFilterIds.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) QuickFilterIds = null;
+            if (parseNode.GetChildNode("tags") is null) { _explicitNullValueTags = default!; _explicitNullProperties?.Remove("tags"); }
+            else if (parseNode.GetChildNode("tags") is { } nullNodeTags && nullNodeTags.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Tags = null;
+            if (parseNode.GetChildNode("tiles") is null) { _explicitNullValueTiles = default!; _explicitNullProperties?.Remove("tiles"); }
+            else if (parseNode.GetChildNode("tiles") is { } nullNodeTiles && nullNodeTiles.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Tiles = null;
+            if (parseNode.GetChildNode("use_dashboard") is null) { _explicitNullValueUseDashboard = default!; _explicitNullProperties?.Remove("use_dashboard"); }
+            else if (parseNode.GetChildNode("use_dashboard") is { } nullNodeUseDashboard && nullNodeUseDashboard.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) UseDashboard = null;
+            if (parseNode.GetChildNode("use_template") is null) { _explicitNullValueUseTemplate = default!; _explicitNullProperties?.Remove("use_template"); }
+            else if (parseNode.GetChildNode("use_template") is { } nullNodeUseTemplate && nullNodeUseTemplate.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) UseTemplate = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -42,122 +59,122 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Colors pinned to specific breakdown values across the dashboard&apos;s tiles. A list of entries, not an object keyed by breakdown value. Send an empty list to clear them.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.BreakdownColorConfig>? BreakdownColors { get => _explicitNullValueBreakdownColors; set { _explicitNullValueBreakdownColors = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("breakdown_colors"); else _explicitNullProperties?.Remove("breakdown_colors"); } }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.BreakdownColorConfig>? BreakdownColors { get => _explicitNullValueBreakdownColors; set { _explicitNullValueBreakdownColors = value; AdditionalData?.Remove("breakdown_colors"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("breakdown_colors"); else _explicitNullProperties?.Remove("breakdown_colors"); } }
         private List<global::Soenneker.PostHog.OpenApiClient.Models.BreakdownColorConfig>? _explicitNullValueBreakdownColors = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.BreakdownColorConfig> BreakdownColors { get => _explicitNullValueBreakdownColors; set { _explicitNullValueBreakdownColors = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("breakdown_colors"); else _explicitNullProperties?.Remove("breakdown_colors"); } }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.BreakdownColorConfig> BreakdownColors { get => _explicitNullValueBreakdownColors; set { _explicitNullValueBreakdownColors = value; AdditionalData?.Remove("breakdown_colors"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("breakdown_colors"); else _explicitNullProperties?.Remove("breakdown_colors"); } }
         private List<global::Soenneker.PostHog.OpenApiClient.Models.BreakdownColorConfig> _explicitNullValueBreakdownColors = default!;
 #endif
         /// <summary>ID of the color theme used for chart visualizations.</summary>
-        public int? DataColorThemeId { get => _explicitNullValueDataColorThemeId; set { _explicitNullValueDataColorThemeId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("data_color_theme_id"); else _explicitNullProperties?.Remove("data_color_theme_id"); } }
+        public int? DataColorThemeId { get => _explicitNullValueDataColorThemeId; set { _explicitNullValueDataColorThemeId = value; AdditionalData?.Remove("data_color_theme_id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("data_color_theme_id"); else _explicitNullProperties?.Remove("data_color_theme_id"); } }
         private int? _explicitNullValueDataColorThemeId = default!;
         /// <summary>When deleting, also delete insights that are only on this dashboard.</summary>
-        public bool? DeleteInsights { get => _explicitNullValueDeleteInsights; set { _explicitNullValueDeleteInsights = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("delete_insights"); else _explicitNullProperties?.Remove("delete_insights"); } }
+        public bool? DeleteInsights { get => _explicitNullValueDeleteInsights; set { _explicitNullValueDeleteInsights = value; AdditionalData?.Remove("delete_insights"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("delete_insights"); else _explicitNullProperties?.Remove("delete_insights"); } }
         private bool? _explicitNullValueDeleteInsights = default!;
         /// <summary>The description property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Description { get => _explicitNullValueDescription; set { _explicitNullValueDescription = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("description"); else _explicitNullProperties?.Remove("description"); } }
+        public string? Description { get => _explicitNullValueDescription; set { _explicitNullValueDescription = value; AdditionalData?.Remove("description"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("description"); else _explicitNullProperties?.Remove("description"); } }
         private string? _explicitNullValueDescription = default!;
 #nullable restore
 #else
-        public string Description { get => _explicitNullValueDescription; set { _explicitNullValueDescription = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("description"); else _explicitNullProperties?.Remove("description"); } }
+        public string Description { get => _explicitNullValueDescription; set { _explicitNullValueDescription = value; AdditionalData?.Remove("description"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("description"); else _explicitNullProperties?.Remove("description"); } }
         private string _explicitNullValueDescription = default!;
 #endif
         /// <summary>Dashboard-level filters (date range and properties) applied across all tiles as the source of truth.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedPatchedDashboardOpenApiFilters? Filters { get => _explicitNullValueFilters; set { _explicitNullValueFilters = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("filters"); else _explicitNullProperties?.Remove("filters"); } }
+        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedPatchedDashboardOpenApiFilters? Filters { get => _explicitNullValueFilters; set { _explicitNullValueFilters = value; AdditionalData?.Remove("filters"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("filters"); else _explicitNullProperties?.Remove("filters"); } }
         private global::Soenneker.PostHog.OpenApiClient.Models.PatchedPatchedDashboardOpenApiFilters? _explicitNullValueFilters = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedPatchedDashboardOpenApiFilters Filters { get => _explicitNullValueFilters; set { _explicitNullValueFilters = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("filters"); else _explicitNullProperties?.Remove("filters"); } }
+        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedPatchedDashboardOpenApiFilters Filters { get => _explicitNullValueFilters; set { _explicitNullValueFilters = value; AdditionalData?.Remove("filters"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("filters"); else _explicitNullProperties?.Remove("filters"); } }
         private global::Soenneker.PostHog.OpenApiClient.Models.PatchedPatchedDashboardOpenApiFilters _explicitNullValueFilters = default!;
 #endif
         /// <summary>* `tight` - tight* `condensed` - condensed* `standard` - standard* `relaxed` - relaxed* `wide` - wide</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedPatchedDashboardOpenApiGridSpacing? GridSpacing { get => _explicitNullValueGridSpacing; set { _explicitNullValueGridSpacing = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("grid_spacing"); else _explicitNullProperties?.Remove("grid_spacing"); } }
+        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedPatchedDashboardOpenApiGridSpacing? GridSpacing { get => _explicitNullValueGridSpacing; set { _explicitNullValueGridSpacing = value; AdditionalData?.Remove("grid_spacing"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("grid_spacing"); else _explicitNullProperties?.Remove("grid_spacing"); } }
         private global::Soenneker.PostHog.OpenApiClient.Models.PatchedPatchedDashboardOpenApiGridSpacing? _explicitNullValueGridSpacing = default!;
         /// <summary>* `sections` - sections* `tabs` - tabs</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedPatchedDashboardOpenApiGroupDisplay? GroupDisplay { get => _explicitNullValueGroupDisplay; set { _explicitNullValueGroupDisplay = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("group_display"); else _explicitNullProperties?.Remove("group_display"); } }
+        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedPatchedDashboardOpenApiGroupDisplay? GroupDisplay { get => _explicitNullValueGroupDisplay; set { _explicitNullValueGroupDisplay = value; AdditionalData?.Remove("group_display"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("group_display"); else _explicitNullProperties?.Remove("group_display"); } }
         private global::Soenneker.PostHog.OpenApiClient.Models.PatchedPatchedDashboardOpenApiGroupDisplay? _explicitNullValueGroupDisplay = default!;
         /// <summary>Settings for tile groups, keyed by the tiles&apos; group_key. Each group shows as a band of its tiles under a heading that viewers can open and close. Viewers who do not have bands yet see only the group title above its tiles. A write replaces the whole map. Send an empty object or null to remove all group settings.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedPatchedDashboardOpenApiGroupsProperty? Groups { get => _explicitNullValueGroups; set { _explicitNullValueGroups = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("groups"); else _explicitNullProperties?.Remove("groups"); } }
+        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedPatchedDashboardOpenApiGroupsProperty? Groups { get => _explicitNullValueGroups; set { _explicitNullValueGroups = value; AdditionalData?.Remove("groups"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("groups"); else _explicitNullProperties?.Remove("groups"); } }
         private global::Soenneker.PostHog.OpenApiClient.Models.PatchedPatchedDashboardOpenApiGroupsProperty? _explicitNullValueGroups = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedPatchedDashboardOpenApiGroupsProperty Groups { get => _explicitNullValueGroups; set { _explicitNullValueGroups = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("groups"); else _explicitNullProperties?.Remove("groups"); } }
+        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedPatchedDashboardOpenApiGroupsProperty Groups { get => _explicitNullValueGroups; set { _explicitNullValueGroups = value; AdditionalData?.Remove("groups"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("groups"); else _explicitNullProperties?.Remove("groups"); } }
         private global::Soenneker.PostHog.OpenApiClient.Models.PatchedPatchedDashboardOpenApiGroupsProperty _explicitNullValueGroups = default!;
 #endif
         /// <summary>Deprecated: use groups. Titles for tile groups, keyed by group_key. A write replaces all titles and keeps the other group settings. Send an empty object or null to clear titles. Do not send it with groups.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedPatchedDashboardOpenApiGroupTitlesProperty? GroupTitles { get => _explicitNullValueGroupTitles; set { _explicitNullValueGroupTitles = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("group_titles"); else _explicitNullProperties?.Remove("group_titles"); } }
+        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedPatchedDashboardOpenApiGroupTitlesProperty? GroupTitles { get => _explicitNullValueGroupTitles; set { _explicitNullValueGroupTitles = value; AdditionalData?.Remove("group_titles"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("group_titles"); else _explicitNullProperties?.Remove("group_titles"); } }
         private global::Soenneker.PostHog.OpenApiClient.Models.PatchedPatchedDashboardOpenApiGroupTitlesProperty? _explicitNullValueGroupTitles = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedPatchedDashboardOpenApiGroupTitlesProperty GroupTitles { get => _explicitNullValueGroupTitles; set { _explicitNullValueGroupTitles = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("group_titles"); else _explicitNullProperties?.Remove("group_titles"); } }
+        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedPatchedDashboardOpenApiGroupTitlesProperty GroupTitles { get => _explicitNullValueGroupTitles; set { _explicitNullValueGroupTitles = value; AdditionalData?.Remove("group_titles"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("group_titles"); else _explicitNullProperties?.Remove("group_titles"); } }
         private global::Soenneker.PostHog.OpenApiClient.Models.PatchedPatchedDashboardOpenApiGroupTitlesProperty _explicitNullValueGroupTitles = default!;
 #endif
         /// <summary>* `vertical` - vertical* `horizontal` - horizontal* `stable` - stable</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedPatchedDashboardOpenApiLayoutCompaction? LayoutCompaction { get => _explicitNullValueLayoutCompaction; set { _explicitNullValueLayoutCompaction = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("layout_compaction"); else _explicitNullProperties?.Remove("layout_compaction"); } }
+        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedPatchedDashboardOpenApiLayoutCompaction? LayoutCompaction { get => _explicitNullValueLayoutCompaction; set { _explicitNullValueLayoutCompaction = value; AdditionalData?.Remove("layout_compaction"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("layout_compaction"); else _explicitNullProperties?.Remove("layout_compaction"); } }
         private global::Soenneker.PostHog.OpenApiClient.Models.PatchedPatchedDashboardOpenApiLayoutCompaction? _explicitNullValueLayoutCompaction = default!;
         /// <summary>The name property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Name { get => _explicitNullValueName; set { _explicitNullValueName = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("name"); else _explicitNullProperties?.Remove("name"); } }
+        public string? Name { get => _explicitNullValueName; set { _explicitNullValueName = value; AdditionalData?.Remove("name"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("name"); else _explicitNullProperties?.Remove("name"); } }
         private string? _explicitNullValueName = default!;
 #nullable restore
 #else
-        public string Name { get => _explicitNullValueName; set { _explicitNullValueName = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("name"); else _explicitNullProperties?.Remove("name"); } }
+        public string Name { get => _explicitNullValueName; set { _explicitNullValueName = value; AdditionalData?.Remove("name"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("name"); else _explicitNullProperties?.Remove("name"); } }
         private string _explicitNullValueName = default!;
 #endif
         /// <summary>The pinned property</summary>
-        public bool? Pinned { get => _explicitNullValuePinned; set { _explicitNullValuePinned = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("pinned"); else _explicitNullProperties?.Remove("pinned"); } }
+        public bool? Pinned { get => _explicitNullValuePinned; set { _explicitNullValuePinned = value; AdditionalData?.Remove("pinned"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("pinned"); else _explicitNullProperties?.Remove("pinned"); } }
         private bool? _explicitNullValuePinned = default!;
         /// <summary>List of quick filter IDs associated with this dashboard.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<string>? QuickFilterIds { get => _explicitNullValueQuickFilterIds; set { _explicitNullValueQuickFilterIds = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("quick_filter_ids"); else _explicitNullProperties?.Remove("quick_filter_ids"); } }
+        public List<string>? QuickFilterIds { get => _explicitNullValueQuickFilterIds; set { _explicitNullValueQuickFilterIds = value; AdditionalData?.Remove("quick_filter_ids"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("quick_filter_ids"); else _explicitNullProperties?.Remove("quick_filter_ids"); } }
         private List<string>? _explicitNullValueQuickFilterIds = default!;
 #nullable restore
 #else
-        public List<string> QuickFilterIds { get => _explicitNullValueQuickFilterIds; set { _explicitNullValueQuickFilterIds = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("quick_filter_ids"); else _explicitNullProperties?.Remove("quick_filter_ids"); } }
+        public List<string> QuickFilterIds { get => _explicitNullValueQuickFilterIds; set { _explicitNullValueQuickFilterIds = value; AdditionalData?.Remove("quick_filter_ids"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("quick_filter_ids"); else _explicitNullProperties?.Remove("quick_filter_ids"); } }
         private List<string> _explicitNullValueQuickFilterIds = default!;
 #endif
         /// <summary>The tags property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<string>? Tags { get => _explicitNullValueTags; set { _explicitNullValueTags = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("tags"); else _explicitNullProperties?.Remove("tags"); } }
+        public List<string>? Tags { get => _explicitNullValueTags; set { _explicitNullValueTags = value; AdditionalData?.Remove("tags"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("tags"); else _explicitNullProperties?.Remove("tags"); } }
         private List<string>? _explicitNullValueTags = default!;
 #nullable restore
 #else
-        public List<string> Tags { get => _explicitNullValueTags; set { _explicitNullValueTags = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("tags"); else _explicitNullProperties?.Remove("tags"); } }
+        public List<string> Tags { get => _explicitNullValueTags; set { _explicitNullValueTags = value; AdditionalData?.Remove("tags"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("tags"); else _explicitNullProperties?.Remove("tags"); } }
         private List<string> _explicitNullValueTags = default!;
 #endif
         /// <summary>Dashboard tiles to update, each identified by its tile id. Any tile type accepts `layouts` to set its grid position and size. Widget tiles also accept nested widget.config patches.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.DashboardPatchTileOpenApi>? Tiles { get => _explicitNullValueTiles; set { _explicitNullValueTiles = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("tiles"); else _explicitNullProperties?.Remove("tiles"); } }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.DashboardPatchTileOpenApi>? Tiles { get => _explicitNullValueTiles; set { _explicitNullValueTiles = value; AdditionalData?.Remove("tiles"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("tiles"); else _explicitNullProperties?.Remove("tiles"); } }
         private List<global::Soenneker.PostHog.OpenApiClient.Models.DashboardPatchTileOpenApi>? _explicitNullValueTiles = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.DashboardPatchTileOpenApi> Tiles { get => _explicitNullValueTiles; set { _explicitNullValueTiles = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("tiles"); else _explicitNullProperties?.Remove("tiles"); } }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.DashboardPatchTileOpenApi> Tiles { get => _explicitNullValueTiles; set { _explicitNullValueTiles = value; AdditionalData?.Remove("tiles"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("tiles"); else _explicitNullProperties?.Remove("tiles"); } }
         private List<global::Soenneker.PostHog.OpenApiClient.Models.DashboardPatchTileOpenApi> _explicitNullValueTiles = default!;
 #endif
         /// <summary>ID of an existing dashboard to duplicate.</summary>
-        public int? UseDashboard { get => _explicitNullValueUseDashboard; set { _explicitNullValueUseDashboard = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("use_dashboard"); else _explicitNullProperties?.Remove("use_dashboard"); } }
+        public int? UseDashboard { get => _explicitNullValueUseDashboard; set { _explicitNullValueUseDashboard = value; AdditionalData?.Remove("use_dashboard"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("use_dashboard"); else _explicitNullProperties?.Remove("use_dashboard"); } }
         private int? _explicitNullValueUseDashboard = default!;
         /// <summary>Template key to create the dashboard from a predefined template.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? UseTemplate { get => _explicitNullValueUseTemplate; set { _explicitNullValueUseTemplate = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("use_template"); else _explicitNullProperties?.Remove("use_template"); } }
+        public string? UseTemplate { get => _explicitNullValueUseTemplate; set { _explicitNullValueUseTemplate = value; AdditionalData?.Remove("use_template"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("use_template"); else _explicitNullProperties?.Remove("use_template"); } }
         private string? _explicitNullValueUseTemplate = default!;
 #nullable restore
 #else
-        public string UseTemplate { get => _explicitNullValueUseTemplate; set { _explicitNullValueUseTemplate = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("use_template"); else _explicitNullProperties?.Remove("use_template"); } }
+        public string UseTemplate { get => _explicitNullValueUseTemplate; set { _explicitNullValueUseTemplate = value; AdditionalData?.Remove("use_template"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("use_template"); else _explicitNullProperties?.Remove("use_template"); } }
         private string _explicitNullValueUseTemplate = default!;
 #endif
         /// <summary>
@@ -191,11 +208,11 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "delete_insights", n => { DeleteInsights = n.GetBoolValue(); } },
                 { "description", n => { Description = n.GetStringValue(); } },
                 { "filters", n => { Filters = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedPatchedDashboardOpenApiFilters>(global::Soenneker.PostHog.OpenApiClient.Models.PatchedPatchedDashboardOpenApiFilters.CreateFromDiscriminatorValue); } },
-                { "grid_spacing", n => { GridSpacing = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedPatchedDashboardOpenApiGridSpacing>(); } },
-                { "group_display", n => { GroupDisplay = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedPatchedDashboardOpenApiGroupDisplay>(); } },
+                { "grid_spacing", n => { var parsed = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedPatchedDashboardOpenApiGridSpacing>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValueGridSpacing = default; _explicitNullProperties?.Remove("grid_spacing"); AdditionalData["grid_spacing"] = unknown; } else { GridSpacing = parsed; AdditionalData.Remove("grid_spacing"); } } },
+                { "group_display", n => { var parsed = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedPatchedDashboardOpenApiGroupDisplay>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValueGroupDisplay = default; _explicitNullProperties?.Remove("group_display"); AdditionalData["group_display"] = unknown; } else { GroupDisplay = parsed; AdditionalData.Remove("group_display"); } } },
                 { "group_titles", n => { GroupTitles = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedPatchedDashboardOpenApiGroupTitlesProperty>(global::Soenneker.PostHog.OpenApiClient.Models.PatchedPatchedDashboardOpenApiGroupTitlesProperty.CreateFromDiscriminatorValue); } },
                 { "groups", n => { Groups = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedPatchedDashboardOpenApiGroupsProperty>(global::Soenneker.PostHog.OpenApiClient.Models.PatchedPatchedDashboardOpenApiGroupsProperty.CreateFromDiscriminatorValue); } },
-                { "layout_compaction", n => { LayoutCompaction = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedPatchedDashboardOpenApiLayoutCompaction>(); } },
+                { "layout_compaction", n => { var parsed = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedPatchedDashboardOpenApiLayoutCompaction>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValueLayoutCompaction = default; _explicitNullProperties?.Remove("layout_compaction"); AdditionalData["layout_compaction"] = unknown; } else { LayoutCompaction = parsed; AdditionalData.Remove("layout_compaction"); } } },
                 { "name", n => { Name = n.GetStringValue(); } },
                 { "pinned", n => { Pinned = n.GetBoolValue(); } },
                 { "quick_filter_ids", n => { QuickFilterIds = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },

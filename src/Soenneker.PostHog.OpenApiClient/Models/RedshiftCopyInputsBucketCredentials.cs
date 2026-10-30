@@ -48,9 +48,11 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             }
             
             var unionPayload = parseNode.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue);
-            bool matchesUnionBranch0 = unionPayload is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject && ((global::System.Func<bool>)(() => parseNode.GetChildNode("aws_access_key_id") != null && parseNode.GetChildNode("aws_secret_access_key") != null))();
-            if (result.Integer == null && result.RedshiftCopyInputsBucketCredentialsOneOf2 == null && matchesUnionBranch0) result.RedshiftCopyInputsBucketCredentialsOneOf2 = global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.RedshiftCopyInputsBucketCredentialsOneOf2(), parseNode);
-            if (result.Integer == null && result.RedshiftCopyInputsBucketCredentialsOneOf2 == null && unionPayload is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject) result.RedshiftCopyInputsBucketCredentialsOneOf2 = global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.RedshiftCopyInputsBucketCredentialsOneOf2(), parseNode);
+            bool matchesUnionBranch0 = unionPayload is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject && ((global::System.Func<bool>)(() => ((unionPayload is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject)) && (unionPayload is not global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject shapeObject0 || (shapeObject0.GetValue() is var shapeMembers1 && (shapeMembers1.ContainsKey("aws_access_key_id") && shapeMembers1.ContainsKey("aws_secret_access_key") && (!shapeMembers1.ContainsKey("aws_access_key_id") || (((shapeMembers1["aws_access_key_id"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString)))) && (!shapeMembers1.ContainsKey("aws_secret_access_key") || (((shapeMembers1["aws_secret_access_key"] is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString)))))))))();
+            int matchingUnionBranches = 0;
+            if (matchesUnionBranch0) matchingUnionBranches++;
+            bool noSelectedUnionBranch = result.Integer == null && result.RedshiftCopyInputsBucketCredentialsOneOf2 == null;
+            if (noSelectedUnionBranch && matchesUnionBranch0 && matchingUnionBranches == 1) result.RedshiftCopyInputsBucketCredentialsOneOf2 = global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.RedshiftCopyInputsBucketCredentialsOneOf2(), parseNode);
             if (result.Integer == null && result.RedshiftCopyInputsBucketCredentialsOneOf2 == null) result.UnrecognizedValue = unionPayload;
 return result;
         }
@@ -60,6 +62,8 @@ return result;
         /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
         public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
         {
+            if (UnrecognizedValue is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject rawFields) { var fields = new global::System.Collections.Generic.Dictionary<string, global::System.Action<IParseNode>>(); foreach (var entry in rawFields.GetValue()) fields[entry.Key] = _ => { }; return fields; }
+
             if(RedshiftCopyInputsBucketCredentialsOneOf2 != null)
             {
                 return RedshiftCopyInputsBucketCredentialsOneOf2.GetFieldDeserializers();
@@ -74,7 +78,10 @@ return result;
         {
             if (global::System.Object.ReferenceEquals(writer, null)) throw new global::System.ArgumentNullException(nameof(writer));
             if (Integer == null && RedshiftCopyInputsBucketCredentialsOneOf2 == null) { if (UnrecognizedValue is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject rawObject) writer.WriteObjectValue(null, new global::Soenneker.OpenApi.Generated.OpenApiUnionAdditionalData(AdditionalData, rawObject)); else if (UnrecognizedValue != null) writer.WriteObjectValue(null, UnrecognizedValue); else if (AdditionalData.Count > 0) writer.WriteObjectValue(null, new global::Soenneker.OpenApi.Generated.OpenApiUnionAdditionalData(AdditionalData)); else writer.WriteNullValue(null); return; }
-            if (RedshiftCopyInputsBucketCredentialsOneOf2 != null && Integer == null) { if (RedshiftCopyInputsBucketCredentialsOneOf2 is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder selectedData) foreach (var entry in AdditionalData) selectedData.AdditionalData[entry.Key] = entry.Value; writer.WriteObjectValue(null, RedshiftCopyInputsBucketCredentialsOneOf2); return; }
+            int selectedUnionBranches = 0;
+            if (Integer != null) selectedUnionBranches++;
+            if (RedshiftCopyInputsBucketCredentialsOneOf2 != null) selectedUnionBranches++;
+            if (RedshiftCopyInputsBucketCredentialsOneOf2 != null && selectedUnionBranches == 1) { if (RedshiftCopyInputsBucketCredentialsOneOf2 is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder selectedData) foreach (var entry in AdditionalData) selectedData.AdditionalData[entry.Key] = entry.Value; writer.WriteObjectValue(null, RedshiftCopyInputsBucketCredentialsOneOf2); return; }
 
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             if(RedshiftCopyInputsBucketCredentialsOneOf2 != null)

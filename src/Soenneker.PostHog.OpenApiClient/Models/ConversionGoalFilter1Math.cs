@@ -97,6 +97,8 @@ return result;
         /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
         public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
         {
+            if (UnrecognizedValue is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject rawFields) { var fields = new global::System.Collections.Generic.Dictionary<string, global::System.Action<IParseNode>>(); foreach (var entry in rawFields.GetValue()) fields[entry.Key] = _ => { }; return fields; }
+
             if(ConversionGoalFilter1MathMember1 != null)
             {
                 return ParseNodeHelper.MergeDeserializersForIntersectionWrapper(ConversionGoalFilter1MathMember1);
@@ -111,7 +113,17 @@ return result;
         {
             if (global::System.Object.ReferenceEquals(writer, null)) throw new global::System.ArgumentNullException(nameof(writer));
             if (BaseMathType == null && CalendarHeatmapMathType == null && ConversionGoalFilter1MathAnyOf8 == null && ConversionGoalFilter1MathMember1 == null && CountPerActorMathType == null && ExperimentMetricMathType == null && FunnelMathType == null && GroupMathType == null && PropertyMathType == null) { if (UnrecognizedValue is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject rawObject) writer.WriteObjectValue(null, new global::Soenneker.OpenApi.Generated.OpenApiUnionAdditionalData(AdditionalData, rawObject)); else if (UnrecognizedValue != null) writer.WriteObjectValue(null, UnrecognizedValue); else if (AdditionalData.Count > 0) writer.WriteObjectValue(null, new global::Soenneker.OpenApi.Generated.OpenApiUnionAdditionalData(AdditionalData)); else writer.WriteNullValue(null); return; }
-            if (ConversionGoalFilter1MathMember1 != null && BaseMathType == null && CalendarHeatmapMathType == null && ConversionGoalFilter1MathAnyOf8 == null && CountPerActorMathType == null && ExperimentMetricMathType == null && FunnelMathType == null && GroupMathType == null && PropertyMathType == null) { if (ConversionGoalFilter1MathMember1 is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder selectedData) foreach (var entry in AdditionalData) selectedData.AdditionalData[entry.Key] = entry.Value; writer.WriteObjectValue(null, ConversionGoalFilter1MathMember1); return; }
+            int selectedUnionBranches = 0;
+            if (BaseMathType != null) selectedUnionBranches++;
+            if (CalendarHeatmapMathType != null) selectedUnionBranches++;
+            if (ConversionGoalFilter1MathAnyOf8 != null) selectedUnionBranches++;
+            if (ConversionGoalFilter1MathMember1 != null) selectedUnionBranches++;
+            if (CountPerActorMathType != null) selectedUnionBranches++;
+            if (ExperimentMetricMathType != null) selectedUnionBranches++;
+            if (FunnelMathType != null) selectedUnionBranches++;
+            if (GroupMathType != null) selectedUnionBranches++;
+            if (PropertyMathType != null) selectedUnionBranches++;
+            if (ConversionGoalFilter1MathMember1 != null && selectedUnionBranches == 1) { if (ConversionGoalFilter1MathMember1 is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder selectedData) foreach (var entry in AdditionalData) selectedData.AdditionalData[entry.Key] = entry.Value; writer.WriteObjectValue(null, ConversionGoalFilter1MathMember1); return; }
 
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             if(BaseMathType != null)

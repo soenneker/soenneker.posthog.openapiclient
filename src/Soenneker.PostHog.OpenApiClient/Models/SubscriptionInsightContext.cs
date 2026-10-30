@@ -17,34 +17,37 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("insight_id") is { } nullNodeInsightId && nullNodeInsightId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) InsightId = null;
-            if (parseNode.GetChildNode("insight_name") is { } nullNodeInsightName && nullNodeInsightName.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) InsightName = null;
-            if (parseNode.GetChildNode("insight_short_id") is { } nullNodeInsightShortId && nullNodeInsightShortId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) InsightShortId = null;
+            if (parseNode.GetChildNode("insight_id") is null) { _explicitNullValueInsightId = default!; _explicitNullProperties?.Remove("insight_id"); }
+            else if (parseNode.GetChildNode("insight_id") is { } nullNodeInsightId && nullNodeInsightId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) InsightId = null;
+            if (parseNode.GetChildNode("insight_name") is null) { _explicitNullValueInsightName = default!; _explicitNullProperties?.Remove("insight_name"); }
+            else if (parseNode.GetChildNode("insight_name") is { } nullNodeInsightName && nullNodeInsightName.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) InsightName = null;
+            if (parseNode.GetChildNode("insight_short_id") is null) { _explicitNullValueInsightShortId = default!; _explicitNullProperties?.Remove("insight_short_id"); }
+            else if (parseNode.GetChildNode("insight_short_id") is { } nullNodeInsightShortId && nullNodeInsightShortId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) InsightShortId = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Database ID of the context insight.</summary>
-        public int? InsightId { get => _explicitNullValueInsightId; set { _explicitNullValueInsightId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("insight_id"); else _explicitNullProperties?.Remove("insight_id"); } }
+        public int? InsightId { get => _explicitNullValueInsightId; set { _explicitNullValueInsightId = value; AdditionalData?.Remove("insight_id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("insight_id"); else _explicitNullProperties?.Remove("insight_id"); } }
         private int? _explicitNullValueInsightId = default!;
         /// <summary>Current display name of the context insight.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? InsightName { get => _explicitNullValueInsightName; set { _explicitNullValueInsightName = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("insight_name"); else _explicitNullProperties?.Remove("insight_name"); } }
+        public string? InsightName { get => _explicitNullValueInsightName; set { _explicitNullValueInsightName = value; AdditionalData?.Remove("insight_name"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("insight_name"); else _explicitNullProperties?.Remove("insight_name"); } }
         private string? _explicitNullValueInsightName = default!;
 #nullable restore
 #else
-        public string InsightName { get => _explicitNullValueInsightName; set { _explicitNullValueInsightName = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("insight_name"); else _explicitNullProperties?.Remove("insight_name"); } }
+        public string InsightName { get => _explicitNullValueInsightName; set { _explicitNullValueInsightName = value; AdditionalData?.Remove("insight_name"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("insight_name"); else _explicitNullProperties?.Remove("insight_name"); } }
         private string _explicitNullValueInsightName = default!;
 #endif
         /// <summary>Stable insight identifier used to open the context insight.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? InsightShortId { get => _explicitNullValueInsightShortId; set { _explicitNullValueInsightShortId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("insight_short_id"); else _explicitNullProperties?.Remove("insight_short_id"); } }
+        public string? InsightShortId { get => _explicitNullValueInsightShortId; set { _explicitNullValueInsightShortId = value; AdditionalData?.Remove("insight_short_id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("insight_short_id"); else _explicitNullProperties?.Remove("insight_short_id"); } }
         private string? _explicitNullValueInsightShortId = default!;
 #nullable restore
 #else
-        public string InsightShortId { get => _explicitNullValueInsightShortId; set { _explicitNullValueInsightShortId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("insight_short_id"); else _explicitNullProperties?.Remove("insight_short_id"); } }
+        public string InsightShortId { get => _explicitNullValueInsightShortId; set { _explicitNullValueInsightShortId = value; AdditionalData?.Remove("insight_short_id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("insight_short_id"); else _explicitNullProperties?.Remove("insight_short_id"); } }
         private string _explicitNullValueInsightShortId = default!;
 #endif
         /// <summary>

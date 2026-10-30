@@ -18,21 +18,24 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("columns") is { } nullNodeColumns && nullNodeColumns.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Columns = null;
-            if (parseNode.GetChildNode("gap") is { } nullNodeGap && nullNodeGap.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Gap = null;
-            if (parseNode.GetChildNode("rowHeight") is { } nullNodeRowHeight && nullNodeRowHeight.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) RowHeight = null;
+            if (parseNode.GetChildNode("columns") is null) { _explicitNullValueColumns = default!; _explicitNullProperties?.Remove("columns"); }
+            else if (parseNode.GetChildNode("columns") is { } nullNodeColumns && nullNodeColumns.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Columns = null;
+            if (parseNode.GetChildNode("gap") is null) { _explicitNullValueGap = default!; _explicitNullProperties?.Remove("gap"); }
+            else if (parseNode.GetChildNode("gap") is { } nullNodeGap && nullNodeGap.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Gap = null;
+            if (parseNode.GetChildNode("rowHeight") is null) { _explicitNullValueRowHeight = default!; _explicitNullProperties?.Remove("rowHeight"); }
+            else if (parseNode.GetChildNode("rowHeight") is { } nullNodeRowHeight && nullNodeRowHeight.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) RowHeight = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>* `4` - 4* `6` - 6* `8` - 8* `10` - 10* `12` - 12</summary>
-        public int? Columns { get => _explicitNullValueColumns; set { _explicitNullValueColumns = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("columns"); else _explicitNullProperties?.Remove("columns"); } }
+        public int? Columns { get => _explicitNullValueColumns; set { _explicitNullValueColumns = value; AdditionalData?.Remove("columns"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("columns"); else _explicitNullProperties?.Remove("columns"); } }
         private int? _explicitNullValueColumns = default!;
         /// <summary>Gap between placements, in pixels.</summary>
-        public int? Gap { get => _explicitNullValueGap; set { _explicitNullValueGap = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("gap"); else _explicitNullProperties?.Remove("gap"); } }
+        public int? Gap { get => _explicitNullValueGap; set { _explicitNullValueGap = value; AdditionalData?.Remove("gap"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("gap"); else _explicitNullProperties?.Remove("gap"); } }
         private int? _explicitNullValueGap = default!;
         /// <summary>Height of one grid row, in pixels.</summary>
-        public int? RowHeight { get => _explicitNullValueRowHeight; set { _explicitNullValueRowHeight = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("rowHeight"); else _explicitNullProperties?.Remove("rowHeight"); } }
+        public int? RowHeight { get => _explicitNullValueRowHeight; set { _explicitNullValueRowHeight = value; AdditionalData?.Remove("rowHeight"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("rowHeight"); else _explicitNullProperties?.Remove("rowHeight"); } }
         private int? _explicitNullValueRowHeight = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.CanvasLayoutGrid"/> and sets the default values.

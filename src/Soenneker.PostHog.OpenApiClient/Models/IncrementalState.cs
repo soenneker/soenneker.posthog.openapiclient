@@ -18,10 +18,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("definition_fingerprint") is { } nullNodeDefinitionFingerprint && nullNodeDefinitionFingerprint.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) DefinitionFingerprint = null;
-            if (parseNode.GetChildNode("last_full_refresh_at") is { } nullNodeLastFullRefreshAt && nullNodeLastFullRefreshAt.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) LastFullRefreshAt = null;
-            if (parseNode.GetChildNode("last_run_mode") is { } nullNodeLastRunMode && nullNodeLastRunMode.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) LastRunMode = null;
-            if (parseNode.GetChildNode("watermark") is { } nullNodeWatermark && nullNodeWatermark.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Watermark = null;
+            if (parseNode.GetChildNode("definition_fingerprint") is null) { _explicitNullValueDefinitionFingerprint = default!; _explicitNullProperties?.Remove("definition_fingerprint"); }
+            else if (parseNode.GetChildNode("definition_fingerprint") is { } nullNodeDefinitionFingerprint && nullNodeDefinitionFingerprint.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) DefinitionFingerprint = null;
+            if (parseNode.GetChildNode("last_full_refresh_at") is null) { _explicitNullValueLastFullRefreshAt = default!; _explicitNullProperties?.Remove("last_full_refresh_at"); }
+            else if (parseNode.GetChildNode("last_full_refresh_at") is { } nullNodeLastFullRefreshAt && nullNodeLastFullRefreshAt.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) LastFullRefreshAt = null;
+            if (parseNode.GetChildNode("last_run_mode") is null) { _explicitNullValueLastRunMode = default!; _explicitNullProperties?.Remove("last_run_mode"); }
+            else if (parseNode.GetChildNode("last_run_mode") is { } nullNodeLastRunMode && nullNodeLastRunMode.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) LastRunMode = null;
+            if (parseNode.GetChildNode("watermark") is null) { _explicitNullValueWatermark = default!; _explicitNullProperties?.Remove("watermark"); }
+            else if (parseNode.GetChildNode("watermark") is { } nullNodeWatermark && nullNodeWatermark.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Watermark = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -29,41 +33,41 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Fingerprint of the query, incremental key, and unique key the stored rows were built from. When it stops matching, the next run rebuilds the whole table. Lookback is not part of it: changing lookback never forces a rebuild.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? DefinitionFingerprint { get => _explicitNullValueDefinitionFingerprint; set { _explicitNullValueDefinitionFingerprint = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("definition_fingerprint"); else _explicitNullProperties?.Remove("definition_fingerprint"); } }
+        public string? DefinitionFingerprint { get => _explicitNullValueDefinitionFingerprint; set { _explicitNullValueDefinitionFingerprint = value; AdditionalData?.Remove("definition_fingerprint"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("definition_fingerprint"); else _explicitNullProperties?.Remove("definition_fingerprint"); } }
         private string? _explicitNullValueDefinitionFingerprint = default!;
 #nullable restore
 #else
-        public string DefinitionFingerprint { get => _explicitNullValueDefinitionFingerprint; set { _explicitNullValueDefinitionFingerprint = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("definition_fingerprint"); else _explicitNullProperties?.Remove("definition_fingerprint"); } }
+        public string DefinitionFingerprint { get => _explicitNullValueDefinitionFingerprint; set { _explicitNullValueDefinitionFingerprint = value; AdditionalData?.Remove("definition_fingerprint"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("definition_fingerprint"); else _explicitNullProperties?.Remove("definition_fingerprint"); } }
         private string _explicitNullValueDefinitionFingerprint = default!;
 #endif
         /// <summary>When the table was last rebuilt from scratch.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? LastFullRefreshAt { get => _explicitNullValueLastFullRefreshAt; set { _explicitNullValueLastFullRefreshAt = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("last_full_refresh_at"); else _explicitNullProperties?.Remove("last_full_refresh_at"); } }
+        public string? LastFullRefreshAt { get => _explicitNullValueLastFullRefreshAt; set { _explicitNullValueLastFullRefreshAt = value; AdditionalData?.Remove("last_full_refresh_at"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("last_full_refresh_at"); else _explicitNullProperties?.Remove("last_full_refresh_at"); } }
         private string? _explicitNullValueLastFullRefreshAt = default!;
 #nullable restore
 #else
-        public string LastFullRefreshAt { get => _explicitNullValueLastFullRefreshAt; set { _explicitNullValueLastFullRefreshAt = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("last_full_refresh_at"); else _explicitNullProperties?.Remove("last_full_refresh_at"); } }
+        public string LastFullRefreshAt { get => _explicitNullValueLastFullRefreshAt; set { _explicitNullValueLastFullRefreshAt = value; AdditionalData?.Remove("last_full_refresh_at"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("last_full_refresh_at"); else _explicitNullProperties?.Remove("last_full_refresh_at"); } }
         private string _explicitNullValueLastFullRefreshAt = default!;
 #endif
         /// <summary>Whether the last run updated the table or rebuilt it.* `incremental` - incremental* `full_refresh` - full_refresh</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.IncrementalStateLastRunMode? LastRunMode { get => _explicitNullValueLastRunMode; set { _explicitNullValueLastRunMode = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("last_run_mode"); else _explicitNullProperties?.Remove("last_run_mode"); } }
+        public global::Soenneker.PostHog.OpenApiClient.Models.IncrementalStateLastRunMode? LastRunMode { get => _explicitNullValueLastRunMode; set { _explicitNullValueLastRunMode = value; AdditionalData?.Remove("last_run_mode"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("last_run_mode"); else _explicitNullProperties?.Remove("last_run_mode"); } }
         private global::Soenneker.PostHog.OpenApiClient.Models.IncrementalStateLastRunMode? _explicitNullValueLastRunMode = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.IncrementalStateLastRunMode LastRunMode { get => _explicitNullValueLastRunMode; set { _explicitNullValueLastRunMode = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("last_run_mode"); else _explicitNullProperties?.Remove("last_run_mode"); } }
+        public global::Soenneker.PostHog.OpenApiClient.Models.IncrementalStateLastRunMode LastRunMode { get => _explicitNullValueLastRunMode; set { _explicitNullValueLastRunMode = value; AdditionalData?.Remove("last_run_mode"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("last_run_mode"); else _explicitNullProperties?.Remove("last_run_mode"); } }
         private global::Soenneker.PostHog.OpenApiClient.Models.IncrementalStateLastRunMode _explicitNullValueLastRunMode = default!;
 #endif
         /// <summary>Highest incremental key value written so far. The next run starts here.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Watermark { get => _explicitNullValueWatermark; set { _explicitNullValueWatermark = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("watermark"); else _explicitNullProperties?.Remove("watermark"); } }
+        public string? Watermark { get => _explicitNullValueWatermark; set { _explicitNullValueWatermark = value; AdditionalData?.Remove("watermark"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("watermark"); else _explicitNullProperties?.Remove("watermark"); } }
         private string? _explicitNullValueWatermark = default!;
 #nullable restore
 #else
-        public string Watermark { get => _explicitNullValueWatermark; set { _explicitNullValueWatermark = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("watermark"); else _explicitNullProperties?.Remove("watermark"); } }
+        public string Watermark { get => _explicitNullValueWatermark; set { _explicitNullValueWatermark = value; AdditionalData?.Remove("watermark"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("watermark"); else _explicitNullProperties?.Remove("watermark"); } }
         private string _explicitNullValueWatermark = default!;
 #endif
         /// <summary>

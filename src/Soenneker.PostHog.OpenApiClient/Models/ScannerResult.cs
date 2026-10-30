@@ -18,10 +18,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("experiment_variant") is { } nullNodeExperimentVariant && nullNodeExperimentVariant.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ExperimentVariant = null;
-            if (parseNode.GetChildNode("model_output") is { } nullNodeModelOutput && nullNodeModelOutput.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ModelOutput = null;
-            if (parseNode.GetChildNode("session_duration_s") is { } nullNodeSessionDurationS && nullNodeSessionDurationS.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SessionDurationS = null;
-            if (parseNode.GetChildNode("signals_count") is { } nullNodeSignalsCount && nullNodeSignalsCount.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SignalsCount = null;
+            if (parseNode.GetChildNode("experiment_variant") is null) { _explicitNullValueExperimentVariant = default!; _explicitNullProperties?.Remove("experiment_variant"); }
+            else if (parseNode.GetChildNode("experiment_variant") is { } nullNodeExperimentVariant && nullNodeExperimentVariant.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ExperimentVariant = null;
+            if (parseNode.GetChildNode("model_output") is null) { _explicitNullValueModelOutput = default!; _explicitNullProperties?.Remove("model_output"); }
+            else if (parseNode.GetChildNode("model_output") is { } nullNodeModelOutput && nullNodeModelOutput.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ModelOutput = null;
+            if (parseNode.GetChildNode("session_duration_s") is null) { _explicitNullValueSessionDurationS = default!; _explicitNullProperties?.Remove("session_duration_s"); }
+            else if (parseNode.GetChildNode("session_duration_s") is { } nullNodeSessionDurationS && nullNodeSessionDurationS.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SessionDurationS = null;
+            if (parseNode.GetChildNode("signals_count") is null) { _explicitNullValueSignalsCount = default!; _explicitNullProperties?.Remove("signals_count"); }
+            else if (parseNode.GetChildNode("signals_count") is { } nullNodeSignalsCount && nullNodeSignalsCount.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SignalsCount = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -29,28 +33,28 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Experiment scanners only: the variant the exposure data attributes this session&apos;s person to. Null on the other types and on rows scanned before variant attribution shipped.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? ExperimentVariant { get => _explicitNullValueExperimentVariant; set { _explicitNullValueExperimentVariant = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("experiment_variant"); else _explicitNullProperties?.Remove("experiment_variant"); } }
+        public string? ExperimentVariant { get => _explicitNullValueExperimentVariant; set { _explicitNullValueExperimentVariant = value; AdditionalData?.Remove("experiment_variant"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("experiment_variant"); else _explicitNullProperties?.Remove("experiment_variant"); } }
         private string? _explicitNullValueExperimentVariant = default!;
 #nullable restore
 #else
-        public string ExperimentVariant { get => _explicitNullValueExperimentVariant; set { _explicitNullValueExperimentVariant = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("experiment_variant"); else _explicitNullProperties?.Remove("experiment_variant"); } }
+        public string ExperimentVariant { get => _explicitNullValueExperimentVariant; set { _explicitNullValueExperimentVariant = value; AdditionalData?.Remove("experiment_variant"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("experiment_variant"); else _explicitNullProperties?.Remove("experiment_variant"); } }
         private string _explicitNullValueExperimentVariant = default!;
 #endif
         /// <summary>Validated scanner output. Shape depends on `scanner_snapshot.scanner_type`; always carries `confidence` and `scanner_type`.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public UntypedNode? ModelOutput { get => _explicitNullValueModelOutput; set { _explicitNullValueModelOutput = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("model_output"); else _explicitNullProperties?.Remove("model_output"); } }
+        public UntypedNode? ModelOutput { get => _explicitNullValueModelOutput; set { _explicitNullValueModelOutput = value; AdditionalData?.Remove("model_output"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("model_output"); else _explicitNullProperties?.Remove("model_output"); } }
         private UntypedNode? _explicitNullValueModelOutput = default!;
 #nullable restore
 #else
-        public UntypedNode ModelOutput { get => _explicitNullValueModelOutput; set { _explicitNullValueModelOutput = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("model_output"); else _explicitNullProperties?.Remove("model_output"); } }
+        public UntypedNode ModelOutput { get => _explicitNullValueModelOutput; set { _explicitNullValueModelOutput = value; AdditionalData?.Remove("model_output"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("model_output"); else _explicitNullProperties?.Remove("model_output"); } }
         private UntypedNode _explicitNullValueModelOutput = default!;
 #endif
         /// <summary>Experiment scanners only: the scanned session&apos;s duration in seconds.</summary>
-        public double? SessionDurationS { get => _explicitNullValueSessionDurationS; set { _explicitNullValueSessionDurationS = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("session_duration_s"); else _explicitNullProperties?.Remove("session_duration_s"); } }
+        public double? SessionDurationS { get => _explicitNullValueSessionDurationS; set { _explicitNullValueSessionDurationS = value; AdditionalData?.Remove("session_duration_s"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("session_duration_s"); else _explicitNullProperties?.Remove("session_duration_s"); } }
         private double? _explicitNullValueSessionDurationS = default!;
         /// <summary>Number of PostHog Signals emitted from this observation.</summary>
-        public int? SignalsCount { get => _explicitNullValueSignalsCount; set { _explicitNullValueSignalsCount = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("signals_count"); else _explicitNullProperties?.Remove("signals_count"); } }
+        public int? SignalsCount { get => _explicitNullValueSignalsCount; set { _explicitNullValueSignalsCount = value; AdditionalData?.Remove("signals_count"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("signals_count"); else _explicitNullProperties?.Remove("signals_count"); } }
         private int? _explicitNullValueSignalsCount = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ScannerResult"/> and sets the default values.

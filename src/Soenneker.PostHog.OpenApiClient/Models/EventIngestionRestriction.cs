@@ -17,12 +17,18 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("distinct_ids") is { } nullNodeDistinctIds && nullNodeDistinctIds.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) DistinctIds = null;
-            if (parseNode.GetChildNode("event_names") is { } nullNodeEventNames && nullNodeEventNames.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) EventNames = null;
-            if (parseNode.GetChildNode("event_uuids") is { } nullNodeEventUuids && nullNodeEventUuids.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) EventUuids = null;
-            if (parseNode.GetChildNode("pipelines") is { } nullNodePipelines && nullNodePipelines.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Pipelines = null;
-            if (parseNode.GetChildNode("restriction_type") is { } nullNodeRestrictionType && nullNodeRestrictionType.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) RestrictionType = null;
-            if (parseNode.GetChildNode("session_ids") is { } nullNodeSessionIds && nullNodeSessionIds.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SessionIds = null;
+            if (parseNode.GetChildNode("distinct_ids") is null) { _explicitNullValueDistinctIds = default!; _explicitNullProperties?.Remove("distinct_ids"); }
+            else if (parseNode.GetChildNode("distinct_ids") is { } nullNodeDistinctIds && nullNodeDistinctIds.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) DistinctIds = null;
+            if (parseNode.GetChildNode("event_names") is null) { _explicitNullValueEventNames = default!; _explicitNullProperties?.Remove("event_names"); }
+            else if (parseNode.GetChildNode("event_names") is { } nullNodeEventNames && nullNodeEventNames.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) EventNames = null;
+            if (parseNode.GetChildNode("event_uuids") is null) { _explicitNullValueEventUuids = default!; _explicitNullProperties?.Remove("event_uuids"); }
+            else if (parseNode.GetChildNode("event_uuids") is { } nullNodeEventUuids && nullNodeEventUuids.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) EventUuids = null;
+            if (parseNode.GetChildNode("pipelines") is null) { _explicitNullValuePipelines = default!; _explicitNullProperties?.Remove("pipelines"); }
+            else if (parseNode.GetChildNode("pipelines") is { } nullNodePipelines && nullNodePipelines.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Pipelines = null;
+            if (parseNode.GetChildNode("restriction_type") is null) { _explicitNullValueRestrictionType = default!; _explicitNullProperties?.Remove("restriction_type"); }
+            else if (parseNode.GetChildNode("restriction_type") is { } nullNodeRestrictionType && nullNodeRestrictionType.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) RestrictionType = null;
+            if (parseNode.GetChildNode("session_ids") is null) { _explicitNullValueSessionIds = default!; _explicitNullProperties?.Remove("session_ids"); }
+            else if (parseNode.GetChildNode("session_ids") is { } nullNodeSessionIds && nullNodeSessionIds.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SessionIds = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -30,54 +36,54 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Distinct IDs the restriction applies to. Empty means it is not filtered by distinct ID.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<string>? DistinctIds { get => _explicitNullValueDistinctIds; set { _explicitNullValueDistinctIds = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("distinct_ids"); else _explicitNullProperties?.Remove("distinct_ids"); } }
+        public List<string>? DistinctIds { get => _explicitNullValueDistinctIds; set { _explicitNullValueDistinctIds = value; AdditionalData?.Remove("distinct_ids"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("distinct_ids"); else _explicitNullProperties?.Remove("distinct_ids"); } }
         private List<string>? _explicitNullValueDistinctIds = default!;
 #nullable restore
 #else
-        public List<string> DistinctIds { get => _explicitNullValueDistinctIds; set { _explicitNullValueDistinctIds = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("distinct_ids"); else _explicitNullProperties?.Remove("distinct_ids"); } }
+        public List<string> DistinctIds { get => _explicitNullValueDistinctIds; set { _explicitNullValueDistinctIds = value; AdditionalData?.Remove("distinct_ids"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("distinct_ids"); else _explicitNullProperties?.Remove("distinct_ids"); } }
         private List<string> _explicitNullValueDistinctIds = default!;
 #endif
         /// <summary>Event names the restriction applies to. Empty means it is not filtered by event name.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<string>? EventNames { get => _explicitNullValueEventNames; set { _explicitNullValueEventNames = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("event_names"); else _explicitNullProperties?.Remove("event_names"); } }
+        public List<string>? EventNames { get => _explicitNullValueEventNames; set { _explicitNullValueEventNames = value; AdditionalData?.Remove("event_names"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("event_names"); else _explicitNullProperties?.Remove("event_names"); } }
         private List<string>? _explicitNullValueEventNames = default!;
 #nullable restore
 #else
-        public List<string> EventNames { get => _explicitNullValueEventNames; set { _explicitNullValueEventNames = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("event_names"); else _explicitNullProperties?.Remove("event_names"); } }
+        public List<string> EventNames { get => _explicitNullValueEventNames; set { _explicitNullValueEventNames = value; AdditionalData?.Remove("event_names"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("event_names"); else _explicitNullProperties?.Remove("event_names"); } }
         private List<string> _explicitNullValueEventNames = default!;
 #endif
         /// <summary>Event UUIDs the restriction applies to. Empty means it is not filtered by event UUID.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<string>? EventUuids { get => _explicitNullValueEventUuids; set { _explicitNullValueEventUuids = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("event_uuids"); else _explicitNullProperties?.Remove("event_uuids"); } }
+        public List<string>? EventUuids { get => _explicitNullValueEventUuids; set { _explicitNullValueEventUuids = value; AdditionalData?.Remove("event_uuids"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("event_uuids"); else _explicitNullProperties?.Remove("event_uuids"); } }
         private List<string>? _explicitNullValueEventUuids = default!;
 #nullable restore
 #else
-        public List<string> EventUuids { get => _explicitNullValueEventUuids; set { _explicitNullValueEventUuids = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("event_uuids"); else _explicitNullProperties?.Remove("event_uuids"); } }
+        public List<string> EventUuids { get => _explicitNullValueEventUuids; set { _explicitNullValueEventUuids = value; AdditionalData?.Remove("event_uuids"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("event_uuids"); else _explicitNullProperties?.Remove("event_uuids"); } }
         private List<string> _explicitNullValueEventUuids = default!;
 #endif
         /// <summary>Ingestion pipelines the restriction applies to. Filters combine with AND; values within a filter combine with OR.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.IngestionPipelineEnum?>? Pipelines { get => _explicitNullValuePipelines; set { _explicitNullValuePipelines = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("pipelines"); else _explicitNullProperties?.Remove("pipelines"); } }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.IngestionPipelineEnum?>? Pipelines { get => _explicitNullValuePipelines; set { _explicitNullValuePipelines = value; AdditionalData?.Remove("pipelines"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("pipelines"); else _explicitNullProperties?.Remove("pipelines"); } }
         private List<global::Soenneker.PostHog.OpenApiClient.Models.IngestionPipelineEnum?>? _explicitNullValuePipelines = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.IngestionPipelineEnum?> Pipelines { get => _explicitNullValuePipelines; set { _explicitNullValuePipelines = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("pipelines"); else _explicitNullProperties?.Remove("pipelines"); } }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.IngestionPipelineEnum?> Pipelines { get => _explicitNullValuePipelines; set { _explicitNullValuePipelines = value; AdditionalData?.Remove("pipelines"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("pipelines"); else _explicitNullProperties?.Remove("pipelines"); } }
         private List<global::Soenneker.PostHog.OpenApiClient.Models.IngestionPipelineEnum?> _explicitNullValuePipelines = default!;
 #endif
         /// <summary>* `skip_person_processing` - Skip Person Processing* `drop_event_from_ingestion` - Drop Event From Ingestion* `force_overflow_from_ingestion` - Force Overflow From Ingestion* `redirect_to_dlq` - Redirect To Dlq* `redirect_to_topic` - Redirect To Topic</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.EventIngestionRestrictionRestrictionType? RestrictionType { get => _explicitNullValueRestrictionType; set { _explicitNullValueRestrictionType = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("restriction_type"); else _explicitNullProperties?.Remove("restriction_type"); } }
+        public global::Soenneker.PostHog.OpenApiClient.Models.EventIngestionRestrictionRestrictionType? RestrictionType { get => _explicitNullValueRestrictionType; set { _explicitNullValueRestrictionType = value; AdditionalData?.Remove("restriction_type"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("restriction_type"); else _explicitNullProperties?.Remove("restriction_type"); } }
         private global::Soenneker.PostHog.OpenApiClient.Models.EventIngestionRestrictionRestrictionType? _explicitNullValueRestrictionType = default!;
         /// <summary>Session IDs the restriction applies to. Empty means it is not filtered by session ID.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<string>? SessionIds { get => _explicitNullValueSessionIds; set { _explicitNullValueSessionIds = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("session_ids"); else _explicitNullProperties?.Remove("session_ids"); } }
+        public List<string>? SessionIds { get => _explicitNullValueSessionIds; set { _explicitNullValueSessionIds = value; AdditionalData?.Remove("session_ids"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("session_ids"); else _explicitNullProperties?.Remove("session_ids"); } }
         private List<string>? _explicitNullValueSessionIds = default!;
 #nullable restore
 #else
-        public List<string> SessionIds { get => _explicitNullValueSessionIds; set { _explicitNullValueSessionIds = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("session_ids"); else _explicitNullProperties?.Remove("session_ids"); } }
+        public List<string> SessionIds { get => _explicitNullValueSessionIds; set { _explicitNullValueSessionIds = value; AdditionalData?.Remove("session_ids"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("session_ids"); else _explicitNullProperties?.Remove("session_ids"); } }
         private List<string> _explicitNullValueSessionIds = default!;
 #endif
         /// <summary>
@@ -109,7 +115,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "event_names", n => { EventNames = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
                 { "event_uuids", n => { EventUuids = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
                 { "pipelines", n => { Pipelines = n.GetCollectionOfEnumValues<global::Soenneker.PostHog.OpenApiClient.Models.IngestionPipelineEnum>()?.AsList(); } },
-                { "restriction_type", n => { RestrictionType = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.EventIngestionRestrictionRestrictionType>(); } },
+                { "restriction_type", n => { var parsed = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.EventIngestionRestrictionRestrictionType>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValueRestrictionType = default; _explicitNullProperties?.Remove("restriction_type"); AdditionalData["restriction_type"] = unknown; } else { RestrictionType = parsed; AdditionalData.Remove("restriction_type"); } } },
                 { "session_ids", n => { SessionIds = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
             };
         }

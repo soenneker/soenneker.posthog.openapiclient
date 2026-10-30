@@ -18,8 +18,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("visits") is { } nullNodeVisits && nullNodeVisits.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Visits = null;
-            if (parseNode.GetChildNode("works_in") is { } nullNodeWorksIn && nullNodeWorksIn.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) WorksIn = null;
+            if (parseNode.GetChildNode("visits") is null) { _explicitNullValueVisits = default!; _explicitNullProperties?.Remove("visits"); }
+            else if (parseNode.GetChildNode("visits") is { } nullNodeVisits && nullNodeVisits.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Visits = null;
+            if (parseNode.GetChildNode("works_in") is null) { _explicitNullValueWorksIn = default!; _explicitNullProperties?.Remove("works_in"); }
+            else if (parseNode.GetChildNode("works_in") is { } nullNodeWorksIn && nullNodeWorksIn.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) WorksIn = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -27,21 +29,21 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Products the user only opened, the most opened first.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.ActivitySummaryProductEnum?>? Visits { get => _explicitNullValueVisits; set { _explicitNullValueVisits = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("visits"); else _explicitNullProperties?.Remove("visits"); } }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.ActivitySummaryProductEnum?>? Visits { get => _explicitNullValueVisits; set { _explicitNullValueVisits = value; AdditionalData?.Remove("visits"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("visits"); else _explicitNullProperties?.Remove("visits"); } }
         private List<global::Soenneker.PostHog.OpenApiClient.Models.ActivitySummaryProductEnum?>? _explicitNullValueVisits = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.ActivitySummaryProductEnum?> Visits { get => _explicitNullValueVisits; set { _explicitNullValueVisits = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("visits"); else _explicitNullProperties?.Remove("visits"); } }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.ActivitySummaryProductEnum?> Visits { get => _explicitNullValueVisits; set { _explicitNullValueVisits = value; AdditionalData?.Remove("visits"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("visits"); else _explicitNullProperties?.Remove("visits"); } }
         private List<global::Soenneker.PostHog.OpenApiClient.Models.ActivitySummaryProductEnum?> _explicitNullValueVisits = default!;
 #endif
         /// <summary>Products where the user changed something or tagged a task, the most active first.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.ActivitySummaryProductEnum?>? WorksIn { get => _explicitNullValueWorksIn; set { _explicitNullValueWorksIn = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("works_in"); else _explicitNullProperties?.Remove("works_in"); } }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.ActivitySummaryProductEnum?>? WorksIn { get => _explicitNullValueWorksIn; set { _explicitNullValueWorksIn = value; AdditionalData?.Remove("works_in"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("works_in"); else _explicitNullProperties?.Remove("works_in"); } }
         private List<global::Soenneker.PostHog.OpenApiClient.Models.ActivitySummaryProductEnum?>? _explicitNullValueWorksIn = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.ActivitySummaryProductEnum?> WorksIn { get => _explicitNullValueWorksIn; set { _explicitNullValueWorksIn = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("works_in"); else _explicitNullProperties?.Remove("works_in"); } }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.ActivitySummaryProductEnum?> WorksIn { get => _explicitNullValueWorksIn; set { _explicitNullValueWorksIn = value; AdditionalData?.Remove("works_in"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("works_in"); else _explicitNullProperties?.Remove("works_in"); } }
         private List<global::Soenneker.PostHog.OpenApiClient.Models.ActivitySummaryProductEnum?> _explicitNullValueWorksIn = default!;
 #endif
         /// <summary>

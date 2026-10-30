@@ -18,10 +18,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("grantable_write_scopes") is { } nullNodeGrantableWriteScopes && nullNodeGrantableWriteScopes.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) GrantableWriteScopes = null;
-            if (parseNode.GetChildNode("presets") is { } nullNodePresets && nullNodePresets.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Presets = null;
-            if (parseNode.GetChildNode("tool_presets") is { } nullNodeToolPresets && nullNodeToolPresets.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ToolPresets = null;
-            if (parseNode.GetChildNode("tools") is { } nullNodeTools && nullNodeTools.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Tools = null;
+            if (parseNode.GetChildNode("grantable_write_scopes") is null) { _explicitNullValueGrantableWriteScopes = default!; _explicitNullProperties?.Remove("grantable_write_scopes"); }
+            else if (parseNode.GetChildNode("grantable_write_scopes") is { } nullNodeGrantableWriteScopes && nullNodeGrantableWriteScopes.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) GrantableWriteScopes = null;
+            if (parseNode.GetChildNode("presets") is null) { _explicitNullValuePresets = default!; _explicitNullProperties?.Remove("presets"); }
+            else if (parseNode.GetChildNode("presets") is { } nullNodePresets && nullNodePresets.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Presets = null;
+            if (parseNode.GetChildNode("tool_presets") is null) { _explicitNullValueToolPresets = default!; _explicitNullProperties?.Remove("tool_presets"); }
+            else if (parseNode.GetChildNode("tool_presets") is { } nullNodeToolPresets && nullNodeToolPresets.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ToolPresets = null;
+            if (parseNode.GetChildNode("tools") is null) { _explicitNullValueTools = default!; _explicitNullProperties?.Remove("tools"); }
+            else if (parseNode.GetChildNode("tools") is { } nullNodeTools && nullNodeTools.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Tools = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -29,21 +33,21 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The write scopes a person can grant to one scout from its settings. A scope outside this set can never be added to a scout&apos;s token.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<string>? GrantableWriteScopes { get => _explicitNullValueGrantableWriteScopes; set { _explicitNullValueGrantableWriteScopes = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("grantable_write_scopes"); else _explicitNullProperties?.Remove("grantable_write_scopes"); } }
+        public List<string>? GrantableWriteScopes { get => _explicitNullValueGrantableWriteScopes; set { _explicitNullValueGrantableWriteScopes = value; AdditionalData?.Remove("grantable_write_scopes"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("grantable_write_scopes"); else _explicitNullProperties?.Remove("grantable_write_scopes"); } }
         private List<string>? _explicitNullValueGrantableWriteScopes = default!;
 #nullable restore
 #else
-        public List<string> GrantableWriteScopes { get => _explicitNullValueGrantableWriteScopes; set { _explicitNullValueGrantableWriteScopes = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("grantable_write_scopes"); else _explicitNullProperties?.Remove("grantable_write_scopes"); } }
+        public List<string> GrantableWriteScopes { get => _explicitNullValueGrantableWriteScopes; set { _explicitNullValueGrantableWriteScopes = value; AdditionalData?.Remove("grantable_write_scopes"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("grantable_write_scopes"); else _explicitNullProperties?.Remove("grantable_write_scopes"); } }
         private List<string> _explicitNullValueGrantableWriteScopes = default!;
 #endif
         /// <summary>The scope presets a scout run can be dispatched with, and the scopes each one resolves to.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.ScoutScopePreset>? Presets { get => _explicitNullValuePresets; set { _explicitNullValuePresets = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("presets"); else _explicitNullProperties?.Remove("presets"); } }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.ScoutScopePreset>? Presets { get => _explicitNullValuePresets; set { _explicitNullValuePresets = value; AdditionalData?.Remove("presets"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("presets"); else _explicitNullProperties?.Remove("presets"); } }
         private List<global::Soenneker.PostHog.OpenApiClient.Models.ScoutScopePreset>? _explicitNullValuePresets = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.ScoutScopePreset> Presets { get => _explicitNullValuePresets; set { _explicitNullValuePresets = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("presets"); else _explicitNullProperties?.Remove("presets"); } }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.ScoutScopePreset> Presets { get => _explicitNullValuePresets; set { _explicitNullValuePresets = value; AdditionalData?.Remove("presets"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("presets"); else _explicitNullProperties?.Remove("presets"); } }
         private List<global::Soenneker.PostHog.OpenApiClient.Models.ScoutScopePreset> _explicitNullValuePresets = default!;
 #endif
         /// <summary>Tools every scout run holds. Show these as always available, excluding them from saved selections.</summary>
@@ -57,21 +61,21 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Tool selections expanded and validated on save.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.ScoutToolPreset>? ToolPresets { get => _explicitNullValueToolPresets; set { _explicitNullValueToolPresets = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("tool_presets"); else _explicitNullProperties?.Remove("tool_presets"); } }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.ScoutToolPreset>? ToolPresets { get => _explicitNullValueToolPresets; set { _explicitNullValueToolPresets = value; AdditionalData?.Remove("tool_presets"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("tool_presets"); else _explicitNullProperties?.Remove("tool_presets"); } }
         private List<global::Soenneker.PostHog.OpenApiClient.Models.ScoutToolPreset>? _explicitNullValueToolPresets = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.ScoutToolPreset> ToolPresets { get => _explicitNullValueToolPresets; set { _explicitNullValueToolPresets = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("tool_presets"); else _explicitNullProperties?.Remove("tool_presets"); } }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.ScoutToolPreset> ToolPresets { get => _explicitNullValueToolPresets; set { _explicitNullValueToolPresets = value; AdditionalData?.Remove("tool_presets"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("tool_presets"); else _explicitNullProperties?.Remove("tool_presets"); } }
         private List<global::Soenneker.PostHog.OpenApiClient.Models.ScoutToolPreset> _explicitNullValueToolPresets = default!;
 #endif
         /// <summary>Every catalogued MCP tool, ordered by name. Tools that a successor has replaced are left out.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.ScoutToolCatalogueEntry>? Tools { get => _explicitNullValueTools; set { _explicitNullValueTools = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("tools"); else _explicitNullProperties?.Remove("tools"); } }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.ScoutToolCatalogueEntry>? Tools { get => _explicitNullValueTools; set { _explicitNullValueTools = value; AdditionalData?.Remove("tools"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("tools"); else _explicitNullProperties?.Remove("tools"); } }
         private List<global::Soenneker.PostHog.OpenApiClient.Models.ScoutToolCatalogueEntry>? _explicitNullValueTools = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.ScoutToolCatalogueEntry> Tools { get => _explicitNullValueTools; set { _explicitNullValueTools = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("tools"); else _explicitNullProperties?.Remove("tools"); } }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.ScoutToolCatalogueEntry> Tools { get => _explicitNullValueTools; set { _explicitNullValueTools = value; AdditionalData?.Remove("tools"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("tools"); else _explicitNullProperties?.Remove("tools"); } }
         private List<global::Soenneker.PostHog.OpenApiClient.Models.ScoutToolCatalogueEntry> _explicitNullValueTools = default!;
 #endif
         /// <summary>

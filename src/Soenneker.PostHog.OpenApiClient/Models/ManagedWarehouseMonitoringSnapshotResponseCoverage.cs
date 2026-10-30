@@ -18,21 +18,24 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("cp_responders") is { } nullNodeCpResponders && nullNodeCpResponders.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CpResponders = null;
-            if (parseNode.GetChildNode("cp_total") is { } nullNodeCpTotal && nullNodeCpTotal.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CpTotal = null;
-            if (parseNode.GetChildNode("partial") is { } nullNodePartial && nullNodePartial.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Partial = null;
+            if (parseNode.GetChildNode("cp_responders") is null) { _explicitNullValueCpResponders = default!; _explicitNullProperties?.Remove("cp_responders"); }
+            else if (parseNode.GetChildNode("cp_responders") is { } nullNodeCpResponders && nullNodeCpResponders.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CpResponders = null;
+            if (parseNode.GetChildNode("cp_total") is null) { _explicitNullValueCpTotal = default!; _explicitNullProperties?.Remove("cp_total"); }
+            else if (parseNode.GetChildNode("cp_total") is { } nullNodeCpTotal && nullNodeCpTotal.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CpTotal = null;
+            if (parseNode.GetChildNode("partial") is null) { _explicitNullValuePartial = default!; _explicitNullProperties?.Remove("partial"); }
+            else if (parseNode.GetChildNode("partial") is { } nullNodePartial && nullNodePartial.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Partial = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Number of control planes that contributed live data.</summary>
-        public int? CpResponders { get => _explicitNullValueCpResponders; set { _explicitNullValueCpResponders = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("cp_responders"); else _explicitNullProperties?.Remove("cp_responders"); } }
+        public int? CpResponders { get => _explicitNullValueCpResponders; set { _explicitNullValueCpResponders = value; AdditionalData?.Remove("cp_responders"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("cp_responders"); else _explicitNullProperties?.Remove("cp_responders"); } }
         private int? _explicitNullValueCpResponders = default!;
         /// <summary>Number of control planes queried for live data.</summary>
-        public int? CpTotal { get => _explicitNullValueCpTotal; set { _explicitNullValueCpTotal = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("cp_total"); else _explicitNullProperties?.Remove("cp_total"); } }
+        public int? CpTotal { get => _explicitNullValueCpTotal; set { _explicitNullValueCpTotal = value; AdditionalData?.Remove("cp_total"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("cp_total"); else _explicitNullProperties?.Remove("cp_total"); } }
         private int? _explicitNullValueCpTotal = default!;
         /// <summary>Whether one or more control planes failed to contribute live data.</summary>
-        public bool? Partial { get => _explicitNullValuePartial; set { _explicitNullValuePartial = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("partial"); else _explicitNullProperties?.Remove("partial"); } }
+        public bool? Partial { get => _explicitNullValuePartial; set { _explicitNullValuePartial = value; AdditionalData?.Remove("partial"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("partial"); else _explicitNullProperties?.Remove("partial"); } }
         private bool? _explicitNullValuePartial = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ManagedWarehouseMonitoringSnapshotResponseCoverage"/> and sets the default values.

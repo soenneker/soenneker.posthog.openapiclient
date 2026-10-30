@@ -17,7 +17,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("oauth_url") is { } nullNodeOauthUrl && nullNodeOauthUrl.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) OauthUrl = null;
+            if (parseNode.GetChildNode("oauth_url") is null) { _explicitNullValueOauthUrl = default!; _explicitNullProperties?.Remove("oauth_url"); }
+            else if (parseNode.GetChildNode("oauth_url") is { } nullNodeOauthUrl && nullNodeOauthUrl.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) OauthUrl = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -25,11 +26,11 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>GitHub User OAuth URL the client should redirect to.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? OauthUrl { get => _explicitNullValueOauthUrl; set { _explicitNullValueOauthUrl = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("oauth_url"); else _explicitNullProperties?.Remove("oauth_url"); } }
+        public string? OauthUrl { get => _explicitNullValueOauthUrl; set { _explicitNullValueOauthUrl = value; AdditionalData?.Remove("oauth_url"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("oauth_url"); else _explicitNullProperties?.Remove("oauth_url"); } }
         private string? _explicitNullValueOauthUrl = default!;
 #nullable restore
 #else
-        public string OauthUrl { get => _explicitNullValueOauthUrl; set { _explicitNullValueOauthUrl = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("oauth_url"); else _explicitNullProperties?.Remove("oauth_url"); } }
+        public string OauthUrl { get => _explicitNullValueOauthUrl; set { _explicitNullValueOauthUrl = value; AdditionalData?.Remove("oauth_url"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("oauth_url"); else _explicitNullProperties?.Remove("oauth_url"); } }
         private string _explicitNullValueOauthUrl = default!;
 #endif
         /// <summary>

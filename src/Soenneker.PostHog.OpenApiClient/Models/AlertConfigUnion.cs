@@ -18,61 +18,69 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("check_ongoing_interval") is { } nullNodeCheckOngoingInterval && nullNodeCheckOngoingInterval.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CheckOngoingInterval = null;
-            if (parseNode.GetChildNode("column") is { } nullNodeColumn && nullNodeColumn.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Column = null;
-            if (parseNode.GetChildNode("evaluation") is { } nullNodeEvaluation && nullNodeEvaluation.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Evaluation = null;
-            if (parseNode.GetChildNode("funnel_step") is { } nullNodeFunnelStep && nullNodeFunnelStep.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) FunnelStep = null;
-            if (parseNode.GetChildNode("label_column") is { } nullNodeLabelColumn && nullNodeLabelColumn.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) LabelColumn = null;
-            if (parseNode.GetChildNode("metric") is { } nullNodeMetric && nullNodeMetric.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Metric = null;
-            if (parseNode.GetChildNode("series_index") is { } nullNodeSeriesIndex && nullNodeSeriesIndex.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SeriesIndex = null;
-            if (parseNode.GetChildNode("type") is { } nullNodeType && nullNodeType.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Type = null;
+            if (parseNode.GetChildNode("check_ongoing_interval") is null) { _explicitNullValueCheckOngoingInterval = default!; _explicitNullProperties?.Remove("check_ongoing_interval"); }
+            else if (parseNode.GetChildNode("check_ongoing_interval") is { } nullNodeCheckOngoingInterval && nullNodeCheckOngoingInterval.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CheckOngoingInterval = null;
+            if (parseNode.GetChildNode("column") is null) { _explicitNullValueColumn = default!; _explicitNullProperties?.Remove("column"); }
+            else if (parseNode.GetChildNode("column") is { } nullNodeColumn && nullNodeColumn.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Column = null;
+            if (parseNode.GetChildNode("evaluation") is null) { _explicitNullValueEvaluation = default!; _explicitNullProperties?.Remove("evaluation"); }
+            else if (parseNode.GetChildNode("evaluation") is { } nullNodeEvaluation && nullNodeEvaluation.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Evaluation = null;
+            if (parseNode.GetChildNode("funnel_step") is null) { _explicitNullValueFunnelStep = default!; _explicitNullProperties?.Remove("funnel_step"); }
+            else if (parseNode.GetChildNode("funnel_step") is { } nullNodeFunnelStep && nullNodeFunnelStep.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) FunnelStep = null;
+            if (parseNode.GetChildNode("label_column") is null) { _explicitNullValueLabelColumn = default!; _explicitNullProperties?.Remove("label_column"); }
+            else if (parseNode.GetChildNode("label_column") is { } nullNodeLabelColumn && nullNodeLabelColumn.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) LabelColumn = null;
+            if (parseNode.GetChildNode("metric") is null) { _explicitNullValueMetric = default!; _explicitNullProperties?.Remove("metric"); }
+            else if (parseNode.GetChildNode("metric") is { } nullNodeMetric && nullNodeMetric.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Metric = null;
+            if (parseNode.GetChildNode("series_index") is null) { _explicitNullValueSeriesIndex = default!; _explicitNullProperties?.Remove("series_index"); }
+            else if (parseNode.GetChildNode("series_index") is { } nullNodeSeriesIndex && nullNodeSeriesIndex.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SeriesIndex = null;
+            if (parseNode.GetChildNode("type") is null) { _explicitNullValueType = default!; _explicitNullProperties?.Remove("type"); }
+            else if (parseNode.GetChildNode("type") is { } nullNodeType && nullNodeType.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Type = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>When true, evaluate the current (still incomplete) time interval in addition to completed ones.</summary>
-        public bool? CheckOngoingInterval { get => _explicitNullValueCheckOngoingInterval; set { _explicitNullValueCheckOngoingInterval = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("check_ongoing_interval"); else _explicitNullProperties?.Remove("check_ongoing_interval"); } }
+        public bool? CheckOngoingInterval { get => _explicitNullValueCheckOngoingInterval; set { _explicitNullValueCheckOngoingInterval = value; AdditionalData?.Remove("check_ongoing_interval"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("check_ongoing_interval"); else _explicitNullProperties?.Remove("check_ongoing_interval"); } }
         private bool? _explicitNullValueCheckOngoingInterval = default!;
         /// <summary>Name of the result column to evaluate. When unset, the single numeric column is used (an error if the result has more than one numeric column).</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Column { get => _explicitNullValueColumn; set { _explicitNullValueColumn = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("column"); else _explicitNullProperties?.Remove("column"); } }
+        public string? Column { get => _explicitNullValueColumn; set { _explicitNullValueColumn = value; AdditionalData?.Remove("column"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("column"); else _explicitNullProperties?.Remove("column"); } }
         private string? _explicitNullValueColumn = default!;
 #nullable restore
 #else
-        public string Column { get => _explicitNullValueColumn; set { _explicitNullValueColumn = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("column"); else _explicitNullProperties?.Remove("column"); } }
+        public string Column { get => _explicitNullValueColumn; set { _explicitNullValueColumn = value; AdditionalData?.Remove("column"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("column"); else _explicitNullProperties?.Remove("column"); } }
         private string _explicitNullValueColumn = default!;
 #endif
         /// <summary>The evaluation property</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.HogQlAlertEvaluation? Evaluation { get => _explicitNullValueEvaluation; set { _explicitNullValueEvaluation = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("evaluation"); else _explicitNullProperties?.Remove("evaluation"); } }
+        public global::Soenneker.PostHog.OpenApiClient.Models.HogQlAlertEvaluation? Evaluation { get => _explicitNullValueEvaluation; set { _explicitNullValueEvaluation = value; AdditionalData?.Remove("evaluation"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("evaluation"); else _explicitNullProperties?.Remove("evaluation"); } }
         private global::Soenneker.PostHog.OpenApiClient.Models.HogQlAlertEvaluation? _explicitNullValueEvaluation = default!;
         /// <summary>Zero-based step index to evaluate. Null = the last step (overall conversion).</summary>
-        public int? FunnelStep { get => _explicitNullValueFunnelStep; set { _explicitNullValueFunnelStep = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("funnel_step"); else _explicitNullProperties?.Remove("funnel_step"); } }
+        public int? FunnelStep { get => _explicitNullValueFunnelStep; set { _explicitNullValueFunnelStep = value; AdditionalData?.Remove("funnel_step"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("funnel_step"); else _explicitNullProperties?.Remove("funnel_step"); } }
         private int? _explicitNullValueFunnelStep = default!;
         /// <summary>Column whose value labels the evaluated row(s) in breach messages: every row in `any_row` mode, or the single evaluated row in `last_row`/`first_row`. When unset, the first non-evaluated column is used, falling back to the row number (any_row) or the value column name (last_row/first_row).</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? LabelColumn { get => _explicitNullValueLabelColumn; set { _explicitNullValueLabelColumn = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("label_column"); else _explicitNullProperties?.Remove("label_column"); } }
+        public string? LabelColumn { get => _explicitNullValueLabelColumn; set { _explicitNullValueLabelColumn = value; AdditionalData?.Remove("label_column"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("label_column"); else _explicitNullProperties?.Remove("label_column"); } }
         private string? _explicitNullValueLabelColumn = default!;
 #nullable restore
 #else
-        public string LabelColumn { get => _explicitNullValueLabelColumn; set { _explicitNullValueLabelColumn = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("label_column"); else _explicitNullProperties?.Remove("label_column"); } }
+        public string LabelColumn { get => _explicitNullValueLabelColumn; set { _explicitNullValueLabelColumn = value; AdditionalData?.Remove("label_column"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("label_column"); else _explicitNullProperties?.Remove("label_column"); } }
         private string _explicitNullValueLabelColumn = default!;
 #endif
         /// <summary>The metric property</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.FunnelConversionMetric? Metric { get => _explicitNullValueMetric; set { _explicitNullValueMetric = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("metric"); else _explicitNullProperties?.Remove("metric"); } }
+        public global::Soenneker.PostHog.OpenApiClient.Models.FunnelConversionMetric? Metric { get => _explicitNullValueMetric; set { _explicitNullValueMetric = value; AdditionalData?.Remove("metric"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("metric"); else _explicitNullProperties?.Remove("metric"); } }
         private global::Soenneker.PostHog.OpenApiClient.Models.FunnelConversionMetric? _explicitNullValueMetric = default!;
         /// <summary>Zero-based index of the series in the insight&apos;s query to monitor.</summary>
-        public int? SeriesIndex { get => _explicitNullValueSeriesIndex; set { _explicitNullValueSeriesIndex = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("series_index"); else _explicitNullProperties?.Remove("series_index"); } }
+        public int? SeriesIndex { get => _explicitNullValueSeriesIndex; set { _explicitNullValueSeriesIndex = value; AdditionalData?.Remove("series_index"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("series_index"); else _explicitNullProperties?.Remove("series_index"); } }
         private int? _explicitNullValueSeriesIndex = default!;
         /// <summary>The type property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Type { get => _explicitNullValueType; set { _explicitNullValueType = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("type"); else _explicitNullProperties?.Remove("type"); } }
+        public string? Type { get => _explicitNullValueType; set { _explicitNullValueType = value; AdditionalData?.Remove("type"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("type"); else _explicitNullProperties?.Remove("type"); } }
         private string? _explicitNullValueType = default!;
 #nullable restore
 #else
-        public string Type { get => _explicitNullValueType; set { _explicitNullValueType = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("type"); else _explicitNullProperties?.Remove("type"); } }
+        public string Type { get => _explicitNullValueType; set { _explicitNullValueType = value; AdditionalData?.Remove("type"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("type"); else _explicitNullProperties?.Remove("type"); } }
         private string _explicitNullValueType = default!;
 #endif
         /// <summary>
@@ -102,10 +110,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             {
                 { "check_ongoing_interval", n => { CheckOngoingInterval = n.GetBoolValue(); } },
                 { "column", n => { Column = n.GetStringValue(); } },
-                { "evaluation", n => { Evaluation = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.HogQlAlertEvaluation>(); } },
+                { "evaluation", n => { var parsed = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.HogQlAlertEvaluation>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValueEvaluation = default; _explicitNullProperties?.Remove("evaluation"); AdditionalData["evaluation"] = unknown; } else { Evaluation = parsed; AdditionalData.Remove("evaluation"); } } },
                 { "funnel_step", n => { FunnelStep = n.GetIntValue(); } },
                 { "label_column", n => { LabelColumn = n.GetStringValue(); } },
-                { "metric", n => { Metric = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.FunnelConversionMetric>(); } },
+                { "metric", n => { var parsed = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.FunnelConversionMetric>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValueMetric = default; _explicitNullProperties?.Remove("metric"); AdditionalData["metric"] = unknown; } else { Metric = parsed; AdditionalData.Remove("metric"); } } },
                 { "series_index", n => { SeriesIndex = n.GetIntValue(); } },
                 { "type", n => { Type = n.GetStringValue(); } },
             };

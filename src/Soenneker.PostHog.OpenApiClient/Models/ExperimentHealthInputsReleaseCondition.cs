@@ -17,36 +17,41 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("number") is { } nullNodeNumber && nullNodeNumber.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Number = null;
-            if (parseNode.GetChildNode("pinned_variant") is { } nullNodePinnedVariant && nullNodePinnedVariant.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) PinnedVariant = null;
-            if (parseNode.GetChildNode("property_count") is { } nullNodePropertyCount && nullNodePropertyCount.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) PropertyCount = null;
-            if (parseNode.GetChildNode("reachable") is { } nullNodeReachable && nullNodeReachable.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Reachable = null;
-            if (parseNode.GetChildNode("rollout_percentage") is { } nullNodeRolloutPercentage && nullNodeRolloutPercentage.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) RolloutPercentage = null;
+            if (parseNode.GetChildNode("number") is null) { _explicitNullValueNumber = default!; _explicitNullProperties?.Remove("number"); }
+            else if (parseNode.GetChildNode("number") is { } nullNodeNumber && nullNodeNumber.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Number = null;
+            if (parseNode.GetChildNode("pinned_variant") is null) { _explicitNullValuePinnedVariant = default!; _explicitNullProperties?.Remove("pinned_variant"); }
+            else if (parseNode.GetChildNode("pinned_variant") is { } nullNodePinnedVariant && nullNodePinnedVariant.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) PinnedVariant = null;
+            if (parseNode.GetChildNode("property_count") is null) { _explicitNullValuePropertyCount = default!; _explicitNullProperties?.Remove("property_count"); }
+            else if (parseNode.GetChildNode("property_count") is { } nullNodePropertyCount && nullNodePropertyCount.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) PropertyCount = null;
+            if (parseNode.GetChildNode("reachable") is null) { _explicitNullValueReachable = default!; _explicitNullProperties?.Remove("reachable"); }
+            else if (parseNode.GetChildNode("reachable") is { } nullNodeReachable && nullNodeReachable.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Reachable = null;
+            if (parseNode.GetChildNode("rollout_percentage") is null) { _explicitNullValueRolloutPercentage = default!; _explicitNullProperties?.Remove("rollout_percentage"); }
+            else if (parseNode.GetChildNode("rollout_percentage") is { } nullNodeRolloutPercentage && nullNodeRolloutPercentage.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) RolloutPercentage = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The condition&apos;s position in the flag, from 1, as the flag page labels it (&apos;Set 2&apos;).</summary>
-        public int? Number { get => _explicitNullValueNumber; set { _explicitNullValueNumber = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("number"); else _explicitNullProperties?.Remove("number"); } }
+        public int? Number { get => _explicitNullValueNumber; set { _explicitNullValueNumber = value; AdditionalData?.Remove("number"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("number"); else _explicitNullProperties?.Remove("number"); } }
         private int? _explicitNullValueNumber = default!;
         /// <summary>The variant that the condition&apos;s override serves. Null when the condition is not reachable, has no override, or its override names no variant of the flag.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? PinnedVariant { get => _explicitNullValuePinnedVariant; set { _explicitNullValuePinnedVariant = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("pinned_variant"); else _explicitNullProperties?.Remove("pinned_variant"); } }
+        public string? PinnedVariant { get => _explicitNullValuePinnedVariant; set { _explicitNullValuePinnedVariant = value; AdditionalData?.Remove("pinned_variant"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("pinned_variant"); else _explicitNullProperties?.Remove("pinned_variant"); } }
         private string? _explicitNullValuePinnedVariant = default!;
 #nullable restore
 #else
-        public string PinnedVariant { get => _explicitNullValuePinnedVariant; set { _explicitNullValuePinnedVariant = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("pinned_variant"); else _explicitNullProperties?.Remove("pinned_variant"); } }
+        public string PinnedVariant { get => _explicitNullValuePinnedVariant; set { _explicitNullValuePinnedVariant = value; AdditionalData?.Remove("pinned_variant"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("pinned_variant"); else _explicitNullProperties?.Remove("pinned_variant"); } }
         private string _explicitNullValuePinnedVariant = default!;
 #endif
         /// <summary>The number of property filters. Null when the flag stores no list.</summary>
-        public int? PropertyCount { get => _explicitNullValuePropertyCount; set { _explicitNullValuePropertyCount = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("property_count"); else _explicitNullProperties?.Remove("property_count"); } }
+        public int? PropertyCount { get => _explicitNullValuePropertyCount; set { _explicitNullValuePropertyCount = value; AdditionalData?.Remove("property_count"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("property_count"); else _explicitNullProperties?.Remove("property_count"); } }
         private int? _explicitNullValuePropertyCount = default!;
         /// <summary>Whether the condition can serve a request. A condition after one that matches everyone never does.</summary>
-        public bool? Reachable { get => _explicitNullValueReachable; set { _explicitNullValueReachable = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("reachable"); else _explicitNullProperties?.Remove("reachable"); } }
+        public bool? Reachable { get => _explicitNullValueReachable; set { _explicitNullValueReachable = value; AdditionalData?.Remove("reachable"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("reachable"); else _explicitNullProperties?.Remove("reachable"); } }
         private bool? _explicitNullValueReachable = default!;
         /// <summary>The condition&apos;s rollout, in percent. Null when the flag stores no number.</summary>
-        public double? RolloutPercentage { get => _explicitNullValueRolloutPercentage; set { _explicitNullValueRolloutPercentage = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("rollout_percentage"); else _explicitNullProperties?.Remove("rollout_percentage"); } }
+        public double? RolloutPercentage { get => _explicitNullValueRolloutPercentage; set { _explicitNullValueRolloutPercentage = value; AdditionalData?.Remove("rollout_percentage"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("rollout_percentage"); else _explicitNullProperties?.Remove("rollout_percentage"); } }
         private double? _explicitNullValueRolloutPercentage = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ExperimentHealthInputsReleaseCondition"/> and sets the default values.

@@ -17,62 +17,70 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("current_usage") is { } nullNodeCurrentUsage && nullNodeCurrentUsage.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CurrentUsage = null;
-            if (parseNode.GetChildNode("has_exceeded_limit") is { } nullNodeHasExceededLimit && nullNodeHasExceededLimit.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) HasExceededLimit = null;
-            if (parseNode.GetChildNode("key") is { } nullNodeKey && nullNodeKey.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Key = null;
-            if (parseNode.GetChildNode("kind") is { } nullNodeKind && nullNodeKind.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Kind = null;
-            if (parseNode.GetChildNode("tier_usage") is { } nullNodeTierUsage && nullNodeTierUsage.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TierUsage = null;
-            if (parseNode.GetChildNode("usage_key") is { } nullNodeUsageKey && nullNodeUsageKey.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) UsageKey = null;
-            if (parseNode.GetChildNode("usage_limit") is { } nullNodeUsageLimit && nullNodeUsageLimit.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) UsageLimit = null;
-            if (parseNode.GetChildNode("usage_ratio") is { } nullNodeUsageRatio && nullNodeUsageRatio.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) UsageRatio = null;
+            if (parseNode.GetChildNode("current_usage") is null) { _explicitNullValueCurrentUsage = default!; _explicitNullProperties?.Remove("current_usage"); }
+            else if (parseNode.GetChildNode("current_usage") is { } nullNodeCurrentUsage && nullNodeCurrentUsage.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CurrentUsage = null;
+            if (parseNode.GetChildNode("has_exceeded_limit") is null) { _explicitNullValueHasExceededLimit = default!; _explicitNullProperties?.Remove("has_exceeded_limit"); }
+            else if (parseNode.GetChildNode("has_exceeded_limit") is { } nullNodeHasExceededLimit && nullNodeHasExceededLimit.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) HasExceededLimit = null;
+            if (parseNode.GetChildNode("key") is null) { _explicitNullValueKey = default!; _explicitNullProperties?.Remove("key"); }
+            else if (parseNode.GetChildNode("key") is { } nullNodeKey && nullNodeKey.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Key = null;
+            if (parseNode.GetChildNode("kind") is null) { _explicitNullValueKind = default!; _explicitNullProperties?.Remove("kind"); }
+            else if (parseNode.GetChildNode("kind") is { } nullNodeKind && nullNodeKind.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Kind = null;
+            if (parseNode.GetChildNode("tier_usage") is null) { _explicitNullValueTierUsage = default!; _explicitNullProperties?.Remove("tier_usage"); }
+            else if (parseNode.GetChildNode("tier_usage") is { } nullNodeTierUsage && nullNodeTierUsage.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TierUsage = null;
+            if (parseNode.GetChildNode("usage_key") is null) { _explicitNullValueUsageKey = default!; _explicitNullProperties?.Remove("usage_key"); }
+            else if (parseNode.GetChildNode("usage_key") is { } nullNodeUsageKey && nullNodeUsageKey.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) UsageKey = null;
+            if (parseNode.GetChildNode("usage_limit") is null) { _explicitNullValueUsageLimit = default!; _explicitNullProperties?.Remove("usage_limit"); }
+            else if (parseNode.GetChildNode("usage_limit") is { } nullNodeUsageLimit && nullNodeUsageLimit.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) UsageLimit = null;
+            if (parseNode.GetChildNode("usage_ratio") is null) { _explicitNullValueUsageRatio = default!; _explicitNullProperties?.Remove("usage_ratio"); }
+            else if (parseNode.GetChildNode("usage_ratio") is { } nullNodeUsageRatio && nullNodeUsageRatio.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) UsageRatio = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The current_usage property</summary>
-        public int? CurrentUsage { get => _explicitNullValueCurrentUsage; set { _explicitNullValueCurrentUsage = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("current_usage"); else _explicitNullProperties?.Remove("current_usage"); } }
+        public int? CurrentUsage { get => _explicitNullValueCurrentUsage; set { _explicitNullValueCurrentUsage = value; AdditionalData?.Remove("current_usage"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("current_usage"); else _explicitNullProperties?.Remove("current_usage"); } }
         private int? _explicitNullValueCurrentUsage = default!;
         /// <summary>The has_exceeded_limit property</summary>
-        public bool? HasExceededLimit { get => _explicitNullValueHasExceededLimit; set { _explicitNullValueHasExceededLimit = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("has_exceeded_limit"); else _explicitNullProperties?.Remove("has_exceeded_limit"); } }
+        public bool? HasExceededLimit { get => _explicitNullValueHasExceededLimit; set { _explicitNullValueHasExceededLimit = value; AdditionalData?.Remove("has_exceeded_limit"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("has_exceeded_limit"); else _explicitNullProperties?.Remove("has_exceeded_limit"); } }
         private bool? _explicitNullValueHasExceededLimit = default!;
         /// <summary>The key property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Key { get => _explicitNullValueKey; set { _explicitNullValueKey = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("key"); else _explicitNullProperties?.Remove("key"); } }
+        public string? Key { get => _explicitNullValueKey; set { _explicitNullValueKey = value; AdditionalData?.Remove("key"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("key"); else _explicitNullProperties?.Remove("key"); } }
         private string? _explicitNullValueKey = default!;
 #nullable restore
 #else
-        public string Key { get => _explicitNullValueKey; set { _explicitNullValueKey = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("key"); else _explicitNullProperties?.Remove("key"); } }
+        public string Key { get => _explicitNullValueKey; set { _explicitNullValueKey = value; AdditionalData?.Remove("key"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("key"); else _explicitNullProperties?.Remove("key"); } }
         private string _explicitNullValueKey = default!;
 #endif
         /// <summary>* `product` - Product* `addon` - Addon</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.CatalogKindEnum? Kind { get => _explicitNullValueKind; set { _explicitNullValueKind = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("kind"); else _explicitNullProperties?.Remove("kind"); } }
+        public global::Soenneker.PostHog.OpenApiClient.Models.CatalogKindEnum? Kind { get => _explicitNullValueKind; set { _explicitNullValueKind = value; AdditionalData?.Remove("kind"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("kind"); else _explicitNullProperties?.Remove("kind"); } }
         private global::Soenneker.PostHog.OpenApiClient.Models.CatalogKindEnum? _explicitNullValueKind = default!;
         /// <summary>The tier_usage property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.TierUsage>? TierUsage { get => _explicitNullValueTierUsage; set { _explicitNullValueTierUsage = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("tier_usage"); else _explicitNullProperties?.Remove("tier_usage"); } }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.TierUsage>? TierUsage { get => _explicitNullValueTierUsage; set { _explicitNullValueTierUsage = value; AdditionalData?.Remove("tier_usage"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("tier_usage"); else _explicitNullProperties?.Remove("tier_usage"); } }
         private List<global::Soenneker.PostHog.OpenApiClient.Models.TierUsage>? _explicitNullValueTierUsage = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.TierUsage> TierUsage { get => _explicitNullValueTierUsage; set { _explicitNullValueTierUsage = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("tier_usage"); else _explicitNullProperties?.Remove("tier_usage"); } }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.TierUsage> TierUsage { get => _explicitNullValueTierUsage; set { _explicitNullValueTierUsage = value; AdditionalData?.Remove("tier_usage"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("tier_usage"); else _explicitNullProperties?.Remove("tier_usage"); } }
         private List<global::Soenneker.PostHog.OpenApiClient.Models.TierUsage> _explicitNullValueTierUsage = default!;
 #endif
         /// <summary>The usage_key property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? UsageKey { get => _explicitNullValueUsageKey; set { _explicitNullValueUsageKey = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("usage_key"); else _explicitNullProperties?.Remove("usage_key"); } }
+        public string? UsageKey { get => _explicitNullValueUsageKey; set { _explicitNullValueUsageKey = value; AdditionalData?.Remove("usage_key"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("usage_key"); else _explicitNullProperties?.Remove("usage_key"); } }
         private string? _explicitNullValueUsageKey = default!;
 #nullable restore
 #else
-        public string UsageKey { get => _explicitNullValueUsageKey; set { _explicitNullValueUsageKey = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("usage_key"); else _explicitNullProperties?.Remove("usage_key"); } }
+        public string UsageKey { get => _explicitNullValueUsageKey; set { _explicitNullValueUsageKey = value; AdditionalData?.Remove("usage_key"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("usage_key"); else _explicitNullProperties?.Remove("usage_key"); } }
         private string _explicitNullValueUsageKey = default!;
 #endif
         /// <summary>The usage_limit property</summary>
-        public int? UsageLimit { get => _explicitNullValueUsageLimit; set { _explicitNullValueUsageLimit = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("usage_limit"); else _explicitNullProperties?.Remove("usage_limit"); } }
+        public int? UsageLimit { get => _explicitNullValueUsageLimit; set { _explicitNullValueUsageLimit = value; AdditionalData?.Remove("usage_limit"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("usage_limit"); else _explicitNullProperties?.Remove("usage_limit"); } }
         private int? _explicitNullValueUsageLimit = default!;
         /// <summary>The usage_ratio property</summary>
-        public double? UsageRatio { get => _explicitNullValueUsageRatio; set { _explicitNullValueUsageRatio = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("usage_ratio"); else _explicitNullProperties?.Remove("usage_ratio"); } }
+        public double? UsageRatio { get => _explicitNullValueUsageRatio; set { _explicitNullValueUsageRatio = value; AdditionalData?.Remove("usage_ratio"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("usage_ratio"); else _explicitNullProperties?.Remove("usage_ratio"); } }
         private double? _explicitNullValueUsageRatio = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.UsageItem"/> and sets the default values.
@@ -102,7 +110,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "current_usage", n => { CurrentUsage = n.GetIntValue(); } },
                 { "has_exceeded_limit", n => { HasExceededLimit = n.GetBoolValue(); } },
                 { "key", n => { Key = n.GetStringValue(); } },
-                { "kind", n => { Kind = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.CatalogKindEnum>(); } },
+                { "kind", n => { var parsed = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.CatalogKindEnum>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValueKind = default; _explicitNullProperties?.Remove("kind"); AdditionalData["kind"] = unknown; } else { Kind = parsed; AdditionalData.Remove("kind"); } } },
                 { "tier_usage", n => { TierUsage = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.TierUsage>(global::Soenneker.PostHog.OpenApiClient.Models.TierUsage.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "usage_key", n => { UsageKey = n.GetStringValue(); } },
                 { "usage_limit", n => { UsageLimit = n.GetIntValue(); } },

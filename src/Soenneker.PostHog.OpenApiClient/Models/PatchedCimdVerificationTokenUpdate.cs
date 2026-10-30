@@ -18,7 +18,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("cimd_url") is { } nullNodeCimdUrl && nullNodeCimdUrl.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CimdUrl = null;
+            if (parseNode.GetChildNode("cimd_url") is null) { _explicitNullValueCimdUrl = default!; _explicitNullProperties?.Remove("cimd_url"); }
+            else if (parseNode.GetChildNode("cimd_url") is { } nullNodeCimdUrl && nullNodeCimdUrl.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CimdUrl = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -26,11 +27,11 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>HTTPS URL of the CIMD metadata document to bind this token to. Only settable once, on a token with no existing binding; an already-bound token must be reissued instead.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? CimdUrl { get => _explicitNullValueCimdUrl; set { _explicitNullValueCimdUrl = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("cimd_url"); else _explicitNullProperties?.Remove("cimd_url"); } }
+        public string? CimdUrl { get => _explicitNullValueCimdUrl; set { _explicitNullValueCimdUrl = value; AdditionalData?.Remove("cimd_url"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("cimd_url"); else _explicitNullProperties?.Remove("cimd_url"); } }
         private string? _explicitNullValueCimdUrl = default!;
 #nullable restore
 #else
-        public string CimdUrl { get => _explicitNullValueCimdUrl; set { _explicitNullValueCimdUrl = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("cimd_url"); else _explicitNullProperties?.Remove("cimd_url"); } }
+        public string CimdUrl { get => _explicitNullValueCimdUrl; set { _explicitNullValueCimdUrl = value; AdditionalData?.Remove("cimd_url"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("cimd_url"); else _explicitNullProperties?.Remove("cimd_url"); } }
         private string _explicitNullValueCimdUrl = default!;
 #endif
         /// <summary>

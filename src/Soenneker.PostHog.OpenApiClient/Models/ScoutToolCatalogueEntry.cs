@@ -18,21 +18,36 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("category") is { } nullNodeCategory && nullNodeCategory.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Category = null;
-            if (parseNode.GetChildNode("feature") is { } nullNodeFeature && nullNodeFeature.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Feature = null;
-            if (parseNode.GetChildNode("feature_entitlement") is { } nullNodeFeatureEntitlement && nullNodeFeatureEntitlement.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) FeatureEntitlement = null;
-            if (parseNode.GetChildNode("feature_flag") is { } nullNodeFeatureFlag && nullNodeFeatureFlag.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) FeatureFlag = null;
-            if (parseNode.GetChildNode("feature_flag_behavior") is { } nullNodeFeatureFlagBehavior && nullNodeFeatureFlagBehavior.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) FeatureFlagBehavior = null;
-            if (parseNode.GetChildNode("feature_flag_variant") is { } nullNodeFeatureFlagVariant && nullNodeFeatureFlagVariant.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) FeatureFlagVariant = null;
-            if (parseNode.GetChildNode("hidden_when_flag_on") is { } nullNodeHiddenWhenFlagOn && nullNodeHiddenWhenFlagOn.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) HiddenWhenFlagOn = null;
-            if (parseNode.GetChildNode("holdable") is { } nullNodeHoldable && nullNodeHoldable.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Holdable = null;
-            if (parseNode.GetChildNode("is_read_only") is { } nullNodeIsReadOnly && nullNodeIsReadOnly.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) IsReadOnly = null;
-            if (parseNode.GetChildNode("missing_scopes") is { } nullNodeMissingScopes && nullNodeMissingScopes.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MissingScopes = null;
-            if (parseNode.GetChildNode("name") is { } nullNodeName && nullNodeName.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Name = null;
-            if (parseNode.GetChildNode("required_scopes") is { } nullNodeRequiredScopes && nullNodeRequiredScopes.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) RequiredScopes = null;
-            if (parseNode.GetChildNode("requires_ai_consent") is { } nullNodeRequiresAiConsent && nullNodeRequiresAiConsent.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) RequiresAiConsent = null;
-            if (parseNode.GetChildNode("summary") is { } nullNodeSummary && nullNodeSummary.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Summary = null;
-            if (parseNode.GetChildNode("title") is { } nullNodeTitle && nullNodeTitle.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Title = null;
+            if (parseNode.GetChildNode("category") is null) { _explicitNullValueCategory = default!; _explicitNullProperties?.Remove("category"); }
+            else if (parseNode.GetChildNode("category") is { } nullNodeCategory && nullNodeCategory.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Category = null;
+            if (parseNode.GetChildNode("feature") is null) { _explicitNullValueFeature = default!; _explicitNullProperties?.Remove("feature"); }
+            else if (parseNode.GetChildNode("feature") is { } nullNodeFeature && nullNodeFeature.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Feature = null;
+            if (parseNode.GetChildNode("feature_entitlement") is null) { _explicitNullValueFeatureEntitlement = default!; _explicitNullProperties?.Remove("feature_entitlement"); }
+            else if (parseNode.GetChildNode("feature_entitlement") is { } nullNodeFeatureEntitlement && nullNodeFeatureEntitlement.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) FeatureEntitlement = null;
+            if (parseNode.GetChildNode("feature_flag") is null) { _explicitNullValueFeatureFlag = default!; _explicitNullProperties?.Remove("feature_flag"); }
+            else if (parseNode.GetChildNode("feature_flag") is { } nullNodeFeatureFlag && nullNodeFeatureFlag.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) FeatureFlag = null;
+            if (parseNode.GetChildNode("feature_flag_behavior") is null) { _explicitNullValueFeatureFlagBehavior = default!; _explicitNullProperties?.Remove("feature_flag_behavior"); }
+            else if (parseNode.GetChildNode("feature_flag_behavior") is { } nullNodeFeatureFlagBehavior && nullNodeFeatureFlagBehavior.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) FeatureFlagBehavior = null;
+            if (parseNode.GetChildNode("feature_flag_variant") is null) { _explicitNullValueFeatureFlagVariant = default!; _explicitNullProperties?.Remove("feature_flag_variant"); }
+            else if (parseNode.GetChildNode("feature_flag_variant") is { } nullNodeFeatureFlagVariant && nullNodeFeatureFlagVariant.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) FeatureFlagVariant = null;
+            if (parseNode.GetChildNode("hidden_when_flag_on") is null) { _explicitNullValueHiddenWhenFlagOn = default!; _explicitNullProperties?.Remove("hidden_when_flag_on"); }
+            else if (parseNode.GetChildNode("hidden_when_flag_on") is { } nullNodeHiddenWhenFlagOn && nullNodeHiddenWhenFlagOn.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) HiddenWhenFlagOn = null;
+            if (parseNode.GetChildNode("holdable") is null) { _explicitNullValueHoldable = default!; _explicitNullProperties?.Remove("holdable"); }
+            else if (parseNode.GetChildNode("holdable") is { } nullNodeHoldable && nullNodeHoldable.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Holdable = null;
+            if (parseNode.GetChildNode("is_read_only") is null) { _explicitNullValueIsReadOnly = default!; _explicitNullProperties?.Remove("is_read_only"); }
+            else if (parseNode.GetChildNode("is_read_only") is { } nullNodeIsReadOnly && nullNodeIsReadOnly.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) IsReadOnly = null;
+            if (parseNode.GetChildNode("missing_scopes") is null) { _explicitNullValueMissingScopes = default!; _explicitNullProperties?.Remove("missing_scopes"); }
+            else if (parseNode.GetChildNode("missing_scopes") is { } nullNodeMissingScopes && nullNodeMissingScopes.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MissingScopes = null;
+            if (parseNode.GetChildNode("name") is null) { _explicitNullValueName = default!; _explicitNullProperties?.Remove("name"); }
+            else if (parseNode.GetChildNode("name") is { } nullNodeName && nullNodeName.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Name = null;
+            if (parseNode.GetChildNode("required_scopes") is null) { _explicitNullValueRequiredScopes = default!; _explicitNullProperties?.Remove("required_scopes"); }
+            else if (parseNode.GetChildNode("required_scopes") is { } nullNodeRequiredScopes && nullNodeRequiredScopes.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) RequiredScopes = null;
+            if (parseNode.GetChildNode("requires_ai_consent") is null) { _explicitNullValueRequiresAiConsent = default!; _explicitNullProperties?.Remove("requires_ai_consent"); }
+            else if (parseNode.GetChildNode("requires_ai_consent") is { } nullNodeRequiresAiConsent && nullNodeRequiresAiConsent.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) RequiresAiConsent = null;
+            if (parseNode.GetChildNode("summary") is null) { _explicitNullValueSummary = default!; _explicitNullProperties?.Remove("summary"); }
+            else if (parseNode.GetChildNode("summary") is { } nullNodeSummary && nullNodeSummary.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Summary = null;
+            if (parseNode.GetChildNode("title") is null) { _explicitNullValueTitle = default!; _explicitNullProperties?.Remove("title"); }
+            else if (parseNode.GetChildNode("title") is { } nullNodeTitle && nullNodeTitle.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Title = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -40,130 +55,130 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The product area the tool belongs to, for example `Error tracking`. Use it to group the listing.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Category { get => _explicitNullValueCategory; set { _explicitNullValueCategory = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("category"); else _explicitNullProperties?.Remove("category"); } }
+        public string? Category { get => _explicitNullValueCategory; set { _explicitNullValueCategory = value; AdditionalData?.Remove("category"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("category"); else _explicitNullProperties?.Remove("category"); } }
         private string? _explicitNullValueCategory = default!;
 #nullable restore
 #else
-        public string Category { get => _explicitNullValueCategory; set { _explicitNullValueCategory = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("category"); else _explicitNullProperties?.Remove("category"); } }
+        public string Category { get => _explicitNullValueCategory; set { _explicitNullValueCategory = value; AdditionalData?.Remove("category"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("category"); else _explicitNullProperties?.Remove("category"); } }
         private string _explicitNullValueCategory = default!;
 #endif
         /// <summary>The feature key the MCP server filters on, for example `error_tracking`. Narrower than `category`.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Feature { get => _explicitNullValueFeature; set { _explicitNullValueFeature = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("feature"); else _explicitNullProperties?.Remove("feature"); } }
+        public string? Feature { get => _explicitNullValueFeature; set { _explicitNullValueFeature = value; AdditionalData?.Remove("feature"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("feature"); else _explicitNullProperties?.Remove("feature"); } }
         private string? _explicitNullValueFeature = default!;
 #nullable restore
 #else
-        public string Feature { get => _explicitNullValueFeature; set { _explicitNullValueFeature = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("feature"); else _explicitNullProperties?.Remove("feature"); } }
+        public string Feature { get => _explicitNullValueFeature; set { _explicitNullValueFeature = value; AdditionalData?.Remove("feature"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("feature"); else _explicitNullProperties?.Remove("feature"); } }
         private string _explicitNullValueFeature = default!;
 #endif
         /// <summary>Plan feature the organization must have for the tool to be served, or null when the tool is free.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? FeatureEntitlement { get => _explicitNullValueFeatureEntitlement; set { _explicitNullValueFeatureEntitlement = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("feature_entitlement"); else _explicitNullProperties?.Remove("feature_entitlement"); } }
+        public string? FeatureEntitlement { get => _explicitNullValueFeatureEntitlement; set { _explicitNullValueFeatureEntitlement = value; AdditionalData?.Remove("feature_entitlement"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("feature_entitlement"); else _explicitNullProperties?.Remove("feature_entitlement"); } }
         private string? _explicitNullValueFeatureEntitlement = default!;
 #nullable restore
 #else
-        public string FeatureEntitlement { get => _explicitNullValueFeatureEntitlement; set { _explicitNullValueFeatureEntitlement = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("feature_entitlement"); else _explicitNullProperties?.Remove("feature_entitlement"); } }
+        public string FeatureEntitlement { get => _explicitNullValueFeatureEntitlement; set { _explicitNullValueFeatureEntitlement = value; AdditionalData?.Remove("feature_entitlement"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("feature_entitlement"); else _explicitNullProperties?.Remove("feature_entitlement"); } }
         private string _explicitNullValueFeatureEntitlement = default!;
 #endif
         /// <summary>Feature flag key that gates the tool, or null when the tool is always served. The flag resolves per project, so evaluate it for the project you are configuring before you offer the tool.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? FeatureFlag { get => _explicitNullValueFeatureFlag; set { _explicitNullValueFeatureFlag = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("feature_flag"); else _explicitNullProperties?.Remove("feature_flag"); } }
+        public string? FeatureFlag { get => _explicitNullValueFeatureFlag; set { _explicitNullValueFeatureFlag = value; AdditionalData?.Remove("feature_flag"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("feature_flag"); else _explicitNullProperties?.Remove("feature_flag"); } }
         private string? _explicitNullValueFeatureFlag = default!;
 #nullable restore
 #else
-        public string FeatureFlag { get => _explicitNullValueFeatureFlag; set { _explicitNullValueFeatureFlag = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("feature_flag"); else _explicitNullProperties?.Remove("feature_flag"); } }
+        public string FeatureFlag { get => _explicitNullValueFeatureFlag; set { _explicitNullValueFeatureFlag = value; AdditionalData?.Remove("feature_flag"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("feature_flag"); else _explicitNullProperties?.Remove("feature_flag"); } }
         private string _explicitNullValueFeatureFlag = default!;
 #endif
         /// <summary>How `feature_flag` gates the tool: `enable` (served only while the flag is on) or `disable` (served only while the flag is off). Null means the default, `enable`.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? FeatureFlagBehavior { get => _explicitNullValueFeatureFlagBehavior; set { _explicitNullValueFeatureFlagBehavior = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("feature_flag_behavior"); else _explicitNullProperties?.Remove("feature_flag_behavior"); } }
+        public string? FeatureFlagBehavior { get => _explicitNullValueFeatureFlagBehavior; set { _explicitNullValueFeatureFlagBehavior = value; AdditionalData?.Remove("feature_flag_behavior"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("feature_flag_behavior"); else _explicitNullProperties?.Remove("feature_flag_behavior"); } }
         private string? _explicitNullValueFeatureFlagBehavior = default!;
 #nullable restore
 #else
-        public string FeatureFlagBehavior { get => _explicitNullValueFeatureFlagBehavior; set { _explicitNullValueFeatureFlagBehavior = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("feature_flag_behavior"); else _explicitNullProperties?.Remove("feature_flag_behavior"); } }
+        public string FeatureFlagBehavior { get => _explicitNullValueFeatureFlagBehavior; set { _explicitNullValueFeatureFlagBehavior = value; AdditionalData?.Remove("feature_flag_behavior"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("feature_flag_behavior"); else _explicitNullProperties?.Remove("feature_flag_behavior"); } }
         private string _explicitNullValueFeatureFlagBehavior = default!;
 #endif
         /// <summary>Variant of `feature_flag` the tool needs, or null when any truthy value serves it.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? FeatureFlagVariant { get => _explicitNullValueFeatureFlagVariant; set { _explicitNullValueFeatureFlagVariant = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("feature_flag_variant"); else _explicitNullProperties?.Remove("feature_flag_variant"); } }
+        public string? FeatureFlagVariant { get => _explicitNullValueFeatureFlagVariant; set { _explicitNullValueFeatureFlagVariant = value; AdditionalData?.Remove("feature_flag_variant"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("feature_flag_variant"); else _explicitNullProperties?.Remove("feature_flag_variant"); } }
         private string? _explicitNullValueFeatureFlagVariant = default!;
 #nullable restore
 #else
-        public string FeatureFlagVariant { get => _explicitNullValueFeatureFlagVariant; set { _explicitNullValueFeatureFlagVariant = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("feature_flag_variant"); else _explicitNullProperties?.Remove("feature_flag_variant"); } }
+        public string FeatureFlagVariant { get => _explicitNullValueFeatureFlagVariant; set { _explicitNullValueFeatureFlagVariant = value; AdditionalData?.Remove("feature_flag_variant"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("feature_flag_variant"); else _explicitNullProperties?.Remove("feature_flag_variant"); } }
         private string _explicitNullValueFeatureFlagVariant = default!;
 #endif
         /// <summary>A second flag key that hides the tool while it is on, independent of `feature_flag`. Usually null.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? HiddenWhenFlagOn { get => _explicitNullValueHiddenWhenFlagOn; set { _explicitNullValueHiddenWhenFlagOn = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("hidden_when_flag_on"); else _explicitNullProperties?.Remove("hidden_when_flag_on"); } }
+        public string? HiddenWhenFlagOn { get => _explicitNullValueHiddenWhenFlagOn; set { _explicitNullValueHiddenWhenFlagOn = value; AdditionalData?.Remove("hidden_when_flag_on"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("hidden_when_flag_on"); else _explicitNullProperties?.Remove("hidden_when_flag_on"); } }
         private string? _explicitNullValueHiddenWhenFlagOn = default!;
 #nullable restore
 #else
-        public string HiddenWhenFlagOn { get => _explicitNullValueHiddenWhenFlagOn; set { _explicitNullValueHiddenWhenFlagOn = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("hidden_when_flag_on"); else _explicitNullProperties?.Remove("hidden_when_flag_on"); } }
+        public string HiddenWhenFlagOn { get => _explicitNullValueHiddenWhenFlagOn; set { _explicitNullValueHiddenWhenFlagOn = value; AdditionalData?.Remove("hidden_when_flag_on"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("hidden_when_flag_on"); else _explicitNullProperties?.Remove("hidden_when_flag_on"); } }
         private string _explicitNullValueHiddenWhenFlagOn = default!;
 #endif
         /// <summary>True when a scout run can hold every scope the tool requires. A false value means no scout reaches the tool, whatever it is granted, so it cannot be configured for one.</summary>
-        public bool? Holdable { get => _explicitNullValueHoldable; set { _explicitNullValueHoldable = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("holdable"); else _explicitNullProperties?.Remove("holdable"); } }
+        public bool? Holdable { get => _explicitNullValueHoldable; set { _explicitNullValueHoldable = value; AdditionalData?.Remove("holdable"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("holdable"); else _explicitNullProperties?.Remove("holdable"); } }
         private bool? _explicitNullValueHoldable = default!;
         /// <summary>True when the tool only reads. A false value means the tool can change the project&apos;s data.</summary>
-        public bool? IsReadOnly { get => _explicitNullValueIsReadOnly; set { _explicitNullValueIsReadOnly = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("is_read_only"); else _explicitNullProperties?.Remove("is_read_only"); } }
+        public bool? IsReadOnly { get => _explicitNullValueIsReadOnly; set { _explicitNullValueIsReadOnly = value; AdditionalData?.Remove("is_read_only"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("is_read_only"); else _explicitNullProperties?.Remove("is_read_only"); } }
         private bool? _explicitNullValueIsReadOnly = default!;
         /// <summary>Required scopes the baseline `signals_scout` preset does not carry. On a holdable tool these are what the scout has to be granted, or the preset it has to opt into. On a tool that is not holdable they include every scope no scout can reach, and can also include scopes a person can grant. Compare them with `grantable_write_scopes` and `presets` to tell the two apart.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<string>? MissingScopes { get => _explicitNullValueMissingScopes; set { _explicitNullValueMissingScopes = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("missing_scopes"); else _explicitNullProperties?.Remove("missing_scopes"); } }
+        public List<string>? MissingScopes { get => _explicitNullValueMissingScopes; set { _explicitNullValueMissingScopes = value; AdditionalData?.Remove("missing_scopes"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("missing_scopes"); else _explicitNullProperties?.Remove("missing_scopes"); } }
         private List<string>? _explicitNullValueMissingScopes = default!;
 #nullable restore
 #else
-        public List<string> MissingScopes { get => _explicitNullValueMissingScopes; set { _explicitNullValueMissingScopes = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("missing_scopes"); else _explicitNullProperties?.Remove("missing_scopes"); } }
+        public List<string> MissingScopes { get => _explicitNullValueMissingScopes; set { _explicitNullValueMissingScopes = value; AdditionalData?.Remove("missing_scopes"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("missing_scopes"); else _explicitNullProperties?.Remove("missing_scopes"); } }
         private List<string> _explicitNullValueMissingScopes = default!;
 #endif
         /// <summary>The tool&apos;s permanent identifier, for example `insight-get`. This is the name a scout calls.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Name { get => _explicitNullValueName; set { _explicitNullValueName = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("name"); else _explicitNullProperties?.Remove("name"); } }
+        public string? Name { get => _explicitNullValueName; set { _explicitNullValueName = value; AdditionalData?.Remove("name"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("name"); else _explicitNullProperties?.Remove("name"); } }
         private string? _explicitNullValueName = default!;
 #nullable restore
 #else
-        public string Name { get => _explicitNullValueName; set { _explicitNullValueName = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("name"); else _explicitNullProperties?.Remove("name"); } }
+        public string Name { get => _explicitNullValueName; set { _explicitNullValueName = value; AdditionalData?.Remove("name"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("name"); else _explicitNullProperties?.Remove("name"); } }
         private string _explicitNullValueName = default!;
 #endif
         /// <summary>The API scopes a token must carry to call the tool. Empty for a tool that needs none.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<string>? RequiredScopes { get => _explicitNullValueRequiredScopes; set { _explicitNullValueRequiredScopes = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("required_scopes"); else _explicitNullProperties?.Remove("required_scopes"); } }
+        public List<string>? RequiredScopes { get => _explicitNullValueRequiredScopes; set { _explicitNullValueRequiredScopes = value; AdditionalData?.Remove("required_scopes"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("required_scopes"); else _explicitNullProperties?.Remove("required_scopes"); } }
         private List<string>? _explicitNullValueRequiredScopes = default!;
 #nullable restore
 #else
-        public List<string> RequiredScopes { get => _explicitNullValueRequiredScopes; set { _explicitNullValueRequiredScopes = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("required_scopes"); else _explicitNullProperties?.Remove("required_scopes"); } }
+        public List<string> RequiredScopes { get => _explicitNullValueRequiredScopes; set { _explicitNullValueRequiredScopes = value; AdditionalData?.Remove("required_scopes"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("required_scopes"); else _explicitNullProperties?.Remove("required_scopes"); } }
         private List<string> _explicitNullValueRequiredScopes = default!;
 #endif
         /// <summary>True when the tool is hidden until the project consents to AI features.</summary>
-        public bool? RequiresAiConsent { get => _explicitNullValueRequiresAiConsent; set { _explicitNullValueRequiresAiConsent = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("requires_ai_consent"); else _explicitNullProperties?.Remove("requires_ai_consent"); } }
+        public bool? RequiresAiConsent { get => _explicitNullValueRequiresAiConsent; set { _explicitNullValueRequiresAiConsent = value; AdditionalData?.Remove("requires_ai_consent"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("requires_ai_consent"); else _explicitNullProperties?.Remove("requires_ai_consent"); } }
         private bool? _explicitNullValueRequiresAiConsent = default!;
         /// <summary>One line on what the tool does. The tool&apos;s full description runs to several kilobytes on some tools, so it is not part of this listing.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Summary { get => _explicitNullValueSummary; set { _explicitNullValueSummary = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("summary"); else _explicitNullProperties?.Remove("summary"); } }
+        public string? Summary { get => _explicitNullValueSummary; set { _explicitNullValueSummary = value; AdditionalData?.Remove("summary"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("summary"); else _explicitNullProperties?.Remove("summary"); } }
         private string? _explicitNullValueSummary = default!;
 #nullable restore
 #else
-        public string Summary { get => _explicitNullValueSummary; set { _explicitNullValueSummary = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("summary"); else _explicitNullProperties?.Remove("summary"); } }
+        public string Summary { get => _explicitNullValueSummary; set { _explicitNullValueSummary = value; AdditionalData?.Remove("summary"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("summary"); else _explicitNullProperties?.Remove("summary"); } }
         private string _explicitNullValueSummary = default!;
 #endif
         /// <summary>The label people read, for example `Get insight`.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Title { get => _explicitNullValueTitle; set { _explicitNullValueTitle = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("title"); else _explicitNullProperties?.Remove("title"); } }
+        public string? Title { get => _explicitNullValueTitle; set { _explicitNullValueTitle = value; AdditionalData?.Remove("title"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("title"); else _explicitNullProperties?.Remove("title"); } }
         private string? _explicitNullValueTitle = default!;
 #nullable restore
 #else
-        public string Title { get => _explicitNullValueTitle; set { _explicitNullValueTitle = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("title"); else _explicitNullProperties?.Remove("title"); } }
+        public string Title { get => _explicitNullValueTitle; set { _explicitNullValueTitle = value; AdditionalData?.Remove("title"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("title"); else _explicitNullProperties?.Remove("title"); } }
         private string _explicitNullValueTitle = default!;
 #endif
         /// <summary>

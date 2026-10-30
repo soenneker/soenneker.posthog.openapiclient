@@ -17,27 +17,30 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("cursor_end") is { } nullNodeCursorEnd && nullNodeCursorEnd.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CursorEnd = null;
-            if (parseNode.GetChildNode("cursor_start") is { } nullNodeCursorStart && nullNodeCursorStart.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CursorStart = null;
-            if (parseNode.GetChildNode("matches") is { } nullNodeMatches && nullNodeMatches.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Matches = null;
+            if (parseNode.GetChildNode("cursor_end") is null) { _explicitNullValueCursorEnd = default!; _explicitNullProperties?.Remove("cursor_end"); }
+            else if (parseNode.GetChildNode("cursor_end") is { } nullNodeCursorEnd && nullNodeCursorEnd.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CursorEnd = null;
+            if (parseNode.GetChildNode("cursor_start") is null) { _explicitNullValueCursorStart = default!; _explicitNullProperties?.Remove("cursor_start"); }
+            else if (parseNode.GetChildNode("cursor_start") is { } nullNodeCursorStart && nullNodeCursorStart.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CursorStart = null;
+            if (parseNode.GetChildNode("matches") is null) { _explicitNullValueMatches = default!; _explicitNullProperties?.Remove("matches"); }
+            else if (parseNode.GetChildNode("matches") is { } nullNodeMatches && nullNodeMatches.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Matches = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>End offset of the text the completions replace.</summary>
-        public int? CursorEnd { get => _explicitNullValueCursorEnd; set { _explicitNullValueCursorEnd = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("cursor_end"); else _explicitNullProperties?.Remove("cursor_end"); } }
+        public int? CursorEnd { get => _explicitNullValueCursorEnd; set { _explicitNullValueCursorEnd = value; AdditionalData?.Remove("cursor_end"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("cursor_end"); else _explicitNullProperties?.Remove("cursor_end"); } }
         private int? _explicitNullValueCursorEnd = default!;
         /// <summary>Start offset of the text the completions replace.</summary>
-        public int? CursorStart { get => _explicitNullValueCursorStart; set { _explicitNullValueCursorStart = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("cursor_start"); else _explicitNullProperties?.Remove("cursor_start"); } }
+        public int? CursorStart { get => _explicitNullValueCursorStart; set { _explicitNullValueCursorStart = value; AdditionalData?.Remove("cursor_start"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("cursor_start"); else _explicitNullProperties?.Remove("cursor_start"); } }
         private int? _explicitNullValueCursorStart = default!;
         /// <summary>Completions from the live kernel&apos;s namespace. Empty when no kernel is running.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.NotebookKernelCompletion>? Matches { get => _explicitNullValueMatches; set { _explicitNullValueMatches = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("matches"); else _explicitNullProperties?.Remove("matches"); } }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.NotebookKernelCompletion>? Matches { get => _explicitNullValueMatches; set { _explicitNullValueMatches = value; AdditionalData?.Remove("matches"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("matches"); else _explicitNullProperties?.Remove("matches"); } }
         private List<global::Soenneker.PostHog.OpenApiClient.Models.NotebookKernelCompletion>? _explicitNullValueMatches = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.NotebookKernelCompletion> Matches { get => _explicitNullValueMatches; set { _explicitNullValueMatches = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("matches"); else _explicitNullProperties?.Remove("matches"); } }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.NotebookKernelCompletion> Matches { get => _explicitNullValueMatches; set { _explicitNullValueMatches = value; AdditionalData?.Remove("matches"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("matches"); else _explicitNullProperties?.Remove("matches"); } }
         private List<global::Soenneker.PostHog.OpenApiClient.Models.NotebookKernelCompletion> _explicitNullValueMatches = default!;
 #endif
         /// <summary>

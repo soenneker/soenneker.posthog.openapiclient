@@ -18,17 +18,19 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("request_outcome") is { } nullNodeRequestOutcome && nullNodeRequestOutcome.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) RequestOutcome = null;
-            if (parseNode.GetChildNode("task_id") is { } nullNodeTaskId && nullNodeTaskId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TaskId = null;
+            if (parseNode.GetChildNode("request_outcome") is null) { _explicitNullValueRequestOutcome = default!; _explicitNullProperties?.Remove("request_outcome"); }
+            else if (parseNode.GetChildNode("request_outcome") is { } nullNodeRequestOutcome && nullNodeRequestOutcome.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) RequestOutcome = null;
+            if (parseNode.GetChildNode("task_id") is null) { _explicitNullValueTaskId = default!; _explicitNullProperties?.Remove("task_id"); }
+            else if (parseNode.GetChildNode("task_id") is { } nullNodeTaskId && nullNodeTaskId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TaskId = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>* `signaled` - signaled* `new_run` - new_run* `already_queued` - already_queued* `reported` - reported</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.CanvasAgentRequestResultRequestOutcome? RequestOutcome { get => _explicitNullValueRequestOutcome; set { _explicitNullValueRequestOutcome = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("request_outcome"); else _explicitNullProperties?.Remove("request_outcome"); } }
+        public global::Soenneker.PostHog.OpenApiClient.Models.CanvasAgentRequestResultRequestOutcome? RequestOutcome { get => _explicitNullValueRequestOutcome; set { _explicitNullValueRequestOutcome = value; AdditionalData?.Remove("request_outcome"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("request_outcome"); else _explicitNullProperties?.Remove("request_outcome"); } }
         private global::Soenneker.PostHog.OpenApiClient.Models.CanvasAgentRequestResultRequestOutcome? _explicitNullValueRequestOutcome = default!;
         /// <summary>Authoring task that received the request or report.</summary>
-        public Guid? TaskId { get => _explicitNullValueTaskId; set { _explicitNullValueTaskId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("task_id"); else _explicitNullProperties?.Remove("task_id"); } }
+        public Guid? TaskId { get => _explicitNullValueTaskId; set { _explicitNullValueTaskId = value; AdditionalData?.Remove("task_id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("task_id"); else _explicitNullProperties?.Remove("task_id"); } }
         private Guid? _explicitNullValueTaskId = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.CanvasAgentRequestResult"/> and sets the default values.
@@ -55,7 +57,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "request_outcome", n => { RequestOutcome = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.CanvasAgentRequestResultRequestOutcome>(); } },
+                { "request_outcome", n => { var parsed = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.CanvasAgentRequestResultRequestOutcome>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValueRequestOutcome = default; _explicitNullProperties?.Remove("request_outcome"); AdditionalData["request_outcome"] = unknown; } else { RequestOutcome = parsed; AdditionalData.Remove("request_outcome"); } } },
                 { "task_id", n => { TaskId = n.GetGuidValue(); } },
             };
         }

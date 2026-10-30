@@ -17,15 +17,24 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("binding_constraints") is { } nullNodeBindingConstraints && nullNodeBindingConstraints.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) BindingConstraints = null;
-            if (parseNode.GetChildNode("degraded") is { } nullNodeDegraded && nullNodeDegraded.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Degraded = null;
-            if (parseNode.GetChildNode("eval_clipped") is { } nullNodeEvalClipped && nullNodeEvalClipped.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) EvalClipped = null;
-            if (parseNode.GetChildNode("eval_end") is { } nullNodeEvalEnd && nullNodeEvalEnd.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) EvalEnd = null;
-            if (parseNode.GetChildNode("eval_start") is { } nullNodeEvalStart && nullNodeEvalStart.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) EvalStart = null;
-            if (parseNode.GetChildNode("issues") is { } nullNodeIssues && nullNodeIssues.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Issues = null;
-            if (parseNode.GetChildNode("lookback_days") is { } nullNodeLookbackDays && nullNodeLookbackDays.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) LookbackDays = null;
-            if (parseNode.GetChildNode("series") is { } nullNodeSeries && nullNodeSeries.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Series = null;
-            if (parseNode.GetChildNode("service_name") is { } nullNodeServiceName && nullNodeServiceName.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ServiceName = null;
+            if (parseNode.GetChildNode("binding_constraints") is null) { _explicitNullValueBindingConstraints = default!; _explicitNullProperties?.Remove("binding_constraints"); }
+            else if (parseNode.GetChildNode("binding_constraints") is { } nullNodeBindingConstraints && nullNodeBindingConstraints.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) BindingConstraints = null;
+            if (parseNode.GetChildNode("degraded") is null) { _explicitNullValueDegraded = default!; _explicitNullProperties?.Remove("degraded"); }
+            else if (parseNode.GetChildNode("degraded") is { } nullNodeDegraded && nullNodeDegraded.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Degraded = null;
+            if (parseNode.GetChildNode("eval_clipped") is null) { _explicitNullValueEvalClipped = default!; _explicitNullProperties?.Remove("eval_clipped"); }
+            else if (parseNode.GetChildNode("eval_clipped") is { } nullNodeEvalClipped && nullNodeEvalClipped.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) EvalClipped = null;
+            if (parseNode.GetChildNode("eval_end") is null) { _explicitNullValueEvalEnd = default!; _explicitNullProperties?.Remove("eval_end"); }
+            else if (parseNode.GetChildNode("eval_end") is { } nullNodeEvalEnd && nullNodeEvalEnd.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) EvalEnd = null;
+            if (parseNode.GetChildNode("eval_start") is null) { _explicitNullValueEvalStart = default!; _explicitNullProperties?.Remove("eval_start"); }
+            else if (parseNode.GetChildNode("eval_start") is { } nullNodeEvalStart && nullNodeEvalStart.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) EvalStart = null;
+            if (parseNode.GetChildNode("issues") is null) { _explicitNullValueIssues = default!; _explicitNullProperties?.Remove("issues"); }
+            else if (parseNode.GetChildNode("issues") is { } nullNodeIssues && nullNodeIssues.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Issues = null;
+            if (parseNode.GetChildNode("lookback_days") is null) { _explicitNullValueLookbackDays = default!; _explicitNullProperties?.Remove("lookback_days"); }
+            else if (parseNode.GetChildNode("lookback_days") is { } nullNodeLookbackDays && nullNodeLookbackDays.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) LookbackDays = null;
+            if (parseNode.GetChildNode("series") is null) { _explicitNullValueSeries = default!; _explicitNullProperties?.Remove("series"); }
+            else if (parseNode.GetChildNode("series") is { } nullNodeSeries && nullNodeSeries.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Series = null;
+            if (parseNode.GetChildNode("service_name") is null) { _explicitNullValueServiceName = default!; _explicitNullProperties?.Remove("service_name"); }
+            else if (parseNode.GetChildNode("service_name") is { } nullNodeServiceName && nullNodeServiceName.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ServiceName = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -33,56 +42,56 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Everything that limited the baseline, empty for an unconstrained scan. team_retention: the project&apos;s log retention is shorter than the full lookback. byte_budget: the scan degraded to stay inside its ClickHouse read budget.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.BindingConstraintsEnum?>? BindingConstraints { get => _explicitNullValueBindingConstraints; set { _explicitNullValueBindingConstraints = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("binding_constraints"); else _explicitNullProperties?.Remove("binding_constraints"); } }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.BindingConstraintsEnum?>? BindingConstraints { get => _explicitNullValueBindingConstraints; set { _explicitNullValueBindingConstraints = value; AdditionalData?.Remove("binding_constraints"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("binding_constraints"); else _explicitNullProperties?.Remove("binding_constraints"); } }
         private List<global::Soenneker.PostHog.OpenApiClient.Models.BindingConstraintsEnum?>? _explicitNullValueBindingConstraints = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.BindingConstraintsEnum?> BindingConstraints { get => _explicitNullValueBindingConstraints; set { _explicitNullValueBindingConstraints = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("binding_constraints"); else _explicitNullProperties?.Remove("binding_constraints"); } }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.BindingConstraintsEnum?> BindingConstraints { get => _explicitNullValueBindingConstraints; set { _explicitNullValueBindingConstraints = value; AdditionalData?.Remove("binding_constraints"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("binding_constraints"); else _explicitNullProperties?.Remove("binding_constraints"); } }
         private List<global::Soenneker.PostHog.OpenApiClient.Models.BindingConstraintsEnum?> _explicitNullValueBindingConstraints = default!;
 #endif
         /// <summary>True when the scan could not afford the full lookback and fell back to a cheaper configuration.</summary>
-        public bool? Degraded { get => _explicitNullValueDegraded; set { _explicitNullValueDegraded = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("degraded"); else _explicitNullProperties?.Remove("degraded"); } }
+        public bool? Degraded { get => _explicitNullValueDegraded; set { _explicitNullValueDegraded = value; AdditionalData?.Remove("degraded"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("degraded"); else _explicitNullProperties?.Remove("degraded"); } }
         private bool? _explicitNullValueDegraded = default!;
         /// <summary>True when the evaluation window was clipped to fit the read budget. The response covers only the clipped window.</summary>
-        public bool? EvalClipped { get => _explicitNullValueEvalClipped; set { _explicitNullValueEvalClipped = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("eval_clipped"); else _explicitNullProperties?.Remove("eval_clipped"); } }
+        public bool? EvalClipped { get => _explicitNullValueEvalClipped; set { _explicitNullValueEvalClipped = value; AdditionalData?.Remove("eval_clipped"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("eval_clipped"); else _explicitNullProperties?.Remove("eval_clipped"); } }
         private bool? _explicitNullValueEvalClipped = default!;
         /// <summary>Actual end of the evaluated window after clamping to now.</summary>
-        public DateTimeOffset? EvalEnd { get => _explicitNullValueEvalEnd; set { _explicitNullValueEvalEnd = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("eval_end"); else _explicitNullProperties?.Remove("eval_end"); } }
+        public DateTimeOffset? EvalEnd { get => _explicitNullValueEvalEnd; set { _explicitNullValueEvalEnd = value; AdditionalData?.Remove("eval_end"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("eval_end"); else _explicitNullProperties?.Remove("eval_end"); } }
         private DateTimeOffset? _explicitNullValueEvalEnd = default!;
         /// <summary>Actual start of the evaluated window after any clipping.</summary>
-        public DateTimeOffset? EvalStart { get => _explicitNullValueEvalStart; set { _explicitNullValueEvalStart = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("eval_start"); else _explicitNullProperties?.Remove("eval_start"); } }
+        public DateTimeOffset? EvalStart { get => _explicitNullValueEvalStart; set { _explicitNullValueEvalStart = value; AdditionalData?.Remove("eval_start"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("eval_start"); else _explicitNullProperties?.Remove("eval_start"); } }
         private DateTimeOffset? _explicitNullValueEvalStart = default!;
         /// <summary>Anomaly issues that opened during the evaluation window, oldest first.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.LogsAnomalyScanIssue>? Issues { get => _explicitNullValueIssues; set { _explicitNullValueIssues = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("issues"); else _explicitNullProperties?.Remove("issues"); } }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.LogsAnomalyScanIssue>? Issues { get => _explicitNullValueIssues; set { _explicitNullValueIssues = value; AdditionalData?.Remove("issues"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("issues"); else _explicitNullProperties?.Remove("issues"); } }
         private List<global::Soenneker.PostHog.OpenApiClient.Models.LogsAnomalyScanIssue>? _explicitNullValueIssues = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.LogsAnomalyScanIssue> Issues { get => _explicitNullValueIssues; set { _explicitNullValueIssues = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("issues"); else _explicitNullProperties?.Remove("issues"); } }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.LogsAnomalyScanIssue> Issues { get => _explicitNullValueIssues; set { _explicitNullValueIssues = value; AdditionalData?.Remove("issues"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("issues"); else _explicitNullProperties?.Remove("issues"); } }
         private List<global::Soenneker.PostHog.OpenApiClient.Models.LogsAnomalyScanIssue> _explicitNullValueIssues = default!;
 #endif
         /// <summary>Days of baseline history the scan used.</summary>
-        public double? LookbackDays { get => _explicitNullValueLookbackDays; set { _explicitNullValueLookbackDays = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("lookback_days"); else _explicitNullProperties?.Remove("lookback_days"); } }
+        public double? LookbackDays { get => _explicitNullValueLookbackDays; set { _explicitNullValueLookbackDays = value; AdditionalData?.Remove("lookback_days"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("lookback_days"); else _explicitNullProperties?.Remove("lookback_days"); } }
         private double? _explicitNullValueLookbackDays = default!;
         /// <summary>One entry per severity level observed for the service, with per bucket evidence.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.LogsAnomalyScanSeries>? Series { get => _explicitNullValueSeries; set { _explicitNullValueSeries = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("series"); else _explicitNullProperties?.Remove("series"); } }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.LogsAnomalyScanSeries>? Series { get => _explicitNullValueSeries; set { _explicitNullValueSeries = value; AdditionalData?.Remove("series"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("series"); else _explicitNullProperties?.Remove("series"); } }
         private List<global::Soenneker.PostHog.OpenApiClient.Models.LogsAnomalyScanSeries>? _explicitNullValueSeries = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.LogsAnomalyScanSeries> Series { get => _explicitNullValueSeries; set { _explicitNullValueSeries = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("series"); else _explicitNullProperties?.Remove("series"); } }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.LogsAnomalyScanSeries> Series { get => _explicitNullValueSeries; set { _explicitNullValueSeries = value; AdditionalData?.Remove("series"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("series"); else _explicitNullProperties?.Remove("series"); } }
         private List<global::Soenneker.PostHog.OpenApiClient.Models.LogsAnomalyScanSeries> _explicitNullValueSeries = default!;
 #endif
         /// <summary>Service that was scanned.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? ServiceName { get => _explicitNullValueServiceName; set { _explicitNullValueServiceName = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("service_name"); else _explicitNullProperties?.Remove("service_name"); } }
+        public string? ServiceName { get => _explicitNullValueServiceName; set { _explicitNullValueServiceName = value; AdditionalData?.Remove("service_name"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("service_name"); else _explicitNullProperties?.Remove("service_name"); } }
         private string? _explicitNullValueServiceName = default!;
 #nullable restore
 #else
-        public string ServiceName { get => _explicitNullValueServiceName; set { _explicitNullValueServiceName = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("service_name"); else _explicitNullProperties?.Remove("service_name"); } }
+        public string ServiceName { get => _explicitNullValueServiceName; set { _explicitNullValueServiceName = value; AdditionalData?.Remove("service_name"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("service_name"); else _explicitNullProperties?.Remove("service_name"); } }
         private string _explicitNullValueServiceName = default!;
 #endif
         /// <summary>

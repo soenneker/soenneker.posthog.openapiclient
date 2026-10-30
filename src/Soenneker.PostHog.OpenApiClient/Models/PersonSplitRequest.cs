@@ -17,8 +17,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("distinct_ids_to_split") is { } nullNodeDistinctIdsToSplit && nullNodeDistinctIdsToSplit.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) DistinctIdsToSplit = null;
-            if (parseNode.GetChildNode("main_distinct_id") is { } nullNodeMainDistinctId && nullNodeMainDistinctId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MainDistinctId = null;
+            if (parseNode.GetChildNode("distinct_ids_to_split") is null) { _explicitNullValueDistinctIdsToSplit = default!; _explicitNullProperties?.Remove("distinct_ids_to_split"); }
+            else if (parseNode.GetChildNode("distinct_ids_to_split") is { } nullNodeDistinctIdsToSplit && nullNodeDistinctIdsToSplit.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) DistinctIdsToSplit = null;
+            if (parseNode.GetChildNode("main_distinct_id") is null) { _explicitNullValueMainDistinctId = default!; _explicitNullProperties?.Remove("main_distinct_id"); }
+            else if (parseNode.GetChildNode("main_distinct_id") is { } nullNodeMainDistinctId && nullNodeMainDistinctId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MainDistinctId = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -26,21 +28,21 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>List of distinct_ids to **move off** this person onto new single-id persons. The original person keeps every other distinct_id and its properties. New persons are created with deterministic UUIDs derived from `(team_id, distinct_id)`. Cannot be combined with `main_distinct_id`.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<string>? DistinctIdsToSplit { get => _explicitNullValueDistinctIdsToSplit; set { _explicitNullValueDistinctIdsToSplit = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("distinct_ids_to_split"); else _explicitNullProperties?.Remove("distinct_ids_to_split"); } }
+        public List<string>? DistinctIdsToSplit { get => _explicitNullValueDistinctIdsToSplit; set { _explicitNullValueDistinctIdsToSplit = value; AdditionalData?.Remove("distinct_ids_to_split"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("distinct_ids_to_split"); else _explicitNullProperties?.Remove("distinct_ids_to_split"); } }
         private List<string>? _explicitNullValueDistinctIdsToSplit = default!;
 #nullable restore
 #else
-        public List<string> DistinctIdsToSplit { get => _explicitNullValueDistinctIdsToSplit; set { _explicitNullValueDistinctIdsToSplit = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("distinct_ids_to_split"); else _explicitNullProperties?.Remove("distinct_ids_to_split"); } }
+        public List<string> DistinctIdsToSplit { get => _explicitNullValueDistinctIdsToSplit; set { _explicitNullValueDistinctIdsToSplit = value; AdditionalData?.Remove("distinct_ids_to_split"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("distinct_ids_to_split"); else _explicitNullProperties?.Remove("distinct_ids_to_split"); } }
         private List<string> _explicitNullValueDistinctIdsToSplit = default!;
 #endif
         /// <summary>The distinct_id to **keep** on this person; every *other* distinct_id is moved to its own new single-id person. If omitted, the first distinct_id on the person is kept. The original person always retains its properties; to clear individual properties afterward, use the delete_property endpoint. To surgically *remove* one or more distinct_ids while leaving the merge intact, use `distinct_ids_to_split` instead — these parameters are inverses of each other and cannot be combined.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? MainDistinctId { get => _explicitNullValueMainDistinctId; set { _explicitNullValueMainDistinctId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("main_distinct_id"); else _explicitNullProperties?.Remove("main_distinct_id"); } }
+        public string? MainDistinctId { get => _explicitNullValueMainDistinctId; set { _explicitNullValueMainDistinctId = value; AdditionalData?.Remove("main_distinct_id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("main_distinct_id"); else _explicitNullProperties?.Remove("main_distinct_id"); } }
         private string? _explicitNullValueMainDistinctId = default!;
 #nullable restore
 #else
-        public string MainDistinctId { get => _explicitNullValueMainDistinctId; set { _explicitNullValueMainDistinctId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("main_distinct_id"); else _explicitNullProperties?.Remove("main_distinct_id"); } }
+        public string MainDistinctId { get => _explicitNullValueMainDistinctId; set { _explicitNullValueMainDistinctId = value; AdditionalData?.Remove("main_distinct_id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("main_distinct_id"); else _explicitNullProperties?.Remove("main_distinct_id"); } }
         private string _explicitNullValueMainDistinctId = default!;
 #endif
         /// <summary>

@@ -17,60 +17,66 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("action") is { } nullNodeAction && nullNodeAction.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Action = null;
-            if (parseNode.GetChildNode("content") is { } nullNodeContent && nullNodeContent.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Content = null;
-            if (parseNode.GetChildNode("expected_reviewers") is { } nullNodeExpectedReviewers && nullNodeExpectedReviewers.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ExpectedReviewers = null;
-            if (parseNode.GetChildNode("removal_note") is { } nullNodeRemovalNote && nullNodeRemovalNote.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) RemovalNote = null;
-            if (parseNode.GetChildNode("removal_reason") is { } nullNodeRemovalReason && nullNodeRemovalReason.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) RemovalReason = null;
-            if (parseNode.GetChildNode("targets") is { } nullNodeTargets && nullNodeTargets.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Targets = null;
+            if (parseNode.GetChildNode("action") is null) { _explicitNullValueAction = default!; _explicitNullProperties?.Remove("action"); }
+            else if (parseNode.GetChildNode("action") is { } nullNodeAction && nullNodeAction.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Action = null;
+            if (parseNode.GetChildNode("content") is null) { _explicitNullValueContent = default!; _explicitNullProperties?.Remove("content"); }
+            else if (parseNode.GetChildNode("content") is { } nullNodeContent && nullNodeContent.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Content = null;
+            if (parseNode.GetChildNode("expected_reviewers") is null) { _explicitNullValueExpectedReviewers = default!; _explicitNullProperties?.Remove("expected_reviewers"); }
+            else if (parseNode.GetChildNode("expected_reviewers") is { } nullNodeExpectedReviewers && nullNodeExpectedReviewers.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ExpectedReviewers = null;
+            if (parseNode.GetChildNode("removal_note") is null) { _explicitNullValueRemovalNote = default!; _explicitNullProperties?.Remove("removal_note"); }
+            else if (parseNode.GetChildNode("removal_note") is { } nullNodeRemovalNote && nullNodeRemovalNote.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) RemovalNote = null;
+            if (parseNode.GetChildNode("removal_reason") is null) { _explicitNullValueRemovalReason = default!; _explicitNullProperties?.Remove("removal_reason"); }
+            else if (parseNode.GetChildNode("removal_reason") is { } nullNodeRemovalReason && nullNodeRemovalReason.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) RemovalReason = null;
+            if (parseNode.GetChildNode("targets") is null) { _explicitNullValueTargets = default!; _explicitNullProperties?.Remove("targets"); }
+            else if (parseNode.GetChildNode("targets") is { } nullNodeTargets && nullNodeTargets.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Targets = null;
         }
 
         /// <summary>* `add` - Add* `remove` - Remove* `replace` - Replace* `confirm` - Confirm</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.SignalReportArtefactWriteAction? Action { get => _explicitNullValueAction; set { _explicitNullValueAction = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("action"); else _explicitNullProperties?.Remove("action"); } }
+        public global::Soenneker.PostHog.OpenApiClient.Models.SignalReportArtefactWriteAction? Action { get => _explicitNullValueAction; set { _explicitNullValueAction = value; AdditionalData?.Remove("action"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("action"); else _explicitNullProperties?.Remove("action"); } }
         private global::Soenneker.PostHog.OpenApiClient.Models.SignalReportArtefactWriteAction? _explicitNullValueAction = default!;
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>People to add, remove, or keep in a replacement. Send an empty list for confirmation.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.SuggestedReviewerEntryWrite>? Content { get => _explicitNullValueContent; set { _explicitNullValueContent = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("content"); else _explicitNullProperties?.Remove("content"); } }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.SuggestedReviewerEntryWrite>? Content { get => _explicitNullValueContent; set { _explicitNullValueContent = value; AdditionalData?.Remove("content"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("content"); else _explicitNullProperties?.Remove("content"); } }
         private List<global::Soenneker.PostHog.OpenApiClient.Models.SuggestedReviewerEntryWrite>? _explicitNullValueContent = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.SuggestedReviewerEntryWrite> Content { get => _explicitNullValueContent; set { _explicitNullValueContent = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("content"); else _explicitNullProperties?.Remove("content"); } }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.SuggestedReviewerEntryWrite> Content { get => _explicitNullValueContent; set { _explicitNullValueContent = value; AdditionalData?.Remove("content"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("content"); else _explicitNullProperties?.Remove("content"); } }
         private List<global::Soenneker.PostHog.OpenApiClient.Models.SuggestedReviewerEntryWrite> _explicitNullValueContent = default!;
 #endif
         /// <summary>State from the last read. Required for replacement and confirmation when corrections are enabled.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.SignalReportArtefactWriteExpectedReviewers? ExpectedReviewers { get => _explicitNullValueExpectedReviewers; set { _explicitNullValueExpectedReviewers = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("expected_reviewers"); else _explicitNullProperties?.Remove("expected_reviewers"); } }
+        public global::Soenneker.PostHog.OpenApiClient.Models.SignalReportArtefactWriteExpectedReviewers? ExpectedReviewers { get => _explicitNullValueExpectedReviewers; set { _explicitNullValueExpectedReviewers = value; AdditionalData?.Remove("expected_reviewers"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("expected_reviewers"); else _explicitNullProperties?.Remove("expected_reviewers"); } }
         private global::Soenneker.PostHog.OpenApiClient.Models.SignalReportArtefactWriteExpectedReviewers? _explicitNullValueExpectedReviewers = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.SignalReportArtefactWriteExpectedReviewers ExpectedReviewers { get => _explicitNullValueExpectedReviewers; set { _explicitNullValueExpectedReviewers = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("expected_reviewers"); else _explicitNullProperties?.Remove("expected_reviewers"); } }
+        public global::Soenneker.PostHog.OpenApiClient.Models.SignalReportArtefactWriteExpectedReviewers ExpectedReviewers { get => _explicitNullValueExpectedReviewers; set { _explicitNullValueExpectedReviewers = value; AdditionalData?.Remove("expected_reviewers"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("expected_reviewers"); else _explicitNullProperties?.Remove("expected_reviewers"); } }
         private global::Soenneker.PostHog.OpenApiClient.Models.SignalReportArtefactWriteExpectedReviewers _explicitNullValueExpectedReviewers = default!;
 #endif
         /// <summary>Optional context for the removal, such as the area the person does not work on. Remove action only.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? RemovalNote { get => _explicitNullValueRemovalNote; set { _explicitNullValueRemovalNote = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("removal_note"); else _explicitNullProperties?.Remove("removal_note"); } }
+        public string? RemovalNote { get => _explicitNullValueRemovalNote; set { _explicitNullValueRemovalNote = value; AdditionalData?.Remove("removal_note"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("removal_note"); else _explicitNullProperties?.Remove("removal_note"); } }
         private string? _explicitNullValueRemovalNote = default!;
 #nullable restore
 #else
-        public string RemovalNote { get => _explicitNullValueRemovalNote; set { _explicitNullValueRemovalNote = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("removal_note"); else _explicitNullProperties?.Remove("removal_note"); } }
+        public string RemovalNote { get => _explicitNullValueRemovalNote; set { _explicitNullValueRemovalNote = value; AdditionalData?.Remove("removal_note"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("removal_note"); else _explicitNullProperties?.Remove("removal_note"); } }
         private string _explicitNullValueRemovalNote = default!;
 #endif
         /// <summary>* `wrong_area` - Not their area* `already_covered` - Someone else is on it* `unavailable` - No bandwidth* `other` - Other</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.SignalReportArtefactWriteRemovalReason? RemovalReason { get => _explicitNullValueRemovalReason; set { _explicitNullValueRemovalReason = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("removal_reason"); else _explicitNullProperties?.Remove("removal_reason"); } }
+        public global::Soenneker.PostHog.OpenApiClient.Models.SignalReportArtefactWriteRemovalReason? RemovalReason { get => _explicitNullValueRemovalReason; set { _explicitNullValueRemovalReason = value; AdditionalData?.Remove("removal_reason"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("removal_reason"); else _explicitNullProperties?.Remove("removal_reason"); } }
         private global::Soenneker.PostHog.OpenApiClient.Models.SignalReportArtefactWriteRemovalReason? _explicitNullValueRemovalReason = default!;
         /// <summary>Explicit add or remove targets. When supplied, content is only a fallback for older servers.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.SuggestedReviewerEntryWrite>? Targets { get => _explicitNullValueTargets; set { _explicitNullValueTargets = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("targets"); else _explicitNullProperties?.Remove("targets"); } }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.SuggestedReviewerEntryWrite>? Targets { get => _explicitNullValueTargets; set { _explicitNullValueTargets = value; AdditionalData?.Remove("targets"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("targets"); else _explicitNullProperties?.Remove("targets"); } }
         private List<global::Soenneker.PostHog.OpenApiClient.Models.SuggestedReviewerEntryWrite>? _explicitNullValueTargets = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.SuggestedReviewerEntryWrite> Targets { get => _explicitNullValueTargets; set { _explicitNullValueTargets = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("targets"); else _explicitNullProperties?.Remove("targets"); } }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.SuggestedReviewerEntryWrite> Targets { get => _explicitNullValueTargets; set { _explicitNullValueTargets = value; AdditionalData?.Remove("targets"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("targets"); else _explicitNullProperties?.Remove("targets"); } }
         private List<global::Soenneker.PostHog.OpenApiClient.Models.SuggestedReviewerEntryWrite> _explicitNullValueTargets = default!;
 #endif
         /// <summary>
@@ -98,11 +104,11 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "action", n => { Action = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.SignalReportArtefactWriteAction>(); } },
+                { "action", n => { var parsed = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.SignalReportArtefactWriteAction>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValueAction = default; _explicitNullProperties?.Remove("action"); AdditionalData["action"] = unknown; } else { Action = parsed; AdditionalData.Remove("action"); } } },
                 { "content", n => { Content = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.SuggestedReviewerEntryWrite>(global::Soenneker.PostHog.OpenApiClient.Models.SuggestedReviewerEntryWrite.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "expected_reviewers", n => { ExpectedReviewers = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SignalReportArtefactWriteExpectedReviewers>(global::Soenneker.PostHog.OpenApiClient.Models.SignalReportArtefactWriteExpectedReviewers.CreateFromDiscriminatorValue); } },
                 { "removal_note", n => { RemovalNote = n.GetStringValue(); } },
-                { "removal_reason", n => { RemovalReason = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.SignalReportArtefactWriteRemovalReason>(); } },
+                { "removal_reason", n => { var parsed = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.SignalReportArtefactWriteRemovalReason>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValueRemovalReason = default; _explicitNullProperties?.Remove("removal_reason"); AdditionalData["removal_reason"] = unknown; } else { RemovalReason = parsed; AdditionalData.Remove("removal_reason"); } } },
                 { "targets", n => { Targets = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.SuggestedReviewerEntryWrite>(global::Soenneker.PostHog.OpenApiClient.Models.SuggestedReviewerEntryWrite.CreateFromDiscriminatorValue)?.AsList(); } },
             };
         }

@@ -17,17 +17,19 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("current_usage") is { } nullNodeCurrentUsage && nullNodeCurrentUsage.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CurrentUsage = null;
-            if (parseNode.GetChildNode("up_to") is { } nullNodeUpTo && nullNodeUpTo.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) UpTo = null;
+            if (parseNode.GetChildNode("current_usage") is null) { _explicitNullValueCurrentUsage = default!; _explicitNullProperties?.Remove("current_usage"); }
+            else if (parseNode.GetChildNode("current_usage") is { } nullNodeCurrentUsage && nullNodeCurrentUsage.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CurrentUsage = null;
+            if (parseNode.GetChildNode("up_to") is null) { _explicitNullValueUpTo = default!; _explicitNullProperties?.Remove("up_to"); }
+            else if (parseNode.GetChildNode("up_to") is { } nullNodeUpTo && nullNodeUpTo.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) UpTo = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The current_usage property</summary>
-        public int? CurrentUsage { get => _explicitNullValueCurrentUsage; set { _explicitNullValueCurrentUsage = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("current_usage"); else _explicitNullProperties?.Remove("current_usage"); } }
+        public int? CurrentUsage { get => _explicitNullValueCurrentUsage; set { _explicitNullValueCurrentUsage = value; AdditionalData?.Remove("current_usage"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("current_usage"); else _explicitNullProperties?.Remove("current_usage"); } }
         private int? _explicitNullValueCurrentUsage = default!;
         /// <summary>The up_to property</summary>
-        public int? UpTo { get => _explicitNullValueUpTo; set { _explicitNullValueUpTo = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("up_to"); else _explicitNullProperties?.Remove("up_to"); } }
+        public int? UpTo { get => _explicitNullValueUpTo; set { _explicitNullValueUpTo = value; AdditionalData?.Remove("up_to"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("up_to"); else _explicitNullProperties?.Remove("up_to"); } }
         private int? _explicitNullValueUpTo = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.TierUsage"/> and sets the default values.

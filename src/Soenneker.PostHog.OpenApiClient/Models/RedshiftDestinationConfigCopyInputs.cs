@@ -18,11 +18,16 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("authorization") is { } nullNodeAuthorization && nullNodeAuthorization.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Authorization = null;
-            if (parseNode.GetChildNode("bucket_credentials") is { } nullNodeBucketCredentials && nullNodeBucketCredentials.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) BucketCredentials = null;
-            if (parseNode.GetChildNode("region_name") is { } nullNodeRegionName && nullNodeRegionName.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) RegionName = null;
-            if (parseNode.GetChildNode("s3_bucket") is { } nullNodeS3Bucket && nullNodeS3Bucket.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) S3Bucket = null;
-            if (parseNode.GetChildNode("s3_key_prefix") is { } nullNodeS3KeyPrefix && nullNodeS3KeyPrefix.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) S3KeyPrefix = null;
+            if (parseNode.GetChildNode("authorization") is null) { _explicitNullValueAuthorization = default!; _explicitNullProperties?.Remove("authorization"); }
+            else if (parseNode.GetChildNode("authorization") is { } nullNodeAuthorization && nullNodeAuthorization.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Authorization = null;
+            if (parseNode.GetChildNode("bucket_credentials") is null) { _explicitNullValueBucketCredentials = default!; _explicitNullProperties?.Remove("bucket_credentials"); }
+            else if (parseNode.GetChildNode("bucket_credentials") is { } nullNodeBucketCredentials && nullNodeBucketCredentials.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) BucketCredentials = null;
+            if (parseNode.GetChildNode("region_name") is null) { _explicitNullValueRegionName = default!; _explicitNullProperties?.Remove("region_name"); }
+            else if (parseNode.GetChildNode("region_name") is { } nullNodeRegionName && nullNodeRegionName.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) RegionName = null;
+            if (parseNode.GetChildNode("s3_bucket") is null) { _explicitNullValueS3Bucket = default!; _explicitNullProperties?.Remove("s3_bucket"); }
+            else if (parseNode.GetChildNode("s3_bucket") is { } nullNodeS3Bucket && nullNodeS3Bucket.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) S3Bucket = null;
+            if (parseNode.GetChildNode("s3_key_prefix") is null) { _explicitNullValueS3KeyPrefix = default!; _explicitNullProperties?.Remove("s3_key_prefix"); }
+            else if (parseNode.GetChildNode("s3_key_prefix") is { } nullNodeS3KeyPrefix && nullNodeS3KeyPrefix.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) S3KeyPrefix = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -30,51 +35,51 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Authorization for Redshift to read staged files during COPY: the ARN of an IAM role attached to the cluster, inline AWS credentials, or the id of an aws-s3-kind Integration.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.RedshiftCopyInputsAuthorization? Authorization { get => _explicitNullValueAuthorization; set { _explicitNullValueAuthorization = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("authorization"); else _explicitNullProperties?.Remove("authorization"); } }
+        public global::Soenneker.PostHog.OpenApiClient.Models.RedshiftCopyInputsAuthorization? Authorization { get => _explicitNullValueAuthorization; set { _explicitNullValueAuthorization = value; AdditionalData?.Remove("authorization"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("authorization"); else _explicitNullProperties?.Remove("authorization"); } }
         private global::Soenneker.PostHog.OpenApiClient.Models.RedshiftCopyInputsAuthorization? _explicitNullValueAuthorization = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.RedshiftCopyInputsAuthorization Authorization { get => _explicitNullValueAuthorization; set { _explicitNullValueAuthorization = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("authorization"); else _explicitNullProperties?.Remove("authorization"); } }
+        public global::Soenneker.PostHog.OpenApiClient.Models.RedshiftCopyInputsAuthorization Authorization { get => _explicitNullValueAuthorization; set { _explicitNullValueAuthorization = value; AdditionalData?.Remove("authorization"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("authorization"); else _explicitNullProperties?.Remove("authorization"); } }
         private global::Soenneker.PostHog.OpenApiClient.Models.RedshiftCopyInputsAuthorization _explicitNullValueAuthorization = default!;
 #endif
         /// <summary>Credentials used to stage files in the S3 bucket: inline AWS credentials or the id of an aws-s3-kind Integration.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.RedshiftCopyInputsBucketCredentials? BucketCredentials { get => _explicitNullValueBucketCredentials; set { _explicitNullValueBucketCredentials = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("bucket_credentials"); else _explicitNullProperties?.Remove("bucket_credentials"); } }
+        public global::Soenneker.PostHog.OpenApiClient.Models.RedshiftCopyInputsBucketCredentials? BucketCredentials { get => _explicitNullValueBucketCredentials; set { _explicitNullValueBucketCredentials = value; AdditionalData?.Remove("bucket_credentials"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("bucket_credentials"); else _explicitNullProperties?.Remove("bucket_credentials"); } }
         private global::Soenneker.PostHog.OpenApiClient.Models.RedshiftCopyInputsBucketCredentials? _explicitNullValueBucketCredentials = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.RedshiftCopyInputsBucketCredentials BucketCredentials { get => _explicitNullValueBucketCredentials; set { _explicitNullValueBucketCredentials = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("bucket_credentials"); else _explicitNullProperties?.Remove("bucket_credentials"); } }
+        public global::Soenneker.PostHog.OpenApiClient.Models.RedshiftCopyInputsBucketCredentials BucketCredentials { get => _explicitNullValueBucketCredentials; set { _explicitNullValueBucketCredentials = value; AdditionalData?.Remove("bucket_credentials"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("bucket_credentials"); else _explicitNullProperties?.Remove("bucket_credentials"); } }
         private global::Soenneker.PostHog.OpenApiClient.Models.RedshiftCopyInputsBucketCredentials _explicitNullValueBucketCredentials = default!;
 #endif
         /// <summary>AWS region of the staging S3 bucket.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? RegionName { get => _explicitNullValueRegionName; set { _explicitNullValueRegionName = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("region_name"); else _explicitNullProperties?.Remove("region_name"); } }
+        public string? RegionName { get => _explicitNullValueRegionName; set { _explicitNullValueRegionName = value; AdditionalData?.Remove("region_name"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("region_name"); else _explicitNullProperties?.Remove("region_name"); } }
         private string? _explicitNullValueRegionName = default!;
 #nullable restore
 #else
-        public string RegionName { get => _explicitNullValueRegionName; set { _explicitNullValueRegionName = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("region_name"); else _explicitNullProperties?.Remove("region_name"); } }
+        public string RegionName { get => _explicitNullValueRegionName; set { _explicitNullValueRegionName = value; AdditionalData?.Remove("region_name"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("region_name"); else _explicitNullProperties?.Remove("region_name"); } }
         private string _explicitNullValueRegionName = default!;
 #endif
         /// <summary>S3 bucket where files are staged before the Redshift COPY.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? S3Bucket { get => _explicitNullValueS3Bucket; set { _explicitNullValueS3Bucket = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("s3_bucket"); else _explicitNullProperties?.Remove("s3_bucket"); } }
+        public string? S3Bucket { get => _explicitNullValueS3Bucket; set { _explicitNullValueS3Bucket = value; AdditionalData?.Remove("s3_bucket"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("s3_bucket"); else _explicitNullProperties?.Remove("s3_bucket"); } }
         private string? _explicitNullValueS3Bucket = default!;
 #nullable restore
 #else
-        public string S3Bucket { get => _explicitNullValueS3Bucket; set { _explicitNullValueS3Bucket = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("s3_bucket"); else _explicitNullProperties?.Remove("s3_bucket"); } }
+        public string S3Bucket { get => _explicitNullValueS3Bucket; set { _explicitNullValueS3Bucket = value; AdditionalData?.Remove("s3_bucket"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("s3_bucket"); else _explicitNullProperties?.Remove("s3_bucket"); } }
         private string _explicitNullValueS3Bucket = default!;
 #endif
         /// <summary>Key prefix for staged files in the S3 bucket.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? S3KeyPrefix { get => _explicitNullValueS3KeyPrefix; set { _explicitNullValueS3KeyPrefix = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("s3_key_prefix"); else _explicitNullProperties?.Remove("s3_key_prefix"); } }
+        public string? S3KeyPrefix { get => _explicitNullValueS3KeyPrefix; set { _explicitNullValueS3KeyPrefix = value; AdditionalData?.Remove("s3_key_prefix"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("s3_key_prefix"); else _explicitNullProperties?.Remove("s3_key_prefix"); } }
         private string? _explicitNullValueS3KeyPrefix = default!;
 #nullable restore
 #else
-        public string S3KeyPrefix { get => _explicitNullValueS3KeyPrefix; set { _explicitNullValueS3KeyPrefix = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("s3_key_prefix"); else _explicitNullProperties?.Remove("s3_key_prefix"); } }
+        public string S3KeyPrefix { get => _explicitNullValueS3KeyPrefix; set { _explicitNullValueS3KeyPrefix = value; AdditionalData?.Remove("s3_key_prefix"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("s3_key_prefix"); else _explicitNullProperties?.Remove("s3_key_prefix"); } }
         private string _explicitNullValueS3KeyPrefix = default!;
 #endif
         /// <summary>

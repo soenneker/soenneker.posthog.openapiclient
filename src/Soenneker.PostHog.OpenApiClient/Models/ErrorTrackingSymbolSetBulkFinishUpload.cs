@@ -17,9 +17,12 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("content_hashes") is { } nullNodeContentHashes && nullNodeContentHashes.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ContentHashes = null;
-            if (parseNode.GetChildNode("upload_attempt_id") is { } nullNodeUploadAttemptId && nullNodeUploadAttemptId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) UploadAttemptId = null;
-            if (parseNode.GetChildNode("upload_run_id") is { } nullNodeUploadRunId && nullNodeUploadRunId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) UploadRunId = null;
+            if (parseNode.GetChildNode("content_hashes") is null) { _explicitNullValueContentHashes = default!; _explicitNullProperties?.Remove("content_hashes"); }
+            else if (parseNode.GetChildNode("content_hashes") is { } nullNodeContentHashes && nullNodeContentHashes.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ContentHashes = null;
+            if (parseNode.GetChildNode("upload_attempt_id") is null) { _explicitNullValueUploadAttemptId = default!; _explicitNullProperties?.Remove("upload_attempt_id"); }
+            else if (parseNode.GetChildNode("upload_attempt_id") is { } nullNodeUploadAttemptId && nullNodeUploadAttemptId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) UploadAttemptId = null;
+            if (parseNode.GetChildNode("upload_run_id") is null) { _explicitNullValueUploadRunId = default!; _explicitNullProperties?.Remove("upload_run_id"); }
+            else if (parseNode.GetChildNode("upload_run_id") is { } nullNodeUploadRunId && nullNodeUploadRunId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) UploadRunId = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -27,18 +30,18 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Map of symbol set ID to uploaded content hash.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingSymbolSetBulkFinishUploadContentHashesProperty? ContentHashes { get => _explicitNullValueContentHashes; set { _explicitNullValueContentHashes = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("content_hashes"); else _explicitNullProperties?.Remove("content_hashes"); } }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingSymbolSetBulkFinishUploadContentHashesProperty? ContentHashes { get => _explicitNullValueContentHashes; set { _explicitNullValueContentHashes = value; AdditionalData?.Remove("content_hashes"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("content_hashes"); else _explicitNullProperties?.Remove("content_hashes"); } }
         private global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingSymbolSetBulkFinishUploadContentHashesProperty? _explicitNullValueContentHashes = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingSymbolSetBulkFinishUploadContentHashesProperty ContentHashes { get => _explicitNullValueContentHashes; set { _explicitNullValueContentHashes = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("content_hashes"); else _explicitNullProperties?.Remove("content_hashes"); } }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingSymbolSetBulkFinishUploadContentHashesProperty ContentHashes { get => _explicitNullValueContentHashes; set { _explicitNullValueContentHashes = value; AdditionalData?.Remove("content_hashes"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("content_hashes"); else _explicitNullProperties?.Remove("content_hashes"); } }
         private global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingSymbolSetBulkFinishUploadContentHashesProperty _explicitNullValueContentHashes = default!;
 #endif
         /// <summary>Optional ID from the corresponding bulk start request for upload analytics.</summary>
-        public Guid? UploadAttemptId { get => _explicitNullValueUploadAttemptId; set { _explicitNullValueUploadAttemptId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("upload_attempt_id"); else _explicitNullProperties?.Remove("upload_attempt_id"); } }
+        public Guid? UploadAttemptId { get => _explicitNullValueUploadAttemptId; set { _explicitNullValueUploadAttemptId = value; AdditionalData?.Remove("upload_attempt_id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("upload_attempt_id"); else _explicitNullProperties?.Remove("upload_attempt_id"); } }
         private Guid? _explicitNullValueUploadAttemptId = default!;
         /// <summary>Optional ID shared by every batch in one CLI upload run, including release-ID retries.</summary>
-        public Guid? UploadRunId { get => _explicitNullValueUploadRunId; set { _explicitNullValueUploadRunId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("upload_run_id"); else _explicitNullProperties?.Remove("upload_run_id"); } }
+        public Guid? UploadRunId { get => _explicitNullValueUploadRunId; set { _explicitNullValueUploadRunId = value; AdditionalData?.Remove("upload_run_id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("upload_run_id"); else _explicitNullProperties?.Remove("upload_run_id"); } }
         private Guid? _explicitNullValueUploadRunId = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingSymbolSetBulkFinishUpload"/> and sets the default values.

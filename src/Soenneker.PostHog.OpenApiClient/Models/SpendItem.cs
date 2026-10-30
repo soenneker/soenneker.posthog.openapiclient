@@ -17,12 +17,18 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("current_amount_usd") is { } nullNodeCurrentAmountUsd && nullNodeCurrentAmountUsd.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CurrentAmountUsd = null;
-            if (parseNode.GetChildNode("current_amount_usd_before_addons") is { } nullNodeCurrentAmountUsdBeforeAddons && nullNodeCurrentAmountUsdBeforeAddons.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CurrentAmountUsdBeforeAddons = null;
-            if (parseNode.GetChildNode("key") is { } nullNodeKey && nullNodeKey.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Key = null;
-            if (parseNode.GetChildNode("kind") is { } nullNodeKind && nullNodeKind.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Kind = null;
-            if (parseNode.GetChildNode("tier_spend") is { } nullNodeTierSpend && nullNodeTierSpend.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TierSpend = null;
-            if (parseNode.GetChildNode("usage_key") is { } nullNodeUsageKey && nullNodeUsageKey.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) UsageKey = null;
+            if (parseNode.GetChildNode("current_amount_usd") is null) { _explicitNullValueCurrentAmountUsd = default!; _explicitNullProperties?.Remove("current_amount_usd"); }
+            else if (parseNode.GetChildNode("current_amount_usd") is { } nullNodeCurrentAmountUsd && nullNodeCurrentAmountUsd.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CurrentAmountUsd = null;
+            if (parseNode.GetChildNode("current_amount_usd_before_addons") is null) { _explicitNullValueCurrentAmountUsdBeforeAddons = default!; _explicitNullProperties?.Remove("current_amount_usd_before_addons"); }
+            else if (parseNode.GetChildNode("current_amount_usd_before_addons") is { } nullNodeCurrentAmountUsdBeforeAddons && nullNodeCurrentAmountUsdBeforeAddons.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CurrentAmountUsdBeforeAddons = null;
+            if (parseNode.GetChildNode("key") is null) { _explicitNullValueKey = default!; _explicitNullProperties?.Remove("key"); }
+            else if (parseNode.GetChildNode("key") is { } nullNodeKey && nullNodeKey.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Key = null;
+            if (parseNode.GetChildNode("kind") is null) { _explicitNullValueKind = default!; _explicitNullProperties?.Remove("kind"); }
+            else if (parseNode.GetChildNode("kind") is { } nullNodeKind && nullNodeKind.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Kind = null;
+            if (parseNode.GetChildNode("tier_spend") is null) { _explicitNullValueTierSpend = default!; _explicitNullProperties?.Remove("tier_spend"); }
+            else if (parseNode.GetChildNode("tier_spend") is { } nullNodeTierSpend && nullNodeTierSpend.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TierSpend = null;
+            if (parseNode.GetChildNode("usage_key") is null) { _explicitNullValueUsageKey = default!; _explicitNullProperties?.Remove("usage_key"); }
+            else if (parseNode.GetChildNode("usage_key") is { } nullNodeUsageKey && nullNodeUsageKey.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) UsageKey = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -30,54 +36,54 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The current_amount_usd property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? CurrentAmountUsd { get => _explicitNullValueCurrentAmountUsd; set { _explicitNullValueCurrentAmountUsd = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("current_amount_usd"); else _explicitNullProperties?.Remove("current_amount_usd"); } }
+        public string? CurrentAmountUsd { get => _explicitNullValueCurrentAmountUsd; set { _explicitNullValueCurrentAmountUsd = value; AdditionalData?.Remove("current_amount_usd"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("current_amount_usd"); else _explicitNullProperties?.Remove("current_amount_usd"); } }
         private string? _explicitNullValueCurrentAmountUsd = default!;
 #nullable restore
 #else
-        public string CurrentAmountUsd { get => _explicitNullValueCurrentAmountUsd; set { _explicitNullValueCurrentAmountUsd = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("current_amount_usd"); else _explicitNullProperties?.Remove("current_amount_usd"); } }
+        public string CurrentAmountUsd { get => _explicitNullValueCurrentAmountUsd; set { _explicitNullValueCurrentAmountUsd = value; AdditionalData?.Remove("current_amount_usd"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("current_amount_usd"); else _explicitNullProperties?.Remove("current_amount_usd"); } }
         private string _explicitNullValueCurrentAmountUsd = default!;
 #endif
         /// <summary>The current_amount_usd_before_addons property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? CurrentAmountUsdBeforeAddons { get => _explicitNullValueCurrentAmountUsdBeforeAddons; set { _explicitNullValueCurrentAmountUsdBeforeAddons = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("current_amount_usd_before_addons"); else _explicitNullProperties?.Remove("current_amount_usd_before_addons"); } }
+        public string? CurrentAmountUsdBeforeAddons { get => _explicitNullValueCurrentAmountUsdBeforeAddons; set { _explicitNullValueCurrentAmountUsdBeforeAddons = value; AdditionalData?.Remove("current_amount_usd_before_addons"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("current_amount_usd_before_addons"); else _explicitNullProperties?.Remove("current_amount_usd_before_addons"); } }
         private string? _explicitNullValueCurrentAmountUsdBeforeAddons = default!;
 #nullable restore
 #else
-        public string CurrentAmountUsdBeforeAddons { get => _explicitNullValueCurrentAmountUsdBeforeAddons; set { _explicitNullValueCurrentAmountUsdBeforeAddons = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("current_amount_usd_before_addons"); else _explicitNullProperties?.Remove("current_amount_usd_before_addons"); } }
+        public string CurrentAmountUsdBeforeAddons { get => _explicitNullValueCurrentAmountUsdBeforeAddons; set { _explicitNullValueCurrentAmountUsdBeforeAddons = value; AdditionalData?.Remove("current_amount_usd_before_addons"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("current_amount_usd_before_addons"); else _explicitNullProperties?.Remove("current_amount_usd_before_addons"); } }
         private string _explicitNullValueCurrentAmountUsdBeforeAddons = default!;
 #endif
         /// <summary>The key property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Key { get => _explicitNullValueKey; set { _explicitNullValueKey = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("key"); else _explicitNullProperties?.Remove("key"); } }
+        public string? Key { get => _explicitNullValueKey; set { _explicitNullValueKey = value; AdditionalData?.Remove("key"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("key"); else _explicitNullProperties?.Remove("key"); } }
         private string? _explicitNullValueKey = default!;
 #nullable restore
 #else
-        public string Key { get => _explicitNullValueKey; set { _explicitNullValueKey = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("key"); else _explicitNullProperties?.Remove("key"); } }
+        public string Key { get => _explicitNullValueKey; set { _explicitNullValueKey = value; AdditionalData?.Remove("key"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("key"); else _explicitNullProperties?.Remove("key"); } }
         private string _explicitNullValueKey = default!;
 #endif
         /// <summary>* `product` - Product* `addon` - Addon</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.CatalogKindEnum? Kind { get => _explicitNullValueKind; set { _explicitNullValueKind = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("kind"); else _explicitNullProperties?.Remove("kind"); } }
+        public global::Soenneker.PostHog.OpenApiClient.Models.CatalogKindEnum? Kind { get => _explicitNullValueKind; set { _explicitNullValueKind = value; AdditionalData?.Remove("kind"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("kind"); else _explicitNullProperties?.Remove("kind"); } }
         private global::Soenneker.PostHog.OpenApiClient.Models.CatalogKindEnum? _explicitNullValueKind = default!;
         /// <summary>The tier_spend property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.TierSpend>? TierSpend { get => _explicitNullValueTierSpend; set { _explicitNullValueTierSpend = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("tier_spend"); else _explicitNullProperties?.Remove("tier_spend"); } }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.TierSpend>? TierSpend { get => _explicitNullValueTierSpend; set { _explicitNullValueTierSpend = value; AdditionalData?.Remove("tier_spend"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("tier_spend"); else _explicitNullProperties?.Remove("tier_spend"); } }
         private List<global::Soenneker.PostHog.OpenApiClient.Models.TierSpend>? _explicitNullValueTierSpend = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.TierSpend> TierSpend { get => _explicitNullValueTierSpend; set { _explicitNullValueTierSpend = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("tier_spend"); else _explicitNullProperties?.Remove("tier_spend"); } }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.TierSpend> TierSpend { get => _explicitNullValueTierSpend; set { _explicitNullValueTierSpend = value; AdditionalData?.Remove("tier_spend"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("tier_spend"); else _explicitNullProperties?.Remove("tier_spend"); } }
         private List<global::Soenneker.PostHog.OpenApiClient.Models.TierSpend> _explicitNullValueTierSpend = default!;
 #endif
         /// <summary>The usage_key property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? UsageKey { get => _explicitNullValueUsageKey; set { _explicitNullValueUsageKey = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("usage_key"); else _explicitNullProperties?.Remove("usage_key"); } }
+        public string? UsageKey { get => _explicitNullValueUsageKey; set { _explicitNullValueUsageKey = value; AdditionalData?.Remove("usage_key"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("usage_key"); else _explicitNullProperties?.Remove("usage_key"); } }
         private string? _explicitNullValueUsageKey = default!;
 #nullable restore
 #else
-        public string UsageKey { get => _explicitNullValueUsageKey; set { _explicitNullValueUsageKey = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("usage_key"); else _explicitNullProperties?.Remove("usage_key"); } }
+        public string UsageKey { get => _explicitNullValueUsageKey; set { _explicitNullValueUsageKey = value; AdditionalData?.Remove("usage_key"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("usage_key"); else _explicitNullProperties?.Remove("usage_key"); } }
         private string _explicitNullValueUsageKey = default!;
 #endif
         /// <summary>
@@ -108,7 +114,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "current_amount_usd", n => { CurrentAmountUsd = n.GetStringValue(); } },
                 { "current_amount_usd_before_addons", n => { CurrentAmountUsdBeforeAddons = n.GetStringValue(); } },
                 { "key", n => { Key = n.GetStringValue(); } },
-                { "kind", n => { Kind = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.CatalogKindEnum>(); } },
+                { "kind", n => { var parsed = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.CatalogKindEnum>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValueKind = default; _explicitNullProperties?.Remove("kind"); AdditionalData["kind"] = unknown; } else { Kind = parsed; AdditionalData.Remove("kind"); } } },
                 { "tier_spend", n => { TierSpend = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.TierSpend>(global::Soenneker.PostHog.OpenApiClient.Models.TierSpend.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "usage_key", n => { UsageKey = n.GetStringValue(); } },
             };

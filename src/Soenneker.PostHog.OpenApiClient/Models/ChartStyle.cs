@@ -17,8 +17,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("curve") is { } nullNodeCurve && nullNodeCurve.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Curve = null;
-            if (parseNode.GetChildNode("seriesColorMode") is { } nullNodeSeriesColorMode && nullNodeSeriesColorMode.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SeriesColorMode = null;
+            if (parseNode.GetChildNode("curve") is null) { _explicitNullValueCurve = default!; _explicitNullProperties?.Remove("curve"); }
+            else if (parseNode.GetChildNode("curve") is { } nullNodeCurve && nullNodeCurve.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Curve = null;
+            if (parseNode.GetChildNode("seriesColorMode") is null) { _explicitNullValueSeriesColorMode = default!; _explicitNullProperties?.Remove("seriesColorMode"); }
+            else if (parseNode.GetChildNode("seriesColorMode") is { } nullNodeSeriesColorMode && nullNodeSeriesColorMode.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SeriesColorMode = null;
         }
 
         /// <summary>Line interpolation: straight segments or a smoothed curve through the points.</summary>

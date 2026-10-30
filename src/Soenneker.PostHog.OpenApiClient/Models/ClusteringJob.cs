@@ -17,30 +17,34 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("analysis_level") is { } nullNodeAnalysisLevel && nullNodeAnalysisLevel.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AnalysisLevel = null;
-            if (parseNode.GetChildNode("enabled") is { } nullNodeEnabled && nullNodeEnabled.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Enabled = null;
-            if (parseNode.GetChildNode("event_filters") is { } nullNodeEventFilters && nullNodeEventFilters.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) EventFilters = null;
-            if (parseNode.GetChildNode("name") is { } nullNodeName && nullNodeName.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Name = null;
+            if (parseNode.GetChildNode("analysis_level") is null) { _explicitNullValueAnalysisLevel = default!; _explicitNullProperties?.Remove("analysis_level"); }
+            else if (parseNode.GetChildNode("analysis_level") is { } nullNodeAnalysisLevel && nullNodeAnalysisLevel.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AnalysisLevel = null;
+            if (parseNode.GetChildNode("enabled") is null) { _explicitNullValueEnabled = default!; _explicitNullProperties?.Remove("enabled"); }
+            else if (parseNode.GetChildNode("enabled") is { } nullNodeEnabled && nullNodeEnabled.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Enabled = null;
+            if (parseNode.GetChildNode("event_filters") is null) { _explicitNullValueEventFilters = default!; _explicitNullProperties?.Remove("event_filters"); }
+            else if (parseNode.GetChildNode("event_filters") is { } nullNodeEventFilters && nullNodeEventFilters.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) EventFilters = null;
+            if (parseNode.GetChildNode("name") is null) { _explicitNullValueName = default!; _explicitNullProperties?.Remove("name"); }
+            else if (parseNode.GetChildNode("name") is { } nullNodeName && nullNodeName.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Name = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>* `trace` - trace* `generation` - generation* `evaluation` - evaluation</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.AnalysisLevelEnum? AnalysisLevel { get => _explicitNullValueAnalysisLevel; set { _explicitNullValueAnalysisLevel = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("analysis_level"); else _explicitNullProperties?.Remove("analysis_level"); } }
+        public global::Soenneker.PostHog.OpenApiClient.Models.AnalysisLevelEnum? AnalysisLevel { get => _explicitNullValueAnalysisLevel; set { _explicitNullValueAnalysisLevel = value; AdditionalData?.Remove("analysis_level"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("analysis_level"); else _explicitNullProperties?.Remove("analysis_level"); } }
         private global::Soenneker.PostHog.OpenApiClient.Models.AnalysisLevelEnum? _explicitNullValueAnalysisLevel = default!;
         /// <summary>The created_at property</summary>
         public DateTimeOffset? CreatedAt { get; private set; }
         /// <summary>The enabled property</summary>
-        public bool? Enabled { get => _explicitNullValueEnabled; set { _explicitNullValueEnabled = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("enabled"); else _explicitNullProperties?.Remove("enabled"); } }
+        public bool? Enabled { get => _explicitNullValueEnabled; set { _explicitNullValueEnabled = value; AdditionalData?.Remove("enabled"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("enabled"); else _explicitNullProperties?.Remove("enabled"); } }
         private bool? _explicitNullValueEnabled = default!;
         /// <summary>PostHog property filters that scope this clustering job. Empty array means no filters.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.ClusteringJobEventFiltersItemProperty>? EventFilters { get => _explicitNullValueEventFilters; set { _explicitNullValueEventFilters = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("event_filters"); else _explicitNullProperties?.Remove("event_filters"); } }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.ClusteringJobEventFiltersItemProperty>? EventFilters { get => _explicitNullValueEventFilters; set { _explicitNullValueEventFilters = value; AdditionalData?.Remove("event_filters"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("event_filters"); else _explicitNullProperties?.Remove("event_filters"); } }
         private List<global::Soenneker.PostHog.OpenApiClient.Models.ClusteringJobEventFiltersItemProperty>? _explicitNullValueEventFilters = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.ClusteringJobEventFiltersItemProperty> EventFilters { get => _explicitNullValueEventFilters; set { _explicitNullValueEventFilters = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("event_filters"); else _explicitNullProperties?.Remove("event_filters"); } }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.ClusteringJobEventFiltersItemProperty> EventFilters { get => _explicitNullValueEventFilters; set { _explicitNullValueEventFilters = value; AdditionalData?.Remove("event_filters"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("event_filters"); else _explicitNullProperties?.Remove("event_filters"); } }
         private List<global::Soenneker.PostHog.OpenApiClient.Models.ClusteringJobEventFiltersItemProperty> _explicitNullValueEventFilters = default!;
 #endif
         /// <summary>The id property</summary>
@@ -48,11 +52,11 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The name property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Name { get => _explicitNullValueName; set { _explicitNullValueName = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("name"); else _explicitNullProperties?.Remove("name"); } }
+        public string? Name { get => _explicitNullValueName; set { _explicitNullValueName = value; AdditionalData?.Remove("name"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("name"); else _explicitNullProperties?.Remove("name"); } }
         private string? _explicitNullValueName = default!;
 #nullable restore
 #else
-        public string Name { get => _explicitNullValueName; set { _explicitNullValueName = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("name"); else _explicitNullProperties?.Remove("name"); } }
+        public string Name { get => _explicitNullValueName; set { _explicitNullValueName = value; AdditionalData?.Remove("name"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("name"); else _explicitNullProperties?.Remove("name"); } }
         private string _explicitNullValueName = default!;
 #endif
         /// <summary>The updated_at property</summary>
@@ -82,7 +86,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "analysis_level", n => { AnalysisLevel = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.AnalysisLevelEnum>(); } },
+                { "analysis_level", n => { var parsed = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.AnalysisLevelEnum>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValueAnalysisLevel = default; _explicitNullProperties?.Remove("analysis_level"); AdditionalData["analysis_level"] = unknown; } else { AnalysisLevel = parsed; AdditionalData.Remove("analysis_level"); } } },
                 { "created_at", n => { CreatedAt = n.GetDateTimeOffsetValue(); } },
                 { "enabled", n => { Enabled = n.GetBoolValue(); } },
                 { "event_filters", n => { EventFilters = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.ClusteringJobEventFiltersItemProperty>(global::Soenneker.PostHog.OpenApiClient.Models.ClusteringJobEventFiltersItemProperty.CreateFromDiscriminatorValue)?.AsList(); } },

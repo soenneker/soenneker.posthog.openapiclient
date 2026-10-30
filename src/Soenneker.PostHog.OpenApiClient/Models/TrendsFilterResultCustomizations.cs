@@ -56,6 +56,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             
             
             var unionPayload = parseNode.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue);
+            bool matchesUnionBranch0 = unionPayload is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject && ((global::System.Func<bool>)(() => ((unionPayload is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject))))();
+            bool matchesUnionBranch1 = unionPayload is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject && ((global::System.Func<bool>)(() => ((unionPayload is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject))))();
+            int matchingUnionBranches = 0;
+            if (matchesUnionBranch0) matchingUnionBranches++;
+            if (matchesUnionBranch1) matchingUnionBranches++;
+            bool noSelectedUnionBranch = result.TrendsFilterResultCustomizationsAnyOf1 == null && result.TrendsFilterResultCustomizationsAnyOf2 == null && result.TrendsFilterResultCustomizationsMember1 == null;
+            if (noSelectedUnionBranch && matchesUnionBranch0 && matchingUnionBranches == 1) result.TrendsFilterResultCustomizationsAnyOf1 = global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.TrendsFilterResultCustomizationsAnyOf1(), parseNode);
+            if (noSelectedUnionBranch && matchesUnionBranch1 && matchingUnionBranches == 1) result.TrendsFilterResultCustomizationsAnyOf2 = global::Soenneker.OpenApi.Generated.OpenApiNullTracking.Capture(new global::Soenneker.PostHog.OpenApiClient.Models.TrendsFilterResultCustomizationsAnyOf2(), parseNode);
             if (result.TrendsFilterResultCustomizationsAnyOf1 == null && result.TrendsFilterResultCustomizationsAnyOf2 == null && result.TrendsFilterResultCustomizationsMember1 == null) result.UnrecognizedValue = unionPayload;
 return result;
         }
@@ -65,6 +73,8 @@ return result;
         /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
         public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
         {
+            if (UnrecognizedValue is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject rawFields) { var fields = new global::System.Collections.Generic.Dictionary<string, global::System.Action<IParseNode>>(); foreach (var entry in rawFields.GetValue()) fields[entry.Key] = _ => { }; return fields; }
+
             if(TrendsFilterResultCustomizationsAnyOf1 != null || TrendsFilterResultCustomizationsAnyOf2 != null || TrendsFilterResultCustomizationsMember1 != null)
             {
                 return ParseNodeHelper.MergeDeserializersForIntersectionWrapper(TrendsFilterResultCustomizationsAnyOf1, TrendsFilterResultCustomizationsAnyOf2, TrendsFilterResultCustomizationsMember1);
@@ -79,9 +89,13 @@ return result;
         {
             if (global::System.Object.ReferenceEquals(writer, null)) throw new global::System.ArgumentNullException(nameof(writer));
             if (TrendsFilterResultCustomizationsAnyOf1 == null && TrendsFilterResultCustomizationsAnyOf2 == null && TrendsFilterResultCustomizationsMember1 == null) { if (UnrecognizedValue is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject rawObject) writer.WriteObjectValue(null, new global::Soenneker.OpenApi.Generated.OpenApiUnionAdditionalData(AdditionalData, rawObject)); else if (UnrecognizedValue != null) writer.WriteObjectValue(null, UnrecognizedValue); else if (AdditionalData.Count > 0) writer.WriteObjectValue(null, new global::Soenneker.OpenApi.Generated.OpenApiUnionAdditionalData(AdditionalData)); else writer.WriteNullValue(null); return; }
-            if (TrendsFilterResultCustomizationsAnyOf1 != null && TrendsFilterResultCustomizationsAnyOf2 == null && TrendsFilterResultCustomizationsMember1 == null) { if (TrendsFilterResultCustomizationsAnyOf1 is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder selectedData) foreach (var entry in AdditionalData) selectedData.AdditionalData[entry.Key] = entry.Value; writer.WriteObjectValue(null, TrendsFilterResultCustomizationsAnyOf1); return; }
-            if (TrendsFilterResultCustomizationsAnyOf2 != null && TrendsFilterResultCustomizationsAnyOf1 == null && TrendsFilterResultCustomizationsMember1 == null) { if (TrendsFilterResultCustomizationsAnyOf2 is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder selectedData) foreach (var entry in AdditionalData) selectedData.AdditionalData[entry.Key] = entry.Value; writer.WriteObjectValue(null, TrendsFilterResultCustomizationsAnyOf2); return; }
-            if (TrendsFilterResultCustomizationsMember1 != null && TrendsFilterResultCustomizationsAnyOf1 == null && TrendsFilterResultCustomizationsAnyOf2 == null) { if (TrendsFilterResultCustomizationsMember1 is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder selectedData) foreach (var entry in AdditionalData) selectedData.AdditionalData[entry.Key] = entry.Value; writer.WriteObjectValue(null, TrendsFilterResultCustomizationsMember1); return; }
+            int selectedUnionBranches = 0;
+            if (TrendsFilterResultCustomizationsAnyOf1 != null) selectedUnionBranches++;
+            if (TrendsFilterResultCustomizationsAnyOf2 != null) selectedUnionBranches++;
+            if (TrendsFilterResultCustomizationsMember1 != null) selectedUnionBranches++;
+            if (TrendsFilterResultCustomizationsAnyOf1 != null && selectedUnionBranches == 1) { if (TrendsFilterResultCustomizationsAnyOf1 is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder selectedData) foreach (var entry in AdditionalData) selectedData.AdditionalData[entry.Key] = entry.Value; writer.WriteObjectValue(null, TrendsFilterResultCustomizationsAnyOf1); return; }
+            if (TrendsFilterResultCustomizationsAnyOf2 != null && selectedUnionBranches == 1) { if (TrendsFilterResultCustomizationsAnyOf2 is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder selectedData) foreach (var entry in AdditionalData) selectedData.AdditionalData[entry.Key] = entry.Value; writer.WriteObjectValue(null, TrendsFilterResultCustomizationsAnyOf2); return; }
+            if (TrendsFilterResultCustomizationsMember1 != null && selectedUnionBranches == 1) { if (TrendsFilterResultCustomizationsMember1 is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder selectedData) foreach (var entry in AdditionalData) selectedData.AdditionalData[entry.Key] = entry.Value; writer.WriteObjectValue(null, TrendsFilterResultCustomizationsMember1); return; }
 
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TrendsFilterResultCustomizationsAnyOf1>(null, TrendsFilterResultCustomizationsAnyOf1, TrendsFilterResultCustomizationsAnyOf2, TrendsFilterResultCustomizationsMember1);

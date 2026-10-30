@@ -17,36 +17,41 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("can_view_task") is { } nullNodeCanViewTask && nullNodeCanViewTask.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CanViewTask = null;
-            if (parseNode.GetChildNode("is_terminal") is { } nullNodeIsTerminal && nullNodeIsTerminal.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) IsTerminal = null;
-            if (parseNode.GetChildNode("pr_url") is { } nullNodePrUrl && nullNodePrUrl.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) PrUrl = null;
-            if (parseNode.GetChildNode("run_status") is { } nullNodeRunStatus && nullNodeRunStatus.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) RunStatus = null;
-            if (parseNode.GetChildNode("task_id") is { } nullNodeTaskId && nullNodeTaskId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TaskId = null;
+            if (parseNode.GetChildNode("can_view_task") is null) { _explicitNullValueCanViewTask = default!; _explicitNullProperties?.Remove("can_view_task"); }
+            else if (parseNode.GetChildNode("can_view_task") is { } nullNodeCanViewTask && nullNodeCanViewTask.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CanViewTask = null;
+            if (parseNode.GetChildNode("is_terminal") is null) { _explicitNullValueIsTerminal = default!; _explicitNullProperties?.Remove("is_terminal"); }
+            else if (parseNode.GetChildNode("is_terminal") is { } nullNodeIsTerminal && nullNodeIsTerminal.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) IsTerminal = null;
+            if (parseNode.GetChildNode("pr_url") is null) { _explicitNullValuePrUrl = default!; _explicitNullProperties?.Remove("pr_url"); }
+            else if (parseNode.GetChildNode("pr_url") is { } nullNodePrUrl && nullNodePrUrl.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) PrUrl = null;
+            if (parseNode.GetChildNode("run_status") is null) { _explicitNullValueRunStatus = default!; _explicitNullProperties?.Remove("run_status"); }
+            else if (parseNode.GetChildNode("run_status") is { } nullNodeRunStatus && nullNodeRunStatus.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) RunStatus = null;
+            if (parseNode.GetChildNode("task_id") is null) { _explicitNullValueTaskId = default!; _explicitNullProperties?.Remove("task_id"); }
+            else if (parseNode.GetChildNode("task_id") is { } nullNodeTaskId && nullNodeTaskId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TaskId = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Whether the requesting user can open the task in PostHog Desktop. Cleanup tasks are visible to their creator only, so other viewers should not be shown a task link.</summary>
-        public bool? CanViewTask { get => _explicitNullValueCanViewTask; set { _explicitNullValueCanViewTask = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("can_view_task"); else _explicitNullProperties?.Remove("can_view_task"); } }
+        public bool? CanViewTask { get => _explicitNullValueCanViewTask; set { _explicitNullValueCanViewTask = value; AdditionalData?.Remove("can_view_task"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("can_view_task"); else _explicitNullProperties?.Remove("can_view_task"); } }
         private bool? _explicitNullValueCanViewTask = default!;
         /// <summary>Whether the run has finished (successfully or not). Stop polling once true.</summary>
-        public bool? IsTerminal { get => _explicitNullValueIsTerminal; set { _explicitNullValueIsTerminal = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("is_terminal"); else _explicitNullProperties?.Remove("is_terminal"); } }
+        public bool? IsTerminal { get => _explicitNullValueIsTerminal; set { _explicitNullValueIsTerminal = value; AdditionalData?.Remove("is_terminal"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("is_terminal"); else _explicitNullProperties?.Remove("is_terminal"); } }
         private bool? _explicitNullValueIsTerminal = default!;
         /// <summary>URL of the pull request the task opened, when it opened one.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? PrUrl { get => _explicitNullValuePrUrl; set { _explicitNullValuePrUrl = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("pr_url"); else _explicitNullProperties?.Remove("pr_url"); } }
+        public string? PrUrl { get => _explicitNullValuePrUrl; set { _explicitNullValuePrUrl = value; AdditionalData?.Remove("pr_url"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("pr_url"); else _explicitNullProperties?.Remove("pr_url"); } }
         private string? _explicitNullValuePrUrl = default!;
 #nullable restore
 #else
-        public string PrUrl { get => _explicitNullValuePrUrl; set { _explicitNullValuePrUrl = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("pr_url"); else _explicitNullProperties?.Remove("pr_url"); } }
+        public string PrUrl { get => _explicitNullValuePrUrl; set { _explicitNullValuePrUrl = value; AdditionalData?.Remove("pr_url"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("pr_url"); else _explicitNullProperties?.Remove("pr_url"); } }
         private string _explicitNullValuePrUrl = default!;
 #endif
         /// <summary>* `not_started` - not_started* `queued` - queued* `in_progress` - in_progress* `completed` - completed* `failed` - failed* `cancelled` - cancelled</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentFlagCleanupTaskRunStatus? RunStatus { get => _explicitNullValueRunStatus; set { _explicitNullValueRunStatus = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("run_status"); else _explicitNullProperties?.Remove("run_status"); } }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentFlagCleanupTaskRunStatus? RunStatus { get => _explicitNullValueRunStatus; set { _explicitNullValueRunStatus = value; AdditionalData?.Remove("run_status"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("run_status"); else _explicitNullProperties?.Remove("run_status"); } }
         private global::Soenneker.PostHog.OpenApiClient.Models.ExperimentFlagCleanupTaskRunStatus? _explicitNullValueRunStatus = default!;
         /// <summary>ID of the flag-cleanup Desktop task.</summary>
-        public Guid? TaskId { get => _explicitNullValueTaskId; set { _explicitNullValueTaskId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("task_id"); else _explicitNullProperties?.Remove("task_id"); } }
+        public Guid? TaskId { get => _explicitNullValueTaskId; set { _explicitNullValueTaskId = value; AdditionalData?.Remove("task_id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("task_id"); else _explicitNullProperties?.Remove("task_id"); } }
         private Guid? _explicitNullValueTaskId = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ExperimentFlagCleanupTask"/> and sets the default values.
@@ -76,7 +81,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "can_view_task", n => { CanViewTask = n.GetBoolValue(); } },
                 { "is_terminal", n => { IsTerminal = n.GetBoolValue(); } },
                 { "pr_url", n => { PrUrl = n.GetStringValue(); } },
-                { "run_status", n => { RunStatus = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentFlagCleanupTaskRunStatus>(); } },
+                { "run_status", n => { var parsed = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentFlagCleanupTaskRunStatus>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValueRunStatus = default; _explicitNullProperties?.Remove("run_status"); AdditionalData["run_status"] = unknown; } else { RunStatus = parsed; AdditionalData.Remove("run_status"); } } },
                 { "task_id", n => { TaskId = n.GetGuidValue(); } },
             };
         }

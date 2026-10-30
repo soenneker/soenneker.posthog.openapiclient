@@ -17,15 +17,24 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("company_domain") is { } nullNodeCompanyDomain && nullNodeCompanyDomain.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CompanyDomain = null;
-            if (parseNode.GetChildNode("has_events") is { } nullNodeHasEvents && nullNodeHasEvents.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) HasEvents = null;
-            if (parseNode.GetChildNode("joining_existing_organization") is { } nullNodeJoiningExistingOrganization && nullNodeJoiningExistingOrganization.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) JoiningExistingOrganization = null;
-            if (parseNode.GetChildNode("model") is { } nullNodeModel && nullNodeModel.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Model = null;
-            if (parseNode.GetChildNode("other_members") is { } nullNodeOtherMembers && nullNodeOtherMembers.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) OtherMembers = null;
-            if (parseNode.GetChildNode("signal_reports_waiting") is { } nullNodeSignalReportsWaiting && nullNodeSignalReportsWaiting.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SignalReportsWaiting = null;
-            if (parseNode.GetChildNode("sources_enabled") is { } nullNodeSourcesEnabled && nullNodeSourcesEnabled.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SourcesEnabled = null;
-            if (parseNode.GetChildNode("sources_newly_enabled") is { } nullNodeSourcesNewlyEnabled && nullNodeSourcesNewlyEnabled.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SourcesNewlyEnabled = null;
-            if (parseNode.GetChildNode("sources_watching") is { } nullNodeSourcesWatching && nullNodeSourcesWatching.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SourcesWatching = null;
+            if (parseNode.GetChildNode("company_domain") is null) { _explicitNullValueCompanyDomain = default!; _explicitNullProperties?.Remove("company_domain"); }
+            else if (parseNode.GetChildNode("company_domain") is { } nullNodeCompanyDomain && nullNodeCompanyDomain.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CompanyDomain = null;
+            if (parseNode.GetChildNode("has_events") is null) { _explicitNullValueHasEvents = default!; _explicitNullProperties?.Remove("has_events"); }
+            else if (parseNode.GetChildNode("has_events") is { } nullNodeHasEvents && nullNodeHasEvents.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) HasEvents = null;
+            if (parseNode.GetChildNode("joining_existing_organization") is null) { _explicitNullValueJoiningExistingOrganization = default!; _explicitNullProperties?.Remove("joining_existing_organization"); }
+            else if (parseNode.GetChildNode("joining_existing_organization") is { } nullNodeJoiningExistingOrganization && nullNodeJoiningExistingOrganization.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) JoiningExistingOrganization = null;
+            if (parseNode.GetChildNode("model") is null) { _explicitNullValueModel = default!; _explicitNullProperties?.Remove("model"); }
+            else if (parseNode.GetChildNode("model") is { } nullNodeModel && nullNodeModel.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Model = null;
+            if (parseNode.GetChildNode("other_members") is null) { _explicitNullValueOtherMembers = default!; _explicitNullProperties?.Remove("other_members"); }
+            else if (parseNode.GetChildNode("other_members") is { } nullNodeOtherMembers && nullNodeOtherMembers.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) OtherMembers = null;
+            if (parseNode.GetChildNode("signal_reports_waiting") is null) { _explicitNullValueSignalReportsWaiting = default!; _explicitNullProperties?.Remove("signal_reports_waiting"); }
+            else if (parseNode.GetChildNode("signal_reports_waiting") is { } nullNodeSignalReportsWaiting && nullNodeSignalReportsWaiting.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SignalReportsWaiting = null;
+            if (parseNode.GetChildNode("sources_enabled") is null) { _explicitNullValueSourcesEnabled = default!; _explicitNullProperties?.Remove("sources_enabled"); }
+            else if (parseNode.GetChildNode("sources_enabled") is { } nullNodeSourcesEnabled && nullNodeSourcesEnabled.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SourcesEnabled = null;
+            if (parseNode.GetChildNode("sources_newly_enabled") is null) { _explicitNullValueSourcesNewlyEnabled = default!; _explicitNullProperties?.Remove("sources_newly_enabled"); }
+            else if (parseNode.GetChildNode("sources_newly_enabled") is { } nullNodeSourcesNewlyEnabled && nullNodeSourcesNewlyEnabled.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SourcesNewlyEnabled = null;
+            if (parseNode.GetChildNode("sources_watching") is null) { _explicitNullValueSourcesWatching = default!; _explicitNullProperties?.Remove("sources_watching"); }
+            else if (parseNode.GetChildNode("sources_watching") is { } nullNodeSourcesWatching && nullNodeSourcesWatching.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SourcesWatching = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -33,63 +42,63 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Company domain to research. Blank simulates a personal email address.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? CompanyDomain { get => _explicitNullValueCompanyDomain; set { _explicitNullValueCompanyDomain = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("company_domain"); else _explicitNullProperties?.Remove("company_domain"); } }
+        public string? CompanyDomain { get => _explicitNullValueCompanyDomain; set { _explicitNullValueCompanyDomain = value; AdditionalData?.Remove("company_domain"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("company_domain"); else _explicitNullProperties?.Remove("company_domain"); } }
         private string? _explicitNullValueCompanyDomain = default!;
 #nullable restore
 #else
-        public string CompanyDomain { get => _explicitNullValueCompanyDomain; set { _explicitNullValueCompanyDomain = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("company_domain"); else _explicitNullProperties?.Remove("company_domain"); } }
+        public string CompanyDomain { get => _explicitNullValueCompanyDomain; set { _explicitNullValueCompanyDomain = value; AdditionalData?.Remove("company_domain"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("company_domain"); else _explicitNullProperties?.Remove("company_domain"); } }
         private string _explicitNullValueCompanyDomain = default!;
 #endif
         /// <summary>Whether the project has ingested events.</summary>
-        public bool? HasEvents { get => _explicitNullValueHasEvents; set { _explicitNullValueHasEvents = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("has_events"); else _explicitNullProperties?.Remove("has_events"); } }
+        public bool? HasEvents { get => _explicitNullValueHasEvents; set { _explicitNullValueHasEvents = value; AdditionalData?.Remove("has_events"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("has_events"); else _explicitNullProperties?.Remove("has_events"); } }
         private bool? _explicitNullValueHasEvents = default!;
         /// <summary>Whether the user is joining an organization that already has shared context.</summary>
-        public bool? JoiningExistingOrganization { get => _explicitNullValueJoiningExistingOrganization; set { _explicitNullValueJoiningExistingOrganization = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("joining_existing_organization"); else _explicitNullProperties?.Remove("joining_existing_organization"); } }
+        public bool? JoiningExistingOrganization { get => _explicitNullValueJoiningExistingOrganization; set { _explicitNullValueJoiningExistingOrganization = value; AdditionalData?.Remove("joining_existing_organization"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("joining_existing_organization"); else _explicitNullProperties?.Remove("joining_existing_organization"); } }
         private bool? _explicitNullValueJoiningExistingOrganization = default!;
         /// <summary>Optional LLM model identifier for the test session. Omit to use the plan default.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Model { get => _explicitNullValueModel; set { _explicitNullValueModel = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("model"); else _explicitNullProperties?.Remove("model"); } }
+        public string? Model { get => _explicitNullValueModel; set { _explicitNullValueModel = value; AdditionalData?.Remove("model"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("model"); else _explicitNullProperties?.Remove("model"); } }
         private string? _explicitNullValueModel = default!;
 #nullable restore
 #else
-        public string Model { get => _explicitNullValueModel; set { _explicitNullValueModel = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("model"); else _explicitNullProperties?.Remove("model"); } }
+        public string Model { get => _explicitNullValueModel; set { _explicitNullValueModel = value; AdditionalData?.Remove("model"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("model"); else _explicitNullProperties?.Remove("model"); } }
         private string _explicitNullValueModel = default!;
 #endif
         /// <summary>Display names of other Desktop users in the organization.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<string>? OtherMembers { get => _explicitNullValueOtherMembers; set { _explicitNullValueOtherMembers = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("other_members"); else _explicitNullProperties?.Remove("other_members"); } }
+        public List<string>? OtherMembers { get => _explicitNullValueOtherMembers; set { _explicitNullValueOtherMembers = value; AdditionalData?.Remove("other_members"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("other_members"); else _explicitNullProperties?.Remove("other_members"); } }
         private List<string>? _explicitNullValueOtherMembers = default!;
 #nullable restore
 #else
-        public List<string> OtherMembers { get => _explicitNullValueOtherMembers; set { _explicitNullValueOtherMembers = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("other_members"); else _explicitNullProperties?.Remove("other_members"); } }
+        public List<string> OtherMembers { get => _explicitNullValueOtherMembers; set { _explicitNullValueOtherMembers = value; AdditionalData?.Remove("other_members"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("other_members"); else _explicitNullProperties?.Remove("other_members"); } }
         private List<string> _explicitNullValueOtherMembers = default!;
 #endif
         /// <summary>Number of findings waiting in #general.</summary>
-        public int? SignalReportsWaiting { get => _explicitNullValueSignalReportsWaiting; set { _explicitNullValueSignalReportsWaiting = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("signal_reports_waiting"); else _explicitNullProperties?.Remove("signal_reports_waiting"); } }
+        public int? SignalReportsWaiting { get => _explicitNullValueSignalReportsWaiting; set { _explicitNullValueSignalReportsWaiting = value; AdditionalData?.Remove("signal_reports_waiting"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("signal_reports_waiting"); else _explicitNullProperties?.Remove("signal_reports_waiting"); } }
         private int? _explicitNullValueSignalReportsWaiting = default!;
         /// <summary>Signal sources that were already enabled.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<string>? SourcesEnabled { get => _explicitNullValueSourcesEnabled; set { _explicitNullValueSourcesEnabled = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("sources_enabled"); else _explicitNullProperties?.Remove("sources_enabled"); } }
+        public List<string>? SourcesEnabled { get => _explicitNullValueSourcesEnabled; set { _explicitNullValueSourcesEnabled = value; AdditionalData?.Remove("sources_enabled"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("sources_enabled"); else _explicitNullProperties?.Remove("sources_enabled"); } }
         private List<string>? _explicitNullValueSourcesEnabled = default!;
 #nullable restore
 #else
-        public List<string> SourcesEnabled { get => _explicitNullValueSourcesEnabled; set { _explicitNullValueSourcesEnabled = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("sources_enabled"); else _explicitNullProperties?.Remove("sources_enabled"); } }
+        public List<string> SourcesEnabled { get => _explicitNullValueSourcesEnabled; set { _explicitNullValueSourcesEnabled = value; AdditionalData?.Remove("sources_enabled"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("sources_enabled"); else _explicitNullProperties?.Remove("sources_enabled"); } }
         private List<string> _explicitNullValueSourcesEnabled = default!;
 #endif
         /// <summary>Whether onboarding enabled any signal sources.</summary>
-        public bool? SourcesNewlyEnabled { get => _explicitNullValueSourcesNewlyEnabled; set { _explicitNullValueSourcesNewlyEnabled = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("sources_newly_enabled"); else _explicitNullProperties?.Remove("sources_newly_enabled"); } }
+        public bool? SourcesNewlyEnabled { get => _explicitNullValueSourcesNewlyEnabled; set { _explicitNullValueSourcesNewlyEnabled = value; AdditionalData?.Remove("sources_newly_enabled"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("sources_newly_enabled"); else _explicitNullProperties?.Remove("sources_newly_enabled"); } }
         private bool? _explicitNullValueSourcesNewlyEnabled = default!;
         /// <summary>Signal sources the onboarding flow is watching.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<string>? SourcesWatching { get => _explicitNullValueSourcesWatching; set { _explicitNullValueSourcesWatching = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("sources_watching"); else _explicitNullProperties?.Remove("sources_watching"); } }
+        public List<string>? SourcesWatching { get => _explicitNullValueSourcesWatching; set { _explicitNullValueSourcesWatching = value; AdditionalData?.Remove("sources_watching"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("sources_watching"); else _explicitNullProperties?.Remove("sources_watching"); } }
         private List<string>? _explicitNullValueSourcesWatching = default!;
 #nullable restore
 #else
-        public List<string> SourcesWatching { get => _explicitNullValueSourcesWatching; set { _explicitNullValueSourcesWatching = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("sources_watching"); else _explicitNullProperties?.Remove("sources_watching"); } }
+        public List<string> SourcesWatching { get => _explicitNullValueSourcesWatching; set { _explicitNullValueSourcesWatching = value; AdditionalData?.Remove("sources_watching"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("sources_watching"); else _explicitNullProperties?.Remove("sources_watching"); } }
         private List<string> _explicitNullValueSourcesWatching = default!;
 #endif
         /// <summary>

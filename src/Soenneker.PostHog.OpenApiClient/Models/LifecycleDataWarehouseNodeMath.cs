@@ -97,6 +97,8 @@ return result;
         /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
         public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
         {
+            if (UnrecognizedValue is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject rawFields) { var fields = new global::System.Collections.Generic.Dictionary<string, global::System.Action<IParseNode>>(); foreach (var entry in rawFields.GetValue()) fields[entry.Key] = _ => { }; return fields; }
+
             if(LifecycleDataWarehouseNodeMathMember1 != null)
             {
                 return ParseNodeHelper.MergeDeserializersForIntersectionWrapper(LifecycleDataWarehouseNodeMathMember1);
@@ -111,7 +113,17 @@ return result;
         {
             if (global::System.Object.ReferenceEquals(writer, null)) throw new global::System.ArgumentNullException(nameof(writer));
             if (BaseMathType == null && CalendarHeatmapMathType == null && CountPerActorMathType == null && ExperimentMetricMathType == null && FunnelMathType == null && GroupMathType == null && LifecycleDataWarehouseNodeMathAnyOf8 == null && LifecycleDataWarehouseNodeMathMember1 == null && PropertyMathType == null) { if (UnrecognizedValue is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject rawObject) writer.WriteObjectValue(null, new global::Soenneker.OpenApi.Generated.OpenApiUnionAdditionalData(AdditionalData, rawObject)); else if (UnrecognizedValue != null) writer.WriteObjectValue(null, UnrecognizedValue); else if (AdditionalData.Count > 0) writer.WriteObjectValue(null, new global::Soenneker.OpenApi.Generated.OpenApiUnionAdditionalData(AdditionalData)); else writer.WriteNullValue(null); return; }
-            if (LifecycleDataWarehouseNodeMathMember1 != null && BaseMathType == null && CalendarHeatmapMathType == null && CountPerActorMathType == null && ExperimentMetricMathType == null && FunnelMathType == null && GroupMathType == null && LifecycleDataWarehouseNodeMathAnyOf8 == null && PropertyMathType == null) { if (LifecycleDataWarehouseNodeMathMember1 is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder selectedData) foreach (var entry in AdditionalData) selectedData.AdditionalData[entry.Key] = entry.Value; writer.WriteObjectValue(null, LifecycleDataWarehouseNodeMathMember1); return; }
+            int selectedUnionBranches = 0;
+            if (BaseMathType != null) selectedUnionBranches++;
+            if (CalendarHeatmapMathType != null) selectedUnionBranches++;
+            if (CountPerActorMathType != null) selectedUnionBranches++;
+            if (ExperimentMetricMathType != null) selectedUnionBranches++;
+            if (FunnelMathType != null) selectedUnionBranches++;
+            if (GroupMathType != null) selectedUnionBranches++;
+            if (LifecycleDataWarehouseNodeMathAnyOf8 != null) selectedUnionBranches++;
+            if (LifecycleDataWarehouseNodeMathMember1 != null) selectedUnionBranches++;
+            if (PropertyMathType != null) selectedUnionBranches++;
+            if (LifecycleDataWarehouseNodeMathMember1 != null && selectedUnionBranches == 1) { if (LifecycleDataWarehouseNodeMathMember1 is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder selectedData) foreach (var entry in AdditionalData) selectedData.AdditionalData[entry.Key] = entry.Value; writer.WriteObjectValue(null, LifecycleDataWarehouseNodeMathMember1); return; }
 
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             if(BaseMathType != null)

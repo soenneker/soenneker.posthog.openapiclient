@@ -17,14 +17,22 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("event") is { } nullNodeEvent && nullNodeEvent.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Event = null;
-            if (parseNode.GetChildNode("id") is { } nullNodeId && nullNodeId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Id = null;
-            if (parseNode.GetChildNode("kind") is { } nullNodeKind && nullNodeKind.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Kind = null;
-            if (parseNode.GetChildNode("math") is { } nullNodeMath && nullNodeMath.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Math = null;
-            if (parseNode.GetChildNode("math_group_type_index") is { } nullNodeMathGroupTypeIndex && nullNodeMathGroupTypeIndex.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MathGroupTypeIndex = null;
-            if (parseNode.GetChildNode("math_hogql") is { } nullNodeMathHogql && nullNodeMathHogql.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MathHogql = null;
-            if (parseNode.GetChildNode("math_property") is { } nullNodeMathProperty && nullNodeMathProperty.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MathProperty = null;
-            if (parseNode.GetChildNode("properties") is { } nullNodeProperties && nullNodeProperties.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Properties = null;
+            if (parseNode.GetChildNode("event") is null) { _explicitNullValueEvent = default!; _explicitNullProperties?.Remove("event"); }
+            else if (parseNode.GetChildNode("event") is { } nullNodeEvent && nullNodeEvent.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Event = null;
+            if (parseNode.GetChildNode("id") is null) { _explicitNullValueId = default!; _explicitNullProperties?.Remove("id"); }
+            else if (parseNode.GetChildNode("id") is { } nullNodeId && nullNodeId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Id = null;
+            if (parseNode.GetChildNode("kind") is null) { _explicitNullValueKind = default!; _explicitNullProperties?.Remove("kind"); }
+            else if (parseNode.GetChildNode("kind") is { } nullNodeKind && nullNodeKind.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Kind = null;
+            if (parseNode.GetChildNode("math") is null) { _explicitNullValueMath = default!; _explicitNullProperties?.Remove("math"); }
+            else if (parseNode.GetChildNode("math") is { } nullNodeMath && nullNodeMath.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Math = null;
+            if (parseNode.GetChildNode("math_group_type_index") is null) { _explicitNullValueMathGroupTypeIndex = default!; _explicitNullProperties?.Remove("math_group_type_index"); }
+            else if (parseNode.GetChildNode("math_group_type_index") is { } nullNodeMathGroupTypeIndex && nullNodeMathGroupTypeIndex.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MathGroupTypeIndex = null;
+            if (parseNode.GetChildNode("math_hogql") is null) { _explicitNullValueMathHogql = default!; _explicitNullProperties?.Remove("math_hogql"); }
+            else if (parseNode.GetChildNode("math_hogql") is { } nullNodeMathHogql && nullNodeMathHogql.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MathHogql = null;
+            if (parseNode.GetChildNode("math_property") is null) { _explicitNullValueMathProperty = default!; _explicitNullProperties?.Remove("math_property"); }
+            else if (parseNode.GetChildNode("math_property") is { } nullNodeMathProperty && nullNodeMathProperty.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MathProperty = null;
+            if (parseNode.GetChildNode("properties") is null) { _explicitNullValueProperties = default!; _explicitNullProperties?.Remove("properties"); }
+            else if (parseNode.GetChildNode("properties") is { } nullNodeProperties && nullNodeProperties.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Properties = null;
         }
 
         /// <summary>Event name, e.g. &apos;$pageview&apos;. Required for EventsNode.</summary>
@@ -49,12 +57,12 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Group type index to aggregate over. Required when math is &apos;unique_group&apos;.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentApiRetentionStartMathGroupTypeIndex? MathGroupTypeIndex { get => _explicitNullValueMathGroupTypeIndex; set { _explicitNullValueMathGroupTypeIndex = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("math_group_type_index"); else _explicitNullProperties?.Remove("math_group_type_index"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.ExperimentApiRetentionStartMathGroupTypeIndex? _explicitNullValueMathGroupTypeIndex = default!;
+        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentApiEventSourceMathGroupTypeIndex? MathGroupTypeIndex { get => _explicitNullValueMathGroupTypeIndex; set { _explicitNullValueMathGroupTypeIndex = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("math_group_type_index"); else _explicitNullProperties?.Remove("math_group_type_index"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.ExperimentApiEventSourceMathGroupTypeIndex? _explicitNullValueMathGroupTypeIndex = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentApiRetentionStartMathGroupTypeIndex MathGroupTypeIndex { get => _explicitNullValueMathGroupTypeIndex; set { _explicitNullValueMathGroupTypeIndex = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("math_group_type_index"); else _explicitNullProperties?.Remove("math_group_type_index"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.ExperimentApiRetentionStartMathGroupTypeIndex _explicitNullValueMathGroupTypeIndex = default!;
+        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentApiEventSourceMathGroupTypeIndex MathGroupTypeIndex { get => _explicitNullValueMathGroupTypeIndex; set { _explicitNullValueMathGroupTypeIndex = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("math_group_type_index"); else _explicitNullProperties?.Remove("math_group_type_index"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.ExperimentApiEventSourceMathGroupTypeIndex _explicitNullValueMathGroupTypeIndex = default!;
 #endif
         /// <summary>HogQL aggregation expression. Required when math is &apos;hogql&apos; — without it the metric silently falls back to a plain count/sum.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -108,7 +116,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "id", n => { Id = n.GetIntValue(); } },
                 { "kind", n => { Kind = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.Kind3>(); } },
                 { "math", n => { Math = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentMetricMathType>(); } },
-                { "math_group_type_index", n => { MathGroupTypeIndex = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentApiRetentionStartMathGroupTypeIndex>(global::Soenneker.PostHog.OpenApiClient.Models.ExperimentApiRetentionStartMathGroupTypeIndex.CreateFromDiscriminatorValue); } },
+                { "math_group_type_index", n => { MathGroupTypeIndex = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentApiEventSourceMathGroupTypeIndex>(global::Soenneker.PostHog.OpenApiClient.Models.ExperimentApiEventSourceMathGroupTypeIndex.CreateFromDiscriminatorValue); } },
                 { "math_hogql", n => { MathHogql = n.GetStringValue(); } },
                 { "math_property", n => { MathProperty = n.GetStringValue(); } },
                 { "properties", n => { Properties = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.EventPropertyFilter>(global::Soenneker.PostHog.OpenApiClient.Models.EventPropertyFilter.CreateFromDiscriminatorValue)?.AsList(); } },
@@ -125,7 +133,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteIntValue("id", Id);
             writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.Kind3>("kind", Kind);
             writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentMetricMathType>("math", Math);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentApiRetentionStartMathGroupTypeIndex>("math_group_type_index", MathGroupTypeIndex);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentApiEventSourceMathGroupTypeIndex>("math_group_type_index", MathGroupTypeIndex);
             writer.WriteStringValue("math_hogql", MathHogql);
             writer.WriteStringValue("math_property", MathProperty);
             writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.EventPropertyFilter>("properties", Properties);if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);

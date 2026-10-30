@@ -18,12 +18,18 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("compression") is { } nullNodeCompression && nullNodeCompression.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Compression = null;
-            if (parseNode.GetChildNode("container_name") is { } nullNodeContainerName && nullNodeContainerName.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ContainerName = null;
-            if (parseNode.GetChildNode("file_format") is { } nullNodeFileFormat && nullNodeFileFormat.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) FileFormat = null;
-            if (parseNode.GetChildNode("legacy_parquet_extension") is { } nullNodeLegacyParquetExtension && nullNodeLegacyParquetExtension.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) LegacyParquetExtension = null;
-            if (parseNode.GetChildNode("max_file_size_mb") is { } nullNodeMaxFileSizeMb && nullNodeMaxFileSizeMb.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MaxFileSizeMb = null;
-            if (parseNode.GetChildNode("prefix") is { } nullNodePrefix && nullNodePrefix.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Prefix = null;
+            if (parseNode.GetChildNode("compression") is null) { _explicitNullValueCompression = default!; _explicitNullProperties?.Remove("compression"); }
+            else if (parseNode.GetChildNode("compression") is { } nullNodeCompression && nullNodeCompression.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Compression = null;
+            if (parseNode.GetChildNode("container_name") is null) { _explicitNullValueContainerName = default!; _explicitNullProperties?.Remove("container_name"); }
+            else if (parseNode.GetChildNode("container_name") is { } nullNodeContainerName && nullNodeContainerName.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ContainerName = null;
+            if (parseNode.GetChildNode("file_format") is null) { _explicitNullValueFileFormat = default!; _explicitNullProperties?.Remove("file_format"); }
+            else if (parseNode.GetChildNode("file_format") is { } nullNodeFileFormat && nullNodeFileFormat.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) FileFormat = null;
+            if (parseNode.GetChildNode("legacy_parquet_extension") is null) { _explicitNullValueLegacyParquetExtension = default!; _explicitNullProperties?.Remove("legacy_parquet_extension"); }
+            else if (parseNode.GetChildNode("legacy_parquet_extension") is { } nullNodeLegacyParquetExtension && nullNodeLegacyParquetExtension.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) LegacyParquetExtension = null;
+            if (parseNode.GetChildNode("max_file_size_mb") is null) { _explicitNullValueMaxFileSizeMb = default!; _explicitNullProperties?.Remove("max_file_size_mb"); }
+            else if (parseNode.GetChildNode("max_file_size_mb") is { } nullNodeMaxFileSizeMb && nullNodeMaxFileSizeMb.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MaxFileSizeMb = null;
+            if (parseNode.GetChildNode("prefix") is null) { _explicitNullValuePrefix = default!; _explicitNullProperties?.Remove("prefix"); }
+            else if (parseNode.GetChildNode("prefix") is { } nullNodePrefix && nullNodePrefix.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Prefix = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -31,40 +37,40 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Optional compression codec applied to exported files. Valid codecs depend on file_format.* `brotli` - brotli* `gzip` - gzip* `lz4` - lz4* `snappy` - snappy* `zstd` - zstd</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.AzureBlobDestinationConfigCompression? Compression { get => _explicitNullValueCompression; set { _explicitNullValueCompression = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("compression"); else _explicitNullProperties?.Remove("compression"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.AzureBlobDestinationConfigCompression? _explicitNullValueCompression = default!;
+        public global::Soenneker.PostHog.OpenApiClient.Models.AwsS3DestinationConfigCompression? Compression { get => _explicitNullValueCompression; set { _explicitNullValueCompression = value; AdditionalData?.Remove("compression"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("compression"); else _explicitNullProperties?.Remove("compression"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.AwsS3DestinationConfigCompression? _explicitNullValueCompression = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.AzureBlobDestinationConfigCompression Compression { get => _explicitNullValueCompression; set { _explicitNullValueCompression = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("compression"); else _explicitNullProperties?.Remove("compression"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.AzureBlobDestinationConfigCompression _explicitNullValueCompression = default!;
+        public global::Soenneker.PostHog.OpenApiClient.Models.AwsS3DestinationConfigCompression Compression { get => _explicitNullValueCompression; set { _explicitNullValueCompression = value; AdditionalData?.Remove("compression"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("compression"); else _explicitNullProperties?.Remove("compression"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.AwsS3DestinationConfigCompression _explicitNullValueCompression = default!;
 #endif
         /// <summary>Azure Blob Storage container name.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? ContainerName { get => _explicitNullValueContainerName; set { _explicitNullValueContainerName = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("container_name"); else _explicitNullProperties?.Remove("container_name"); } }
+        public string? ContainerName { get => _explicitNullValueContainerName; set { _explicitNullValueContainerName = value; AdditionalData?.Remove("container_name"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("container_name"); else _explicitNullProperties?.Remove("container_name"); } }
         private string? _explicitNullValueContainerName = default!;
 #nullable restore
 #else
-        public string ContainerName { get => _explicitNullValueContainerName; set { _explicitNullValueContainerName = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("container_name"); else _explicitNullProperties?.Remove("container_name"); } }
+        public string ContainerName { get => _explicitNullValueContainerName; set { _explicitNullValueContainerName = value; AdditionalData?.Remove("container_name"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("container_name"); else _explicitNullProperties?.Remove("container_name"); } }
         private string _explicitNullValueContainerName = default!;
 #endif
         /// <summary>* `Parquet` - Parquet* `JSONLines` - JSONLines</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.AzureBlobDestinationConfigFileFormat? FileFormat { get => _explicitNullValueFileFormat; set { _explicitNullValueFileFormat = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("file_format"); else _explicitNullProperties?.Remove("file_format"); } }
+        public global::Soenneker.PostHog.OpenApiClient.Models.AzureBlobDestinationConfigFileFormat? FileFormat { get => _explicitNullValueFileFormat; set { _explicitNullValueFileFormat = value; AdditionalData?.Remove("file_format"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("file_format"); else _explicitNullProperties?.Remove("file_format"); } }
         private global::Soenneker.PostHog.OpenApiClient.Models.AzureBlobDestinationConfigFileFormat? _explicitNullValueFileFormat = default!;
         /// <summary>Whether Parquet files keep the compression codec in their extension, for example &apos;.parquet.zst&apos; rather than &apos;.parquet&apos;. Parquet records its codec inside the file, so new exports leave it out. An export that already wrote Parquet files before this setting existed keeps it, so that pipelines matching on the old names do not break. Has no effect on JSON Lines, which always carries the codec in its extension.</summary>
-        public bool? LegacyParquetExtension { get => _explicitNullValueLegacyParquetExtension; set { _explicitNullValueLegacyParquetExtension = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("legacy_parquet_extension"); else _explicitNullProperties?.Remove("legacy_parquet_extension"); } }
+        public bool? LegacyParquetExtension { get => _explicitNullValueLegacyParquetExtension; set { _explicitNullValueLegacyParquetExtension = value; AdditionalData?.Remove("legacy_parquet_extension"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("legacy_parquet_extension"); else _explicitNullProperties?.Remove("legacy_parquet_extension"); } }
         private bool? _explicitNullValueLegacyParquetExtension = default!;
         /// <summary>If set, rolls to a new file once the current file exceeds this size in MB.</summary>
-        public int? MaxFileSizeMb { get => _explicitNullValueMaxFileSizeMb; set { _explicitNullValueMaxFileSizeMb = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("max_file_size_mb"); else _explicitNullProperties?.Remove("max_file_size_mb"); } }
+        public int? MaxFileSizeMb { get => _explicitNullValueMaxFileSizeMb; set { _explicitNullValueMaxFileSizeMb = value; AdditionalData?.Remove("max_file_size_mb"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("max_file_size_mb"); else _explicitNullProperties?.Remove("max_file_size_mb"); } }
         private int? _explicitNullValueMaxFileSizeMb = default!;
         /// <summary>Object key prefix applied to every exported file.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Prefix { get => _explicitNullValuePrefix; set { _explicitNullValuePrefix = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("prefix"); else _explicitNullProperties?.Remove("prefix"); } }
+        public string? Prefix { get => _explicitNullValuePrefix; set { _explicitNullValuePrefix = value; AdditionalData?.Remove("prefix"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("prefix"); else _explicitNullProperties?.Remove("prefix"); } }
         private string? _explicitNullValuePrefix = default!;
 #nullable restore
 #else
-        public string Prefix { get => _explicitNullValuePrefix; set { _explicitNullValuePrefix = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("prefix"); else _explicitNullProperties?.Remove("prefix"); } }
+        public string Prefix { get => _explicitNullValuePrefix; set { _explicitNullValuePrefix = value; AdditionalData?.Remove("prefix"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("prefix"); else _explicitNullProperties?.Remove("prefix"); } }
         private string _explicitNullValuePrefix = default!;
 #endif
         /// <summary>
@@ -92,9 +98,9 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "compression", n => { Compression = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.AzureBlobDestinationConfigCompression>(global::Soenneker.PostHog.OpenApiClient.Models.AzureBlobDestinationConfigCompression.CreateFromDiscriminatorValue); } },
+                { "compression", n => { Compression = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.AwsS3DestinationConfigCompression>(global::Soenneker.PostHog.OpenApiClient.Models.AwsS3DestinationConfigCompression.CreateFromDiscriminatorValue); } },
                 { "container_name", n => { ContainerName = n.GetStringValue(); } },
-                { "file_format", n => { FileFormat = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.AzureBlobDestinationConfigFileFormat>(); } },
+                { "file_format", n => { var parsed = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.AzureBlobDestinationConfigFileFormat>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValueFileFormat = default; _explicitNullProperties?.Remove("file_format"); AdditionalData["file_format"] = unknown; } else { FileFormat = parsed; AdditionalData.Remove("file_format"); } } },
                 { "legacy_parquet_extension", n => { LegacyParquetExtension = n.GetBoolValue(); } },
                 { "max_file_size_mb", n => { MaxFileSizeMb = n.GetIntValue(); } },
                 { "prefix", n => { Prefix = n.GetStringValue(); } },
@@ -107,7 +113,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.AzureBlobDestinationConfigCompression>("compression", Compression);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.AwsS3DestinationConfigCompression>("compression", Compression);
             writer.WriteStringValue("container_name", ContainerName);
             writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.AzureBlobDestinationConfigFileFormat>("file_format", FileFormat);
             writer.WriteBoolValue("legacy_parquet_extension", LegacyParquetExtension);

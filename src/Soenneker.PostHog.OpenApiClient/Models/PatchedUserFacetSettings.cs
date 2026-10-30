@@ -17,7 +17,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("custom_facets") is { } nullNodeCustomFacets && nullNodeCustomFacets.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CustomFacets = null;
+            if (parseNode.GetChildNode("custom_facets") is null) { _explicitNullValueCustomFacets = default!; _explicitNullProperties?.Remove("custom_facets"); }
+            else if (parseNode.GetChildNode("custom_facets") is { } nullNodeCustomFacets && nullNodeCustomFacets.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CustomFacets = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -25,11 +26,11 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Ordered list of custom facets the user has pinned for this product, within the current team. Send the full list to replace the existing set.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.UserFacetSettingsEntry>? CustomFacets { get => _explicitNullValueCustomFacets; set { _explicitNullValueCustomFacets = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("custom_facets"); else _explicitNullProperties?.Remove("custom_facets"); } }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.UserFacetSettingsEntry>? CustomFacets { get => _explicitNullValueCustomFacets; set { _explicitNullValueCustomFacets = value; AdditionalData?.Remove("custom_facets"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("custom_facets"); else _explicitNullProperties?.Remove("custom_facets"); } }
         private List<global::Soenneker.PostHog.OpenApiClient.Models.UserFacetSettingsEntry>? _explicitNullValueCustomFacets = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.UserFacetSettingsEntry> CustomFacets { get => _explicitNullValueCustomFacets; set { _explicitNullValueCustomFacets = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("custom_facets"); else _explicitNullProperties?.Remove("custom_facets"); } }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.UserFacetSettingsEntry> CustomFacets { get => _explicitNullValueCustomFacets; set { _explicitNullValueCustomFacets = value; AdditionalData?.Remove("custom_facets"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("custom_facets"); else _explicitNullProperties?.Remove("custom_facets"); } }
         private List<global::Soenneker.PostHog.OpenApiClient.Models.UserFacetSettingsEntry> _explicitNullValueCustomFacets = default!;
 #endif
         /// <summary>

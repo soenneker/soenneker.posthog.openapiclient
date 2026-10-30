@@ -18,7 +18,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("features_sql") is { } nullNodeFeaturesSql && nullNodeFeaturesSql.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) FeaturesSql = null;
+            if (parseNode.GetChildNode("features_sql") is null) { _explicitNullValueFeaturesSql = default!; _explicitNullProperties?.Remove("features_sql"); }
+            else if (parseNode.GetChildNode("features_sql") is { } nullNodeFeaturesSql && nullNodeFeaturesSql.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) FeaturesSql = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -26,11 +27,11 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Your HogQL feature query, using the {anchors}/{lookback_days} contract. Must be a read-only SELECT keyed on person_id (aliased to distinct_id), one row per user. The backend runs it server-side against the labeled training population — no 500-row cap — and writes the resulting train/holdout feature and label parquet files into your sandbox.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? FeaturesSql { get => _explicitNullValueFeaturesSql; set { _explicitNullValueFeaturesSql = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("features_sql"); else _explicitNullProperties?.Remove("features_sql"); } }
+        public string? FeaturesSql { get => _explicitNullValueFeaturesSql; set { _explicitNullValueFeaturesSql = value; AdditionalData?.Remove("features_sql"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("features_sql"); else _explicitNullProperties?.Remove("features_sql"); } }
         private string? _explicitNullValueFeaturesSql = default!;
 #nullable restore
 #else
-        public string FeaturesSql { get => _explicitNullValueFeaturesSql; set { _explicitNullValueFeaturesSql = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("features_sql"); else _explicitNullProperties?.Remove("features_sql"); } }
+        public string FeaturesSql { get => _explicitNullValueFeaturesSql; set { _explicitNullValueFeaturesSql = value; AdditionalData?.Remove("features_sql"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("features_sql"); else _explicitNullProperties?.Remove("features_sql"); } }
         private string _explicitNullValueFeaturesSql = default!;
 #endif
         /// <summary>

@@ -17,17 +17,19 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("current_period_end") is { } nullNodeCurrentPeriodEnd && nullNodeCurrentPeriodEnd.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CurrentPeriodEnd = null;
-            if (parseNode.GetChildNode("current_period_start") is { } nullNodeCurrentPeriodStart && nullNodeCurrentPeriodStart.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CurrentPeriodStart = null;
+            if (parseNode.GetChildNode("current_period_end") is null) { _explicitNullValueCurrentPeriodEnd = default!; _explicitNullProperties?.Remove("current_period_end"); }
+            else if (parseNode.GetChildNode("current_period_end") is { } nullNodeCurrentPeriodEnd && nullNodeCurrentPeriodEnd.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CurrentPeriodEnd = null;
+            if (parseNode.GetChildNode("current_period_start") is null) { _explicitNullValueCurrentPeriodStart = default!; _explicitNullProperties?.Remove("current_period_start"); }
+            else if (parseNode.GetChildNode("current_period_start") is { } nullNodeCurrentPeriodStart && nullNodeCurrentPeriodStart.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CurrentPeriodStart = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>End of the organization&apos;s current billing period, or null when billing has not synced a period.</summary>
-        public DateTimeOffset? CurrentPeriodEnd { get => _explicitNullValueCurrentPeriodEnd; set { _explicitNullValueCurrentPeriodEnd = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("current_period_end"); else _explicitNullProperties?.Remove("current_period_end"); } }
+        public DateTimeOffset? CurrentPeriodEnd { get => _explicitNullValueCurrentPeriodEnd; set { _explicitNullValueCurrentPeriodEnd = value; AdditionalData?.Remove("current_period_end"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("current_period_end"); else _explicitNullProperties?.Remove("current_period_end"); } }
         private DateTimeOffset? _explicitNullValueCurrentPeriodEnd = default!;
         /// <summary>Start of the organization&apos;s current billing period, or null when billing has not synced a period.</summary>
-        public DateTimeOffset? CurrentPeriodStart { get => _explicitNullValueCurrentPeriodStart; set { _explicitNullValueCurrentPeriodStart = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("current_period_start"); else _explicitNullProperties?.Remove("current_period_start"); } }
+        public DateTimeOffset? CurrentPeriodStart { get => _explicitNullValueCurrentPeriodStart; set { _explicitNullValueCurrentPeriodStart = value; AdditionalData?.Remove("current_period_start"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("current_period_start"); else _explicitNullProperties?.Remove("current_period_start"); } }
         private DateTimeOffset? _explicitNullValueCurrentPeriodStart = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.BillingPeriodResponse"/> and sets the default values.

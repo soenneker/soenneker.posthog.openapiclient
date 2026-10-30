@@ -17,11 +17,16 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("brief") is { } nullNodeBrief && nullNodeBrief.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Brief = null;
-            if (parseNode.GetChildNode("content_package") is { } nullNodeContentPackage && nullNodeContentPackage.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ContentPackage = null;
-            if (parseNode.GetChildNode("evidence") is { } nullNodeEvidence && nullNodeEvidence.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Evidence = null;
-            if (parseNode.GetChildNode("source_ledger") is { } nullNodeSourceLedger && nullNodeSourceLedger.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SourceLedger = null;
-            if (parseNode.GetChildNode("validation_report") is { } nullNodeValidationReport && nullNodeValidationReport.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ValidationReport = null;
+            if (parseNode.GetChildNode("brief") is null) { _explicitNullValueBrief = default!; _explicitNullProperties?.Remove("brief"); }
+            else if (parseNode.GetChildNode("brief") is { } nullNodeBrief && nullNodeBrief.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Brief = null;
+            if (parseNode.GetChildNode("content_package") is null) { _explicitNullValueContentPackage = default!; _explicitNullProperties?.Remove("content_package"); }
+            else if (parseNode.GetChildNode("content_package") is { } nullNodeContentPackage && nullNodeContentPackage.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ContentPackage = null;
+            if (parseNode.GetChildNode("evidence") is null) { _explicitNullValueEvidence = default!; _explicitNullProperties?.Remove("evidence"); }
+            else if (parseNode.GetChildNode("evidence") is { } nullNodeEvidence && nullNodeEvidence.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Evidence = null;
+            if (parseNode.GetChildNode("source_ledger") is null) { _explicitNullValueSourceLedger = default!; _explicitNullProperties?.Remove("source_ledger"); }
+            else if (parseNode.GetChildNode("source_ledger") is { } nullNodeSourceLedger && nullNodeSourceLedger.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SourceLedger = null;
+            if (parseNode.GetChildNode("validation_report") is null) { _explicitNullValueValidationReport = default!; _explicitNullProperties?.Remove("validation_report"); }
+            else if (parseNode.GetChildNode("validation_report") is { } nullNodeValidationReport && nullNodeValidationReport.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ValidationReport = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -29,21 +34,21 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Content brief the draft was written from.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.ContentAutopilotProposalBrief? Brief { get => _explicitNullValueBrief; set { _explicitNullValueBrief = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("brief"); else _explicitNullProperties?.Remove("brief"); } }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ContentAutopilotProposalBrief? Brief { get => _explicitNullValueBrief; set { _explicitNullValueBrief = value; AdditionalData?.Remove("brief"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("brief"); else _explicitNullProperties?.Remove("brief"); } }
         private global::Soenneker.PostHog.OpenApiClient.Models.ContentAutopilotProposalBrief? _explicitNullValueBrief = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ContentAutopilotProposalBrief Brief { get => _explicitNullValueBrief; set { _explicitNullValueBrief = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("brief"); else _explicitNullProperties?.Remove("brief"); } }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ContentAutopilotProposalBrief Brief { get => _explicitNullValueBrief; set { _explicitNullValueBrief = value; AdditionalData?.Remove("brief"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("brief"); else _explicitNullProperties?.Remove("brief"); } }
         private global::Soenneker.PostHog.OpenApiClient.Models.ContentAutopilotProposalBrief _explicitNullValueBrief = default!;
 #endif
         /// <summary>Structured package that accompanies the exported Markdown.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.ContentAutopilotProposalContentPackage? ContentPackage { get => _explicitNullValueContentPackage; set { _explicitNullValueContentPackage = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("content_package"); else _explicitNullProperties?.Remove("content_package"); } }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ContentAutopilotProposalContentPackage? ContentPackage { get => _explicitNullValueContentPackage; set { _explicitNullValueContentPackage = value; AdditionalData?.Remove("content_package"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("content_package"); else _explicitNullProperties?.Remove("content_package"); } }
         private global::Soenneker.PostHog.OpenApiClient.Models.ContentAutopilotProposalContentPackage? _explicitNullValueContentPackage = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ContentAutopilotProposalContentPackage ContentPackage { get => _explicitNullValueContentPackage; set { _explicitNullValueContentPackage = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("content_package"); else _explicitNullProperties?.Remove("content_package"); } }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ContentAutopilotProposalContentPackage ContentPackage { get => _explicitNullValueContentPackage; set { _explicitNullValueContentPackage = value; AdditionalData?.Remove("content_package"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("content_package"); else _explicitNullProperties?.Remove("content_package"); } }
         private global::Soenneker.PostHog.OpenApiClient.Models.ContentAutopilotProposalContentPackage _explicitNullValueContentPackage = default!;
 #endif
         /// <summary>The created_at property</summary>
@@ -51,11 +56,11 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Performance evidence for this proposal.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.ContentAutopilotEvidence>? Evidence { get => _explicitNullValueEvidence; set { _explicitNullValueEvidence = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("evidence"); else _explicitNullProperties?.Remove("evidence"); } }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.ContentAutopilotEvidence>? Evidence { get => _explicitNullValueEvidence; set { _explicitNullValueEvidence = value; AdditionalData?.Remove("evidence"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("evidence"); else _explicitNullProperties?.Remove("evidence"); } }
         private List<global::Soenneker.PostHog.OpenApiClient.Models.ContentAutopilotEvidence>? _explicitNullValueEvidence = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.ContentAutopilotEvidence> Evidence { get => _explicitNullValueEvidence; set { _explicitNullValueEvidence = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("evidence"); else _explicitNullProperties?.Remove("evidence"); } }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.ContentAutopilotEvidence> Evidence { get => _explicitNullValueEvidence; set { _explicitNullValueEvidence = value; AdditionalData?.Remove("evidence"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("evidence"); else _explicitNullProperties?.Remove("evidence"); } }
         private List<global::Soenneker.PostHog.OpenApiClient.Models.ContentAutopilotEvidence> _explicitNullValueEvidence = default!;
 #endif
         /// <summary>The id property</summary>
@@ -85,11 +90,11 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Factual claims in the draft and the site pages that support them.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.ContentAutopilotSourceLedgerEntry>? SourceLedger { get => _explicitNullValueSourceLedger; set { _explicitNullValueSourceLedger = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("source_ledger"); else _explicitNullProperties?.Remove("source_ledger"); } }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.ContentAutopilotSourceLedgerEntry>? SourceLedger { get => _explicitNullValueSourceLedger; set { _explicitNullValueSourceLedger = value; AdditionalData?.Remove("source_ledger"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("source_ledger"); else _explicitNullProperties?.Remove("source_ledger"); } }
         private List<global::Soenneker.PostHog.OpenApiClient.Models.ContentAutopilotSourceLedgerEntry>? _explicitNullValueSourceLedger = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.ContentAutopilotSourceLedgerEntry> SourceLedger { get => _explicitNullValueSourceLedger; set { _explicitNullValueSourceLedger = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("source_ledger"); else _explicitNullProperties?.Remove("source_ledger"); } }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.ContentAutopilotSourceLedgerEntry> SourceLedger { get => _explicitNullValueSourceLedger; set { _explicitNullValueSourceLedger = value; AdditionalData?.Remove("source_ledger"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("source_ledger"); else _explicitNullProperties?.Remove("source_ledger"); } }
         private List<global::Soenneker.PostHog.OpenApiClient.Models.ContentAutopilotSourceLedgerEntry> _explicitNullValueSourceLedger = default!;
 #endif
         /// <summary>Primary query or topic targeted by this proposal.</summary>
@@ -121,11 +126,11 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Blocking and advisory validation results.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.ContentAutopilotProposalValidationReport? ValidationReport { get => _explicitNullValueValidationReport; set { _explicitNullValueValidationReport = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("validation_report"); else _explicitNullProperties?.Remove("validation_report"); } }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ContentAutopilotProposalValidationReport? ValidationReport { get => _explicitNullValueValidationReport; set { _explicitNullValueValidationReport = value; AdditionalData?.Remove("validation_report"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("validation_report"); else _explicitNullProperties?.Remove("validation_report"); } }
         private global::Soenneker.PostHog.OpenApiClient.Models.ContentAutopilotProposalValidationReport? _explicitNullValueValidationReport = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ContentAutopilotProposalValidationReport ValidationReport { get => _explicitNullValueValidationReport; set { _explicitNullValueValidationReport = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("validation_report"); else _explicitNullProperties?.Remove("validation_report"); } }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ContentAutopilotProposalValidationReport ValidationReport { get => _explicitNullValueValidationReport; set { _explicitNullValueValidationReport = value; AdditionalData?.Remove("validation_report"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("validation_report"); else _explicitNullProperties?.Remove("validation_report"); } }
         private global::Soenneker.PostHog.OpenApiClient.Models.ContentAutopilotProposalValidationReport _explicitNullValueValidationReport = default!;
 #endif
         /// <summary>

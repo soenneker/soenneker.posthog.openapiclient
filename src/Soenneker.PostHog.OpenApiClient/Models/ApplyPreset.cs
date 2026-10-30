@@ -17,17 +17,19 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("audience") is { } nullNodeAudience && nullNodeAudience.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Audience = null;
-            if (parseNode.GetChildNode("preset") is { } nullNodePreset && nullNodePreset.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Preset = null;
+            if (parseNode.GetChildNode("audience") is null) { _explicitNullValueAudience = default!; _explicitNullProperties?.Remove("audience"); }
+            else if (parseNode.GetChildNode("audience") is { } nullNodeAudience && nullNodeAudience.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Audience = null;
+            if (parseNode.GetChildNode("preset") is null) { _explicitNullValuePreset = default!; _explicitNullProperties?.Remove("preset"); }
+            else if (parseNode.GetChildNode("preset") is { } nullNodePreset && nullNodePreset.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Preset = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>* `members` - members* `agents` - agents</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.ApplyPresetAudience? Audience { get => _explicitNullValueAudience; set { _explicitNullValueAudience = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("audience"); else _explicitNullProperties?.Remove("audience"); } }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ApplyPresetAudience? Audience { get => _explicitNullValueAudience; set { _explicitNullValueAudience = value; AdditionalData?.Remove("audience"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("audience"); else _explicitNullProperties?.Remove("audience"); } }
         private global::Soenneker.PostHog.OpenApiClient.Models.ApplyPresetAudience? _explicitNullValueAudience = default!;
         /// <summary>* `allow` - Allow all* `user` - Member decides* `ask` - Ask for destructive* `block` - Block destructive</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.ApplyPresetPreset? Preset { get => _explicitNullValuePreset; set { _explicitNullValuePreset = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("preset"); else _explicitNullProperties?.Remove("preset"); } }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ApplyPresetPreset? Preset { get => _explicitNullValuePreset; set { _explicitNullValuePreset = value; AdditionalData?.Remove("preset"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("preset"); else _explicitNullProperties?.Remove("preset"); } }
         private global::Soenneker.PostHog.OpenApiClient.Models.ApplyPresetPreset? _explicitNullValuePreset = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ApplyPreset"/> and sets the default values.
@@ -54,8 +56,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "audience", n => { Audience = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ApplyPresetAudience>(); } },
-                { "preset", n => { Preset = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ApplyPresetPreset>(); } },
+                { "audience", n => { var parsed = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ApplyPresetAudience>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValueAudience = default; _explicitNullProperties?.Remove("audience"); AdditionalData["audience"] = unknown; } else { Audience = parsed; AdditionalData.Remove("audience"); } } },
+                { "preset", n => { var parsed = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ApplyPresetPreset>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValuePreset = default; _explicitNullProperties?.Remove("preset"); AdditionalData["preset"] = unknown; } else { Preset = parsed; AdditionalData.Remove("preset"); } } },
             };
         }
         /// <summary>

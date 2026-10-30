@@ -17,10 +17,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("columns") is { } nullNodeColumns && nullNodeColumns.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Columns = null;
-            if (parseNode.GetChildNode("schemaHash") is { } nullNodeSchemaHash && nullNodeSchemaHash.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SchemaHash = null;
-            if (parseNode.GetChildNode("slot") is { } nullNodeSlot && nullNodeSlot.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Slot = null;
-            if (parseNode.GetChildNode("sourceName") is { } nullNodeSourceName && nullNodeSourceName.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SourceName = null;
+            if (parseNode.GetChildNode("columns") is null) { _explicitNullValueColumns = default!; _explicitNullProperties?.Remove("columns"); }
+            else if (parseNode.GetChildNode("columns") is { } nullNodeColumns && nullNodeColumns.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Columns = null;
+            if (parseNode.GetChildNode("schemaHash") is null) { _explicitNullValueSchemaHash = default!; _explicitNullProperties?.Remove("schemaHash"); }
+            else if (parseNode.GetChildNode("schemaHash") is { } nullNodeSchemaHash && nullNodeSchemaHash.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SchemaHash = null;
+            if (parseNode.GetChildNode("slot") is null) { _explicitNullValueSlot = default!; _explicitNullProperties?.Remove("slot"); }
+            else if (parseNode.GetChildNode("slot") is { } nullNodeSlot && nullNodeSlot.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Slot = null;
+            if (parseNode.GetChildNode("sourceName") is null) { _explicitNullValueSourceName = default!; _explicitNullProperties?.Remove("sourceName"); }
+            else if (parseNode.GetChildNode("sourceName") is { } nullNodeSourceName && nullNodeSourceName.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SourceName = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -28,41 +32,41 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Columns the notebook-local binding must produce after its optional Hog mapping.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.WidgetInputContractColumn>? Columns { get => _explicitNullValueColumns; set { _explicitNullValueColumns = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("columns"); else _explicitNullProperties?.Remove("columns"); } }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.WidgetInputContractColumn>? Columns { get => _explicitNullValueColumns; set { _explicitNullValueColumns = value; AdditionalData?.Remove("columns"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("columns"); else _explicitNullProperties?.Remove("columns"); } }
         private List<global::Soenneker.PostHog.OpenApiClient.Models.WidgetInputContractColumn>? _explicitNullValueColumns = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.WidgetInputContractColumn> Columns { get => _explicitNullValueColumns; set { _explicitNullValueColumns = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("columns"); else _explicitNullProperties?.Remove("columns"); } }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.WidgetInputContractColumn> Columns { get => _explicitNullValueColumns; set { _explicitNullValueColumns = value; AdditionalData?.Remove("columns"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("columns"); else _explicitNullProperties?.Remove("columns"); } }
         private List<global::Soenneker.PostHog.OpenApiClient.Models.WidgetInputContractColumn> _explicitNullValueColumns = default!;
 #endif
         /// <summary>Hash of the expected column schema.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? SchemaHash { get => _explicitNullValueSchemaHash; set { _explicitNullValueSchemaHash = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("schemaHash"); else _explicitNullProperties?.Remove("schemaHash"); } }
+        public string? SchemaHash { get => _explicitNullValueSchemaHash; set { _explicitNullValueSchemaHash = value; AdditionalData?.Remove("schemaHash"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("schemaHash"); else _explicitNullProperties?.Remove("schemaHash"); } }
         private string? _explicitNullValueSchemaHash = default!;
 #nullable restore
 #else
-        public string SchemaHash { get => _explicitNullValueSchemaHash; set { _explicitNullValueSchemaHash = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("schemaHash"); else _explicitNullProperties?.Remove("schemaHash"); } }
+        public string SchemaHash { get => _explicitNullValueSchemaHash; set { _explicitNullValueSchemaHash = value; AdditionalData?.Remove("schemaHash"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("schemaHash"); else _explicitNullProperties?.Remove("schemaHash"); } }
         private string _explicitNullValueSchemaHash = default!;
 #endif
         /// <summary>Stable logical input name used by the reusable widget.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Slot { get => _explicitNullValueSlot; set { _explicitNullValueSlot = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("slot"); else _explicitNullProperties?.Remove("slot"); } }
+        public string? Slot { get => _explicitNullValueSlot; set { _explicitNullValueSlot = value; AdditionalData?.Remove("slot"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("slot"); else _explicitNullProperties?.Remove("slot"); } }
         private string? _explicitNullValueSlot = default!;
 #nullable restore
 #else
-        public string Slot { get => _explicitNullValueSlot; set { _explicitNullValueSlot = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("slot"); else _explicitNullProperties?.Remove("slot"); } }
+        public string Slot { get => _explicitNullValueSlot; set { _explicitNullValueSlot = value; AdditionalData?.Remove("slot"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("slot"); else _explicitNullProperties?.Remove("slot"); } }
         private string _explicitNullValueSlot = default!;
 #endif
         /// <summary>Original dataframe name when the widget was published.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? SourceName { get => _explicitNullValueSourceName; set { _explicitNullValueSourceName = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("sourceName"); else _explicitNullProperties?.Remove("sourceName"); } }
+        public string? SourceName { get => _explicitNullValueSourceName; set { _explicitNullValueSourceName = value; AdditionalData?.Remove("sourceName"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("sourceName"); else _explicitNullProperties?.Remove("sourceName"); } }
         private string? _explicitNullValueSourceName = default!;
 #nullable restore
 #else
-        public string SourceName { get => _explicitNullValueSourceName; set { _explicitNullValueSourceName = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("sourceName"); else _explicitNullProperties?.Remove("sourceName"); } }
+        public string SourceName { get => _explicitNullValueSourceName; set { _explicitNullValueSourceName = value; AdditionalData?.Remove("sourceName"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("sourceName"); else _explicitNullProperties?.Remove("sourceName"); } }
         private string _explicitNullValueSourceName = default!;
 #endif
         /// <summary>

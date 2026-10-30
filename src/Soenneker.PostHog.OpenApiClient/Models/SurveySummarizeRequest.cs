@@ -17,13 +17,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("force_refresh") is { } nullNodeForceRefresh && nullNodeForceRefresh.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ForceRefresh = null;
+            if (parseNode.GetChildNode("force_refresh") is null) { _explicitNullValueForceRefresh = default!; _explicitNullProperties?.Remove("force_refresh"); }
+            else if (parseNode.GetChildNode("force_refresh") is { } nullNodeForceRefresh && nullNodeForceRefresh.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ForceRefresh = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>When true, bypass cached summaries and regenerate. Defaults to false.</summary>
-        public bool? ForceRefresh { get => _explicitNullValueForceRefresh; set { _explicitNullValueForceRefresh = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("force_refresh"); else _explicitNullProperties?.Remove("force_refresh"); } }
+        public bool? ForceRefresh { get => _explicitNullValueForceRefresh; set { _explicitNullValueForceRefresh = value; AdditionalData?.Remove("force_refresh"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("force_refresh"); else _explicitNullProperties?.Remove("force_refresh"); } }
         private bool? _explicitNullValueForceRefresh = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.SurveySummarizeRequest"/> and sets the default values.

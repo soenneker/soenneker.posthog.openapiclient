@@ -17,10 +17,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("attribution_mode") is { } nullNodeAttributionMode && nullNodeAttributionMode.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AttributionMode = null;
-            if (parseNode.GetChildNode("attribution_window_days") is { } nullNodeAttributionWindowDays && nullNodeAttributionWindowDays.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AttributionWindowDays = null;
-            if (parseNode.GetChildNode("goals") is { } nullNodeGoals && nullNodeGoals.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Goals = null;
-            if (parseNode.GetChildNode("has_misconfigured") is { } nullNodeHasMisconfigured && nullNodeHasMisconfigured.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) HasMisconfigured = null;
+            if (parseNode.GetChildNode("attribution_mode") is null) { _explicitNullValueAttributionMode = default!; _explicitNullProperties?.Remove("attribution_mode"); }
+            else if (parseNode.GetChildNode("attribution_mode") is { } nullNodeAttributionMode && nullNodeAttributionMode.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AttributionMode = null;
+            if (parseNode.GetChildNode("attribution_window_days") is null) { _explicitNullValueAttributionWindowDays = default!; _explicitNullProperties?.Remove("attribution_window_days"); }
+            else if (parseNode.GetChildNode("attribution_window_days") is { } nullNodeAttributionWindowDays && nullNodeAttributionWindowDays.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AttributionWindowDays = null;
+            if (parseNode.GetChildNode("goals") is null) { _explicitNullValueGoals = default!; _explicitNullProperties?.Remove("goals"); }
+            else if (parseNode.GetChildNode("goals") is { } nullNodeGoals && nullNodeGoals.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Goals = null;
+            if (parseNode.GetChildNode("has_misconfigured") is null) { _explicitNullValueHasMisconfigured = default!; _explicitNullProperties?.Remove("has_misconfigured"); }
+            else if (parseNode.GetChildNode("has_misconfigured") is { } nullNodeHasMisconfigured && nullNodeHasMisconfigured.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) HasMisconfigured = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -28,28 +32,28 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The team&apos;s attribution model (e.g. last_touch, first_touch, linear)</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? AttributionMode { get => _explicitNullValueAttributionMode; set { _explicitNullValueAttributionMode = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("attribution_mode"); else _explicitNullProperties?.Remove("attribution_mode"); } }
+        public string? AttributionMode { get => _explicitNullValueAttributionMode; set { _explicitNullValueAttributionMode = value; AdditionalData?.Remove("attribution_mode"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("attribution_mode"); else _explicitNullProperties?.Remove("attribution_mode"); } }
         private string? _explicitNullValueAttributionMode = default!;
 #nullable restore
 #else
-        public string AttributionMode { get => _explicitNullValueAttributionMode; set { _explicitNullValueAttributionMode = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("attribution_mode"); else _explicitNullProperties?.Remove("attribution_mode"); } }
+        public string AttributionMode { get => _explicitNullValueAttributionMode; set { _explicitNullValueAttributionMode = value; AdditionalData?.Remove("attribution_mode"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("attribution_mode"); else _explicitNullProperties?.Remove("attribution_mode"); } }
         private string _explicitNullValueAttributionMode = default!;
 #endif
         /// <summary>The team&apos;s configured attribution window in days</summary>
-        public int? AttributionWindowDays { get => _explicitNullValueAttributionWindowDays; set { _explicitNullValueAttributionWindowDays = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("attribution_window_days"); else _explicitNullProperties?.Remove("attribution_window_days"); } }
+        public int? AttributionWindowDays { get => _explicitNullValueAttributionWindowDays; set { _explicitNullValueAttributionWindowDays = value; AdditionalData?.Remove("attribution_window_days"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("attribution_window_days"); else _explicitNullProperties?.Remove("attribution_window_days"); } }
         private int? _explicitNullValueAttributionWindowDays = default!;
         /// <summary>One summary entry per configured conversion goal</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.ConversionGoalSummary>? Goals { get => _explicitNullValueGoals; set { _explicitNullValueGoals = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("goals"); else _explicitNullProperties?.Remove("goals"); } }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.ConversionGoalSummary>? Goals { get => _explicitNullValueGoals; set { _explicitNullValueGoals = value; AdditionalData?.Remove("goals"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("goals"); else _explicitNullProperties?.Remove("goals"); } }
         private List<global::Soenneker.PostHog.OpenApiClient.Models.ConversionGoalSummary>? _explicitNullValueGoals = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.ConversionGoalSummary> Goals { get => _explicitNullValueGoals; set { _explicitNullValueGoals = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("goals"); else _explicitNullProperties?.Remove("goals"); } }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.ConversionGoalSummary> Goals { get => _explicitNullValueGoals; set { _explicitNullValueGoals = value; AdditionalData?.Remove("goals"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("goals"); else _explicitNullProperties?.Remove("goals"); } }
         private List<global::Soenneker.PostHog.OpenApiClient.Models.ConversionGoalSummary> _explicitNullValueGoals = default!;
 #endif
         /// <summary>True if any goal is misconfigured</summary>
-        public bool? HasMisconfigured { get => _explicitNullValueHasMisconfigured; set { _explicitNullValueHasMisconfigured = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("has_misconfigured"); else _explicitNullProperties?.Remove("has_misconfigured"); } }
+        public bool? HasMisconfigured { get => _explicitNullValueHasMisconfigured; set { _explicitNullValueHasMisconfigured = value; AdditionalData?.Remove("has_misconfigured"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("has_misconfigured"); else _explicitNullProperties?.Remove("has_misconfigured"); } }
         private bool? _explicitNullValueHasMisconfigured = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ConversionGoalsListResponse"/> and sets the default values.

@@ -17,7 +17,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("bucketBySessionStart") is { } nullNodeBucketBySessionStart && nullNodeBucketBySessionStart.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) BucketBySessionStart = null;
+            if (parseNode.GetChildNode("bucketBySessionStart") is null) { _explicitNullValueBucketBySessionStart = default!; _explicitNullProperties?.Remove("bucketBySessionStart"); }
+            else if (parseNode.GetChildNode("bucketBySessionStart") is { } nullNodeBucketBySessionStart && nullNodeBucketBySessionStart.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) BucketBySessionStart = null;
         }
 
         /// <summary>When true and the series math is `dau`/`unique_users`, each user contributes to the (day-of-week, hour) bucket of their session&apos;s first event only — matching the web overview session-start attribution. When false (default), the user contributes to every bucket they have any event in. No effect on `total` math (event counts are unchanged either way).</summary>

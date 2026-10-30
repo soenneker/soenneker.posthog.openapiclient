@@ -17,16 +17,26 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("avg_session_duration") is { } nullNodeAvgSessionDuration && nullNodeAvgSessionDuration.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AvgSessionDuration = null;
-            if (parseNode.GetChildNode("bounce_rate") is { } nullNodeBounceRate && nullNodeBounceRate.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) BounceRate = null;
-            if (parseNode.GetChildNode("dashboard_url") is { } nullNodeDashboardUrl && nullNodeDashboardUrl.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) DashboardUrl = null;
-            if (parseNode.GetChildNode("goals") is { } nullNodeGoals && nullNodeGoals.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Goals = null;
-            if (parseNode.GetChildNode("metadata") is { } nullNodeMetadata && nullNodeMetadata.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Metadata = null;
-            if (parseNode.GetChildNode("pageviews") is { } nullNodePageviews && nullNodePageviews.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Pageviews = null;
-            if (parseNode.GetChildNode("sessions") is { } nullNodeSessions && nullNodeSessions.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Sessions = null;
-            if (parseNode.GetChildNode("top_pages") is { } nullNodeTopPages && nullNodeTopPages.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TopPages = null;
-            if (parseNode.GetChildNode("top_sources") is { } nullNodeTopSources && nullNodeTopSources.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TopSources = null;
-            if (parseNode.GetChildNode("visitors") is { } nullNodeVisitors && nullNodeVisitors.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Visitors = null;
+            if (parseNode.GetChildNode("avg_session_duration") is null) { _explicitNullValueAvgSessionDuration = default!; _explicitNullProperties?.Remove("avg_session_duration"); }
+            else if (parseNode.GetChildNode("avg_session_duration") is { } nullNodeAvgSessionDuration && nullNodeAvgSessionDuration.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AvgSessionDuration = null;
+            if (parseNode.GetChildNode("bounce_rate") is null) { _explicitNullValueBounceRate = default!; _explicitNullProperties?.Remove("bounce_rate"); }
+            else if (parseNode.GetChildNode("bounce_rate") is { } nullNodeBounceRate && nullNodeBounceRate.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) BounceRate = null;
+            if (parseNode.GetChildNode("dashboard_url") is null) { _explicitNullValueDashboardUrl = default!; _explicitNullProperties?.Remove("dashboard_url"); }
+            else if (parseNode.GetChildNode("dashboard_url") is { } nullNodeDashboardUrl && nullNodeDashboardUrl.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) DashboardUrl = null;
+            if (parseNode.GetChildNode("goals") is null) { _explicitNullValueGoals = default!; _explicitNullProperties?.Remove("goals"); }
+            else if (parseNode.GetChildNode("goals") is { } nullNodeGoals && nullNodeGoals.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Goals = null;
+            if (parseNode.GetChildNode("metadata") is null) { _explicitNullValueMetadata = default!; _explicitNullProperties?.Remove("metadata"); }
+            else if (parseNode.GetChildNode("metadata") is { } nullNodeMetadata && nullNodeMetadata.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Metadata = null;
+            if (parseNode.GetChildNode("pageviews") is null) { _explicitNullValuePageviews = default!; _explicitNullProperties?.Remove("pageviews"); }
+            else if (parseNode.GetChildNode("pageviews") is { } nullNodePageviews && nullNodePageviews.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Pageviews = null;
+            if (parseNode.GetChildNode("sessions") is null) { _explicitNullValueSessions = default!; _explicitNullProperties?.Remove("sessions"); }
+            else if (parseNode.GetChildNode("sessions") is { } nullNodeSessions && nullNodeSessions.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Sessions = null;
+            if (parseNode.GetChildNode("top_pages") is null) { _explicitNullValueTopPages = default!; _explicitNullProperties?.Remove("top_pages"); }
+            else if (parseNode.GetChildNode("top_pages") is { } nullNodeTopPages && nullNodeTopPages.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TopPages = null;
+            if (parseNode.GetChildNode("top_sources") is null) { _explicitNullValueTopSources = default!; _explicitNullProperties?.Remove("top_sources"); }
+            else if (parseNode.GetChildNode("top_sources") is { } nullNodeTopSources && nullNodeTopSources.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TopSources = null;
+            if (parseNode.GetChildNode("visitors") is null) { _explicitNullValueVisitors = default!; _explicitNullProperties?.Remove("visitors"); }
+            else if (parseNode.GetChildNode("visitors") is { } nullNodeVisitors && nullNodeVisitors.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Visitors = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -34,101 +44,101 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Average session duration.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.WeeklyDigestResponseAvgSessionDuration? AvgSessionDuration { get => _explicitNullValueAvgSessionDuration; set { _explicitNullValueAvgSessionDuration = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("avg_session_duration"); else _explicitNullProperties?.Remove("avg_session_duration"); } }
+        public global::Soenneker.PostHog.OpenApiClient.Models.WeeklyDigestResponseAvgSessionDuration? AvgSessionDuration { get => _explicitNullValueAvgSessionDuration; set { _explicitNullValueAvgSessionDuration = value; AdditionalData?.Remove("avg_session_duration"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("avg_session_duration"); else _explicitNullProperties?.Remove("avg_session_duration"); } }
         private global::Soenneker.PostHog.OpenApiClient.Models.WeeklyDigestResponseAvgSessionDuration? _explicitNullValueAvgSessionDuration = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.WeeklyDigestResponseAvgSessionDuration AvgSessionDuration { get => _explicitNullValueAvgSessionDuration; set { _explicitNullValueAvgSessionDuration = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("avg_session_duration"); else _explicitNullProperties?.Remove("avg_session_duration"); } }
+        public global::Soenneker.PostHog.OpenApiClient.Models.WeeklyDigestResponseAvgSessionDuration AvgSessionDuration { get => _explicitNullValueAvgSessionDuration; set { _explicitNullValueAvgSessionDuration = value; AdditionalData?.Remove("avg_session_duration"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("avg_session_duration"); else _explicitNullProperties?.Remove("avg_session_duration"); } }
         private global::Soenneker.PostHog.OpenApiClient.Models.WeeklyDigestResponseAvgSessionDuration _explicitNullValueAvgSessionDuration = default!;
 #endif
         /// <summary>Bounce rate (0–100).</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.WeeklyDigestResponseBounceRate? BounceRate { get => _explicitNullValueBounceRate; set { _explicitNullValueBounceRate = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("bounce_rate"); else _explicitNullProperties?.Remove("bounce_rate"); } }
+        public global::Soenneker.PostHog.OpenApiClient.Models.WeeklyDigestResponseBounceRate? BounceRate { get => _explicitNullValueBounceRate; set { _explicitNullValueBounceRate = value; AdditionalData?.Remove("bounce_rate"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("bounce_rate"); else _explicitNullProperties?.Remove("bounce_rate"); } }
         private global::Soenneker.PostHog.OpenApiClient.Models.WeeklyDigestResponseBounceRate? _explicitNullValueBounceRate = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.WeeklyDigestResponseBounceRate BounceRate { get => _explicitNullValueBounceRate; set { _explicitNullValueBounceRate = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("bounce_rate"); else _explicitNullProperties?.Remove("bounce_rate"); } }
+        public global::Soenneker.PostHog.OpenApiClient.Models.WeeklyDigestResponseBounceRate BounceRate { get => _explicitNullValueBounceRate; set { _explicitNullValueBounceRate = value; AdditionalData?.Remove("bounce_rate"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("bounce_rate"); else _explicitNullProperties?.Remove("bounce_rate"); } }
         private global::Soenneker.PostHog.OpenApiClient.Models.WeeklyDigestResponseBounceRate _explicitNullValueBounceRate = default!;
 #endif
         /// <summary>Link to the Web analytics dashboard for this project.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? DashboardUrl { get => _explicitNullValueDashboardUrl; set { _explicitNullValueDashboardUrl = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("dashboard_url"); else _explicitNullProperties?.Remove("dashboard_url"); } }
+        public string? DashboardUrl { get => _explicitNullValueDashboardUrl; set { _explicitNullValueDashboardUrl = value; AdditionalData?.Remove("dashboard_url"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("dashboard_url"); else _explicitNullProperties?.Remove("dashboard_url"); } }
         private string? _explicitNullValueDashboardUrl = default!;
 #nullable restore
 #else
-        public string DashboardUrl { get => _explicitNullValueDashboardUrl; set { _explicitNullValueDashboardUrl = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("dashboard_url"); else _explicitNullProperties?.Remove("dashboard_url"); } }
+        public string DashboardUrl { get => _explicitNullValueDashboardUrl; set { _explicitNullValueDashboardUrl = value; AdditionalData?.Remove("dashboard_url"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("dashboard_url"); else _explicitNullProperties?.Remove("dashboard_url"); } }
         private string _explicitNullValueDashboardUrl = default!;
 #endif
         /// <summary>Goal conversions.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.Goal>? Goals { get => _explicitNullValueGoals; set { _explicitNullValueGoals = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("goals"); else _explicitNullProperties?.Remove("goals"); } }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.Goal>? Goals { get => _explicitNullValueGoals; set { _explicitNullValueGoals = value; AdditionalData?.Remove("goals"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("goals"); else _explicitNullProperties?.Remove("goals"); } }
         private List<global::Soenneker.PostHog.OpenApiClient.Models.Goal>? _explicitNullValueGoals = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.Goal> Goals { get => _explicitNullValueGoals; set { _explicitNullValueGoals = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("goals"); else _explicitNullProperties?.Remove("goals"); } }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.Goal> Goals { get => _explicitNullValueGoals; set { _explicitNullValueGoals = value; AdditionalData?.Remove("goals"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("goals"); else _explicitNullProperties?.Remove("goals"); } }
         private List<global::Soenneker.PostHog.OpenApiClient.Models.Goal> _explicitNullValueGoals = default!;
 #endif
         /// <summary>Period, filters and metric definitions behind the numbers, and a status that explains a zero.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.WeeklyDigestResponseMetadata? Metadata { get => _explicitNullValueMetadata; set { _explicitNullValueMetadata = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("metadata"); else _explicitNullProperties?.Remove("metadata"); } }
+        public global::Soenneker.PostHog.OpenApiClient.Models.WeeklyDigestResponseMetadata? Metadata { get => _explicitNullValueMetadata; set { _explicitNullValueMetadata = value; AdditionalData?.Remove("metadata"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("metadata"); else _explicitNullProperties?.Remove("metadata"); } }
         private global::Soenneker.PostHog.OpenApiClient.Models.WeeklyDigestResponseMetadata? _explicitNullValueMetadata = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.WeeklyDigestResponseMetadata Metadata { get => _explicitNullValueMetadata; set { _explicitNullValueMetadata = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("metadata"); else _explicitNullProperties?.Remove("metadata"); } }
+        public global::Soenneker.PostHog.OpenApiClient.Models.WeeklyDigestResponseMetadata Metadata { get => _explicitNullValueMetadata; set { _explicitNullValueMetadata = value; AdditionalData?.Remove("metadata"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("metadata"); else _explicitNullProperties?.Remove("metadata"); } }
         private global::Soenneker.PostHog.OpenApiClient.Models.WeeklyDigestResponseMetadata _explicitNullValueMetadata = default!;
 #endif
         /// <summary>Total pageviews.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.WeeklyDigestResponsePageviews? Pageviews { get => _explicitNullValuePageviews; set { _explicitNullValuePageviews = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("pageviews"); else _explicitNullProperties?.Remove("pageviews"); } }
+        public global::Soenneker.PostHog.OpenApiClient.Models.WeeklyDigestResponsePageviews? Pageviews { get => _explicitNullValuePageviews; set { _explicitNullValuePageviews = value; AdditionalData?.Remove("pageviews"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("pageviews"); else _explicitNullProperties?.Remove("pageviews"); } }
         private global::Soenneker.PostHog.OpenApiClient.Models.WeeklyDigestResponsePageviews? _explicitNullValuePageviews = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.WeeklyDigestResponsePageviews Pageviews { get => _explicitNullValuePageviews; set { _explicitNullValuePageviews = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("pageviews"); else _explicitNullProperties?.Remove("pageviews"); } }
+        public global::Soenneker.PostHog.OpenApiClient.Models.WeeklyDigestResponsePageviews Pageviews { get => _explicitNullValuePageviews; set { _explicitNullValuePageviews = value; AdditionalData?.Remove("pageviews"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("pageviews"); else _explicitNullProperties?.Remove("pageviews"); } }
         private global::Soenneker.PostHog.OpenApiClient.Models.WeeklyDigestResponsePageviews _explicitNullValuePageviews = default!;
 #endif
         /// <summary>Total sessions.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.WeeklyDigestResponseSessions? Sessions { get => _explicitNullValueSessions; set { _explicitNullValueSessions = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("sessions"); else _explicitNullProperties?.Remove("sessions"); } }
+        public global::Soenneker.PostHog.OpenApiClient.Models.WeeklyDigestResponseSessions? Sessions { get => _explicitNullValueSessions; set { _explicitNullValueSessions = value; AdditionalData?.Remove("sessions"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("sessions"); else _explicitNullProperties?.Remove("sessions"); } }
         private global::Soenneker.PostHog.OpenApiClient.Models.WeeklyDigestResponseSessions? _explicitNullValueSessions = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.WeeklyDigestResponseSessions Sessions { get => _explicitNullValueSessions; set { _explicitNullValueSessions = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("sessions"); else _explicitNullProperties?.Remove("sessions"); } }
+        public global::Soenneker.PostHog.OpenApiClient.Models.WeeklyDigestResponseSessions Sessions { get => _explicitNullValueSessions; set { _explicitNullValueSessions = value; AdditionalData?.Remove("sessions"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("sessions"); else _explicitNullProperties?.Remove("sessions"); } }
         private global::Soenneker.PostHog.OpenApiClient.Models.WeeklyDigestResponseSessions _explicitNullValueSessions = default!;
 #endif
         /// <summary>Top 5 pages by unique visitors.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.TopPage>? TopPages { get => _explicitNullValueTopPages; set { _explicitNullValueTopPages = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("top_pages"); else _explicitNullProperties?.Remove("top_pages"); } }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.TopPage>? TopPages { get => _explicitNullValueTopPages; set { _explicitNullValueTopPages = value; AdditionalData?.Remove("top_pages"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("top_pages"); else _explicitNullProperties?.Remove("top_pages"); } }
         private List<global::Soenneker.PostHog.OpenApiClient.Models.TopPage>? _explicitNullValueTopPages = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.TopPage> TopPages { get => _explicitNullValueTopPages; set { _explicitNullValueTopPages = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("top_pages"); else _explicitNullProperties?.Remove("top_pages"); } }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.TopPage> TopPages { get => _explicitNullValueTopPages; set { _explicitNullValueTopPages = value; AdditionalData?.Remove("top_pages"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("top_pages"); else _explicitNullProperties?.Remove("top_pages"); } }
         private List<global::Soenneker.PostHog.OpenApiClient.Models.TopPage> _explicitNullValueTopPages = default!;
 #endif
         /// <summary>Top 5 traffic sources by unique visitors.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.TopSource>? TopSources { get => _explicitNullValueTopSources; set { _explicitNullValueTopSources = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("top_sources"); else _explicitNullProperties?.Remove("top_sources"); } }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.TopSource>? TopSources { get => _explicitNullValueTopSources; set { _explicitNullValueTopSources = value; AdditionalData?.Remove("top_sources"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("top_sources"); else _explicitNullProperties?.Remove("top_sources"); } }
         private List<global::Soenneker.PostHog.OpenApiClient.Models.TopSource>? _explicitNullValueTopSources = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.TopSource> TopSources { get => _explicitNullValueTopSources; set { _explicitNullValueTopSources = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("top_sources"); else _explicitNullProperties?.Remove("top_sources"); } }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.TopSource> TopSources { get => _explicitNullValueTopSources; set { _explicitNullValueTopSources = value; AdditionalData?.Remove("top_sources"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("top_sources"); else _explicitNullProperties?.Remove("top_sources"); } }
         private List<global::Soenneker.PostHog.OpenApiClient.Models.TopSource> _explicitNullValueTopSources = default!;
 #endif
         /// <summary>Unique visitors.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.WeeklyDigestResponseVisitors? Visitors { get => _explicitNullValueVisitors; set { _explicitNullValueVisitors = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("visitors"); else _explicitNullProperties?.Remove("visitors"); } }
+        public global::Soenneker.PostHog.OpenApiClient.Models.WeeklyDigestResponseVisitors? Visitors { get => _explicitNullValueVisitors; set { _explicitNullValueVisitors = value; AdditionalData?.Remove("visitors"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("visitors"); else _explicitNullProperties?.Remove("visitors"); } }
         private global::Soenneker.PostHog.OpenApiClient.Models.WeeklyDigestResponseVisitors? _explicitNullValueVisitors = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.WeeklyDigestResponseVisitors Visitors { get => _explicitNullValueVisitors; set { _explicitNullValueVisitors = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("visitors"); else _explicitNullProperties?.Remove("visitors"); } }
+        public global::Soenneker.PostHog.OpenApiClient.Models.WeeklyDigestResponseVisitors Visitors { get => _explicitNullValueVisitors; set { _explicitNullValueVisitors = value; AdditionalData?.Remove("visitors"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("visitors"); else _explicitNullProperties?.Remove("visitors"); } }
         private global::Soenneker.PostHog.OpenApiClient.Models.WeeklyDigestResponseVisitors _explicitNullValueVisitors = default!;
 #endif
         /// <summary>

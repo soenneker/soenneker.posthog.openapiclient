@@ -18,14 +18,22 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("column_descriptions") is { } nullNodeColumnDescriptions && nullNodeColumnDescriptions.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ColumnDescriptions = null;
-            if (parseNode.GetChildNode("column_property_map") is { } nullNodeColumnPropertyMap && nullNodeColumnPropertyMap.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ColumnPropertyMap = null;
-            if (parseNode.GetChildNode("definition") is { } nullNodeDefinition && nullNodeDefinition.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Definition = null;
-            if (parseNode.GetChildNode("external_data_schema") is { } nullNodeExternalDataSchema && nullNodeExternalDataSchema.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ExternalDataSchema = null;
-            if (parseNode.GetChildNode("is_enabled") is { } nullNodeIsEnabled && nullNodeIsEnabled.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) IsEnabled = null;
-            if (parseNode.GetChildNode("key_column") is { } nullNodeKeyColumn && nullNodeKeyColumn.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) KeyColumn = null;
-            if (parseNode.GetChildNode("saved_query") is { } nullNodeSavedQuery && nullNodeSavedQuery.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SavedQuery = null;
-            if (parseNode.GetChildNode("source_column") is { } nullNodeSourceColumn && nullNodeSourceColumn.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SourceColumn = null;
+            if (parseNode.GetChildNode("column_descriptions") is null) { _explicitNullValueColumnDescriptions = default!; _explicitNullProperties?.Remove("column_descriptions"); }
+            else if (parseNode.GetChildNode("column_descriptions") is { } nullNodeColumnDescriptions && nullNodeColumnDescriptions.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ColumnDescriptions = null;
+            if (parseNode.GetChildNode("column_property_map") is null) { _explicitNullValueColumnPropertyMap = default!; _explicitNullProperties?.Remove("column_property_map"); }
+            else if (parseNode.GetChildNode("column_property_map") is { } nullNodeColumnPropertyMap && nullNodeColumnPropertyMap.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ColumnPropertyMap = null;
+            if (parseNode.GetChildNode("definition") is null) { _explicitNullValueDefinition = default!; _explicitNullProperties?.Remove("definition"); }
+            else if (parseNode.GetChildNode("definition") is { } nullNodeDefinition && nullNodeDefinition.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Definition = null;
+            if (parseNode.GetChildNode("external_data_schema") is null) { _explicitNullValueExternalDataSchema = default!; _explicitNullProperties?.Remove("external_data_schema"); }
+            else if (parseNode.GetChildNode("external_data_schema") is { } nullNodeExternalDataSchema && nullNodeExternalDataSchema.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ExternalDataSchema = null;
+            if (parseNode.GetChildNode("is_enabled") is null) { _explicitNullValueIsEnabled = default!; _explicitNullProperties?.Remove("is_enabled"); }
+            else if (parseNode.GetChildNode("is_enabled") is { } nullNodeIsEnabled && nullNodeIsEnabled.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) IsEnabled = null;
+            if (parseNode.GetChildNode("key_column") is null) { _explicitNullValueKeyColumn = default!; _explicitNullProperties?.Remove("key_column"); }
+            else if (parseNode.GetChildNode("key_column") is { } nullNodeKeyColumn && nullNodeKeyColumn.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) KeyColumn = null;
+            if (parseNode.GetChildNode("saved_query") is null) { _explicitNullValueSavedQuery = default!; _explicitNullProperties?.Remove("saved_query"); }
+            else if (parseNode.GetChildNode("saved_query") is { } nullNodeSavedQuery && nullNodeSavedQuery.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SavedQuery = null;
+            if (parseNode.GetChildNode("source_column") is null) { _explicitNullValueSourceColumn = default!; _explicitNullProperties?.Remove("source_column"); }
+            else if (parseNode.GetChildNode("source_column") is { } nullNodeSourceColumn && nullNodeSourceColumn.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SourceColumn = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -33,21 +41,21 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Person and group sources only: {warehouse_column: description} giving each mapped column a human-facing description, seeded from the warehouse column&apos;s information_schema description. Optional per column.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public UntypedNode? ColumnDescriptions { get => _explicitNullValueColumnDescriptions; set { _explicitNullValueColumnDescriptions = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("column_descriptions"); else _explicitNullProperties?.Remove("column_descriptions"); } }
+        public UntypedNode? ColumnDescriptions { get => _explicitNullValueColumnDescriptions; set { _explicitNullValueColumnDescriptions = value; AdditionalData?.Remove("column_descriptions"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("column_descriptions"); else _explicitNullProperties?.Remove("column_descriptions"); } }
         private UntypedNode? _explicitNullValueColumnDescriptions = default!;
 #nullable restore
 #else
-        public UntypedNode ColumnDescriptions { get => _explicitNullValueColumnDescriptions; set { _explicitNullValueColumnDescriptions = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("column_descriptions"); else _explicitNullProperties?.Remove("column_descriptions"); } }
+        public UntypedNode ColumnDescriptions { get => _explicitNullValueColumnDescriptions; set { _explicitNullValueColumnDescriptions = value; AdditionalData?.Remove("column_descriptions"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("column_descriptions"); else _explicitNullProperties?.Remove("column_descriptions"); } }
         private UntypedNode _explicitNullValueColumnDescriptions = default!;
 #endif
         /// <summary>Person and group sources only: {warehouse_column: property_name} mapping the columns this source writes onto the person or group.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public UntypedNode? ColumnPropertyMap { get => _explicitNullValueColumnPropertyMap; set { _explicitNullValueColumnPropertyMap = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("column_property_map"); else _explicitNullProperties?.Remove("column_property_map"); } }
+        public UntypedNode? ColumnPropertyMap { get => _explicitNullValueColumnPropertyMap; set { _explicitNullValueColumnPropertyMap = value; AdditionalData?.Remove("column_property_map"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("column_property_map"); else _explicitNullProperties?.Remove("column_property_map"); } }
         private UntypedNode? _explicitNullValueColumnPropertyMap = default!;
 #nullable restore
 #else
-        public UntypedNode ColumnPropertyMap { get => _explicitNullValueColumnPropertyMap; set { _explicitNullValueColumnPropertyMap = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("column_property_map"); else _explicitNullProperties?.Remove("column_property_map"); } }
+        public UntypedNode ColumnPropertyMap { get => _explicitNullValueColumnPropertyMap; set { _explicitNullValueColumnPropertyMap = value; AdditionalData?.Remove("column_property_map"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("column_property_map"); else _explicitNullProperties?.Remove("column_property_map"); } }
         private UntypedNode _explicitNullValueColumnPropertyMap = default!;
 #endif
         /// <summary>Consecutive failed sync runs; the source auto-disables at the cap.</summary>
@@ -57,26 +65,26 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The created_by property</summary>
         public int? CreatedBy { get; private set; }
         /// <summary>UUID of the custom property definition this source feeds. One source per definition.</summary>
-        public Guid? Definition { get => _explicitNullValueDefinition; set { _explicitNullValueDefinition = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("definition"); else _explicitNullProperties?.Remove("definition"); } }
+        public Guid? Definition { get => _explicitNullValueDefinition; set { _explicitNullValueDefinition = value; AdditionalData?.Remove("definition"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("definition"); else _explicitNullProperties?.Remove("definition"); } }
         private Guid? _explicitNullValueDefinition = default!;
         /// <summary>Person and group sources only: UUID of the warehouse schema (an imported table) to read from. Mutually exclusive with saved_query; a person or group source sets exactly one.</summary>
-        public Guid? ExternalDataSchema { get => _explicitNullValueExternalDataSchema; set { _explicitNullValueExternalDataSchema = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("external_data_schema"); else _explicitNullProperties?.Remove("external_data_schema"); } }
+        public Guid? ExternalDataSchema { get => _explicitNullValueExternalDataSchema; set { _explicitNullValueExternalDataSchema = value; AdditionalData?.Remove("external_data_schema"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("external_data_schema"); else _explicitNullProperties?.Remove("external_data_schema"); } }
         private Guid? _explicitNullValueExternalDataSchema = default!;
         /// <summary>Table-bound person and group sources only: UUID of the warehouse source owning the schema, so the UI can link to the table. Null for account sources, view-bound sources, or when unavailable.</summary>
         public Guid? ExternalDataSource { get; private set; }
         /// <summary>The id property</summary>
         public Guid? Id { get; private set; }
         /// <summary>Whether the source syncs. Auto-disabled after repeated failures or a missing view; re-enabling resets the failure count.</summary>
-        public bool? IsEnabled { get => _explicitNullValueIsEnabled; set { _explicitNullValueIsEnabled = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("is_enabled"); else _explicitNullProperties?.Remove("is_enabled"); } }
+        public bool? IsEnabled { get => _explicitNullValueIsEnabled; set { _explicitNullValueIsEnabled = value; AdditionalData?.Remove("is_enabled"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("is_enabled"); else _explicitNullProperties?.Remove("is_enabled"); } }
         private bool? _explicitNullValueIsEnabled = default!;
         /// <summary>Column whose value identifies the target: an account&apos;s external_id for account sources, the person&apos;s distinct_id for person sources, or the group key for group sources.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? KeyColumn { get => _explicitNullValueKeyColumn; set { _explicitNullValueKeyColumn = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("key_column"); else _explicitNullProperties?.Remove("key_column"); } }
+        public string? KeyColumn { get => _explicitNullValueKeyColumn; set { _explicitNullValueKeyColumn = value; AdditionalData?.Remove("key_column"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("key_column"); else _explicitNullProperties?.Remove("key_column"); } }
         private string? _explicitNullValueKeyColumn = default!;
 #nullable restore
 #else
-        public string KeyColumn { get => _explicitNullValueKeyColumn; set { _explicitNullValueKeyColumn = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("key_column"); else _explicitNullProperties?.Remove("key_column"); } }
+        public string KeyColumn { get => _explicitNullValueKeyColumn; set { _explicitNullValueKeyColumn = value; AdditionalData?.Remove("key_column"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("key_column"); else _explicitNullProperties?.Remove("key_column"); } }
         private string _explicitNullValueKeyColumn = default!;
 #endif
         /// <summary>When the most recent sync run finished.</summary>
@@ -100,7 +108,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Person and group sources only: approximate time of the next scheduled run (last run + interval). Approximate — drifts if the schedule was paused. Null for account sources, if never run, or when the interval is unavailable.</summary>
         public DateTimeOffset? NextSyncAt { get; private set; }
         /// <summary>UUID of the data-warehouse saved query to read from. Required for an account source. For a person or group source it must be a materialized view, and is one of the two binding options. Mutually exclusive with external_data_schema.</summary>
-        public Guid? SavedQuery { get => _explicitNullValueSavedQuery; set { _explicitNullValueSavedQuery = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("saved_query"); else _explicitNullProperties?.Remove("saved_query"); } }
+        public Guid? SavedQuery { get => _explicitNullValueSavedQuery; set { _explicitNullValueSavedQuery = value; AdditionalData?.Remove("saved_query"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("saved_query"); else _explicitNullProperties?.Remove("saved_query"); } }
         private Guid? _explicitNullValueSavedQuery = default!;
         /// <summary>View-bound person and group sources only: the materialized view&apos;s name, so the UI can tell a view-backed source from a table-backed one. Null for account and table-bound sources.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -113,11 +121,11 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Account sources only: column in the view whose value is written to the property.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? SourceColumn { get => _explicitNullValueSourceColumn; set { _explicitNullValueSourceColumn = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("source_column"); else _explicitNullProperties?.Remove("source_column"); } }
+        public string? SourceColumn { get => _explicitNullValueSourceColumn; set { _explicitNullValueSourceColumn = value; AdditionalData?.Remove("source_column"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("source_column"); else _explicitNullProperties?.Remove("source_column"); } }
         private string? _explicitNullValueSourceColumn = default!;
 #nullable restore
 #else
-        public string SourceColumn { get => _explicitNullValueSourceColumn; set { _explicitNullValueSourceColumn = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("source_column"); else _explicitNullProperties?.Remove("source_column"); } }
+        public string SourceColumn { get => _explicitNullValueSourceColumn; set { _explicitNullValueSourceColumn = value; AdditionalData?.Remove("source_column"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("source_column"); else _explicitNullProperties?.Remove("source_column"); } }
         private string _explicitNullValueSourceColumn = default!;
 #endif
         /// <summary>Person and group sources only: how often the bound table or view runs, in seconds. Null for account sources, or when the schedule is unavailable — including a view whose frequency is set on its data-modeling DAG.</summary>

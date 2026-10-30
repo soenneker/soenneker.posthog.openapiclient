@@ -8,7 +8,7 @@ using System;
 namespace Soenneker.PostHog.OpenApiClient.Models
 {
     /// <summary>
-    /// Composed type wrapper for classes <see cref="bool"/>, <see cref="double"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.DataWarehousePropertyFilterValueMember1"/>, <see cref="string"/>, List&lt;global::Soenneker.PostHog.OpenApiClient.Models.DataWarehousePropertyFilterValueAnyOf1Item&gt;
+    /// Composed type wrapper for classes <see cref="bool"/>, <see cref="double"/>, <see cref="global::Soenneker.PostHog.OpenApiClient.Models.DataWarehousePropertyFilterValueMember1"/>, <see cref="string"/>, List&lt;global::Soenneker.PostHog.OpenApiClient.Models.AccountCustomPropertyFilterValueAnyOf1Item&gt;
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public partial class DataWarehousePropertyFilterValue : IComposedTypeWrapper, IParsable
@@ -18,16 +18,16 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode UnrecognizedValue { get; set; } = null!;
         public global::System.Collections.Generic.IDictionary<string, object> AdditionalData { get; set; } = new global::System.Collections.Generic.Dictionary<string, object>();
 
-        /// <summary>Composed type representation for type <see cref="bool"/></summary>
-        public bool? Boolean { get; set; }
-        /// <summary>Composed type representation for type List&lt;global::Soenneker.PostHog.OpenApiClient.Models.DataWarehousePropertyFilterValueAnyOf1Item&gt;</summary>
+        /// <summary>Composed type representation for type List&lt;global::Soenneker.PostHog.OpenApiClient.Models.AccountCustomPropertyFilterValueAnyOf1Item&gt;</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.DataWarehousePropertyFilterValueAnyOf1Item>? DataWarehousePropertyFilterValueAnyOf1Item { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.AccountCustomPropertyFilterValueAnyOf1Item>? AccountCustomPropertyFilterValueAnyOf1Item { get; set; }
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.DataWarehousePropertyFilterValueAnyOf1Item> DataWarehousePropertyFilterValueAnyOf1Item { get; set; }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.AccountCustomPropertyFilterValueAnyOf1Item> AccountCustomPropertyFilterValueAnyOf1Item { get; set; }
 #endif
+        /// <summary>Composed type representation for type <see cref="bool"/></summary>
+        public bool? Boolean { get; set; }
         /// <summary>Composed type representation for type <see cref="global::Soenneker.PostHog.OpenApiClient.Models.DataWarehousePropertyFilterValueMember1"/></summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
@@ -67,16 +67,16 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             {
                 result.String = stringValue;
             }
-            else if(parseNode.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is global::Microsoft.Kiota.Abstractions.Serialization.UntypedArray && parseNode.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.DataWarehousePropertyFilterValueAnyOf1Item>(global::Soenneker.PostHog.OpenApiClient.Models.DataWarehousePropertyFilterValueAnyOf1Item.CreateFromDiscriminatorValue)?.AsList() is List<global::Soenneker.PostHog.OpenApiClient.Models.DataWarehousePropertyFilterValueAnyOf1Item> dataWarehousePropertyFilterValueAnyOf1ItemValue)
+            else if(parseNode.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is global::Microsoft.Kiota.Abstractions.Serialization.UntypedArray && global::System.Linq.Enumerable.All(((global::Microsoft.Kiota.Abstractions.Serialization.UntypedArray)parseNode.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue)).GetValue(), item => ((((item is global::Microsoft.Kiota.Abstractions.Serialization.UntypedString))) || (((item is global::Microsoft.Kiota.Abstractions.Serialization.UntypedInteger or global::Microsoft.Kiota.Abstractions.Serialization.UntypedLong or global::Microsoft.Kiota.Abstractions.Serialization.UntypedFloat or global::Microsoft.Kiota.Abstractions.Serialization.UntypedDouble or global::Microsoft.Kiota.Abstractions.Serialization.UntypedDecimal))) || (((item is global::Microsoft.Kiota.Abstractions.Serialization.UntypedBoolean))))) && parseNode.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.AccountCustomPropertyFilterValueAnyOf1Item>(global::Soenneker.PostHog.OpenApiClient.Models.AccountCustomPropertyFilterValueAnyOf1Item.CreateFromDiscriminatorValue)?.AsList() is List<global::Soenneker.PostHog.OpenApiClient.Models.AccountCustomPropertyFilterValueAnyOf1Item> accountCustomPropertyFilterValueAnyOf1ItemValue)
             {
-                result.DataWarehousePropertyFilterValueAnyOf1Item = dataWarehousePropertyFilterValueAnyOf1ItemValue;
+                result.AccountCustomPropertyFilterValueAnyOf1Item = accountCustomPropertyFilterValueAnyOf1ItemValue;
             }
             else {
                 
             }
             
             var unionPayload = parseNode.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue);
-            if (result.Boolean == null && result.DataWarehousePropertyFilterValueAnyOf1Item == null && result.DataWarehousePropertyFilterValueMember1 == null && result.Double == null && result.String == null) result.UnrecognizedValue = unionPayload;
+            if (result.AccountCustomPropertyFilterValueAnyOf1Item == null && result.Boolean == null && result.DataWarehousePropertyFilterValueMember1 == null && result.Double == null && result.String == null) result.UnrecognizedValue = unionPayload;
 return result;
         }
         /// <summary>
@@ -85,6 +85,8 @@ return result;
         /// <returns>A IDictionary&lt;string, Action&lt;IParseNode&gt;&gt;</returns>
         public virtual IDictionary<string, Action<IParseNode>> GetFieldDeserializers()
         {
+            if (UnrecognizedValue is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject rawFields) { var fields = new global::System.Collections.Generic.Dictionary<string, global::System.Action<IParseNode>>(); foreach (var entry in rawFields.GetValue()) fields[entry.Key] = _ => { }; return fields; }
+
             if(DataWarehousePropertyFilterValueMember1 != null)
             {
                 return ParseNodeHelper.MergeDeserializersForIntersectionWrapper(DataWarehousePropertyFilterValueMember1);
@@ -98,8 +100,14 @@ return result;
         public virtual void Serialize(ISerializationWriter writer)
         {
             if (global::System.Object.ReferenceEquals(writer, null)) throw new global::System.ArgumentNullException(nameof(writer));
-            if (Boolean == null && DataWarehousePropertyFilterValueAnyOf1Item == null && DataWarehousePropertyFilterValueMember1 == null && Double == null && String == null) { if (UnrecognizedValue is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject rawObject) writer.WriteObjectValue(null, new global::Soenneker.OpenApi.Generated.OpenApiUnionAdditionalData(AdditionalData, rawObject)); else if (UnrecognizedValue != null) writer.WriteObjectValue(null, UnrecognizedValue); else if (AdditionalData.Count > 0) writer.WriteObjectValue(null, new global::Soenneker.OpenApi.Generated.OpenApiUnionAdditionalData(AdditionalData)); else writer.WriteNullValue(null); return; }
-            if (DataWarehousePropertyFilterValueMember1 != null && Boolean == null && DataWarehousePropertyFilterValueAnyOf1Item == null && Double == null && String == null) { if (DataWarehousePropertyFilterValueMember1 is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder selectedData) foreach (var entry in AdditionalData) selectedData.AdditionalData[entry.Key] = entry.Value; writer.WriteObjectValue(null, DataWarehousePropertyFilterValueMember1); return; }
+            if (AccountCustomPropertyFilterValueAnyOf1Item == null && Boolean == null && DataWarehousePropertyFilterValueMember1 == null && Double == null && String == null) { if (UnrecognizedValue is global::Microsoft.Kiota.Abstractions.Serialization.UntypedObject rawObject) writer.WriteObjectValue(null, new global::Soenneker.OpenApi.Generated.OpenApiUnionAdditionalData(AdditionalData, rawObject)); else if (UnrecognizedValue != null) writer.WriteObjectValue(null, UnrecognizedValue); else if (AdditionalData.Count > 0) writer.WriteObjectValue(null, new global::Soenneker.OpenApi.Generated.OpenApiUnionAdditionalData(AdditionalData)); else writer.WriteNullValue(null); return; }
+            int selectedUnionBranches = 0;
+            if (AccountCustomPropertyFilterValueAnyOf1Item != null) selectedUnionBranches++;
+            if (Boolean != null) selectedUnionBranches++;
+            if (DataWarehousePropertyFilterValueMember1 != null) selectedUnionBranches++;
+            if (Double != null) selectedUnionBranches++;
+            if (String != null) selectedUnionBranches++;
+            if (DataWarehousePropertyFilterValueMember1 != null && selectedUnionBranches == 1) { if (DataWarehousePropertyFilterValueMember1 is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder selectedData) foreach (var entry in AdditionalData) selectedData.AdditionalData[entry.Key] = entry.Value; writer.WriteObjectValue(null, DataWarehousePropertyFilterValueMember1); return; }
 
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
             if(Boolean != null)
@@ -114,9 +122,9 @@ return result;
             {
                 writer.WriteStringValue(null, String);
             }
-            else if(DataWarehousePropertyFilterValueAnyOf1Item != null)
+            else if(AccountCustomPropertyFilterValueAnyOf1Item != null)
             {
-                writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.DataWarehousePropertyFilterValueAnyOf1Item>(null, DataWarehousePropertyFilterValueAnyOf1Item);
+                writer.WriteCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.AccountCustomPropertyFilterValueAnyOf1Item>(null, AccountCustomPropertyFilterValueAnyOf1Item);
             }
             else {
                 if (DataWarehousePropertyFilterValueMember1 is global::Microsoft.Kiota.Abstractions.Serialization.IAdditionalDataHolder unionData) foreach (var entry in AdditionalData) unionData.AdditionalData[entry.Key] = entry.Value;

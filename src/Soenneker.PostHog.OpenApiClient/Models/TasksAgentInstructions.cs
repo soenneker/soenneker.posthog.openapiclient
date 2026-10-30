@@ -18,7 +18,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("agent_instructions") is { } nullNodeAgentInstructions && nullNodeAgentInstructions.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AgentInstructions = null;
+            if (parseNode.GetChildNode("agent_instructions") is null) { _explicitNullValueAgentInstructions = default!; _explicitNullProperties?.Remove("agent_instructions"); }
+            else if (parseNode.GetChildNode("agent_instructions") is { } nullNodeAgentInstructions && nullNodeAgentInstructions.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AgentInstructions = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -26,11 +27,11 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Markdown instructions that PostHog cloud agents read in every eligible Tasks run, the same way a local agent reads AGENTS.md. Send an empty string to clear.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? AgentInstructions { get => _explicitNullValueAgentInstructions; set { _explicitNullValueAgentInstructions = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("agent_instructions"); else _explicitNullProperties?.Remove("agent_instructions"); } }
+        public string? AgentInstructions { get => _explicitNullValueAgentInstructions; set { _explicitNullValueAgentInstructions = value; AdditionalData?.Remove("agent_instructions"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("agent_instructions"); else _explicitNullProperties?.Remove("agent_instructions"); } }
         private string? _explicitNullValueAgentInstructions = default!;
 #nullable restore
 #else
-        public string AgentInstructions { get => _explicitNullValueAgentInstructions; set { _explicitNullValueAgentInstructions = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("agent_instructions"); else _explicitNullProperties?.Remove("agent_instructions"); } }
+        public string AgentInstructions { get => _explicitNullValueAgentInstructions; set { _explicitNullValueAgentInstructions = value; AdditionalData?.Remove("agent_instructions"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("agent_instructions"); else _explicitNullProperties?.Remove("agent_instructions"); } }
         private string _explicitNullValueAgentInstructions = default!;
 #endif
         /// <summary>

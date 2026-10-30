@@ -18,10 +18,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("company_address") is { } nullNodeCompanyAddress && nullNodeCompanyAddress.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CompanyAddress = null;
-            if (parseNode.GetChildNode("company_name") is { } nullNodeCompanyName && nullNodeCompanyName.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CompanyName = null;
-            if (parseNode.GetChildNode("document_type") is { } nullNodeDocumentType && nullNodeDocumentType.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) DocumentType = null;
-            if (parseNode.GetChildNode("representative_email") is { } nullNodeRepresentativeEmail && nullNodeRepresentativeEmail.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) RepresentativeEmail = null;
+            if (parseNode.GetChildNode("company_address") is null) { _explicitNullValueCompanyAddress = default!; _explicitNullProperties?.Remove("company_address"); }
+            else if (parseNode.GetChildNode("company_address") is { } nullNodeCompanyAddress && nullNodeCompanyAddress.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CompanyAddress = null;
+            if (parseNode.GetChildNode("company_name") is null) { _explicitNullValueCompanyName = default!; _explicitNullProperties?.Remove("company_name"); }
+            else if (parseNode.GetChildNode("company_name") is { } nullNodeCompanyName && nullNodeCompanyName.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CompanyName = null;
+            if (parseNode.GetChildNode("document_type") is null) { _explicitNullValueDocumentType = default!; _explicitNullProperties?.Remove("document_type"); }
+            else if (parseNode.GetChildNode("document_type") is { } nullNodeDocumentType && nullNodeDocumentType.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) DocumentType = null;
+            if (parseNode.GetChildNode("representative_email") is null) { _explicitNullValueRepresentativeEmail = default!; _explicitNullProperties?.Remove("representative_email"); }
+            else if (parseNode.GetChildNode("representative_email") is { } nullNodeRepresentativeEmail && nullNodeRepresentativeEmail.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) RepresentativeEmail = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -29,34 +33,34 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The customer address (PandaDoc&apos;s Client.StreetAddress).</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? CompanyAddress { get => _explicitNullValueCompanyAddress; set { _explicitNullValueCompanyAddress = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("company_address"); else _explicitNullProperties?.Remove("company_address"); } }
+        public string? CompanyAddress { get => _explicitNullValueCompanyAddress; set { _explicitNullValueCompanyAddress = value; AdditionalData?.Remove("company_address"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("company_address"); else _explicitNullProperties?.Remove("company_address"); } }
         private string? _explicitNullValueCompanyAddress = default!;
 #nullable restore
 #else
-        public string CompanyAddress { get => _explicitNullValueCompanyAddress; set { _explicitNullValueCompanyAddress = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("company_address"); else _explicitNullProperties?.Remove("company_address"); } }
+        public string CompanyAddress { get => _explicitNullValueCompanyAddress; set { _explicitNullValueCompanyAddress = value; AdditionalData?.Remove("company_address"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("company_address"); else _explicitNullProperties?.Remove("company_address"); } }
         private string _explicitNullValueCompanyAddress = default!;
 #endif
         /// <summary>The customer legal entity entering the agreement (PandaDoc&apos;s Client.Company).</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? CompanyName { get => _explicitNullValueCompanyName; set { _explicitNullValueCompanyName = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("company_name"); else _explicitNullProperties?.Remove("company_name"); } }
+        public string? CompanyName { get => _explicitNullValueCompanyName; set { _explicitNullValueCompanyName = value; AdditionalData?.Remove("company_name"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("company_name"); else _explicitNullProperties?.Remove("company_name"); } }
         private string? _explicitNullValueCompanyName = default!;
 #nullable restore
 #else
-        public string CompanyName { get => _explicitNullValueCompanyName; set { _explicitNullValueCompanyName = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("company_name"); else _explicitNullProperties?.Remove("company_name"); } }
+        public string CompanyName { get => _explicitNullValueCompanyName; set { _explicitNullValueCompanyName = value; AdditionalData?.Remove("company_name"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("company_name"); else _explicitNullProperties?.Remove("company_name"); } }
         private string _explicitNullValueCompanyName = default!;
 #endif
         /// <summary>* `BAA` - BAA* `DPA` - DPA</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.CreateLegalDocumentDocumentType? DocumentType { get => _explicitNullValueDocumentType; set { _explicitNullValueDocumentType = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("document_type"); else _explicitNullProperties?.Remove("document_type"); } }
+        public global::Soenneker.PostHog.OpenApiClient.Models.CreateLegalDocumentDocumentType? DocumentType { get => _explicitNullValueDocumentType; set { _explicitNullValueDocumentType = value; AdditionalData?.Remove("document_type"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("document_type"); else _explicitNullProperties?.Remove("document_type"); } }
         private global::Soenneker.PostHog.OpenApiClient.Models.CreateLegalDocumentDocumentType? _explicitNullValueDocumentType = default!;
         /// <summary>Email the signed PandaDoc envelope is sent to (PandaDoc&apos;s Client.Email).</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? RepresentativeEmail { get => _explicitNullValueRepresentativeEmail; set { _explicitNullValueRepresentativeEmail = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("representative_email"); else _explicitNullProperties?.Remove("representative_email"); } }
+        public string? RepresentativeEmail { get => _explicitNullValueRepresentativeEmail; set { _explicitNullValueRepresentativeEmail = value; AdditionalData?.Remove("representative_email"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("representative_email"); else _explicitNullProperties?.Remove("representative_email"); } }
         private string? _explicitNullValueRepresentativeEmail = default!;
 #nullable restore
 #else
-        public string RepresentativeEmail { get => _explicitNullValueRepresentativeEmail; set { _explicitNullValueRepresentativeEmail = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("representative_email"); else _explicitNullProperties?.Remove("representative_email"); } }
+        public string RepresentativeEmail { get => _explicitNullValueRepresentativeEmail; set { _explicitNullValueRepresentativeEmail = value; AdditionalData?.Remove("representative_email"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("representative_email"); else _explicitNullProperties?.Remove("representative_email"); } }
         private string _explicitNullValueRepresentativeEmail = default!;
 #endif
         /// <summary>
@@ -86,7 +90,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             {
                 { "company_address", n => { CompanyAddress = n.GetStringValue(); } },
                 { "company_name", n => { CompanyName = n.GetStringValue(); } },
-                { "document_type", n => { DocumentType = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.CreateLegalDocumentDocumentType>(); } },
+                { "document_type", n => { var parsed = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.CreateLegalDocumentDocumentType>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValueDocumentType = default; _explicitNullProperties?.Remove("document_type"); AdditionalData["document_type"] = unknown; } else { DocumentType = parsed; AdditionalData.Remove("document_type"); } } },
                 { "representative_email", n => { RepresentativeEmail = n.GetStringValue(); } },
             };
         }

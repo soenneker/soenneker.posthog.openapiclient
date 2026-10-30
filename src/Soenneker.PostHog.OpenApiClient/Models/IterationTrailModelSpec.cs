@@ -18,8 +18,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("model_class") is { } nullNodeModelClass && nullNodeModelClass.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ModelClass = null;
-            if (parseNode.GetChildNode("model_params") is { } nullNodeModelParams && nullNodeModelParams.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ModelParams = null;
+            if (parseNode.GetChildNode("model_class") is null) { _explicitNullValueModelClass = default!; _explicitNullProperties?.Remove("model_class"); }
+            else if (parseNode.GetChildNode("model_class") is { } nullNodeModelClass && nullNodeModelClass.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ModelClass = null;
+            if (parseNode.GetChildNode("model_params") is null) { _explicitNullValueModelParams = default!; _explicitNullProperties?.Remove("model_params"); }
+            else if (parseNode.GetChildNode("model_params") is { } nullNodeModelParams && nullNodeModelParams.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ModelParams = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -27,21 +29,21 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Dotted path of the estimator class.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? ModelClass { get => _explicitNullValueModelClass; set { _explicitNullValueModelClass = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("model_class"); else _explicitNullProperties?.Remove("model_class"); } }
+        public string? ModelClass { get => _explicitNullValueModelClass; set { _explicitNullValueModelClass = value; AdditionalData?.Remove("model_class"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("model_class"); else _explicitNullProperties?.Remove("model_class"); } }
         private string? _explicitNullValueModelClass = default!;
 #nullable restore
 #else
-        public string ModelClass { get => _explicitNullValueModelClass; set { _explicitNullValueModelClass = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("model_class"); else _explicitNullProperties?.Remove("model_class"); } }
+        public string ModelClass { get => _explicitNullValueModelClass; set { _explicitNullValueModelClass = value; AdditionalData?.Remove("model_class"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("model_class"); else _explicitNullProperties?.Remove("model_class"); } }
         private string _explicitNullValueModelClass = default!;
 #endif
         /// <summary>Keyword arguments for the estimator&apos;s constructor; null or absent means the defaults.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.IterationTrailModelSpecModelParamsProperty? ModelParams { get => _explicitNullValueModelParams; set { _explicitNullValueModelParams = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("model_params"); else _explicitNullProperties?.Remove("model_params"); } }
+        public global::Soenneker.PostHog.OpenApiClient.Models.IterationTrailModelSpecModelParamsProperty? ModelParams { get => _explicitNullValueModelParams; set { _explicitNullValueModelParams = value; AdditionalData?.Remove("model_params"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("model_params"); else _explicitNullProperties?.Remove("model_params"); } }
         private global::Soenneker.PostHog.OpenApiClient.Models.IterationTrailModelSpecModelParamsProperty? _explicitNullValueModelParams = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.IterationTrailModelSpecModelParamsProperty ModelParams { get => _explicitNullValueModelParams; set { _explicitNullValueModelParams = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("model_params"); else _explicitNullProperties?.Remove("model_params"); } }
+        public global::Soenneker.PostHog.OpenApiClient.Models.IterationTrailModelSpecModelParamsProperty ModelParams { get => _explicitNullValueModelParams; set { _explicitNullValueModelParams = value; AdditionalData?.Remove("model_params"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("model_params"); else _explicitNullProperties?.Remove("model_params"); } }
         private global::Soenneker.PostHog.OpenApiClient.Models.IterationTrailModelSpecModelParamsProperty _explicitNullValueModelParams = default!;
 #endif
         /// <summary>

@@ -18,53 +18,65 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("backfill") is { } nullNodeBackfill && nullNodeBackfill.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Backfill = null;
-            if (parseNode.GetChildNode("batch_export_on_demand") is { } nullNodeBatchExportOnDemand && nullNodeBatchExportOnDemand.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) BatchExportOnDemand = null;
-            if (parseNode.GetChildNode("bytes_exported") is { } nullNodeBytesExported && nullNodeBytesExported.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) BytesExported = null;
-            if (parseNode.GetChildNode("cursor") is { } nullNodeCursor && nullNodeCursor.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Cursor = null;
-            if (parseNode.GetChildNode("data_interval_end") is { } nullNodeDataIntervalEnd && nullNodeDataIntervalEnd.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) DataIntervalEnd = null;
-            if (parseNode.GetChildNode("data_interval_start") is { } nullNodeDataIntervalStart && nullNodeDataIntervalStart.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) DataIntervalStart = null;
-            if (parseNode.GetChildNode("finished_at") is { } nullNodeFinishedAt && nullNodeFinishedAt.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) FinishedAt = null;
-            if (parseNode.GetChildNode("latest_error") is { } nullNodeLatestError && nullNodeLatestError.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) LatestError = null;
-            if (parseNode.GetChildNode("records_completed") is { } nullNodeRecordsCompleted && nullNodeRecordsCompleted.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) RecordsCompleted = null;
-            if (parseNode.GetChildNode("records_failed") is { } nullNodeRecordsFailed && nullNodeRecordsFailed.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) RecordsFailed = null;
-            if (parseNode.GetChildNode("records_total_count") is { } nullNodeRecordsTotalCount && nullNodeRecordsTotalCount.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) RecordsTotalCount = null;
-            if (parseNode.GetChildNode("status") is { } nullNodeStatus && nullNodeStatus.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Status = null;
+            if (parseNode.GetChildNode("backfill") is null) { _explicitNullValueBackfill = default!; _explicitNullProperties?.Remove("backfill"); }
+            else if (parseNode.GetChildNode("backfill") is { } nullNodeBackfill && nullNodeBackfill.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Backfill = null;
+            if (parseNode.GetChildNode("batch_export_on_demand") is null) { _explicitNullValueBatchExportOnDemand = default!; _explicitNullProperties?.Remove("batch_export_on_demand"); }
+            else if (parseNode.GetChildNode("batch_export_on_demand") is { } nullNodeBatchExportOnDemand && nullNodeBatchExportOnDemand.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) BatchExportOnDemand = null;
+            if (parseNode.GetChildNode("bytes_exported") is null) { _explicitNullValueBytesExported = default!; _explicitNullProperties?.Remove("bytes_exported"); }
+            else if (parseNode.GetChildNode("bytes_exported") is { } nullNodeBytesExported && nullNodeBytesExported.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) BytesExported = null;
+            if (parseNode.GetChildNode("cursor") is null) { _explicitNullValueCursor = default!; _explicitNullProperties?.Remove("cursor"); }
+            else if (parseNode.GetChildNode("cursor") is { } nullNodeCursor && nullNodeCursor.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Cursor = null;
+            if (parseNode.GetChildNode("data_interval_end") is null) { _explicitNullValueDataIntervalEnd = default!; _explicitNullProperties?.Remove("data_interval_end"); }
+            else if (parseNode.GetChildNode("data_interval_end") is { } nullNodeDataIntervalEnd && nullNodeDataIntervalEnd.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) DataIntervalEnd = null;
+            if (parseNode.GetChildNode("data_interval_start") is null) { _explicitNullValueDataIntervalStart = default!; _explicitNullProperties?.Remove("data_interval_start"); }
+            else if (parseNode.GetChildNode("data_interval_start") is { } nullNodeDataIntervalStart && nullNodeDataIntervalStart.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) DataIntervalStart = null;
+            if (parseNode.GetChildNode("finished_at") is null) { _explicitNullValueFinishedAt = default!; _explicitNullProperties?.Remove("finished_at"); }
+            else if (parseNode.GetChildNode("finished_at") is { } nullNodeFinishedAt && nullNodeFinishedAt.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) FinishedAt = null;
+            if (parseNode.GetChildNode("latest_error") is null) { _explicitNullValueLatestError = default!; _explicitNullProperties?.Remove("latest_error"); }
+            else if (parseNode.GetChildNode("latest_error") is { } nullNodeLatestError && nullNodeLatestError.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) LatestError = null;
+            if (parseNode.GetChildNode("records_completed") is null) { _explicitNullValueRecordsCompleted = default!; _explicitNullProperties?.Remove("records_completed"); }
+            else if (parseNode.GetChildNode("records_completed") is { } nullNodeRecordsCompleted && nullNodeRecordsCompleted.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) RecordsCompleted = null;
+            if (parseNode.GetChildNode("records_failed") is null) { _explicitNullValueRecordsFailed = default!; _explicitNullProperties?.Remove("records_failed"); }
+            else if (parseNode.GetChildNode("records_failed") is { } nullNodeRecordsFailed && nullNodeRecordsFailed.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) RecordsFailed = null;
+            if (parseNode.GetChildNode("records_total_count") is null) { _explicitNullValueRecordsTotalCount = default!; _explicitNullProperties?.Remove("records_total_count"); }
+            else if (parseNode.GetChildNode("records_total_count") is { } nullNodeRecordsTotalCount && nullNodeRecordsTotalCount.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) RecordsTotalCount = null;
+            if (parseNode.GetChildNode("status") is null) { _explicitNullValueStatus = default!; _explicitNullProperties?.Remove("status"); }
+            else if (parseNode.GetChildNode("status") is { } nullNodeStatus && nullNodeStatus.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Status = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The backfill this run belongs to.</summary>
-        public Guid? Backfill { get => _explicitNullValueBackfill; set { _explicitNullValueBackfill = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("backfill"); else _explicitNullProperties?.Remove("backfill"); } }
+        public Guid? Backfill { get => _explicitNullValueBackfill; set { _explicitNullValueBackfill = value; AdditionalData?.Remove("backfill"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("backfill"); else _explicitNullProperties?.Remove("backfill"); } }
         private Guid? _explicitNullValueBackfill = default!;
         /// <summary>The `BatchExport` this run belongs to.</summary>
         public Guid? BatchExport { get; private set; }
         /// <summary>The `BatchExportOnDemand` this run belongs to.</summary>
-        public Guid? BatchExportOnDemand { get => _explicitNullValueBatchExportOnDemand; set { _explicitNullValueBatchExportOnDemand = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("batch_export_on_demand"); else _explicitNullProperties?.Remove("batch_export_on_demand"); } }
+        public Guid? BatchExportOnDemand { get => _explicitNullValueBatchExportOnDemand; set { _explicitNullValueBatchExportOnDemand = value; AdditionalData?.Remove("batch_export_on_demand"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("batch_export_on_demand"); else _explicitNullProperties?.Remove("batch_export_on_demand"); } }
         private Guid? _explicitNullValueBatchExportOnDemand = default!;
         /// <summary>The number of bytes that have been exported in this BatchExportRun.</summary>
-        public long? BytesExported { get => _explicitNullValueBytesExported; set { _explicitNullValueBytesExported = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("bytes_exported"); else _explicitNullProperties?.Remove("bytes_exported"); } }
+        public long? BytesExported { get => _explicitNullValueBytesExported; set { _explicitNullValueBytesExported = value; AdditionalData?.Remove("bytes_exported"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("bytes_exported"); else _explicitNullProperties?.Remove("bytes_exported"); } }
         private long? _explicitNullValueBytesExported = default!;
         /// <summary>The timestamp at which this BatchExportRun was created.</summary>
         public DateTimeOffset? CreatedAt { get; private set; }
         /// <summary>An opaque cursor that may be used to resume.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Cursor { get => _explicitNullValueCursor; set { _explicitNullValueCursor = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("cursor"); else _explicitNullProperties?.Remove("cursor"); } }
+        public string? Cursor { get => _explicitNullValueCursor; set { _explicitNullValueCursor = value; AdditionalData?.Remove("cursor"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("cursor"); else _explicitNullProperties?.Remove("cursor"); } }
         private string? _explicitNullValueCursor = default!;
 #nullable restore
 #else
-        public string Cursor { get => _explicitNullValueCursor; set { _explicitNullValueCursor = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("cursor"); else _explicitNullProperties?.Remove("cursor"); } }
+        public string Cursor { get => _explicitNullValueCursor; set { _explicitNullValueCursor = value; AdditionalData?.Remove("cursor"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("cursor"); else _explicitNullProperties?.Remove("cursor"); } }
         private string _explicitNullValueCursor = default!;
 #endif
         /// <summary>The end of the data interval.</summary>
-        public DateTimeOffset? DataIntervalEnd { get => _explicitNullValueDataIntervalEnd; set { _explicitNullValueDataIntervalEnd = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("data_interval_end"); else _explicitNullProperties?.Remove("data_interval_end"); } }
+        public DateTimeOffset? DataIntervalEnd { get => _explicitNullValueDataIntervalEnd; set { _explicitNullValueDataIntervalEnd = value; AdditionalData?.Remove("data_interval_end"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("data_interval_end"); else _explicitNullProperties?.Remove("data_interval_end"); } }
         private DateTimeOffset? _explicitNullValueDataIntervalEnd = default!;
         /// <summary>The start of the data interval.</summary>
-        public DateTimeOffset? DataIntervalStart { get => _explicitNullValueDataIntervalStart; set { _explicitNullValueDataIntervalStart = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("data_interval_start"); else _explicitNullProperties?.Remove("data_interval_start"); } }
+        public DateTimeOffset? DataIntervalStart { get => _explicitNullValueDataIntervalStart; set { _explicitNullValueDataIntervalStart = value; AdditionalData?.Remove("data_interval_start"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("data_interval_start"); else _explicitNullProperties?.Remove("data_interval_start"); } }
         private DateTimeOffset? _explicitNullValueDataIntervalStart = default!;
         /// <summary>The timestamp at which this BatchExportRun finished, successfully or not.</summary>
-        public DateTimeOffset? FinishedAt { get => _explicitNullValueFinishedAt; set { _explicitNullValueFinishedAt = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("finished_at"); else _explicitNullProperties?.Remove("finished_at"); } }
+        public DateTimeOffset? FinishedAt { get => _explicitNullValueFinishedAt; set { _explicitNullValueFinishedAt = value; AdditionalData?.Remove("finished_at"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("finished_at"); else _explicitNullProperties?.Remove("finished_at"); } }
         private DateTimeOffset? _explicitNullValueFinishedAt = default!;
         /// <summary>The id property</summary>
         public Guid? Id { get; private set; }
@@ -73,24 +85,24 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The latest error that occurred during this run.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? LatestError { get => _explicitNullValueLatestError; set { _explicitNullValueLatestError = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("latest_error"); else _explicitNullProperties?.Remove("latest_error"); } }
+        public string? LatestError { get => _explicitNullValueLatestError; set { _explicitNullValueLatestError = value; AdditionalData?.Remove("latest_error"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("latest_error"); else _explicitNullProperties?.Remove("latest_error"); } }
         private string? _explicitNullValueLatestError = default!;
 #nullable restore
 #else
-        public string LatestError { get => _explicitNullValueLatestError; set { _explicitNullValueLatestError = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("latest_error"); else _explicitNullProperties?.Remove("latest_error"); } }
+        public string LatestError { get => _explicitNullValueLatestError; set { _explicitNullValueLatestError = value; AdditionalData?.Remove("latest_error"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("latest_error"); else _explicitNullProperties?.Remove("latest_error"); } }
         private string _explicitNullValueLatestError = default!;
 #endif
         /// <summary>The number of records that have been exported.</summary>
-        public int? RecordsCompleted { get => _explicitNullValueRecordsCompleted; set { _explicitNullValueRecordsCompleted = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("records_completed"); else _explicitNullProperties?.Remove("records_completed"); } }
+        public int? RecordsCompleted { get => _explicitNullValueRecordsCompleted; set { _explicitNullValueRecordsCompleted = value; AdditionalData?.Remove("records_completed"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("records_completed"); else _explicitNullProperties?.Remove("records_completed"); } }
         private int? _explicitNullValueRecordsCompleted = default!;
         /// <summary>The number of records that failed downstream processing (e.g. hog function execution errors).</summary>
-        public int? RecordsFailed { get => _explicitNullValueRecordsFailed; set { _explicitNullValueRecordsFailed = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("records_failed"); else _explicitNullProperties?.Remove("records_failed"); } }
+        public int? RecordsFailed { get => _explicitNullValueRecordsFailed; set { _explicitNullValueRecordsFailed = value; AdditionalData?.Remove("records_failed"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("records_failed"); else _explicitNullProperties?.Remove("records_failed"); } }
         private int? _explicitNullValueRecordsFailed = default!;
         /// <summary>The total count of records that should be exported in this BatchExportRun.</summary>
-        public int? RecordsTotalCount { get => _explicitNullValueRecordsTotalCount; set { _explicitNullValueRecordsTotalCount = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("records_total_count"); else _explicitNullProperties?.Remove("records_total_count"); } }
+        public int? RecordsTotalCount { get => _explicitNullValueRecordsTotalCount; set { _explicitNullValueRecordsTotalCount = value; AdditionalData?.Remove("records_total_count"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("records_total_count"); else _explicitNullProperties?.Remove("records_total_count"); } }
         private int? _explicitNullValueRecordsTotalCount = default!;
         /// <summary>* `Cancelled` - Cancelled* `Completed` - Completed* `ContinuedAsNew` - Continued As New* `Failed` - Failed* `FailedRetryable` - Failed Retryable* `FailedBilling` - Failed Billing* `Terminated` - Terminated* `TimedOut` - Timedout* `Running` - Running* `Starting` - Starting</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.BatchExportRunStatus? Status { get => _explicitNullValueStatus; set { _explicitNullValueStatus = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("status"); else _explicitNullProperties?.Remove("status"); } }
+        public global::Soenneker.PostHog.OpenApiClient.Models.BatchExportRunStatus? Status { get => _explicitNullValueStatus; set { _explicitNullValueStatus = value; AdditionalData?.Remove("status"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("status"); else _explicitNullProperties?.Remove("status"); } }
         private global::Soenneker.PostHog.OpenApiClient.Models.BatchExportRunStatus? _explicitNullValueStatus = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.BatchExportRun"/> and sets the default values.
@@ -132,7 +144,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "records_completed", n => { RecordsCompleted = n.GetIntValue(); } },
                 { "records_failed", n => { RecordsFailed = n.GetIntValue(); } },
                 { "records_total_count", n => { RecordsTotalCount = n.GetIntValue(); } },
-                { "status", n => { Status = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.BatchExportRunStatus>(); } },
+                { "status", n => { var parsed = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.BatchExportRunStatus>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValueStatus = default; _explicitNullProperties?.Remove("status"); AdditionalData["status"] = unknown; } else { Status = parsed; AdditionalData.Remove("status"); } } },
             };
         }
         /// <summary>

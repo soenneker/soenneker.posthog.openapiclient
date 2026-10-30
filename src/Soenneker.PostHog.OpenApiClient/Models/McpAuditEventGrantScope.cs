@@ -7,6 +7,9 @@ namespace Soenneker.PostHog.OpenApiClient.Models
     [global::System.CodeDom.Compiler.GeneratedCode("Kiota", "1.0.0")]
     public enum McpAuditEventGrantScope
     {
+        [EnumMember(Value = "")]
+        EmptyString,
+
         [EnumMember(Value = "personal")]
         #pragma warning disable CS1591
         Personal,

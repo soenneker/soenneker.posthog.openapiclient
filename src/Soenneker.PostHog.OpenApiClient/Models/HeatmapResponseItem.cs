@@ -17,25 +17,29 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("count") is { } nullNodeCount && nullNodeCount.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Count = null;
-            if (parseNode.GetChildNode("pointer_relative_x") is { } nullNodePointerRelativeX && nullNodePointerRelativeX.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) PointerRelativeX = null;
-            if (parseNode.GetChildNode("pointer_target_fixed") is { } nullNodePointerTargetFixed && nullNodePointerTargetFixed.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) PointerTargetFixed = null;
-            if (parseNode.GetChildNode("pointer_y") is { } nullNodePointerY && nullNodePointerY.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) PointerY = null;
+            if (parseNode.GetChildNode("count") is null) { _explicitNullValueCount = default!; _explicitNullProperties?.Remove("count"); }
+            else if (parseNode.GetChildNode("count") is { } nullNodeCount && nullNodeCount.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Count = null;
+            if (parseNode.GetChildNode("pointer_relative_x") is null) { _explicitNullValuePointerRelativeX = default!; _explicitNullProperties?.Remove("pointer_relative_x"); }
+            else if (parseNode.GetChildNode("pointer_relative_x") is { } nullNodePointerRelativeX && nullNodePointerRelativeX.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) PointerRelativeX = null;
+            if (parseNode.GetChildNode("pointer_target_fixed") is null) { _explicitNullValuePointerTargetFixed = default!; _explicitNullProperties?.Remove("pointer_target_fixed"); }
+            else if (parseNode.GetChildNode("pointer_target_fixed") is { } nullNodePointerTargetFixed && nullNodePointerTargetFixed.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) PointerTargetFixed = null;
+            if (parseNode.GetChildNode("pointer_y") is null) { _explicitNullValuePointerY = default!; _explicitNullProperties?.Remove("pointer_y"); }
+            else if (parseNode.GetChildNode("pointer_y") is { } nullNodePointerY && nullNodePointerY.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) PointerY = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The count property</summary>
-        public int? Count { get => _explicitNullValueCount; set { _explicitNullValueCount = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("count"); else _explicitNullProperties?.Remove("count"); } }
+        public int? Count { get => _explicitNullValueCount; set { _explicitNullValueCount = value; AdditionalData?.Remove("count"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("count"); else _explicitNullProperties?.Remove("count"); } }
         private int? _explicitNullValueCount = default!;
         /// <summary>The pointer_relative_x property</summary>
-        public double? PointerRelativeX { get => _explicitNullValuePointerRelativeX; set { _explicitNullValuePointerRelativeX = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("pointer_relative_x"); else _explicitNullProperties?.Remove("pointer_relative_x"); } }
+        public double? PointerRelativeX { get => _explicitNullValuePointerRelativeX; set { _explicitNullValuePointerRelativeX = value; AdditionalData?.Remove("pointer_relative_x"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("pointer_relative_x"); else _explicitNullProperties?.Remove("pointer_relative_x"); } }
         private double? _explicitNullValuePointerRelativeX = default!;
         /// <summary>The pointer_target_fixed property</summary>
-        public bool? PointerTargetFixed { get => _explicitNullValuePointerTargetFixed; set { _explicitNullValuePointerTargetFixed = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("pointer_target_fixed"); else _explicitNullProperties?.Remove("pointer_target_fixed"); } }
+        public bool? PointerTargetFixed { get => _explicitNullValuePointerTargetFixed; set { _explicitNullValuePointerTargetFixed = value; AdditionalData?.Remove("pointer_target_fixed"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("pointer_target_fixed"); else _explicitNullProperties?.Remove("pointer_target_fixed"); } }
         private bool? _explicitNullValuePointerTargetFixed = default!;
         /// <summary>The pointer_y property</summary>
-        public int? PointerY { get => _explicitNullValuePointerY; set { _explicitNullValuePointerY = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("pointer_y"); else _explicitNullProperties?.Remove("pointer_y"); } }
+        public int? PointerY { get => _explicitNullValuePointerY; set { _explicitNullValuePointerY = value; AdditionalData?.Remove("pointer_y"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("pointer_y"); else _explicitNullProperties?.Remove("pointer_y"); } }
         private int? _explicitNullValuePointerY = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.HeatmapResponseItem"/> and sets the default values.

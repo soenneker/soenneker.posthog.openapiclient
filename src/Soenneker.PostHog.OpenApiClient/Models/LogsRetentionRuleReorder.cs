@@ -17,7 +17,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("ordered_ids") is { } nullNodeOrderedIds && nullNodeOrderedIds.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) OrderedIds = null;
+            if (parseNode.GetChildNode("ordered_ids") is null) { _explicitNullValueOrderedIds = default!; _explicitNullProperties?.Remove("ordered_ids"); }
+            else if (parseNode.GetChildNode("ordered_ids") is { } nullNodeOrderedIds && nullNodeOrderedIds.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) OrderedIds = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -25,11 +26,11 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Rule IDs in the desired evaluation order (first element is highest priority / lowest order index).</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<Guid?>? OrderedIds { get => _explicitNullValueOrderedIds; set { _explicitNullValueOrderedIds = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("ordered_ids"); else _explicitNullProperties?.Remove("ordered_ids"); } }
+        public List<Guid?>? OrderedIds { get => _explicitNullValueOrderedIds; set { _explicitNullValueOrderedIds = value; AdditionalData?.Remove("ordered_ids"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("ordered_ids"); else _explicitNullProperties?.Remove("ordered_ids"); } }
         private List<Guid?>? _explicitNullValueOrderedIds = default!;
 #nullable restore
 #else
-        public List<Guid?> OrderedIds { get => _explicitNullValueOrderedIds; set { _explicitNullValueOrderedIds = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("ordered_ids"); else _explicitNullProperties?.Remove("ordered_ids"); } }
+        public List<Guid?> OrderedIds { get => _explicitNullValueOrderedIds; set { _explicitNullValueOrderedIds = value; AdditionalData?.Remove("ordered_ids"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("ordered_ids"); else _explicitNullProperties?.Remove("ordered_ids"); } }
         private List<Guid?> _explicitNullValueOrderedIds = default!;
 #endif
         /// <summary>

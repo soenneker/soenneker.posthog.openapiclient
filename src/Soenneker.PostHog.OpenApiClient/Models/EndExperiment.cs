@@ -17,11 +17,16 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("conclusion") is { } nullNodeConclusion && nullNodeConclusion.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Conclusion = null;
-            if (parseNode.GetChildNode("conclusion_comment") is { } nullNodeConclusionComment && nullNodeConclusionComment.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ConclusionComment = null;
-            if (parseNode.GetChildNode("open_cleanup_pr") is { } nullNodeOpenCleanupPr && nullNodeOpenCleanupPr.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) OpenCleanupPr = null;
-            if (parseNode.GetChildNode("repository") is { } nullNodeRepository && nullNodeRepository.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Repository = null;
-            if (parseNode.GetChildNode("set_repository_as_team_default") is { } nullNodeSetRepositoryAsTeamDefault && nullNodeSetRepositoryAsTeamDefault.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SetRepositoryAsTeamDefault = null;
+            if (parseNode.GetChildNode("conclusion") is null) { _explicitNullValueConclusion = default!; _explicitNullProperties?.Remove("conclusion"); }
+            else if (parseNode.GetChildNode("conclusion") is { } nullNodeConclusion && nullNodeConclusion.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Conclusion = null;
+            if (parseNode.GetChildNode("conclusion_comment") is null) { _explicitNullValueConclusionComment = default!; _explicitNullProperties?.Remove("conclusion_comment"); }
+            else if (parseNode.GetChildNode("conclusion_comment") is { } nullNodeConclusionComment && nullNodeConclusionComment.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ConclusionComment = null;
+            if (parseNode.GetChildNode("open_cleanup_pr") is null) { _explicitNullValueOpenCleanupPr = default!; _explicitNullProperties?.Remove("open_cleanup_pr"); }
+            else if (parseNode.GetChildNode("open_cleanup_pr") is { } nullNodeOpenCleanupPr && nullNodeOpenCleanupPr.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) OpenCleanupPr = null;
+            if (parseNode.GetChildNode("repository") is null) { _explicitNullValueRepository = default!; _explicitNullProperties?.Remove("repository"); }
+            else if (parseNode.GetChildNode("repository") is { } nullNodeRepository && nullNodeRepository.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Repository = null;
+            if (parseNode.GetChildNode("set_repository_as_team_default") is null) { _explicitNullValueSetRepositoryAsTeamDefault = default!; _explicitNullProperties?.Remove("set_repository_as_team_default"); }
+            else if (parseNode.GetChildNode("set_repository_as_team_default") is { } nullNodeSetRepositoryAsTeamDefault && nullNodeSetRepositoryAsTeamDefault.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SetRepositoryAsTeamDefault = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -29,38 +34,38 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The conclusion of the experiment.* `won` - won* `lost` - lost* `inconclusive` - inconclusive* `stopped_early` - stopped_early* `invalid` - invalid</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.EndExperimentConclusion? Conclusion { get => _explicitNullValueConclusion; set { _explicitNullValueConclusion = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("conclusion"); else _explicitNullProperties?.Remove("conclusion"); } }
+        public global::Soenneker.PostHog.OpenApiClient.Models.EndExperimentConclusion? Conclusion { get => _explicitNullValueConclusion; set { _explicitNullValueConclusion = value; AdditionalData?.Remove("conclusion"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("conclusion"); else _explicitNullProperties?.Remove("conclusion"); } }
         private global::Soenneker.PostHog.OpenApiClient.Models.EndExperimentConclusion? _explicitNullValueConclusion = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.EndExperimentConclusion Conclusion { get => _explicitNullValueConclusion; set { _explicitNullValueConclusion = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("conclusion"); else _explicitNullProperties?.Remove("conclusion"); } }
+        public global::Soenneker.PostHog.OpenApiClient.Models.EndExperimentConclusion Conclusion { get => _explicitNullValueConclusion; set { _explicitNullValueConclusion = value; AdditionalData?.Remove("conclusion"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("conclusion"); else _explicitNullProperties?.Remove("conclusion"); } }
         private global::Soenneker.PostHog.OpenApiClient.Models.EndExperimentConclusion _explicitNullValueConclusion = default!;
 #endif
         /// <summary>Optional comment about the experiment conclusion.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? ConclusionComment { get => _explicitNullValueConclusionComment; set { _explicitNullValueConclusionComment = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("conclusion_comment"); else _explicitNullProperties?.Remove("conclusion_comment"); } }
+        public string? ConclusionComment { get => _explicitNullValueConclusionComment; set { _explicitNullValueConclusionComment = value; AdditionalData?.Remove("conclusion_comment"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("conclusion_comment"); else _explicitNullProperties?.Remove("conclusion_comment"); } }
         private string? _explicitNullValueConclusionComment = default!;
 #nullable restore
 #else
-        public string ConclusionComment { get => _explicitNullValueConclusionComment; set { _explicitNullValueConclusionComment = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("conclusion_comment"); else _explicitNullProperties?.Remove("conclusion_comment"); } }
+        public string ConclusionComment { get => _explicitNullValueConclusionComment; set { _explicitNullValueConclusionComment = value; AdditionalData?.Remove("conclusion_comment"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("conclusion_comment"); else _explicitNullProperties?.Remove("conclusion_comment"); } }
         private string _explicitNullValueConclusionComment = default!;
 #endif
         /// <summary>When true, open a draft pull request that removes the experiment&apos;s feature-flag code from the linked repository. A personal API key needs the task:write scope (403 otherwise). Skipped when the conclusion is empty, or when no connected repository can be resolved.</summary>
-        public bool? OpenCleanupPr { get => _explicitNullValueOpenCleanupPr; set { _explicitNullValueOpenCleanupPr = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("open_cleanup_pr"); else _explicitNullProperties?.Remove("open_cleanup_pr"); } }
+        public bool? OpenCleanupPr { get => _explicitNullValueOpenCleanupPr; set { _explicitNullValueOpenCleanupPr = value; AdditionalData?.Remove("open_cleanup_pr"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("open_cleanup_pr"); else _explicitNullProperties?.Remove("open_cleanup_pr"); } }
         private bool? _explicitNullValueOpenCleanupPr = default!;
         /// <summary>GitHub repository to open the cleanup pull request in, in `organization/repository` format. Only used when open_cleanup_pr is true. It must be one of the team&apos;s connected repositories (see the flag_cleanup_target action); it is then saved as the experiment&apos;s repository. When omitted, the experiment&apos;s saved repository, the team&apos;s default cleanup repository, or the team&apos;s only connected repository is used.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Repository { get => _explicitNullValueRepository; set { _explicitNullValueRepository = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("repository"); else _explicitNullProperties?.Remove("repository"); } }
+        public string? Repository { get => _explicitNullValueRepository; set { _explicitNullValueRepository = value; AdditionalData?.Remove("repository"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("repository"); else _explicitNullProperties?.Remove("repository"); } }
         private string? _explicitNullValueRepository = default!;
 #nullable restore
 #else
-        public string Repository { get => _explicitNullValueRepository; set { _explicitNullValueRepository = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("repository"); else _explicitNullProperties?.Remove("repository"); } }
+        public string Repository { get => _explicitNullValueRepository; set { _explicitNullValueRepository = value; AdditionalData?.Remove("repository"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("repository"); else _explicitNullProperties?.Remove("repository"); } }
         private string _explicitNullValueRepository = default!;
 #endif
         /// <summary>When true, also save `repository` as this environment&apos;s default cleanup repository, used for experiments that have no repository of their own. Only acts when open_cleanup_pr is true and `repository` is provided and belongs to the team&apos;s GitHub installation. Requires project admin access (403 otherwise).</summary>
-        public bool? SetRepositoryAsTeamDefault { get => _explicitNullValueSetRepositoryAsTeamDefault; set { _explicitNullValueSetRepositoryAsTeamDefault = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("set_repository_as_team_default"); else _explicitNullProperties?.Remove("set_repository_as_team_default"); } }
+        public bool? SetRepositoryAsTeamDefault { get => _explicitNullValueSetRepositoryAsTeamDefault; set { _explicitNullValueSetRepositoryAsTeamDefault = value; AdditionalData?.Remove("set_repository_as_team_default"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("set_repository_as_team_default"); else _explicitNullProperties?.Remove("set_repository_as_team_default"); } }
         private bool? _explicitNullValueSetRepositoryAsTeamDefault = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.EndExperiment"/> and sets the default values.

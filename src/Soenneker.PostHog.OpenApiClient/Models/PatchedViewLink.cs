@@ -17,13 +17,20 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("configuration") is { } nullNodeConfiguration && nullNodeConfiguration.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Configuration = null;
-            if (parseNode.GetChildNode("deleted") is { } nullNodeDeleted && nullNodeDeleted.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Deleted = null;
-            if (parseNode.GetChildNode("field_name") is { } nullNodeFieldName && nullNodeFieldName.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) FieldName = null;
-            if (parseNode.GetChildNode("joining_table_key") is { } nullNodeJoiningTableKey && nullNodeJoiningTableKey.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) JoiningTableKey = null;
-            if (parseNode.GetChildNode("joining_table_name") is { } nullNodeJoiningTableName && nullNodeJoiningTableName.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) JoiningTableName = null;
-            if (parseNode.GetChildNode("source_table_key") is { } nullNodeSourceTableKey && nullNodeSourceTableKey.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SourceTableKey = null;
-            if (parseNode.GetChildNode("source_table_name") is { } nullNodeSourceTableName && nullNodeSourceTableName.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SourceTableName = null;
+            if (parseNode.GetChildNode("configuration") is null) { _explicitNullValueConfiguration = default!; _explicitNullProperties?.Remove("configuration"); }
+            else if (parseNode.GetChildNode("configuration") is { } nullNodeConfiguration && nullNodeConfiguration.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Configuration = null;
+            if (parseNode.GetChildNode("deleted") is null) { _explicitNullValueDeleted = default!; _explicitNullProperties?.Remove("deleted"); }
+            else if (parseNode.GetChildNode("deleted") is { } nullNodeDeleted && nullNodeDeleted.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Deleted = null;
+            if (parseNode.GetChildNode("field_name") is null) { _explicitNullValueFieldName = default!; _explicitNullProperties?.Remove("field_name"); }
+            else if (parseNode.GetChildNode("field_name") is { } nullNodeFieldName && nullNodeFieldName.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) FieldName = null;
+            if (parseNode.GetChildNode("joining_table_key") is null) { _explicitNullValueJoiningTableKey = default!; _explicitNullProperties?.Remove("joining_table_key"); }
+            else if (parseNode.GetChildNode("joining_table_key") is { } nullNodeJoiningTableKey && nullNodeJoiningTableKey.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) JoiningTableKey = null;
+            if (parseNode.GetChildNode("joining_table_name") is null) { _explicitNullValueJoiningTableName = default!; _explicitNullProperties?.Remove("joining_table_name"); }
+            else if (parseNode.GetChildNode("joining_table_name") is { } nullNodeJoiningTableName && nullNodeJoiningTableName.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) JoiningTableName = null;
+            if (parseNode.GetChildNode("source_table_key") is null) { _explicitNullValueSourceTableKey = default!; _explicitNullProperties?.Remove("source_table_key"); }
+            else if (parseNode.GetChildNode("source_table_key") is { } nullNodeSourceTableKey && nullNodeSourceTableKey.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SourceTableKey = null;
+            if (parseNode.GetChildNode("source_table_name") is null) { _explicitNullValueSourceTableName = default!; _explicitNullProperties?.Remove("source_table_name"); }
+            else if (parseNode.GetChildNode("source_table_name") is { } nullNodeSourceTableName && nullNodeSourceTableName.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SourceTableName = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -31,11 +38,11 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Optional join configuration, for example experiments optimization flags.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public UntypedNode? Configuration { get => _explicitNullValueConfiguration; set { _explicitNullValueConfiguration = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("configuration"); else _explicitNullProperties?.Remove("configuration"); } }
+        public UntypedNode? Configuration { get => _explicitNullValueConfiguration; set { _explicitNullValueConfiguration = value; AdditionalData?.Remove("configuration"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("configuration"); else _explicitNullProperties?.Remove("configuration"); } }
         private UntypedNode? _explicitNullValueConfiguration = default!;
 #nullable restore
 #else
-        public UntypedNode Configuration { get => _explicitNullValueConfiguration; set { _explicitNullValueConfiguration = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("configuration"); else _explicitNullProperties?.Remove("configuration"); } }
+        public UntypedNode Configuration { get => _explicitNullValueConfiguration; set { _explicitNullValueConfiguration = value; AdditionalData?.Remove("configuration"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("configuration"); else _explicitNullProperties?.Remove("configuration"); } }
         private UntypedNode _explicitNullValueConfiguration = default!;
 #endif
         /// <summary>The created_at property</summary>
@@ -49,16 +56,16 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public global::Soenneker.PostHog.OpenApiClient.Models.PatchedViewLinkCreatedBy CreatedBy { get; private set; }
 #endif
         /// <summary>Whether this join has been soft-deleted.</summary>
-        public bool? Deleted { get => _explicitNullValueDeleted; set { _explicitNullValueDeleted = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("deleted"); else _explicitNullProperties?.Remove("deleted"); } }
+        public bool? Deleted { get => _explicitNullValueDeleted; set { _explicitNullValueDeleted = value; AdditionalData?.Remove("deleted"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("deleted"); else _explicitNullProperties?.Remove("deleted"); } }
         private bool? _explicitNullValueDeleted = default!;
         /// <summary>Accessor added to the source table to reach the joined rows, for example person in events.person.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? FieldName { get => _explicitNullValueFieldName; set { _explicitNullValueFieldName = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("field_name"); else _explicitNullProperties?.Remove("field_name"); } }
+        public string? FieldName { get => _explicitNullValueFieldName; set { _explicitNullValueFieldName = value; AdditionalData?.Remove("field_name"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("field_name"); else _explicitNullProperties?.Remove("field_name"); } }
         private string? _explicitNullValueFieldName = default!;
 #nullable restore
 #else
-        public string FieldName { get => _explicitNullValueFieldName; set { _explicitNullValueFieldName = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("field_name"); else _explicitNullProperties?.Remove("field_name"); } }
+        public string FieldName { get => _explicitNullValueFieldName; set { _explicitNullValueFieldName = value; AdditionalData?.Remove("field_name"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("field_name"); else _explicitNullProperties?.Remove("field_name"); } }
         private string _explicitNullValueFieldName = default!;
 #endif
         /// <summary>The id property</summary>
@@ -66,41 +73,41 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Column or HogQL expression on the joining table used as the join key.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? JoiningTableKey { get => _explicitNullValueJoiningTableKey; set { _explicitNullValueJoiningTableKey = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("joining_table_key"); else _explicitNullProperties?.Remove("joining_table_key"); } }
+        public string? JoiningTableKey { get => _explicitNullValueJoiningTableKey; set { _explicitNullValueJoiningTableKey = value; AdditionalData?.Remove("joining_table_key"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("joining_table_key"); else _explicitNullProperties?.Remove("joining_table_key"); } }
         private string? _explicitNullValueJoiningTableKey = default!;
 #nullable restore
 #else
-        public string JoiningTableKey { get => _explicitNullValueJoiningTableKey; set { _explicitNullValueJoiningTableKey = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("joining_table_key"); else _explicitNullProperties?.Remove("joining_table_key"); } }
+        public string JoiningTableKey { get => _explicitNullValueJoiningTableKey; set { _explicitNullValueJoiningTableKey = value; AdditionalData?.Remove("joining_table_key"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("joining_table_key"); else _explicitNullProperties?.Remove("joining_table_key"); } }
         private string _explicitNullValueJoiningTableKey = default!;
 #endif
         /// <summary>Name of the table or view being joined onto the source table.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? JoiningTableName { get => _explicitNullValueJoiningTableName; set { _explicitNullValueJoiningTableName = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("joining_table_name"); else _explicitNullProperties?.Remove("joining_table_name"); } }
+        public string? JoiningTableName { get => _explicitNullValueJoiningTableName; set { _explicitNullValueJoiningTableName = value; AdditionalData?.Remove("joining_table_name"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("joining_table_name"); else _explicitNullProperties?.Remove("joining_table_name"); } }
         private string? _explicitNullValueJoiningTableName = default!;
 #nullable restore
 #else
-        public string JoiningTableName { get => _explicitNullValueJoiningTableName; set { _explicitNullValueJoiningTableName = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("joining_table_name"); else _explicitNullProperties?.Remove("joining_table_name"); } }
+        public string JoiningTableName { get => _explicitNullValueJoiningTableName; set { _explicitNullValueJoiningTableName = value; AdditionalData?.Remove("joining_table_name"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("joining_table_name"); else _explicitNullProperties?.Remove("joining_table_name"); } }
         private string _explicitNullValueJoiningTableName = default!;
 #endif
         /// <summary>Column or HogQL expression on the source table used as the join key.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? SourceTableKey { get => _explicitNullValueSourceTableKey; set { _explicitNullValueSourceTableKey = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("source_table_key"); else _explicitNullProperties?.Remove("source_table_key"); } }
+        public string? SourceTableKey { get => _explicitNullValueSourceTableKey; set { _explicitNullValueSourceTableKey = value; AdditionalData?.Remove("source_table_key"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("source_table_key"); else _explicitNullProperties?.Remove("source_table_key"); } }
         private string? _explicitNullValueSourceTableKey = default!;
 #nullable restore
 #else
-        public string SourceTableKey { get => _explicitNullValueSourceTableKey; set { _explicitNullValueSourceTableKey = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("source_table_key"); else _explicitNullProperties?.Remove("source_table_key"); } }
+        public string SourceTableKey { get => _explicitNullValueSourceTableKey; set { _explicitNullValueSourceTableKey = value; AdditionalData?.Remove("source_table_key"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("source_table_key"); else _explicitNullProperties?.Remove("source_table_key"); } }
         private string _explicitNullValueSourceTableKey = default!;
 #endif
         /// <summary>Name of the table the join starts from, for example events.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? SourceTableName { get => _explicitNullValueSourceTableName; set { _explicitNullValueSourceTableName = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("source_table_name"); else _explicitNullProperties?.Remove("source_table_name"); } }
+        public string? SourceTableName { get => _explicitNullValueSourceTableName; set { _explicitNullValueSourceTableName = value; AdditionalData?.Remove("source_table_name"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("source_table_name"); else _explicitNullProperties?.Remove("source_table_name"); } }
         private string? _explicitNullValueSourceTableName = default!;
 #nullable restore
 #else
-        public string SourceTableName { get => _explicitNullValueSourceTableName; set { _explicitNullValueSourceTableName = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("source_table_name"); else _explicitNullProperties?.Remove("source_table_name"); } }
+        public string SourceTableName { get => _explicitNullValueSourceTableName; set { _explicitNullValueSourceTableName = value; AdditionalData?.Remove("source_table_name"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("source_table_name"); else _explicitNullProperties?.Remove("source_table_name"); } }
         private string _explicitNullValueSourceTableName = default!;
 #endif
         /// <summary>

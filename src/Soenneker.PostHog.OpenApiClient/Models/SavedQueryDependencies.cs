@@ -17,17 +17,19 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("downstream_count") is { } nullNodeDownstreamCount && nullNodeDownstreamCount.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) DownstreamCount = null;
-            if (parseNode.GetChildNode("upstream_count") is { } nullNodeUpstreamCount && nullNodeUpstreamCount.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) UpstreamCount = null;
+            if (parseNode.GetChildNode("downstream_count") is null) { _explicitNullValueDownstreamCount = default!; _explicitNullProperties?.Remove("downstream_count"); }
+            else if (parseNode.GetChildNode("downstream_count") is { } nullNodeDownstreamCount && nullNodeDownstreamCount.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) DownstreamCount = null;
+            if (parseNode.GetChildNode("upstream_count") is null) { _explicitNullValueUpstreamCount = default!; _explicitNullProperties?.Remove("upstream_count"); }
+            else if (parseNode.GetChildNode("upstream_count") is { } nullNodeUpstreamCount && nullNodeUpstreamCount.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) UpstreamCount = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>How many queries read from this query directly.</summary>
-        public int? DownstreamCount { get => _explicitNullValueDownstreamCount; set { _explicitNullValueDownstreamCount = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("downstream_count"); else _explicitNullProperties?.Remove("downstream_count"); } }
+        public int? DownstreamCount { get => _explicitNullValueDownstreamCount; set { _explicitNullValueDownstreamCount = value; AdditionalData?.Remove("downstream_count"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("downstream_count"); else _explicitNullProperties?.Remove("downstream_count"); } }
         private int? _explicitNullValueDownstreamCount = default!;
         /// <summary>How many tables and queries this query reads from directly.</summary>
-        public int? UpstreamCount { get => _explicitNullValueUpstreamCount; set { _explicitNullValueUpstreamCount = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("upstream_count"); else _explicitNullProperties?.Remove("upstream_count"); } }
+        public int? UpstreamCount { get => _explicitNullValueUpstreamCount; set { _explicitNullValueUpstreamCount = value; AdditionalData?.Remove("upstream_count"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("upstream_count"); else _explicitNullProperties?.Remove("upstream_count"); } }
         private int? _explicitNullValueUpstreamCount = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.SavedQueryDependencies"/> and sets the default values.

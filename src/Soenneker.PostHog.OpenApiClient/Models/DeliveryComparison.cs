@@ -17,15 +17,24 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("author") is { } nullNodeAuthor && nullNodeAuthor.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Author = null;
-            if (parseNode.GetChildNode("author_medians") is { } nullNodeAuthorMedians && nullNodeAuthorMedians.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AuthorMedians = null;
-            if (parseNode.GetChildNode("has_membership_data") is { } nullNodeHasMembershipData && nullNodeHasMembershipData.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) HasMembershipData = null;
-            if (parseNode.GetChildNode("pull_request") is { } nullNodePullRequest && nullNodePullRequest.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) PullRequest = null;
-            if (parseNode.GetChildNode("ready_data_available") is { } nullNodeReadyDataAvailable && nullNodeReadyDataAvailable.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ReadyDataAvailable = null;
-            if (parseNode.GetChildNode("repo_medians") is { } nullNodeRepoMedians && nullNodeRepoMedians.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) RepoMedians = null;
-            if (parseNode.GetChildNode("review_data_available") is { } nullNodeReviewDataAvailable && nullNodeReviewDataAvailable.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ReviewDataAvailable = null;
-            if (parseNode.GetChildNode("team_basis") is { } nullNodeTeamBasis && nullNodeTeamBasis.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TeamBasis = null;
-            if (parseNode.GetChildNode("teams") is { } nullNodeTeams && nullNodeTeams.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Teams = null;
+            if (parseNode.GetChildNode("author") is null) { _explicitNullValueAuthor = default!; _explicitNullProperties?.Remove("author"); }
+            else if (parseNode.GetChildNode("author") is { } nullNodeAuthor && nullNodeAuthor.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Author = null;
+            if (parseNode.GetChildNode("author_medians") is null) { _explicitNullValueAuthorMedians = default!; _explicitNullProperties?.Remove("author_medians"); }
+            else if (parseNode.GetChildNode("author_medians") is { } nullNodeAuthorMedians && nullNodeAuthorMedians.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AuthorMedians = null;
+            if (parseNode.GetChildNode("has_membership_data") is null) { _explicitNullValueHasMembershipData = default!; _explicitNullProperties?.Remove("has_membership_data"); }
+            else if (parseNode.GetChildNode("has_membership_data") is { } nullNodeHasMembershipData && nullNodeHasMembershipData.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) HasMembershipData = null;
+            if (parseNode.GetChildNode("pull_request") is null) { _explicitNullValuePullRequest = default!; _explicitNullProperties?.Remove("pull_request"); }
+            else if (parseNode.GetChildNode("pull_request") is { } nullNodePullRequest && nullNodePullRequest.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) PullRequest = null;
+            if (parseNode.GetChildNode("ready_data_available") is null) { _explicitNullValueReadyDataAvailable = default!; _explicitNullProperties?.Remove("ready_data_available"); }
+            else if (parseNode.GetChildNode("ready_data_available") is { } nullNodeReadyDataAvailable && nullNodeReadyDataAvailable.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ReadyDataAvailable = null;
+            if (parseNode.GetChildNode("repo_medians") is null) { _explicitNullValueRepoMedians = default!; _explicitNullProperties?.Remove("repo_medians"); }
+            else if (parseNode.GetChildNode("repo_medians") is { } nullNodeRepoMedians && nullNodeRepoMedians.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) RepoMedians = null;
+            if (parseNode.GetChildNode("review_data_available") is null) { _explicitNullValueReviewDataAvailable = default!; _explicitNullProperties?.Remove("review_data_available"); }
+            else if (parseNode.GetChildNode("review_data_available") is { } nullNodeReviewDataAvailable && nullNodeReviewDataAvailable.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ReviewDataAvailable = null;
+            if (parseNode.GetChildNode("team_basis") is null) { _explicitNullValueTeamBasis = default!; _explicitNullProperties?.Remove("team_basis"); }
+            else if (parseNode.GetChildNode("team_basis") is { } nullNodeTeamBasis && nullNodeTeamBasis.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TeamBasis = null;
+            if (parseNode.GetChildNode("teams") is null) { _explicitNullValueTeams = default!; _explicitNullProperties?.Remove("teams"); }
+            else if (parseNode.GetChildNode("teams") is { } nullNodeTeams && nullNodeTeams.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Teams = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -33,63 +42,63 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The GitHub login the comparison is for.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Author { get => _explicitNullValueAuthor; set { _explicitNullValueAuthor = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("author"); else _explicitNullProperties?.Remove("author"); } }
+        public string? Author { get => _explicitNullValueAuthor; set { _explicitNullValueAuthor = value; AdditionalData?.Remove("author"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("author"); else _explicitNullProperties?.Remove("author"); } }
         private string? _explicitNullValueAuthor = default!;
 #nullable restore
 #else
-        public string Author { get => _explicitNullValueAuthor; set { _explicitNullValueAuthor = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("author"); else _explicitNullProperties?.Remove("author"); } }
+        public string Author { get => _explicitNullValueAuthor; set { _explicitNullValueAuthor = value; AdditionalData?.Remove("author"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("author"); else _explicitNullProperties?.Remove("author"); } }
         private string _explicitNullValueAuthor = default!;
 #endif
         /// <summary>Over the author&apos;s pull requests, without the pr_number pull request.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.DeliveryComparisonAuthorMedians? AuthorMedians { get => _explicitNullValueAuthorMedians; set { _explicitNullValueAuthorMedians = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("author_medians"); else _explicitNullProperties?.Remove("author_medians"); } }
+        public global::Soenneker.PostHog.OpenApiClient.Models.DeliveryComparisonAuthorMedians? AuthorMedians { get => _explicitNullValueAuthorMedians; set { _explicitNullValueAuthorMedians = value; AdditionalData?.Remove("author_medians"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("author_medians"); else _explicitNullProperties?.Remove("author_medians"); } }
         private global::Soenneker.PostHog.OpenApiClient.Models.DeliveryComparisonAuthorMedians? _explicitNullValueAuthorMedians = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.DeliveryComparisonAuthorMedians AuthorMedians { get => _explicitNullValueAuthorMedians; set { _explicitNullValueAuthorMedians = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("author_medians"); else _explicitNullProperties?.Remove("author_medians"); } }
+        public global::Soenneker.PostHog.OpenApiClient.Models.DeliveryComparisonAuthorMedians AuthorMedians { get => _explicitNullValueAuthorMedians; set { _explicitNullValueAuthorMedians = value; AdditionalData?.Remove("author_medians"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("author_medians"); else _explicitNullProperties?.Remove("author_medians"); } }
         private global::Soenneker.PostHog.OpenApiClient.Models.DeliveryComparisonAuthorMedians _explicitNullValueAuthorMedians = default!;
 #endif
         /// <summary>True when the team membership table is synced. Without it, team_basis is no_team.</summary>
-        public bool? HasMembershipData { get => _explicitNullValueHasMembershipData; set { _explicitNullValueHasMembershipData = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("has_membership_data"); else _explicitNullProperties?.Remove("has_membership_data"); } }
+        public bool? HasMembershipData { get => _explicitNullValueHasMembershipData; set { _explicitNullValueHasMembershipData = value; AdditionalData?.Remove("has_membership_data"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("has_membership_data"); else _explicitNullProperties?.Remove("has_membership_data"); } }
         private bool? _explicitNullValueHasMembershipData = default!;
         /// <summary>The pr_number pull request measured the same way, when it merged in the window. Null otherwise.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.PullRequestReadyToMerge? PullRequest { get => _explicitNullValuePullRequest; set { _explicitNullValuePullRequest = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("pull_request"); else _explicitNullProperties?.Remove("pull_request"); } }
+        public global::Soenneker.PostHog.OpenApiClient.Models.PullRequestReadyToMerge? PullRequest { get => _explicitNullValuePullRequest; set { _explicitNullValuePullRequest = value; AdditionalData?.Remove("pull_request"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("pull_request"); else _explicitNullProperties?.Remove("pull_request"); } }
         private global::Soenneker.PostHog.OpenApiClient.Models.PullRequestReadyToMerge? _explicitNullValuePullRequest = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.PullRequestReadyToMerge PullRequest { get => _explicitNullValuePullRequest; set { _explicitNullValuePullRequest = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("pull_request"); else _explicitNullProperties?.Remove("pull_request"); } }
+        public global::Soenneker.PostHog.OpenApiClient.Models.PullRequestReadyToMerge PullRequest { get => _explicitNullValuePullRequest; set { _explicitNullValuePullRequest = value; AdditionalData?.Remove("pull_request"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("pull_request"); else _explicitNullProperties?.Remove("pull_request"); } }
         private global::Soenneker.PostHog.OpenApiClient.Models.PullRequestReadyToMerge _explicitNullValuePullRequest = default!;
 #endif
         /// <summary>False when issue events aren&apos;t synced: the ready-to-merge medians are then null.</summary>
-        public bool? ReadyDataAvailable { get => _explicitNullValueReadyDataAvailable; set { _explicitNullValueReadyDataAvailable = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("ready_data_available"); else _explicitNullProperties?.Remove("ready_data_available"); } }
+        public bool? ReadyDataAvailable { get => _explicitNullValueReadyDataAvailable; set { _explicitNullValueReadyDataAvailable = value; AdditionalData?.Remove("ready_data_available"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("ready_data_available"); else _explicitNullProperties?.Remove("ready_data_available"); } }
         private bool? _explicitNullValueReadyDataAvailable = default!;
         /// <summary>Over every non-bot pull request in the repository, the author&apos;s included and the pr_number pull request left out.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.DeliveryComparisonRepoMedians? RepoMedians { get => _explicitNullValueRepoMedians; set { _explicitNullValueRepoMedians = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("repo_medians"); else _explicitNullProperties?.Remove("repo_medians"); } }
+        public global::Soenneker.PostHog.OpenApiClient.Models.DeliveryComparisonRepoMedians? RepoMedians { get => _explicitNullValueRepoMedians; set { _explicitNullValueRepoMedians = value; AdditionalData?.Remove("repo_medians"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("repo_medians"); else _explicitNullProperties?.Remove("repo_medians"); } }
         private global::Soenneker.PostHog.OpenApiClient.Models.DeliveryComparisonRepoMedians? _explicitNullValueRepoMedians = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.DeliveryComparisonRepoMedians RepoMedians { get => _explicitNullValueRepoMedians; set { _explicitNullValueRepoMedians = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("repo_medians"); else _explicitNullProperties?.Remove("repo_medians"); } }
+        public global::Soenneker.PostHog.OpenApiClient.Models.DeliveryComparisonRepoMedians RepoMedians { get => _explicitNullValueRepoMedians; set { _explicitNullValueRepoMedians = value; AdditionalData?.Remove("repo_medians"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("repo_medians"); else _explicitNullProperties?.Remove("repo_medians"); } }
         private global::Soenneker.PostHog.OpenApiClient.Models.DeliveryComparisonRepoMedians _explicitNullValueRepoMedians = default!;
 #endif
         /// <summary>False when reviews aren&apos;t synced: the approval medians are then null.</summary>
-        public bool? ReviewDataAvailable { get => _explicitNullValueReviewDataAvailable; set { _explicitNullValueReviewDataAvailable = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("review_data_available"); else _explicitNullProperties?.Remove("review_data_available"); } }
+        public bool? ReviewDataAvailable { get => _explicitNullValueReviewDataAvailable; set { _explicitNullValueReviewDataAvailable = value; AdditionalData?.Remove("review_data_available"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("review_data_available"); else _explicitNullProperties?.Remove("review_data_available"); } }
         private bool? _explicitNullValueReviewDataAvailable = default!;
         /// <summary>* `pull_request` - Pull Request* `review_requests` - Review Requests* `only_team` - Only Team* `all_teams` - All Teams* `no_team` - No Team</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.DeliveryComparisonTeamBasis? TeamBasis { get => _explicitNullValueTeamBasis; set { _explicitNullValueTeamBasis = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("team_basis"); else _explicitNullProperties?.Remove("team_basis"); } }
+        public global::Soenneker.PostHog.OpenApiClient.Models.DeliveryComparisonTeamBasis? TeamBasis { get => _explicitNullValueTeamBasis; set { _explicitNullValueTeamBasis = value; AdditionalData?.Remove("team_basis"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("team_basis"); else _explicitNullProperties?.Remove("team_basis"); } }
         private global::Soenneker.PostHog.OpenApiClient.Models.DeliveryComparisonTeamBasis? _explicitNullValueTeamBasis = default!;
         /// <summary>The author&apos;s teams that team_basis picked, sorted by slug. Empty for no_team.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.TeamReadyToMergeMedians>? Teams { get => _explicitNullValueTeams; set { _explicitNullValueTeams = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("teams"); else _explicitNullProperties?.Remove("teams"); } }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.TeamReadyToMergeMedians>? Teams { get => _explicitNullValueTeams; set { _explicitNullValueTeams = value; AdditionalData?.Remove("teams"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("teams"); else _explicitNullProperties?.Remove("teams"); } }
         private List<global::Soenneker.PostHog.OpenApiClient.Models.TeamReadyToMergeMedians>? _explicitNullValueTeams = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.TeamReadyToMergeMedians> Teams { get => _explicitNullValueTeams; set { _explicitNullValueTeams = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("teams"); else _explicitNullProperties?.Remove("teams"); } }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.TeamReadyToMergeMedians> Teams { get => _explicitNullValueTeams; set { _explicitNullValueTeams = value; AdditionalData?.Remove("teams"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("teams"); else _explicitNullProperties?.Remove("teams"); } }
         private List<global::Soenneker.PostHog.OpenApiClient.Models.TeamReadyToMergeMedians> _explicitNullValueTeams = default!;
 #endif
         /// <summary>
@@ -124,7 +133,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "ready_data_available", n => { ReadyDataAvailable = n.GetBoolValue(); } },
                 { "repo_medians", n => { RepoMedians = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DeliveryComparisonRepoMedians>(global::Soenneker.PostHog.OpenApiClient.Models.DeliveryComparisonRepoMedians.CreateFromDiscriminatorValue); } },
                 { "review_data_available", n => { ReviewDataAvailable = n.GetBoolValue(); } },
-                { "team_basis", n => { TeamBasis = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.DeliveryComparisonTeamBasis>(); } },
+                { "team_basis", n => { var parsed = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.DeliveryComparisonTeamBasis>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValueTeamBasis = default; _explicitNullProperties?.Remove("team_basis"); AdditionalData["team_basis"] = unknown; } else { TeamBasis = parsed; AdditionalData.Remove("team_basis"); } } },
                 { "teams", n => { Teams = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.TeamReadyToMergeMedians>(global::Soenneker.PostHog.OpenApiClient.Models.TeamReadyToMergeMedians.CreateFromDiscriminatorValue)?.AsList(); } },
             };
         }

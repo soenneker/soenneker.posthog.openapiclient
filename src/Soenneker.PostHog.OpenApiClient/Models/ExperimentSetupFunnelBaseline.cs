@@ -17,28 +17,31 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("number_of_samples") is { } nullNodeNumberOfSamples && nullNodeNumberOfSamples.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) NumberOfSamples = null;
-            if (parseNode.GetChildNode("step_counts") is { } nullNodeStepCounts && nullNodeStepCounts.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) StepCounts = null;
-            if (parseNode.GetChildNode("sum") is { } nullNodeSum && nullNodeSum.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Sum = null;
+            if (parseNode.GetChildNode("number_of_samples") is null) { _explicitNullValueNumberOfSamples = default!; _explicitNullProperties?.Remove("number_of_samples"); }
+            else if (parseNode.GetChildNode("number_of_samples") is { } nullNodeNumberOfSamples && nullNodeNumberOfSamples.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) NumberOfSamples = null;
+            if (parseNode.GetChildNode("step_counts") is null) { _explicitNullValueStepCounts = default!; _explicitNullProperties?.Remove("step_counts"); }
+            else if (parseNode.GetChildNode("step_counts") is { } nullNodeStepCounts && nullNodeStepCounts.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) StepCounts = null;
+            if (parseNode.GetChildNode("sum") is null) { _explicitNullValueSum = default!; _explicitNullProperties?.Remove("sum"); }
+            else if (parseNode.GetChildNode("sum") is { } nullNodeSum && nullNodeSum.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Sum = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Persons who reached the target.</summary>
-        public int? NumberOfSamples { get => _explicitNullValueNumberOfSamples; set { _explicitNullValueNumberOfSamples = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("number_of_samples"); else _explicitNullProperties?.Remove("number_of_samples"); } }
+        public int? NumberOfSamples { get => _explicitNullValueNumberOfSamples; set { _explicitNullValueNumberOfSamples = value; AdditionalData?.Remove("number_of_samples"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("number_of_samples"); else _explicitNullProperties?.Remove("number_of_samples"); } }
         private int? _explicitNullValueNumberOfSamples = default!;
         /// <summary>One entry: the persons who converted.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<double?>? StepCounts { get => _explicitNullValueStepCounts; set { _explicitNullValueStepCounts = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("step_counts"); else _explicitNullProperties?.Remove("step_counts"); } }
+        public List<double?>? StepCounts { get => _explicitNullValueStepCounts; set { _explicitNullValueStepCounts = value; AdditionalData?.Remove("step_counts"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("step_counts"); else _explicitNullProperties?.Remove("step_counts"); } }
         private List<double?>? _explicitNullValueStepCounts = default!;
 #nullable restore
 #else
-        public List<double?> StepCounts { get => _explicitNullValueStepCounts; set { _explicitNullValueStepCounts = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("step_counts"); else _explicitNullProperties?.Remove("step_counts"); } }
+        public List<double?> StepCounts { get => _explicitNullValueStepCounts; set { _explicitNullValueStepCounts = value; AdditionalData?.Remove("step_counts"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("step_counts"); else _explicitNullProperties?.Remove("step_counts"); } }
         private List<double?> _explicitNullValueStepCounts = default!;
 #endif
         /// <summary>Persons who converted.</summary>
-        public double? Sum { get => _explicitNullValueSum; set { _explicitNullValueSum = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("sum"); else _explicitNullProperties?.Remove("sum"); } }
+        public double? Sum { get => _explicitNullValueSum; set { _explicitNullValueSum = value; AdditionalData?.Remove("sum"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("sum"); else _explicitNullProperties?.Remove("sum"); } }
         private double? _explicitNullValueSum = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ExperimentSetupFunnelBaseline"/> and sets the default values.

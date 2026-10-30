@@ -17,8 +17,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("github_team") is { } nullNodeGithubTeam && nullNodeGithubTeam.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) GithubTeam = null;
-            if (parseNode.GetChildNode("medians") is { } nullNodeMedians && nullNodeMedians.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Medians = null;
+            if (parseNode.GetChildNode("github_team") is null) { _explicitNullValueGithubTeam = default!; _explicitNullProperties?.Remove("github_team"); }
+            else if (parseNode.GetChildNode("github_team") is { } nullNodeGithubTeam && nullNodeGithubTeam.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) GithubTeam = null;
+            if (parseNode.GetChildNode("medians") is null) { _explicitNullValueMedians = default!; _explicitNullProperties?.Remove("medians"); }
+            else if (parseNode.GetChildNode("medians") is { } nullNodeMedians && nullNodeMedians.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Medians = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -26,21 +28,21 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The GitHub team slug.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? GithubTeam { get => _explicitNullValueGithubTeam; set { _explicitNullValueGithubTeam = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("github_team"); else _explicitNullProperties?.Remove("github_team"); } }
+        public string? GithubTeam { get => _explicitNullValueGithubTeam; set { _explicitNullValueGithubTeam = value; AdditionalData?.Remove("github_team"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("github_team"); else _explicitNullProperties?.Remove("github_team"); } }
         private string? _explicitNullValueGithubTeam = default!;
 #nullable restore
 #else
-        public string GithubTeam { get => _explicitNullValueGithubTeam; set { _explicitNullValueGithubTeam = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("github_team"); else _explicitNullProperties?.Remove("github_team"); } }
+        public string GithubTeam { get => _explicitNullValueGithubTeam; set { _explicitNullValueGithubTeam = value; AdditionalData?.Remove("github_team"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("github_team"); else _explicitNullProperties?.Remove("github_team"); } }
         private string _explicitNullValueGithubTeam = default!;
 #endif
         /// <summary>Over the pull requests by the team&apos;s members, the same population as a github_team scope, without the pr_number pull request. Null when fewer than three other authors contribute a ready time, because the author could read a teammate&apos;s value back from the median. The approval medians are null on the same terms for approvals.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.ReadyToMergeMedians? Medians { get => _explicitNullValueMedians; set { _explicitNullValueMedians = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("medians"); else _explicitNullProperties?.Remove("medians"); } }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ReadyToMergeMedians? Medians { get => _explicitNullValueMedians; set { _explicitNullValueMedians = value; AdditionalData?.Remove("medians"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("medians"); else _explicitNullProperties?.Remove("medians"); } }
         private global::Soenneker.PostHog.OpenApiClient.Models.ReadyToMergeMedians? _explicitNullValueMedians = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ReadyToMergeMedians Medians { get => _explicitNullValueMedians; set { _explicitNullValueMedians = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("medians"); else _explicitNullProperties?.Remove("medians"); } }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ReadyToMergeMedians Medians { get => _explicitNullValueMedians; set { _explicitNullValueMedians = value; AdditionalData?.Remove("medians"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("medians"); else _explicitNullProperties?.Remove("medians"); } }
         private global::Soenneker.PostHog.OpenApiClient.Models.ReadyToMergeMedians _explicitNullValueMedians = default!;
 #endif
         /// <summary>

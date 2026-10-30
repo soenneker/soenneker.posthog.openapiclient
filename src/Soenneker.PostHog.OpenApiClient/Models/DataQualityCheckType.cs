@@ -18,10 +18,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("check_type") is { } nullNodeCheckType && nullNodeCheckType.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CheckType = null;
-            if (parseNode.GetChildNode("config_schema") is { } nullNodeConfigSchema && nullNodeConfigSchema.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ConfigSchema = null;
-            if (parseNode.GetChildNode("description") is { } nullNodeDescription && nullNodeDescription.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Description = null;
-            if (parseNode.GetChildNode("requires_column") is { } nullNodeRequiresColumn && nullNodeRequiresColumn.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) RequiresColumn = null;
+            if (parseNode.GetChildNode("check_type") is null) { _explicitNullValueCheckType = default!; _explicitNullProperties?.Remove("check_type"); }
+            else if (parseNode.GetChildNode("check_type") is { } nullNodeCheckType && nullNodeCheckType.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CheckType = null;
+            if (parseNode.GetChildNode("config_schema") is null) { _explicitNullValueConfigSchema = default!; _explicitNullProperties?.Remove("config_schema"); }
+            else if (parseNode.GetChildNode("config_schema") is { } nullNodeConfigSchema && nullNodeConfigSchema.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ConfigSchema = null;
+            if (parseNode.GetChildNode("description") is null) { _explicitNullValueDescription = default!; _explicitNullProperties?.Remove("description"); }
+            else if (parseNode.GetChildNode("description") is { } nullNodeDescription && nullNodeDescription.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Description = null;
+            if (parseNode.GetChildNode("requires_column") is null) { _explicitNullValueRequiresColumn = default!; _explicitNullProperties?.Remove("requires_column"); }
+            else if (parseNode.GetChildNode("requires_column") is { } nullNodeRequiresColumn && nullNodeRequiresColumn.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) RequiresColumn = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -29,35 +33,35 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Value to pass as check_type.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? CheckType { get => _explicitNullValueCheckType; set { _explicitNullValueCheckType = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("check_type"); else _explicitNullProperties?.Remove("check_type"); } }
+        public string? CheckType { get => _explicitNullValueCheckType; set { _explicitNullValueCheckType = value; AdditionalData?.Remove("check_type"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("check_type"); else _explicitNullProperties?.Remove("check_type"); } }
         private string? _explicitNullValueCheckType = default!;
 #nullable restore
 #else
-        public string CheckType { get => _explicitNullValueCheckType; set { _explicitNullValueCheckType = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("check_type"); else _explicitNullProperties?.Remove("check_type"); } }
+        public string CheckType { get => _explicitNullValueCheckType; set { _explicitNullValueCheckType = value; AdditionalData?.Remove("check_type"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("check_type"); else _explicitNullProperties?.Remove("check_type"); } }
         private string _explicitNullValueCheckType = default!;
 #endif
         /// <summary>JSON schema the config object is validated against.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.DataQualityCheckTypeConfigSchemaProperty? ConfigSchema { get => _explicitNullValueConfigSchema; set { _explicitNullValueConfigSchema = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("config_schema"); else _explicitNullProperties?.Remove("config_schema"); } }
+        public global::Soenneker.PostHog.OpenApiClient.Models.DataQualityCheckTypeConfigSchemaProperty? ConfigSchema { get => _explicitNullValueConfigSchema; set { _explicitNullValueConfigSchema = value; AdditionalData?.Remove("config_schema"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("config_schema"); else _explicitNullProperties?.Remove("config_schema"); } }
         private global::Soenneker.PostHog.OpenApiClient.Models.DataQualityCheckTypeConfigSchemaProperty? _explicitNullValueConfigSchema = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.DataQualityCheckTypeConfigSchemaProperty ConfigSchema { get => _explicitNullValueConfigSchema; set { _explicitNullValueConfigSchema = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("config_schema"); else _explicitNullProperties?.Remove("config_schema"); } }
+        public global::Soenneker.PostHog.OpenApiClient.Models.DataQualityCheckTypeConfigSchemaProperty ConfigSchema { get => _explicitNullValueConfigSchema; set { _explicitNullValueConfigSchema = value; AdditionalData?.Remove("config_schema"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("config_schema"); else _explicitNullProperties?.Remove("config_schema"); } }
         private global::Soenneker.PostHog.OpenApiClient.Models.DataQualityCheckTypeConfigSchemaProperty _explicitNullValueConfigSchema = default!;
 #endif
         /// <summary>What the check asserts and what counts as a failure.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Description { get => _explicitNullValueDescription; set { _explicitNullValueDescription = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("description"); else _explicitNullProperties?.Remove("description"); } }
+        public string? Description { get => _explicitNullValueDescription; set { _explicitNullValueDescription = value; AdditionalData?.Remove("description"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("description"); else _explicitNullProperties?.Remove("description"); } }
         private string? _explicitNullValueDescription = default!;
 #nullable restore
 #else
-        public string Description { get => _explicitNullValueDescription; set { _explicitNullValueDescription = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("description"); else _explicitNullProperties?.Remove("description"); } }
+        public string Description { get => _explicitNullValueDescription; set { _explicitNullValueDescription = value; AdditionalData?.Remove("description"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("description"); else _explicitNullProperties?.Remove("description"); } }
         private string _explicitNullValueDescription = default!;
 #endif
         /// <summary>Whether column_name must be set for this type.</summary>
-        public bool? RequiresColumn { get => _explicitNullValueRequiresColumn; set { _explicitNullValueRequiresColumn = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("requires_column"); else _explicitNullProperties?.Remove("requires_column"); } }
+        public bool? RequiresColumn { get => _explicitNullValueRequiresColumn; set { _explicitNullValueRequiresColumn = value; AdditionalData?.Remove("requires_column"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("requires_column"); else _explicitNullProperties?.Remove("requires_column"); } }
         private bool? _explicitNullValueRequiresColumn = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.DataQualityCheckType"/> and sets the default values.

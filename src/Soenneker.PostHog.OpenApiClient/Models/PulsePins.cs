@@ -17,7 +17,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("pins") is { } nullNodePins && nullNodePins.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Pins = null;
+            if (parseNode.GetChildNode("pins") is null) { _explicitNullValuePins = default!; _explicitNullProperties?.Remove("pins"); }
+            else if (parseNode.GetChildNode("pins") is { } nullNodePins && nullNodePins.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Pins = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -25,11 +26,11 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Numbers the person keeps at the start of the key numbers, in order. Suggestions fill the free places. Only the first 4 distinct keys are kept. At most 20 entries.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.PulsePin>? Pins { get => _explicitNullValuePins; set { _explicitNullValuePins = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("pins"); else _explicitNullProperties?.Remove("pins"); } }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.PulsePin>? Pins { get => _explicitNullValuePins; set { _explicitNullValuePins = value; AdditionalData?.Remove("pins"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("pins"); else _explicitNullProperties?.Remove("pins"); } }
         private List<global::Soenneker.PostHog.OpenApiClient.Models.PulsePin>? _explicitNullValuePins = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.PulsePin> Pins { get => _explicitNullValuePins; set { _explicitNullValuePins = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("pins"); else _explicitNullProperties?.Remove("pins"); } }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.PulsePin> Pins { get => _explicitNullValuePins; set { _explicitNullValuePins = value; AdditionalData?.Remove("pins"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("pins"); else _explicitNullProperties?.Remove("pins"); } }
         private List<global::Soenneker.PostHog.OpenApiClient.Models.PulsePin> _explicitNullValuePins = default!;
 #endif
         /// <summary>

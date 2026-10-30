@@ -17,28 +17,31 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("model_count") is { } nullNodeModelCount && nullNodeModelCount.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ModelCount = null;
-            if (parseNode.GetChildNode("provider") is { } nullNodeProvider && nullNodeProvider.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Provider = null;
-            if (parseNode.GetChildNode("requires_provider_key") is { } nullNodeRequiresProviderKey && nullNodeRequiresProviderKey.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) RequiresProviderKey = null;
+            if (parseNode.GetChildNode("model_count") is null) { _explicitNullValueModelCount = default!; _explicitNullProperties?.Remove("model_count"); }
+            else if (parseNode.GetChildNode("model_count") is { } nullNodeModelCount && nullNodeModelCount.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ModelCount = null;
+            if (parseNode.GetChildNode("provider") is null) { _explicitNullValueProvider = default!; _explicitNullProperties?.Remove("provider"); }
+            else if (parseNode.GetChildNode("provider") is { } nullNodeProvider && nullNodeProvider.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Provider = null;
+            if (parseNode.GetChildNode("requires_provider_key") is null) { _explicitNullValueRequiresProviderKey = default!; _explicitNullProperties?.Remove("requires_provider_key"); }
+            else if (parseNode.GetChildNode("requires_provider_key") is { } nullNodeRequiresProviderKey && nullNodeRequiresProviderKey.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) RequiresProviderKey = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>How many of this provider&apos;s models appear in `models`.</summary>
-        public int? ModelCount { get => _explicitNullValueModelCount; set { _explicitNullValueModelCount = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("model_count"); else _explicitNullProperties?.Remove("model_count"); } }
+        public int? ModelCount { get => _explicitNullValueModelCount; set { _explicitNullValueModelCount = value; AdditionalData?.Remove("model_count"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("model_count"); else _explicitNullProperties?.Remove("model_count"); } }
         private int? _explicitNullValueModelCount = default!;
         /// <summary>Supported provider value, exactly as the `provider` param accepts it.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Provider { get => _explicitNullValueProvider; set { _explicitNullValueProvider = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("provider"); else _explicitNullProperties?.Remove("provider"); } }
+        public string? Provider { get => _explicitNullValueProvider; set { _explicitNullValueProvider = value; AdditionalData?.Remove("provider"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("provider"); else _explicitNullProperties?.Remove("provider"); } }
         private string? _explicitNullValueProvider = default!;
 #nullable restore
 #else
-        public string Provider { get => _explicitNullValueProvider; set { _explicitNullValueProvider = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("provider"); else _explicitNullProperties?.Remove("provider"); } }
+        public string Provider { get => _explicitNullValueProvider; set { _explicitNullValueProvider = value; AdditionalData?.Remove("provider"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("provider"); else _explicitNullProperties?.Remove("provider"); } }
         private string _explicitNullValueProvider = default!;
 #endif
         /// <summary>True when this provider&apos;s models can only be listed by passing `key_id` for one of the team&apos;s provider keys, so `model_count` is 0 until a key is supplied. False means PostHog funds some of the provider&apos;s models in the playground. LLM-judge evaluations and LLM taggers always run on one of the team&apos;s own provider keys, whatever this value is.</summary>
-        public bool? RequiresProviderKey { get => _explicitNullValueRequiresProviderKey; set { _explicitNullValueRequiresProviderKey = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("requires_provider_key"); else _explicitNullProperties?.Remove("requires_provider_key"); } }
+        public bool? RequiresProviderKey { get => _explicitNullValueRequiresProviderKey; set { _explicitNullValueRequiresProviderKey = value; AdditionalData?.Remove("requires_provider_key"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("requires_provider_key"); else _explicitNullProperties?.Remove("requires_provider_key"); } }
         private bool? _explicitNullValueRequiresProviderKey = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.LlmProviderModelsSummary"/> and sets the default values.

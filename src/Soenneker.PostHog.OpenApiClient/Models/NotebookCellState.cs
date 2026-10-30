@@ -17,17 +17,28 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("cell_type") is { } nullNodeCellType && nullNodeCellType.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CellType = null;
-            if (parseNode.GetChildNode("code") is { } nullNodeCode && nullNodeCode.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Code = null;
-            if (parseNode.GetChildNode("dataframe_name") is { } nullNodeDataframeName && nullNodeDataframeName.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) DataframeName = null;
-            if (parseNode.GetChildNode("dependents") is { } nullNodeDependents && nullNodeDependents.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Dependents = null;
-            if (parseNode.GetChildNode("depends_on") is { } nullNodeDependsOn && nullNodeDependsOn.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) DependsOn = null;
-            if (parseNode.GetChildNode("end") is { } nullNodeEnd && nullNodeEnd.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) End = null;
-            if (parseNode.GetChildNode("last_run") is { } nullNodeLastRun && nullNodeLastRun.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) LastRun = null;
-            if (parseNode.GetChildNode("node_id") is { } nullNodeNodeId && nullNodeNodeId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) NodeId = null;
-            if (parseNode.GetChildNode("start") is { } nullNodeStart && nullNodeStart.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Start = null;
-            if (parseNode.GetChildNode("status") is { } nullNodeStatus && nullNodeStatus.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Status = null;
-            if (parseNode.GetChildNode("visualization") is { } nullNodeVisualization && nullNodeVisualization.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Visualization = null;
+            if (parseNode.GetChildNode("cell_type") is null) { _explicitNullValueCellType = default!; _explicitNullProperties?.Remove("cell_type"); }
+            else if (parseNode.GetChildNode("cell_type") is { } nullNodeCellType && nullNodeCellType.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CellType = null;
+            if (parseNode.GetChildNode("code") is null) { _explicitNullValueCode = default!; _explicitNullProperties?.Remove("code"); }
+            else if (parseNode.GetChildNode("code") is { } nullNodeCode && nullNodeCode.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Code = null;
+            if (parseNode.GetChildNode("dataframe_name") is null) { _explicitNullValueDataframeName = default!; _explicitNullProperties?.Remove("dataframe_name"); }
+            else if (parseNode.GetChildNode("dataframe_name") is { } nullNodeDataframeName && nullNodeDataframeName.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) DataframeName = null;
+            if (parseNode.GetChildNode("dependents") is null) { _explicitNullValueDependents = default!; _explicitNullProperties?.Remove("dependents"); }
+            else if (parseNode.GetChildNode("dependents") is { } nullNodeDependents && nullNodeDependents.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Dependents = null;
+            if (parseNode.GetChildNode("depends_on") is null) { _explicitNullValueDependsOn = default!; _explicitNullProperties?.Remove("depends_on"); }
+            else if (parseNode.GetChildNode("depends_on") is { } nullNodeDependsOn && nullNodeDependsOn.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) DependsOn = null;
+            if (parseNode.GetChildNode("end") is null) { _explicitNullValueEnd = default!; _explicitNullProperties?.Remove("end"); }
+            else if (parseNode.GetChildNode("end") is { } nullNodeEnd && nullNodeEnd.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) End = null;
+            if (parseNode.GetChildNode("last_run") is null) { _explicitNullValueLastRun = default!; _explicitNullProperties?.Remove("last_run"); }
+            else if (parseNode.GetChildNode("last_run") is { } nullNodeLastRun && nullNodeLastRun.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) LastRun = null;
+            if (parseNode.GetChildNode("node_id") is null) { _explicitNullValueNodeId = default!; _explicitNullProperties?.Remove("node_id"); }
+            else if (parseNode.GetChildNode("node_id") is { } nullNodeNodeId && nullNodeNodeId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) NodeId = null;
+            if (parseNode.GetChildNode("start") is null) { _explicitNullValueStart = default!; _explicitNullProperties?.Remove("start"); }
+            else if (parseNode.GetChildNode("start") is { } nullNodeStart && nullNodeStart.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Start = null;
+            if (parseNode.GetChildNode("status") is null) { _explicitNullValueStatus = default!; _explicitNullProperties?.Remove("status"); }
+            else if (parseNode.GetChildNode("status") is { } nullNodeStatus && nullNodeStatus.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Status = null;
+            if (parseNode.GetChildNode("visualization") is null) { _explicitNullValueVisualization = default!; _explicitNullProperties?.Remove("visualization"); }
+            else if (parseNode.GetChildNode("visualization") is { } nullNodeVisualization && nullNodeVisualization.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Visualization = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -35,97 +46,97 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Cell kind: &apos;sql&apos;, &apos;python&apos;, &apos;saved_insight&apos; (an insight with an optional prepared dataframe), or &apos;markdown&apos; (prose, a heading, or a fenced block; never runs and joins no dependency graph).</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? CellType { get => _explicitNullValueCellType; set { _explicitNullValueCellType = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("cell_type"); else _explicitNullProperties?.Remove("cell_type"); } }
+        public string? CellType { get => _explicitNullValueCellType; set { _explicitNullValueCellType = value; AdditionalData?.Remove("cell_type"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("cell_type"); else _explicitNullProperties?.Remove("cell_type"); } }
         private string? _explicitNullValueCellType = default!;
 #nullable restore
 #else
-        public string CellType { get => _explicitNullValueCellType; set { _explicitNullValueCellType = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("cell_type"); else _explicitNullProperties?.Remove("cell_type"); } }
+        public string CellType { get => _explicitNullValueCellType; set { _explicitNullValueCellType = value; AdditionalData?.Remove("cell_type"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("cell_type"); else _explicitNullProperties?.Remove("cell_type"); } }
         private string _explicitNullValueCellType = default!;
 #endif
         /// <summary>The cell&apos;s source, truncated with a marker past 8KB. For a markdown cell this is the block&apos;s markdown.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Code { get => _explicitNullValueCode; set { _explicitNullValueCode = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("code"); else _explicitNullProperties?.Remove("code"); } }
+        public string? Code { get => _explicitNullValueCode; set { _explicitNullValueCode = value; AdditionalData?.Remove("code"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("code"); else _explicitNullProperties?.Remove("code"); } }
         private string? _explicitNullValueCode = default!;
 #nullable restore
 #else
-        public string Code { get => _explicitNullValueCode; set { _explicitNullValueCode = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("code"); else _explicitNullProperties?.Remove("code"); } }
+        public string Code { get => _explicitNullValueCode; set { _explicitNullValueCode = value; AdditionalData?.Remove("code"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("code"); else _explicitNullProperties?.Remove("code"); } }
         private string _explicitNullValueCode = default!;
 #endif
         /// <summary>Name other cells reference this cell&apos;s result by; blank means display-only.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? DataframeName { get => _explicitNullValueDataframeName; set { _explicitNullValueDataframeName = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("dataframe_name"); else _explicitNullProperties?.Remove("dataframe_name"); } }
+        public string? DataframeName { get => _explicitNullValueDataframeName; set { _explicitNullValueDataframeName = value; AdditionalData?.Remove("dataframe_name"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("dataframe_name"); else _explicitNullProperties?.Remove("dataframe_name"); } }
         private string? _explicitNullValueDataframeName = default!;
 #nullable restore
 #else
-        public string DataframeName { get => _explicitNullValueDataframeName; set { _explicitNullValueDataframeName = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("dataframe_name"); else _explicitNullProperties?.Remove("dataframe_name"); } }
+        public string DataframeName { get => _explicitNullValueDataframeName; set { _explicitNullValueDataframeName = value; AdditionalData?.Remove("dataframe_name"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("dataframe_name"); else _explicitNullProperties?.Remove("dataframe_name"); } }
         private string _explicitNullValueDataframeName = default!;
 #endif
         /// <summary>node_ids of cells that reference this cell&apos;s dataframe.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<string>? Dependents { get => _explicitNullValueDependents; set { _explicitNullValueDependents = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("dependents"); else _explicitNullProperties?.Remove("dependents"); } }
+        public List<string>? Dependents { get => _explicitNullValueDependents; set { _explicitNullValueDependents = value; AdditionalData?.Remove("dependents"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("dependents"); else _explicitNullProperties?.Remove("dependents"); } }
         private List<string>? _explicitNullValueDependents = default!;
 #nullable restore
 #else
-        public List<string> Dependents { get => _explicitNullValueDependents; set { _explicitNullValueDependents = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("dependents"); else _explicitNullProperties?.Remove("dependents"); } }
+        public List<string> Dependents { get => _explicitNullValueDependents; set { _explicitNullValueDependents = value; AdditionalData?.Remove("dependents"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("dependents"); else _explicitNullProperties?.Remove("dependents"); } }
         private List<string> _explicitNullValueDependents = default!;
 #endif
         /// <summary>node_ids of cells whose dataframes this cell&apos;s code references.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<string>? DependsOn { get => _explicitNullValueDependsOn; set { _explicitNullValueDependsOn = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("depends_on"); else _explicitNullProperties?.Remove("depends_on"); } }
+        public List<string>? DependsOn { get => _explicitNullValueDependsOn; set { _explicitNullValueDependsOn = value; AdditionalData?.Remove("depends_on"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("depends_on"); else _explicitNullProperties?.Remove("depends_on"); } }
         private List<string>? _explicitNullValueDependsOn = default!;
 #nullable restore
 #else
-        public List<string> DependsOn { get => _explicitNullValueDependsOn; set { _explicitNullValueDependsOn = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("depends_on"); else _explicitNullProperties?.Remove("depends_on"); } }
+        public List<string> DependsOn { get => _explicitNullValueDependsOn; set { _explicitNullValueDependsOn = value; AdditionalData?.Remove("depends_on"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("depends_on"); else _explicitNullProperties?.Remove("depends_on"); } }
         private List<string> _explicitNullValueDependsOn = default!;
 #endif
         /// <summary>Offset just past the cell&apos;s source, in UTF-16 code units, excluding the blank lines that separate it from the next cell.</summary>
-        public int? End { get => _explicitNullValueEnd; set { _explicitNullValueEnd = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("end"); else _explicitNullProperties?.Remove("end"); } }
+        public int? End { get => _explicitNullValueEnd; set { _explicitNullValueEnd = value; AdditionalData?.Remove("end"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("end"); else _explicitNullProperties?.Remove("end"); } }
         private int? _explicitNullValueEnd = default!;
         /// <summary>Summary of the most recent run; null when never run.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.NotebookCellLastRun? LastRun { get => _explicitNullValueLastRun; set { _explicitNullValueLastRun = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("last_run"); else _explicitNullProperties?.Remove("last_run"); } }
+        public global::Soenneker.PostHog.OpenApiClient.Models.NotebookCellLastRun? LastRun { get => _explicitNullValueLastRun; set { _explicitNullValueLastRun = value; AdditionalData?.Remove("last_run"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("last_run"); else _explicitNullProperties?.Remove("last_run"); } }
         private global::Soenneker.PostHog.OpenApiClient.Models.NotebookCellLastRun? _explicitNullValueLastRun = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.NotebookCellLastRun LastRun { get => _explicitNullValueLastRun; set { _explicitNullValueLastRun = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("last_run"); else _explicitNullProperties?.Remove("last_run"); } }
+        public global::Soenneker.PostHog.OpenApiClient.Models.NotebookCellLastRun LastRun { get => _explicitNullValueLastRun; set { _explicitNullValueLastRun = value; AdditionalData?.Remove("last_run"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("last_run"); else _explicitNullProperties?.Remove("last_run"); } }
         private global::Soenneker.PostHog.OpenApiClient.Models.NotebookCellLastRun _explicitNullValueLastRun = default!;
 #endif
         /// <summary>Durable cell identity, used by the cell run and edit endpoints.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? NodeId { get => _explicitNullValueNodeId; set { _explicitNullValueNodeId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("node_id"); else _explicitNullProperties?.Remove("node_id"); } }
+        public string? NodeId { get => _explicitNullValueNodeId; set { _explicitNullValueNodeId = value; AdditionalData?.Remove("node_id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("node_id"); else _explicitNullProperties?.Remove("node_id"); } }
         private string? _explicitNullValueNodeId = default!;
 #nullable restore
 #else
-        public string NodeId { get => _explicitNullValueNodeId; set { _explicitNullValueNodeId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("node_id"); else _explicitNullProperties?.Remove("node_id"); } }
+        public string NodeId { get => _explicitNullValueNodeId; set { _explicitNullValueNodeId = value; AdditionalData?.Remove("node_id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("node_id"); else _explicitNullProperties?.Remove("node_id"); } }
         private string _explicitNullValueNodeId = default!;
 #endif
         /// <summary>Offset where the cell&apos;s source starts in the notebook&apos;s markdown, in UTF-16 code units, the same unit the collaboration diffs use.</summary>
-        public int? Start { get => _explicitNullValueStart; set { _explicitNullValueStart = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("start"); else _explicitNullProperties?.Remove("start"); } }
+        public int? Start { get => _explicitNullValueStart; set { _explicitNullValueStart = value; AdditionalData?.Remove("start"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("start"); else _explicitNullProperties?.Remove("start"); } }
         private int? _explicitNullValueStart = default!;
         /// <summary>Derived cell state: &apos;never_run&apos;, &apos;running&apos;, &apos;done&apos;, &apos;failed&apos;, &apos;interrupted&apos;, or &apos;stale&apos; — stale means re-running now would execute different code than the last completed run (the cell or an upstream dependency changed).</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Status { get => _explicitNullValueStatus; set { _explicitNullValueStatus = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("status"); else _explicitNullProperties?.Remove("status"); } }
+        public string? Status { get => _explicitNullValueStatus; set { _explicitNullValueStatus = value; AdditionalData?.Remove("status"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("status"); else _explicitNullProperties?.Remove("status"); } }
         private string? _explicitNullValueStatus = default!;
 #nullable restore
 #else
-        public string Status { get => _explicitNullValueStatus; set { _explicitNullValueStatus = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("status"); else _explicitNullProperties?.Remove("status"); } }
+        public string Status { get => _explicitNullValueStatus; set { _explicitNullValueStatus = value; AdditionalData?.Remove("status"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("status"); else _explicitNullProperties?.Remove("status"); } }
         private string _explicitNullValueStatus = default!;
 #endif
         /// <summary>SQL cells only: the chart the cell opens on, set in the editor or with the visualization parameter of notebooks-add-cell. Null when the cell opens on its results table.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.NotebookCellVisualization? Visualization { get => _explicitNullValueVisualization; set { _explicitNullValueVisualization = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("visualization"); else _explicitNullProperties?.Remove("visualization"); } }
+        public global::Soenneker.PostHog.OpenApiClient.Models.NotebookCellVisualization? Visualization { get => _explicitNullValueVisualization; set { _explicitNullValueVisualization = value; AdditionalData?.Remove("visualization"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("visualization"); else _explicitNullProperties?.Remove("visualization"); } }
         private global::Soenneker.PostHog.OpenApiClient.Models.NotebookCellVisualization? _explicitNullValueVisualization = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.NotebookCellVisualization Visualization { get => _explicitNullValueVisualization; set { _explicitNullValueVisualization = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("visualization"); else _explicitNullProperties?.Remove("visualization"); } }
+        public global::Soenneker.PostHog.OpenApiClient.Models.NotebookCellVisualization Visualization { get => _explicitNullValueVisualization; set { _explicitNullValueVisualization = value; AdditionalData?.Remove("visualization"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("visualization"); else _explicitNullProperties?.Remove("visualization"); } }
         private global::Soenneker.PostHog.OpenApiClient.Models.NotebookCellVisualization _explicitNullValueVisualization = default!;
 #endif
         /// <summary>

@@ -18,18 +18,30 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("audience") is { } nullNodeAudience && nullNodeAudience.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Audience = null;
-            if (parseNode.GetChildNode("competitor_coverage") is { } nullNodeCompetitorCoverage && nullNodeCompetitorCoverage.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CompetitorCoverage = null;
-            if (parseNode.GetChildNode("competitors_to_research") is { } nullNodeCompetitorsToResearch && nullNodeCompetitorsToResearch.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CompetitorsToResearch = null;
-            if (parseNode.GetChildNode("disambiguation") is { } nullNodeDisambiguation && nullNodeDisambiguation.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Disambiguation = null;
-            if (parseNode.GetChildNode("engine_answer_summary") is { } nullNodeEngineAnswerSummary && nullNodeEngineAnswerSummary.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) EngineAnswerSummary = null;
-            if (parseNode.GetChildNode("intent") is { } nullNodeIntent && nullNodeIntent.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Intent = null;
-            if (parseNode.GetChildNode("outline") is { } nullNodeOutline && nullNodeOutline.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Outline = null;
-            if (parseNode.GetChildNode("questions_to_answer") is { } nullNodeQuestionsToAnswer && nullNodeQuestionsToAnswer.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) QuestionsToAnswer = null;
-            if (parseNode.GetChildNode("recommended_type") is { } nullNodeRecommendedType && nullNodeRecommendedType.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) RecommendedType = null;
-            if (parseNode.GetChildNode("site_pages_to_read") is { } nullNodeSitePagesToRead && nullNodeSitePagesToRead.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SitePagesToRead = null;
-            if (parseNode.GetChildNode("target_page") is { } nullNodeTargetPage && nullNodeTargetPage.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TargetPage = null;
-            if (parseNode.GetChildNode("working_title") is { } nullNodeWorkingTitle && nullNodeWorkingTitle.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) WorkingTitle = null;
+            if (parseNode.GetChildNode("audience") is null) { _explicitNullValueAudience = default!; _explicitNullProperties?.Remove("audience"); }
+            else if (parseNode.GetChildNode("audience") is { } nullNodeAudience && nullNodeAudience.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Audience = null;
+            if (parseNode.GetChildNode("competitor_coverage") is null) { _explicitNullValueCompetitorCoverage = default!; _explicitNullProperties?.Remove("competitor_coverage"); }
+            else if (parseNode.GetChildNode("competitor_coverage") is { } nullNodeCompetitorCoverage && nullNodeCompetitorCoverage.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CompetitorCoverage = null;
+            if (parseNode.GetChildNode("competitors_to_research") is null) { _explicitNullValueCompetitorsToResearch = default!; _explicitNullProperties?.Remove("competitors_to_research"); }
+            else if (parseNode.GetChildNode("competitors_to_research") is { } nullNodeCompetitorsToResearch && nullNodeCompetitorsToResearch.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CompetitorsToResearch = null;
+            if (parseNode.GetChildNode("disambiguation") is null) { _explicitNullValueDisambiguation = default!; _explicitNullProperties?.Remove("disambiguation"); }
+            else if (parseNode.GetChildNode("disambiguation") is { } nullNodeDisambiguation && nullNodeDisambiguation.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Disambiguation = null;
+            if (parseNode.GetChildNode("engine_answer_summary") is null) { _explicitNullValueEngineAnswerSummary = default!; _explicitNullProperties?.Remove("engine_answer_summary"); }
+            else if (parseNode.GetChildNode("engine_answer_summary") is { } nullNodeEngineAnswerSummary && nullNodeEngineAnswerSummary.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) EngineAnswerSummary = null;
+            if (parseNode.GetChildNode("intent") is null) { _explicitNullValueIntent = default!; _explicitNullProperties?.Remove("intent"); }
+            else if (parseNode.GetChildNode("intent") is { } nullNodeIntent && nullNodeIntent.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Intent = null;
+            if (parseNode.GetChildNode("outline") is null) { _explicitNullValueOutline = default!; _explicitNullProperties?.Remove("outline"); }
+            else if (parseNode.GetChildNode("outline") is { } nullNodeOutline && nullNodeOutline.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Outline = null;
+            if (parseNode.GetChildNode("questions_to_answer") is null) { _explicitNullValueQuestionsToAnswer = default!; _explicitNullProperties?.Remove("questions_to_answer"); }
+            else if (parseNode.GetChildNode("questions_to_answer") is { } nullNodeQuestionsToAnswer && nullNodeQuestionsToAnswer.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) QuestionsToAnswer = null;
+            if (parseNode.GetChildNode("recommended_type") is null) { _explicitNullValueRecommendedType = default!; _explicitNullProperties?.Remove("recommended_type"); }
+            else if (parseNode.GetChildNode("recommended_type") is { } nullNodeRecommendedType && nullNodeRecommendedType.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) RecommendedType = null;
+            if (parseNode.GetChildNode("site_pages_to_read") is null) { _explicitNullValueSitePagesToRead = default!; _explicitNullProperties?.Remove("site_pages_to_read"); }
+            else if (parseNode.GetChildNode("site_pages_to_read") is { } nullNodeSitePagesToRead && nullNodeSitePagesToRead.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SitePagesToRead = null;
+            if (parseNode.GetChildNode("target_page") is null) { _explicitNullValueTargetPage = default!; _explicitNullProperties?.Remove("target_page"); }
+            else if (parseNode.GetChildNode("target_page") is { } nullNodeTargetPage && nullNodeTargetPage.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TargetPage = null;
+            if (parseNode.GetChildNode("working_title") is null) { _explicitNullValueWorkingTitle = default!; _explicitNullProperties?.Remove("working_title"); }
+            else if (parseNode.GetChildNode("working_title") is { } nullNodeWorkingTitle && nullNodeWorkingTitle.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) WorkingTitle = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -37,121 +49,121 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Who the content is for.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Audience { get => _explicitNullValueAudience; set { _explicitNullValueAudience = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("audience"); else _explicitNullProperties?.Remove("audience"); } }
+        public string? Audience { get => _explicitNullValueAudience; set { _explicitNullValueAudience = value; AdditionalData?.Remove("audience"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("audience"); else _explicitNullProperties?.Remove("audience"); } }
         private string? _explicitNullValueAudience = default!;
 #nullable restore
 #else
-        public string Audience { get => _explicitNullValueAudience; set { _explicitNullValueAudience = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("audience"); else _explicitNullProperties?.Remove("audience"); } }
+        public string Audience { get => _explicitNullValueAudience; set { _explicitNullValueAudience = value; AdditionalData?.Remove("audience"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("audience"); else _explicitNullProperties?.Remove("audience"); } }
         private string _explicitNullValueAudience = default!;
 #endif
         /// <summary>Topics the cited competitor pages cover that the site&apos;s pages don&apos;t.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<string>? CompetitorCoverage { get => _explicitNullValueCompetitorCoverage; set { _explicitNullValueCompetitorCoverage = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("competitor_coverage"); else _explicitNullProperties?.Remove("competitor_coverage"); } }
+        public List<string>? CompetitorCoverage { get => _explicitNullValueCompetitorCoverage; set { _explicitNullValueCompetitorCoverage = value; AdditionalData?.Remove("competitor_coverage"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("competitor_coverage"); else _explicitNullProperties?.Remove("competitor_coverage"); } }
         private List<string>? _explicitNullValueCompetitorCoverage = default!;
 #nullable restore
 #else
-        public List<string> CompetitorCoverage { get => _explicitNullValueCompetitorCoverage; set { _explicitNullValueCompetitorCoverage = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("competitor_coverage"); else _explicitNullProperties?.Remove("competitor_coverage"); } }
+        public List<string> CompetitorCoverage { get => _explicitNullValueCompetitorCoverage; set { _explicitNullValueCompetitorCoverage = value; AdditionalData?.Remove("competitor_coverage"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("competitor_coverage"); else _explicitNullProperties?.Remove("competitor_coverage"); } }
         private List<string> _explicitNullValueCompetitorCoverage = default!;
 #endif
         /// <summary>Products the brief asked to research for a comparison.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.ContentAutopilotBriefCompetitor>? CompetitorsToResearch { get => _explicitNullValueCompetitorsToResearch; set { _explicitNullValueCompetitorsToResearch = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("competitors_to_research"); else _explicitNullProperties?.Remove("competitors_to_research"); } }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.ContentAutopilotBriefCompetitor>? CompetitorsToResearch { get => _explicitNullValueCompetitorsToResearch; set { _explicitNullValueCompetitorsToResearch = value; AdditionalData?.Remove("competitors_to_research"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("competitors_to_research"); else _explicitNullProperties?.Remove("competitors_to_research"); } }
         private List<global::Soenneker.PostHog.OpenApiClient.Models.ContentAutopilotBriefCompetitor>? _explicitNullValueCompetitorsToResearch = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.ContentAutopilotBriefCompetitor> CompetitorsToResearch { get => _explicitNullValueCompetitorsToResearch; set { _explicitNullValueCompetitorsToResearch = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("competitors_to_research"); else _explicitNullProperties?.Remove("competitors_to_research"); } }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.ContentAutopilotBriefCompetitor> CompetitorsToResearch { get => _explicitNullValueCompetitorsToResearch; set { _explicitNullValueCompetitorsToResearch = value; AdditionalData?.Remove("competitors_to_research"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("competitors_to_research"); else _explicitNullProperties?.Remove("competitors_to_research"); } }
         private List<global::Soenneker.PostHog.OpenApiClient.Models.ContentAutopilotBriefCompetitor> _explicitNullValueCompetitorsToResearch = default!;
 #endif
         /// <summary>What the question means, when AI answer engines misread which product or company it asks about.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Disambiguation { get => _explicitNullValueDisambiguation; set { _explicitNullValueDisambiguation = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("disambiguation"); else _explicitNullProperties?.Remove("disambiguation"); } }
+        public string? Disambiguation { get => _explicitNullValueDisambiguation; set { _explicitNullValueDisambiguation = value; AdditionalData?.Remove("disambiguation"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("disambiguation"); else _explicitNullProperties?.Remove("disambiguation"); } }
         private string? _explicitNullValueDisambiguation = default!;
 #nullable restore
 #else
-        public string Disambiguation { get => _explicitNullValueDisambiguation; set { _explicitNullValueDisambiguation = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("disambiguation"); else _explicitNullProperties?.Remove("disambiguation"); } }
+        public string Disambiguation { get => _explicitNullValueDisambiguation; set { _explicitNullValueDisambiguation = value; AdditionalData?.Remove("disambiguation"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("disambiguation"); else _explicitNullProperties?.Remove("disambiguation"); } }
         private string _explicitNullValueDisambiguation = default!;
 #endif
         /// <summary>What AI answer engines currently say, including what they get wrong.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? EngineAnswerSummary { get => _explicitNullValueEngineAnswerSummary; set { _explicitNullValueEngineAnswerSummary = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("engine_answer_summary"); else _explicitNullProperties?.Remove("engine_answer_summary"); } }
+        public string? EngineAnswerSummary { get => _explicitNullValueEngineAnswerSummary; set { _explicitNullValueEngineAnswerSummary = value; AdditionalData?.Remove("engine_answer_summary"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("engine_answer_summary"); else _explicitNullProperties?.Remove("engine_answer_summary"); } }
         private string? _explicitNullValueEngineAnswerSummary = default!;
 #nullable restore
 #else
-        public string EngineAnswerSummary { get => _explicitNullValueEngineAnswerSummary; set { _explicitNullValueEngineAnswerSummary = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("engine_answer_summary"); else _explicitNullProperties?.Remove("engine_answer_summary"); } }
+        public string EngineAnswerSummary { get => _explicitNullValueEngineAnswerSummary; set { _explicitNullValueEngineAnswerSummary = value; AdditionalData?.Remove("engine_answer_summary"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("engine_answer_summary"); else _explicitNullProperties?.Remove("engine_answer_summary"); } }
         private string _explicitNullValueEngineAnswerSummary = default!;
 #endif
         /// <summary>What the person asking wants to know or decide.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Intent { get => _explicitNullValueIntent; set { _explicitNullValueIntent = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("intent"); else _explicitNullProperties?.Remove("intent"); } }
+        public string? Intent { get => _explicitNullValueIntent; set { _explicitNullValueIntent = value; AdditionalData?.Remove("intent"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("intent"); else _explicitNullProperties?.Remove("intent"); } }
         private string? _explicitNullValueIntent = default!;
 #nullable restore
 #else
-        public string Intent { get => _explicitNullValueIntent; set { _explicitNullValueIntent = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("intent"); else _explicitNullProperties?.Remove("intent"); } }
+        public string Intent { get => _explicitNullValueIntent; set { _explicitNullValueIntent = value; AdditionalData?.Remove("intent"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("intent"); else _explicitNullProperties?.Remove("intent"); } }
         private string _explicitNullValueIntent = default!;
 #endif
         /// <summary>Planned sections, in order.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<string>? Outline { get => _explicitNullValueOutline; set { _explicitNullValueOutline = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("outline"); else _explicitNullProperties?.Remove("outline"); } }
+        public List<string>? Outline { get => _explicitNullValueOutline; set { _explicitNullValueOutline = value; AdditionalData?.Remove("outline"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("outline"); else _explicitNullProperties?.Remove("outline"); } }
         private List<string>? _explicitNullValueOutline = default!;
 #nullable restore
 #else
-        public List<string> Outline { get => _explicitNullValueOutline; set { _explicitNullValueOutline = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("outline"); else _explicitNullProperties?.Remove("outline"); } }
+        public List<string> Outline { get => _explicitNullValueOutline; set { _explicitNullValueOutline = value; AdditionalData?.Remove("outline"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("outline"); else _explicitNullProperties?.Remove("outline"); } }
         private List<string> _explicitNullValueOutline = default!;
 #endif
         /// <summary>Questions the page must answer.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<string>? QuestionsToAnswer { get => _explicitNullValueQuestionsToAnswer; set { _explicitNullValueQuestionsToAnswer = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("questions_to_answer"); else _explicitNullProperties?.Remove("questions_to_answer"); } }
+        public List<string>? QuestionsToAnswer { get => _explicitNullValueQuestionsToAnswer; set { _explicitNullValueQuestionsToAnswer = value; AdditionalData?.Remove("questions_to_answer"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("questions_to_answer"); else _explicitNullProperties?.Remove("questions_to_answer"); } }
         private List<string>? _explicitNullValueQuestionsToAnswer = default!;
 #nullable restore
 #else
-        public List<string> QuestionsToAnswer { get => _explicitNullValueQuestionsToAnswer; set { _explicitNullValueQuestionsToAnswer = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("questions_to_answer"); else _explicitNullProperties?.Remove("questions_to_answer"); } }
+        public List<string> QuestionsToAnswer { get => _explicitNullValueQuestionsToAnswer; set { _explicitNullValueQuestionsToAnswer = value; AdditionalData?.Remove("questions_to_answer"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("questions_to_answer"); else _explicitNullProperties?.Remove("questions_to_answer"); } }
         private List<string> _explicitNullValueQuestionsToAnswer = default!;
 #endif
         /// <summary>Whether the brief recommends new_content or page_improvement.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? RecommendedType { get => _explicitNullValueRecommendedType; set { _explicitNullValueRecommendedType = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("recommended_type"); else _explicitNullProperties?.Remove("recommended_type"); } }
+        public string? RecommendedType { get => _explicitNullValueRecommendedType; set { _explicitNullValueRecommendedType = value; AdditionalData?.Remove("recommended_type"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("recommended_type"); else _explicitNullProperties?.Remove("recommended_type"); } }
         private string? _explicitNullValueRecommendedType = default!;
 #nullable restore
 #else
-        public string RecommendedType { get => _explicitNullValueRecommendedType; set { _explicitNullValueRecommendedType = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("recommended_type"); else _explicitNullProperties?.Remove("recommended_type"); } }
+        public string RecommendedType { get => _explicitNullValueRecommendedType; set { _explicitNullValueRecommendedType = value; AdditionalData?.Remove("recommended_type"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("recommended_type"); else _explicitNullProperties?.Remove("recommended_type"); } }
         private string _explicitNullValueRecommendedType = default!;
 #endif
         /// <summary>Site pages the brief asked to read for facts.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<string>? SitePagesToRead { get => _explicitNullValueSitePagesToRead; set { _explicitNullValueSitePagesToRead = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("site_pages_to_read"); else _explicitNullProperties?.Remove("site_pages_to_read"); } }
+        public List<string>? SitePagesToRead { get => _explicitNullValueSitePagesToRead; set { _explicitNullValueSitePagesToRead = value; AdditionalData?.Remove("site_pages_to_read"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("site_pages_to_read"); else _explicitNullProperties?.Remove("site_pages_to_read"); } }
         private List<string>? _explicitNullValueSitePagesToRead = default!;
 #nullable restore
 #else
-        public List<string> SitePagesToRead { get => _explicitNullValueSitePagesToRead; set { _explicitNullValueSitePagesToRead = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("site_pages_to_read"); else _explicitNullProperties?.Remove("site_pages_to_read"); } }
+        public List<string> SitePagesToRead { get => _explicitNullValueSitePagesToRead; set { _explicitNullValueSitePagesToRead = value; AdditionalData?.Remove("site_pages_to_read"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("site_pages_to_read"); else _explicitNullProperties?.Remove("site_pages_to_read"); } }
         private List<string> _explicitNullValueSitePagesToRead = default!;
 #endif
         /// <summary>Site page the brief chose to improve. Empty for a new page.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? TargetPage { get => _explicitNullValueTargetPage; set { _explicitNullValueTargetPage = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("target_page"); else _explicitNullProperties?.Remove("target_page"); } }
+        public string? TargetPage { get => _explicitNullValueTargetPage; set { _explicitNullValueTargetPage = value; AdditionalData?.Remove("target_page"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("target_page"); else _explicitNullProperties?.Remove("target_page"); } }
         private string? _explicitNullValueTargetPage = default!;
 #nullable restore
 #else
-        public string TargetPage { get => _explicitNullValueTargetPage; set { _explicitNullValueTargetPage = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("target_page"); else _explicitNullProperties?.Remove("target_page"); } }
+        public string TargetPage { get => _explicitNullValueTargetPage; set { _explicitNullValueTargetPage = value; AdditionalData?.Remove("target_page"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("target_page"); else _explicitNullProperties?.Remove("target_page"); } }
         private string _explicitNullValueTargetPage = default!;
 #endif
         /// <summary>Working title for the page.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? WorkingTitle { get => _explicitNullValueWorkingTitle; set { _explicitNullValueWorkingTitle = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("working_title"); else _explicitNullProperties?.Remove("working_title"); } }
+        public string? WorkingTitle { get => _explicitNullValueWorkingTitle; set { _explicitNullValueWorkingTitle = value; AdditionalData?.Remove("working_title"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("working_title"); else _explicitNullProperties?.Remove("working_title"); } }
         private string? _explicitNullValueWorkingTitle = default!;
 #nullable restore
 #else
-        public string WorkingTitle { get => _explicitNullValueWorkingTitle; set { _explicitNullValueWorkingTitle = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("working_title"); else _explicitNullProperties?.Remove("working_title"); } }
+        public string WorkingTitle { get => _explicitNullValueWorkingTitle; set { _explicitNullValueWorkingTitle = value; AdditionalData?.Remove("working_title"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("working_title"); else _explicitNullProperties?.Remove("working_title"); } }
         private string _explicitNullValueWorkingTitle = default!;
 #endif
         /// <summary>

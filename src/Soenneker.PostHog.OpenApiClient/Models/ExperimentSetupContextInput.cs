@@ -18,13 +18,20 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("metric_event") is { } nullNodeMetricEvent && nullNodeMetricEvent.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MetricEvent = null;
-            if (parseNode.GetChildNode("metric_properties") is { } nullNodeMetricProperties && nullNodeMetricProperties.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MetricProperties = null;
-            if (parseNode.GetChildNode("previous_experiments_limit") is { } nullNodePreviousExperimentsLimit && nullNodePreviousExperimentsLimit.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) PreviousExperimentsLimit = null;
-            if (parseNode.GetChildNode("shared_metrics_limit") is { } nullNodeSharedMetricsLimit && nullNodeSharedMetricsLimit.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SharedMetricsLimit = null;
-            if (parseNode.GetChildNode("target_event") is { } nullNodeTargetEvent && nullNodeTargetEvent.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TargetEvent = null;
-            if (parseNode.GetChildNode("target_properties") is { } nullNodeTargetProperties && nullNodeTargetProperties.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TargetProperties = null;
-            if (parseNode.GetChildNode("target_url_contains") is { } nullNodeTargetUrlContains && nullNodeTargetUrlContains.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TargetUrlContains = null;
+            if (parseNode.GetChildNode("metric_event") is null) { _explicitNullValueMetricEvent = default!; _explicitNullProperties?.Remove("metric_event"); }
+            else if (parseNode.GetChildNode("metric_event") is { } nullNodeMetricEvent && nullNodeMetricEvent.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MetricEvent = null;
+            if (parseNode.GetChildNode("metric_properties") is null) { _explicitNullValueMetricProperties = default!; _explicitNullProperties?.Remove("metric_properties"); }
+            else if (parseNode.GetChildNode("metric_properties") is { } nullNodeMetricProperties && nullNodeMetricProperties.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MetricProperties = null;
+            if (parseNode.GetChildNode("previous_experiments_limit") is null) { _explicitNullValuePreviousExperimentsLimit = default!; _explicitNullProperties?.Remove("previous_experiments_limit"); }
+            else if (parseNode.GetChildNode("previous_experiments_limit") is { } nullNodePreviousExperimentsLimit && nullNodePreviousExperimentsLimit.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) PreviousExperimentsLimit = null;
+            if (parseNode.GetChildNode("shared_metrics_limit") is null) { _explicitNullValueSharedMetricsLimit = default!; _explicitNullProperties?.Remove("shared_metrics_limit"); }
+            else if (parseNode.GetChildNode("shared_metrics_limit") is { } nullNodeSharedMetricsLimit && nullNodeSharedMetricsLimit.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SharedMetricsLimit = null;
+            if (parseNode.GetChildNode("target_event") is null) { _explicitNullValueTargetEvent = default!; _explicitNullProperties?.Remove("target_event"); }
+            else if (parseNode.GetChildNode("target_event") is { } nullNodeTargetEvent && nullNodeTargetEvent.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TargetEvent = null;
+            if (parseNode.GetChildNode("target_properties") is null) { _explicitNullValueTargetProperties = default!; _explicitNullProperties?.Remove("target_properties"); }
+            else if (parseNode.GetChildNode("target_properties") is { } nullNodeTargetProperties && nullNodeTargetProperties.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TargetProperties = null;
+            if (parseNode.GetChildNode("target_url_contains") is null) { _explicitNullValueTargetUrlContains = default!; _explicitNullProperties?.Remove("target_url_contains"); }
+            else if (parseNode.GetChildNode("target_url_contains") is { } nullNodeTargetUrlContains && nullNodeTargetUrlContains.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TargetUrlContains = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -32,57 +39,57 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Event of the candidate primary metric. With target_event, candidate_metric returns a baseline. Without it, candidate_metric returns only the event&apos;s volume. Also marks the shared metrics that count this event.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? MetricEvent { get => _explicitNullValueMetricEvent; set { _explicitNullValueMetricEvent = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("metric_event"); else _explicitNullProperties?.Remove("metric_event"); } }
+        public string? MetricEvent { get => _explicitNullValueMetricEvent; set { _explicitNullValueMetricEvent = value; AdditionalData?.Remove("metric_event"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("metric_event"); else _explicitNullProperties?.Remove("metric_event"); } }
         private string? _explicitNullValueMetricEvent = default!;
 #nullable restore
 #else
-        public string MetricEvent { get => _explicitNullValueMetricEvent; set { _explicitNullValueMetricEvent = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("metric_event"); else _explicitNullProperties?.Remove("metric_event"); } }
+        public string MetricEvent { get => _explicitNullValueMetricEvent; set { _explicitNullValueMetricEvent = value; AdditionalData?.Remove("metric_event"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("metric_event"); else _explicitNullProperties?.Remove("metric_event"); } }
         private string _explicitNullValueMetricEvent = default!;
 #endif
         /// <summary>Event or person property filters that narrow the metric event, for the metric that counts only some of its occurrences. At most 10 filters, and each needs type &apos;event&apos; or &apos;person&apos;. Needs metric_event.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentSetupPropertyFilterListItem>? MetricProperties { get => _explicitNullValueMetricProperties; set { _explicitNullValueMetricProperties = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("metric_properties"); else _explicitNullProperties?.Remove("metric_properties"); } }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentSetupPropertyFilterListItem>? MetricProperties { get => _explicitNullValueMetricProperties; set { _explicitNullValueMetricProperties = value; AdditionalData?.Remove("metric_properties"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("metric_properties"); else _explicitNullProperties?.Remove("metric_properties"); } }
         private List<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentSetupPropertyFilterListItem>? _explicitNullValueMetricProperties = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentSetupPropertyFilterListItem> MetricProperties { get => _explicitNullValueMetricProperties; set { _explicitNullValueMetricProperties = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("metric_properties"); else _explicitNullProperties?.Remove("metric_properties"); } }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentSetupPropertyFilterListItem> MetricProperties { get => _explicitNullValueMetricProperties; set { _explicitNullValueMetricProperties = value; AdditionalData?.Remove("metric_properties"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("metric_properties"); else _explicitNullProperties?.Remove("metric_properties"); } }
         private List<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentSetupPropertyFilterListItem> _explicitNullValueMetricProperties = default!;
 #endif
         /// <summary>How many experiments to return, most recently launched first, then drafts, 1 to 25.</summary>
-        public int? PreviousExperimentsLimit { get => _explicitNullValuePreviousExperimentsLimit; set { _explicitNullValuePreviousExperimentsLimit = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("previous_experiments_limit"); else _explicitNullProperties?.Remove("previous_experiments_limit"); } }
+        public int? PreviousExperimentsLimit { get => _explicitNullValuePreviousExperimentsLimit; set { _explicitNullValuePreviousExperimentsLimit = value; AdditionalData?.Remove("previous_experiments_limit"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("previous_experiments_limit"); else _explicitNullProperties?.Remove("previous_experiments_limit"); } }
         private int? _explicitNullValuePreviousExperimentsLimit = default!;
         /// <summary>How many shared metrics to return, most reused first, 1 to 25.</summary>
-        public int? SharedMetricsLimit { get => _explicitNullValueSharedMetricsLimit; set { _explicitNullValueSharedMetricsLimit = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("shared_metrics_limit"); else _explicitNullProperties?.Remove("shared_metrics_limit"); } }
+        public int? SharedMetricsLimit { get => _explicitNullValueSharedMetricsLimit; set { _explicitNullValueSharedMetricsLimit = value; AdditionalData?.Remove("shared_metrics_limit"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("shared_metrics_limit"); else _explicitNullProperties?.Remove("shared_metrics_limit"); } }
         private int? _explicitNullValueSharedMetricsLimit = default!;
         /// <summary>Event that marks a visit to the surface under test, for example &apos;$pageview&apos; or &apos;$screen&apos;. Needed for target_surface and for the baseline in candidate_metric.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? TargetEvent { get => _explicitNullValueTargetEvent; set { _explicitNullValueTargetEvent = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("target_event"); else _explicitNullProperties?.Remove("target_event"); } }
+        public string? TargetEvent { get => _explicitNullValueTargetEvent; set { _explicitNullValueTargetEvent = value; AdditionalData?.Remove("target_event"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("target_event"); else _explicitNullProperties?.Remove("target_event"); } }
         private string? _explicitNullValueTargetEvent = default!;
 #nullable restore
 #else
-        public string TargetEvent { get => _explicitNullValueTargetEvent; set { _explicitNullValueTargetEvent = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("target_event"); else _explicitNullProperties?.Remove("target_event"); } }
+        public string TargetEvent { get => _explicitNullValueTargetEvent; set { _explicitNullValueTargetEvent = value; AdditionalData?.Remove("target_event"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("target_event"); else _explicitNullProperties?.Remove("target_event"); } }
         private string _explicitNullValueTargetEvent = default!;
 #endif
         /// <summary>Event or person property filters that narrow the target event, for example an exact $host and $pathname for one page. At most 10 filters, and each needs type &apos;event&apos; or &apos;person&apos;. Needs target_event. Combines with target_url_contains.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentSetupPropertyFilterListItem>? TargetProperties { get => _explicitNullValueTargetProperties; set { _explicitNullValueTargetProperties = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("target_properties"); else _explicitNullProperties?.Remove("target_properties"); } }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentSetupPropertyFilterListItem>? TargetProperties { get => _explicitNullValueTargetProperties; set { _explicitNullValueTargetProperties = value; AdditionalData?.Remove("target_properties"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("target_properties"); else _explicitNullProperties?.Remove("target_properties"); } }
         private List<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentSetupPropertyFilterListItem>? _explicitNullValueTargetProperties = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentSetupPropertyFilterListItem> TargetProperties { get => _explicitNullValueTargetProperties; set { _explicitNullValueTargetProperties = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("target_properties"); else _explicitNullProperties?.Remove("target_properties"); } }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentSetupPropertyFilterListItem> TargetProperties { get => _explicitNullValueTargetProperties; set { _explicitNullValueTargetProperties = value; AdditionalData?.Remove("target_properties"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("target_properties"); else _explicitNullProperties?.Remove("target_properties"); } }
         private List<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentSetupPropertyFilterListItem> _explicitNullValueTargetProperties = default!;
 #endif
         /// <summary>Only counts target events whose $current_url contains this text, ignoring case. Needs target_event to be &apos;$pageview&apos;.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? TargetUrlContains { get => _explicitNullValueTargetUrlContains; set { _explicitNullValueTargetUrlContains = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("target_url_contains"); else _explicitNullProperties?.Remove("target_url_contains"); } }
+        public string? TargetUrlContains { get => _explicitNullValueTargetUrlContains; set { _explicitNullValueTargetUrlContains = value; AdditionalData?.Remove("target_url_contains"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("target_url_contains"); else _explicitNullProperties?.Remove("target_url_contains"); } }
         private string? _explicitNullValueTargetUrlContains = default!;
 #nullable restore
 #else
-        public string TargetUrlContains { get => _explicitNullValueTargetUrlContains; set { _explicitNullValueTargetUrlContains = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("target_url_contains"); else _explicitNullProperties?.Remove("target_url_contains"); } }
+        public string TargetUrlContains { get => _explicitNullValueTargetUrlContains; set { _explicitNullValueTargetUrlContains = value; AdditionalData?.Remove("target_url_contains"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("target_url_contains"); else _explicitNullProperties?.Remove("target_url_contains"); } }
         private string _explicitNullValueTargetUrlContains = default!;
 #endif
         /// <summary>

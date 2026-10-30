@@ -18,12 +18,18 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("artefact_type") is { } nullNodeArtefactType && nullNodeArtefactType.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ArtefactType = null;
-            if (parseNode.GetChildNode("claim_id") is { } nullNodeClaimId && nullNodeClaimId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ClaimId = null;
-            if (parseNode.GetChildNode("content") is { } nullNodeContent && nullNodeContent.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Content = null;
-            if (parseNode.GetChildNode("expected_reviewers") is { } nullNodeExpectedReviewers && nullNodeExpectedReviewers.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ExpectedReviewers = null;
-            if (parseNode.GetChildNode("reviewer_outcome") is { } nullNodeReviewerOutcome && nullNodeReviewerOutcome.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ReviewerOutcome = null;
-            if (parseNode.GetChildNode("reviewer_retry_reason") is { } nullNodeReviewerRetryReason && nullNodeReviewerRetryReason.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ReviewerRetryReason = null;
+            if (parseNode.GetChildNode("artefact_type") is null) { _explicitNullValueArtefactType = default!; _explicitNullProperties?.Remove("artefact_type"); }
+            else if (parseNode.GetChildNode("artefact_type") is { } nullNodeArtefactType && nullNodeArtefactType.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ArtefactType = null;
+            if (parseNode.GetChildNode("claim_id") is null) { _explicitNullValueClaimId = default!; _explicitNullProperties?.Remove("claim_id"); }
+            else if (parseNode.GetChildNode("claim_id") is { } nullNodeClaimId && nullNodeClaimId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ClaimId = null;
+            if (parseNode.GetChildNode("content") is null) { _explicitNullValueContent = default!; _explicitNullProperties?.Remove("content"); }
+            else if (parseNode.GetChildNode("content") is { } nullNodeContent && nullNodeContent.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Content = null;
+            if (parseNode.GetChildNode("expected_reviewers") is null) { _explicitNullValueExpectedReviewers = default!; _explicitNullProperties?.Remove("expected_reviewers"); }
+            else if (parseNode.GetChildNode("expected_reviewers") is { } nullNodeExpectedReviewers && nullNodeExpectedReviewers.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ExpectedReviewers = null;
+            if (parseNode.GetChildNode("reviewer_outcome") is null) { _explicitNullValueReviewerOutcome = default!; _explicitNullProperties?.Remove("reviewer_outcome"); }
+            else if (parseNode.GetChildNode("reviewer_outcome") is { } nullNodeReviewerOutcome && nullNodeReviewerOutcome.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ReviewerOutcome = null;
+            if (parseNode.GetChildNode("reviewer_retry_reason") is null) { _explicitNullValueReviewerRetryReason = default!; _explicitNullProperties?.Remove("reviewer_retry_reason"); }
+            else if (parseNode.GetChildNode("reviewer_retry_reason") is { } nullNodeReviewerRetryReason && nullNodeReviewerRetryReason.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ReviewerRetryReason = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -31,47 +37,47 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The artefact type. One of: actionability_judgment, channel_assignment, code_reference, commit, dismissal, note, priority_judgment, related_to, repo_selection, safety_judgment, signal_finding, source_suggestion, suggested_reviewers. Log types accumulate; status types (safety_judgment, actionability_judgment, priority_judgment, repo_selection, suggested_reviewers, channel_assignment, source_suggestion) are latest-wins — appending a new version supersedes the previous one as the report&apos;s canonical status.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? ArtefactType { get => _explicitNullValueArtefactType; set { _explicitNullValueArtefactType = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("artefact_type"); else _explicitNullProperties?.Remove("artefact_type"); } }
+        public string? ArtefactType { get => _explicitNullValueArtefactType; set { _explicitNullValueArtefactType = value; AdditionalData?.Remove("artefact_type"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("artefact_type"); else _explicitNullProperties?.Remove("artefact_type"); } }
         private string? _explicitNullValueArtefactType = default!;
 #nullable restore
 #else
-        public string ArtefactType { get => _explicitNullValueArtefactType; set { _explicitNullValueArtefactType = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("artefact_type"); else _explicitNullProperties?.Remove("artefact_type"); } }
+        public string ArtefactType { get => _explicitNullValueArtefactType; set { _explicitNullValueArtefactType = value; AdditionalData?.Remove("artefact_type"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("artefact_type"); else _explicitNullProperties?.Remove("artefact_type"); } }
         private string _explicitNullValueArtefactType = default!;
 #endif
         /// <summary>Active claim to attribute this work to. Must belong to the caller and report.</summary>
-        public Guid? ClaimId { get => _explicitNullValueClaimId; set { _explicitNullValueClaimId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("claim_id"); else _explicitNullProperties?.Remove("claim_id"); } }
+        public Guid? ClaimId { get => _explicitNullValueClaimId; set { _explicitNullValueClaimId = value; AdditionalData?.Remove("claim_id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("claim_id"); else _explicitNullProperties?.Remove("claim_id"); } }
         private Guid? _explicitNullValueClaimId = default!;
         /// <summary>The artefact payload as a JSON object or array; shape depends on artefact_type and is validated against its schema.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public UntypedNode? Content { get => _explicitNullValueContent; set { _explicitNullValueContent = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("content"); else _explicitNullProperties?.Remove("content"); } }
+        public UntypedNode? Content { get => _explicitNullValueContent; set { _explicitNullValueContent = value; AdditionalData?.Remove("content"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("content"); else _explicitNullProperties?.Remove("content"); } }
         private UntypedNode? _explicitNullValueContent = default!;
 #nullable restore
 #else
-        public UntypedNode Content { get => _explicitNullValueContent; set { _explicitNullValueContent = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("content"); else _explicitNullProperties?.Remove("content"); } }
+        public UntypedNode Content { get => _explicitNullValueContent; set { _explicitNullValueContent = value; AdditionalData?.Remove("content"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("content"); else _explicitNullProperties?.Remove("content"); } }
         private UntypedNode _explicitNullValueContent = default!;
 #endif
         /// <summary>Report reviewer_assignment.state read before selection began. Required when reviewer corrections are enabled.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.SignalReportArtefactLogCreateExpectedReviewers? ExpectedReviewers { get => _explicitNullValueExpectedReviewers; set { _explicitNullValueExpectedReviewers = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("expected_reviewers"); else _explicitNullProperties?.Remove("expected_reviewers"); } }
+        public global::Soenneker.PostHog.OpenApiClient.Models.SignalReportArtefactLogCreateExpectedReviewers? ExpectedReviewers { get => _explicitNullValueExpectedReviewers; set { _explicitNullValueExpectedReviewers = value; AdditionalData?.Remove("expected_reviewers"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("expected_reviewers"); else _explicitNullProperties?.Remove("expected_reviewers"); } }
         private global::Soenneker.PostHog.OpenApiClient.Models.SignalReportArtefactLogCreateExpectedReviewers? _explicitNullValueExpectedReviewers = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.SignalReportArtefactLogCreateExpectedReviewers ExpectedReviewers { get => _explicitNullValueExpectedReviewers; set { _explicitNullValueExpectedReviewers = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("expected_reviewers"); else _explicitNullProperties?.Remove("expected_reviewers"); } }
+        public global::Soenneker.PostHog.OpenApiClient.Models.SignalReportArtefactLogCreateExpectedReviewers ExpectedReviewers { get => _explicitNullValueExpectedReviewers; set { _explicitNullValueExpectedReviewers = value; AdditionalData?.Remove("expected_reviewers"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("expected_reviewers"); else _explicitNullProperties?.Remove("expected_reviewers"); } }
         private global::Soenneker.PostHog.OpenApiClient.Models.SignalReportArtefactLogCreateExpectedReviewers _explicitNullValueExpectedReviewers = default!;
 #endif
         /// <summary>* `selected` - Selected* `no_suitable_owner` - No suitable owner* `lookup_failed` - Lookup failed</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.SignalReportArtefactLogCreateReviewerOutcome? ReviewerOutcome { get => _explicitNullValueReviewerOutcome; set { _explicitNullValueReviewerOutcome = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("reviewer_outcome"); else _explicitNullProperties?.Remove("reviewer_outcome"); } }
+        public global::Soenneker.PostHog.OpenApiClient.Models.SignalReportArtefactLogCreateReviewerOutcome? ReviewerOutcome { get => _explicitNullValueReviewerOutcome; set { _explicitNullValueReviewerOutcome = value; AdditionalData?.Remove("reviewer_outcome"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("reviewer_outcome"); else _explicitNullProperties?.Remove("reviewer_outcome"); } }
         private global::Soenneker.PostHog.OpenApiClient.Models.SignalReportArtefactLogCreateReviewerOutcome? _explicitNullValueReviewerOutcome = default!;
         /// <summary>Reason the reviewer lookup failed.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? ReviewerRetryReason { get => _explicitNullValueReviewerRetryReason; set { _explicitNullValueReviewerRetryReason = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("reviewer_retry_reason"); else _explicitNullProperties?.Remove("reviewer_retry_reason"); } }
+        public string? ReviewerRetryReason { get => _explicitNullValueReviewerRetryReason; set { _explicitNullValueReviewerRetryReason = value; AdditionalData?.Remove("reviewer_retry_reason"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("reviewer_retry_reason"); else _explicitNullProperties?.Remove("reviewer_retry_reason"); } }
         private string? _explicitNullValueReviewerRetryReason = default!;
 #nullable restore
 #else
-        public string ReviewerRetryReason { get => _explicitNullValueReviewerRetryReason; set { _explicitNullValueReviewerRetryReason = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("reviewer_retry_reason"); else _explicitNullProperties?.Remove("reviewer_retry_reason"); } }
+        public string ReviewerRetryReason { get => _explicitNullValueReviewerRetryReason; set { _explicitNullValueReviewerRetryReason = value; AdditionalData?.Remove("reviewer_retry_reason"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("reviewer_retry_reason"); else _explicitNullProperties?.Remove("reviewer_retry_reason"); } }
         private string _explicitNullValueReviewerRetryReason = default!;
 #endif
         /// <summary>
@@ -103,7 +109,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "claim_id", n => { ClaimId = n.GetGuidValue(); } },
                 { "content", n => { Content = n.GetObjectValue<UntypedNode>(UntypedNode.CreateFromDiscriminatorValue); } },
                 { "expected_reviewers", n => { ExpectedReviewers = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SignalReportArtefactLogCreateExpectedReviewers>(global::Soenneker.PostHog.OpenApiClient.Models.SignalReportArtefactLogCreateExpectedReviewers.CreateFromDiscriminatorValue); } },
-                { "reviewer_outcome", n => { ReviewerOutcome = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.SignalReportArtefactLogCreateReviewerOutcome>(); } },
+                { "reviewer_outcome", n => { var parsed = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.SignalReportArtefactLogCreateReviewerOutcome>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValueReviewerOutcome = default; _explicitNullProperties?.Remove("reviewer_outcome"); AdditionalData["reviewer_outcome"] = unknown; } else { ReviewerOutcome = parsed; AdditionalData.Remove("reviewer_outcome"); } } },
                 { "reviewer_retry_reason", n => { ReviewerRetryReason = n.GetStringValue(); } },
             };
         }

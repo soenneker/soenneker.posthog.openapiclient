@@ -17,23 +17,25 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("code_usage_billing_active") is { } nullNodeCodeUsageBillingActive && nullNodeCodeUsageBillingActive.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CodeUsageBillingActive = null;
-            if (parseNode.GetChildNode("limited") is { } nullNodeLimited && nullNodeLimited.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Limited = null;
+            if (parseNode.GetChildNode("code_usage_billing_active") is null) { _explicitNullValueCodeUsageBillingActive = default!; _explicitNullProperties?.Remove("code_usage_billing_active"); }
+            else if (parseNode.GetChildNode("code_usage_billing_active") is { } nullNodeCodeUsageBillingActive && nullNodeCodeUsageBillingActive.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CodeUsageBillingActive = null;
+            if (parseNode.GetChildNode("limited") is null) { _explicitNullValueLimited = default!; _explicitNullProperties?.Remove("limited"); }
+            else if (parseNode.GetChildNode("limited") is { } nullNodeLimited && nullNodeLimited.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Limited = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Whether the team&apos;s organization pays for PostHog Desktop usage: billing grants the `posthog_code_usage` product feature only on the Desktop usage product&apos;s paid plan, synced into the organization&apos;s available features. Consumers gate paid-tier Desktop behavior on this; an org unknown to billing reads as not paying. Always false for deactivated organizations.</summary>
-        public bool? CodeUsageBillingActive { get => _explicitNullValueCodeUsageBillingActive; set { _explicitNullValueCodeUsageBillingActive = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("code_usage_billing_active"); else _explicitNullProperties?.Remove("code_usage_billing_active"); } }
+        public bool? CodeUsageBillingActive { get => _explicitNullValueCodeUsageBillingActive; set { _explicitNullValueCodeUsageBillingActive = value; AdditionalData?.Remove("code_usage_billing_active"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("code_usage_billing_active"); else _explicitNullProperties?.Remove("code_usage_billing_active"); } }
         private bool? _explicitNullValueCodeUsageBillingActive = default!;
         /// <summary>Per-resource limit state for every `QuotaResource` value, e.g. `ai_credits`, `posthog_code_credits`. Also carries the informational Desktop component resources (`posthog_code_token_credits`, `sandbox_compute_credits`, `sandbox_compute_cpu_millicore_seconds`, `sandbox_compute_memory_mib_seconds`) with usage in their native units, a null limit, and `limited` always false — they are never quota-enforced; only the combined `posthog_code_credits` is.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.QuotaLimitsResponseLimitedProperty? Limited { get => _explicitNullValueLimited; set { _explicitNullValueLimited = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("limited"); else _explicitNullProperties?.Remove("limited"); } }
+        public global::Soenneker.PostHog.OpenApiClient.Models.QuotaLimitsResponseLimitedProperty? Limited { get => _explicitNullValueLimited; set { _explicitNullValueLimited = value; AdditionalData?.Remove("limited"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("limited"); else _explicitNullProperties?.Remove("limited"); } }
         private global::Soenneker.PostHog.OpenApiClient.Models.QuotaLimitsResponseLimitedProperty? _explicitNullValueLimited = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.QuotaLimitsResponseLimitedProperty Limited { get => _explicitNullValueLimited; set { _explicitNullValueLimited = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("limited"); else _explicitNullProperties?.Remove("limited"); } }
+        public global::Soenneker.PostHog.OpenApiClient.Models.QuotaLimitsResponseLimitedProperty Limited { get => _explicitNullValueLimited; set { _explicitNullValueLimited = value; AdditionalData?.Remove("limited"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("limited"); else _explicitNullProperties?.Remove("limited"); } }
         private global::Soenneker.PostHog.OpenApiClient.Models.QuotaLimitsResponseLimitedProperty _explicitNullValueLimited = default!;
 #endif
         /// <summary>

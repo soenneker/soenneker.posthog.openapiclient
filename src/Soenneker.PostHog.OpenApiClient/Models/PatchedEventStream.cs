@@ -18,11 +18,16 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("enabled") is { } nullNodeEnabled && nullNodeEnabled.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Enabled = null;
-            if (parseNode.GetChildNode("event_names") is { } nullNodeEventNames && nullNodeEventNames.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) EventNames = null;
-            if (parseNode.GetChildNode("slack_channel_id") is { } nullNodeSlackChannelId && nullNodeSlackChannelId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SlackChannelId = null;
-            if (parseNode.GetChildNode("slack_channel_name") is { } nullNodeSlackChannelName && nullNodeSlackChannelName.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SlackChannelName = null;
-            if (parseNode.GetChildNode("slack_integration") is { } nullNodeSlackIntegration && nullNodeSlackIntegration.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SlackIntegration = null;
+            if (parseNode.GetChildNode("enabled") is null) { _explicitNullValueEnabled = default!; _explicitNullProperties?.Remove("enabled"); }
+            else if (parseNode.GetChildNode("enabled") is { } nullNodeEnabled && nullNodeEnabled.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Enabled = null;
+            if (parseNode.GetChildNode("event_names") is null) { _explicitNullValueEventNames = default!; _explicitNullProperties?.Remove("event_names"); }
+            else if (parseNode.GetChildNode("event_names") is { } nullNodeEventNames && nullNodeEventNames.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) EventNames = null;
+            if (parseNode.GetChildNode("slack_channel_id") is null) { _explicitNullValueSlackChannelId = default!; _explicitNullProperties?.Remove("slack_channel_id"); }
+            else if (parseNode.GetChildNode("slack_channel_id") is { } nullNodeSlackChannelId && nullNodeSlackChannelId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SlackChannelId = null;
+            if (parseNode.GetChildNode("slack_channel_name") is null) { _explicitNullValueSlackChannelName = default!; _explicitNullProperties?.Remove("slack_channel_name"); }
+            else if (parseNode.GetChildNode("slack_channel_name") is { } nullNodeSlackChannelName && nullNodeSlackChannelName.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SlackChannelName = null;
+            if (parseNode.GetChildNode("slack_integration") is null) { _explicitNullValueSlackIntegration = default!; _explicitNullProperties?.Remove("slack_integration"); }
+            else if (parseNode.GetChildNode("slack_integration") is { } nullNodeSlackIntegration && nullNodeSlackIntegration.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SlackIntegration = null;
         }
 
         /// <summary>UUIDs of the member accounts whose users&apos; events are streamed. Managed via the add_account/remove_account endpoints.</summary>
@@ -40,16 +45,16 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The created_by property</summary>
         public int? CreatedBy { get; private set; }
         /// <summary>Whether the stream delivers to Slack. Delivery also requires at least one event, at least one member account with an external ID, and a Slack workspace + channel.</summary>
-        public bool? Enabled { get => _explicitNullValueEnabled; set { _explicitNullValueEnabled = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("enabled"); else _explicitNullProperties?.Remove("enabled"); } }
+        public bool? Enabled { get => _explicitNullValueEnabled; set { _explicitNullValueEnabled = value; AdditionalData?.Remove("enabled"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("enabled"); else _explicitNullProperties?.Remove("enabled"); } }
         private bool? _explicitNullValueEnabled = default!;
         /// <summary>Names of the events to stream (matched exactly). Duplicates and blanks are dropped.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<string>? EventNames { get => _explicitNullValueEventNames; set { _explicitNullValueEventNames = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("event_names"); else _explicitNullProperties?.Remove("event_names"); } }
+        public List<string>? EventNames { get => _explicitNullValueEventNames; set { _explicitNullValueEventNames = value; AdditionalData?.Remove("event_names"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("event_names"); else _explicitNullProperties?.Remove("event_names"); } }
         private List<string>? _explicitNullValueEventNames = default!;
 #nullable restore
 #else
-        public List<string> EventNames { get => _explicitNullValueEventNames; set { _explicitNullValueEventNames = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("event_names"); else _explicitNullProperties?.Remove("event_names"); } }
+        public List<string> EventNames { get => _explicitNullValueEventNames; set { _explicitNullValueEventNames = value; AdditionalData?.Remove("event_names"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("event_names"); else _explicitNullProperties?.Remove("event_names"); } }
         private List<string> _explicitNullValueEventNames = default!;
 #endif
         /// <summary>The id property</summary>
@@ -57,25 +62,25 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Slack channel ID to post to (e.g. C0123ABC).</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? SlackChannelId { get => _explicitNullValueSlackChannelId; set { _explicitNullValueSlackChannelId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("slack_channel_id"); else _explicitNullProperties?.Remove("slack_channel_id"); } }
+        public string? SlackChannelId { get => _explicitNullValueSlackChannelId; set { _explicitNullValueSlackChannelId = value; AdditionalData?.Remove("slack_channel_id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("slack_channel_id"); else _explicitNullProperties?.Remove("slack_channel_id"); } }
         private string? _explicitNullValueSlackChannelId = default!;
 #nullable restore
 #else
-        public string SlackChannelId { get => _explicitNullValueSlackChannelId; set { _explicitNullValueSlackChannelId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("slack_channel_id"); else _explicitNullProperties?.Remove("slack_channel_id"); } }
+        public string SlackChannelId { get => _explicitNullValueSlackChannelId; set { _explicitNullValueSlackChannelId = value; AdditionalData?.Remove("slack_channel_id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("slack_channel_id"); else _explicitNullProperties?.Remove("slack_channel_id"); } }
         private string _explicitNullValueSlackChannelId = default!;
 #endif
         /// <summary>Display name of the Slack channel (e.g. #customer-events). Informational only.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? SlackChannelName { get => _explicitNullValueSlackChannelName; set { _explicitNullValueSlackChannelName = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("slack_channel_name"); else _explicitNullProperties?.Remove("slack_channel_name"); } }
+        public string? SlackChannelName { get => _explicitNullValueSlackChannelName; set { _explicitNullValueSlackChannelName = value; AdditionalData?.Remove("slack_channel_name"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("slack_channel_name"); else _explicitNullProperties?.Remove("slack_channel_name"); } }
         private string? _explicitNullValueSlackChannelName = default!;
 #nullable restore
 #else
-        public string SlackChannelName { get => _explicitNullValueSlackChannelName; set { _explicitNullValueSlackChannelName = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("slack_channel_name"); else _explicitNullProperties?.Remove("slack_channel_name"); } }
+        public string SlackChannelName { get => _explicitNullValueSlackChannelName; set { _explicitNullValueSlackChannelName = value; AdditionalData?.Remove("slack_channel_name"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("slack_channel_name"); else _explicitNullProperties?.Remove("slack_channel_name"); } }
         private string _explicitNullValueSlackChannelName = default!;
 #endif
         /// <summary>ID of the team&apos;s Slack workspace integration to deliver through.</summary>
-        public int? SlackIntegration { get => _explicitNullValueSlackIntegration; set { _explicitNullValueSlackIntegration = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("slack_integration"); else _explicitNullProperties?.Remove("slack_integration"); } }
+        public int? SlackIntegration { get => _explicitNullValueSlackIntegration; set { _explicitNullValueSlackIntegration = value; AdditionalData?.Remove("slack_integration"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("slack_integration"); else _explicitNullProperties?.Remove("slack_integration"); } }
         private int? _explicitNullValueSlackIntegration = default!;
         /// <summary>The updated_at property</summary>
         public DateTimeOffset? UpdatedAt { get; private set; }

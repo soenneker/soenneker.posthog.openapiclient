@@ -17,13 +17,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("interaction_kind") is { } nullNodeInteractionKind && nullNodeInteractionKind.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) InteractionKind = null;
+            if (parseNode.GetChildNode("interaction_kind") is null) { _explicitNullValueInteractionKind = default!; _explicitNullProperties?.Remove("interaction_kind"); }
+            else if (parseNode.GetChildNode("interaction_kind") is { } nullNodeInteractionKind && nullNodeInteractionKind.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) InteractionKind = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>* `data` - data* `recording` - recording</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.RecordInteractionRequestInteractionKind? InteractionKind { get => _explicitNullValueInteractionKind; set { _explicitNullValueInteractionKind = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("interaction_kind"); else _explicitNullProperties?.Remove("interaction_kind"); } }
+        public global::Soenneker.PostHog.OpenApiClient.Models.RecordInteractionRequestInteractionKind? InteractionKind { get => _explicitNullValueInteractionKind; set { _explicitNullValueInteractionKind = value; AdditionalData?.Remove("interaction_kind"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("interaction_kind"); else _explicitNullProperties?.Remove("interaction_kind"); } }
         private global::Soenneker.PostHog.OpenApiClient.Models.RecordInteractionRequestInteractionKind? _explicitNullValueInteractionKind = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.RecordInteractionRequest"/> and sets the default values.
@@ -50,7 +51,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "interaction_kind", n => { InteractionKind = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.RecordInteractionRequestInteractionKind>(); } },
+                { "interaction_kind", n => { var parsed = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.RecordInteractionRequestInteractionKind>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValueInteractionKind = default; _explicitNullProperties?.Remove("interaction_kind"); AdditionalData["interaction_kind"] = unknown; } else { InteractionKind = parsed; AdditionalData.Remove("interaction_kind"); } } },
             };
         }
         /// <summary>

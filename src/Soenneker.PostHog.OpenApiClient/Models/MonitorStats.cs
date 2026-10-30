@@ -17,21 +17,24 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("inconclusive_total") is { } nullNodeInconclusiveTotal && nullNodeInconclusiveTotal.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) InconclusiveTotal = null;
-            if (parseNode.GetChildNode("no_total") is { } nullNodeNoTotal && nullNodeNoTotal.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) NoTotal = null;
-            if (parseNode.GetChildNode("yes_total") is { } nullNodeYesTotal && nullNodeYesTotal.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) YesTotal = null;
+            if (parseNode.GetChildNode("inconclusive_total") is null) { _explicitNullValueInconclusiveTotal = default!; _explicitNullProperties?.Remove("inconclusive_total"); }
+            else if (parseNode.GetChildNode("inconclusive_total") is { } nullNodeInconclusiveTotal && nullNodeInconclusiveTotal.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) InconclusiveTotal = null;
+            if (parseNode.GetChildNode("no_total") is null) { _explicitNullValueNoTotal = default!; _explicitNullProperties?.Remove("no_total"); }
+            else if (parseNode.GetChildNode("no_total") is { } nullNodeNoTotal && nullNodeNoTotal.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) NoTotal = null;
+            if (parseNode.GetChildNode("yes_total") is null) { _explicitNullValueYesTotal = default!; _explicitNullProperties?.Remove("yes_total"); }
+            else if (parseNode.GetChildNode("yes_total") is { } nullNodeYesTotal && nullNodeYesTotal.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) YesTotal = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Succeeded observations whose verdict was `inconclusive`.</summary>
-        public int? InconclusiveTotal { get => _explicitNullValueInconclusiveTotal; set { _explicitNullValueInconclusiveTotal = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("inconclusive_total"); else _explicitNullProperties?.Remove("inconclusive_total"); } }
+        public int? InconclusiveTotal { get => _explicitNullValueInconclusiveTotal; set { _explicitNullValueInconclusiveTotal = value; AdditionalData?.Remove("inconclusive_total"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("inconclusive_total"); else _explicitNullProperties?.Remove("inconclusive_total"); } }
         private int? _explicitNullValueInconclusiveTotal = default!;
         /// <summary>Succeeded observations whose verdict was `no`.</summary>
-        public int? NoTotal { get => _explicitNullValueNoTotal; set { _explicitNullValueNoTotal = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("no_total"); else _explicitNullProperties?.Remove("no_total"); } }
+        public int? NoTotal { get => _explicitNullValueNoTotal; set { _explicitNullValueNoTotal = value; AdditionalData?.Remove("no_total"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("no_total"); else _explicitNullProperties?.Remove("no_total"); } }
         private int? _explicitNullValueNoTotal = default!;
         /// <summary>Succeeded observations whose verdict was `yes`.</summary>
-        public int? YesTotal { get => _explicitNullValueYesTotal; set { _explicitNullValueYesTotal = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("yes_total"); else _explicitNullProperties?.Remove("yes_total"); } }
+        public int? YesTotal { get => _explicitNullValueYesTotal; set { _explicitNullValueYesTotal = value; AdditionalData?.Remove("yes_total"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("yes_total"); else _explicitNullProperties?.Remove("yes_total"); } }
         private int? _explicitNullValueYesTotal = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.MonitorStats"/> and sets the default values.

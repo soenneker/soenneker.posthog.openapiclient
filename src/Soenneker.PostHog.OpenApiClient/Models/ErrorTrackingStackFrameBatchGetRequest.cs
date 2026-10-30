@@ -17,8 +17,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("raw_ids") is { } nullNodeRawIds && nullNodeRawIds.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) RawIds = null;
-            if (parseNode.GetChildNode("symbol_set") is { } nullNodeSymbolSet && nullNodeSymbolSet.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SymbolSet = null;
+            if (parseNode.GetChildNode("raw_ids") is null) { _explicitNullValueRawIds = default!; _explicitNullProperties?.Remove("raw_ids"); }
+            else if (parseNode.GetChildNode("raw_ids") is { } nullNodeRawIds && nullNodeRawIds.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) RawIds = null;
+            if (parseNode.GetChildNode("symbol_set") is null) { _explicitNullValueSymbolSet = default!; _explicitNullProperties?.Remove("symbol_set"); }
+            else if (parseNode.GetChildNode("symbol_set") is { } nullNodeSymbolSet && nullNodeSymbolSet.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SymbolSet = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -26,21 +28,21 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Raw frame IDs in &apos;hash/part&apos; format to resolve in a single request.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<string>? RawIds { get => _explicitNullValueRawIds; set { _explicitNullValueRawIds = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("raw_ids"); else _explicitNullProperties?.Remove("raw_ids"); } }
+        public List<string>? RawIds { get => _explicitNullValueRawIds; set { _explicitNullValueRawIds = value; AdditionalData?.Remove("raw_ids"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("raw_ids"); else _explicitNullProperties?.Remove("raw_ids"); } }
         private List<string>? _explicitNullValueRawIds = default!;
 #nullable restore
 #else
-        public List<string> RawIds { get => _explicitNullValueRawIds; set { _explicitNullValueRawIds = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("raw_ids"); else _explicitNullProperties?.Remove("raw_ids"); } }
+        public List<string> RawIds { get => _explicitNullValueRawIds; set { _explicitNullValueRawIds = value; AdditionalData?.Remove("raw_ids"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("raw_ids"); else _explicitNullProperties?.Remove("raw_ids"); } }
         private List<string> _explicitNullValueRawIds = default!;
 #endif
         /// <summary>Optional symbol set reference to scope the lookup to a single symbol set.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? SymbolSet { get => _explicitNullValueSymbolSet; set { _explicitNullValueSymbolSet = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("symbol_set"); else _explicitNullProperties?.Remove("symbol_set"); } }
+        public string? SymbolSet { get => _explicitNullValueSymbolSet; set { _explicitNullValueSymbolSet = value; AdditionalData?.Remove("symbol_set"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("symbol_set"); else _explicitNullProperties?.Remove("symbol_set"); } }
         private string? _explicitNullValueSymbolSet = default!;
 #nullable restore
 #else
-        public string SymbolSet { get => _explicitNullValueSymbolSet; set { _explicitNullValueSymbolSet = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("symbol_set"); else _explicitNullProperties?.Remove("symbol_set"); } }
+        public string SymbolSet { get => _explicitNullValueSymbolSet; set { _explicitNullValueSymbolSet = value; AdditionalData?.Remove("symbol_set"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("symbol_set"); else _explicitNullProperties?.Remove("symbol_set"); } }
         private string _explicitNullValueSymbolSet = default!;
 #endif
         /// <summary>

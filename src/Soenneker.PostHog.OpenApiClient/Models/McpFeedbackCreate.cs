@@ -17,16 +17,26 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("attempted_tool") is { } nullNodeAttemptedTool && nullNodeAttemptedTool.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AttemptedTool = null;
-            if (parseNode.GetChildNode("category") is { } nullNodeCategory && nullNodeCategory.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Category = null;
-            if (parseNode.GetChildNode("feedback") is { } nullNodeFeedback && nullNodeFeedback.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Feedback = null;
-            if (parseNode.GetChildNode("goal") is { } nullNodeGoal && nullNodeGoal.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Goal = null;
-            if (parseNode.GetChildNode("mcp_client_name") is { } nullNodeMcpClientName && nullNodeMcpClientName.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) McpClientName = null;
-            if (parseNode.GetChildNode("mcp_client_version") is { } nullNodeMcpClientVersion && nullNodeMcpClientVersion.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) McpClientVersion = null;
-            if (parseNode.GetChildNode("mcp_protocol_version") is { } nullNodeMcpProtocolVersion && nullNodeMcpProtocolVersion.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) McpProtocolVersion = null;
-            if (parseNode.GetChildNode("mcp_session_id") is { } nullNodeMcpSessionId && nullNodeMcpSessionId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) McpSessionId = null;
-            if (parseNode.GetChildNode("mcp_trace_id") is { } nullNodeMcpTraceId && nullNodeMcpTraceId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) McpTraceId = null;
-            if (parseNode.GetChildNode("mcp_transport") is { } nullNodeMcpTransport && nullNodeMcpTransport.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) McpTransport = null;
+            if (parseNode.GetChildNode("attempted_tool") is null) { _explicitNullValueAttemptedTool = default!; _explicitNullProperties?.Remove("attempted_tool"); }
+            else if (parseNode.GetChildNode("attempted_tool") is { } nullNodeAttemptedTool && nullNodeAttemptedTool.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AttemptedTool = null;
+            if (parseNode.GetChildNode("category") is null) { _explicitNullValueCategory = default!; _explicitNullProperties?.Remove("category"); }
+            else if (parseNode.GetChildNode("category") is { } nullNodeCategory && nullNodeCategory.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Category = null;
+            if (parseNode.GetChildNode("feedback") is null) { _explicitNullValueFeedback = default!; _explicitNullProperties?.Remove("feedback"); }
+            else if (parseNode.GetChildNode("feedback") is { } nullNodeFeedback && nullNodeFeedback.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Feedback = null;
+            if (parseNode.GetChildNode("goal") is null) { _explicitNullValueGoal = default!; _explicitNullProperties?.Remove("goal"); }
+            else if (parseNode.GetChildNode("goal") is { } nullNodeGoal && nullNodeGoal.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Goal = null;
+            if (parseNode.GetChildNode("mcp_client_name") is null) { _explicitNullValueMcpClientName = default!; _explicitNullProperties?.Remove("mcp_client_name"); }
+            else if (parseNode.GetChildNode("mcp_client_name") is { } nullNodeMcpClientName && nullNodeMcpClientName.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) McpClientName = null;
+            if (parseNode.GetChildNode("mcp_client_version") is null) { _explicitNullValueMcpClientVersion = default!; _explicitNullProperties?.Remove("mcp_client_version"); }
+            else if (parseNode.GetChildNode("mcp_client_version") is { } nullNodeMcpClientVersion && nullNodeMcpClientVersion.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) McpClientVersion = null;
+            if (parseNode.GetChildNode("mcp_protocol_version") is null) { _explicitNullValueMcpProtocolVersion = default!; _explicitNullProperties?.Remove("mcp_protocol_version"); }
+            else if (parseNode.GetChildNode("mcp_protocol_version") is { } nullNodeMcpProtocolVersion && nullNodeMcpProtocolVersion.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) McpProtocolVersion = null;
+            if (parseNode.GetChildNode("mcp_session_id") is null) { _explicitNullValueMcpSessionId = default!; _explicitNullProperties?.Remove("mcp_session_id"); }
+            else if (parseNode.GetChildNode("mcp_session_id") is { } nullNodeMcpSessionId && nullNodeMcpSessionId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) McpSessionId = null;
+            if (parseNode.GetChildNode("mcp_trace_id") is null) { _explicitNullValueMcpTraceId = default!; _explicitNullProperties?.Remove("mcp_trace_id"); }
+            else if (parseNode.GetChildNode("mcp_trace_id") is { } nullNodeMcpTraceId && nullNodeMcpTraceId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) McpTraceId = null;
+            if (parseNode.GetChildNode("mcp_transport") is null) { _explicitNullValueMcpTransport = default!; _explicitNullProperties?.Remove("mcp_transport"); }
+            else if (parseNode.GetChildNode("mcp_transport") is { } nullNodeMcpTransport && nullNodeMcpTransport.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) McpTransport = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -34,94 +44,94 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The tool the user tried before leaving feedback, if known.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? AttemptedTool { get => _explicitNullValueAttemptedTool; set { _explicitNullValueAttemptedTool = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("attempted_tool"); else _explicitNullProperties?.Remove("attempted_tool"); } }
+        public string? AttemptedTool { get => _explicitNullValueAttemptedTool; set { _explicitNullValueAttemptedTool = value; AdditionalData?.Remove("attempted_tool"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("attempted_tool"); else _explicitNullProperties?.Remove("attempted_tool"); } }
         private string? _explicitNullValueAttemptedTool = default!;
 #nullable restore
 #else
-        public string AttemptedTool { get => _explicitNullValueAttemptedTool; set { _explicitNullValueAttemptedTool = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("attempted_tool"); else _explicitNullProperties?.Remove("attempted_tool"); } }
+        public string AttemptedTool { get => _explicitNullValueAttemptedTool; set { _explicitNullValueAttemptedTool = value; AdditionalData?.Remove("attempted_tool"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("attempted_tool"); else _explicitNullProperties?.Remove("attempted_tool"); } }
         private string _explicitNullValueAttemptedTool = default!;
 #endif
         /// <summary>* `results` - Results* `usability` - Usability* `bug` - Bug* `docs` - Docs* `other` - Other</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.McpFeedbackCreateCategory? Category { get => _explicitNullValueCategory; set { _explicitNullValueCategory = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("category"); else _explicitNullProperties?.Remove("category"); } }
+        public global::Soenneker.PostHog.OpenApiClient.Models.McpFeedbackCreateCategory? Category { get => _explicitNullValueCategory; set { _explicitNullValueCategory = value; AdditionalData?.Remove("category"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("category"); else _explicitNullProperties?.Remove("category"); } }
         private global::Soenneker.PostHog.OpenApiClient.Models.McpFeedbackCreateCategory? _explicitNullValueCategory = default!;
         /// <summary>Concrete feedback about the MCP experience, tool result, or workflow friction.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Feedback { get => _explicitNullValueFeedback; set { _explicitNullValueFeedback = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("feedback"); else _explicitNullProperties?.Remove("feedback"); } }
+        public string? Feedback { get => _explicitNullValueFeedback; set { _explicitNullValueFeedback = value; AdditionalData?.Remove("feedback"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("feedback"); else _explicitNullProperties?.Remove("feedback"); } }
         private string? _explicitNullValueFeedback = default!;
 #nullable restore
 #else
-        public string Feedback { get => _explicitNullValueFeedback; set { _explicitNullValueFeedback = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("feedback"); else _explicitNullProperties?.Remove("feedback"); } }
+        public string Feedback { get => _explicitNullValueFeedback; set { _explicitNullValueFeedback = value; AdditionalData?.Remove("feedback"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("feedback"); else _explicitNullProperties?.Remove("feedback"); } }
         private string _explicitNullValueFeedback = default!;
 #endif
         /// <summary>The user&apos;s intended outcome when using MCP.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Goal { get => _explicitNullValueGoal; set { _explicitNullValueGoal = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("goal"); else _explicitNullProperties?.Remove("goal"); } }
+        public string? Goal { get => _explicitNullValueGoal; set { _explicitNullValueGoal = value; AdditionalData?.Remove("goal"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("goal"); else _explicitNullProperties?.Remove("goal"); } }
         private string? _explicitNullValueGoal = default!;
 #nullable restore
 #else
-        public string Goal { get => _explicitNullValueGoal; set { _explicitNullValueGoal = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("goal"); else _explicitNullProperties?.Remove("goal"); } }
+        public string Goal { get => _explicitNullValueGoal; set { _explicitNullValueGoal = value; AdditionalData?.Remove("goal"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("goal"); else _explicitNullProperties?.Remove("goal"); } }
         private string _explicitNullValueGoal = default!;
 #endif
         /// <summary>MCP client name, for example Claude Desktop or Cursor.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? McpClientName { get => _explicitNullValueMcpClientName; set { _explicitNullValueMcpClientName = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("mcp_client_name"); else _explicitNullProperties?.Remove("mcp_client_name"); } }
+        public string? McpClientName { get => _explicitNullValueMcpClientName; set { _explicitNullValueMcpClientName = value; AdditionalData?.Remove("mcp_client_name"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("mcp_client_name"); else _explicitNullProperties?.Remove("mcp_client_name"); } }
         private string? _explicitNullValueMcpClientName = default!;
 #nullable restore
 #else
-        public string McpClientName { get => _explicitNullValueMcpClientName; set { _explicitNullValueMcpClientName = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("mcp_client_name"); else _explicitNullProperties?.Remove("mcp_client_name"); } }
+        public string McpClientName { get => _explicitNullValueMcpClientName; set { _explicitNullValueMcpClientName = value; AdditionalData?.Remove("mcp_client_name"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("mcp_client_name"); else _explicitNullProperties?.Remove("mcp_client_name"); } }
         private string _explicitNullValueMcpClientName = default!;
 #endif
         /// <summary>Version string for the MCP client when available.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? McpClientVersion { get => _explicitNullValueMcpClientVersion; set { _explicitNullValueMcpClientVersion = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("mcp_client_version"); else _explicitNullProperties?.Remove("mcp_client_version"); } }
+        public string? McpClientVersion { get => _explicitNullValueMcpClientVersion; set { _explicitNullValueMcpClientVersion = value; AdditionalData?.Remove("mcp_client_version"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("mcp_client_version"); else _explicitNullProperties?.Remove("mcp_client_version"); } }
         private string? _explicitNullValueMcpClientVersion = default!;
 #nullable restore
 #else
-        public string McpClientVersion { get => _explicitNullValueMcpClientVersion; set { _explicitNullValueMcpClientVersion = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("mcp_client_version"); else _explicitNullProperties?.Remove("mcp_client_version"); } }
+        public string McpClientVersion { get => _explicitNullValueMcpClientVersion; set { _explicitNullValueMcpClientVersion = value; AdditionalData?.Remove("mcp_client_version"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("mcp_client_version"); else _explicitNullProperties?.Remove("mcp_client_version"); } }
         private string _explicitNullValueMcpClientVersion = default!;
 #endif
         /// <summary>MCP protocol version negotiated for the session when available.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? McpProtocolVersion { get => _explicitNullValueMcpProtocolVersion; set { _explicitNullValueMcpProtocolVersion = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("mcp_protocol_version"); else _explicitNullProperties?.Remove("mcp_protocol_version"); } }
+        public string? McpProtocolVersion { get => _explicitNullValueMcpProtocolVersion; set { _explicitNullValueMcpProtocolVersion = value; AdditionalData?.Remove("mcp_protocol_version"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("mcp_protocol_version"); else _explicitNullProperties?.Remove("mcp_protocol_version"); } }
         private string? _explicitNullValueMcpProtocolVersion = default!;
 #nullable restore
 #else
-        public string McpProtocolVersion { get => _explicitNullValueMcpProtocolVersion; set { _explicitNullValueMcpProtocolVersion = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("mcp_protocol_version"); else _explicitNullProperties?.Remove("mcp_protocol_version"); } }
+        public string McpProtocolVersion { get => _explicitNullValueMcpProtocolVersion; set { _explicitNullValueMcpProtocolVersion = value; AdditionalData?.Remove("mcp_protocol_version"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("mcp_protocol_version"); else _explicitNullProperties?.Remove("mcp_protocol_version"); } }
         private string _explicitNullValueMcpProtocolVersion = default!;
 #endif
         /// <summary>Stable MCP session identifier when available.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? McpSessionId { get => _explicitNullValueMcpSessionId; set { _explicitNullValueMcpSessionId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("mcp_session_id"); else _explicitNullProperties?.Remove("mcp_session_id"); } }
+        public string? McpSessionId { get => _explicitNullValueMcpSessionId; set { _explicitNullValueMcpSessionId = value; AdditionalData?.Remove("mcp_session_id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("mcp_session_id"); else _explicitNullProperties?.Remove("mcp_session_id"); } }
         private string? _explicitNullValueMcpSessionId = default!;
 #nullable restore
 #else
-        public string McpSessionId { get => _explicitNullValueMcpSessionId; set { _explicitNullValueMcpSessionId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("mcp_session_id"); else _explicitNullProperties?.Remove("mcp_session_id"); } }
+        public string McpSessionId { get => _explicitNullValueMcpSessionId; set { _explicitNullValueMcpSessionId = value; AdditionalData?.Remove("mcp_session_id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("mcp_session_id"); else _explicitNullProperties?.Remove("mcp_session_id"); } }
         private string _explicitNullValueMcpSessionId = default!;
 #endif
         /// <summary>Trace identifier for the surrounding MCP workflow when available.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? McpTraceId { get => _explicitNullValueMcpTraceId; set { _explicitNullValueMcpTraceId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("mcp_trace_id"); else _explicitNullProperties?.Remove("mcp_trace_id"); } }
+        public string? McpTraceId { get => _explicitNullValueMcpTraceId; set { _explicitNullValueMcpTraceId = value; AdditionalData?.Remove("mcp_trace_id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("mcp_trace_id"); else _explicitNullProperties?.Remove("mcp_trace_id"); } }
         private string? _explicitNullValueMcpTraceId = default!;
 #nullable restore
 #else
-        public string McpTraceId { get => _explicitNullValueMcpTraceId; set { _explicitNullValueMcpTraceId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("mcp_trace_id"); else _explicitNullProperties?.Remove("mcp_trace_id"); } }
+        public string McpTraceId { get => _explicitNullValueMcpTraceId; set { _explicitNullValueMcpTraceId = value; AdditionalData?.Remove("mcp_trace_id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("mcp_trace_id"); else _explicitNullProperties?.Remove("mcp_trace_id"); } }
         private string _explicitNullValueMcpTraceId = default!;
 #endif
         /// <summary>Transport used for the MCP session, for example streamable_http or sse.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? McpTransport { get => _explicitNullValueMcpTransport; set { _explicitNullValueMcpTransport = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("mcp_transport"); else _explicitNullProperties?.Remove("mcp_transport"); } }
+        public string? McpTransport { get => _explicitNullValueMcpTransport; set { _explicitNullValueMcpTransport = value; AdditionalData?.Remove("mcp_transport"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("mcp_transport"); else _explicitNullProperties?.Remove("mcp_transport"); } }
         private string? _explicitNullValueMcpTransport = default!;
 #nullable restore
 #else
-        public string McpTransport { get => _explicitNullValueMcpTransport; set { _explicitNullValueMcpTransport = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("mcp_transport"); else _explicitNullProperties?.Remove("mcp_transport"); } }
+        public string McpTransport { get => _explicitNullValueMcpTransport; set { _explicitNullValueMcpTransport = value; AdditionalData?.Remove("mcp_transport"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("mcp_transport"); else _explicitNullProperties?.Remove("mcp_transport"); } }
         private string _explicitNullValueMcpTransport = default!;
 #endif
         /// <summary>
@@ -150,7 +160,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "attempted_tool", n => { AttemptedTool = n.GetStringValue(); } },
-                { "category", n => { Category = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.McpFeedbackCreateCategory>(); } },
+                { "category", n => { var parsed = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.McpFeedbackCreateCategory>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValueCategory = default; _explicitNullProperties?.Remove("category"); AdditionalData["category"] = unknown; } else { Category = parsed; AdditionalData.Remove("category"); } } },
                 { "feedback", n => { Feedback = n.GetStringValue(); } },
                 { "goal", n => { Goal = n.GetStringValue(); } },
                 { "mcp_client_name", n => { McpClientName = n.GetStringValue(); } },

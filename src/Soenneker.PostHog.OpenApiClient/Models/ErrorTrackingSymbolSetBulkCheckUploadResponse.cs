@@ -17,7 +17,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("chunk_ids_to_upload") is { } nullNodeChunkIdsToUpload && nullNodeChunkIdsToUpload.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ChunkIdsToUpload = null;
+            if (parseNode.GetChildNode("chunk_ids_to_upload") is null) { _explicitNullValueChunkIdsToUpload = default!; _explicitNullProperties?.Remove("chunk_ids_to_upload"); }
+            else if (parseNode.GetChildNode("chunk_ids_to_upload") is { } nullNodeChunkIdsToUpload && nullNodeChunkIdsToUpload.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ChunkIdsToUpload = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -25,11 +26,11 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Chunk IDs to send to `bulk_start_upload`: the symbol set is missing, its upload never completed, its content differs, or it still needs the release bound. The other chunks are already uploaded with identical content and were marked as still in use.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<string>? ChunkIdsToUpload { get => _explicitNullValueChunkIdsToUpload; set { _explicitNullValueChunkIdsToUpload = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("chunk_ids_to_upload"); else _explicitNullProperties?.Remove("chunk_ids_to_upload"); } }
+        public List<string>? ChunkIdsToUpload { get => _explicitNullValueChunkIdsToUpload; set { _explicitNullValueChunkIdsToUpload = value; AdditionalData?.Remove("chunk_ids_to_upload"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("chunk_ids_to_upload"); else _explicitNullProperties?.Remove("chunk_ids_to_upload"); } }
         private List<string>? _explicitNullValueChunkIdsToUpload = default!;
 #nullable restore
 #else
-        public List<string> ChunkIdsToUpload { get => _explicitNullValueChunkIdsToUpload; set { _explicitNullValueChunkIdsToUpload = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("chunk_ids_to_upload"); else _explicitNullProperties?.Remove("chunk_ids_to_upload"); } }
+        public List<string> ChunkIdsToUpload { get => _explicitNullValueChunkIdsToUpload; set { _explicitNullValueChunkIdsToUpload = value; AdditionalData?.Remove("chunk_ids_to_upload"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("chunk_ids_to_upload"); else _explicitNullProperties?.Remove("chunk_ids_to_upload"); } }
         private List<string> _explicitNullValueChunkIdsToUpload = default!;
 #endif
         /// <summary>

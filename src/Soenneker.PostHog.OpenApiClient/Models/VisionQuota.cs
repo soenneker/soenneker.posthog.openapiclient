@@ -45,6 +45,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public int? Remaining { get; private set; }
         /// <summary>Credit-weighted sum of enabled scanners&apos; projected observations/month across the organization. A capped scanner contributes at most what its own credit limit has left this period, folded back into a 30-day rate. A monthly rate: only the part falling in the days left of the period lands this period. Scanners without a computed estimate contribute 0.</summary>
         public int? ScannersMonthlyCredits { get; private set; }
+        /// <summary>The part of `scanners_monthly_credits` that lands between now and `period_end`. Use it for rest-of-period forecasts; billing forecasts from the same figure.</summary>
+        public int? ScannersPeriodCredits { get; private set; }
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.VisionQuota"/> and sets the default values.
         /// </summary>
@@ -82,6 +84,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "projected_monthly_credits", n => { ProjectedMonthlyCredits = n.GetIntValue(); } },
                 { "remaining", n => { Remaining = n.GetIntValue(); } },
                 { "scanners_monthly_credits", n => { ScannersMonthlyCredits = n.GetIntValue(); } },
+                { "scanners_period_credits", n => { ScannersPeriodCredits = n.GetIntValue(); } },
             };
         }
         /// <summary>

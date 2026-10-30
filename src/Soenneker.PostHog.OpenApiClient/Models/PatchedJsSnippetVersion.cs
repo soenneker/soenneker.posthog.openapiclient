@@ -17,7 +17,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("js_snippet_version") is { } nullNodeJsSnippetVersion && nullNodeJsSnippetVersion.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) JsSnippetVersion = null;
+            if (parseNode.GetChildNode("js_snippet_version") is null) { _explicitNullValueJsSnippetVersion = default!; _explicitNullProperties?.Remove("js_snippet_version"); }
+            else if (parseNode.GetChildNode("js_snippet_version") is { } nullNodeJsSnippetVersion && nullNodeJsSnippetVersion.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) JsSnippetVersion = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -25,11 +26,11 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Version pin: null for latest, &quot;1.358.0&quot; for exact, &quot;1&quot; for major, &quot;1.358&quot; for minor</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? JsSnippetVersion { get => _explicitNullValueJsSnippetVersion; set { _explicitNullValueJsSnippetVersion = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("js_snippet_version"); else _explicitNullProperties?.Remove("js_snippet_version"); } }
+        public string? JsSnippetVersion { get => _explicitNullValueJsSnippetVersion; set { _explicitNullValueJsSnippetVersion = value; AdditionalData?.Remove("js_snippet_version"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("js_snippet_version"); else _explicitNullProperties?.Remove("js_snippet_version"); } }
         private string? _explicitNullValueJsSnippetVersion = default!;
 #nullable restore
 #else
-        public string JsSnippetVersion { get => _explicitNullValueJsSnippetVersion; set { _explicitNullValueJsSnippetVersion = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("js_snippet_version"); else _explicitNullProperties?.Remove("js_snippet_version"); } }
+        public string JsSnippetVersion { get => _explicitNullValueJsSnippetVersion; set { _explicitNullValueJsSnippetVersion = value; AdditionalData?.Remove("js_snippet_version"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("js_snippet_version"); else _explicitNullProperties?.Remove("js_snippet_version"); } }
         private string _explicitNullValueJsSnippetVersion = default!;
 #endif
         /// <summary>

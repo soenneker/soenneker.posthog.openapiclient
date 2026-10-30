@@ -18,28 +18,31 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("emit") is { } nullNodeEmit && nullNodeEmit.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Emit = null;
-            if (parseNode.GetChildNode("run_cron_schedule") is { } nullNodeRunCronSchedule && nullNodeRunCronSchedule.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) RunCronSchedule = null;
-            if (parseNode.GetChildNode("run_interval_minutes") is { } nullNodeRunIntervalMinutes && nullNodeRunIntervalMinutes.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) RunIntervalMinutes = null;
+            if (parseNode.GetChildNode("emit") is null) { _explicitNullValueEmit = default!; _explicitNullProperties?.Remove("emit"); }
+            else if (parseNode.GetChildNode("emit") is { } nullNodeEmit && nullNodeEmit.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Emit = null;
+            if (parseNode.GetChildNode("run_cron_schedule") is null) { _explicitNullValueRunCronSchedule = default!; _explicitNullProperties?.Remove("run_cron_schedule"); }
+            else if (parseNode.GetChildNode("run_cron_schedule") is { } nullNodeRunCronSchedule && nullNodeRunCronSchedule.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) RunCronSchedule = null;
+            if (parseNode.GetChildNode("run_interval_minutes") is null) { _explicitNullValueRunIntervalMinutes = default!; _explicitNullProperties?.Remove("run_interval_minutes"); }
+            else if (parseNode.GetChildNode("run_interval_minutes") is { } nullNodeRunIntervalMinutes && nullNodeRunIntervalMinutes.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) RunIntervalMinutes = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Whether the suggested scout should write to the inbox (false = dry run).</summary>
-        public bool? Emit { get => _explicitNullValueEmit; set { _explicitNullValueEmit = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("emit"); else _explicitNullProperties?.Remove("emit"); } }
+        public bool? Emit { get => _explicitNullValueEmit; set { _explicitNullValueEmit = value; AdditionalData?.Remove("emit"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("emit"); else _explicitNullProperties?.Remove("emit"); } }
         private bool? _explicitNullValueEmit = default!;
         /// <summary>Suggested five-field cron schedule in the project timezone, or null for an interval.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? RunCronSchedule { get => _explicitNullValueRunCronSchedule; set { _explicitNullValueRunCronSchedule = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("run_cron_schedule"); else _explicitNullProperties?.Remove("run_cron_schedule"); } }
+        public string? RunCronSchedule { get => _explicitNullValueRunCronSchedule; set { _explicitNullValueRunCronSchedule = value; AdditionalData?.Remove("run_cron_schedule"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("run_cron_schedule"); else _explicitNullProperties?.Remove("run_cron_schedule"); } }
         private string? _explicitNullValueRunCronSchedule = default!;
 #nullable restore
 #else
-        public string RunCronSchedule { get => _explicitNullValueRunCronSchedule; set { _explicitNullValueRunCronSchedule = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("run_cron_schedule"); else _explicitNullProperties?.Remove("run_cron_schedule"); } }
+        public string RunCronSchedule { get => _explicitNullValueRunCronSchedule; set { _explicitNullValueRunCronSchedule = value; AdditionalData?.Remove("run_cron_schedule"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("run_cron_schedule"); else _explicitNullProperties?.Remove("run_cron_schedule"); } }
         private string _explicitNullValueRunCronSchedule = default!;
 #endif
         /// <summary>Suggested minutes between runs when no cron is given; null means the daily default.</summary>
-        public int? RunIntervalMinutes { get => _explicitNullValueRunIntervalMinutes; set { _explicitNullValueRunIntervalMinutes = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("run_interval_minutes"); else _explicitNullProperties?.Remove("run_interval_minutes"); } }
+        public int? RunIntervalMinutes { get => _explicitNullValueRunIntervalMinutes; set { _explicitNullValueRunIntervalMinutes = value; AdditionalData?.Remove("run_interval_minutes"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("run_interval_minutes"); else _explicitNullProperties?.Remove("run_interval_minutes"); } }
         private int? _explicitNullValueRunIntervalMinutes = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ScoutSuggestionItemProposedConfig"/> and sets the default values.

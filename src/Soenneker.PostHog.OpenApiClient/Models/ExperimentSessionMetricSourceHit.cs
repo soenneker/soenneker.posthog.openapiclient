@@ -18,50 +18,57 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("event_count") is { } nullNodeEventCount && nullNodeEventCount.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) EventCount = null;
-            if (parseNode.GetChildNode("first_timestamp") is { } nullNodeFirstTimestamp && nullNodeFirstTimestamp.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) FirstTimestamp = null;
-            if (parseNode.GetChildNode("source_index") is { } nullNodeSourceIndex && nullNodeSourceIndex.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SourceIndex = null;
-            if (parseNode.GetChildNode("source_name") is { } nullNodeSourceName && nullNodeSourceName.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SourceName = null;
-            if (parseNode.GetChildNode("source_role") is { } nullNodeSourceRole && nullNodeSourceRole.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SourceRole = null;
-            if (parseNode.GetChildNode("source_total") is { } nullNodeSourceTotal && nullNodeSourceTotal.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SourceTotal = null;
-            if (parseNode.GetChildNode("timestamps") is { } nullNodeTimestamps && nullNodeTimestamps.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Timestamps = null;
+            if (parseNode.GetChildNode("event_count") is null) { _explicitNullValueEventCount = default!; _explicitNullProperties?.Remove("event_count"); }
+            else if (parseNode.GetChildNode("event_count") is { } nullNodeEventCount && nullNodeEventCount.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) EventCount = null;
+            if (parseNode.GetChildNode("first_timestamp") is null) { _explicitNullValueFirstTimestamp = default!; _explicitNullProperties?.Remove("first_timestamp"); }
+            else if (parseNode.GetChildNode("first_timestamp") is { } nullNodeFirstTimestamp && nullNodeFirstTimestamp.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) FirstTimestamp = null;
+            if (parseNode.GetChildNode("source_index") is null) { _explicitNullValueSourceIndex = default!; _explicitNullProperties?.Remove("source_index"); }
+            else if (parseNode.GetChildNode("source_index") is { } nullNodeSourceIndex && nullNodeSourceIndex.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SourceIndex = null;
+            if (parseNode.GetChildNode("source_name") is null) { _explicitNullValueSourceName = default!; _explicitNullProperties?.Remove("source_name"); }
+            else if (parseNode.GetChildNode("source_name") is { } nullNodeSourceName && nullNodeSourceName.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SourceName = null;
+            if (parseNode.GetChildNode("source_role") is null) { _explicitNullValueSourceRole = default!; _explicitNullProperties?.Remove("source_role"); }
+            else if (parseNode.GetChildNode("source_role") is { } nullNodeSourceRole && nullNodeSourceRole.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SourceRole = null;
+            if (parseNode.GetChildNode("source_total") is null) { _explicitNullValueSourceTotal = default!; _explicitNullProperties?.Remove("source_total"); }
+            else if (parseNode.GetChildNode("source_total") is { } nullNodeSourceTotal && nullNodeSourceTotal.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SourceTotal = null;
+            if (parseNode.GetChildNode("timestamps") is null) { _explicitNullValueTimestamps = default!; _explicitNullProperties?.Remove("timestamps"); }
+            else if (parseNode.GetChildNode("timestamps") is { } nullNodeTimestamps && nullNodeTimestamps.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Timestamps = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Number of events in the session matching this source.</summary>
-        public int? EventCount { get => _explicitNullValueEventCount; set { _explicitNullValueEventCount = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("event_count"); else _explicitNullProperties?.Remove("event_count"); } }
+        public int? EventCount { get => _explicitNullValueEventCount; set { _explicitNullValueEventCount = value; AdditionalData?.Remove("event_count"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("event_count"); else _explicitNullProperties?.Remove("event_count"); } }
         private int? _explicitNullValueEventCount = default!;
         /// <summary>Timestamp of the first event in the session matching this source.</summary>
-        public DateTimeOffset? FirstTimestamp { get => _explicitNullValueFirstTimestamp; set { _explicitNullValueFirstTimestamp = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("first_timestamp"); else _explicitNullProperties?.Remove("first_timestamp"); } }
+        public DateTimeOffset? FirstTimestamp { get => _explicitNullValueFirstTimestamp; set { _explicitNullValueFirstTimestamp = value; AdditionalData?.Remove("first_timestamp"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("first_timestamp"); else _explicitNullProperties?.Remove("first_timestamp"); } }
         private DateTimeOffset? _explicitNullValueFirstTimestamp = default!;
         /// <summary>0-based position of this source among all the metric&apos;s sources, data-warehouse ones included — so a funnel step keeps its real step number even when an earlier step has no session events.</summary>
-        public int? SourceIndex { get => _explicitNullValueSourceIndex; set { _explicitNullValueSourceIndex = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("source_index"); else _explicitNullProperties?.Remove("source_index"); } }
+        public int? SourceIndex { get => _explicitNullValueSourceIndex; set { _explicitNullValueSourceIndex = value; AdditionalData?.Remove("source_index"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("source_index"); else _explicitNullProperties?.Remove("source_index"); } }
         private int? _explicitNullValueSourceIndex = default!;
         /// <summary>Display name of the source event or action.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? SourceName { get => _explicitNullValueSourceName; set { _explicitNullValueSourceName = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("source_name"); else _explicitNullProperties?.Remove("source_name"); } }
+        public string? SourceName { get => _explicitNullValueSourceName; set { _explicitNullValueSourceName = value; AdditionalData?.Remove("source_name"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("source_name"); else _explicitNullProperties?.Remove("source_name"); } }
         private string? _explicitNullValueSourceName = default!;
 #nullable restore
 #else
-        public string SourceName { get => _explicitNullValueSourceName; set { _explicitNullValueSourceName = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("source_name"); else _explicitNullProperties?.Remove("source_name"); } }
+        public string SourceName { get => _explicitNullValueSourceName; set { _explicitNullValueSourceName = value; AdditionalData?.Remove("source_name"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("source_name"); else _explicitNullProperties?.Remove("source_name"); } }
         private string _explicitNullValueSourceName = default!;
 #endif
         /// <summary>* `source` - source* `step` - step* `numerator` - numerator* `denominator` - denominator* `retention_start` - retention_start* `retention_completion` - retention_completion</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentSessionMetricSourceHitSourceRole? SourceRole { get => _explicitNullValueSourceRole; set { _explicitNullValueSourceRole = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("source_role"); else _explicitNullProperties?.Remove("source_role"); } }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentSessionMetricSourceHitSourceRole? SourceRole { get => _explicitNullValueSourceRole; set { _explicitNullValueSourceRole = value; AdditionalData?.Remove("source_role"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("source_role"); else _explicitNullProperties?.Remove("source_role"); } }
         private global::Soenneker.PostHog.OpenApiClient.Models.ExperimentSessionMetricSourceHitSourceRole? _explicitNullValueSourceRole = default!;
         /// <summary>Total number of sources the metric is defined over.</summary>
-        public int? SourceTotal { get => _explicitNullValueSourceTotal; set { _explicitNullValueSourceTotal = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("source_total"); else _explicitNullProperties?.Remove("source_total"); } }
+        public int? SourceTotal { get => _explicitNullValueSourceTotal; set { _explicitNullValueSourceTotal = value; AdditionalData?.Remove("source_total"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("source_total"); else _explicitNullProperties?.Remove("source_total"); } }
         private int? _explicitNullValueSourceTotal = default!;
         /// <summary>Ascending timestamps of this source&apos;s matching events in the session, capped at the first 50. event_count is the true total, so this list may be shorter — treat these as seek points, not a count.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<DateTimeOffset?>? Timestamps { get => _explicitNullValueTimestamps; set { _explicitNullValueTimestamps = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("timestamps"); else _explicitNullProperties?.Remove("timestamps"); } }
+        public List<DateTimeOffset?>? Timestamps { get => _explicitNullValueTimestamps; set { _explicitNullValueTimestamps = value; AdditionalData?.Remove("timestamps"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("timestamps"); else _explicitNullProperties?.Remove("timestamps"); } }
         private List<DateTimeOffset?>? _explicitNullValueTimestamps = default!;
 #nullable restore
 #else
-        public List<DateTimeOffset?> Timestamps { get => _explicitNullValueTimestamps; set { _explicitNullValueTimestamps = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("timestamps"); else _explicitNullProperties?.Remove("timestamps"); } }
+        public List<DateTimeOffset?> Timestamps { get => _explicitNullValueTimestamps; set { _explicitNullValueTimestamps = value; AdditionalData?.Remove("timestamps"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("timestamps"); else _explicitNullProperties?.Remove("timestamps"); } }
         private List<DateTimeOffset?> _explicitNullValueTimestamps = default!;
 #endif
         /// <summary>
@@ -93,7 +100,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "first_timestamp", n => { FirstTimestamp = n.GetDateTimeOffsetValue(); } },
                 { "source_index", n => { SourceIndex = n.GetIntValue(); } },
                 { "source_name", n => { SourceName = n.GetStringValue(); } },
-                { "source_role", n => { SourceRole = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentSessionMetricSourceHitSourceRole>(); } },
+                { "source_role", n => { var parsed = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ExperimentSessionMetricSourceHitSourceRole>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValueSourceRole = default; _explicitNullProperties?.Remove("source_role"); AdditionalData["source_role"] = unknown; } else { SourceRole = parsed; AdditionalData.Remove("source_role"); } } },
                 { "source_total", n => { SourceTotal = n.GetIntValue(); } },
                 { "timestamps", n => { Timestamps = n.GetCollectionOfPrimitiveValues<DateTimeOffset?>()?.AsList(); } },
             };

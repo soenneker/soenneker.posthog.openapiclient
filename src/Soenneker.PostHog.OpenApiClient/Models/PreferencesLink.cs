@@ -17,7 +17,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("preferences_url") is { } nullNodePreferencesUrl && nullNodePreferencesUrl.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) PreferencesUrl = null;
+            if (parseNode.GetChildNode("preferences_url") is null) { _explicitNullValuePreferencesUrl = default!; _explicitNullProperties?.Remove("preferences_url"); }
+            else if (parseNode.GetChildNode("preferences_url") is { } nullNodePreferencesUrl && nullNodePreferencesUrl.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) PreferencesUrl = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -25,11 +26,11 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Token-gated URL where the recipient can manage their preferences.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? PreferencesUrl { get => _explicitNullValuePreferencesUrl; set { _explicitNullValuePreferencesUrl = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("preferences_url"); else _explicitNullProperties?.Remove("preferences_url"); } }
+        public string? PreferencesUrl { get => _explicitNullValuePreferencesUrl; set { _explicitNullValuePreferencesUrl = value; AdditionalData?.Remove("preferences_url"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("preferences_url"); else _explicitNullProperties?.Remove("preferences_url"); } }
         private string? _explicitNullValuePreferencesUrl = default!;
 #nullable restore
 #else
-        public string PreferencesUrl { get => _explicitNullValuePreferencesUrl; set { _explicitNullValuePreferencesUrl = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("preferences_url"); else _explicitNullProperties?.Remove("preferences_url"); } }
+        public string PreferencesUrl { get => _explicitNullValuePreferencesUrl; set { _explicitNullValuePreferencesUrl = value; AdditionalData?.Remove("preferences_url"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("preferences_url"); else _explicitNullProperties?.Remove("preferences_url"); } }
         private string _explicitNullValuePreferencesUrl = default!;
 #endif
         /// <summary>

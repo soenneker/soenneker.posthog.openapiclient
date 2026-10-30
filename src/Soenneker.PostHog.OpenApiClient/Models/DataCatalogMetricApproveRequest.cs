@@ -18,13 +18,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("expected_updated_at") is { } nullNodeExpectedUpdatedAt && nullNodeExpectedUpdatedAt.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ExpectedUpdatedAt = null;
+            if (parseNode.GetChildNode("expected_updated_at") is null) { _explicitNullValueExpectedUpdatedAt = default!; _explicitNullProperties?.Remove("expected_updated_at"); }
+            else if (parseNode.GetChildNode("expected_updated_at") is { } nullNodeExpectedUpdatedAt && nullNodeExpectedUpdatedAt.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ExpectedUpdatedAt = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The metric&apos;s `updated_at` as last seen by the approver. When the metric changed since then, the API returns 409 and leaves it proposed. Omit to approve the current version.</summary>
-        public DateTimeOffset? ExpectedUpdatedAt { get => _explicitNullValueExpectedUpdatedAt; set { _explicitNullValueExpectedUpdatedAt = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("expected_updated_at"); else _explicitNullProperties?.Remove("expected_updated_at"); } }
+        public DateTimeOffset? ExpectedUpdatedAt { get => _explicitNullValueExpectedUpdatedAt; set { _explicitNullValueExpectedUpdatedAt = value; AdditionalData?.Remove("expected_updated_at"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("expected_updated_at"); else _explicitNullProperties?.Remove("expected_updated_at"); } }
         private DateTimeOffset? _explicitNullValueExpectedUpdatedAt = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.DataCatalogMetricApproveRequest"/> and sets the default values.

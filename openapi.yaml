@@ -66431,41 +66431,6 @@ paths:
           description: ''
       x-product:
       - persons
-  /api/projects/{project_id}/persons/reset_person_distinct_id/:
-    post:
-      operationId: persons_reset_person_distinct_id_create
-      description: Fix a distinct_id that stays hidden after its person was deleted
-        and created again. Does nothing if no live person uses this distinct_id. In
-        that case, send a new event for it instead.
-      parameters:
-      - in: query
-        name: format
-        schema:
-          type: string
-          enum:
-          - csv
-          - json
-      - $ref: '#/components/parameters/ProjectIdPath'
-      tags:
-      - persons
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/PersonRecord'
-      security:
-      - PersonalAPIKeyAuth:
-        - person:write
-      responses:
-        '202':
-          description: The fix was applied, or nothing needed fixing.
-        '409':
-          description: The person is being updated by another operation. Try again
-            shortly.
-        '503':
-          description: Person data is temporarily unavailable. Try again shortly.
-      x-product:
-      - persons
   /api/projects/{project_id}/persons/values/:
     get:
       operationId: persons_values_retrieve
@@ -74149,12 +74114,12 @@ paths:
         a status type reverts the report''s canonical status to the previous version
         (latest-wins over what remains). `task_run` artefacts are an append-only work
         log and cannot be deleted. Neither can the types this API cannot write, which
-        the pipeline owns: `autostart_skip`, `check_cancelled`, `check_expired`, `check_observation`,
-        `check_result`, `check_scheduled`, `code_review`, `impact_measurement_plan`,
-        `implementation_decision`, `implementation_dispatch`, `implementation_handover`,
-        `implementation_replacement`, `pr_owner_assignment`, `pull_request`, `ranking_score`,
-        `report_link`, `reviewer_corrections`, `summary_change`, `task_run`, `title_change`,
-        `video_segment`, `work_claim`, `work_release`.'
+        the pipeline owns: `autostart_skip`, `check_authoring`, `check_cancelled`,
+        `check_expired`, `check_observation`, `check_result`, `check_scheduled`, `code_review`,
+        `impact_measurement_plan`, `implementation_decision`, `implementation_dispatch`,
+        `implementation_handover`, `implementation_replacement`, `pr_owner_assignment`,
+        `pull_request`, `ranking_score`, `report_link`, `reviewer_corrections`, `summary_change`,
+        `task_run`, `title_change`, `video_segment`, `work_claim`, `work_release`.'
       summary: Delete an artefact
       parameters:
       - in: path
@@ -74581,6 +74546,60 @@ paths:
               schema:
                 $ref: '#/components/schemas/SignalReportBulkClaimResponse'
           description: ''
+      x-product:
+      - signals
+  /api/projects/{project_id}/signals/reports/for_me/:
+    get:
+      operationId: signals_reports_for_me_retrieve
+      description: Your open inbox reports, ranked for you by one language model call
+        over your activity summary, the reports that need you and the ranking model's
+        predictions. Each entry has a reason and a compact report. A current stored
+        list returns at once. Otherwise the request builds a new list, which can take
+        30 seconds or more. Only the user the list is about can read it.
+      summary: Get your personal ranked inbox
+      parameters:
+      - in: query
+        name: focus
+        schema:
+          type: string
+          maxLength: 2000
+        description: Free text about what to put first, such as `error tracking` or
+          `billing reports`. A request with focus always builds a new list, and an
+          unfocused request never reuses it.
+      - in: query
+        name: limit
+        schema:
+          type: integer
+          maximum: 100
+          minimum: 1
+        description: The most reports to return, best first. Defaults to 25. Values
+          above the configured maximum (50) use the maximum.
+      - $ref: '#/components/parameters/ProjectIdPath'
+      - in: query
+        name: refresh
+        schema:
+          type: boolean
+          default: false
+        description: Build a new list even when the stored one is current. A build
+          calls a model and can take 30 seconds or more.
+      tags:
+      - signals
+      security:
+      - PersonalAPIKeyAuth:
+        - task:read
+      - PersonalAPIKeyAuth:
+        - task:read
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PersonalRanking'
+          description: ''
+        '404':
+          description: Personal ranking is not available to the caller.
+        '429':
+          description: The build limit is reached and no stored list exists yet.
       x-product:
       - signals
   /api/projects/{project_id}/signals/reports/pr_ci_statuses/:
@@ -180035,6 +180054,7 @@ components:
                 MarketingAnalyticsAggregatedQuery: '#/components/schemas/MarketingAnalyticsAggregatedQuery'
                 MarketingAnalyticsAttributionPathsQuery: '#/components/schemas/MarketingAnalyticsAttributionPathsQuery'
                 MarketingAnalyticsAttributionQuery: '#/components/schemas/MarketingAnalyticsAttributionQuery'
+                MarketingAnalyticsRecommendationsQuery: '#/components/schemas/MarketingAnalyticsRecommendationsQuery'
                 MarketingAnalyticsRetentionQuery: '#/components/schemas/MarketingAnalyticsRetentionQuery'
                 MarketingAnalyticsSearchQuery: '#/components/schemas/MarketingAnalyticsSearchQuery'
                 MarketingAnalyticsTableQuery: '#/components/schemas/MarketingAnalyticsTableQuery'
@@ -180089,6 +180109,7 @@ components:
             - $ref: '#/components/schemas/MarketingAnalyticsAttributionPathsQuery'
             - $ref: '#/components/schemas/MarketingAnalyticsRetentionQuery'
             - $ref: '#/components/schemas/MarketingAnalyticsSearchQuery'
+            - $ref: '#/components/schemas/MarketingAnalyticsRecommendationsQuery'
             - $ref: '#/components/schemas/WebOverviewQuery'
             - $ref: '#/components/schemas/WebStatsTableQuery'
             - $ref: '#/components/schemas/WebExternalClicksTableQuery'
@@ -180417,6 +180438,7 @@ components:
                 MarketingAnalyticsAggregatedQuery: '#/components/schemas/MarketingAnalyticsAggregatedQuery'
                 MarketingAnalyticsAttributionPathsQuery: '#/components/schemas/MarketingAnalyticsAttributionPathsQuery'
                 MarketingAnalyticsAttributionQuery: '#/components/schemas/MarketingAnalyticsAttributionQuery'
+                MarketingAnalyticsRecommendationsQuery: '#/components/schemas/MarketingAnalyticsRecommendationsQuery'
                 MarketingAnalyticsRetentionQuery: '#/components/schemas/MarketingAnalyticsRetentionQuery'
                 MarketingAnalyticsSearchQuery: '#/components/schemas/MarketingAnalyticsSearchQuery'
                 MarketingAnalyticsTableQuery: '#/components/schemas/MarketingAnalyticsTableQuery'
@@ -180471,6 +180493,7 @@ components:
             - $ref: '#/components/schemas/MarketingAnalyticsAttributionPathsQuery'
             - $ref: '#/components/schemas/MarketingAnalyticsRetentionQuery'
             - $ref: '#/components/schemas/MarketingAnalyticsSearchQuery'
+            - $ref: '#/components/schemas/MarketingAnalyticsRecommendationsQuery'
             - $ref: '#/components/schemas/WebOverviewQuery'
             - $ref: '#/components/schemas/WebStatsTableQuery'
             - $ref: '#/components/schemas/WebExternalClicksTableQuery'
@@ -191798,7 +191821,7 @@ components:
             * `c` - c
             * `d` - d
           oneOf:
-          - $ref: '#/components/schemas/TierEnum'
+          - $ref: '#/components/schemas/LogsAnomalyScanSeriesTierEnum'
           - $ref: '#/components/schemas/NullEnum'
         history_start:
           type:
@@ -191829,6 +191852,18 @@ components:
       - severity
       - stage
       - tier
+    LogsAnomalyScanSeriesTierEnum:
+      enum:
+      - a
+      - b
+      - c
+      - d
+      type: string
+      description: |-
+        * `a` - a
+        * `b` - b
+        * `c` - c
+        * `d` - d
     LogsAnomalyVerdictEnum:
       enum:
       - spike
@@ -200238,7 +200273,7 @@ components:
           - type: 'null'
           default: null
           description: ISO timestamp of the oldest precompute window backing this
-            result — surfaced as "data as of X".
+            result.
           title: Datacomputedat
         error:
           anyOf:
@@ -200255,6 +200290,16 @@ components:
           default: null
           description: Generated HogQL query.
           title: Hogql
+        latestDayComputedAt:
+          anyOf:
+          - type: string
+          - type: 'null'
+          default: null
+          description: ISO timestamp of when the numbers for the most recent day in
+            the range were computed, at this time or later. It is the oldest stamp
+            among the precompute windows that hold that day, across costs and conversion
+            goals. Unset when no precompute was read or a window has no stamp.
+          title: Latestdaycomputedat
         modifiers:
           anyOf:
           - $ref: '#/components/schemas/HogQLQueryModifiers'
@@ -201394,6 +201439,319 @@ components:
       - DESC
       title: MarketingAnalyticsOrderByEnum
       type: string
+    MarketingAnalyticsRecommendation:
+      additionalProperties: false
+      properties:
+        action:
+          title: Action
+          type: string
+        campaign:
+          anyOf:
+          - type: string
+          - type: 'null'
+          default: null
+          description: The campaign a search term recommendation applies to, when
+            it applies to one.
+          title: Campaign
+        currency:
+          anyOf:
+          - type: string
+          - type: 'null'
+          default: null
+          title: Currency
+        impact:
+          anyOf:
+          - type: number
+          - type: 'null'
+          default: null
+          description: Monthly money impact in the account currency. Null when the
+            rule has no money impact.
+          title: Impact
+        impactDirection:
+          $ref: '#/components/schemas/MarketingAnalyticsRecommendationImpactDirection'
+        impactType:
+          $ref: '#/components/schemas/MarketingAnalyticsRecommendationImpactType'
+        level:
+          $ref: '#/components/schemas/MarketingAnalyticsRecommendationLevel'
+        reason:
+          title: Reason
+          type: string
+        rule:
+          $ref: '#/components/schemas/MarketingAnalyticsRecommendationRule'
+        subject:
+          description: The campaign name or the search term the recommendation is
+            about.
+          title: Subject
+          type: string
+      required:
+      - action
+      - impactDirection
+      - impactType
+      - level
+      - reason
+      - rule
+      - subject
+      title: MarketingAnalyticsRecommendation
+      type: object
+    MarketingAnalyticsRecommendationImpactDirection:
+      enum:
+      - save
+      - gain
+      - invest
+      - keep
+      title: MarketingAnalyticsRecommendationImpactDirection
+      type: string
+    MarketingAnalyticsRecommendationImpactType:
+      enum:
+      - measured
+      - estimated
+      title: MarketingAnalyticsRecommendationImpactType
+      type: string
+    MarketingAnalyticsRecommendationLevel:
+      enum:
+      - campaign
+      - search_term
+      title: MarketingAnalyticsRecommendationLevel
+      type: string
+    MarketingAnalyticsRecommendationRule:
+      enum:
+      - budget_constrained
+      - brand_leak
+      - scale_campaign
+      - review_campaign
+      - policy_limited
+      - brand_overlap
+      - content_gap
+      - keyword_gap
+      - spend_without_conversions
+      - striking_distance
+      title: MarketingAnalyticsRecommendationRule
+      type: string
+    MarketingAnalyticsRecommendationsQuery:
+      additionalProperties: false
+      properties:
+        dateRange:
+          anyOf:
+          - $ref: '#/components/schemas/DateRange'
+          - type: 'null'
+          default: null
+        kind:
+          const: MarketingAnalyticsRecommendationsQuery
+          default: MarketingAnalyticsRecommendationsQuery
+          title: Kind
+          type: string
+        modifiers:
+          anyOf:
+          - $ref: '#/components/schemas/HogQLQueryModifiers'
+          - type: 'null'
+          default: null
+          description: Modifiers used when performing the query
+        response:
+          anyOf:
+          - $ref: '#/components/schemas/MarketingAnalyticsRecommendationsQueryResponse'
+          - type: 'null'
+          default: null
+        sources:
+          anyOf:
+          - items:
+              $ref: '#/components/schemas/MarketingAnalyticsRecommendationsSource'
+            type: array
+          - type: 'null'
+          default: null
+          description: Tables to read. Omit to read every synced Google Ads and Google
+            Search Console source in the project.
+          title: Sources
+        tags:
+          anyOf:
+          - $ref: '#/components/schemas/QueryLogTags'
+          - type: 'null'
+          default: null
+        version:
+          anyOf:
+          - type: number
+          - type: 'null'
+          default: null
+          description: version of the node, used for schema migrations
+          title: Version
+      title: MarketingAnalyticsRecommendationsQuery
+      type: object
+    MarketingAnalyticsRecommendationsQueryResponse:
+      additionalProperties: false
+      properties:
+        disclaimer:
+          description: Caveat to show with the results. The results are suggestions,
+            and impact figures are estimates.
+          title: Disclaimer
+          type: string
+        error:
+          anyOf:
+          - type: string
+          - type: 'null'
+          default: null
+          description: Query error. Returned only if 'explain' or `modifiers.debug`
+            is true. Throws an error otherwise.
+          title: Error
+        hogql:
+          anyOf:
+          - type: string
+          - type: 'null'
+          default: null
+          description: Generated HogQL query.
+          title: Hogql
+        modifiers:
+          anyOf:
+          - $ref: '#/components/schemas/HogQLQueryModifiers'
+          - type: 'null'
+          default: null
+          description: Modifiers used when performing the query
+        query_status:
+          anyOf:
+          - $ref: '#/components/schemas/QueryStatus'
+          - type: 'null'
+          default: null
+          description: Query status indicates whether next to the provided data, a
+            query is still running.
+        resolved_compare_date_range:
+          anyOf:
+          - $ref: '#/components/schemas/ResolvedDateRangeResponse'
+          - type: 'null'
+          default: null
+          description: The resolved previous/comparison period date range, when comparing
+            against another period
+        resolved_date_range:
+          anyOf:
+          - $ref: '#/components/schemas/ResolvedDateRangeResponse'
+          - type: 'null'
+          default: null
+          description: The date range used for the query
+        results:
+          items:
+            $ref: '#/components/schemas/MarketingAnalyticsRecommendation'
+          title: Results
+          type: array
+        timings:
+          anyOf:
+          - items:
+              $ref: '#/components/schemas/QueryTiming'
+            type: array
+          - type: 'null'
+          default: null
+          description: Measured timings for different parts of the query generation
+            process
+          title: Timings
+        used_data_warehouse_sources:
+          anyOf:
+          - items:
+              $ref: '#/components/schemas/DataWarehouseSourceUsage'
+            type: array
+          - type: 'null'
+          default: null
+          description: Connector-synced data warehouse sources referenced by this
+            query, if any.
+          title: Used Data Warehouse Sources
+        warnings:
+          anyOf:
+          - items:
+              anyOf:
+              - $ref: '#/components/schemas/DataWarehouseSyncWarning'
+              - $ref: '#/components/schemas/AccessControlFilterWarning'
+            type: array
+          - type: 'null'
+          default: null
+          description: Warnings about data warehouse sources referenced by the query
+            whose latest sync failed, is paused, hit a billing limit, or is otherwise
+            stale. Results may not reflect current source data. Accumulated across
+            every HogQL execution that contributes to this response — so insights
+            backed by warehouse tables (Trends, Funnels, etc.) receive the same warnings
+            as raw HogQL queries. Also carries access control warnings when a system-table
+            query filters out objects the user can't access.
+          title: Warnings
+      required:
+      - disclaimer
+      - results
+      title: MarketingAnalyticsRecommendationsQueryResponse
+      type: object
+    MarketingAnalyticsRecommendationsSource:
+      additionalProperties: false
+      properties:
+        campaignImpressionShareTable:
+          anyOf:
+          - type: string
+          - type: 'null'
+          default: null
+          description: Google Ads daily campaign impression share table.
+          title: Campaignimpressionsharetable
+        campaignStatsTable:
+          anyOf:
+          - type: string
+          - type: 'null'
+          default: null
+          description: Google Ads daily campaign stats table.
+          title: Campaignstatstable
+        campaignTable:
+          anyOf:
+          - type: string
+          - type: 'null'
+          default: null
+          description: Google Ads campaign table.
+          title: Campaigntable
+        customerTable:
+          anyOf:
+          - type: string
+          - type: 'null'
+          default: null
+          description: Google Ads customer table, used for the account currency.
+          title: Customertable
+        performanceMaxSearchTermTable:
+          anyOf:
+          - type: string
+          - type: 'null'
+          default: null
+          description: Google Ads search term table for Performance Max campaigns.
+          title: Performancemaxsearchtermtable
+        queryTable:
+          anyOf:
+          - type: string
+          - type: 'null'
+          default: null
+          description: Google Search Console table with one row per query, or per
+            query and page.
+          title: Querytable
+        searchTermKeywordTable:
+          anyOf:
+          - type: string
+          - type: 'null'
+          default: null
+          description: Google Ads search term table split by the keyword that matched
+            each term.
+          title: Searchtermkeywordtable
+        searchTermTable:
+          anyOf:
+          - type: string
+          - type: 'null'
+          default: null
+          description: Google Ads search term table for Search campaigns.
+          title: Searchtermtable
+        sitesTable:
+          anyOf:
+          - type: string
+          - type: 'null'
+          default: null
+          description: Google Search Console sites table, used to infer the brand
+            name.
+          title: Sitestable
+        sourceType:
+          $ref: '#/components/schemas/MarketingAnalyticsRecommendationsSourceType'
+      required:
+      - sourceType
+      title: MarketingAnalyticsRecommendationsSource
+      type: object
+    MarketingAnalyticsRecommendationsSourceType:
+      enum:
+      - GoogleAds
+      - GoogleSearchConsole
+      title: MarketingAnalyticsRecommendationsSourceType
+      type: string
     MarketingAnalyticsRetentionCell:
       additionalProperties: false
       properties:
@@ -202476,7 +202834,7 @@ components:
           - type: 'null'
           default: null
           description: ISO timestamp of the oldest precompute window backing this
-            result — surfaced as "data as of X".
+            result.
           title: Datacomputedat
         error:
           anyOf:
@@ -202499,6 +202857,16 @@ components:
           default: null
           description: Generated HogQL query.
           title: Hogql
+        latestDayComputedAt:
+          anyOf:
+          - type: string
+          - type: 'null'
+          default: null
+          description: ISO timestamp of when the numbers for the most recent day in
+            the range were computed, at this time or later. It is the oldest stamp
+            among the precompute windows that hold that day, across costs and conversion
+            goals. Unset when no precompute was read or a window has no stamp.
+          title: Latestdaycomputedat
         limit:
           anyOf:
           - type: integer
@@ -233228,6 +233596,269 @@ components:
           description: Property keys and values to set together, instead of 'key'
             and 'value'. One request sets up to 1000 properties and emits a single
             $set event.
+    PersonalRanking:
+      type: object
+      properties:
+        status:
+          allOf:
+          - $ref: '#/components/schemas/PersonalRankingStatusEnum'
+          description: |-
+            ready: the list is in `results`. unavailable: personal ranking is off now, and `results` is empty.
+
+            * `ready` - ready
+            * `unavailable` - unavailable
+        personalized:
+          type: boolean
+          description: True when the language model ranked the list with your activity
+            summary. False when you have no summary yet or the build fell back to
+            the inbox order.
+        cached:
+          type: boolean
+          description: True when the list comes from storage, false when this request
+            built it.
+        stale:
+          type: boolean
+          description: True when the list does not match your current inbox, because
+            you reached the build limit. Try `refresh` again later.
+        fallback_reason:
+          type:
+          - string
+          - 'null'
+          description: 'Why the list is in inbox order and not ranked by the language
+            model: llm_error, timeout, malformed_output, truncated_output, no_candidates
+            or ai_not_approved. Null when the model ranked it.'
+        generated_at:
+          type:
+          - string
+          - 'null'
+          format: date-time
+          description: When the list was built.
+        latency_ms:
+          type:
+          - integer
+          - 'null'
+          description: How long the model call of the build took, in ms. Null when
+            there was no model call.
+        activity_summary_version:
+          type:
+          - integer
+          - 'null'
+          description: The version of your activity summary that the build read, or
+            null.
+        candidates_considered:
+          type: integer
+          description: How many reports the build considered.
+        ranked_count:
+          type: integer
+          description: How many reports the stored list ranks. `results` holds at
+            most `limit` of them.
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/PersonalRankingEntry'
+          description: Your reports, best first. A report that left your inbox since
+            the build, for example a resolved one, is left out.
+        folded:
+          type: array
+          items:
+            $ref: '#/components/schemas/PersonalRankingFold'
+          description: Reports the list leaves out because another report in it covers
+            the same work.
+      required:
+      - activity_summary_version
+      - cached
+      - candidates_considered
+      - fallback_reason
+      - folded
+      - generated_at
+      - latency_ms
+      - personalized
+      - ranked_count
+      - results
+      - stale
+      - status
+    PersonalRankingEntry:
+      type: object
+      properties:
+        rank:
+          type: integer
+          description: The position in your list. 1 is the first.
+        tier:
+          allOf:
+          - $ref: '#/components/schemas/PersonalRankingTierEnum'
+          description: |-
+            top, worth_a_look or later.
+
+            * `top` - top
+            * `worth_a_look` - worth_a_look
+            * `later` - later
+        reason:
+          type: string
+          description: Why the report has this place in your list.
+        next_step:
+          type:
+          - string
+          - 'null'
+          description: A suggested next step for the top entries. Null for the others.
+        matched:
+          allOf:
+          - $ref: '#/components/schemas/PersonalRankingMatched'
+          description: What in your work the report matches.
+        ranked_by:
+          allOf:
+          - $ref: '#/components/schemas/PersonalRankingRankedByEnum'
+          description: |-
+            llm: the language model placed the report. model: it kept its place in the inbox order.
+
+            * `llm` - llm
+            * `model` - model
+        report:
+          allOf:
+          - $ref: '#/components/schemas/PersonalRankingReport'
+          description: A compact view of the report.
+      required:
+      - matched
+      - next_step
+      - rank
+      - ranked_by
+      - reason
+      - report
+      - tier
+    PersonalRankingFold:
+      type: object
+      properties:
+        report_id:
+          type: string
+          format: uuid
+          description: The report that the list leaves out.
+        into_report_id:
+          type: string
+          format: uuid
+          description: The report in the list that covers the same work.
+        reason:
+          type: string
+          description: Why the two reports are about the same work.
+      required:
+      - into_report_id
+      - reason
+      - report_id
+    PersonalRankingMatched:
+      type: object
+      properties:
+        theme:
+          type:
+          - string
+          - 'null'
+          description: The theme of your activity summary that the report matches,
+            or null.
+        needs_you:
+          type: array
+          items:
+            $ref: '#/components/schemas/PersonalRankingNeedsYouEnum'
+          description: 'Why the report needs you: you are a suggested reviewer, you
+            claimed it, or it waits on your input.'
+      required:
+      - needs_you
+      - theme
+    PersonalRankingNeedsYouEnum:
+      enum:
+      - suggested_reviewer
+      - claimed
+      - waiting_on_input
+      type: string
+      description: |-
+        * `suggested_reviewer` - suggested_reviewer
+        * `claimed` - claimed
+        * `waiting_on_input` - waiting_on_input
+    PersonalRankingRankedByEnum:
+      enum:
+      - llm
+      - model
+      type: string
+      description: |-
+        * `llm` - llm
+        * `model` - model
+    PersonalRankingReport:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+          description: The report id. Pass it to inbox-reports-retrieve for the full
+            report.
+        title:
+          type: string
+          description: The report title.
+        status:
+          allOf:
+          - $ref: '#/components/schemas/SignalReportStatusEnum'
+          description: |-
+            The report status.
+
+            * `potential` - Potential
+            * `candidate` - Candidate
+            * `in_progress` - In Progress
+            * `pending_input` - Pending Input
+            * `ready` - Ready
+            * `monitoring` - Monitoring
+            * `resolved` - Resolved
+            * `closed` - Closed
+            * `failed` - Failed
+            * `deleted` - Deleted
+            * `suppressed` - Suppressed
+        priority:
+          description: |-
+            The report priority, P0 to P4, or null.
+
+            * `P0` - P0
+            * `P1` - P1
+            * `P2` - P2
+            * `P3` - P3
+            * `P4` - P4
+          oneOf:
+          - $ref: '#/components/schemas/AutonomyPriorityEnum'
+          - $ref: '#/components/schemas/NullEnum'
+        implementation_pr_state:
+          description: |-
+            The state of the report's implementation pull request, or null when it has none.
+
+            * `unknown` - Unknown
+            * `draft` - Draft
+            * `open` - Open
+            * `closed` - Closed
+            * `merged` - Merged
+          oneOf:
+          - $ref: '#/components/schemas/SignalReportAssignmentPrStateEnum'
+          - $ref: '#/components/schemas/NullEnum'
+        ranking:
+          allOf:
+          - $ref: '#/components/schemas/ReportRanking'
+          description: The ranking model's predictions for the report.
+      required:
+      - id
+      - implementation_pr_state
+      - priority
+      - ranking
+      - status
+      - title
+    PersonalRankingStatusEnum:
+      enum:
+      - ready
+      - unavailable
+      type: string
+      description: |-
+        * `ready` - ready
+        * `unavailable` - unavailable
+    PersonalRankingTierEnum:
+      enum:
+      - top
+      - worth_a_look
+      - later
+      type: string
+      description: |-
+        * `top` - top
+        * `worth_a_look` - worth_a_look
+        * `later` - later
     PersonalSpendAnalysisResponse:
       type: object
       description: Structured personal LLM spend analysis for the requesting user.
@@ -240905,6 +241536,7 @@ components:
               MarketingAnalyticsAggregatedQuery: '#/components/schemas/MarketingAnalyticsAggregatedQuery'
               MarketingAnalyticsAttributionPathsQuery: '#/components/schemas/MarketingAnalyticsAttributionPathsQuery'
               MarketingAnalyticsAttributionQuery: '#/components/schemas/MarketingAnalyticsAttributionQuery'
+              MarketingAnalyticsRecommendationsQuery: '#/components/schemas/MarketingAnalyticsRecommendationsQuery'
               MarketingAnalyticsRetentionQuery: '#/components/schemas/MarketingAnalyticsRetentionQuery'
               MarketingAnalyticsSearchQuery: '#/components/schemas/MarketingAnalyticsSearchQuery'
               MarketingAnalyticsTableQuery: '#/components/schemas/MarketingAnalyticsTableQuery'
@@ -240994,6 +241626,7 @@ components:
           - $ref: '#/components/schemas/MarketingAnalyticsAttributionPathsQuery'
           - $ref: '#/components/schemas/MarketingAnalyticsRetentionQuery'
           - $ref: '#/components/schemas/MarketingAnalyticsSearchQuery'
+          - $ref: '#/components/schemas/MarketingAnalyticsRecommendationsQuery'
           - $ref: '#/components/schemas/DataVisualizationNode'
           - $ref: '#/components/schemas/BIVisualizationNode'
           - $ref: '#/components/schemas/DataTableNode'
@@ -241120,8 +241753,8 @@ components:
       - $ref: '#/components/schemas/QueryResponseAlternative36'
       - $ref: '#/components/schemas/QueryResponseAlternative37'
       - $ref: '#/components/schemas/QueryResponseAlternative38'
-      - {}
       - $ref: '#/components/schemas/QueryResponseAlternative39'
+      - {}
       - $ref: '#/components/schemas/QueryResponseAlternative40'
       - $ref: '#/components/schemas/QueryResponseAlternative41'
       - $ref: '#/components/schemas/QueryResponseAlternative42'
@@ -241138,7 +241771,7 @@ components:
       - $ref: '#/components/schemas/QueryResponseAlternative53'
       - $ref: '#/components/schemas/QueryResponseAlternative54'
       - $ref: '#/components/schemas/QueryResponseAlternative55'
-      - $ref: '#/components/schemas/QueryResponseAlternative57'
+      - $ref: '#/components/schemas/QueryResponseAlternative56'
       - $ref: '#/components/schemas/QueryResponseAlternative58'
       - $ref: '#/components/schemas/QueryResponseAlternative59'
       - $ref: '#/components/schemas/QueryResponseAlternative60'
@@ -241147,7 +241780,7 @@ components:
       - $ref: '#/components/schemas/QueryResponseAlternative63'
       - $ref: '#/components/schemas/QueryResponseAlternative64'
       - $ref: '#/components/schemas/QueryResponseAlternative65'
-      - $ref: '#/components/schemas/QueryResponseAlternative67'
+      - $ref: '#/components/schemas/QueryResponseAlternative66'
       - $ref: '#/components/schemas/QueryResponseAlternative68'
       - $ref: '#/components/schemas/QueryResponseAlternative69'
       - $ref: '#/components/schemas/QueryResponseAlternative70'
@@ -241163,7 +241796,7 @@ components:
       - $ref: '#/components/schemas/QueryResponseAlternative80'
       - $ref: '#/components/schemas/QueryResponseAlternative81'
       - $ref: '#/components/schemas/QueryResponseAlternative82'
-      - $ref: '#/components/schemas/QueryResponseAlternative85'
+      - $ref: '#/components/schemas/QueryResponseAlternative83'
       - $ref: '#/components/schemas/QueryResponseAlternative86'
       - $ref: '#/components/schemas/QueryResponseAlternative87'
       - $ref: '#/components/schemas/QueryResponseAlternative88'
@@ -241191,6 +241824,7 @@ components:
       - $ref: '#/components/schemas/QueryResponseAlternative110'
       - $ref: '#/components/schemas/QueryResponseAlternative111'
       - $ref: '#/components/schemas/QueryResponseAlternative112'
+      - $ref: '#/components/schemas/QueryResponseAlternative113'
       title: QueryResponseAlternative
     QueryResponseAlternative1:
       additionalProperties: false
@@ -241390,7 +242024,7 @@ components:
           description: The date range used for the query
         results:
           items:
-            $ref: '#/components/schemas/MCPToolFailureOccurrenceItem'
+            $ref: '#/components/schemas/MCPToolFailureItem'
           title: Results
           type: array
         timings:
@@ -241479,9 +242113,8 @@ components:
           default: null
           description: The date range used for the query
         results:
-          description: Zero or one row; empty when the tool had no calls in the window.
           items:
-            $ref: '#/components/schemas/MCPToolStatsItem'
+            $ref: '#/components/schemas/MCPToolFailureOccurrenceItem'
           title: Results
           type: array
         timings:
@@ -241570,8 +242203,9 @@ components:
           default: null
           description: The date range used for the query
         results:
+          description: Zero or one row; empty when the tool had no calls in the window.
           items:
-            $ref: '#/components/schemas/MCPToolDailyStatItem'
+            $ref: '#/components/schemas/MCPToolStatsItem'
           title: Results
           type: array
         timings:
@@ -241616,6 +242250,96 @@ components:
       title: QueryResponseAlternative102
       type: object
     QueryResponseAlternative103:
+      additionalProperties: false
+      properties:
+        error:
+          anyOf:
+          - type: string
+          - type: 'null'
+          default: null
+          description: Query error. Returned only if 'explain' or `modifiers.debug`
+            is true. Throws an error otherwise.
+          title: Error
+        hogql:
+          anyOf:
+          - type: string
+          - type: 'null'
+          default: null
+          description: Generated HogQL query.
+          title: Hogql
+        modifiers:
+          anyOf:
+          - $ref: '#/components/schemas/HogQLQueryModifiers'
+          - type: 'null'
+          default: null
+          description: Modifiers used when performing the query
+        query_status:
+          anyOf:
+          - $ref: '#/components/schemas/QueryStatus'
+          - type: 'null'
+          default: null
+          description: Query status indicates whether next to the provided data, a
+            query is still running.
+        resolved_compare_date_range:
+          anyOf:
+          - $ref: '#/components/schemas/ResolvedDateRangeResponse'
+          - type: 'null'
+          default: null
+          description: The resolved previous/comparison period date range, when comparing
+            against another period
+        resolved_date_range:
+          anyOf:
+          - $ref: '#/components/schemas/ResolvedDateRangeResponse'
+          - type: 'null'
+          default: null
+          description: The date range used for the query
+        results:
+          items:
+            $ref: '#/components/schemas/MCPToolDailyStatItem'
+          title: Results
+          type: array
+        timings:
+          anyOf:
+          - items:
+              $ref: '#/components/schemas/QueryTiming'
+            type: array
+          - type: 'null'
+          default: null
+          description: Measured timings for different parts of the query generation
+            process
+          title: Timings
+        used_data_warehouse_sources:
+          anyOf:
+          - items:
+              $ref: '#/components/schemas/DataWarehouseSourceUsage'
+            type: array
+          - type: 'null'
+          default: null
+          description: Connector-synced data warehouse sources referenced by this
+            query, if any.
+          title: Used Data Warehouse Sources
+        warnings:
+          anyOf:
+          - items:
+              anyOf:
+              - $ref: '#/components/schemas/DataWarehouseSyncWarning'
+              - $ref: '#/components/schemas/AccessControlFilterWarning'
+            type: array
+          - type: 'null'
+          default: null
+          description: Warnings about data warehouse sources referenced by the query
+            whose latest sync failed, is paused, hit a billing limit, or is otherwise
+            stale. Results may not reflect current source data. Accumulated across
+            every HogQL execution that contributes to this response — so insights
+            backed by warehouse tables (Trends, Funnels, etc.) receive the same warnings
+            as raw HogQL queries. Also carries access control warnings when a system-table
+            query filters out objects the user can't access.
+          title: Warnings
+      required:
+      - results
+      title: QueryResponseAlternative103
+      type: object
+    QueryResponseAlternative104:
       additionalProperties: false
       properties:
         error:
@@ -241720,96 +242444,6 @@ components:
       - results
       - totalCount
       - totalSessions
-      title: QueryResponseAlternative103
-      type: object
-    QueryResponseAlternative104:
-      additionalProperties: false
-      properties:
-        error:
-          anyOf:
-          - type: string
-          - type: 'null'
-          default: null
-          description: Query error. Returned only if 'explain' or `modifiers.debug`
-            is true. Throws an error otherwise.
-          title: Error
-        hogql:
-          anyOf:
-          - type: string
-          - type: 'null'
-          default: null
-          description: Generated HogQL query.
-          title: Hogql
-        modifiers:
-          anyOf:
-          - $ref: '#/components/schemas/HogQLQueryModifiers'
-          - type: 'null'
-          default: null
-          description: Modifiers used when performing the query
-        query_status:
-          anyOf:
-          - $ref: '#/components/schemas/QueryStatus'
-          - type: 'null'
-          default: null
-          description: Query status indicates whether next to the provided data, a
-            query is still running.
-        resolved_compare_date_range:
-          anyOf:
-          - $ref: '#/components/schemas/ResolvedDateRangeResponse'
-          - type: 'null'
-          default: null
-          description: The resolved previous/comparison period date range, when comparing
-            against another period
-        resolved_date_range:
-          anyOf:
-          - $ref: '#/components/schemas/ResolvedDateRangeResponse'
-          - type: 'null'
-          default: null
-          description: The date range used for the query
-        results:
-          items:
-            $ref: '#/components/schemas/MCPToolQualityDailyStatItem'
-          title: Results
-          type: array
-        timings:
-          anyOf:
-          - items:
-              $ref: '#/components/schemas/QueryTiming'
-            type: array
-          - type: 'null'
-          default: null
-          description: Measured timings for different parts of the query generation
-            process
-          title: Timings
-        used_data_warehouse_sources:
-          anyOf:
-          - items:
-              $ref: '#/components/schemas/DataWarehouseSourceUsage'
-            type: array
-          - type: 'null'
-          default: null
-          description: Connector-synced data warehouse sources referenced by this
-            query, if any.
-          title: Used Data Warehouse Sources
-        warnings:
-          anyOf:
-          - items:
-              anyOf:
-              - $ref: '#/components/schemas/DataWarehouseSyncWarning'
-              - $ref: '#/components/schemas/AccessControlFilterWarning'
-            type: array
-          - type: 'null'
-          default: null
-          description: Warnings about data warehouse sources referenced by the query
-            whose latest sync failed, is paused, hit a billing limit, or is otherwise
-            stale. Results may not reflect current source data. Accumulated across
-            every HogQL execution that contributes to this response — so insights
-            backed by warehouse tables (Trends, Funnels, etc.) receive the same warnings
-            as raw HogQL queries. Also carries access control warnings when a system-table
-            query filters out objects the user can't access.
-          title: Warnings
-      required:
-      - results
       title: QueryResponseAlternative104
       type: object
     QueryResponseAlternative105:
@@ -241858,7 +242492,7 @@ components:
           description: The date range used for the query
         results:
           items:
-            $ref: '#/components/schemas/MCPToolCategoryCountItem'
+            $ref: '#/components/schemas/MCPToolQualityDailyStatItem'
           title: Results
           type: array
         timings:
@@ -241948,7 +242582,7 @@ components:
           description: The date range used for the query
         results:
           items:
-            $ref: '#/components/schemas/MCPToolCategoryItem'
+            $ref: '#/components/schemas/MCPToolCategoryCountItem'
           title: Results
           type: array
         timings:
@@ -242038,7 +242672,7 @@ components:
           description: The date range used for the query
         results:
           items:
-            $ref: '#/components/schemas/MCPToolCategoryMapItem'
+            $ref: '#/components/schemas/MCPToolCategoryItem'
           title: Results
           type: array
         timings:
@@ -242128,7 +242762,7 @@ components:
           description: The date range used for the query
         results:
           items:
-            $ref: '#/components/schemas/MCPToolDescriptionItem'
+            $ref: '#/components/schemas/MCPToolCategoryMapItem'
           title: Results
           type: array
         timings:
@@ -242218,7 +242852,7 @@ components:
           description: The date range used for the query
         results:
           items:
-            $ref: '#/components/schemas/MCPToolSampleIntentItem'
+            $ref: '#/components/schemas/MCPToolDescriptionItem'
           title: Results
           type: array
         timings:
@@ -242427,7 +243061,7 @@ components:
           description: The date range used for the query
         results:
           items:
-            $ref: '#/components/schemas/MCPToolNeighborItem'
+            $ref: '#/components/schemas/MCPToolSampleIntentItem'
           title: Results
           type: array
         timings:
@@ -242472,6 +243106,96 @@ components:
       title: QueryResponseAlternative110
       type: object
     QueryResponseAlternative111:
+      additionalProperties: false
+      properties:
+        error:
+          anyOf:
+          - type: string
+          - type: 'null'
+          default: null
+          description: Query error. Returned only if 'explain' or `modifiers.debug`
+            is true. Throws an error otherwise.
+          title: Error
+        hogql:
+          anyOf:
+          - type: string
+          - type: 'null'
+          default: null
+          description: Generated HogQL query.
+          title: Hogql
+        modifiers:
+          anyOf:
+          - $ref: '#/components/schemas/HogQLQueryModifiers'
+          - type: 'null'
+          default: null
+          description: Modifiers used when performing the query
+        query_status:
+          anyOf:
+          - $ref: '#/components/schemas/QueryStatus'
+          - type: 'null'
+          default: null
+          description: Query status indicates whether next to the provided data, a
+            query is still running.
+        resolved_compare_date_range:
+          anyOf:
+          - $ref: '#/components/schemas/ResolvedDateRangeResponse'
+          - type: 'null'
+          default: null
+          description: The resolved previous/comparison period date range, when comparing
+            against another period
+        resolved_date_range:
+          anyOf:
+          - $ref: '#/components/schemas/ResolvedDateRangeResponse'
+          - type: 'null'
+          default: null
+          description: The date range used for the query
+        results:
+          items:
+            $ref: '#/components/schemas/MCPToolNeighborItem'
+          title: Results
+          type: array
+        timings:
+          anyOf:
+          - items:
+              $ref: '#/components/schemas/QueryTiming'
+            type: array
+          - type: 'null'
+          default: null
+          description: Measured timings for different parts of the query generation
+            process
+          title: Timings
+        used_data_warehouse_sources:
+          anyOf:
+          - items:
+              $ref: '#/components/schemas/DataWarehouseSourceUsage'
+            type: array
+          - type: 'null'
+          default: null
+          description: Connector-synced data warehouse sources referenced by this
+            query, if any.
+          title: Used Data Warehouse Sources
+        warnings:
+          anyOf:
+          - items:
+              anyOf:
+              - $ref: '#/components/schemas/DataWarehouseSyncWarning'
+              - $ref: '#/components/schemas/AccessControlFilterWarning'
+            type: array
+          - type: 'null'
+          default: null
+          description: Warnings about data warehouse sources referenced by the query
+            whose latest sync failed, is paused, hit a billing limit, or is otherwise
+            stale. Results may not reflect current source data. Accumulated across
+            every HogQL execution that contributes to this response — so insights
+            backed by warehouse tables (Trends, Funnels, etc.) receive the same warnings
+            as raw HogQL queries. Also carries access control warnings when a system-table
+            query filters out objects the user can't access.
+          title: Warnings
+      required:
+      - results
+      title: QueryResponseAlternative111
+      type: object
+    QueryResponseAlternative112:
       additionalProperties: false
       properties:
         error:
@@ -242564,9 +243288,9 @@ components:
       required:
       - has_next
       - results
-      title: QueryResponseAlternative111
+      title: QueryResponseAlternative112
       type: object
-    QueryResponseAlternative112:
+    QueryResponseAlternative113:
       additionalProperties: false
       properties:
         error:
@@ -242654,7 +243378,7 @@ components:
           title: Warnings
       required:
       - results
-      title: QueryResponseAlternative112
+      title: QueryResponseAlternative113
       type: object
     QueryResponseAlternative12:
       additionalProperties: false
@@ -245094,7 +245818,7 @@ components:
           - type: 'null'
           default: null
           description: ISO timestamp of the oldest precompute window backing this
-            result — surfaced as "data as of X".
+            result.
           title: Datacomputedat
         error:
           anyOf:
@@ -245117,6 +245841,16 @@ components:
           default: null
           description: Generated HogQL query.
           title: Hogql
+        latestDayComputedAt:
+          anyOf:
+          - type: string
+          - type: 'null'
+          default: null
+          description: ISO timestamp of when the numbers for the most recent day in
+            the range were computed, at this time or later. It is the oldest stamp
+            among the precompute windows that hold that day, across costs and conversion
+            goals. Unset when no precompute was read or a window has no stamp.
+          title: Latestdaycomputedat
         limit:
           anyOf:
           - type: integer
@@ -245233,7 +245967,7 @@ components:
           - type: 'null'
           default: null
           description: ISO timestamp of the oldest precompute window backing this
-            result — surfaced as "data as of X".
+            result.
           title: Datacomputedat
         error:
           anyOf:
@@ -245250,6 +245984,16 @@ components:
           default: null
           description: Generated HogQL query.
           title: Hogql
+        latestDayComputedAt:
+          anyOf:
+          - type: string
+          - type: 'null'
+          default: null
+          description: ISO timestamp of when the numbers for the most recent day in
+            the range were computed, at this time or later. It is the oldest stamp
+            among the precompute windows that hold that day, across costs and conversion
+            goals. Unset when no precompute was read or a window has no stamp.
+          title: Latestdaycomputedat
         modifiers:
           anyOf:
           - $ref: '#/components/schemas/HogQLQueryModifiers'
@@ -245864,10 +246608,11 @@ components:
     QueryResponseAlternative39:
       additionalProperties: false
       properties:
-        columns:
-          items: {}
-          title: Columns
-          type: array
+        disclaimer:
+          description: Caveat to show with the results. The results are suggestions,
+            and impact figures are estimates.
+          title: Disclaimer
+          type: string
         error:
           anyOf:
           - type: string
@@ -245876,41 +246621,19 @@ components:
           description: Query error. Returned only if 'explain' or `modifiers.debug`
             is true. Throws an error otherwise.
           title: Error
-        hasMore:
+        hogql:
           anyOf:
-          - type: boolean
+          - type: string
           - type: 'null'
           default: null
-          title: Hasmore
-        hogql:
           description: Generated HogQL query.
           title: Hogql
-          type: string
-        limit:
-          anyOf:
-          - type: integer
-          - type: 'null'
-          default: null
-          title: Limit
         modifiers:
           anyOf:
           - $ref: '#/components/schemas/HogQLQueryModifiers'
           - type: 'null'
           default: null
           description: Modifiers used when performing the query
-        nextCursor:
-          anyOf:
-          - type: string
-          - type: 'null'
-          default: null
-          description: Cursor for fetching the next page of results
-          title: Nextcursor
-        offset:
-          anyOf:
-          - type: integer
-          - type: 'null'
-          default: null
-          title: Offset
         query_status:
           anyOf:
           - $ref: '#/components/schemas/QueryStatus'
@@ -245933,8 +246656,7 @@ components:
           description: The date range used for the query
         results:
           items:
-            items: {}
-            type: array
+            $ref: '#/components/schemas/MarketingAnalyticsRecommendation'
           title: Results
           type: array
         timings:
@@ -245947,11 +246669,6 @@ components:
           description: Measured timings for different parts of the query generation
             process
           title: Timings
-        types:
-          items:
-            type: string
-          title: Types
-          type: array
         used_data_warehouse_sources:
           anyOf:
           - items:
@@ -245980,10 +246697,8 @@ components:
             query filters out objects the user can't access.
           title: Warnings
       required:
-      - columns
-      - hogql
+      - disclaimer
       - results
-      - types
       title: QueryResponseAlternative39
       type: object
     QueryResponseAlternative4:
@@ -246131,6 +246846,131 @@ components:
           title: Hogql
           type: string
         limit:
+          anyOf:
+          - type: integer
+          - type: 'null'
+          default: null
+          title: Limit
+        modifiers:
+          anyOf:
+          - $ref: '#/components/schemas/HogQLQueryModifiers'
+          - type: 'null'
+          default: null
+          description: Modifiers used when performing the query
+        nextCursor:
+          anyOf:
+          - type: string
+          - type: 'null'
+          default: null
+          description: Cursor for fetching the next page of results
+          title: Nextcursor
+        offset:
+          anyOf:
+          - type: integer
+          - type: 'null'
+          default: null
+          title: Offset
+        query_status:
+          anyOf:
+          - $ref: '#/components/schemas/QueryStatus'
+          - type: 'null'
+          default: null
+          description: Query status indicates whether next to the provided data, a
+            query is still running.
+        resolved_compare_date_range:
+          anyOf:
+          - $ref: '#/components/schemas/ResolvedDateRangeResponse'
+          - type: 'null'
+          default: null
+          description: The resolved previous/comparison period date range, when comparing
+            against another period
+        resolved_date_range:
+          anyOf:
+          - $ref: '#/components/schemas/ResolvedDateRangeResponse'
+          - type: 'null'
+          default: null
+          description: The date range used for the query
+        results:
+          items:
+            items: {}
+            type: array
+          title: Results
+          type: array
+        timings:
+          anyOf:
+          - items:
+              $ref: '#/components/schemas/QueryTiming'
+            type: array
+          - type: 'null'
+          default: null
+          description: Measured timings for different parts of the query generation
+            process
+          title: Timings
+        types:
+          items:
+            type: string
+          title: Types
+          type: array
+        used_data_warehouse_sources:
+          anyOf:
+          - items:
+              $ref: '#/components/schemas/DataWarehouseSourceUsage'
+            type: array
+          - type: 'null'
+          default: null
+          description: Connector-synced data warehouse sources referenced by this
+            query, if any.
+          title: Used Data Warehouse Sources
+        warnings:
+          anyOf:
+          - items:
+              anyOf:
+              - $ref: '#/components/schemas/DataWarehouseSyncWarning'
+              - $ref: '#/components/schemas/AccessControlFilterWarning'
+            type: array
+          - type: 'null'
+          default: null
+          description: Warnings about data warehouse sources referenced by the query
+            whose latest sync failed, is paused, hit a billing limit, or is otherwise
+            stale. Results may not reflect current source data. Accumulated across
+            every HogQL execution that contributes to this response — so insights
+            backed by warehouse tables (Trends, Funnels, etc.) receive the same warnings
+            as raw HogQL queries. Also carries access control warnings when a system-table
+            query filters out objects the user can't access.
+          title: Warnings
+      required:
+      - columns
+      - hogql
+      - results
+      - types
+      title: QueryResponseAlternative40
+      type: object
+    QueryResponseAlternative41:
+      additionalProperties: false
+      properties:
+        columns:
+          items: {}
+          title: Columns
+          type: array
+        error:
+          anyOf:
+          - type: string
+          - type: 'null'
+          default: null
+          description: Query error. Returned only if 'explain' or `modifiers.debug`
+            is true. Throws an error otherwise.
+          title: Error
+        hasMore:
+          anyOf:
+          - type: boolean
+          - type: 'null'
+          default: null
+          title: Hasmore
+        hogql:
+          description: Generated HogQL query.
+          title: Hogql
+          type: string
+        limit:
           title: Limit
           type: integer
         missing_actors_count:
@@ -246225,9 +247065,9 @@ components:
       - limit
       - offset
       - results
-      title: QueryResponseAlternative40
+      title: QueryResponseAlternative41
       type: object
-    QueryResponseAlternative41:
+    QueryResponseAlternative42:
       additionalProperties: false
       properties:
         columns:
@@ -246344,9 +247184,9 @@ components:
       - offset
       - results
       - types
-      title: QueryResponseAlternative41
+      title: QueryResponseAlternative42
       type: object
-    QueryResponseAlternative42:
+    QueryResponseAlternative43:
       additionalProperties: false
       properties:
         clickhouse:
@@ -246506,9 +247346,9 @@ components:
           title: Warnings
       required:
       - results
-      title: QueryResponseAlternative42
+      title: QueryResponseAlternative43
       type: object
-    QueryResponseAlternative43:
+    QueryResponseAlternative44:
       additionalProperties: false
       properties:
         dateFrom:
@@ -246642,9 +247482,9 @@ components:
           title: Warnings
       required:
       - results
-      title: QueryResponseAlternative43
+      title: QueryResponseAlternative44
       type: object
-    QueryResponseAlternative44:
+    QueryResponseAlternative45:
       additionalProperties: false
       properties:
         columns:
@@ -246722,132 +247562,6 @@ components:
           description: When the oldest precomputed window this response used was computed.
             Unset for live responses.
           title: Precomputedat
-        query_status:
-          anyOf:
-          - $ref: '#/components/schemas/QueryStatus'
-          - type: 'null'
-          default: null
-          description: Query status indicates whether next to the provided data, a
-            query is still running.
-        resolved_compare_date_range:
-          anyOf:
-          - $ref: '#/components/schemas/ResolvedDateRangeResponse'
-          - type: 'null'
-          default: null
-          description: The resolved previous/comparison period date range, when comparing
-            against another period
-        resolved_date_range:
-          anyOf:
-          - $ref: '#/components/schemas/ResolvedDateRangeResponse'
-          - type: 'null'
-          default: null
-          description: The date range used for the query
-        results:
-          items: {}
-          title: Results
-          type: array
-        samplingRate:
-          anyOf:
-          - $ref: '#/components/schemas/SamplingRate'
-          - type: 'null'
-          default: null
-        timings:
-          anyOf:
-          - items:
-              $ref: '#/components/schemas/QueryTiming'
-            type: array
-          - type: 'null'
-          default: null
-          description: Measured timings for different parts of the query generation
-            process
-          title: Timings
-        types:
-          anyOf:
-          - items: {}
-            type: array
-          - type: 'null'
-          default: null
-          title: Types
-        used_data_warehouse_sources:
-          anyOf:
-          - items:
-              $ref: '#/components/schemas/DataWarehouseSourceUsage'
-            type: array
-          - type: 'null'
-          default: null
-          description: Connector-synced data warehouse sources referenced by this
-            query, if any.
-          title: Used Data Warehouse Sources
-        warnings:
-          anyOf:
-          - items:
-              anyOf:
-              - $ref: '#/components/schemas/DataWarehouseSyncWarning'
-              - $ref: '#/components/schemas/AccessControlFilterWarning'
-            type: array
-          - type: 'null'
-          default: null
-          description: Warnings about data warehouse sources referenced by the query
-            whose latest sync failed, is paused, hit a billing limit, or is otherwise
-            stale. Results may not reflect current source data. Accumulated across
-            every HogQL execution that contributes to this response — so insights
-            backed by warehouse tables (Trends, Funnels, etc.) receive the same warnings
-            as raw HogQL queries. Also carries access control warnings when a system-table
-            query filters out objects the user can't access.
-          title: Warnings
-      required:
-      - results
-      title: QueryResponseAlternative44
-      type: object
-    QueryResponseAlternative45:
-      additionalProperties: false
-      properties:
-        columns:
-          anyOf:
-          - items: {}
-            type: array
-          - type: 'null'
-          default: null
-          title: Columns
-        error:
-          anyOf:
-          - type: string
-          - type: 'null'
-          default: null
-          description: Query error. Returned only if 'explain' or `modifiers.debug`
-            is true. Throws an error otherwise.
-          title: Error
-        hasMore:
-          anyOf:
-          - type: boolean
-          - type: 'null'
-          default: null
-          title: Hasmore
-        hogql:
-          anyOf:
-          - type: string
-          - type: 'null'
-          default: null
-          description: Generated HogQL query.
-          title: Hogql
-        limit:
-          anyOf:
-          - type: integer
-          - type: 'null'
-          default: null
-          title: Limit
-        modifiers:
-          anyOf:
-          - $ref: '#/components/schemas/HogQLQueryModifiers'
-          - type: 'null'
-          default: null
-          description: Modifiers used when performing the query
-        offset:
-          anyOf:
-          - type: integer
-          - type: 'null'
-          default: null
-          title: Offset
         query_status:
           anyOf:
           - $ref: '#/components/schemas/QueryStatus'
@@ -246998,6 +247712,11 @@ components:
           items: {}
           title: Results
           type: array
+        samplingRate:
+          anyOf:
+          - $ref: '#/components/schemas/SamplingRate'
+          - type: 'null'
+          default: null
         timings:
           anyOf:
           - items:
@@ -247047,6 +247766,127 @@ components:
       title: QueryResponseAlternative46
       type: object
     QueryResponseAlternative47:
+      additionalProperties: false
+      properties:
+        columns:
+          anyOf:
+          - items: {}
+            type: array
+          - type: 'null'
+          default: null
+          title: Columns
+        error:
+          anyOf:
+          - type: string
+          - type: 'null'
+          default: null
+          description: Query error. Returned only if 'explain' or `modifiers.debug`
+            is true. Throws an error otherwise.
+          title: Error
+        hasMore:
+          anyOf:
+          - type: boolean
+          - type: 'null'
+          default: null
+          title: Hasmore
+        hogql:
+          anyOf:
+          - type: string
+          - type: 'null'
+          default: null
+          description: Generated HogQL query.
+          title: Hogql
+        limit:
+          anyOf:
+          - type: integer
+          - type: 'null'
+          default: null
+          title: Limit
+        modifiers:
+          anyOf:
+          - $ref: '#/components/schemas/HogQLQueryModifiers'
+          - type: 'null'
+          default: null
+          description: Modifiers used when performing the query
+        offset:
+          anyOf:
+          - type: integer
+          - type: 'null'
+          default: null
+          title: Offset
+        query_status:
+          anyOf:
+          - $ref: '#/components/schemas/QueryStatus'
+          - type: 'null'
+          default: null
+          description: Query status indicates whether next to the provided data, a
+            query is still running.
+        resolved_compare_date_range:
+          anyOf:
+          - $ref: '#/components/schemas/ResolvedDateRangeResponse'
+          - type: 'null'
+          default: null
+          description: The resolved previous/comparison period date range, when comparing
+            against another period
+        resolved_date_range:
+          anyOf:
+          - $ref: '#/components/schemas/ResolvedDateRangeResponse'
+          - type: 'null'
+          default: null
+          description: The date range used for the query
+        results:
+          items: {}
+          title: Results
+          type: array
+        timings:
+          anyOf:
+          - items:
+              $ref: '#/components/schemas/QueryTiming'
+            type: array
+          - type: 'null'
+          default: null
+          description: Measured timings for different parts of the query generation
+            process
+          title: Timings
+        types:
+          anyOf:
+          - items: {}
+            type: array
+          - type: 'null'
+          default: null
+          title: Types
+        used_data_warehouse_sources:
+          anyOf:
+          - items:
+              $ref: '#/components/schemas/DataWarehouseSourceUsage'
+            type: array
+          - type: 'null'
+          default: null
+          description: Connector-synced data warehouse sources referenced by this
+            query, if any.
+          title: Used Data Warehouse Sources
+        warnings:
+          anyOf:
+          - items:
+              anyOf:
+              - $ref: '#/components/schemas/DataWarehouseSyncWarning'
+              - $ref: '#/components/schemas/AccessControlFilterWarning'
+            type: array
+          - type: 'null'
+          default: null
+          description: Warnings about data warehouse sources referenced by the query
+            whose latest sync failed, is paused, hit a billing limit, or is otherwise
+            stale. Results may not reflect current source data. Accumulated across
+            every HogQL execution that contributes to this response — so insights
+            backed by warehouse tables (Trends, Funnels, etc.) receive the same warnings
+            as raw HogQL queries. Also carries access control warnings when a system-table
+            query filters out objects the user can't access.
+          title: Warnings
+      required:
+      - results
+      title: QueryResponseAlternative47
+      type: object
+    QueryResponseAlternative48:
       additionalProperties: false
       properties:
         columns:
@@ -247199,9 +248039,9 @@ components:
           title: Warnings
       required:
       - results
-      title: QueryResponseAlternative47
+      title: QueryResponseAlternative48
       type: object
-    QueryResponseAlternative48:
+    QueryResponseAlternative49:
       additionalProperties: false
       properties:
         error:
@@ -247320,9 +248160,80 @@ components:
           title: Warnings
       required:
       - results
-      title: QueryResponseAlternative48
+      title: QueryResponseAlternative49
       type: object
-    QueryResponseAlternative49:
+    QueryResponseAlternative5:
+      additionalProperties: false
+      properties:
+        breakdown:
+          anyOf:
+          - items:
+              $ref: '#/components/schemas/BreakdownItem'
+            type: array
+          - type: 'null'
+          default: null
+          title: Breakdown
+        breakdowns:
+          anyOf:
+          - items:
+              $ref: '#/components/schemas/MultipleBreakdownOptions'
+            type: array
+          - type: 'null'
+          default: null
+          title: Breakdowns
+        compare:
+          anyOf:
+          - items:
+              $ref: '#/components/schemas/CompareItem'
+            type: array
+          - type: 'null'
+          default: null
+          title: Compare
+        day:
+          anyOf:
+          - items:
+              $ref: '#/components/schemas/DayItem'
+            type: array
+          - type: 'null'
+          default: null
+          title: Day
+        interval:
+          anyOf:
+          - items:
+              $ref: '#/components/schemas/IntervalItem'
+            type: array
+          - type: 'null'
+          default: null
+          title: Interval
+        series:
+          anyOf:
+          - items:
+              $ref: '#/components/schemas/Series'
+            type: array
+          - type: 'null'
+          default: null
+          title: Series
+        status:
+          anyOf:
+          - items:
+              $ref: '#/components/schemas/StatusItem'
+            type: array
+          - type: 'null'
+          default: null
+          title: Status
+        warnings:
+          anyOf:
+          - items:
+              $ref: '#/components/schemas/DataWarehouseSyncWarning'
+            type: array
+          - type: 'null'
+          default: null
+          description: Data warehouse sync warnings — see AnalyticsQueryResponseBase.warnings
+            for semantics.
+          title: Warnings
+      title: QueryResponseAlternative5
+      type: object
+    QueryResponseAlternative50:
       additionalProperties: false
       properties:
         columns:
@@ -247439,80 +248350,9 @@ components:
           title: Warnings
       required:
       - results
-      title: QueryResponseAlternative49
+      title: QueryResponseAlternative50
       type: object
-    QueryResponseAlternative5:
-      additionalProperties: false
-      properties:
-        breakdown:
-          anyOf:
-          - items:
-              $ref: '#/components/schemas/BreakdownItem'
-            type: array
-          - type: 'null'
-          default: null
-          title: Breakdown
-        breakdowns:
-          anyOf:
-          - items:
-              $ref: '#/components/schemas/MultipleBreakdownOptions'
-            type: array
-          - type: 'null'
-          default: null
-          title: Breakdowns
-        compare:
-          anyOf:
-          - items:
-              $ref: '#/components/schemas/CompareItem'
-            type: array
-          - type: 'null'
-          default: null
-          title: Compare
-        day:
-          anyOf:
-          - items:
-              $ref: '#/components/schemas/DayItem'
-            type: array
-          - type: 'null'
-          default: null
-          title: Day
-        interval:
-          anyOf:
-          - items:
-              $ref: '#/components/schemas/IntervalItem'
-            type: array
-          - type: 'null'
-          default: null
-          title: Interval
-        series:
-          anyOf:
-          - items:
-              $ref: '#/components/schemas/Series'
-            type: array
-          - type: 'null'
-          default: null
-          title: Series
-        status:
-          anyOf:
-          - items:
-              $ref: '#/components/schemas/StatusItem'
-            type: array
-          - type: 'null'
-          default: null
-          title: Status
-        warnings:
-          anyOf:
-          - items:
-              $ref: '#/components/schemas/DataWarehouseSyncWarning'
-            type: array
-          - type: 'null'
-          default: null
-          description: Data warehouse sync warnings — see AnalyticsQueryResponseBase.warnings
-            for semantics.
-          title: Warnings
-      title: QueryResponseAlternative5
-      type: object
-    QueryResponseAlternative50:
+    QueryResponseAlternative51:
       additionalProperties: false
       properties:
         columns:
@@ -247628,9 +248468,9 @@ components:
       - hogql
       - results
       - types
-      title: QueryResponseAlternative50
+      title: QueryResponseAlternative51
       type: object
-    QueryResponseAlternative51:
+    QueryResponseAlternative52:
       additionalProperties: false
       properties:
         columns:
@@ -247646,7 +248486,7 @@ components:
           - type: 'null'
           default: null
           description: ISO timestamp of the oldest precompute window backing this
-            result — surfaced as "data as of X".
+            result.
           title: Datacomputedat
         error:
           anyOf:
@@ -247669,6 +248509,16 @@ components:
           default: null
           description: Generated HogQL query.
           title: Hogql
+        latestDayComputedAt:
+          anyOf:
+          - type: string
+          - type: 'null'
+          default: null
+          description: ISO timestamp of when the numbers for the most recent day in
+            the range were computed, at this time or later. It is the oldest stamp
+            among the precompute windows that hold that day, across costs and conversion
+            goals. Unset when no precompute was read or a window has no stamp.
+          title: Latestdaycomputedat
         limit:
           anyOf:
           - type: integer
@@ -247774,9 +248624,9 @@ components:
           title: Warnings
       required:
       - results
-      title: QueryResponseAlternative51
+      title: QueryResponseAlternative52
       type: object
-    QueryResponseAlternative52:
+    QueryResponseAlternative53:
       additionalProperties: false
       properties:
         dataComputedAt:
@@ -247785,7 +248635,7 @@ components:
           - type: 'null'
           default: null
           description: ISO timestamp of the oldest precompute window backing this
-            result — surfaced as "data as of X".
+            result.
           title: Datacomputedat
         error:
           anyOf:
@@ -247802,6 +248652,16 @@ components:
           default: null
           description: Generated HogQL query.
           title: Hogql
+        latestDayComputedAt:
+          anyOf:
+          - type: string
+          - type: 'null'
+          default: null
+          description: ISO timestamp of when the numbers for the most recent day in
+            the range were computed, at this time or later. It is the oldest stamp
+            among the precompute windows that hold that day, across costs and conversion
+            goals. Unset when no precompute was read or a window has no stamp.
+          title: Latestdaycomputedat
         modifiers:
           anyOf:
           - $ref: '#/components/schemas/HogQLQueryModifiers'
@@ -247847,122 +248707,6 @@ components:
           - $ref: '#/components/schemas/SamplingRate'
           - type: 'null'
           default: null
-        timings:
-          anyOf:
-          - items:
-              $ref: '#/components/schemas/QueryTiming'
-            type: array
-          - type: 'null'
-          default: null
-          description: Measured timings for different parts of the query generation
-            process
-          title: Timings
-        used_data_warehouse_sources:
-          anyOf:
-          - items:
-              $ref: '#/components/schemas/DataWarehouseSourceUsage'
-            type: array
-          - type: 'null'
-          default: null
-          description: Connector-synced data warehouse sources referenced by this
-            query, if any.
-          title: Used Data Warehouse Sources
-        warnings:
-          anyOf:
-          - items:
-              anyOf:
-              - $ref: '#/components/schemas/DataWarehouseSyncWarning'
-              - $ref: '#/components/schemas/AccessControlFilterWarning'
-            type: array
-          - type: 'null'
-          default: null
-          description: Warnings about data warehouse sources referenced by the query
-            whose latest sync failed, is paused, hit a billing limit, or is otherwise
-            stale. Results may not reflect current source data. Accumulated across
-            every HogQL execution that contributes to this response — so insights
-            backed by warehouse tables (Trends, Funnels, etc.) receive the same warnings
-            as raw HogQL queries. Also carries access control warnings when a system-table
-            query filters out objects the user can't access.
-          title: Warnings
-      required:
-      - results
-      title: QueryResponseAlternative52
-      type: object
-    QueryResponseAlternative53:
-      additionalProperties: false
-      properties:
-        columns:
-          anyOf:
-          - items:
-              type: string
-            type: array
-          - type: 'null'
-          default: null
-          title: Columns
-        error:
-          anyOf:
-          - type: string
-          - type: 'null'
-          default: null
-          description: Query error. Returned only if 'explain' or `modifiers.debug`
-            is true. Throws an error otherwise.
-          title: Error
-        hasMore:
-          anyOf:
-          - type: boolean
-          - type: 'null'
-          default: null
-          title: Hasmore
-        hogql:
-          anyOf:
-          - type: string
-          - type: 'null'
-          default: null
-          description: Generated HogQL query.
-          title: Hogql
-        limit:
-          anyOf:
-          - type: integer
-          - type: 'null'
-          default: null
-          title: Limit
-        modifiers:
-          anyOf:
-          - $ref: '#/components/schemas/HogQLQueryModifiers'
-          - type: 'null'
-          default: null
-          description: Modifiers used when performing the query
-        offset:
-          anyOf:
-          - type: integer
-          - type: 'null'
-          default: null
-          title: Offset
-        query_status:
-          anyOf:
-          - $ref: '#/components/schemas/QueryStatus'
-          - type: 'null'
-          default: null
-          description: Query status indicates whether next to the provided data, a
-            query is still running.
-        resolved_compare_date_range:
-          anyOf:
-          - $ref: '#/components/schemas/ResolvedDateRangeResponse'
-          - type: 'null'
-          default: null
-          description: The resolved previous/comparison period date range, when comparing
-            against another period
-        resolved_date_range:
-          anyOf:
-          - $ref: '#/components/schemas/ResolvedDateRangeResponse'
-          - type: 'null'
-          default: null
-          description: The date range used for the query
-        results:
-          items:
-            $ref: '#/components/schemas/ErrorTrackingIssue'
-          title: Results
-          type: array
         timings:
           anyOf:
           - items:
@@ -248076,7 +248820,7 @@ components:
           description: The date range used for the query
         results:
           items:
-            $ref: '#/components/schemas/ErrorTrackingCorrelatedIssue'
+            $ref: '#/components/schemas/ErrorTrackingIssue'
           title: Results
           type: array
         timings:
@@ -248192,7 +248936,7 @@ components:
           description: The date range used for the query
         results:
           items:
-            $ref: '#/components/schemas/LLMTrace'
+            $ref: '#/components/schemas/ErrorTrackingCorrelatedIssue'
           title: Results
           type: array
         timings:
@@ -248236,7 +248980,123 @@ components:
       - results
       title: QueryResponseAlternative55
       type: object
-    QueryResponseAlternative57:
+    QueryResponseAlternative56:
+      additionalProperties: false
+      properties:
+        columns:
+          anyOf:
+          - items:
+              type: string
+            type: array
+          - type: 'null'
+          default: null
+          title: Columns
+        error:
+          anyOf:
+          - type: string
+          - type: 'null'
+          default: null
+          description: Query error. Returned only if 'explain' or `modifiers.debug`
+            is true. Throws an error otherwise.
+          title: Error
+        hasMore:
+          anyOf:
+          - type: boolean
+          - type: 'null'
+          default: null
+          title: Hasmore
+        hogql:
+          anyOf:
+          - type: string
+          - type: 'null'
+          default: null
+          description: Generated HogQL query.
+          title: Hogql
+        limit:
+          anyOf:
+          - type: integer
+          - type: 'null'
+          default: null
+          title: Limit
+        modifiers:
+          anyOf:
+          - $ref: '#/components/schemas/HogQLQueryModifiers'
+          - type: 'null'
+          default: null
+          description: Modifiers used when performing the query
+        offset:
+          anyOf:
+          - type: integer
+          - type: 'null'
+          default: null
+          title: Offset
+        query_status:
+          anyOf:
+          - $ref: '#/components/schemas/QueryStatus'
+          - type: 'null'
+          default: null
+          description: Query status indicates whether next to the provided data, a
+            query is still running.
+        resolved_compare_date_range:
+          anyOf:
+          - $ref: '#/components/schemas/ResolvedDateRangeResponse'
+          - type: 'null'
+          default: null
+          description: The resolved previous/comparison period date range, when comparing
+            against another period
+        resolved_date_range:
+          anyOf:
+          - $ref: '#/components/schemas/ResolvedDateRangeResponse'
+          - type: 'null'
+          default: null
+          description: The date range used for the query
+        results:
+          items:
+            $ref: '#/components/schemas/LLMTrace'
+          title: Results
+          type: array
+        timings:
+          anyOf:
+          - items:
+              $ref: '#/components/schemas/QueryTiming'
+            type: array
+          - type: 'null'
+          default: null
+          description: Measured timings for different parts of the query generation
+            process
+          title: Timings
+        used_data_warehouse_sources:
+          anyOf:
+          - items:
+              $ref: '#/components/schemas/DataWarehouseSourceUsage'
+            type: array
+          - type: 'null'
+          default: null
+          description: Connector-synced data warehouse sources referenced by this
+            query, if any.
+          title: Used Data Warehouse Sources
+        warnings:
+          anyOf:
+          - items:
+              anyOf:
+              - $ref: '#/components/schemas/DataWarehouseSyncWarning'
+              - $ref: '#/components/schemas/AccessControlFilterWarning'
+            type: array
+          - type: 'null'
+          default: null
+          description: Warnings about data warehouse sources referenced by the query
+            whose latest sync failed, is paused, hit a billing limit, or is otherwise
+            stale. Results may not reflect current source data. Accumulated across
+            every HogQL execution that contributes to this response — so insights
+            backed by warehouse tables (Trends, Funnels, etc.) receive the same warnings
+            as raw HogQL queries. Also carries access control warnings when a system-table
+            query filters out objects the user can't access.
+          title: Warnings
+      required:
+      - results
+      title: QueryResponseAlternative56
+      type: object
+    QueryResponseAlternative58:
       additionalProperties: false
       properties:
         columns:
@@ -248355,9 +249215,9 @@ components:
           title: Warnings
       required:
       - results
-      title: QueryResponseAlternative57
+      title: QueryResponseAlternative58
       type: object
-    QueryResponseAlternative58:
+    QueryResponseAlternative59:
       additionalProperties: false
       properties:
         columns:
@@ -248486,9 +249346,105 @@ components:
       - offset
       - results
       - types
-      title: QueryResponseAlternative58
+      title: QueryResponseAlternative59
       type: object
-    QueryResponseAlternative59:
+    QueryResponseAlternative6:
+      additionalProperties: false
+      properties:
+        error:
+          anyOf:
+          - type: string
+          - type: 'null'
+          default: null
+          description: Query error. Returned only if 'explain' or `modifiers.debug`
+            is true. Throws an error otherwise.
+          title: Error
+        hasMore:
+          anyOf:
+          - type: boolean
+          - type: 'null'
+          default: null
+          title: Hasmore
+        hogql:
+          anyOf:
+          - type: string
+          - type: 'null'
+          default: null
+          description: Generated HogQL query.
+          title: Hogql
+        modifiers:
+          anyOf:
+          - $ref: '#/components/schemas/HogQLQueryModifiers'
+          - type: 'null'
+          default: null
+          description: Modifiers used when performing the query
+        query_status:
+          anyOf:
+          - $ref: '#/components/schemas/QueryStatus'
+          - type: 'null'
+          default: null
+          description: Query status indicates whether next to the provided data, a
+            query is still running.
+        resolved_compare_date_range:
+          anyOf:
+          - $ref: '#/components/schemas/ResolvedDateRangeResponse'
+          - type: 'null'
+          default: null
+          description: The resolved previous/comparison period date range, when comparing
+            against another period
+        resolved_date_range:
+          anyOf:
+          - $ref: '#/components/schemas/ResolvedDateRangeResponse'
+          - type: 'null'
+          default: null
+          description: The date range used for the query
+        results:
+          items:
+            $ref: '#/components/schemas/TimelineEntry'
+          title: Results
+          type: array
+        timings:
+          anyOf:
+          - items:
+              $ref: '#/components/schemas/QueryTiming'
+            type: array
+          - type: 'null'
+          default: null
+          description: Measured timings for different parts of the query generation
+            process
+          title: Timings
+        used_data_warehouse_sources:
+          anyOf:
+          - items:
+              $ref: '#/components/schemas/DataWarehouseSourceUsage'
+            type: array
+          - type: 'null'
+          default: null
+          description: Connector-synced data warehouse sources referenced by this
+            query, if any.
+          title: Used Data Warehouse Sources
+        warnings:
+          anyOf:
+          - items:
+              anyOf:
+              - $ref: '#/components/schemas/DataWarehouseSyncWarning'
+              - $ref: '#/components/schemas/AccessControlFilterWarning'
+            type: array
+          - type: 'null'
+          default: null
+          description: Warnings about data warehouse sources referenced by the query
+            whose latest sync failed, is paused, hit a billing limit, or is otherwise
+            stale. Results may not reflect current source data. Accumulated across
+            every HogQL execution that contributes to this response — so insights
+            backed by warehouse tables (Trends, Funnels, etc.) receive the same warnings
+            as raw HogQL queries. Also carries access control warnings when a system-table
+            query filters out objects the user can't access.
+          title: Warnings
+      required:
+      - results
+      title: QueryResponseAlternative6
+      type: object
+    QueryResponseAlternative60:
       additionalProperties: false
       properties:
         columns:
@@ -248634,105 +249590,9 @@ components:
       - limit
       - offset
       - results
-      title: QueryResponseAlternative59
+      title: QueryResponseAlternative60
       type: object
-    QueryResponseAlternative6:
-      additionalProperties: false
-      properties:
-        error:
-          anyOf:
-          - type: string
-          - type: 'null'
-          default: null
-          description: Query error. Returned only if 'explain' or `modifiers.debug`
-            is true. Throws an error otherwise.
-          title: Error
-        hasMore:
-          anyOf:
-          - type: boolean
-          - type: 'null'
-          default: null
-          title: Hasmore
-        hogql:
-          anyOf:
-          - type: string
-          - type: 'null'
-          default: null
-          description: Generated HogQL query.
-          title: Hogql
-        modifiers:
-          anyOf:
-          - $ref: '#/components/schemas/HogQLQueryModifiers'
-          - type: 'null'
-          default: null
-          description: Modifiers used when performing the query
-        query_status:
-          anyOf:
-          - $ref: '#/components/schemas/QueryStatus'
-          - type: 'null'
-          default: null
-          description: Query status indicates whether next to the provided data, a
-            query is still running.
-        resolved_compare_date_range:
-          anyOf:
-          - $ref: '#/components/schemas/ResolvedDateRangeResponse'
-          - type: 'null'
-          default: null
-          description: The resolved previous/comparison period date range, when comparing
-            against another period
-        resolved_date_range:
-          anyOf:
-          - $ref: '#/components/schemas/ResolvedDateRangeResponse'
-          - type: 'null'
-          default: null
-          description: The date range used for the query
-        results:
-          items:
-            $ref: '#/components/schemas/TimelineEntry'
-          title: Results
-          type: array
-        timings:
-          anyOf:
-          - items:
-              $ref: '#/components/schemas/QueryTiming'
-            type: array
-          - type: 'null'
-          default: null
-          description: Measured timings for different parts of the query generation
-            process
-          title: Timings
-        used_data_warehouse_sources:
-          anyOf:
-          - items:
-              $ref: '#/components/schemas/DataWarehouseSourceUsage'
-            type: array
-          - type: 'null'
-          default: null
-          description: Connector-synced data warehouse sources referenced by this
-            query, if any.
-          title: Used Data Warehouse Sources
-        warnings:
-          anyOf:
-          - items:
-              anyOf:
-              - $ref: '#/components/schemas/DataWarehouseSyncWarning'
-              - $ref: '#/components/schemas/AccessControlFilterWarning'
-            type: array
-          - type: 'null'
-          default: null
-          description: Warnings about data warehouse sources referenced by the query
-            whose latest sync failed, is paused, hit a billing limit, or is otherwise
-            stale. Results may not reflect current source data. Accumulated across
-            every HogQL execution that contributes to this response — so insights
-            backed by warehouse tables (Trends, Funnels, etc.) receive the same warnings
-            as raw HogQL queries. Also carries access control warnings when a system-table
-            query filters out objects the user can't access.
-          title: Warnings
-      required:
-      - results
-      title: QueryResponseAlternative6
-      type: object
-    QueryResponseAlternative60:
+    QueryResponseAlternative61:
       additionalProperties: false
       properties:
         action_names:
@@ -248847,9 +249707,9 @@ components:
           title: Warnings
       required:
       - results
-      title: QueryResponseAlternative60
+      title: QueryResponseAlternative61
       type: object
-    QueryResponseAlternative61:
+    QueryResponseAlternative62:
       additionalProperties: false
       properties:
         error:
@@ -248942,96 +249802,6 @@ components:
           title: Warnings
       required:
       - results
-      title: QueryResponseAlternative61
-      type: object
-    QueryResponseAlternative62:
-      additionalProperties: false
-      properties:
-        error:
-          anyOf:
-          - type: string
-          - type: 'null'
-          default: null
-          description: Query error. Returned only if 'explain' or `modifiers.debug`
-            is true. Throws an error otherwise.
-          title: Error
-        hogql:
-          anyOf:
-          - type: string
-          - type: 'null'
-          default: null
-          description: Generated HogQL query.
-          title: Hogql
-        modifiers:
-          anyOf:
-          - $ref: '#/components/schemas/HogQLQueryModifiers'
-          - type: 'null'
-          default: null
-          description: Modifiers used when performing the query
-        query_status:
-          anyOf:
-          - $ref: '#/components/schemas/QueryStatus'
-          - type: 'null'
-          default: null
-          description: Query status indicates whether next to the provided data, a
-            query is still running.
-        resolved_compare_date_range:
-          anyOf:
-          - $ref: '#/components/schemas/ResolvedDateRangeResponse'
-          - type: 'null'
-          default: null
-          description: The resolved previous/comparison period date range, when comparing
-            against another period
-        resolved_date_range:
-          anyOf:
-          - $ref: '#/components/schemas/ResolvedDateRangeResponse'
-          - type: 'null'
-          default: null
-          description: The date range used for the query
-        results:
-          items:
-            $ref: '#/components/schemas/RetentionResult'
-          title: Results
-          type: array
-        timings:
-          anyOf:
-          - items:
-              $ref: '#/components/schemas/QueryTiming'
-            type: array
-          - type: 'null'
-          default: null
-          description: Measured timings for different parts of the query generation
-            process
-          title: Timings
-        used_data_warehouse_sources:
-          anyOf:
-          - items:
-              $ref: '#/components/schemas/DataWarehouseSourceUsage'
-            type: array
-          - type: 'null'
-          default: null
-          description: Connector-synced data warehouse sources referenced by this
-            query, if any.
-          title: Used Data Warehouse Sources
-        warnings:
-          anyOf:
-          - items:
-              anyOf:
-              - $ref: '#/components/schemas/DataWarehouseSyncWarning'
-              - $ref: '#/components/schemas/AccessControlFilterWarning'
-            type: array
-          - type: 'null'
-          default: null
-          description: Warnings about data warehouse sources referenced by the query
-            whose latest sync failed, is paused, hit a billing limit, or is otherwise
-            stale. Results may not reflect current source data. Accumulated across
-            every HogQL execution that contributes to this response — so insights
-            backed by warehouse tables (Trends, Funnels, etc.) receive the same warnings
-            as raw HogQL queries. Also carries access control warnings when a system-table
-            query filters out objects the user can't access.
-          title: Warnings
-      required:
-      - results
       title: QueryResponseAlternative62
       type: object
     QueryResponseAlternative63:
@@ -249080,7 +249850,7 @@ components:
           description: The date range used for the query
         results:
           items:
-            $ref: '#/components/schemas/PathsLink'
+            $ref: '#/components/schemas/RetentionResult'
           title: Results
           type: array
         timings:
@@ -249169,7 +249939,10 @@ components:
           default: null
           description: The date range used for the query
         results:
-          $ref: '#/components/schemas/PathsV2Results'
+          items:
+            $ref: '#/components/schemas/PathsLink'
+          title: Results
+          type: array
         timings:
           anyOf:
           - items:
@@ -249212,6 +249985,93 @@ components:
       title: QueryResponseAlternative64
       type: object
     QueryResponseAlternative65:
+      additionalProperties: false
+      properties:
+        error:
+          anyOf:
+          - type: string
+          - type: 'null'
+          default: null
+          description: Query error. Returned only if 'explain' or `modifiers.debug`
+            is true. Throws an error otherwise.
+          title: Error
+        hogql:
+          anyOf:
+          - type: string
+          - type: 'null'
+          default: null
+          description: Generated HogQL query.
+          title: Hogql
+        modifiers:
+          anyOf:
+          - $ref: '#/components/schemas/HogQLQueryModifiers'
+          - type: 'null'
+          default: null
+          description: Modifiers used when performing the query
+        query_status:
+          anyOf:
+          - $ref: '#/components/schemas/QueryStatus'
+          - type: 'null'
+          default: null
+          description: Query status indicates whether next to the provided data, a
+            query is still running.
+        resolved_compare_date_range:
+          anyOf:
+          - $ref: '#/components/schemas/ResolvedDateRangeResponse'
+          - type: 'null'
+          default: null
+          description: The resolved previous/comparison period date range, when comparing
+            against another period
+        resolved_date_range:
+          anyOf:
+          - $ref: '#/components/schemas/ResolvedDateRangeResponse'
+          - type: 'null'
+          default: null
+          description: The date range used for the query
+        results:
+          $ref: '#/components/schemas/PathsV2Results'
+        timings:
+          anyOf:
+          - items:
+              $ref: '#/components/schemas/QueryTiming'
+            type: array
+          - type: 'null'
+          default: null
+          description: Measured timings for different parts of the query generation
+            process
+          title: Timings
+        used_data_warehouse_sources:
+          anyOf:
+          - items:
+              $ref: '#/components/schemas/DataWarehouseSourceUsage'
+            type: array
+          - type: 'null'
+          default: null
+          description: Connector-synced data warehouse sources referenced by this
+            query, if any.
+          title: Used Data Warehouse Sources
+        warnings:
+          anyOf:
+          - items:
+              anyOf:
+              - $ref: '#/components/schemas/DataWarehouseSyncWarning'
+              - $ref: '#/components/schemas/AccessControlFilterWarning'
+            type: array
+          - type: 'null'
+          default: null
+          description: Warnings about data warehouse sources referenced by the query
+            whose latest sync failed, is paused, hit a billing limit, or is otherwise
+            stale. Results may not reflect current source data. Accumulated across
+            every HogQL execution that contributes to this response — so insights
+            backed by warehouse tables (Trends, Funnels, etc.) receive the same warnings
+            as raw HogQL queries. Also carries access control warnings when a system-table
+            query filters out objects the user can't access.
+          title: Warnings
+      required:
+      - results
+      title: QueryResponseAlternative65
+      type: object
+    QueryResponseAlternative66:
       additionalProperties: false
       properties:
         action_names:
@@ -249311,9 +250171,9 @@ components:
           title: Warnings
       required:
       - results
-      title: QueryResponseAlternative65
+      title: QueryResponseAlternative66
       type: object
-    QueryResponseAlternative67:
+    QueryResponseAlternative68:
       additionalProperties: false
       properties:
         joins:
@@ -249337,9 +250197,9 @@ components:
       required:
       - joins
       - tables
-      title: QueryResponseAlternative67
+      title: QueryResponseAlternative68
       type: object
-    QueryResponseAlternative68:
+    QueryResponseAlternative69:
       additionalProperties: false
       properties:
         error:
@@ -249439,9 +250299,38 @@ components:
       required:
       - has_next
       - results
-      title: QueryResponseAlternative68
+      title: QueryResponseAlternative69
       type: object
-    QueryResponseAlternative69:
+    QueryResponseAlternative7:
+      additionalProperties: false
+      properties:
+        bytecode:
+          anyOf:
+          - items: {}
+            type: array
+          - type: 'null'
+          default: null
+          title: Bytecode
+        coloredBytecode:
+          anyOf:
+          - items: {}
+            type: array
+          - type: 'null'
+          default: null
+          title: Coloredbytecode
+        results:
+          title: Results
+        stdout:
+          anyOf:
+          - type: string
+          - type: 'null'
+          default: null
+          title: Stdout
+      required:
+      - results
+      title: QueryResponseAlternative7
+      type: object
+    QueryResponseAlternative70:
       additionalProperties: false
       properties:
         columns:
@@ -249559,38 +250448,9 @@ components:
           title: Warnings
       required:
       - results
-      title: QueryResponseAlternative69
+      title: QueryResponseAlternative70
       type: object
-    QueryResponseAlternative7:
-      additionalProperties: false
-      properties:
-        bytecode:
-          anyOf:
-          - items: {}
-            type: array
-          - type: 'null'
-          default: null
-          title: Bytecode
-        coloredBytecode:
-          anyOf:
-          - items: {}
-            type: array
-          - type: 'null'
-          default: null
-          title: Coloredbytecode
-        results:
-          title: Results
-        stdout:
-          anyOf:
-          - type: string
-          - type: 'null'
-          default: null
-          title: Stdout
-      required:
-      - results
-      title: QueryResponseAlternative7
-      type: object
-    QueryResponseAlternative70:
+    QueryResponseAlternative71:
       additionalProperties: false
       properties:
         count:
@@ -249682,9 +250542,9 @@ components:
       required:
       - count
       - results
-      title: QueryResponseAlternative70
+      title: QueryResponseAlternative71
       type: object
-    QueryResponseAlternative71:
+    QueryResponseAlternative72:
       additionalProperties: false
       properties:
         error:
@@ -249772,9 +250632,9 @@ components:
           title: Warnings
       required:
       - results
-      title: QueryResponseAlternative71
+      title: QueryResponseAlternative72
       type: object
-    QueryResponseAlternative72:
+    QueryResponseAlternative73:
       additionalProperties: false
       properties:
         error:
@@ -249862,9 +250722,9 @@ components:
           title: Warnings
       required:
       - results
-      title: QueryResponseAlternative72
+      title: QueryResponseAlternative73
       type: object
-    QueryResponseAlternative73:
+    QueryResponseAlternative74:
       additionalProperties: false
       properties:
         bounds:
@@ -249973,9 +250833,9 @@ components:
       - counts
       - results
       - times
-      title: QueryResponseAlternative73
+      title: QueryResponseAlternative74
       type: object
-    QueryResponseAlternative74:
+    QueryResponseAlternative75:
       additionalProperties: false
       properties:
         error:
@@ -250085,9 +250945,9 @@ components:
           title: Warnings
       required:
       - results
-      title: QueryResponseAlternative74
+      title: QueryResponseAlternative75
       type: object
-    QueryResponseAlternative75:
+    QueryResponseAlternative76:
       additionalProperties: false
       properties:
         compare:
@@ -250185,9 +251045,9 @@ components:
           title: Warnings
       required:
       - results
-      title: QueryResponseAlternative75
+      title: QueryResponseAlternative76
       type: object
-    QueryResponseAlternative76:
+    QueryResponseAlternative77:
       additionalProperties: false
       properties:
         compare:
@@ -250285,9 +251145,9 @@ components:
           title: Warnings
       required:
       - results
-      title: QueryResponseAlternative76
+      title: QueryResponseAlternative77
       type: object
-    QueryResponseAlternative77:
+    QueryResponseAlternative78:
       additionalProperties: false
       properties:
         compare:
@@ -250385,9 +251245,9 @@ components:
           title: Warnings
       required:
       - results
-      title: QueryResponseAlternative77
+      title: QueryResponseAlternative78
       type: object
-    QueryResponseAlternative78:
+    QueryResponseAlternative79:
       additionalProperties: false
       properties:
         questions:
@@ -250407,114 +251267,6 @@ components:
           title: Warnings
       required:
       - questions
-      title: QueryResponseAlternative78
-      type: object
-    QueryResponseAlternative79:
-      additionalProperties: false
-      properties:
-        error:
-          anyOf:
-          - type: string
-          - type: 'null'
-          default: null
-          description: Query error. Returned only if 'explain' or `modifiers.debug`
-            is true. Throws an error otherwise.
-          title: Error
-        hasMore:
-          anyOf:
-          - type: boolean
-          - type: 'null'
-          default: null
-          title: Hasmore
-        hogql:
-          anyOf:
-          - type: string
-          - type: 'null'
-          default: null
-          description: Generated HogQL query.
-          title: Hogql
-        limit:
-          anyOf:
-          - type: integer
-          - type: 'null'
-          default: null
-          title: Limit
-        modifiers:
-          anyOf:
-          - $ref: '#/components/schemas/HogQLQueryModifiers'
-          - type: 'null'
-          default: null
-          description: Modifiers used when performing the query
-        offset:
-          anyOf:
-          - type: integer
-          - type: 'null'
-          default: null
-          title: Offset
-        query_status:
-          anyOf:
-          - $ref: '#/components/schemas/QueryStatus'
-          - type: 'null'
-          default: null
-          description: Query status indicates whether next to the provided data, a
-            query is still running.
-        resolved_compare_date_range:
-          anyOf:
-          - $ref: '#/components/schemas/ResolvedDateRangeResponse'
-          - type: 'null'
-          default: null
-          description: The resolved previous/comparison period date range, when comparing
-            against another period
-        resolved_date_range:
-          anyOf:
-          - $ref: '#/components/schemas/ResolvedDateRangeResponse'
-          - type: 'null'
-          default: null
-          description: The date range used for the query
-        results:
-          items:
-            $ref: '#/components/schemas/TeamTaxonomyItem'
-          title: Results
-          type: array
-        timings:
-          anyOf:
-          - items:
-              $ref: '#/components/schemas/QueryTiming'
-            type: array
-          - type: 'null'
-          default: null
-          description: Measured timings for different parts of the query generation
-            process
-          title: Timings
-        used_data_warehouse_sources:
-          anyOf:
-          - items:
-              $ref: '#/components/schemas/DataWarehouseSourceUsage'
-            type: array
-          - type: 'null'
-          default: null
-          description: Connector-synced data warehouse sources referenced by this
-            query, if any.
-          title: Used Data Warehouse Sources
-        warnings:
-          anyOf:
-          - items:
-              anyOf:
-              - $ref: '#/components/schemas/DataWarehouseSyncWarning'
-              - $ref: '#/components/schemas/AccessControlFilterWarning'
-            type: array
-          - type: 'null'
-          default: null
-          description: Warnings about data warehouse sources referenced by the query
-            whose latest sync failed, is paused, hit a billing limit, or is otherwise
-            stale. Results may not reflect current source data. Accumulated across
-            every HogQL execution that contributes to this response — so insights
-            backed by warehouse tables (Trends, Funnels, etc.) receive the same warnings
-            as raw HogQL queries. Also carries access control warnings when a system-table
-            query filters out objects the user can't access.
-          title: Warnings
-      required:
-      - results
       title: QueryResponseAlternative79
       type: object
     QueryResponseAlternative8:
@@ -250743,7 +251495,7 @@ components:
           description: The date range used for the query
         results:
           items:
-            $ref: '#/components/schemas/EventTaxonomyItem'
+            $ref: '#/components/schemas/TeamTaxonomyItem'
           title: Results
           type: array
         timings:
@@ -250788,6 +251540,114 @@ components:
       title: QueryResponseAlternative80
       type: object
     QueryResponseAlternative81:
+      additionalProperties: false
+      properties:
+        error:
+          anyOf:
+          - type: string
+          - type: 'null'
+          default: null
+          description: Query error. Returned only if 'explain' or `modifiers.debug`
+            is true. Throws an error otherwise.
+          title: Error
+        hasMore:
+          anyOf:
+          - type: boolean
+          - type: 'null'
+          default: null
+          title: Hasmore
+        hogql:
+          anyOf:
+          - type: string
+          - type: 'null'
+          default: null
+          description: Generated HogQL query.
+          title: Hogql
+        limit:
+          anyOf:
+          - type: integer
+          - type: 'null'
+          default: null
+          title: Limit
+        modifiers:
+          anyOf:
+          - $ref: '#/components/schemas/HogQLQueryModifiers'
+          - type: 'null'
+          default: null
+          description: Modifiers used when performing the query
+        offset:
+          anyOf:
+          - type: integer
+          - type: 'null'
+          default: null
+          title: Offset
+        query_status:
+          anyOf:
+          - $ref: '#/components/schemas/QueryStatus'
+          - type: 'null'
+          default: null
+          description: Query status indicates whether next to the provided data, a
+            query is still running.
+        resolved_compare_date_range:
+          anyOf:
+          - $ref: '#/components/schemas/ResolvedDateRangeResponse'
+          - type: 'null'
+          default: null
+          description: The resolved previous/comparison period date range, when comparing
+            against another period
+        resolved_date_range:
+          anyOf:
+          - $ref: '#/components/schemas/ResolvedDateRangeResponse'
+          - type: 'null'
+          default: null
+          description: The date range used for the query
+        results:
+          items:
+            $ref: '#/components/schemas/EventTaxonomyItem'
+          title: Results
+          type: array
+        timings:
+          anyOf:
+          - items:
+              $ref: '#/components/schemas/QueryTiming'
+            type: array
+          - type: 'null'
+          default: null
+          description: Measured timings for different parts of the query generation
+            process
+          title: Timings
+        used_data_warehouse_sources:
+          anyOf:
+          - items:
+              $ref: '#/components/schemas/DataWarehouseSourceUsage'
+            type: array
+          - type: 'null'
+          default: null
+          description: Connector-synced data warehouse sources referenced by this
+            query, if any.
+          title: Used Data Warehouse Sources
+        warnings:
+          anyOf:
+          - items:
+              anyOf:
+              - $ref: '#/components/schemas/DataWarehouseSyncWarning'
+              - $ref: '#/components/schemas/AccessControlFilterWarning'
+            type: array
+          - type: 'null'
+          default: null
+          description: Warnings about data warehouse sources referenced by the query
+            whose latest sync failed, is paused, hit a billing limit, or is otherwise
+            stale. Results may not reflect current source data. Accumulated across
+            every HogQL execution that contributes to this response — so insights
+            backed by warehouse tables (Trends, Funnels, etc.) receive the same warnings
+            as raw HogQL queries. Also carries access control warnings when a system-table
+            query filters out objects the user can't access.
+          title: Warnings
+      required:
+      - results
+      title: QueryResponseAlternative81
+      type: object
+    QueryResponseAlternative82:
       additionalProperties: false
       properties:
         error:
@@ -250877,9 +251737,9 @@ components:
           title: Warnings
       required:
       - results
-      title: QueryResponseAlternative81
+      title: QueryResponseAlternative82
       type: object
-    QueryResponseAlternative82:
+    QueryResponseAlternative83:
       additionalProperties: false
       properties:
         columns:
@@ -250993,9 +251853,9 @@ components:
           title: Warnings
       required:
       - results
-      title: QueryResponseAlternative82
+      title: QueryResponseAlternative83
       type: object
-    QueryResponseAlternative85:
+    QueryResponseAlternative86:
       additionalProperties: false
       properties:
         newerTimestamp:
@@ -251046,9 +251906,9 @@ components:
           description: Data warehouse sync warnings — see AnalyticsQueryResponseBase.warnings
             for semantics.
           title: Warnings
-      title: QueryResponseAlternative85
+      title: QueryResponseAlternative86
       type: object
-    QueryResponseAlternative86:
+    QueryResponseAlternative87:
       additionalProperties: false
       properties:
         error:
@@ -251136,9 +251996,9 @@ components:
           title: Warnings
       required:
       - results
-      title: QueryResponseAlternative86
+      title: QueryResponseAlternative87
       type: object
-    QueryResponseAlternative87:
+    QueryResponseAlternative88:
       additionalProperties: false
       properties:
         error:
@@ -251226,9 +252086,9 @@ components:
           title: Warnings
       required:
       - results
-      title: QueryResponseAlternative87
+      title: QueryResponseAlternative88
       type: object
-    QueryResponseAlternative88:
+    QueryResponseAlternative89:
       additionalProperties: false
       properties:
         columns:
@@ -251357,9 +252217,85 @@ components:
       - offset
       - results
       - types
-      title: QueryResponseAlternative88
+      title: QueryResponseAlternative89
       type: object
-    QueryResponseAlternative89:
+    QueryResponseAlternative9:
+      additionalProperties: false
+      properties:
+        ch_table_names:
+          anyOf:
+          - items:
+              type: string
+            type: array
+          - type: 'null'
+          default: null
+          title: Ch Table Names
+        errors:
+          items:
+            $ref: '#/components/schemas/HogQLNotice'
+          title: Errors
+          type: array
+        index_usage:
+          anyOf:
+          - items:
+              $ref: '#/components/schemas/PredicateIndexUsage'
+            type: array
+          - type: 'null'
+          default: null
+          description: One entry per property filter, in query order.
+          title: Index Usage
+        isUsingIndices:
+          anyOf:
+          - $ref: '#/components/schemas/QueryIndexUsage'
+          - type: 'null'
+          default: null
+        isValid:
+          anyOf:
+          - type: boolean
+          - type: 'null'
+          default: null
+          title: Isvalid
+        notices:
+          items:
+            $ref: '#/components/schemas/HogQLNotice'
+          title: Notices
+          type: array
+        output_columns:
+          anyOf:
+          - items:
+              $ref: '#/components/schemas/HogQLMetadataColumn'
+            type: array
+          - type: 'null'
+          default: null
+          description: Best-effort output schema, without executing the query. Only
+            included when includeOutputTypes is requested and inference succeeds.
+          title: Output Columns
+        query:
+          anyOf:
+          - type: string
+          - type: 'null'
+          default: null
+          title: Query
+        table_names:
+          anyOf:
+          - items:
+              type: string
+            type: array
+          - type: 'null'
+          default: null
+          title: Table Names
+        warnings:
+          items:
+            $ref: '#/components/schemas/HogQLNotice'
+          title: Warnings
+          type: array
+      required:
+      - errors
+      - notices
+      - warnings
+      title: QueryResponseAlternative9
+      type: object
+    QueryResponseAlternative90:
       additionalProperties: false
       properties:
         columns:
@@ -251505,85 +252441,9 @@ components:
       - limit
       - offset
       - results
-      title: QueryResponseAlternative89
+      title: QueryResponseAlternative90
       type: object
-    QueryResponseAlternative9:
-      additionalProperties: false
-      properties:
-        ch_table_names:
-          anyOf:
-          - items:
-              type: string
-            type: array
-          - type: 'null'
-          default: null
-          title: Ch Table Names
-        errors:
-          items:
-            $ref: '#/components/schemas/HogQLNotice'
-          title: Errors
-          type: array
-        index_usage:
-          anyOf:
-          - items:
-              $ref: '#/components/schemas/PredicateIndexUsage'
-            type: array
-          - type: 'null'
-          default: null
-          description: One entry per property filter, in query order.
-          title: Index Usage
-        isUsingIndices:
-          anyOf:
-          - $ref: '#/components/schemas/QueryIndexUsage'
-          - type: 'null'
-          default: null
-        isValid:
-          anyOf:
-          - type: boolean
-          - type: 'null'
-          default: null
-          title: Isvalid
-        notices:
-          items:
-            $ref: '#/components/schemas/HogQLNotice'
-          title: Notices
-          type: array
-        output_columns:
-          anyOf:
-          - items:
-              $ref: '#/components/schemas/HogQLMetadataColumn'
-            type: array
-          - type: 'null'
-          default: null
-          description: Best-effort output schema, without executing the query. Only
-            included when includeOutputTypes is requested and inference succeeds.
-          title: Output Columns
-        query:
-          anyOf:
-          - type: string
-          - type: 'null'
-          default: null
-          title: Query
-        table_names:
-          anyOf:
-          - items:
-              type: string
-            type: array
-          - type: 'null'
-          default: null
-          title: Table Names
-        warnings:
-          items:
-            $ref: '#/components/schemas/HogQLNotice'
-          title: Warnings
-          type: array
-      required:
-      - errors
-      - notices
-      - warnings
-      title: QueryResponseAlternative9
-      type: object
-    QueryResponseAlternative90:
+    QueryResponseAlternative91:
       additionalProperties: false
       properties:
         error:
@@ -251671,9 +252531,9 @@ components:
           title: Warnings
       required:
       - results
-      title: QueryResponseAlternative90
+      title: QueryResponseAlternative91
       type: object
-    QueryResponseAlternative91:
+    QueryResponseAlternative92:
       additionalProperties: false
       properties:
         columns:
@@ -251792,97 +252652,6 @@ components:
           title: Warnings
       required:
       - results
-      title: QueryResponseAlternative91
-      type: object
-    QueryResponseAlternative92:
-      additionalProperties: false
-      properties:
-        error:
-          anyOf:
-          - type: string
-          - type: 'null'
-          default: null
-          description: Query error. Returned only if 'explain' or `modifiers.debug`
-            is true. Throws an error otherwise.
-          title: Error
-        hogql:
-          anyOf:
-          - type: string
-          - type: 'null'
-          default: null
-          description: Generated HogQL query.
-          title: Hogql
-        modifiers:
-          anyOf:
-          - $ref: '#/components/schemas/HogQLQueryModifiers'
-          - type: 'null'
-          default: null
-          description: Modifiers used when performing the query
-        query_status:
-          anyOf:
-          - $ref: '#/components/schemas/QueryStatus'
-          - type: 'null'
-          default: null
-          description: Query status indicates whether next to the provided data, a
-            query is still running.
-        resolved_compare_date_range:
-          anyOf:
-          - $ref: '#/components/schemas/ResolvedDateRangeResponse'
-          - type: 'null'
-          default: null
-          description: The resolved previous/comparison period date range, when comparing
-            against another period
-        resolved_date_range:
-          anyOf:
-          - $ref: '#/components/schemas/ResolvedDateRangeResponse'
-          - type: 'null'
-          default: null
-          description: The date range used for the query
-        results:
-          items:
-            additionalProperties: true
-            type: object
-          title: Results
-          type: array
-        timings:
-          anyOf:
-          - items:
-              $ref: '#/components/schemas/QueryTiming'
-            type: array
-          - type: 'null'
-          default: null
-          description: Measured timings for different parts of the query generation
-            process
-          title: Timings
-        used_data_warehouse_sources:
-          anyOf:
-          - items:
-              $ref: '#/components/schemas/DataWarehouseSourceUsage'
-            type: array
-          - type: 'null'
-          default: null
-          description: Connector-synced data warehouse sources referenced by this
-            query, if any.
-          title: Used Data Warehouse Sources
-        warnings:
-          anyOf:
-          - items:
-              anyOf:
-              - $ref: '#/components/schemas/DataWarehouseSyncWarning'
-              - $ref: '#/components/schemas/AccessControlFilterWarning'
-            type: array
-          - type: 'null'
-          default: null
-          description: Warnings about data warehouse sources referenced by the query
-            whose latest sync failed, is paused, hit a billing limit, or is otherwise
-            stale. Results may not reflect current source data. Accumulated across
-            every HogQL execution that contributes to this response — so insights
-            backed by warehouse tables (Trends, Funnels, etc.) receive the same warnings
-            as raw HogQL queries. Also carries access control warnings when a system-table
-            query filters out objects the user can't access.
-          title: Warnings
-      required:
-      - results
       title: QueryResponseAlternative92
       type: object
     QueryResponseAlternative93:
@@ -251931,7 +252700,8 @@ components:
           description: The date range used for the query
         results:
           items:
-            $ref: '#/components/schemas/MCPToolCallBreakdownItem'
+            additionalProperties: true
+            type: object
           title: Results
           type: array
         timings:
@@ -252021,7 +252791,7 @@ components:
           description: The date range used for the query
         results:
           items:
-            $ref: '#/components/schemas/MCPToolCallsAndErrorsItem'
+            $ref: '#/components/schemas/MCPToolCallBreakdownItem'
           title: Results
           type: array
         timings:
@@ -252111,7 +252881,7 @@ components:
           description: The date range used for the query
         results:
           items:
-            $ref: '#/components/schemas/MCPHarnessBreakdownItem'
+            $ref: '#/components/schemas/MCPToolCallsAndErrorsItem'
           title: Results
           type: array
         timings:
@@ -252156,6 +252926,96 @@ components:
       title: QueryResponseAlternative95
       type: object
     QueryResponseAlternative96:
+      additionalProperties: false
+      properties:
+        error:
+          anyOf:
+          - type: string
+          - type: 'null'
+          default: null
+          description: Query error. Returned only if 'explain' or `modifiers.debug`
+            is true. Throws an error otherwise.
+          title: Error
+        hogql:
+          anyOf:
+          - type: string
+          - type: 'null'
+          default: null
+          description: Generated HogQL query.
+          title: Hogql
+        modifiers:
+          anyOf:
+          - $ref: '#/components/schemas/HogQLQueryModifiers'
+          - type: 'null'
+          default: null
+          description: Modifiers used when performing the query
+        query_status:
+          anyOf:
+          - $ref: '#/components/schemas/QueryStatus'
+          - type: 'null'
+          default: null
+          description: Query status indicates whether next to the provided data, a
+            query is still running.
+        resolved_compare_date_range:
+          anyOf:
+          - $ref: '#/components/schemas/ResolvedDateRangeResponse'
+          - type: 'null'
+          default: null
+          description: The resolved previous/comparison period date range, when comparing
+            against another period
+        resolved_date_range:
+          anyOf:
+          - $ref: '#/components/schemas/ResolvedDateRangeResponse'
+          - type: 'null'
+          default: null
+          description: The date range used for the query
+        results:
+          items:
+            $ref: '#/components/schemas/MCPHarnessBreakdownItem'
+          title: Results
+          type: array
+        timings:
+          anyOf:
+          - items:
+              $ref: '#/components/schemas/QueryTiming'
+            type: array
+          - type: 'null'
+          default: null
+          description: Measured timings for different parts of the query generation
+            process
+          title: Timings
+        used_data_warehouse_sources:
+          anyOf:
+          - items:
+              $ref: '#/components/schemas/DataWarehouseSourceUsage'
+            type: array
+          - type: 'null'
+          default: null
+          description: Connector-synced data warehouse sources referenced by this
+            query, if any.
+          title: Used Data Warehouse Sources
+        warnings:
+          anyOf:
+          - items:
+              anyOf:
+              - $ref: '#/components/schemas/DataWarehouseSyncWarning'
+              - $ref: '#/components/schemas/AccessControlFilterWarning'
+            type: array
+          - type: 'null'
+          default: null
+          description: Warnings about data warehouse sources referenced by the query
+            whose latest sync failed, is paused, hit a billing limit, or is otherwise
+            stale. Results may not reflect current source data. Accumulated across
+            every HogQL execution that contributes to this response — so insights
+            backed by warehouse tables (Trends, Funnels, etc.) receive the same warnings
+            as raw HogQL queries. Also carries access control warnings when a system-table
+            query filters out objects the user can't access.
+          title: Warnings
+      required:
+      - results
+      title: QueryResponseAlternative96
+      type: object
+    QueryResponseAlternative97:
       additionalProperties: false
       properties:
         error:
@@ -252250,96 +253110,6 @@ components:
           title: Warnings
       required:
       - results
-      title: QueryResponseAlternative96
-      type: object
-    QueryResponseAlternative97:
-      additionalProperties: false
-      properties:
-        error:
-          anyOf:
-          - type: string
-          - type: 'null'
-          default: null
-          description: Query error. Returned only if 'explain' or `modifiers.debug`
-            is true. Throws an error otherwise.
-          title: Error
-        hogql:
-          anyOf:
-          - type: string
-          - type: 'null'
-          default: null
-          description: Generated HogQL query.
-          title: Hogql
-        modifiers:
-          anyOf:
-          - $ref: '#/components/schemas/HogQLQueryModifiers'
-          - type: 'null'
-          default: null
-          description: Modifiers used when performing the query
-        query_status:
-          anyOf:
-          - $ref: '#/components/schemas/QueryStatus'
-          - type: 'null'
-          default: null
-          description: Query status indicates whether next to the provided data, a
-            query is still running.
-        resolved_compare_date_range:
-          anyOf:
-          - $ref: '#/components/schemas/ResolvedDateRangeResponse'
-          - type: 'null'
-          default: null
-          description: The resolved previous/comparison period date range, when comparing
-            against another period
-        resolved_date_range:
-          anyOf:
-          - $ref: '#/components/schemas/ResolvedDateRangeResponse'
-          - type: 'null'
-          default: null
-          description: The date range used for the query
-        results:
-          items:
-            $ref: '#/components/schemas/MCPProtocolVersionBreakdownItem'
-          title: Results
-          type: array
-        timings:
-          anyOf:
-          - items:
-              $ref: '#/components/schemas/QueryTiming'
-            type: array
-          - type: 'null'
-          default: null
-          description: Measured timings for different parts of the query generation
-            process
-          title: Timings
-        used_data_warehouse_sources:
-          anyOf:
-          - items:
-              $ref: '#/components/schemas/DataWarehouseSourceUsage'
-            type: array
-          - type: 'null'
-          default: null
-          description: Connector-synced data warehouse sources referenced by this
-            query, if any.
-          title: Used Data Warehouse Sources
-        warnings:
-          anyOf:
-          - items:
-              anyOf:
-              - $ref: '#/components/schemas/DataWarehouseSyncWarning'
-              - $ref: '#/components/schemas/AccessControlFilterWarning'
-            type: array
-          - type: 'null'
-          default: null
-          description: Warnings about data warehouse sources referenced by the query
-            whose latest sync failed, is paused, hit a billing limit, or is otherwise
-            stale. Results may not reflect current source data. Accumulated across
-            every HogQL execution that contributes to this response — so insights
-            backed by warehouse tables (Trends, Funnels, etc.) receive the same warnings
-            as raw HogQL queries. Also carries access control warnings when a system-table
-            query filters out objects the user can't access.
-          title: Warnings
-      required:
-      - results
       title: QueryResponseAlternative97
       type: object
     QueryResponseAlternative98:
@@ -252388,7 +253158,7 @@ components:
           description: The date range used for the query
         results:
           items:
-            $ref: '#/components/schemas/MCPToolTopUserItem'
+            $ref: '#/components/schemas/MCPProtocolVersionBreakdownItem'
           title: Results
           type: array
         timings:
@@ -252478,7 +253248,7 @@ components:
           description: The date range used for the query
         results:
           items:
-            $ref: '#/components/schemas/MCPToolFailureItem'
+            $ref: '#/components/schemas/MCPToolTopUserItem'
           title: Results
           type: array
         timings:
@@ -252916,6 +253686,7 @@ components:
               MarketingAnalyticsAggregatedQuery: '#/components/schemas/MarketingAnalyticsAggregatedQuery'
               MarketingAnalyticsAttributionPathsQuery: '#/components/schemas/MarketingAnalyticsAttributionPathsQuery'
               MarketingAnalyticsAttributionQuery: '#/components/schemas/MarketingAnalyticsAttributionQuery'
+              MarketingAnalyticsRecommendationsQuery: '#/components/schemas/MarketingAnalyticsRecommendationsQuery'
               MarketingAnalyticsRetentionQuery: '#/components/schemas/MarketingAnalyticsRetentionQuery'
               MarketingAnalyticsSearchQuery: '#/components/schemas/MarketingAnalyticsSearchQuery'
               MarketingAnalyticsTableQuery: '#/components/schemas/MarketingAnalyticsTableQuery'
@@ -253005,6 +253776,7 @@ components:
           - $ref: '#/components/schemas/MarketingAnalyticsAttributionPathsQuery'
           - $ref: '#/components/schemas/MarketingAnalyticsRetentionQuery'
           - $ref: '#/components/schemas/MarketingAnalyticsSearchQuery'
+          - $ref: '#/components/schemas/MarketingAnalyticsRecommendationsQuery'
           - $ref: '#/components/schemas/DataVisualizationNode'
           - $ref: '#/components/schemas/BIVisualizationNode'
           - $ref: '#/components/schemas/DataTableNode'
@@ -253137,6 +253909,7 @@ components:
               MarketingAnalyticsAggregatedQuery: '#/components/schemas/MarketingAnalyticsAggregatedQuery'
               MarketingAnalyticsAttributionPathsQuery: '#/components/schemas/MarketingAnalyticsAttributionPathsQuery'
               MarketingAnalyticsAttributionQuery: '#/components/schemas/MarketingAnalyticsAttributionQuery'
+              MarketingAnalyticsRecommendationsQuery: '#/components/schemas/MarketingAnalyticsRecommendationsQuery'
               MarketingAnalyticsRetentionQuery: '#/components/schemas/MarketingAnalyticsRetentionQuery'
               MarketingAnalyticsSearchQuery: '#/components/schemas/MarketingAnalyticsSearchQuery'
               MarketingAnalyticsTableQuery: '#/components/schemas/MarketingAnalyticsTableQuery'
@@ -253226,6 +253999,7 @@ components:
           - $ref: '#/components/schemas/MarketingAnalyticsAttributionPathsQuery'
           - $ref: '#/components/schemas/MarketingAnalyticsRetentionQuery'
           - $ref: '#/components/schemas/MarketingAnalyticsSearchQuery'
+          - $ref: '#/components/schemas/MarketingAnalyticsRecommendationsQuery'
           - $ref: '#/components/schemas/DataVisualizationNode'
           - $ref: '#/components/schemas/BIVisualizationNode'
           - $ref: '#/components/schemas/DataTableNode'
@@ -259162,7 +259936,7 @@ components:
           - type: 'null'
           default: null
           description: ISO timestamp of the oldest precompute window backing this
-            result — surfaced as "data as of X".
+            result.
           title: Datacomputedat
         error:
           anyOf:
@@ -259185,6 +259959,16 @@ components:
           default: null
           description: Generated HogQL query.
           title: Hogql
+        latestDayComputedAt:
+          anyOf:
+          - type: string
+          - type: 'null'
+          default: null
+          description: ISO timestamp of when the numbers for the most recent day in
+            the range were computed, at this time or later. It is the oldest stamp
+            among the precompute windows that hold that day, across costs and conversion
+            goals. Unset when no precompute was read or a window has no stamp.
+          title: Latestdaycomputedat
         limit:
           anyOf:
           - type: integer
@@ -259301,7 +260085,7 @@ components:
           - type: 'null'
           default: null
           description: ISO timestamp of the oldest precompute window backing this
-            result — surfaced as "data as of X".
+            result.
           title: Datacomputedat
         error:
           anyOf:
@@ -259318,6 +260102,16 @@ components:
           default: null
           description: Generated HogQL query.
           title: Hogql
+        latestDayComputedAt:
+          anyOf:
+          - type: string
+          - type: 'null'
+          default: null
+          description: ISO timestamp of when the numbers for the most recent day in
+            the range were computed, at this time or later. It is the oldest stamp
+            among the precompute windows that hold that day, across costs and conversion
+            goals. Unset when no precompute was read or a window has no stamp.
+          title: Latestdaycomputedat
         modifiers:
           anyOf:
           - $ref: '#/components/schemas/HogQLQueryModifiers'
@@ -275007,6 +275801,7 @@ components:
       - check_result
       - check_observation
       - check_scheduled
+      - check_authoring
       - check_expired
       - check_cancelled
       - implementation_decision
@@ -275045,6 +275840,7 @@ components:
         * `check_result` - Check Result
         * `check_observation` - Check Observation
         * `check_scheduled` - Check Scheduled
+        * `check_authoring` - Check Authoring
         * `check_expired` - Check Expired
         * `check_cancelled` - Check Cancelled
         * `implementation_decision` - Implementation Decision
@@ -299113,18 +299909,6 @@ components:
       required:
       - columnKey
       - order
-    TierEnum:
-      enum:
-      - a
-      - b
-      - c
-      - d
-      type: string
-      description: |-
-        * `a` - a
-        * `b` - b
-        * `c` - c
-        * `d` - d
     TierForecast:
       type: object
       properties:
@@ -309123,6 +309907,12 @@ components:
             own credit limit has left this period, folded back into a 30-day rate.
             A monthly rate: only the part falling in the days left of the period lands
             this period. Scanners without a computed estimate contribute 0.'
+        scanners_period_credits:
+          type: integer
+          readOnly: true
+          description: The part of `scanners_monthly_credits` that lands between now
+            and `period_end`. Use it for rest-of-period forecasts; billing forecasts
+            from the same figure.
         backfills_committed_credits:
           type: integer
           readOnly: true
@@ -309147,6 +309937,7 @@ components:
       - projected_monthly_credits
       - remaining
       - scanners_monthly_credits
+      - scanners_period_credits
     VisionSpendDay:
       type: object
       properties:

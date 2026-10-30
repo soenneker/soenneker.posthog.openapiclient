@@ -17,36 +17,41 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("current") is { } nullNodeCurrent && nullNodeCurrent.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Current = null;
-            if (parseNode.GetChildNode("recorded_at") is { } nullNodeRecordedAt && nullNodeRecordedAt.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) RecordedAt = null;
-            if (parseNode.GetChildNode("scanner_version") is { } nullNodeScannerVersion && nullNodeScannerVersion.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ScannerVersion = null;
-            if (parseNode.GetChildNode("scout_config_id") is { } nullNodeScoutConfigId && nullNodeScoutConfigId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ScoutConfigId = null;
-            if (parseNode.GetChildNode("scout_enabled") is { } nullNodeScoutEnabled && nullNodeScoutEnabled.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ScoutEnabled = null;
+            if (parseNode.GetChildNode("current") is null) { _explicitNullValueCurrent = default!; _explicitNullProperties?.Remove("current"); }
+            else if (parseNode.GetChildNode("current") is { } nullNodeCurrent && nullNodeCurrent.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Current = null;
+            if (parseNode.GetChildNode("recorded_at") is null) { _explicitNullValueRecordedAt = default!; _explicitNullProperties?.Remove("recorded_at"); }
+            else if (parseNode.GetChildNode("recorded_at") is { } nullNodeRecordedAt && nullNodeRecordedAt.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) RecordedAt = null;
+            if (parseNode.GetChildNode("scanner_version") is null) { _explicitNullValueScannerVersion = default!; _explicitNullProperties?.Remove("scanner_version"); }
+            else if (parseNode.GetChildNode("scanner_version") is { } nullNodeScannerVersion && nullNodeScannerVersion.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ScannerVersion = null;
+            if (parseNode.GetChildNode("scout_config_id") is null) { _explicitNullValueScoutConfigId = default!; _explicitNullProperties?.Remove("scout_config_id"); }
+            else if (parseNode.GetChildNode("scout_config_id") is { } nullNodeScoutConfigId && nullNodeScoutConfigId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ScoutConfigId = null;
+            if (parseNode.GetChildNode("scout_enabled") is null) { _explicitNullValueScoutEnabled = default!; _explicitNullProperties?.Remove("scout_enabled"); }
+            else if (parseNode.GetChildNode("scout_enabled") is { } nullNodeScoutEnabled && nullNodeScoutEnabled.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ScoutEnabled = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Whether the newest analysis covers the scanner&apos;s current version. When false, digests and differences are null until the scout&apos;s next run.</summary>
-        public bool? Current { get => _explicitNullValueCurrent; set { _explicitNullValueCurrent = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("current"); else _explicitNullProperties?.Remove("current"); } }
+        public bool? Current { get => _explicitNullValueCurrent; set { _explicitNullValueCurrent = value; AdditionalData?.Remove("current"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("current"); else _explicitNullProperties?.Remove("current"); } }
         private bool? _explicitNullValueCurrent = default!;
         /// <summary>When the run behind the newest analysis started; null before its first run.</summary>
-        public DateTimeOffset? RecordedAt { get => _explicitNullValueRecordedAt; set { _explicitNullValueRecordedAt = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("recorded_at"); else _explicitNullProperties?.Remove("recorded_at"); } }
+        public DateTimeOffset? RecordedAt { get => _explicitNullValueRecordedAt; set { _explicitNullValueRecordedAt = value; AdditionalData?.Remove("recorded_at"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("recorded_at"); else _explicitNullProperties?.Remove("recorded_at"); } }
         private DateTimeOffset? _explicitNullValueRecordedAt = default!;
         /// <summary>The scanner version the newest analysis covered.</summary>
-        public int? ScannerVersion { get => _explicitNullValueScannerVersion; set { _explicitNullValueScannerVersion = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("scanner_version"); else _explicitNullProperties?.Remove("scanner_version"); } }
+        public int? ScannerVersion { get => _explicitNullValueScannerVersion; set { _explicitNullValueScannerVersion = value; AdditionalData?.Remove("scanner_version"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("scanner_version"); else _explicitNullProperties?.Remove("scanner_version"); } }
         private int? _explicitNullValueScannerVersion = default!;
         /// <summary>The variant analysis scout&apos;s config id.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? ScoutConfigId { get => _explicitNullValueScoutConfigId; set { _explicitNullValueScoutConfigId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("scout_config_id"); else _explicitNullProperties?.Remove("scout_config_id"); } }
+        public string? ScoutConfigId { get => _explicitNullValueScoutConfigId; set { _explicitNullValueScoutConfigId = value; AdditionalData?.Remove("scout_config_id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("scout_config_id"); else _explicitNullProperties?.Remove("scout_config_id"); } }
         private string? _explicitNullValueScoutConfigId = default!;
 #nullable restore
 #else
-        public string ScoutConfigId { get => _explicitNullValueScoutConfigId; set { _explicitNullValueScoutConfigId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("scout_config_id"); else _explicitNullProperties?.Remove("scout_config_id"); } }
+        public string ScoutConfigId { get => _explicitNullValueScoutConfigId; set { _explicitNullValueScoutConfigId = value; AdditionalData?.Remove("scout_config_id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("scout_config_id"); else _explicitNullProperties?.Remove("scout_config_id"); } }
         private string _explicitNullValueScoutConfigId = default!;
 #endif
         /// <summary>Whether the scout runs on its schedule.</summary>
-        public bool? ScoutEnabled { get => _explicitNullValueScoutEnabled; set { _explicitNullValueScoutEnabled = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("scout_enabled"); else _explicitNullProperties?.Remove("scout_enabled"); } }
+        public bool? ScoutEnabled { get => _explicitNullValueScoutEnabled; set { _explicitNullValueScoutEnabled = value; AdditionalData?.Remove("scout_enabled"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("scout_enabled"); else _explicitNullProperties?.Remove("scout_enabled"); } }
         private bool? _explicitNullValueScoutEnabled = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.VariantsAnalysisState"/> and sets the default values.

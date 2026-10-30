@@ -18,10 +18,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("dashboard") is { } nullNodeDashboard && nullNodeDashboard.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Dashboard = null;
-            if (parseNode.GetChildNode("export_context") is { } nullNodeExportContext && nullNodeExportContext.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ExportContext = null;
-            if (parseNode.GetChildNode("export_format") is { } nullNodeExportFormat && nullNodeExportFormat.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ExportFormat = null;
-            if (parseNode.GetChildNode("insight") is { } nullNodeInsight && nullNodeInsight.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Insight = null;
+            if (parseNode.GetChildNode("dashboard") is null) { _explicitNullValueDashboard = default!; _explicitNullProperties?.Remove("dashboard"); }
+            else if (parseNode.GetChildNode("dashboard") is { } nullNodeDashboard && nullNodeDashboard.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Dashboard = null;
+            if (parseNode.GetChildNode("export_context") is null) { _explicitNullValueExportContext = default!; _explicitNullProperties?.Remove("export_context"); }
+            else if (parseNode.GetChildNode("export_context") is { } nullNodeExportContext && nullNodeExportContext.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ExportContext = null;
+            if (parseNode.GetChildNode("export_format") is null) { _explicitNullValueExportFormat = default!; _explicitNullProperties?.Remove("export_format"); }
+            else if (parseNode.GetChildNode("export_format") is { } nullNodeExportFormat && nullNodeExportFormat.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ExportFormat = null;
+            if (parseNode.GetChildNode("insight") is null) { _explicitNullValueInsight = default!; _explicitNullProperties?.Remove("insight"); }
+            else if (parseNode.GetChildNode("insight") is { } nullNodeInsight && nullNodeInsight.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Insight = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -29,7 +33,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The created_at property</summary>
         public DateTimeOffset? CreatedAt { get; private set; }
         /// <summary>The dashboard property</summary>
-        public int? Dashboard { get => _explicitNullValueDashboard; set { _explicitNullValueDashboard = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("dashboard"); else _explicitNullProperties?.Remove("dashboard"); } }
+        public int? Dashboard { get => _explicitNullValueDashboard; set { _explicitNullValueDashboard = value; AdditionalData?.Remove("dashboard"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("dashboard"); else _explicitNullProperties?.Remove("dashboard"); } }
         private int? _explicitNullValueDashboard = default!;
         /// <summary>The exception property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -44,15 +48,15 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The export_context property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public UntypedNode? ExportContext { get => _explicitNullValueExportContext; set { _explicitNullValueExportContext = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("export_context"); else _explicitNullProperties?.Remove("export_context"); } }
+        public UntypedNode? ExportContext { get => _explicitNullValueExportContext; set { _explicitNullValueExportContext = value; AdditionalData?.Remove("export_context"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("export_context"); else _explicitNullProperties?.Remove("export_context"); } }
         private UntypedNode? _explicitNullValueExportContext = default!;
 #nullable restore
 #else
-        public UntypedNode ExportContext { get => _explicitNullValueExportContext; set { _explicitNullValueExportContext = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("export_context"); else _explicitNullProperties?.Remove("export_context"); } }
+        public UntypedNode ExportContext { get => _explicitNullValueExportContext; set { _explicitNullValueExportContext = value; AdditionalData?.Remove("export_context"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("export_context"); else _explicitNullProperties?.Remove("export_context"); } }
         private UntypedNode _explicitNullValueExportContext = default!;
 #endif
         /// <summary>* `image/png` - image/png* `application/pdf` - application/pdf* `text/csv` - text/csv* `application/vnd.openxmlformats-officedocument.spreadsheetml.sheet` - application/vnd.openxmlformats-officedocument.spreadsheetml.sheet* `video/webm` - video/webm* `video/mp4` - video/mp4* `image/gif` - image/gif* `application/json` - application/json</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.ExportedAssetCreateExportFormat? ExportFormat { get => _explicitNullValueExportFormat; set { _explicitNullValueExportFormat = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("export_format"); else _explicitNullProperties?.Remove("export_format"); } }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ExportedAssetCreateExportFormat? ExportFormat { get => _explicitNullValueExportFormat; set { _explicitNullValueExportFormat = value; AdditionalData?.Remove("export_format"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("export_format"); else _explicitNullProperties?.Remove("export_format"); } }
         private global::Soenneker.PostHog.OpenApiClient.Models.ExportedAssetCreateExportFormat? _explicitNullValueExportFormat = default!;
         /// <summary>The filename property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -67,7 +71,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The id property</summary>
         public int? Id { get; private set; }
         /// <summary>The insight property</summary>
-        public int? Insight { get => _explicitNullValueInsight; set { _explicitNullValueInsight = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("insight"); else _explicitNullProperties?.Remove("insight"); } }
+        public int? Insight { get => _explicitNullValueInsight; set { _explicitNullValueInsight = value; AdditionalData?.Remove("insight"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("insight"); else _explicitNullProperties?.Remove("insight"); } }
         private int? _explicitNullValueInsight = default!;
         /// <summary>The effective access level the user has for this object</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -107,7 +111,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "exception", n => { Exception = n.GetStringValue(); } },
                 { "expires_after", n => { ExpiresAfter = n.GetDateTimeOffsetValue(); } },
                 { "export_context", n => { ExportContext = n.GetObjectValue<UntypedNode>(UntypedNode.CreateFromDiscriminatorValue); } },
-                { "export_format", n => { ExportFormat = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ExportedAssetCreateExportFormat>(); } },
+                { "export_format", n => { var parsed = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ExportedAssetCreateExportFormat>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValueExportFormat = default; _explicitNullProperties?.Remove("export_format"); AdditionalData["export_format"] = unknown; } else { ExportFormat = parsed; AdditionalData.Remove("export_format"); } } },
                 { "filename", n => { Filename = n.GetStringValue(); } },
                 { "has_content", n => { HasContent = n.GetBoolValue(); } },
                 { "id", n => { Id = n.GetIntValue(); } },

@@ -18,17 +18,28 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("explanation") is { } nullNodeExplanation && nullNodeExplanation.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Explanation = null;
-            if (parseNode.GetChildNode("github_login") is { } nullNodeGithubLogin && nullNodeGithubLogin.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) GithubLogin = null;
-            if (parseNode.GetChildNode("github_name") is { } nullNodeGithubName && nullNodeGithubName.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) GithubName = null;
-            if (parseNode.GetChildNode("is_default_owner") is { } nullNodeIsDefaultOwner && nullNodeIsDefaultOwner.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) IsDefaultOwner = null;
-            if (parseNode.GetChildNode("is_skill_owner") is { } nullNodeIsSkillOwner && nullNodeIsSkillOwner.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) IsSkillOwner = null;
-            if (parseNode.GetChildNode("reason") is { } nullNodeReason && nullNodeReason.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Reason = null;
-            if (parseNode.GetChildNode("relevant_commits") is { } nullNodeRelevantCommits && nullNodeRelevantCommits.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) RelevantCommits = null;
-            if (parseNode.GetChildNode("source_label") is { } nullNodeSourceLabel && nullNodeSourceLabel.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SourceLabel = null;
-            if (parseNode.GetChildNode("source_skill") is { } nullNodeSourceSkill && nullNodeSourceSkill.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SourceSkill = null;
-            if (parseNode.GetChildNode("user") is { } nullNodeUser && nullNodeUser.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) User = null;
-            if (parseNode.GetChildNode("user_uuid") is { } nullNodeUserUuid && nullNodeUserUuid.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) UserUuid = null;
+            if (parseNode.GetChildNode("explanation") is null) { _explicitNullValueExplanation = default!; _explicitNullProperties?.Remove("explanation"); }
+            else if (parseNode.GetChildNode("explanation") is { } nullNodeExplanation && nullNodeExplanation.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Explanation = null;
+            if (parseNode.GetChildNode("github_login") is null) { _explicitNullValueGithubLogin = default!; _explicitNullProperties?.Remove("github_login"); }
+            else if (parseNode.GetChildNode("github_login") is { } nullNodeGithubLogin && nullNodeGithubLogin.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) GithubLogin = null;
+            if (parseNode.GetChildNode("github_name") is null) { _explicitNullValueGithubName = default!; _explicitNullProperties?.Remove("github_name"); }
+            else if (parseNode.GetChildNode("github_name") is { } nullNodeGithubName && nullNodeGithubName.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) GithubName = null;
+            if (parseNode.GetChildNode("is_default_owner") is null) { _explicitNullValueIsDefaultOwner = default!; _explicitNullProperties?.Remove("is_default_owner"); }
+            else if (parseNode.GetChildNode("is_default_owner") is { } nullNodeIsDefaultOwner && nullNodeIsDefaultOwner.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) IsDefaultOwner = null;
+            if (parseNode.GetChildNode("is_skill_owner") is null) { _explicitNullValueIsSkillOwner = default!; _explicitNullProperties?.Remove("is_skill_owner"); }
+            else if (parseNode.GetChildNode("is_skill_owner") is { } nullNodeIsSkillOwner && nullNodeIsSkillOwner.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) IsSkillOwner = null;
+            if (parseNode.GetChildNode("reason") is null) { _explicitNullValueReason = default!; _explicitNullProperties?.Remove("reason"); }
+            else if (parseNode.GetChildNode("reason") is { } nullNodeReason && nullNodeReason.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Reason = null;
+            if (parseNode.GetChildNode("relevant_commits") is null) { _explicitNullValueRelevantCommits = default!; _explicitNullProperties?.Remove("relevant_commits"); }
+            else if (parseNode.GetChildNode("relevant_commits") is { } nullNodeRelevantCommits && nullNodeRelevantCommits.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) RelevantCommits = null;
+            if (parseNode.GetChildNode("source_label") is null) { _explicitNullValueSourceLabel = default!; _explicitNullProperties?.Remove("source_label"); }
+            else if (parseNode.GetChildNode("source_label") is { } nullNodeSourceLabel && nullNodeSourceLabel.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SourceLabel = null;
+            if (parseNode.GetChildNode("source_skill") is null) { _explicitNullValueSourceSkill = default!; _explicitNullProperties?.Remove("source_skill"); }
+            else if (parseNode.GetChildNode("source_skill") is { } nullNodeSourceSkill && nullNodeSourceSkill.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SourceSkill = null;
+            if (parseNode.GetChildNode("user") is null) { _explicitNullValueUser = default!; _explicitNullProperties?.Remove("user"); }
+            else if (parseNode.GetChildNode("user") is { } nullNodeUser && nullNodeUser.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) User = null;
+            if (parseNode.GetChildNode("user_uuid") is null) { _explicitNullValueUserUuid = default!; _explicitNullProperties?.Remove("user_uuid"); }
+            else if (parseNode.GetChildNode("user_uuid") is { } nullNodeUserUuid && nullNodeUserUuid.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) UserUuid = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -36,97 +47,97 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>One line of evidence for display. Null when there is none to show.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Explanation { get => _explicitNullValueExplanation; set { _explicitNullValueExplanation = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("explanation"); else _explicitNullProperties?.Remove("explanation"); } }
+        public string? Explanation { get => _explicitNullValueExplanation; set { _explicitNullValueExplanation = value; AdditionalData?.Remove("explanation"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("explanation"); else _explicitNullProperties?.Remove("explanation"); } }
         private string? _explicitNullValueExplanation = default!;
 #nullable restore
 #else
-        public string Explanation { get => _explicitNullValueExplanation; set { _explicitNullValueExplanation = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("explanation"); else _explicitNullProperties?.Remove("explanation"); } }
+        public string Explanation { get => _explicitNullValueExplanation; set { _explicitNullValueExplanation = value; AdditionalData?.Remove("explanation"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("explanation"); else _explicitNullProperties?.Remove("explanation"); } }
         private string _explicitNullValueExplanation = default!;
 #endif
         /// <summary>GitHub login, lowercased. Null when the reviewer has no linked account.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? GithubLogin { get => _explicitNullValueGithubLogin; set { _explicitNullValueGithubLogin = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("github_login"); else _explicitNullProperties?.Remove("github_login"); } }
+        public string? GithubLogin { get => _explicitNullValueGithubLogin; set { _explicitNullValueGithubLogin = value; AdditionalData?.Remove("github_login"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("github_login"); else _explicitNullProperties?.Remove("github_login"); } }
         private string? _explicitNullValueGithubLogin = default!;
 #nullable restore
 #else
-        public string GithubLogin { get => _explicitNullValueGithubLogin; set { _explicitNullValueGithubLogin = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("github_login"); else _explicitNullProperties?.Remove("github_login"); } }
+        public string GithubLogin { get => _explicitNullValueGithubLogin; set { _explicitNullValueGithubLogin = value; AdditionalData?.Remove("github_login"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("github_login"); else _explicitNullProperties?.Remove("github_login"); } }
         private string _explicitNullValueGithubLogin = default!;
 #endif
         /// <summary>Display name, when the writer supplied one.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? GithubName { get => _explicitNullValueGithubName; set { _explicitNullValueGithubName = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("github_name"); else _explicitNullProperties?.Remove("github_name"); } }
+        public string? GithubName { get => _explicitNullValueGithubName; set { _explicitNullValueGithubName = value; AdditionalData?.Remove("github_name"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("github_name"); else _explicitNullProperties?.Remove("github_name"); } }
         private string? _explicitNullValueGithubName = default!;
 #nullable restore
 #else
-        public string GithubName { get => _explicitNullValueGithubName; set { _explicitNullValueGithubName = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("github_name"); else _explicitNullProperties?.Remove("github_name"); } }
+        public string GithubName { get => _explicitNullValueGithubName; set { _explicitNullValueGithubName = value; AdditionalData?.Remove("github_name"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("github_name"); else _explicitNullProperties?.Remove("github_name"); } }
         private string _explicitNullValueGithubName = default!;
 #endif
         /// <summary>True when no evidence selected anyone and the report fell back to the project&apos;s default owner. The entry routes the report, but it is not ownership evidence.</summary>
-        public bool? IsDefaultOwner { get => _explicitNullValueIsDefaultOwner; set { _explicitNullValueIsDefaultOwner = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("is_default_owner"); else _explicitNullProperties?.Remove("is_default_owner"); } }
+        public bool? IsDefaultOwner { get => _explicitNullValueIsDefaultOwner; set { _explicitNullValueIsDefaultOwner = value; AdditionalData?.Remove("is_default_owner"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("is_default_owner"); else _explicitNullProperties?.Remove("is_default_owner"); } }
         private bool? _explicitNullValueIsDefaultOwner = default!;
         /// <summary>True when the scout owner guardrail added the entry rather than commit authorship.</summary>
-        public bool? IsSkillOwner { get => _explicitNullValueIsSkillOwner; set { _explicitNullValueIsSkillOwner = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("is_skill_owner"); else _explicitNullProperties?.Remove("is_skill_owner"); } }
+        public bool? IsSkillOwner { get => _explicitNullValueIsSkillOwner; set { _explicitNullValueIsSkillOwner = value; AdditionalData?.Remove("is_skill_owner"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("is_skill_owner"); else _explicitNullProperties?.Remove("is_skill_owner"); } }
         private bool? _explicitNullValueIsSkillOwner = default!;
         /// <summary>Why this reviewer was chosen.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Reason { get => _explicitNullValueReason; set { _explicitNullValueReason = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("reason"); else _explicitNullProperties?.Remove("reason"); } }
+        public string? Reason { get => _explicitNullValueReason; set { _explicitNullValueReason = value; AdditionalData?.Remove("reason"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("reason"); else _explicitNullProperties?.Remove("reason"); } }
         private string? _explicitNullValueReason = default!;
 #nullable restore
 #else
-        public string Reason { get => _explicitNullValueReason; set { _explicitNullValueReason = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("reason"); else _explicitNullProperties?.Remove("reason"); } }
+        public string Reason { get => _explicitNullValueReason; set { _explicitNullValueReason = value; AdditionalData?.Remove("reason"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("reason"); else _explicitNullProperties?.Remove("reason"); } }
         private string _explicitNullValueReason = default!;
 #endif
         /// <summary>Commits attributed to this reviewer. Empty when the pick came from elsewhere.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.SuggestedReviewerCommit>? RelevantCommits { get => _explicitNullValueRelevantCommits; set { _explicitNullValueRelevantCommits = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("relevant_commits"); else _explicitNullProperties?.Remove("relevant_commits"); } }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.SuggestedReviewerCommit>? RelevantCommits { get => _explicitNullValueRelevantCommits; set { _explicitNullValueRelevantCommits = value; AdditionalData?.Remove("relevant_commits"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("relevant_commits"); else _explicitNullProperties?.Remove("relevant_commits"); } }
         private List<global::Soenneker.PostHog.OpenApiClient.Models.SuggestedReviewerCommit>? _explicitNullValueRelevantCommits = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.SuggestedReviewerCommit> RelevantCommits { get => _explicitNullValueRelevantCommits; set { _explicitNullValueRelevantCommits = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("relevant_commits"); else _explicitNullProperties?.Remove("relevant_commits"); } }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.SuggestedReviewerCommit> RelevantCommits { get => _explicitNullValueRelevantCommits; set { _explicitNullValueRelevantCommits = value; AdditionalData?.Remove("relevant_commits"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("relevant_commits"); else _explicitNullProperties?.Remove("relevant_commits"); } }
         private List<global::Soenneker.PostHog.OpenApiClient.Models.SuggestedReviewerCommit> _explicitNullValueRelevantCommits = default!;
 #endif
         /// <summary>Where the suggestion came from, for display.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? SourceLabel { get => _explicitNullValueSourceLabel; set { _explicitNullValueSourceLabel = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("source_label"); else _explicitNullProperties?.Remove("source_label"); } }
+        public string? SourceLabel { get => _explicitNullValueSourceLabel; set { _explicitNullValueSourceLabel = value; AdditionalData?.Remove("source_label"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("source_label"); else _explicitNullProperties?.Remove("source_label"); } }
         private string? _explicitNullValueSourceLabel = default!;
 #nullable restore
 #else
-        public string SourceLabel { get => _explicitNullValueSourceLabel; set { _explicitNullValueSourceLabel = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("source_label"); else _explicitNullProperties?.Remove("source_label"); } }
+        public string SourceLabel { get => _explicitNullValueSourceLabel; set { _explicitNullValueSourceLabel = value; AdditionalData?.Remove("source_label"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("source_label"); else _explicitNullProperties?.Remove("source_label"); } }
         private string _explicitNullValueSourceLabel = default!;
 #endif
         /// <summary>Scout skill whose run wrote the entry. Null when no scout did.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? SourceSkill { get => _explicitNullValueSourceSkill; set { _explicitNullValueSourceSkill = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("source_skill"); else _explicitNullProperties?.Remove("source_skill"); } }
+        public string? SourceSkill { get => _explicitNullValueSourceSkill; set { _explicitNullValueSourceSkill = value; AdditionalData?.Remove("source_skill"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("source_skill"); else _explicitNullProperties?.Remove("source_skill"); } }
         private string? _explicitNullValueSourceSkill = default!;
 #nullable restore
 #else
-        public string SourceSkill { get => _explicitNullValueSourceSkill; set { _explicitNullValueSourceSkill = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("source_skill"); else _explicitNullProperties?.Remove("source_skill"); } }
+        public string SourceSkill { get => _explicitNullValueSourceSkill; set { _explicitNullValueSourceSkill = value; AdditionalData?.Remove("source_skill"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("source_skill"); else _explicitNullProperties?.Remove("source_skill"); } }
         private string _explicitNullValueSourceSkill = default!;
 #endif
         /// <summary>Resolved org member. Null when the entry resolves to nobody.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.User2? User { get => _explicitNullValueUser; set { _explicitNullValueUser = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("user"); else _explicitNullProperties?.Remove("user"); } }
+        public global::Soenneker.PostHog.OpenApiClient.Models.User2? User { get => _explicitNullValueUser; set { _explicitNullValueUser = value; AdditionalData?.Remove("user"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("user"); else _explicitNullProperties?.Remove("user"); } }
         private global::Soenneker.PostHog.OpenApiClient.Models.User2? _explicitNullValueUser = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.User2 User { get => _explicitNullValueUser; set { _explicitNullValueUser = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("user"); else _explicitNullProperties?.Remove("user"); } }
+        public global::Soenneker.PostHog.OpenApiClient.Models.User2 User { get => _explicitNullValueUser; set { _explicitNullValueUser = value; AdditionalData?.Remove("user"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("user"); else _explicitNullProperties?.Remove("user"); } }
         private global::Soenneker.PostHog.OpenApiClient.Models.User2 _explicitNullValueUser = default!;
 #endif
         /// <summary>PostHog user this entry routes to. Null on entries written before reviewers had one.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? UserUuid { get => _explicitNullValueUserUuid; set { _explicitNullValueUserUuid = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("user_uuid"); else _explicitNullProperties?.Remove("user_uuid"); } }
+        public string? UserUuid { get => _explicitNullValueUserUuid; set { _explicitNullValueUserUuid = value; AdditionalData?.Remove("user_uuid"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("user_uuid"); else _explicitNullProperties?.Remove("user_uuid"); } }
         private string? _explicitNullValueUserUuid = default!;
 #nullable restore
 #else
-        public string UserUuid { get => _explicitNullValueUserUuid; set { _explicitNullValueUserUuid = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("user_uuid"); else _explicitNullProperties?.Remove("user_uuid"); } }
+        public string UserUuid { get => _explicitNullValueUserUuid; set { _explicitNullValueUserUuid = value; AdditionalData?.Remove("user_uuid"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("user_uuid"); else _explicitNullProperties?.Remove("user_uuid"); } }
         private string _explicitNullValueUserUuid = default!;
 #endif
         /// <summary>

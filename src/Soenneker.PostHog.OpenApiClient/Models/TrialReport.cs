@@ -17,16 +17,26 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("artefacts") is { } nullNodeArtefacts && nullNodeArtefacts.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Artefacts = null;
-            if (parseNode.GetChildNode("content_revision_count") is { } nullNodeContentRevisionCount && nullNodeContentRevisionCount.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ContentRevisionCount = null;
-            if (parseNode.GetChildNode("corroboration_count") is { } nullNodeCorroborationCount && nullNodeCorroborationCount.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CorroborationCount = null;
-            if (parseNode.GetChildNode("document") is { } nullNodeDocument && nullNodeDocument.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Document = null;
-            if (parseNode.GetChildNode("edits") is { } nullNodeEdits && nullNodeEdits.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Edits = null;
-            if (parseNode.GetChildNode("evidence") is { } nullNodeEvidence && nullNodeEvidence.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Evidence = null;
-            if (parseNode.GetChildNode("id") is { } nullNodeId && nullNodeId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Id = null;
-            if (parseNode.GetChildNode("operator_metadata") is { } nullNodeOperatorMetadata && nullNodeOperatorMetadata.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) OperatorMetadata = null;
-            if (parseNode.GetChildNode("payload") is { } nullNodePayload && nullNodePayload.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Payload = null;
-            if (parseNode.GetChildNode("source_report_id") is { } nullNodeSourceReportId && nullNodeSourceReportId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SourceReportId = null;
+            if (parseNode.GetChildNode("artefacts") is null) { _explicitNullValueArtefacts = default!; _explicitNullProperties?.Remove("artefacts"); }
+            else if (parseNode.GetChildNode("artefacts") is { } nullNodeArtefacts && nullNodeArtefacts.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Artefacts = null;
+            if (parseNode.GetChildNode("content_revision_count") is null) { _explicitNullValueContentRevisionCount = default!; _explicitNullProperties?.Remove("content_revision_count"); }
+            else if (parseNode.GetChildNode("content_revision_count") is { } nullNodeContentRevisionCount && nullNodeContentRevisionCount.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ContentRevisionCount = null;
+            if (parseNode.GetChildNode("corroboration_count") is null) { _explicitNullValueCorroborationCount = default!; _explicitNullProperties?.Remove("corroboration_count"); }
+            else if (parseNode.GetChildNode("corroboration_count") is { } nullNodeCorroborationCount && nullNodeCorroborationCount.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CorroborationCount = null;
+            if (parseNode.GetChildNode("document") is null) { _explicitNullValueDocument = default!; _explicitNullProperties?.Remove("document"); }
+            else if (parseNode.GetChildNode("document") is { } nullNodeDocument && nullNodeDocument.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Document = null;
+            if (parseNode.GetChildNode("edits") is null) { _explicitNullValueEdits = default!; _explicitNullProperties?.Remove("edits"); }
+            else if (parseNode.GetChildNode("edits") is { } nullNodeEdits && nullNodeEdits.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Edits = null;
+            if (parseNode.GetChildNode("evidence") is null) { _explicitNullValueEvidence = default!; _explicitNullProperties?.Remove("evidence"); }
+            else if (parseNode.GetChildNode("evidence") is { } nullNodeEvidence && nullNodeEvidence.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Evidence = null;
+            if (parseNode.GetChildNode("id") is null) { _explicitNullValueId = default!; _explicitNullProperties?.Remove("id"); }
+            else if (parseNode.GetChildNode("id") is { } nullNodeId && nullNodeId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Id = null;
+            if (parseNode.GetChildNode("operator_metadata") is null) { _explicitNullValueOperatorMetadata = default!; _explicitNullProperties?.Remove("operator_metadata"); }
+            else if (parseNode.GetChildNode("operator_metadata") is { } nullNodeOperatorMetadata && nullNodeOperatorMetadata.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) OperatorMetadata = null;
+            if (parseNode.GetChildNode("payload") is null) { _explicitNullValuePayload = default!; _explicitNullProperties?.Remove("payload"); }
+            else if (parseNode.GetChildNode("payload") is { } nullNodePayload && nullNodePayload.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Payload = null;
+            if (parseNode.GetChildNode("source_report_id") is null) { _explicitNullValueSourceReportId = default!; _explicitNullProperties?.Remove("source_report_id"); }
+            else if (parseNode.GetChildNode("source_report_id") is { } nullNodeSourceReportId && nullNodeSourceReportId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SourceReportId = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -34,87 +44,87 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The artefacts property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.TrialReportArtefactsItemProperty>? Artefacts { get => _explicitNullValueArtefacts; set { _explicitNullValueArtefacts = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("artefacts"); else _explicitNullProperties?.Remove("artefacts"); } }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.TrialReportArtefactsItemProperty>? Artefacts { get => _explicitNullValueArtefacts; set { _explicitNullValueArtefacts = value; AdditionalData?.Remove("artefacts"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("artefacts"); else _explicitNullProperties?.Remove("artefacts"); } }
         private List<global::Soenneker.PostHog.OpenApiClient.Models.TrialReportArtefactsItemProperty>? _explicitNullValueArtefacts = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.TrialReportArtefactsItemProperty> Artefacts { get => _explicitNullValueArtefacts; set { _explicitNullValueArtefacts = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("artefacts"); else _explicitNullProperties?.Remove("artefacts"); } }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.TrialReportArtefactsItemProperty> Artefacts { get => _explicitNullValueArtefacts; set { _explicitNullValueArtefacts = value; AdditionalData?.Remove("artefacts"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("artefacts"); else _explicitNullProperties?.Remove("artefacts"); } }
         private List<global::Soenneker.PostHog.OpenApiClient.Models.TrialReportArtefactsItemProperty> _explicitNullValueArtefacts = default!;
 #endif
         /// <summary>The content_revision_count property</summary>
-        public int? ContentRevisionCount { get => _explicitNullValueContentRevisionCount; set { _explicitNullValueContentRevisionCount = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("content_revision_count"); else _explicitNullProperties?.Remove("content_revision_count"); } }
+        public int? ContentRevisionCount { get => _explicitNullValueContentRevisionCount; set { _explicitNullValueContentRevisionCount = value; AdditionalData?.Remove("content_revision_count"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("content_revision_count"); else _explicitNullProperties?.Remove("content_revision_count"); } }
         private int? _explicitNullValueContentRevisionCount = default!;
         /// <summary>The corroboration_count property</summary>
-        public int? CorroborationCount { get => _explicitNullValueCorroborationCount; set { _explicitNullValueCorroborationCount = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("corroboration_count"); else _explicitNullProperties?.Remove("corroboration_count"); } }
+        public int? CorroborationCount { get => _explicitNullValueCorroborationCount; set { _explicitNullValueCorroborationCount = value; AdditionalData?.Remove("corroboration_count"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("corroboration_count"); else _explicitNullProperties?.Remove("corroboration_count"); } }
         private int? _explicitNullValueCorroborationCount = default!;
         /// <summary>The document property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.TrialReportDocumentProperty? Document { get => _explicitNullValueDocument; set { _explicitNullValueDocument = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("document"); else _explicitNullProperties?.Remove("document"); } }
+        public global::Soenneker.PostHog.OpenApiClient.Models.TrialReportDocumentProperty? Document { get => _explicitNullValueDocument; set { _explicitNullValueDocument = value; AdditionalData?.Remove("document"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("document"); else _explicitNullProperties?.Remove("document"); } }
         private global::Soenneker.PostHog.OpenApiClient.Models.TrialReportDocumentProperty? _explicitNullValueDocument = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.TrialReportDocumentProperty Document { get => _explicitNullValueDocument; set { _explicitNullValueDocument = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("document"); else _explicitNullProperties?.Remove("document"); } }
+        public global::Soenneker.PostHog.OpenApiClient.Models.TrialReportDocumentProperty Document { get => _explicitNullValueDocument; set { _explicitNullValueDocument = value; AdditionalData?.Remove("document"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("document"); else _explicitNullProperties?.Remove("document"); } }
         private global::Soenneker.PostHog.OpenApiClient.Models.TrialReportDocumentProperty _explicitNullValueDocument = default!;
 #endif
         /// <summary>The edits property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.TrialReportEditsItemProperty>? Edits { get => _explicitNullValueEdits; set { _explicitNullValueEdits = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("edits"); else _explicitNullProperties?.Remove("edits"); } }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.TrialReportEditsItemProperty>? Edits { get => _explicitNullValueEdits; set { _explicitNullValueEdits = value; AdditionalData?.Remove("edits"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("edits"); else _explicitNullProperties?.Remove("edits"); } }
         private List<global::Soenneker.PostHog.OpenApiClient.Models.TrialReportEditsItemProperty>? _explicitNullValueEdits = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.TrialReportEditsItemProperty> Edits { get => _explicitNullValueEdits; set { _explicitNullValueEdits = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("edits"); else _explicitNullProperties?.Remove("edits"); } }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.TrialReportEditsItemProperty> Edits { get => _explicitNullValueEdits; set { _explicitNullValueEdits = value; AdditionalData?.Remove("edits"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("edits"); else _explicitNullProperties?.Remove("edits"); } }
         private List<global::Soenneker.PostHog.OpenApiClient.Models.TrialReportEditsItemProperty> _explicitNullValueEdits = default!;
 #endif
         /// <summary>The evidence property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.TrialReportEvidenceItemProperty>? Evidence { get => _explicitNullValueEvidence; set { _explicitNullValueEvidence = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("evidence"); else _explicitNullProperties?.Remove("evidence"); } }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.TrialReportEvidenceItemProperty>? Evidence { get => _explicitNullValueEvidence; set { _explicitNullValueEvidence = value; AdditionalData?.Remove("evidence"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("evidence"); else _explicitNullProperties?.Remove("evidence"); } }
         private List<global::Soenneker.PostHog.OpenApiClient.Models.TrialReportEvidenceItemProperty>? _explicitNullValueEvidence = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.TrialReportEvidenceItemProperty> Evidence { get => _explicitNullValueEvidence; set { _explicitNullValueEvidence = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("evidence"); else _explicitNullProperties?.Remove("evidence"); } }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.TrialReportEvidenceItemProperty> Evidence { get => _explicitNullValueEvidence; set { _explicitNullValueEvidence = value; AdditionalData?.Remove("evidence"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("evidence"); else _explicitNullProperties?.Remove("evidence"); } }
         private List<global::Soenneker.PostHog.OpenApiClient.Models.TrialReportEvidenceItemProperty> _explicitNullValueEvidence = default!;
 #endif
         /// <summary>The id property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Id { get => _explicitNullValueId; set { _explicitNullValueId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("id"); else _explicitNullProperties?.Remove("id"); } }
+        public string? Id { get => _explicitNullValueId; set { _explicitNullValueId = value; AdditionalData?.Remove("id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("id"); else _explicitNullProperties?.Remove("id"); } }
         private string? _explicitNullValueId = default!;
 #nullable restore
 #else
-        public string Id { get => _explicitNullValueId; set { _explicitNullValueId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("id"); else _explicitNullProperties?.Remove("id"); } }
+        public string Id { get => _explicitNullValueId; set { _explicitNullValueId = value; AdditionalData?.Remove("id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("id"); else _explicitNullProperties?.Remove("id"); } }
         private string _explicitNullValueId = default!;
 #endif
         /// <summary>The operator_metadata property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.TrialReportOperatorMetadataProperty? OperatorMetadata { get => _explicitNullValueOperatorMetadata; set { _explicitNullValueOperatorMetadata = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("operator_metadata"); else _explicitNullProperties?.Remove("operator_metadata"); } }
+        public global::Soenneker.PostHog.OpenApiClient.Models.TrialReportOperatorMetadataProperty? OperatorMetadata { get => _explicitNullValueOperatorMetadata; set { _explicitNullValueOperatorMetadata = value; AdditionalData?.Remove("operator_metadata"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("operator_metadata"); else _explicitNullProperties?.Remove("operator_metadata"); } }
         private global::Soenneker.PostHog.OpenApiClient.Models.TrialReportOperatorMetadataProperty? _explicitNullValueOperatorMetadata = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.TrialReportOperatorMetadataProperty OperatorMetadata { get => _explicitNullValueOperatorMetadata; set { _explicitNullValueOperatorMetadata = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("operator_metadata"); else _explicitNullProperties?.Remove("operator_metadata"); } }
+        public global::Soenneker.PostHog.OpenApiClient.Models.TrialReportOperatorMetadataProperty OperatorMetadata { get => _explicitNullValueOperatorMetadata; set { _explicitNullValueOperatorMetadata = value; AdditionalData?.Remove("operator_metadata"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("operator_metadata"); else _explicitNullProperties?.Remove("operator_metadata"); } }
         private global::Soenneker.PostHog.OpenApiClient.Models.TrialReportOperatorMetadataProperty _explicitNullValueOperatorMetadata = default!;
 #endif
         /// <summary>The payload property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.TrialReportPayloadProperty? Payload { get => _explicitNullValuePayload; set { _explicitNullValuePayload = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("payload"); else _explicitNullProperties?.Remove("payload"); } }
+        public global::Soenneker.PostHog.OpenApiClient.Models.TrialReportPayloadProperty? Payload { get => _explicitNullValuePayload; set { _explicitNullValuePayload = value; AdditionalData?.Remove("payload"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("payload"); else _explicitNullProperties?.Remove("payload"); } }
         private global::Soenneker.PostHog.OpenApiClient.Models.TrialReportPayloadProperty? _explicitNullValuePayload = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.TrialReportPayloadProperty Payload { get => _explicitNullValuePayload; set { _explicitNullValuePayload = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("payload"); else _explicitNullProperties?.Remove("payload"); } }
+        public global::Soenneker.PostHog.OpenApiClient.Models.TrialReportPayloadProperty Payload { get => _explicitNullValuePayload; set { _explicitNullValuePayload = value; AdditionalData?.Remove("payload"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("payload"); else _explicitNullProperties?.Remove("payload"); } }
         private global::Soenneker.PostHog.OpenApiClient.Models.TrialReportPayloadProperty _explicitNullValuePayload = default!;
 #endif
         /// <summary>The source_report_id property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? SourceReportId { get => _explicitNullValueSourceReportId; set { _explicitNullValueSourceReportId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("source_report_id"); else _explicitNullProperties?.Remove("source_report_id"); } }
+        public string? SourceReportId { get => _explicitNullValueSourceReportId; set { _explicitNullValueSourceReportId = value; AdditionalData?.Remove("source_report_id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("source_report_id"); else _explicitNullProperties?.Remove("source_report_id"); } }
         private string? _explicitNullValueSourceReportId = default!;
 #nullable restore
 #else
-        public string SourceReportId { get => _explicitNullValueSourceReportId; set { _explicitNullValueSourceReportId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("source_report_id"); else _explicitNullProperties?.Remove("source_report_id"); } }
+        public string SourceReportId { get => _explicitNullValueSourceReportId; set { _explicitNullValueSourceReportId = value; AdditionalData?.Remove("source_report_id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("source_report_id"); else _explicitNullProperties?.Remove("source_report_id"); } }
         private string _explicitNullValueSourceReportId = default!;
 #endif
         /// <summary>

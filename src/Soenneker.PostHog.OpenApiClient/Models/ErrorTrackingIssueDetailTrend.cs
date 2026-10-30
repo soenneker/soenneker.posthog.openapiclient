@@ -18,57 +18,64 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("change_percent") is { } nullNodeChangePercent && nullNodeChangePercent.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ChangePercent = null;
-            if (parseNode.GetChildNode("current_from") is { } nullNodeCurrentFrom && nullNodeCurrentFrom.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CurrentFrom = null;
-            if (parseNode.GetChildNode("current_occurrences") is { } nullNodeCurrentOccurrences && nullNodeCurrentOccurrences.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CurrentOccurrences = null;
-            if (parseNode.GetChildNode("direction") is { } nullNodeDirection && nullNodeDirection.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Direction = null;
-            if (parseNode.GetChildNode("previous_from") is { } nullNodePreviousFrom && nullNodePreviousFrom.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) PreviousFrom = null;
-            if (parseNode.GetChildNode("previous_occurrences") is { } nullNodePreviousOccurrences && nullNodePreviousOccurrences.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) PreviousOccurrences = null;
-            if (parseNode.GetChildNode("previous_to") is { } nullNodePreviousTo && nullNodePreviousTo.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) PreviousTo = null;
+            if (parseNode.GetChildNode("change_percent") is null) { _explicitNullValueChangePercent = default!; _explicitNullProperties?.Remove("change_percent"); }
+            else if (parseNode.GetChildNode("change_percent") is { } nullNodeChangePercent && nullNodeChangePercent.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ChangePercent = null;
+            if (parseNode.GetChildNode("current_from") is null) { _explicitNullValueCurrentFrom = default!; _explicitNullProperties?.Remove("current_from"); }
+            else if (parseNode.GetChildNode("current_from") is { } nullNodeCurrentFrom && nullNodeCurrentFrom.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CurrentFrom = null;
+            if (parseNode.GetChildNode("current_occurrences") is null) { _explicitNullValueCurrentOccurrences = default!; _explicitNullProperties?.Remove("current_occurrences"); }
+            else if (parseNode.GetChildNode("current_occurrences") is { } nullNodeCurrentOccurrences && nullNodeCurrentOccurrences.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CurrentOccurrences = null;
+            if (parseNode.GetChildNode("direction") is null) { _explicitNullValueDirection = default!; _explicitNullProperties?.Remove("direction"); }
+            else if (parseNode.GetChildNode("direction") is { } nullNodeDirection && nullNodeDirection.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Direction = null;
+            if (parseNode.GetChildNode("previous_from") is null) { _explicitNullValuePreviousFrom = default!; _explicitNullProperties?.Remove("previous_from"); }
+            else if (parseNode.GetChildNode("previous_from") is { } nullNodePreviousFrom && nullNodePreviousFrom.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) PreviousFrom = null;
+            if (parseNode.GetChildNode("previous_occurrences") is null) { _explicitNullValuePreviousOccurrences = default!; _explicitNullProperties?.Remove("previous_occurrences"); }
+            else if (parseNode.GetChildNode("previous_occurrences") is { } nullNodePreviousOccurrences && nullNodePreviousOccurrences.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) PreviousOccurrences = null;
+            if (parseNode.GetChildNode("previous_to") is null) { _explicitNullValuePreviousTo = default!; _explicitNullProperties?.Remove("previous_to"); }
+            else if (parseNode.GetChildNode("previous_to") is { } nullNodePreviousTo && nullNodePreviousTo.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) PreviousTo = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Percent change from the first half to the second half. Absent when the first half has no occurrences.</summary>
-        public int? ChangePercent { get => _explicitNullValueChangePercent; set { _explicitNullValueChangePercent = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("change_percent"); else _explicitNullProperties?.Remove("change_percent"); } }
+        public int? ChangePercent { get => _explicitNullValueChangePercent; set { _explicitNullValueChangePercent = value; AdditionalData?.Remove("change_percent"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("change_percent"); else _explicitNullProperties?.Remove("change_percent"); } }
         private int? _explicitNullValueChangePercent = default!;
         /// <summary>Start of the second half. The second half ends at the end of dateRange.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? CurrentFrom { get => _explicitNullValueCurrentFrom; set { _explicitNullValueCurrentFrom = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("current_from"); else _explicitNullProperties?.Remove("current_from"); } }
+        public string? CurrentFrom { get => _explicitNullValueCurrentFrom; set { _explicitNullValueCurrentFrom = value; AdditionalData?.Remove("current_from"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("current_from"); else _explicitNullProperties?.Remove("current_from"); } }
         private string? _explicitNullValueCurrentFrom = default!;
 #nullable restore
 #else
-        public string CurrentFrom { get => _explicitNullValueCurrentFrom; set { _explicitNullValueCurrentFrom = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("current_from"); else _explicitNullProperties?.Remove("current_from"); } }
+        public string CurrentFrom { get => _explicitNullValueCurrentFrom; set { _explicitNullValueCurrentFrom = value; AdditionalData?.Remove("current_from"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("current_from"); else _explicitNullProperties?.Remove("current_from"); } }
         private string _explicitNullValueCurrentFrom = default!;
 #endif
         /// <summary>Occurrences in the second half of dateRange.</summary>
-        public int? CurrentOccurrences { get => _explicitNullValueCurrentOccurrences; set { _explicitNullValueCurrentOccurrences = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("current_occurrences"); else _explicitNullProperties?.Remove("current_occurrences"); } }
+        public int? CurrentOccurrences { get => _explicitNullValueCurrentOccurrences; set { _explicitNullValueCurrentOccurrences = value; AdditionalData?.Remove("current_occurrences"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("current_occurrences"); else _explicitNullProperties?.Remove("current_occurrences"); } }
         private int? _explicitNullValueCurrentOccurrences = default!;
         /// <summary>* `new` - New* `increasing` - Increasing* `decreasing` - Decreasing* `stable` - Stable</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingIssueTrendDirection? Direction { get => _explicitNullValueDirection; set { _explicitNullValueDirection = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("direction"); else _explicitNullProperties?.Remove("direction"); } }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingIssueTrendDirection? Direction { get => _explicitNullValueDirection; set { _explicitNullValueDirection = value; AdditionalData?.Remove("direction"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("direction"); else _explicitNullProperties?.Remove("direction"); } }
         private global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingIssueTrendDirection? _explicitNullValueDirection = default!;
         /// <summary>Start of the first half.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? PreviousFrom { get => _explicitNullValuePreviousFrom; set { _explicitNullValuePreviousFrom = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("previous_from"); else _explicitNullProperties?.Remove("previous_from"); } }
+        public string? PreviousFrom { get => _explicitNullValuePreviousFrom; set { _explicitNullValuePreviousFrom = value; AdditionalData?.Remove("previous_from"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("previous_from"); else _explicitNullProperties?.Remove("previous_from"); } }
         private string? _explicitNullValuePreviousFrom = default!;
 #nullable restore
 #else
-        public string PreviousFrom { get => _explicitNullValuePreviousFrom; set { _explicitNullValuePreviousFrom = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("previous_from"); else _explicitNullProperties?.Remove("previous_from"); } }
+        public string PreviousFrom { get => _explicitNullValuePreviousFrom; set { _explicitNullValuePreviousFrom = value; AdditionalData?.Remove("previous_from"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("previous_from"); else _explicitNullProperties?.Remove("previous_from"); } }
         private string _explicitNullValuePreviousFrom = default!;
 #endif
         /// <summary>Occurrences in the first half of dateRange.</summary>
-        public int? PreviousOccurrences { get => _explicitNullValuePreviousOccurrences; set { _explicitNullValuePreviousOccurrences = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("previous_occurrences"); else _explicitNullProperties?.Remove("previous_occurrences"); } }
+        public int? PreviousOccurrences { get => _explicitNullValuePreviousOccurrences; set { _explicitNullValuePreviousOccurrences = value; AdditionalData?.Remove("previous_occurrences"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("previous_occurrences"); else _explicitNullProperties?.Remove("previous_occurrences"); } }
         private int? _explicitNullValuePreviousOccurrences = default!;
         /// <summary>End of the first half.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? PreviousTo { get => _explicitNullValuePreviousTo; set { _explicitNullValuePreviousTo = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("previous_to"); else _explicitNullProperties?.Remove("previous_to"); } }
+        public string? PreviousTo { get => _explicitNullValuePreviousTo; set { _explicitNullValuePreviousTo = value; AdditionalData?.Remove("previous_to"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("previous_to"); else _explicitNullProperties?.Remove("previous_to"); } }
         private string? _explicitNullValuePreviousTo = default!;
 #nullable restore
 #else
-        public string PreviousTo { get => _explicitNullValuePreviousTo; set { _explicitNullValuePreviousTo = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("previous_to"); else _explicitNullProperties?.Remove("previous_to"); } }
+        public string PreviousTo { get => _explicitNullValuePreviousTo; set { _explicitNullValuePreviousTo = value; AdditionalData?.Remove("previous_to"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("previous_to"); else _explicitNullProperties?.Remove("previous_to"); } }
         private string _explicitNullValuePreviousTo = default!;
 #endif
         /// <summary>
@@ -99,7 +106,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "change_percent", n => { ChangePercent = n.GetIntValue(); } },
                 { "current_from", n => { CurrentFrom = n.GetStringValue(); } },
                 { "current_occurrences", n => { CurrentOccurrences = n.GetIntValue(); } },
-                { "direction", n => { Direction = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingIssueTrendDirection>(); } },
+                { "direction", n => { var parsed = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingIssueTrendDirection>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValueDirection = default; _explicitNullProperties?.Remove("direction"); AdditionalData["direction"] = unknown; } else { Direction = parsed; AdditionalData.Remove("direction"); } } },
                 { "previous_from", n => { PreviousFrom = n.GetStringValue(); } },
                 { "previous_occurrences", n => { PreviousOccurrences = n.GetIntValue(); } },
                 { "previous_to", n => { PreviousTo = n.GetStringValue(); } },

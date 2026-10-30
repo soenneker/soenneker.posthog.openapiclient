@@ -17,17 +17,19 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("jobs_synced_at") is { } nullNodeJobsSyncedAt && nullNodeJobsSyncedAt.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) JobsSyncedAt = null;
-            if (parseNode.GetChildNode("runs_synced_at") is { } nullNodeRunsSyncedAt && nullNodeRunsSyncedAt.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) RunsSyncedAt = null;
+            if (parseNode.GetChildNode("jobs_synced_at") is null) { _explicitNullValueJobsSyncedAt = default!; _explicitNullProperties?.Remove("jobs_synced_at"); }
+            else if (parseNode.GetChildNode("jobs_synced_at") is { } nullNodeJobsSyncedAt && nullNodeJobsSyncedAt.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) JobsSyncedAt = null;
+            if (parseNode.GetChildNode("runs_synced_at") is null) { _explicitNullValueRunsSyncedAt = default!; _explicitNullProperties?.Remove("runs_synced_at"); }
+            else if (parseNode.GetChildNode("runs_synced_at") is { } nullNodeRunsSyncedAt && nullNodeRunsSyncedAt.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) RunsSyncedAt = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The same time for the stored workflow jobs. Null when jobs are not synced.</summary>
-        public DateTimeOffset? JobsSyncedAt { get => _explicitNullValueJobsSyncedAt; set { _explicitNullValueJobsSyncedAt = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("jobs_synced_at"); else _explicitNullProperties?.Remove("jobs_synced_at"); } }
+        public DateTimeOffset? JobsSyncedAt { get => _explicitNullValueJobsSyncedAt; set { _explicitNullValueJobsSyncedAt = value; AdditionalData?.Remove("jobs_synced_at"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("jobs_synced_at"); else _explicitNullProperties?.Remove("jobs_synced_at"); } }
         private DateTimeOffset? _explicitNullValueJobsSyncedAt = default!;
         /// <summary>When the last completed sync of the stored workflow runs started. Every stored run is at least this fresh. The older of the GitHub and Depot CI times when the repository syncs both. Null when a runs table has never synced.</summary>
-        public DateTimeOffset? RunsSyncedAt { get => _explicitNullValueRunsSyncedAt; set { _explicitNullValueRunsSyncedAt = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("runs_synced_at"); else _explicitNullProperties?.Remove("runs_synced_at"); } }
+        public DateTimeOffset? RunsSyncedAt { get => _explicitNullValueRunsSyncedAt; set { _explicitNullValueRunsSyncedAt = value; AdditionalData?.Remove("runs_synced_at"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("runs_synced_at"); else _explicitNullProperties?.Remove("runs_synced_at"); } }
         private DateTimeOffset? _explicitNullValueRunsSyncedAt = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.CiDataFreshness"/> and sets the default values.

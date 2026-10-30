@@ -18,51 +18,58 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("completed_partitions") is { } nullNodeCompletedPartitions && nullNodeCompletedPartitions.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CompletedPartitions = null;
-            if (parseNode.GetChildNode("current_partition") is { } nullNodeCurrentPartition && nullNodeCurrentPartition.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CurrentPartition = null;
-            if (parseNode.GetChildNode("dataset") is { } nullNodeDataset && nullNodeDataset.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Dataset = null;
-            if (parseNode.GetChildNode("detail") is { } nullNodeDetail && nullNodeDetail.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Detail = null;
-            if (parseNode.GetChildNode("last_updated_at") is { } nullNodeLastUpdatedAt && nullNodeLastUpdatedAt.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) LastUpdatedAt = null;
-            if (parseNode.GetChildNode("readiness_state") is { } nullNodeReadinessState && nullNodeReadinessState.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ReadinessState = null;
-            if (parseNode.GetChildNode("total_partitions") is { } nullNodeTotalPartitions && nullNodeTotalPartitions.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TotalPartitions = null;
+            if (parseNode.GetChildNode("completed_partitions") is null) { _explicitNullValueCompletedPartitions = default!; _explicitNullProperties?.Remove("completed_partitions"); }
+            else if (parseNode.GetChildNode("completed_partitions") is { } nullNodeCompletedPartitions && nullNodeCompletedPartitions.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CompletedPartitions = null;
+            if (parseNode.GetChildNode("current_partition") is null) { _explicitNullValueCurrentPartition = default!; _explicitNullProperties?.Remove("current_partition"); }
+            else if (parseNode.GetChildNode("current_partition") is { } nullNodeCurrentPartition && nullNodeCurrentPartition.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CurrentPartition = null;
+            if (parseNode.GetChildNode("dataset") is null) { _explicitNullValueDataset = default!; _explicitNullProperties?.Remove("dataset"); }
+            else if (parseNode.GetChildNode("dataset") is { } nullNodeDataset && nullNodeDataset.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Dataset = null;
+            if (parseNode.GetChildNode("detail") is null) { _explicitNullValueDetail = default!; _explicitNullProperties?.Remove("detail"); }
+            else if (parseNode.GetChildNode("detail") is { } nullNodeDetail && nullNodeDetail.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Detail = null;
+            if (parseNode.GetChildNode("last_updated_at") is null) { _explicitNullValueLastUpdatedAt = default!; _explicitNullProperties?.Remove("last_updated_at"); }
+            else if (parseNode.GetChildNode("last_updated_at") is { } nullNodeLastUpdatedAt && nullNodeLastUpdatedAt.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) LastUpdatedAt = null;
+            if (parseNode.GetChildNode("readiness_state") is null) { _explicitNullValueReadinessState = default!; _explicitNullProperties?.Remove("readiness_state"); }
+            else if (parseNode.GetChildNode("readiness_state") is { } nullNodeReadinessState && nullNodeReadinessState.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ReadinessState = null;
+            if (parseNode.GetChildNode("total_partitions") is null) { _explicitNullValueTotalPartitions = default!; _explicitNullProperties?.Remove("total_partitions"); }
+            else if (parseNode.GetChildNode("total_partitions") is { } nullNodeTotalPartitions && nullNodeTotalPartitions.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TotalPartitions = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Number of historical backfill partitions completed successfully.</summary>
-        public int? CompletedPartitions { get => _explicitNullValueCompletedPartitions; set { _explicitNullValueCompletedPartitions = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("completed_partitions"); else _explicitNullProperties?.Remove("completed_partitions"); } }
+        public int? CompletedPartitions { get => _explicitNullValueCompletedPartitions; set { _explicitNullValueCompletedPartitions = value; AdditionalData?.Remove("completed_partitions"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("completed_partitions"); else _explicitNullProperties?.Remove("completed_partitions"); } }
         private int? _explicitNullValueCompletedPartitions = default!;
         /// <summary>Partition currently running or requiring attention, when applicable.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? CurrentPartition { get => _explicitNullValueCurrentPartition; set { _explicitNullValueCurrentPartition = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("current_partition"); else _explicitNullProperties?.Remove("current_partition"); } }
+        public string? CurrentPartition { get => _explicitNullValueCurrentPartition; set { _explicitNullValueCurrentPartition = value; AdditionalData?.Remove("current_partition"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("current_partition"); else _explicitNullProperties?.Remove("current_partition"); } }
         private string? _explicitNullValueCurrentPartition = default!;
 #nullable restore
 #else
-        public string CurrentPartition { get => _explicitNullValueCurrentPartition; set { _explicitNullValueCurrentPartition = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("current_partition"); else _explicitNullProperties?.Remove("current_partition"); } }
+        public string CurrentPartition { get => _explicitNullValueCurrentPartition; set { _explicitNullValueCurrentPartition = value; AdditionalData?.Remove("current_partition"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("current_partition"); else _explicitNullProperties?.Remove("current_partition"); } }
         private string _explicitNullValueCurrentPartition = default!;
 #endif
         /// <summary>* `events` - events* `persons` - persons</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.ManagedWarehouseDatasetStatusDataset? Dataset { get => _explicitNullValueDataset; set { _explicitNullValueDataset = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("dataset"); else _explicitNullProperties?.Remove("dataset"); } }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ManagedWarehouseDatasetStatusDataset? Dataset { get => _explicitNullValueDataset; set { _explicitNullValueDataset = value; AdditionalData?.Remove("dataset"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("dataset"); else _explicitNullProperties?.Remove("dataset"); } }
         private global::Soenneker.PostHog.OpenApiClient.Models.ManagedWarehouseDatasetStatusDataset? _explicitNullValueDataset = default!;
         /// <summary>Human-readable explanation of the current readiness state.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Detail { get => _explicitNullValueDetail; set { _explicitNullValueDetail = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("detail"); else _explicitNullProperties?.Remove("detail"); } }
+        public string? Detail { get => _explicitNullValueDetail; set { _explicitNullValueDetail = value; AdditionalData?.Remove("detail"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("detail"); else _explicitNullProperties?.Remove("detail"); } }
         private string? _explicitNullValueDetail = default!;
 #nullable restore
 #else
-        public string Detail { get => _explicitNullValueDetail; set { _explicitNullValueDetail = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("detail"); else _explicitNullProperties?.Remove("detail"); } }
+        public string Detail { get => _explicitNullValueDetail; set { _explicitNullValueDetail = value; AdditionalData?.Remove("detail"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("detail"); else _explicitNullProperties?.Remove("detail"); } }
         private string _explicitNullValueDetail = default!;
 #endif
         /// <summary>When the durable backfill status last changed.</summary>
-        public DateTimeOffset? LastUpdatedAt { get => _explicitNullValueLastUpdatedAt; set { _explicitNullValueLastUpdatedAt = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("last_updated_at"); else _explicitNullProperties?.Remove("last_updated_at"); } }
+        public DateTimeOffset? LastUpdatedAt { get => _explicitNullValueLastUpdatedAt; set { _explicitNullValueLastUpdatedAt = value; AdditionalData?.Remove("last_updated_at"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("last_updated_at"); else _explicitNullProperties?.Remove("last_updated_at"); } }
         private DateTimeOffset? _explicitNullValueLastUpdatedAt = default!;
         /// <summary>* `not_configured` - not_configured* `waiting` - waiting* `backfilling` - backfilling* `up_to_date` - up_to_date* `needs_attention` - needs_attention* `sync_paused` - sync_paused</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.ManagedWarehouseDatasetStatusReadinessState? ReadinessState { get => _explicitNullValueReadinessState; set { _explicitNullValueReadinessState = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("readiness_state"); else _explicitNullProperties?.Remove("readiness_state"); } }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ManagedWarehouseDatasetStatusReadinessState? ReadinessState { get => _explicitNullValueReadinessState; set { _explicitNullValueReadinessState = value; AdditionalData?.Remove("readiness_state"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("readiness_state"); else _explicitNullProperties?.Remove("readiness_state"); } }
         private global::Soenneker.PostHog.OpenApiClient.Models.ManagedWarehouseDatasetStatusReadinessState? _explicitNullValueReadinessState = default!;
         /// <summary>Expected historical partitions, or null while the range is being calculated.</summary>
-        public int? TotalPartitions { get => _explicitNullValueTotalPartitions; set { _explicitNullValueTotalPartitions = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("total_partitions"); else _explicitNullProperties?.Remove("total_partitions"); } }
+        public int? TotalPartitions { get => _explicitNullValueTotalPartitions; set { _explicitNullValueTotalPartitions = value; AdditionalData?.Remove("total_partitions"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("total_partitions"); else _explicitNullProperties?.Remove("total_partitions"); } }
         private int? _explicitNullValueTotalPartitions = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ManagedWarehouseDataStatusResponsePersons"/> and sets the default values.
@@ -91,10 +98,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             {
                 { "completed_partitions", n => { CompletedPartitions = n.GetIntValue(); } },
                 { "current_partition", n => { CurrentPartition = n.GetStringValue(); } },
-                { "dataset", n => { Dataset = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ManagedWarehouseDatasetStatusDataset>(); } },
+                { "dataset", n => { var parsed = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ManagedWarehouseDatasetStatusDataset>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValueDataset = default; _explicitNullProperties?.Remove("dataset"); AdditionalData["dataset"] = unknown; } else { Dataset = parsed; AdditionalData.Remove("dataset"); } } },
                 { "detail", n => { Detail = n.GetStringValue(); } },
                 { "last_updated_at", n => { LastUpdatedAt = n.GetDateTimeOffsetValue(); } },
-                { "readiness_state", n => { ReadinessState = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ManagedWarehouseDatasetStatusReadinessState>(); } },
+                { "readiness_state", n => { var parsed = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ManagedWarehouseDatasetStatusReadinessState>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValueReadinessState = default; _explicitNullProperties?.Remove("readiness_state"); AdditionalData["readiness_state"] = unknown; } else { ReadinessState = parsed; AdditionalData.Remove("readiness_state"); } } },
                 { "total_partitions", n => { TotalPartitions = n.GetIntValue(); } },
             };
         }

@@ -17,7 +17,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("content_hash") is { } nullNodeContentHash && nullNodeContentHash.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ContentHash = null;
+            if (parseNode.GetChildNode("content_hash") is null) { _explicitNullValueContentHash = default!; _explicitNullProperties?.Remove("content_hash"); }
+            else if (parseNode.GetChildNode("content_hash") is { } nullNodeContentHash && nullNodeContentHash.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ContentHash = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -25,11 +26,11 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Hash of the uploaded symbol set content.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? ContentHash { get => _explicitNullValueContentHash; set { _explicitNullValueContentHash = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("content_hash"); else _explicitNullProperties?.Remove("content_hash"); } }
+        public string? ContentHash { get => _explicitNullValueContentHash; set { _explicitNullValueContentHash = value; AdditionalData?.Remove("content_hash"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("content_hash"); else _explicitNullProperties?.Remove("content_hash"); } }
         private string? _explicitNullValueContentHash = default!;
 #nullable restore
 #else
-        public string ContentHash { get => _explicitNullValueContentHash; set { _explicitNullValueContentHash = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("content_hash"); else _explicitNullProperties?.Remove("content_hash"); } }
+        public string ContentHash { get => _explicitNullValueContentHash; set { _explicitNullValueContentHash = value; AdditionalData?.Remove("content_hash"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("content_hash"); else _explicitNullProperties?.Remove("content_hash"); } }
         private string _explicitNullValueContentHash = default!;
 #endif
         /// <summary>

@@ -17,13 +17,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("backfill") is { } nullNodeBackfill && nullNodeBackfill.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Backfill = null;
+            if (parseNode.GetChildNode("backfill") is null) { _explicitNullValueBackfill = default!; _explicitNullProperties?.Remove("backfill"); }
+            else if (parseNode.GetChildNode("backfill") is { } nullNodeBackfill && nullNodeBackfill.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Backfill = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Whether to backfill the runs that the batch export missed while it was paused.</summary>
-        public bool? Backfill { get => _explicitNullValueBackfill; set { _explicitNullValueBackfill = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("backfill"); else _explicitNullProperties?.Remove("backfill"); } }
+        public bool? Backfill { get => _explicitNullValueBackfill; set { _explicitNullValueBackfill = value; AdditionalData?.Remove("backfill"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("backfill"); else _explicitNullProperties?.Remove("backfill"); } }
         private bool? _explicitNullValueBackfill = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.BatchExportUnpauseRequest"/> and sets the default values.

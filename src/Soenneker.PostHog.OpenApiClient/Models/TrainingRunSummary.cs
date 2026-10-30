@@ -18,97 +18,107 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("best_holdout_score") is { } nullNodeBestHoldoutScore && nullNodeBestHoldoutScore.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) BestHoldoutScore = null;
-            if (parseNode.GetChildNode("champion_model_class") is { } nullNodeChampionModelClass && nullNodeChampionModelClass.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ChampionModelClass = null;
-            if (parseNode.GetChildNode("champion_promoted") is { } nullNodeChampionPromoted && nullNodeChampionPromoted.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ChampionPromoted = null;
-            if (parseNode.GetChildNode("dead_ends") is { } nullNodeDeadEnds && nullNodeDeadEnds.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) DeadEnds = null;
-            if (parseNode.GetChildNode("distillation") is { } nullNodeDistillation && nullNodeDistillation.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Distillation = null;
-            if (parseNode.GetChildNode("horizon_days") is { } nullNodeHorizonDays && nullNodeHorizonDays.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) HorizonDays = null;
-            if (parseNode.GetChildNode("kept_ladder") is { } nullNodeKeptLadder && nullNodeKeptLadder.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) KeptLadder = null;
-            if (parseNode.GetChildNode("recommended_next") is { } nullNodeRecommendedNext && nullNodeRecommendedNext.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) RecommendedNext = null;
-            if (parseNode.GetChildNode("report_notebook_short_id") is { } nullNodeReportNotebookShortId && nullNodeReportNotebookShortId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ReportNotebookShortId = null;
-            if (parseNode.GetChildNode("target_event") is { } nullNodeTargetEvent && nullNodeTargetEvent.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TargetEvent = null;
+            if (parseNode.GetChildNode("best_holdout_score") is null) { _explicitNullValueBestHoldoutScore = default!; _explicitNullProperties?.Remove("best_holdout_score"); }
+            else if (parseNode.GetChildNode("best_holdout_score") is { } nullNodeBestHoldoutScore && nullNodeBestHoldoutScore.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) BestHoldoutScore = null;
+            if (parseNode.GetChildNode("champion_model_class") is null) { _explicitNullValueChampionModelClass = default!; _explicitNullProperties?.Remove("champion_model_class"); }
+            else if (parseNode.GetChildNode("champion_model_class") is { } nullNodeChampionModelClass && nullNodeChampionModelClass.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ChampionModelClass = null;
+            if (parseNode.GetChildNode("champion_promoted") is null) { _explicitNullValueChampionPromoted = default!; _explicitNullProperties?.Remove("champion_promoted"); }
+            else if (parseNode.GetChildNode("champion_promoted") is { } nullNodeChampionPromoted && nullNodeChampionPromoted.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ChampionPromoted = null;
+            if (parseNode.GetChildNode("dead_ends") is null) { _explicitNullValueDeadEnds = default!; _explicitNullProperties?.Remove("dead_ends"); }
+            else if (parseNode.GetChildNode("dead_ends") is { } nullNodeDeadEnds && nullNodeDeadEnds.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) DeadEnds = null;
+            if (parseNode.GetChildNode("distillation") is null) { _explicitNullValueDistillation = default!; _explicitNullProperties?.Remove("distillation"); }
+            else if (parseNode.GetChildNode("distillation") is { } nullNodeDistillation && nullNodeDistillation.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Distillation = null;
+            if (parseNode.GetChildNode("horizon_days") is null) { _explicitNullValueHorizonDays = default!; _explicitNullProperties?.Remove("horizon_days"); }
+            else if (parseNode.GetChildNode("horizon_days") is { } nullNodeHorizonDays && nullNodeHorizonDays.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) HorizonDays = null;
+            if (parseNode.GetChildNode("kept_ladder") is null) { _explicitNullValueKeptLadder = default!; _explicitNullProperties?.Remove("kept_ladder"); }
+            else if (parseNode.GetChildNode("kept_ladder") is { } nullNodeKeptLadder && nullNodeKeptLadder.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) KeptLadder = null;
+            if (parseNode.GetChildNode("recommended_next") is null) { _explicitNullValueRecommendedNext = default!; _explicitNullProperties?.Remove("recommended_next"); }
+            else if (parseNode.GetChildNode("recommended_next") is { } nullNodeRecommendedNext && nullNodeRecommendedNext.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) RecommendedNext = null;
+            if (parseNode.GetChildNode("report_notebook_short_id") is null) { _explicitNullValueReportNotebookShortId = default!; _explicitNullProperties?.Remove("report_notebook_short_id"); }
+            else if (parseNode.GetChildNode("report_notebook_short_id") is { } nullNodeReportNotebookShortId && nullNodeReportNotebookShortId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ReportNotebookShortId = null;
+            if (parseNode.GetChildNode("target_event") is null) { _explicitNullValueTargetEvent = default!; _explicitNullProperties?.Remove("target_event"); }
+            else if (parseNode.GetChildNode("target_event") is { } nullNodeTargetEvent && nullNodeTargetEvent.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TargetEvent = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Best holdout AUC achieved in the run.</summary>
-        public double? BestHoldoutScore { get => _explicitNullValueBestHoldoutScore; set { _explicitNullValueBestHoldoutScore = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("best_holdout_score"); else _explicitNullProperties?.Remove("best_holdout_score"); } }
+        public double? BestHoldoutScore { get => _explicitNullValueBestHoldoutScore; set { _explicitNullValueBestHoldoutScore = value; AdditionalData?.Remove("best_holdout_score"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("best_holdout_score"); else _explicitNullProperties?.Remove("best_holdout_score"); } }
         private double? _explicitNullValueBestHoldoutScore = default!;
         /// <summary>Model class of the run&apos;s best model.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? ChampionModelClass { get => _explicitNullValueChampionModelClass; set { _explicitNullValueChampionModelClass = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("champion_model_class"); else _explicitNullProperties?.Remove("champion_model_class"); } }
+        public string? ChampionModelClass { get => _explicitNullValueChampionModelClass; set { _explicitNullValueChampionModelClass = value; AdditionalData?.Remove("champion_model_class"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("champion_model_class"); else _explicitNullProperties?.Remove("champion_model_class"); } }
         private string? _explicitNullValueChampionModelClass = default!;
 #nullable restore
 #else
-        public string ChampionModelClass { get => _explicitNullValueChampionModelClass; set { _explicitNullValueChampionModelClass = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("champion_model_class"); else _explicitNullProperties?.Remove("champion_model_class"); } }
+        public string ChampionModelClass { get => _explicitNullValueChampionModelClass; set { _explicitNullValueChampionModelClass = value; AdditionalData?.Remove("champion_model_class"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("champion_model_class"); else _explicitNullProperties?.Remove("champion_model_class"); } }
         private string _explicitNullValueChampionModelClass = default!;
 #endif
         /// <summary>Whether this run&apos;s best model was promoted to champion (vs kept as challenger).</summary>
-        public bool? ChampionPromoted { get => _explicitNullValueChampionPromoted; set { _explicitNullValueChampionPromoted = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("champion_promoted"); else _explicitNullProperties?.Remove("champion_promoted"); } }
+        public bool? ChampionPromoted { get => _explicitNullValueChampionPromoted; set { _explicitNullValueChampionPromoted = value; AdditionalData?.Remove("champion_promoted"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("champion_promoted"); else _explicitNullProperties?.Remove("champion_promoted"); } }
         private bool? _explicitNullValueChampionPromoted = default!;
         /// <summary>Discarded or crashed iterations — approaches already tried that did not help; avoid repeating.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.TrainingRunSummaryLadderItem>? DeadEnds { get => _explicitNullValueDeadEnds; set { _explicitNullValueDeadEnds = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("dead_ends"); else _explicitNullProperties?.Remove("dead_ends"); } }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.TrainingRunSummaryLadderItem>? DeadEnds { get => _explicitNullValueDeadEnds; set { _explicitNullValueDeadEnds = value; AdditionalData?.Remove("dead_ends"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("dead_ends"); else _explicitNullProperties?.Remove("dead_ends"); } }
         private List<global::Soenneker.PostHog.OpenApiClient.Models.TrainingRunSummaryLadderItem>? _explicitNullValueDeadEnds = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.TrainingRunSummaryLadderItem> DeadEnds { get => _explicitNullValueDeadEnds; set { _explicitNullValueDeadEnds = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("dead_ends"); else _explicitNullProperties?.Remove("dead_ends"); } }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.TrainingRunSummaryLadderItem> DeadEnds { get => _explicitNullValueDeadEnds; set { _explicitNullValueDeadEnds = value; AdditionalData?.Remove("dead_ends"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("dead_ends"); else _explicitNullProperties?.Remove("dead_ends"); } }
         private List<global::Soenneker.PostHog.OpenApiClient.Models.TrainingRunSummaryLadderItem> _explicitNullValueDeadEnds = default!;
 #endif
         /// <summary>Agent&apos;s 1–2 sentence distillation of what this run learned. Empty if not provided.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Distillation { get => _explicitNullValueDistillation; set { _explicitNullValueDistillation = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("distillation"); else _explicitNullProperties?.Remove("distillation"); } }
+        public string? Distillation { get => _explicitNullValueDistillation; set { _explicitNullValueDistillation = value; AdditionalData?.Remove("distillation"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("distillation"); else _explicitNullProperties?.Remove("distillation"); } }
         private string? _explicitNullValueDistillation = default!;
 #nullable restore
 #else
-        public string Distillation { get => _explicitNullValueDistillation; set { _explicitNullValueDistillation = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("distillation"); else _explicitNullProperties?.Remove("distillation"); } }
+        public string Distillation { get => _explicitNullValueDistillation; set { _explicitNullValueDistillation = value; AdditionalData?.Remove("distillation"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("distillation"); else _explicitNullProperties?.Remove("distillation"); } }
         private string _explicitNullValueDistillation = default!;
 #endif
         /// <summary>Prediction horizon, in days.</summary>
-        public int? HorizonDays { get => _explicitNullValueHorizonDays; set { _explicitNullValueHorizonDays = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("horizon_days"); else _explicitNullProperties?.Remove("horizon_days"); } }
+        public int? HorizonDays { get => _explicitNullValueHorizonDays; set { _explicitNullValueHorizonDays = value; AdditionalData?.Remove("horizon_days"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("horizon_days"); else _explicitNullProperties?.Remove("horizon_days"); } }
         private int? _explicitNullValueHorizonDays = default!;
         /// <summary>Kept iterations, highest holdout AUC first — the winning approaches worth reusing.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.TrainingRunSummaryLadderItem>? KeptLadder { get => _explicitNullValueKeptLadder; set { _explicitNullValueKeptLadder = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("kept_ladder"); else _explicitNullProperties?.Remove("kept_ladder"); } }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.TrainingRunSummaryLadderItem>? KeptLadder { get => _explicitNullValueKeptLadder; set { _explicitNullValueKeptLadder = value; AdditionalData?.Remove("kept_ladder"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("kept_ladder"); else _explicitNullProperties?.Remove("kept_ladder"); } }
         private List<global::Soenneker.PostHog.OpenApiClient.Models.TrainingRunSummaryLadderItem>? _explicitNullValueKeptLadder = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.TrainingRunSummaryLadderItem> KeptLadder { get => _explicitNullValueKeptLadder; set { _explicitNullValueKeptLadder = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("kept_ladder"); else _explicitNullProperties?.Remove("kept_ladder"); } }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.TrainingRunSummaryLadderItem> KeptLadder { get => _explicitNullValueKeptLadder; set { _explicitNullValueKeptLadder = value; AdditionalData?.Remove("kept_ladder"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("kept_ladder"); else _explicitNullProperties?.Remove("kept_ladder"); } }
         private List<global::Soenneker.PostHog.OpenApiClient.Models.TrainingRunSummaryLadderItem> _explicitNullValueKeptLadder = default!;
 #endif
         /// <summary>Agent&apos;s suggested next experiments for a future run. Empty if not provided.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? RecommendedNext { get => _explicitNullValueRecommendedNext; set { _explicitNullValueRecommendedNext = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("recommended_next"); else _explicitNullProperties?.Remove("recommended_next"); } }
+        public string? RecommendedNext { get => _explicitNullValueRecommendedNext; set { _explicitNullValueRecommendedNext = value; AdditionalData?.Remove("recommended_next"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("recommended_next"); else _explicitNullProperties?.Remove("recommended_next"); } }
         private string? _explicitNullValueRecommendedNext = default!;
 #nullable restore
 #else
-        public string RecommendedNext { get => _explicitNullValueRecommendedNext; set { _explicitNullValueRecommendedNext = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("recommended_next"); else _explicitNullProperties?.Remove("recommended_next"); } }
+        public string RecommendedNext { get => _explicitNullValueRecommendedNext; set { _explicitNullValueRecommendedNext = value; AdditionalData?.Remove("recommended_next"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("recommended_next"); else _explicitNullProperties?.Remove("recommended_next"); } }
         private string _explicitNullValueRecommendedNext = default!;
 #endif
         /// <summary>Short id of the report notebook the agent built for this run. Empty if there is none.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? ReportNotebookShortId { get => _explicitNullValueReportNotebookShortId; set { _explicitNullValueReportNotebookShortId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("report_notebook_short_id"); else _explicitNullProperties?.Remove("report_notebook_short_id"); } }
+        public string? ReportNotebookShortId { get => _explicitNullValueReportNotebookShortId; set { _explicitNullValueReportNotebookShortId = value; AdditionalData?.Remove("report_notebook_short_id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("report_notebook_short_id"); else _explicitNullProperties?.Remove("report_notebook_short_id"); } }
         private string? _explicitNullValueReportNotebookShortId = default!;
 #nullable restore
 #else
-        public string ReportNotebookShortId { get => _explicitNullValueReportNotebookShortId; set { _explicitNullValueReportNotebookShortId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("report_notebook_short_id"); else _explicitNullProperties?.Remove("report_notebook_short_id"); } }
+        public string ReportNotebookShortId { get => _explicitNullValueReportNotebookShortId; set { _explicitNullValueReportNotebookShortId = value; AdditionalData?.Remove("report_notebook_short_id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("report_notebook_short_id"); else _explicitNullProperties?.Remove("report_notebook_short_id"); } }
         private string _explicitNullValueReportNotebookShortId = default!;
 #endif
         /// <summary>Target event the run&apos;s pipeline predicts.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? TargetEvent { get => _explicitNullValueTargetEvent; set { _explicitNullValueTargetEvent = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("target_event"); else _explicitNullProperties?.Remove("target_event"); } }
+        public string? TargetEvent { get => _explicitNullValueTargetEvent; set { _explicitNullValueTargetEvent = value; AdditionalData?.Remove("target_event"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("target_event"); else _explicitNullProperties?.Remove("target_event"); } }
         private string? _explicitNullValueTargetEvent = default!;
 #nullable restore
 #else
-        public string TargetEvent { get => _explicitNullValueTargetEvent; set { _explicitNullValueTargetEvent = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("target_event"); else _explicitNullProperties?.Remove("target_event"); } }
+        public string TargetEvent { get => _explicitNullValueTargetEvent; set { _explicitNullValueTargetEvent = value; AdditionalData?.Remove("target_event"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("target_event"); else _explicitNullProperties?.Remove("target_event"); } }
         private string _explicitNullValueTargetEvent = default!;
 #endif
         /// <summary>

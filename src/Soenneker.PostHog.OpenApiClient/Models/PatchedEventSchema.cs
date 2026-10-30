@@ -17,8 +17,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("event_definition") is { } nullNodeEventDefinition && nullNodeEventDefinition.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) EventDefinition = null;
-            if (parseNode.GetChildNode("property_group_id") is { } nullNodePropertyGroupId && nullNodePropertyGroupId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) PropertyGroupId = null;
+            if (parseNode.GetChildNode("event_definition") is null) { _explicitNullValueEventDefinition = default!; _explicitNullProperties?.Remove("event_definition"); }
+            else if (parseNode.GetChildNode("event_definition") is { } nullNodeEventDefinition && nullNodeEventDefinition.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) EventDefinition = null;
+            if (parseNode.GetChildNode("property_group_id") is null) { _explicitNullValuePropertyGroupId = default!; _explicitNullProperties?.Remove("property_group_id"); }
+            else if (parseNode.GetChildNode("property_group_id") is { } nullNodePropertyGroupId && nullNodePropertyGroupId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) PropertyGroupId = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -26,7 +28,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The created_at property</summary>
         public DateTimeOffset? CreatedAt { get; private set; }
         /// <summary>The event_definition property</summary>
-        public Guid? EventDefinition { get => _explicitNullValueEventDefinition; set { _explicitNullValueEventDefinition = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("event_definition"); else _explicitNullProperties?.Remove("event_definition"); } }
+        public Guid? EventDefinition { get => _explicitNullValueEventDefinition; set { _explicitNullValueEventDefinition = value; AdditionalData?.Remove("event_definition"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("event_definition"); else _explicitNullProperties?.Remove("event_definition"); } }
         private Guid? _explicitNullValueEventDefinition = default!;
         /// <summary>The id property</summary>
         public Guid? Id { get; private set; }
@@ -39,7 +41,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public global::Soenneker.PostHog.OpenApiClient.Models.PatchedEventSchemaPropertyGroup PropertyGroup { get; private set; }
 #endif
         /// <summary>The property_group_id property</summary>
-        public Guid? PropertyGroupId { get => _explicitNullValuePropertyGroupId; set { _explicitNullValuePropertyGroupId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("property_group_id"); else _explicitNullProperties?.Remove("property_group_id"); } }
+        public Guid? PropertyGroupId { get => _explicitNullValuePropertyGroupId; set { _explicitNullValuePropertyGroupId = value; AdditionalData?.Remove("property_group_id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("property_group_id"); else _explicitNullProperties?.Remove("property_group_id"); } }
         private Guid? _explicitNullValuePropertyGroupId = default!;
         /// <summary>The updated_at property</summary>
         public DateTimeOffset? UpdatedAt { get; private set; }

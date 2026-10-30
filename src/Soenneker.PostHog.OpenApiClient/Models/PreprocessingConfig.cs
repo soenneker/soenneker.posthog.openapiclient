@@ -17,9 +17,12 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("diffs_n") is { } nullNodeDiffsN && nullNodeDiffsN.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) DiffsN = null;
-            if (parseNode.GetChildNode("lags_n") is { } nullNodeLagsN && nullNodeLagsN.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) LagsN = null;
-            if (parseNode.GetChildNode("smooth_n") is { } nullNodeSmoothN && nullNodeSmoothN.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SmoothN = null;
+            if (parseNode.GetChildNode("diffs_n") is null) { _explicitNullValueDiffsN = default!; _explicitNullProperties?.Remove("diffs_n"); }
+            else if (parseNode.GetChildNode("diffs_n") is { } nullNodeDiffsN && nullNodeDiffsN.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) DiffsN = null;
+            if (parseNode.GetChildNode("lags_n") is null) { _explicitNullValueLagsN = default!; _explicitNullProperties?.Remove("lags_n"); }
+            else if (parseNode.GetChildNode("lags_n") is { } nullNodeLagsN && nullNodeLagsN.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) LagsN = null;
+            if (parseNode.GetChildNode("smooth_n") is null) { _explicitNullValueSmoothN = default!; _explicitNullProperties?.Remove("smooth_n"); }
+            else if (parseNode.GetChildNode("smooth_n") is { } nullNodeSmoothN && nullNodeSmoothN.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SmoothN = null;
         }
 
         /// <summary>Order of differencing. 0 = raw values, 1 = first-order diffs (default: 0)</summary>

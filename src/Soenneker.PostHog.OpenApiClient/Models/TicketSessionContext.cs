@@ -18,8 +18,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("current_url") is { } nullNodeCurrentUrl && nullNodeCurrentUrl.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CurrentUrl = null;
-            if (parseNode.GetChildNode("replay_url") is { } nullNodeReplayUrl && nullNodeReplayUrl.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ReplayUrl = null;
+            if (parseNode.GetChildNode("current_url") is null) { _explicitNullValueCurrentUrl = default!; _explicitNullProperties?.Remove("current_url"); }
+            else if (parseNode.GetChildNode("current_url") is { } nullNodeCurrentUrl && nullNodeCurrentUrl.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CurrentUrl = null;
+            if (parseNode.GetChildNode("replay_url") is null) { _explicitNullValueReplayUrl = default!; _explicitNullProperties?.Remove("replay_url"); }
+            else if (parseNode.GetChildNode("replay_url") is { } nullNodeReplayUrl && nullNodeReplayUrl.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ReplayUrl = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -27,21 +29,21 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Page the reporter was on.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? CurrentUrl { get => _explicitNullValueCurrentUrl; set { _explicitNullValueCurrentUrl = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("current_url"); else _explicitNullProperties?.Remove("current_url"); } }
+        public string? CurrentUrl { get => _explicitNullValueCurrentUrl; set { _explicitNullValueCurrentUrl = value; AdditionalData?.Remove("current_url"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("current_url"); else _explicitNullProperties?.Remove("current_url"); } }
         private string? _explicitNullValueCurrentUrl = default!;
 #nullable restore
 #else
-        public string CurrentUrl { get => _explicitNullValueCurrentUrl; set { _explicitNullValueCurrentUrl = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("current_url"); else _explicitNullProperties?.Remove("current_url"); } }
+        public string CurrentUrl { get => _explicitNullValueCurrentUrl; set { _explicitNullValueCurrentUrl = value; AdditionalData?.Remove("current_url"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("current_url"); else _explicitNullProperties?.Remove("current_url"); } }
         private string _explicitNullValueCurrentUrl = default!;
 #endif
         /// <summary>Replay of the session the ticket came from.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? ReplayUrl { get => _explicitNullValueReplayUrl; set { _explicitNullValueReplayUrl = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("replay_url"); else _explicitNullProperties?.Remove("replay_url"); } }
+        public string? ReplayUrl { get => _explicitNullValueReplayUrl; set { _explicitNullValueReplayUrl = value; AdditionalData?.Remove("replay_url"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("replay_url"); else _explicitNullProperties?.Remove("replay_url"); } }
         private string? _explicitNullValueReplayUrl = default!;
 #nullable restore
 #else
-        public string ReplayUrl { get => _explicitNullValueReplayUrl; set { _explicitNullValueReplayUrl = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("replay_url"); else _explicitNullProperties?.Remove("replay_url"); } }
+        public string ReplayUrl { get => _explicitNullValueReplayUrl; set { _explicitNullValueReplayUrl = value; AdditionalData?.Remove("replay_url"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("replay_url"); else _explicitNullProperties?.Remove("replay_url"); } }
         private string _explicitNullValueReplayUrl = default!;
 #endif
         /// <summary>

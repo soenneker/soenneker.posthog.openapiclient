@@ -18,27 +18,30 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("flow_variant") is { } nullNodeFlowVariant && nullNodeFlowVariant.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) FlowVariant = null;
-            if (parseNode.GetChildNode("reason") is { } nullNodeReason && nullNodeReason.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Reason = null;
-            if (parseNode.GetChildNode("step_at_skip") is { } nullNodeStepAtSkip && nullNodeStepAtSkip.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) StepAtSkip = null;
+            if (parseNode.GetChildNode("flow_variant") is null) { _explicitNullValueFlowVariant = default!; _explicitNullProperties?.Remove("flow_variant"); }
+            else if (parseNode.GetChildNode("flow_variant") is { } nullNodeFlowVariant && nullNodeFlowVariant.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) FlowVariant = null;
+            if (parseNode.GetChildNode("reason") is null) { _explicitNullValueReason = default!; _explicitNullProperties?.Remove("reason"); }
+            else if (parseNode.GetChildNode("reason") is { } nullNodeReason && nullNodeReason.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Reason = null;
+            if (parseNode.GetChildNode("step_at_skip") is null) { _explicitNullValueStepAtSkip = default!; _explicitNullProperties?.Remove("step_at_skip"); }
+            else if (parseNode.GetChildNode("step_at_skip") is { } nullNodeStepAtSkip && nullNodeStepAtSkip.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) StepAtSkip = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>* `legacy` - Default onboarding* `simple` - Simple onboarding</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.OnboardingSkipRequestFlowVariant? FlowVariant { get => _explicitNullValueFlowVariant; set { _explicitNullValueFlowVariant = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("flow_variant"); else _explicitNullProperties?.Remove("flow_variant"); } }
+        public global::Soenneker.PostHog.OpenApiClient.Models.OnboardingSkipRequestFlowVariant? FlowVariant { get => _explicitNullValueFlowVariant; set { _explicitNullValueFlowVariant = value; AdditionalData?.Remove("flow_variant"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("flow_variant"); else _explicitNullProperties?.Remove("flow_variant"); } }
         private global::Soenneker.PostHog.OpenApiClient.Models.OnboardingSkipRequestFlowVariant? _explicitNullValueFlowVariant = default!;
         /// <summary>* `later` - Later* `other` - Other</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.OnboardingSkipRequestReason? Reason { get => _explicitNullValueReason; set { _explicitNullValueReason = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("reason"); else _explicitNullProperties?.Remove("reason"); } }
+        public global::Soenneker.PostHog.OpenApiClient.Models.OnboardingSkipRequestReason? Reason { get => _explicitNullValueReason; set { _explicitNullValueReason = value; AdditionalData?.Remove("reason"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("reason"); else _explicitNullProperties?.Remove("reason"); } }
         private global::Soenneker.PostHog.OpenApiClient.Models.OnboardingSkipRequestReason? _explicitNullValueReason = default!;
         /// <summary>Onboarding step key the user was on when skipping, for analytics only.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? StepAtSkip { get => _explicitNullValueStepAtSkip; set { _explicitNullValueStepAtSkip = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("step_at_skip"); else _explicitNullProperties?.Remove("step_at_skip"); } }
+        public string? StepAtSkip { get => _explicitNullValueStepAtSkip; set { _explicitNullValueStepAtSkip = value; AdditionalData?.Remove("step_at_skip"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("step_at_skip"); else _explicitNullProperties?.Remove("step_at_skip"); } }
         private string? _explicitNullValueStepAtSkip = default!;
 #nullable restore
 #else
-        public string StepAtSkip { get => _explicitNullValueStepAtSkip; set { _explicitNullValueStepAtSkip = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("step_at_skip"); else _explicitNullProperties?.Remove("step_at_skip"); } }
+        public string StepAtSkip { get => _explicitNullValueStepAtSkip; set { _explicitNullValueStepAtSkip = value; AdditionalData?.Remove("step_at_skip"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("step_at_skip"); else _explicitNullProperties?.Remove("step_at_skip"); } }
         private string _explicitNullValueStepAtSkip = default!;
 #endif
         /// <summary>
@@ -66,8 +69,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "flow_variant", n => { FlowVariant = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.OnboardingSkipRequestFlowVariant>(); } },
-                { "reason", n => { Reason = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.OnboardingSkipRequestReason>(); } },
+                { "flow_variant", n => { var parsed = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.OnboardingSkipRequestFlowVariant>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValueFlowVariant = default; _explicitNullProperties?.Remove("flow_variant"); AdditionalData["flow_variant"] = unknown; } else { FlowVariant = parsed; AdditionalData.Remove("flow_variant"); } } },
+                { "reason", n => { var parsed = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.OnboardingSkipRequestReason>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValueReason = default; _explicitNullProperties?.Remove("reason"); AdditionalData["reason"] = unknown; } else { Reason = parsed; AdditionalData.Remove("reason"); } } },
                 { "step_at_skip", n => { StepAtSkip = n.GetStringValue(); } },
             };
         }

@@ -17,13 +17,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("hasSpans") is { } nullNodeHasSpans && nullNodeHasSpans.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) HasSpans = null;
+            if (parseNode.GetChildNode("hasSpans") is null) { _explicitNullValueHasSpans = default!; _explicitNullProperties?.Remove("hasSpans"); }
+            else if (parseNode.GetChildNode("hasSpans") is { } nullNodeHasSpans && nullNodeHasSpans.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) HasSpans = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Whether the team has ingested any tracing spans yet. Used to gate the onboarding empty state.</summary>
-        public bool? HasSpans { get => _explicitNullValueHasSpans; set { _explicitNullValueHasSpans = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("hasSpans"); else _explicitNullProperties?.Remove("hasSpans"); } }
+        public bool? HasSpans { get => _explicitNullValueHasSpans; set { _explicitNullValueHasSpans = value; AdditionalData?.Remove("hasSpans"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("hasSpans"); else _explicitNullProperties?.Remove("hasSpans"); } }
         private bool? _explicitNullValueHasSpans = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.HasSpansResponse"/> and sets the default values.

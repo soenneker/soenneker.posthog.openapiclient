@@ -17,69 +17,77 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("action_key") is { } nullNodeActionKey && nullNodeActionKey.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ActionKey = null;
-            if (parseNode.GetChildNode("allow_self_approve") is { } nullNodeAllowSelfApprove && nullNodeAllowSelfApprove.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AllowSelfApprove = null;
-            if (parseNode.GetChildNode("approver_config") is { } nullNodeApproverConfig && nullNodeApproverConfig.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ApproverConfig = null;
-            if (parseNode.GetChildNode("bypass_org_membership_levels") is { } nullNodeBypassOrgMembershipLevels && nullNodeBypassOrgMembershipLevels.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) BypassOrgMembershipLevels = null;
-            if (parseNode.GetChildNode("bypass_roles") is { } nullNodeBypassRoles && nullNodeBypassRoles.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) BypassRoles = null;
-            if (parseNode.GetChildNode("conditions") is { } nullNodeConditions && nullNodeConditions.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Conditions = null;
-            if (parseNode.GetChildNode("enabled") is { } nullNodeEnabled && nullNodeEnabled.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Enabled = null;
-            if (parseNode.GetChildNode("expires_after") is { } nullNodeExpiresAfter && nullNodeExpiresAfter.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ExpiresAfter = null;
+            if (parseNode.GetChildNode("action_key") is null) { _explicitNullValueActionKey = default!; _explicitNullProperties?.Remove("action_key"); }
+            else if (parseNode.GetChildNode("action_key") is { } nullNodeActionKey && nullNodeActionKey.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ActionKey = null;
+            if (parseNode.GetChildNode("allow_self_approve") is null) { _explicitNullValueAllowSelfApprove = default!; _explicitNullProperties?.Remove("allow_self_approve"); }
+            else if (parseNode.GetChildNode("allow_self_approve") is { } nullNodeAllowSelfApprove && nullNodeAllowSelfApprove.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AllowSelfApprove = null;
+            if (parseNode.GetChildNode("approver_config") is null) { _explicitNullValueApproverConfig = default!; _explicitNullProperties?.Remove("approver_config"); }
+            else if (parseNode.GetChildNode("approver_config") is { } nullNodeApproverConfig && nullNodeApproverConfig.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ApproverConfig = null;
+            if (parseNode.GetChildNode("bypass_org_membership_levels") is null) { _explicitNullValueBypassOrgMembershipLevels = default!; _explicitNullProperties?.Remove("bypass_org_membership_levels"); }
+            else if (parseNode.GetChildNode("bypass_org_membership_levels") is { } nullNodeBypassOrgMembershipLevels && nullNodeBypassOrgMembershipLevels.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) BypassOrgMembershipLevels = null;
+            if (parseNode.GetChildNode("bypass_roles") is null) { _explicitNullValueBypassRoles = default!; _explicitNullProperties?.Remove("bypass_roles"); }
+            else if (parseNode.GetChildNode("bypass_roles") is { } nullNodeBypassRoles && nullNodeBypassRoles.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) BypassRoles = null;
+            if (parseNode.GetChildNode("conditions") is null) { _explicitNullValueConditions = default!; _explicitNullProperties?.Remove("conditions"); }
+            else if (parseNode.GetChildNode("conditions") is { } nullNodeConditions && nullNodeConditions.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Conditions = null;
+            if (parseNode.GetChildNode("enabled") is null) { _explicitNullValueEnabled = default!; _explicitNullProperties?.Remove("enabled"); }
+            else if (parseNode.GetChildNode("enabled") is { } nullNodeEnabled && nullNodeEnabled.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Enabled = null;
+            if (parseNode.GetChildNode("expires_after") is null) { _explicitNullValueExpiresAfter = default!; _explicitNullProperties?.Remove("expires_after"); }
+            else if (parseNode.GetChildNode("expires_after") is { } nullNodeExpiresAfter && nullNodeExpiresAfter.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ExpiresAfter = null;
         }
 
         /// <summary>The action_key property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? ActionKey { get => _explicitNullValueActionKey; set { _explicitNullValueActionKey = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("action_key"); else _explicitNullProperties?.Remove("action_key"); } }
+        public string? ActionKey { get => _explicitNullValueActionKey; set { _explicitNullValueActionKey = value; AdditionalData?.Remove("action_key"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("action_key"); else _explicitNullProperties?.Remove("action_key"); } }
         private string? _explicitNullValueActionKey = default!;
 #nullable restore
 #else
-        public string ActionKey { get => _explicitNullValueActionKey; set { _explicitNullValueActionKey = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("action_key"); else _explicitNullProperties?.Remove("action_key"); } }
+        public string ActionKey { get => _explicitNullValueActionKey; set { _explicitNullValueActionKey = value; AdditionalData?.Remove("action_key"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("action_key"); else _explicitNullProperties?.Remove("action_key"); } }
         private string _explicitNullValueActionKey = default!;
 #endif
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The allow_self_approve property</summary>
-        public bool? AllowSelfApprove { get => _explicitNullValueAllowSelfApprove; set { _explicitNullValueAllowSelfApprove = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("allow_self_approve"); else _explicitNullProperties?.Remove("allow_self_approve"); } }
+        public bool? AllowSelfApprove { get => _explicitNullValueAllowSelfApprove; set { _explicitNullValueAllowSelfApprove = value; AdditionalData?.Remove("allow_self_approve"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("allow_self_approve"); else _explicitNullProperties?.Remove("allow_self_approve"); } }
         private bool? _explicitNullValueAllowSelfApprove = default!;
         /// <summary>The approver_config property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public UntypedNode? ApproverConfig { get => _explicitNullValueApproverConfig; set { _explicitNullValueApproverConfig = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("approver_config"); else _explicitNullProperties?.Remove("approver_config"); } }
+        public UntypedNode? ApproverConfig { get => _explicitNullValueApproverConfig; set { _explicitNullValueApproverConfig = value; AdditionalData?.Remove("approver_config"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("approver_config"); else _explicitNullProperties?.Remove("approver_config"); } }
         private UntypedNode? _explicitNullValueApproverConfig = default!;
 #nullable restore
 #else
-        public UntypedNode ApproverConfig { get => _explicitNullValueApproverConfig; set { _explicitNullValueApproverConfig = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("approver_config"); else _explicitNullProperties?.Remove("approver_config"); } }
+        public UntypedNode ApproverConfig { get => _explicitNullValueApproverConfig; set { _explicitNullValueApproverConfig = value; AdditionalData?.Remove("approver_config"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("approver_config"); else _explicitNullProperties?.Remove("approver_config"); } }
         private UntypedNode _explicitNullValueApproverConfig = default!;
 #endif
         /// <summary>The bypass_org_membership_levels property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public UntypedNode? BypassOrgMembershipLevels { get => _explicitNullValueBypassOrgMembershipLevels; set { _explicitNullValueBypassOrgMembershipLevels = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("bypass_org_membership_levels"); else _explicitNullProperties?.Remove("bypass_org_membership_levels"); } }
+        public UntypedNode? BypassOrgMembershipLevels { get => _explicitNullValueBypassOrgMembershipLevels; set { _explicitNullValueBypassOrgMembershipLevels = value; AdditionalData?.Remove("bypass_org_membership_levels"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("bypass_org_membership_levels"); else _explicitNullProperties?.Remove("bypass_org_membership_levels"); } }
         private UntypedNode? _explicitNullValueBypassOrgMembershipLevels = default!;
 #nullable restore
 #else
-        public UntypedNode BypassOrgMembershipLevels { get => _explicitNullValueBypassOrgMembershipLevels; set { _explicitNullValueBypassOrgMembershipLevels = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("bypass_org_membership_levels"); else _explicitNullProperties?.Remove("bypass_org_membership_levels"); } }
+        public UntypedNode BypassOrgMembershipLevels { get => _explicitNullValueBypassOrgMembershipLevels; set { _explicitNullValueBypassOrgMembershipLevels = value; AdditionalData?.Remove("bypass_org_membership_levels"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("bypass_org_membership_levels"); else _explicitNullProperties?.Remove("bypass_org_membership_levels"); } }
         private UntypedNode _explicitNullValueBypassOrgMembershipLevels = default!;
 #endif
         /// <summary>The bypass_roles property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<Guid?>? BypassRoles { get => _explicitNullValueBypassRoles; set { _explicitNullValueBypassRoles = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("bypass_roles"); else _explicitNullProperties?.Remove("bypass_roles"); } }
+        public List<Guid?>? BypassRoles { get => _explicitNullValueBypassRoles; set { _explicitNullValueBypassRoles = value; AdditionalData?.Remove("bypass_roles"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("bypass_roles"); else _explicitNullProperties?.Remove("bypass_roles"); } }
         private List<Guid?>? _explicitNullValueBypassRoles = default!;
 #nullable restore
 #else
-        public List<Guid?> BypassRoles { get => _explicitNullValueBypassRoles; set { _explicitNullValueBypassRoles = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("bypass_roles"); else _explicitNullProperties?.Remove("bypass_roles"); } }
+        public List<Guid?> BypassRoles { get => _explicitNullValueBypassRoles; set { _explicitNullValueBypassRoles = value; AdditionalData?.Remove("bypass_roles"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("bypass_roles"); else _explicitNullProperties?.Remove("bypass_roles"); } }
         private List<Guid?> _explicitNullValueBypassRoles = default!;
 #endif
         /// <summary>The conditions property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public UntypedNode? Conditions { get => _explicitNullValueConditions; set { _explicitNullValueConditions = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("conditions"); else _explicitNullProperties?.Remove("conditions"); } }
+        public UntypedNode? Conditions { get => _explicitNullValueConditions; set { _explicitNullValueConditions = value; AdditionalData?.Remove("conditions"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("conditions"); else _explicitNullProperties?.Remove("conditions"); } }
         private UntypedNode? _explicitNullValueConditions = default!;
 #nullable restore
 #else
-        public UntypedNode Conditions { get => _explicitNullValueConditions; set { _explicitNullValueConditions = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("conditions"); else _explicitNullProperties?.Remove("conditions"); } }
+        public UntypedNode Conditions { get => _explicitNullValueConditions; set { _explicitNullValueConditions = value; AdditionalData?.Remove("conditions"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("conditions"); else _explicitNullProperties?.Remove("conditions"); } }
         private UntypedNode _explicitNullValueConditions = default!;
 #endif
         /// <summary>The created_at property</summary>
@@ -93,16 +101,16 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public global::Soenneker.PostHog.OpenApiClient.Models.PatchedApprovalPolicyCreatedBy CreatedBy { get; private set; }
 #endif
         /// <summary>The enabled property</summary>
-        public bool? Enabled { get => _explicitNullValueEnabled; set { _explicitNullValueEnabled = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("enabled"); else _explicitNullProperties?.Remove("enabled"); } }
+        public bool? Enabled { get => _explicitNullValueEnabled; set { _explicitNullValueEnabled = value; AdditionalData?.Remove("enabled"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("enabled"); else _explicitNullProperties?.Remove("enabled"); } }
         private bool? _explicitNullValueEnabled = default!;
         /// <summary>Auto-expire change requests after this duration</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? ExpiresAfter { get => _explicitNullValueExpiresAfter; set { _explicitNullValueExpiresAfter = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("expires_after"); else _explicitNullProperties?.Remove("expires_after"); } }
+        public string? ExpiresAfter { get => _explicitNullValueExpiresAfter; set { _explicitNullValueExpiresAfter = value; AdditionalData?.Remove("expires_after"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("expires_after"); else _explicitNullProperties?.Remove("expires_after"); } }
         private string? _explicitNullValueExpiresAfter = default!;
 #nullable restore
 #else
-        public string ExpiresAfter { get => _explicitNullValueExpiresAfter; set { _explicitNullValueExpiresAfter = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("expires_after"); else _explicitNullProperties?.Remove("expires_after"); } }
+        public string ExpiresAfter { get => _explicitNullValueExpiresAfter; set { _explicitNullValueExpiresAfter = value; AdditionalData?.Remove("expires_after"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("expires_after"); else _explicitNullProperties?.Remove("expires_after"); } }
         private string _explicitNullValueExpiresAfter = default!;
 #endif
         /// <summary>The id property</summary>

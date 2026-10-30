@@ -18,11 +18,16 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("classifier") is { } nullNodeClassifier && nullNodeClassifier.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Classifier = null;
-            if (parseNode.GetChildNode("experiment") is { } nullNodeExperiment && nullNodeExperiment.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Experiment = null;
-            if (parseNode.GetChildNode("monitor") is { } nullNodeMonitor && nullNodeMonitor.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Monitor = null;
-            if (parseNode.GetChildNode("scorer") is { } nullNodeScorer && nullNodeScorer.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Scorer = null;
-            if (parseNode.GetChildNode("summarizer") is { } nullNodeSummarizer && nullNodeSummarizer.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Summarizer = null;
+            if (parseNode.GetChildNode("classifier") is null) { _explicitNullValueClassifier = default!; _explicitNullProperties?.Remove("classifier"); }
+            else if (parseNode.GetChildNode("classifier") is { } nullNodeClassifier && nullNodeClassifier.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Classifier = null;
+            if (parseNode.GetChildNode("experiment") is null) { _explicitNullValueExperiment = default!; _explicitNullProperties?.Remove("experiment"); }
+            else if (parseNode.GetChildNode("experiment") is { } nullNodeExperiment && nullNodeExperiment.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Experiment = null;
+            if (parseNode.GetChildNode("monitor") is null) { _explicitNullValueMonitor = default!; _explicitNullProperties?.Remove("monitor"); }
+            else if (parseNode.GetChildNode("monitor") is { } nullNodeMonitor && nullNodeMonitor.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Monitor = null;
+            if (parseNode.GetChildNode("scorer") is null) { _explicitNullValueScorer = default!; _explicitNullProperties?.Remove("scorer"); }
+            else if (parseNode.GetChildNode("scorer") is { } nullNodeScorer && nullNodeScorer.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Scorer = null;
+            if (parseNode.GetChildNode("summarizer") is null) { _explicitNullValueSummarizer = default!; _explicitNullProperties?.Remove("summarizer"); }
+            else if (parseNode.GetChildNode("summarizer") is { } nullNodeSummarizer && nullNodeSummarizer.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Summarizer = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -30,51 +35,51 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Per-scanner-type count of enabled vs total scanners.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.ScannerTypeStats? Classifier { get => _explicitNullValueClassifier; set { _explicitNullValueClassifier = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("classifier"); else _explicitNullProperties?.Remove("classifier"); } }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ScannerTypeStats? Classifier { get => _explicitNullValueClassifier; set { _explicitNullValueClassifier = value; AdditionalData?.Remove("classifier"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("classifier"); else _explicitNullProperties?.Remove("classifier"); } }
         private global::Soenneker.PostHog.OpenApiClient.Models.ScannerTypeStats? _explicitNullValueClassifier = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ScannerTypeStats Classifier { get => _explicitNullValueClassifier; set { _explicitNullValueClassifier = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("classifier"); else _explicitNullProperties?.Remove("classifier"); } }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ScannerTypeStats Classifier { get => _explicitNullValueClassifier; set { _explicitNullValueClassifier = value; AdditionalData?.Remove("classifier"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("classifier"); else _explicitNullProperties?.Remove("classifier"); } }
         private global::Soenneker.PostHog.OpenApiClient.Models.ScannerTypeStats _explicitNullValueClassifier = default!;
 #endif
         /// <summary>Per-scanner-type count of enabled vs total scanners.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.ScannerTypeStats? Experiment { get => _explicitNullValueExperiment; set { _explicitNullValueExperiment = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("experiment"); else _explicitNullProperties?.Remove("experiment"); } }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ScannerTypeStats? Experiment { get => _explicitNullValueExperiment; set { _explicitNullValueExperiment = value; AdditionalData?.Remove("experiment"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("experiment"); else _explicitNullProperties?.Remove("experiment"); } }
         private global::Soenneker.PostHog.OpenApiClient.Models.ScannerTypeStats? _explicitNullValueExperiment = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ScannerTypeStats Experiment { get => _explicitNullValueExperiment; set { _explicitNullValueExperiment = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("experiment"); else _explicitNullProperties?.Remove("experiment"); } }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ScannerTypeStats Experiment { get => _explicitNullValueExperiment; set { _explicitNullValueExperiment = value; AdditionalData?.Remove("experiment"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("experiment"); else _explicitNullProperties?.Remove("experiment"); } }
         private global::Soenneker.PostHog.OpenApiClient.Models.ScannerTypeStats _explicitNullValueExperiment = default!;
 #endif
         /// <summary>Per-scanner-type count of enabled vs total scanners.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.ScannerTypeStats? Monitor { get => _explicitNullValueMonitor; set { _explicitNullValueMonitor = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("monitor"); else _explicitNullProperties?.Remove("monitor"); } }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ScannerTypeStats? Monitor { get => _explicitNullValueMonitor; set { _explicitNullValueMonitor = value; AdditionalData?.Remove("monitor"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("monitor"); else _explicitNullProperties?.Remove("monitor"); } }
         private global::Soenneker.PostHog.OpenApiClient.Models.ScannerTypeStats? _explicitNullValueMonitor = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ScannerTypeStats Monitor { get => _explicitNullValueMonitor; set { _explicitNullValueMonitor = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("monitor"); else _explicitNullProperties?.Remove("monitor"); } }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ScannerTypeStats Monitor { get => _explicitNullValueMonitor; set { _explicitNullValueMonitor = value; AdditionalData?.Remove("monitor"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("monitor"); else _explicitNullProperties?.Remove("monitor"); } }
         private global::Soenneker.PostHog.OpenApiClient.Models.ScannerTypeStats _explicitNullValueMonitor = default!;
 #endif
         /// <summary>Per-scanner-type count of enabled vs total scanners.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.ScannerTypeStats? Scorer { get => _explicitNullValueScorer; set { _explicitNullValueScorer = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("scorer"); else _explicitNullProperties?.Remove("scorer"); } }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ScannerTypeStats? Scorer { get => _explicitNullValueScorer; set { _explicitNullValueScorer = value; AdditionalData?.Remove("scorer"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("scorer"); else _explicitNullProperties?.Remove("scorer"); } }
         private global::Soenneker.PostHog.OpenApiClient.Models.ScannerTypeStats? _explicitNullValueScorer = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ScannerTypeStats Scorer { get => _explicitNullValueScorer; set { _explicitNullValueScorer = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("scorer"); else _explicitNullProperties?.Remove("scorer"); } }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ScannerTypeStats Scorer { get => _explicitNullValueScorer; set { _explicitNullValueScorer = value; AdditionalData?.Remove("scorer"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("scorer"); else _explicitNullProperties?.Remove("scorer"); } }
         private global::Soenneker.PostHog.OpenApiClient.Models.ScannerTypeStats _explicitNullValueScorer = default!;
 #endif
         /// <summary>Per-scanner-type count of enabled vs total scanners.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.ScannerTypeStats? Summarizer { get => _explicitNullValueSummarizer; set { _explicitNullValueSummarizer = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("summarizer"); else _explicitNullProperties?.Remove("summarizer"); } }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ScannerTypeStats? Summarizer { get => _explicitNullValueSummarizer; set { _explicitNullValueSummarizer = value; AdditionalData?.Remove("summarizer"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("summarizer"); else _explicitNullProperties?.Remove("summarizer"); } }
         private global::Soenneker.PostHog.OpenApiClient.Models.ScannerTypeStats? _explicitNullValueSummarizer = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ScannerTypeStats Summarizer { get => _explicitNullValueSummarizer; set { _explicitNullValueSummarizer = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("summarizer"); else _explicitNullProperties?.Remove("summarizer"); } }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ScannerTypeStats Summarizer { get => _explicitNullValueSummarizer; set { _explicitNullValueSummarizer = value; AdditionalData?.Remove("summarizer"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("summarizer"); else _explicitNullProperties?.Remove("summarizer"); } }
         private global::Soenneker.PostHog.OpenApiClient.Models.ScannerTypeStats _explicitNullValueSummarizer = default!;
 #endif
         /// <summary>

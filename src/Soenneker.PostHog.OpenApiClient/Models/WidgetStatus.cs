@@ -17,33 +17,50 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("active_job") is { } nullNodeActiveJob && nullNodeActiveJob.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ActiveJob = null;
-            if (parseNode.GetChildNode("artifact_url") is { } nullNodeArtifactUrl && nullNodeArtifactUrl.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ArtifactUrl = null;
-            if (parseNode.GetChildNode("build_hash") is { } nullNodeBuildHash && nullNodeBuildHash.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) BuildHash = null;
-            if (parseNode.GetChildNode("current_version_id") is { } nullNodeCurrentVersionId && nullNodeCurrentVersionId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CurrentVersionId = null;
-            if (parseNode.GetChildNode("error_code") is { } nullNodeErrorCode && nullNodeErrorCode.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ErrorCode = null;
-            if (parseNode.GetChildNode("error_detail") is { } nullNodeErrorDetail && nullNodeErrorDetail.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ErrorDetail = null;
-            if (parseNode.GetChildNode("failure_phase") is { } nullNodeFailurePhase && nullNodeFailurePhase.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) FailurePhase = null;
-            if (parseNode.GetChildNode("frame_names") is { } nullNodeFrameNames && nullNodeFrameNames.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) FrameNames = null;
-            if (parseNode.GetChildNode("has_versions") is { } nullNodeHasVersions && nullNodeHasVersions.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) HasVersions = null;
-            if (parseNode.GetChildNode("input_bindings") is { } nullNodeInputBindings && nullNodeInputBindings.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) InputBindings = null;
-            if (parseNode.GetChildNode("input_contract") is { } nullNodeInputContract && nullNodeInputContract.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) InputContract = null;
-            if (parseNode.GetChildNode("instance_id") is { } nullNodeInstanceId && nullNodeInstanceId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) InstanceId = null;
-            if (parseNode.GetChildNode("is_reusable") is { } nullNodeIsReusable && nullNodeIsReusable.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) IsReusable = null;
-            if (parseNode.GetChildNode("lifecycle_status") is { } nullNodeLifecycleStatus && nullNodeLifecycleStatus.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) LifecycleStatus = null;
-            if (parseNode.GetChildNode("pinned_version_id") is { } nullNodePinnedVersionId && nullNodePinnedVersionId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) PinnedVersionId = null;
-            if (parseNode.GetChildNode("security_review") is { } nullNodeSecurityReview && nullNodeSecurityReview.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SecurityReview = null;
-            if (parseNode.GetChildNode("widget_id") is { } nullNodeWidgetId && nullNodeWidgetId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) WidgetId = null;
+            if (parseNode.GetChildNode("active_job") is null) { _explicitNullValueActiveJob = default!; _explicitNullProperties?.Remove("active_job"); }
+            else if (parseNode.GetChildNode("active_job") is { } nullNodeActiveJob && nullNodeActiveJob.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ActiveJob = null;
+            if (parseNode.GetChildNode("artifact_url") is null) { _explicitNullValueArtifactUrl = default!; _explicitNullProperties?.Remove("artifact_url"); }
+            else if (parseNode.GetChildNode("artifact_url") is { } nullNodeArtifactUrl && nullNodeArtifactUrl.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ArtifactUrl = null;
+            if (parseNode.GetChildNode("build_hash") is null) { _explicitNullValueBuildHash = default!; _explicitNullProperties?.Remove("build_hash"); }
+            else if (parseNode.GetChildNode("build_hash") is { } nullNodeBuildHash && nullNodeBuildHash.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) BuildHash = null;
+            if (parseNode.GetChildNode("current_version_id") is null) { _explicitNullValueCurrentVersionId = default!; _explicitNullProperties?.Remove("current_version_id"); }
+            else if (parseNode.GetChildNode("current_version_id") is { } nullNodeCurrentVersionId && nullNodeCurrentVersionId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CurrentVersionId = null;
+            if (parseNode.GetChildNode("error_code") is null) { _explicitNullValueErrorCode = default!; _explicitNullProperties?.Remove("error_code"); }
+            else if (parseNode.GetChildNode("error_code") is { } nullNodeErrorCode && nullNodeErrorCode.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ErrorCode = null;
+            if (parseNode.GetChildNode("error_detail") is null) { _explicitNullValueErrorDetail = default!; _explicitNullProperties?.Remove("error_detail"); }
+            else if (parseNode.GetChildNode("error_detail") is { } nullNodeErrorDetail && nullNodeErrorDetail.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ErrorDetail = null;
+            if (parseNode.GetChildNode("failure_phase") is null) { _explicitNullValueFailurePhase = default!; _explicitNullProperties?.Remove("failure_phase"); }
+            else if (parseNode.GetChildNode("failure_phase") is { } nullNodeFailurePhase && nullNodeFailurePhase.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) FailurePhase = null;
+            if (parseNode.GetChildNode("frame_names") is null) { _explicitNullValueFrameNames = default!; _explicitNullProperties?.Remove("frame_names"); }
+            else if (parseNode.GetChildNode("frame_names") is { } nullNodeFrameNames && nullNodeFrameNames.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) FrameNames = null;
+            if (parseNode.GetChildNode("has_versions") is null) { _explicitNullValueHasVersions = default!; _explicitNullProperties?.Remove("has_versions"); }
+            else if (parseNode.GetChildNode("has_versions") is { } nullNodeHasVersions && nullNodeHasVersions.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) HasVersions = null;
+            if (parseNode.GetChildNode("input_bindings") is null) { _explicitNullValueInputBindings = default!; _explicitNullProperties?.Remove("input_bindings"); }
+            else if (parseNode.GetChildNode("input_bindings") is { } nullNodeInputBindings && nullNodeInputBindings.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) InputBindings = null;
+            if (parseNode.GetChildNode("input_contract") is null) { _explicitNullValueInputContract = default!; _explicitNullProperties?.Remove("input_contract"); }
+            else if (parseNode.GetChildNode("input_contract") is { } nullNodeInputContract && nullNodeInputContract.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) InputContract = null;
+            if (parseNode.GetChildNode("instance_id") is null) { _explicitNullValueInstanceId = default!; _explicitNullProperties?.Remove("instance_id"); }
+            else if (parseNode.GetChildNode("instance_id") is { } nullNodeInstanceId && nullNodeInstanceId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) InstanceId = null;
+            if (parseNode.GetChildNode("is_reusable") is null) { _explicitNullValueIsReusable = default!; _explicitNullProperties?.Remove("is_reusable"); }
+            else if (parseNode.GetChildNode("is_reusable") is { } nullNodeIsReusable && nullNodeIsReusable.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) IsReusable = null;
+            if (parseNode.GetChildNode("lifecycle_status") is null) { _explicitNullValueLifecycleStatus = default!; _explicitNullProperties?.Remove("lifecycle_status"); }
+            else if (parseNode.GetChildNode("lifecycle_status") is { } nullNodeLifecycleStatus && nullNodeLifecycleStatus.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) LifecycleStatus = null;
+            if (parseNode.GetChildNode("pinned_version_id") is null) { _explicitNullValuePinnedVersionId = default!; _explicitNullProperties?.Remove("pinned_version_id"); }
+            else if (parseNode.GetChildNode("pinned_version_id") is { } nullNodePinnedVersionId && nullNodePinnedVersionId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) PinnedVersionId = null;
+            if (parseNode.GetChildNode("security_review") is null) { _explicitNullValueSecurityReview = default!; _explicitNullProperties?.Remove("security_review"); }
+            else if (parseNode.GetChildNode("security_review") is { } nullNodeSecurityReview && nullNodeSecurityReview.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SecurityReview = null;
+            if (parseNode.GetChildNode("widget_id") is null) { _explicitNullValueWidgetId = default!; _explicitNullProperties?.Remove("widget_id"); }
+            else if (parseNode.GetChildNode("widget_id") is { } nullNodeWidgetId && nullNodeWidgetId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) WidgetId = null;
         }
 
         /// <summary>Active generation job, if any.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.WidgetJob? ActiveJob { get => _explicitNullValueActiveJob; set { _explicitNullValueActiveJob = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("active_job"); else _explicitNullProperties?.Remove("active_job"); } }
+        public global::Soenneker.PostHog.OpenApiClient.Models.WidgetJob? ActiveJob { get => _explicitNullValueActiveJob; set { _explicitNullValueActiveJob = value; AdditionalData?.Remove("active_job"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("active_job"); else _explicitNullProperties?.Remove("active_job"); } }
         private global::Soenneker.PostHog.OpenApiClient.Models.WidgetJob? _explicitNullValueActiveJob = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.WidgetJob ActiveJob { get => _explicitNullValueActiveJob; set { _explicitNullValueActiveJob = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("active_job"); else _explicitNullProperties?.Remove("active_job"); } }
+        public global::Soenneker.PostHog.OpenApiClient.Models.WidgetJob ActiveJob { get => _explicitNullValueActiveJob; set { _explicitNullValueActiveJob = value; AdditionalData?.Remove("active_job"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("active_job"); else _explicitNullProperties?.Remove("active_job"); } }
         private global::Soenneker.PostHog.OpenApiClient.Models.WidgetJob _explicitNullValueActiveJob = default!;
 #endif
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -51,113 +68,113 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Short-lived URL for the selected widget version&apos;s preview.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? ArtifactUrl { get => _explicitNullValueArtifactUrl; set { _explicitNullValueArtifactUrl = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("artifact_url"); else _explicitNullProperties?.Remove("artifact_url"); } }
+        public string? ArtifactUrl { get => _explicitNullValueArtifactUrl; set { _explicitNullValueArtifactUrl = value; AdditionalData?.Remove("artifact_url"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("artifact_url"); else _explicitNullProperties?.Remove("artifact_url"); } }
         private string? _explicitNullValueArtifactUrl = default!;
 #nullable restore
 #else
-        public string ArtifactUrl { get => _explicitNullValueArtifactUrl; set { _explicitNullValueArtifactUrl = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("artifact_url"); else _explicitNullProperties?.Remove("artifact_url"); } }
+        public string ArtifactUrl { get => _explicitNullValueArtifactUrl; set { _explicitNullValueArtifactUrl = value; AdditionalData?.Remove("artifact_url"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("artifact_url"); else _explicitNullProperties?.Remove("artifact_url"); } }
         private string _explicitNullValueArtifactUrl = default!;
 #endif
         /// <summary>Hex SHA-256 over the exact immutable artifact manifest selected for display.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? BuildHash { get => _explicitNullValueBuildHash; set { _explicitNullValueBuildHash = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("build_hash"); else _explicitNullProperties?.Remove("build_hash"); } }
+        public string? BuildHash { get => _explicitNullValueBuildHash; set { _explicitNullValueBuildHash = value; AdditionalData?.Remove("build_hash"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("build_hash"); else _explicitNullProperties?.Remove("build_hash"); } }
         private string? _explicitNullValueBuildHash = default!;
 #nullable restore
 #else
-        public string BuildHash { get => _explicitNullValueBuildHash; set { _explicitNullValueBuildHash = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("build_hash"); else _explicitNullProperties?.Remove("build_hash"); } }
+        public string BuildHash { get => _explicitNullValueBuildHash; set { _explicitNullValueBuildHash = value; AdditionalData?.Remove("build_hash"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("build_hash"); else _explicitNullProperties?.Remove("build_hash"); } }
         private string _explicitNullValueBuildHash = default!;
 #endif
         /// <summary>Selected immutable widget version.</summary>
-        public Guid? CurrentVersionId { get => _explicitNullValueCurrentVersionId; set { _explicitNullValueCurrentVersionId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("current_version_id"); else _explicitNullProperties?.Remove("current_version_id"); } }
+        public Guid? CurrentVersionId { get => _explicitNullValueCurrentVersionId; set { _explicitNullValueCurrentVersionId = value; AdditionalData?.Remove("current_version_id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("current_version_id"); else _explicitNullProperties?.Remove("current_version_id"); } }
         private Guid? _explicitNullValueCurrentVersionId = default!;
         /// <summary>Stable failure code for support and diagnostics.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? ErrorCode { get => _explicitNullValueErrorCode; set { _explicitNullValueErrorCode = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("error_code"); else _explicitNullProperties?.Remove("error_code"); } }
+        public string? ErrorCode { get => _explicitNullValueErrorCode; set { _explicitNullValueErrorCode = value; AdditionalData?.Remove("error_code"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("error_code"); else _explicitNullProperties?.Remove("error_code"); } }
         private string? _explicitNullValueErrorCode = default!;
 #nullable restore
 #else
-        public string ErrorCode { get => _explicitNullValueErrorCode; set { _explicitNullValueErrorCode = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("error_code"); else _explicitNullProperties?.Remove("error_code"); } }
+        public string ErrorCode { get => _explicitNullValueErrorCode; set { _explicitNullValueErrorCode = value; AdditionalData?.Remove("error_code"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("error_code"); else _explicitNullProperties?.Remove("error_code"); } }
         private string _explicitNullValueErrorCode = default!;
 #endif
         /// <summary>Actionable failure detail.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? ErrorDetail { get => _explicitNullValueErrorDetail; set { _explicitNullValueErrorDetail = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("error_detail"); else _explicitNullProperties?.Remove("error_detail"); } }
+        public string? ErrorDetail { get => _explicitNullValueErrorDetail; set { _explicitNullValueErrorDetail = value; AdditionalData?.Remove("error_detail"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("error_detail"); else _explicitNullProperties?.Remove("error_detail"); } }
         private string? _explicitNullValueErrorDetail = default!;
 #nullable restore
 #else
-        public string ErrorDetail { get => _explicitNullValueErrorDetail; set { _explicitNullValueErrorDetail = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("error_detail"); else _explicitNullProperties?.Remove("error_detail"); } }
+        public string ErrorDetail { get => _explicitNullValueErrorDetail; set { _explicitNullValueErrorDetail = value; AdditionalData?.Remove("error_detail"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("error_detail"); else _explicitNullProperties?.Remove("error_detail"); } }
         private string _explicitNullValueErrorDetail = default!;
 #endif
         /// <summary>Generation step that failed, if a generation job failed.* `generating_source` - generating_source* `reviewing_source` - reviewing_source* `publishing_source` - publishing_source* `unknown` - unknown</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.WidgetStatusFailurePhase? FailurePhase { get => _explicitNullValueFailurePhase; set { _explicitNullValueFailurePhase = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("failure_phase"); else _explicitNullProperties?.Remove("failure_phase"); } }
+        public global::Soenneker.PostHog.OpenApiClient.Models.WidgetStatusFailurePhase? FailurePhase { get => _explicitNullValueFailurePhase; set { _explicitNullValueFailurePhase = value; AdditionalData?.Remove("failure_phase"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("failure_phase"); else _explicitNullProperties?.Remove("failure_phase"); } }
         private global::Soenneker.PostHog.OpenApiClient.Models.WidgetStatusFailurePhase? _explicitNullValueFailurePhase = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.WidgetStatusFailurePhase FailurePhase { get => _explicitNullValueFailurePhase; set { _explicitNullValueFailurePhase = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("failure_phase"); else _explicitNullProperties?.Remove("failure_phase"); } }
+        public global::Soenneker.PostHog.OpenApiClient.Models.WidgetStatusFailurePhase FailurePhase { get => _explicitNullValueFailurePhase; set { _explicitNullValueFailurePhase = value; AdditionalData?.Remove("failure_phase"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("failure_phase"); else _explicitNullProperties?.Remove("failure_phase"); } }
         private global::Soenneker.PostHog.OpenApiClient.Models.WidgetStatusFailurePhase _explicitNullValueFailurePhase = default!;
 #endif
         /// <summary>Logical dataframe slots available to the selected version.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<string>? FrameNames { get => _explicitNullValueFrameNames; set { _explicitNullValueFrameNames = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("frame_names"); else _explicitNullProperties?.Remove("frame_names"); } }
+        public List<string>? FrameNames { get => _explicitNullValueFrameNames; set { _explicitNullValueFrameNames = value; AdditionalData?.Remove("frame_names"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("frame_names"); else _explicitNullProperties?.Remove("frame_names"); } }
         private List<string>? _explicitNullValueFrameNames = default!;
 #nullable restore
 #else
-        public List<string> FrameNames { get => _explicitNullValueFrameNames; set { _explicitNullValueFrameNames = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("frame_names"); else _explicitNullProperties?.Remove("frame_names"); } }
+        public List<string> FrameNames { get => _explicitNullValueFrameNames; set { _explicitNullValueFrameNames = value; AdditionalData?.Remove("frame_names"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("frame_names"); else _explicitNullProperties?.Remove("frame_names"); } }
         private List<string> _explicitNullValueFrameNames = default!;
 #endif
         /// <summary>Whether the widget has generated history.</summary>
-        public bool? HasVersions { get => _explicitNullValueHasVersions; set { _explicitNullValueHasVersions = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("has_versions"); else _explicitNullProperties?.Remove("has_versions"); } }
+        public bool? HasVersions { get => _explicitNullValueHasVersions; set { _explicitNullValueHasVersions = value; AdditionalData?.Remove("has_versions"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("has_versions"); else _explicitNullProperties?.Remove("has_versions"); } }
         private bool? _explicitNullValueHasVersions = default!;
         /// <summary>Notebook-local mapping from each logical widget input slot to a dataframe and optional Hog transform.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.WidgetStatusInputBindingsProperty? InputBindings { get => _explicitNullValueInputBindings; set { _explicitNullValueInputBindings = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("input_bindings"); else _explicitNullProperties?.Remove("input_bindings"); } }
+        public global::Soenneker.PostHog.OpenApiClient.Models.WidgetStatusInputBindingsProperty? InputBindings { get => _explicitNullValueInputBindings; set { _explicitNullValueInputBindings = value; AdditionalData?.Remove("input_bindings"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("input_bindings"); else _explicitNullProperties?.Remove("input_bindings"); } }
         private global::Soenneker.PostHog.OpenApiClient.Models.WidgetStatusInputBindingsProperty? _explicitNullValueInputBindings = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.WidgetStatusInputBindingsProperty InputBindings { get => _explicitNullValueInputBindings; set { _explicitNullValueInputBindings = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("input_bindings"); else _explicitNullProperties?.Remove("input_bindings"); } }
+        public global::Soenneker.PostHog.OpenApiClient.Models.WidgetStatusInputBindingsProperty InputBindings { get => _explicitNullValueInputBindings; set { _explicitNullValueInputBindings = value; AdditionalData?.Remove("input_bindings"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("input_bindings"); else _explicitNullProperties?.Remove("input_bindings"); } }
         private global::Soenneker.PostHog.OpenApiClient.Models.WidgetStatusInputBindingsProperty _explicitNullValueInputBindings = default!;
 #endif
         /// <summary>Logical dataframe slots and output schemas required by the selected widget version.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.WidgetInputContractItem>? InputContract { get => _explicitNullValueInputContract; set { _explicitNullValueInputContract = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("input_contract"); else _explicitNullProperties?.Remove("input_contract"); } }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.WidgetInputContractItem>? InputContract { get => _explicitNullValueInputContract; set { _explicitNullValueInputContract = value; AdditionalData?.Remove("input_contract"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("input_contract"); else _explicitNullProperties?.Remove("input_contract"); } }
         private List<global::Soenneker.PostHog.OpenApiClient.Models.WidgetInputContractItem>? _explicitNullValueInputContract = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.WidgetInputContractItem> InputContract { get => _explicitNullValueInputContract; set { _explicitNullValueInputContract = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("input_contract"); else _explicitNullProperties?.Remove("input_contract"); } }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.WidgetInputContractItem> InputContract { get => _explicitNullValueInputContract; set { _explicitNullValueInputContract = value; AdditionalData?.Remove("input_contract"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("input_contract"); else _explicitNullProperties?.Remove("input_contract"); } }
         private List<global::Soenneker.PostHog.OpenApiClient.Models.WidgetInputContractItem> _explicitNullValueInputContract = default!;
 #endif
         /// <summary>Placement in this notebook.</summary>
-        public Guid? InstanceId { get => _explicitNullValueInstanceId; set { _explicitNullValueInstanceId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("instance_id"); else _explicitNullProperties?.Remove("instance_id"); } }
+        public Guid? InstanceId { get => _explicitNullValueInstanceId; set { _explicitNullValueInstanceId = value; AdditionalData?.Remove("instance_id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("instance_id"); else _explicitNullProperties?.Remove("instance_id"); } }
         private Guid? _explicitNullValueInstanceId = default!;
         /// <summary>Whether this widget identity is published in the reusable widget catalog.</summary>
-        public bool? IsReusable { get => _explicitNullValueIsReusable; set { _explicitNullValueIsReusable = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("is_reusable"); else _explicitNullProperties?.Remove("is_reusable"); } }
+        public bool? IsReusable { get => _explicitNullValueIsReusable; set { _explicitNullValueIsReusable = value; AdditionalData?.Remove("is_reusable"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("is_reusable"); else _explicitNullProperties?.Remove("is_reusable"); } }
         private bool? _explicitNullValueIsReusable = default!;
         /// <summary>* `awaiting_generation` - awaiting_generation* `generating` - generating* `building` - building* `ready` - ready* `failed` - failed* `incompatible` - incompatible</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.WidgetStatusLifecycleStatus? LifecycleStatus { get => _explicitNullValueLifecycleStatus; set { _explicitNullValueLifecycleStatus = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("lifecycle_status"); else _explicitNullProperties?.Remove("lifecycle_status"); } }
+        public global::Soenneker.PostHog.OpenApiClient.Models.WidgetStatusLifecycleStatus? LifecycleStatus { get => _explicitNullValueLifecycleStatus; set { _explicitNullValueLifecycleStatus = value; AdditionalData?.Remove("lifecycle_status"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("lifecycle_status"); else _explicitNullProperties?.Remove("lifecycle_status"); } }
         private global::Soenneker.PostHog.OpenApiClient.Models.WidgetStatusLifecycleStatus? _explicitNullValueLifecycleStatus = default!;
         /// <summary>Version explicitly pinned for this notebook placement, or null when it follows the latest version.</summary>
-        public Guid? PinnedVersionId { get => _explicitNullValuePinnedVersionId; set { _explicitNullValuePinnedVersionId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("pinned_version_id"); else _explicitNullProperties?.Remove("pinned_version_id"); } }
+        public Guid? PinnedVersionId { get => _explicitNullValuePinnedVersionId; set { _explicitNullValuePinnedVersionId = value; AdditionalData?.Remove("pinned_version_id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("pinned_version_id"); else _explicitNullProperties?.Remove("pinned_version_id"); } }
         private Guid? _explicitNullValuePinnedVersionId = default!;
         /// <summary>Automated review for the selected source, or null for a legacy unreviewed version.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.WidgetSecurityReview? SecurityReview { get => _explicitNullValueSecurityReview; set { _explicitNullValueSecurityReview = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("security_review"); else _explicitNullProperties?.Remove("security_review"); } }
+        public global::Soenneker.PostHog.OpenApiClient.Models.WidgetSecurityReview? SecurityReview { get => _explicitNullValueSecurityReview; set { _explicitNullValueSecurityReview = value; AdditionalData?.Remove("security_review"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("security_review"); else _explicitNullProperties?.Remove("security_review"); } }
         private global::Soenneker.PostHog.OpenApiClient.Models.WidgetSecurityReview? _explicitNullValueSecurityReview = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.WidgetSecurityReview SecurityReview { get => _explicitNullValueSecurityReview; set { _explicitNullValueSecurityReview = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("security_review"); else _explicitNullProperties?.Remove("security_review"); } }
+        public global::Soenneker.PostHog.OpenApiClient.Models.WidgetSecurityReview SecurityReview { get => _explicitNullValueSecurityReview; set { _explicitNullValueSecurityReview = value; AdditionalData?.Remove("security_review"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("security_review"); else _explicitNullProperties?.Remove("security_review"); } }
         private global::Soenneker.PostHog.OpenApiClient.Models.WidgetSecurityReview _explicitNullValueSecurityReview = default!;
 #endif
         /// <summary>Reusable widget identity.</summary>
-        public Guid? WidgetId { get => _explicitNullValueWidgetId; set { _explicitNullValueWidgetId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("widget_id"); else _explicitNullProperties?.Remove("widget_id"); } }
+        public Guid? WidgetId { get => _explicitNullValueWidgetId; set { _explicitNullValueWidgetId = value; AdditionalData?.Remove("widget_id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("widget_id"); else _explicitNullProperties?.Remove("widget_id"); } }
         private Guid? _explicitNullValueWidgetId = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.WidgetStatus"/> and sets the default values.
@@ -197,7 +214,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "input_contract", n => { InputContract = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.WidgetInputContractItem>(global::Soenneker.PostHog.OpenApiClient.Models.WidgetInputContractItem.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "instance_id", n => { InstanceId = n.GetGuidValue(); } },
                 { "is_reusable", n => { IsReusable = n.GetBoolValue(); } },
-                { "lifecycle_status", n => { LifecycleStatus = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.WidgetStatusLifecycleStatus>(); } },
+                { "lifecycle_status", n => { var parsed = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.WidgetStatusLifecycleStatus>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValueLifecycleStatus = default; _explicitNullProperties?.Remove("lifecycle_status"); AdditionalData["lifecycle_status"] = unknown; } else { LifecycleStatus = parsed; AdditionalData.Remove("lifecycle_status"); } } },
                 { "pinned_version_id", n => { PinnedVersionId = n.GetGuidValue(); } },
                 { "security_review", n => { SecurityReview = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.WidgetSecurityReview>(global::Soenneker.PostHog.OpenApiClient.Models.WidgetSecurityReview.CreateFromDiscriminatorValue); } },
                 { "widget_id", n => { WidgetId = n.GetGuidValue(); } },

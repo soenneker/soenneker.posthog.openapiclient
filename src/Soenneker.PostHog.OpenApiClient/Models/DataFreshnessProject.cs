@@ -17,32 +17,36 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("freshness") is { } nullNodeFreshness && nullNodeFreshness.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Freshness = null;
-            if (parseNode.GetChildNode("last_data_at") is { } nullNodeLastDataAt && nullNodeLastDataAt.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) LastDataAt = null;
-            if (parseNode.GetChildNode("sources") is { } nullNodeSources && nullNodeSources.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Sources = null;
-            if (parseNode.GetChildNode("team_id") is { } nullNodeTeamId && nullNodeTeamId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TeamId = null;
+            if (parseNode.GetChildNode("freshness") is null) { _explicitNullValueFreshness = default!; _explicitNullProperties?.Remove("freshness"); }
+            else if (parseNode.GetChildNode("freshness") is { } nullNodeFreshness && nullNodeFreshness.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Freshness = null;
+            if (parseNode.GetChildNode("last_data_at") is null) { _explicitNullValueLastDataAt = default!; _explicitNullProperties?.Remove("last_data_at"); }
+            else if (parseNode.GetChildNode("last_data_at") is { } nullNodeLastDataAt && nullNodeLastDataAt.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) LastDataAt = null;
+            if (parseNode.GetChildNode("sources") is null) { _explicitNullValueSources = default!; _explicitNullProperties?.Remove("sources"); }
+            else if (parseNode.GetChildNode("sources") is { } nullNodeSources && nullNodeSources.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Sources = null;
+            if (parseNode.GetChildNode("team_id") is null) { _explicitNullValueTeamId = default!; _explicitNullProperties?.Remove("team_id"); }
+            else if (parseNode.GetChildNode("team_id") is { } nullNodeTeamId && nullNodeTeamId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TeamId = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>* `never` - never* `live` - live* `stale` - stale</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.DataFreshnessProjectFreshness? Freshness { get => _explicitNullValueFreshness; set { _explicitNullValueFreshness = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("freshness"); else _explicitNullProperties?.Remove("freshness"); } }
+        public global::Soenneker.PostHog.OpenApiClient.Models.DataFreshnessProjectFreshness? Freshness { get => _explicitNullValueFreshness; set { _explicitNullValueFreshness = value; AdditionalData?.Remove("freshness"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("freshness"); else _explicitNullProperties?.Remove("freshness"); } }
         private global::Soenneker.PostHog.OpenApiClient.Models.DataFreshnessProjectFreshness? _explicitNullValueFreshness = default!;
         /// <summary>When data of any kind last reached the project, or null if nothing arrived within the lookback window.</summary>
-        public DateTimeOffset? LastDataAt { get => _explicitNullValueLastDataAt; set { _explicitNullValueLastDataAt = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("last_data_at"); else _explicitNullProperties?.Remove("last_data_at"); } }
+        public DateTimeOffset? LastDataAt { get => _explicitNullValueLastDataAt; set { _explicitNullValueLastDataAt = value; AdditionalData?.Remove("last_data_at"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("last_data_at"); else _explicitNullProperties?.Remove("last_data_at"); } }
         private DateTimeOffset? _explicitNullValueLastDataAt = default!;
         /// <summary>Per-source breakdown, most recently active first.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.DataFreshnessSource>? Sources { get => _explicitNullValueSources; set { _explicitNullValueSources = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("sources"); else _explicitNullProperties?.Remove("sources"); } }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.DataFreshnessSource>? Sources { get => _explicitNullValueSources; set { _explicitNullValueSources = value; AdditionalData?.Remove("sources"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("sources"); else _explicitNullProperties?.Remove("sources"); } }
         private List<global::Soenneker.PostHog.OpenApiClient.Models.DataFreshnessSource>? _explicitNullValueSources = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.DataFreshnessSource> Sources { get => _explicitNullValueSources; set { _explicitNullValueSources = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("sources"); else _explicitNullProperties?.Remove("sources"); } }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.DataFreshnessSource> Sources { get => _explicitNullValueSources; set { _explicitNullValueSources = value; AdditionalData?.Remove("sources"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("sources"); else _explicitNullProperties?.Remove("sources"); } }
         private List<global::Soenneker.PostHog.OpenApiClient.Models.DataFreshnessSource> _explicitNullValueSources = default!;
 #endif
         /// <summary>ID of the project this freshness verdict is for.</summary>
-        public int? TeamId { get => _explicitNullValueTeamId; set { _explicitNullValueTeamId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("team_id"); else _explicitNullProperties?.Remove("team_id"); } }
+        public int? TeamId { get => _explicitNullValueTeamId; set { _explicitNullValueTeamId = value; AdditionalData?.Remove("team_id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("team_id"); else _explicitNullProperties?.Remove("team_id"); } }
         private int? _explicitNullValueTeamId = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.DataFreshnessProject"/> and sets the default values.
@@ -69,7 +73,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "freshness", n => { Freshness = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.DataFreshnessProjectFreshness>(); } },
+                { "freshness", n => { var parsed = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.DataFreshnessProjectFreshness>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValueFreshness = default; _explicitNullProperties?.Remove("freshness"); AdditionalData["freshness"] = unknown; } else { Freshness = parsed; AdditionalData.Remove("freshness"); } } },
                 { "last_data_at", n => { LastDataAt = n.GetDateTimeOffsetValue(); } },
                 { "sources", n => { Sources = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.DataFreshnessSource>(global::Soenneker.PostHog.OpenApiClient.Models.DataFreshnessSource.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "team_id", n => { TeamId = n.GetIntValue(); } },

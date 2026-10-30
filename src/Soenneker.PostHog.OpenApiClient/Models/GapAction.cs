@@ -17,13 +17,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("resolved_source_id") is { } nullNodeResolvedSourceId && nullNodeResolvedSourceId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ResolvedSourceId = null;
+            if (parseNode.GetChildNode("resolved_source_id") is null) { _explicitNullValueResolvedSourceId = default!; _explicitNullProperties?.Remove("resolved_source_id"); }
+            else if (parseNode.GetChildNode("resolved_source_id") is { } nullNodeResolvedSourceId && nullNodeResolvedSourceId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ResolvedSourceId = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Optional knowledge source to link when accepting.</summary>
-        public Guid? ResolvedSourceId { get => _explicitNullValueResolvedSourceId; set { _explicitNullValueResolvedSourceId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("resolved_source_id"); else _explicitNullProperties?.Remove("resolved_source_id"); } }
+        public Guid? ResolvedSourceId { get => _explicitNullValueResolvedSourceId; set { _explicitNullValueResolvedSourceId = value; AdditionalData?.Remove("resolved_source_id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("resolved_source_id"); else _explicitNullProperties?.Remove("resolved_source_id"); } }
         private Guid? _explicitNullValueResolvedSourceId = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.GapAction"/> and sets the default values.

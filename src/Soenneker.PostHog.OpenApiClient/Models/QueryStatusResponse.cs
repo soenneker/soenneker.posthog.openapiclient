@@ -17,7 +17,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("query_status") is { } nullNodeQueryStatus && nullNodeQueryStatus.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) QueryStatus = null;
+            if (parseNode.GetChildNode("query_status") is null) { _explicitNullValueQueryStatus = default!; _explicitNullProperties?.Remove("query_status"); }
+            else if (parseNode.GetChildNode("query_status") is { } nullNodeQueryStatus && nullNodeQueryStatus.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) QueryStatus = null;
         }
 
         /// <summary>The query_status property</summary>

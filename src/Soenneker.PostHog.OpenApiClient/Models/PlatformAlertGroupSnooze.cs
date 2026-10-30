@@ -17,8 +17,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("grouping_key") is { } nullNodeGroupingKey && nullNodeGroupingKey.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) GroupingKey = null;
-            if (parseNode.GetChildNode("snooze_until") is { } nullNodeSnoozeUntil && nullNodeSnoozeUntil.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SnoozeUntil = null;
+            if (parseNode.GetChildNode("grouping_key") is null) { _explicitNullValueGroupingKey = default!; _explicitNullProperties?.Remove("grouping_key"); }
+            else if (parseNode.GetChildNode("grouping_key") is { } nullNodeGroupingKey && nullNodeGroupingKey.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) GroupingKey = null;
+            if (parseNode.GetChildNode("snooze_until") is null) { _explicitNullValueSnoozeUntil = default!; _explicitNullProperties?.Remove("snooze_until"); }
+            else if (parseNode.GetChildNode("snooze_until") is { } nullNodeSnoozeUntil && nullNodeSnoozeUntil.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SnoozeUntil = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -26,15 +28,15 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Key of the group to snooze, as the grouping_key of one of the alert&apos;s instances.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? GroupingKey { get => _explicitNullValueGroupingKey; set { _explicitNullValueGroupingKey = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("grouping_key"); else _explicitNullProperties?.Remove("grouping_key"); } }
+        public string? GroupingKey { get => _explicitNullValueGroupingKey; set { _explicitNullValueGroupingKey = value; AdditionalData?.Remove("grouping_key"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("grouping_key"); else _explicitNullProperties?.Remove("grouping_key"); } }
         private string? _explicitNullValueGroupingKey = default!;
 #nullable restore
 #else
-        public string GroupingKey { get => _explicitNullValueGroupingKey; set { _explicitNullValueGroupingKey = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("grouping_key"); else _explicitNullProperties?.Remove("grouping_key"); } }
+        public string GroupingKey { get => _explicitNullValueGroupingKey; set { _explicitNullValueGroupingKey = value; AdditionalData?.Remove("grouping_key"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("grouping_key"); else _explicitNullProperties?.Remove("grouping_key"); } }
         private string _explicitNullValueGroupingKey = default!;
 #endif
         /// <summary>Time until which this group&apos;s notifications are muted. Must be in the future and at most 30 days away. Null clears the group&apos;s snooze. The group keeps being checked, and its firing stays open.</summary>
-        public DateTimeOffset? SnoozeUntil { get => _explicitNullValueSnoozeUntil; set { _explicitNullValueSnoozeUntil = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("snooze_until"); else _explicitNullProperties?.Remove("snooze_until"); } }
+        public DateTimeOffset? SnoozeUntil { get => _explicitNullValueSnoozeUntil; set { _explicitNullValueSnoozeUntil = value; AdditionalData?.Remove("snooze_until"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("snooze_until"); else _explicitNullProperties?.Remove("snooze_until"); } }
         private DateTimeOffset? _explicitNullValueSnoozeUntil = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.PlatformAlertGroupSnooze"/> and sets the default values.

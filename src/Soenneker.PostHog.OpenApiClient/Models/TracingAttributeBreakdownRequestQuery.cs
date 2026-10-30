@@ -18,15 +18,24 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("breakdownKey") is { } nullNodeBreakdownKey && nullNodeBreakdownKey.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) BreakdownKey = null;
-            if (parseNode.GetChildNode("breakdownType") is { } nullNodeBreakdownType && nullNodeBreakdownType.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) BreakdownType = null;
-            if (parseNode.GetChildNode("compareFilter") is { } nullNodeCompareFilter && nullNodeCompareFilter.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CompareFilter = null;
-            if (parseNode.GetChildNode("dateRange") is { } nullNodeDateRange && nullNodeDateRange.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) DateRange = null;
-            if (parseNode.GetChildNode("excludeBreakdownFilter") is { } nullNodeExcludeBreakdownFilter && nullNodeExcludeBreakdownFilter.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ExcludeBreakdownFilter = null;
-            if (parseNode.GetChildNode("facetSearch") is { } nullNodeFacetSearch && nullNodeFacetSearch.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) FacetSearch = null;
-            if (parseNode.GetChildNode("filterGroup") is { } nullNodeFilterGroup && nullNodeFilterGroup.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) FilterGroup = null;
-            if (parseNode.GetChildNode("orderBy") is { } nullNodeOrderBy && nullNodeOrderBy.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) OrderBy = null;
-            if (parseNode.GetChildNode("serviceNames") is { } nullNodeServiceNames && nullNodeServiceNames.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ServiceNames = null;
+            if (parseNode.GetChildNode("breakdownKey") is null) { _explicitNullValueBreakdownKey = default!; _explicitNullProperties?.Remove("breakdownKey"); }
+            else if (parseNode.GetChildNode("breakdownKey") is { } nullNodeBreakdownKey && nullNodeBreakdownKey.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) BreakdownKey = null;
+            if (parseNode.GetChildNode("breakdownType") is null) { _explicitNullValueBreakdownType = default!; _explicitNullProperties?.Remove("breakdownType"); }
+            else if (parseNode.GetChildNode("breakdownType") is { } nullNodeBreakdownType && nullNodeBreakdownType.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) BreakdownType = null;
+            if (parseNode.GetChildNode("compareFilter") is null) { _explicitNullValueCompareFilter = default!; _explicitNullProperties?.Remove("compareFilter"); }
+            else if (parseNode.GetChildNode("compareFilter") is { } nullNodeCompareFilter && nullNodeCompareFilter.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CompareFilter = null;
+            if (parseNode.GetChildNode("dateRange") is null) { _explicitNullValueDateRange = default!; _explicitNullProperties?.Remove("dateRange"); }
+            else if (parseNode.GetChildNode("dateRange") is { } nullNodeDateRange && nullNodeDateRange.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) DateRange = null;
+            if (parseNode.GetChildNode("excludeBreakdownFilter") is null) { _explicitNullValueExcludeBreakdownFilter = default!; _explicitNullProperties?.Remove("excludeBreakdownFilter"); }
+            else if (parseNode.GetChildNode("excludeBreakdownFilter") is { } nullNodeExcludeBreakdownFilter && nullNodeExcludeBreakdownFilter.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ExcludeBreakdownFilter = null;
+            if (parseNode.GetChildNode("facetSearch") is null) { _explicitNullValueFacetSearch = default!; _explicitNullProperties?.Remove("facetSearch"); }
+            else if (parseNode.GetChildNode("facetSearch") is { } nullNodeFacetSearch && nullNodeFacetSearch.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) FacetSearch = null;
+            if (parseNode.GetChildNode("filterGroup") is null) { _explicitNullValueFilterGroup = default!; _explicitNullProperties?.Remove("filterGroup"); }
+            else if (parseNode.GetChildNode("filterGroup") is { } nullNodeFilterGroup && nullNodeFilterGroup.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) FilterGroup = null;
+            if (parseNode.GetChildNode("orderBy") is null) { _explicitNullValueOrderBy = default!; _explicitNullProperties?.Remove("orderBy"); }
+            else if (parseNode.GetChildNode("orderBy") is { } nullNodeOrderBy && nullNodeOrderBy.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) OrderBy = null;
+            if (parseNode.GetChildNode("serviceNames") is null) { _explicitNullValueServiceNames = default!; _explicitNullProperties?.Remove("serviceNames"); }
+            else if (parseNode.GetChildNode("serviceNames") is { } nullNodeServiceNames && nullNodeServiceNames.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ServiceNames = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -34,70 +43,70 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Attribute key to group by (e.g. &quot;server.address&quot;, &quot;http.response.status_code&quot;). Discover keys with apm-attributes-list. For the &quot;span&quot; breakdown type, must be one of the allowlisted top-level columns: &quot;service_name&quot;, &quot;status_code&quot;.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? BreakdownKey { get => _explicitNullValueBreakdownKey; set { _explicitNullValueBreakdownKey = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("breakdownKey"); else _explicitNullProperties?.Remove("breakdownKey"); } }
+        public string? BreakdownKey { get => _explicitNullValueBreakdownKey; set { _explicitNullValueBreakdownKey = value; AdditionalData?.Remove("breakdownKey"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("breakdownKey"); else _explicitNullProperties?.Remove("breakdownKey"); } }
         private string? _explicitNullValueBreakdownKey = default!;
 #nullable restore
 #else
-        public string BreakdownKey { get => _explicitNullValueBreakdownKey; set { _explicitNullValueBreakdownKey = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("breakdownKey"); else _explicitNullProperties?.Remove("breakdownKey"); } }
+        public string BreakdownKey { get => _explicitNullValueBreakdownKey; set { _explicitNullValueBreakdownKey = value; AdditionalData?.Remove("breakdownKey"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("breakdownKey"); else _explicitNullProperties?.Remove("breakdownKey"); } }
         private string _explicitNullValueBreakdownKey = default!;
 #endif
         /// <summary>* `span` - span* `span_attribute` - span_attribute* `span_resource_attribute` - span_resource_attribute</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.TracingAttributeBreakdownQueryBodyBreakdownType? BreakdownType { get => _explicitNullValueBreakdownType; set { _explicitNullValueBreakdownType = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("breakdownType"); else _explicitNullProperties?.Remove("breakdownType"); } }
+        public global::Soenneker.PostHog.OpenApiClient.Models.TracingAttributeBreakdownQueryBodyBreakdownType? BreakdownType { get => _explicitNullValueBreakdownType; set { _explicitNullValueBreakdownType = value; AdditionalData?.Remove("breakdownType"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("breakdownType"); else _explicitNullProperties?.Remove("breakdownType"); } }
         private global::Soenneker.PostHog.OpenApiClient.Models.TracingAttributeBreakdownQueryBodyBreakdownType? _explicitNullValueBreakdownType = default!;
         /// <summary>Optional comparison-window configuration. When omitted, only the primary window is returned.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.TracingAttributeBreakdownQueryBodyCompareFilter? CompareFilter { get => _explicitNullValueCompareFilter; set { _explicitNullValueCompareFilter = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("compareFilter"); else _explicitNullProperties?.Remove("compareFilter"); } }
+        public global::Soenneker.PostHog.OpenApiClient.Models.TracingAttributeBreakdownQueryBodyCompareFilter? CompareFilter { get => _explicitNullValueCompareFilter; set { _explicitNullValueCompareFilter = value; AdditionalData?.Remove("compareFilter"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("compareFilter"); else _explicitNullProperties?.Remove("compareFilter"); } }
         private global::Soenneker.PostHog.OpenApiClient.Models.TracingAttributeBreakdownQueryBodyCompareFilter? _explicitNullValueCompareFilter = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.TracingAttributeBreakdownQueryBodyCompareFilter CompareFilter { get => _explicitNullValueCompareFilter; set { _explicitNullValueCompareFilter = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("compareFilter"); else _explicitNullProperties?.Remove("compareFilter"); } }
+        public global::Soenneker.PostHog.OpenApiClient.Models.TracingAttributeBreakdownQueryBodyCompareFilter CompareFilter { get => _explicitNullValueCompareFilter; set { _explicitNullValueCompareFilter = value; AdditionalData?.Remove("compareFilter"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("compareFilter"); else _explicitNullProperties?.Remove("compareFilter"); } }
         private global::Soenneker.PostHog.OpenApiClient.Models.TracingAttributeBreakdownQueryBodyCompareFilter _explicitNullValueCompareFilter = default!;
 #endif
         /// <summary>Date range for the primary window. Defaults to last hour.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.TracingAttributeBreakdownQueryBodyDateRange? DateRange { get => _explicitNullValueDateRange; set { _explicitNullValueDateRange = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("dateRange"); else _explicitNullProperties?.Remove("dateRange"); } }
+        public global::Soenneker.PostHog.OpenApiClient.Models.TracingAttributeBreakdownQueryBodyDateRange? DateRange { get => _explicitNullValueDateRange; set { _explicitNullValueDateRange = value; AdditionalData?.Remove("dateRange"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("dateRange"); else _explicitNullProperties?.Remove("dateRange"); } }
         private global::Soenneker.PostHog.OpenApiClient.Models.TracingAttributeBreakdownQueryBodyDateRange? _explicitNullValueDateRange = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.TracingAttributeBreakdownQueryBodyDateRange DateRange { get => _explicitNullValueDateRange; set { _explicitNullValueDateRange = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("dateRange"); else _explicitNullProperties?.Remove("dateRange"); } }
+        public global::Soenneker.PostHog.OpenApiClient.Models.TracingAttributeBreakdownQueryBodyDateRange DateRange { get => _explicitNullValueDateRange; set { _explicitNullValueDateRange = value; AdditionalData?.Remove("dateRange"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("dateRange"); else _explicitNullProperties?.Remove("dateRange"); } }
         private global::Soenneker.PostHog.OpenApiClient.Models.TracingAttributeBreakdownQueryBodyDateRange _explicitNullValueDateRange = default!;
 #endif
         /// <summary>Drop filters targeting the breakdown key itself (including serviceNames for a service_name breakdown), so a facet&apos;s value list stays complete while one of its values is selected.</summary>
-        public bool? ExcludeBreakdownFilter { get => _explicitNullValueExcludeBreakdownFilter; set { _explicitNullValueExcludeBreakdownFilter = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("excludeBreakdownFilter"); else _explicitNullProperties?.Remove("excludeBreakdownFilter"); } }
+        public bool? ExcludeBreakdownFilter { get => _explicitNullValueExcludeBreakdownFilter; set { _explicitNullValueExcludeBreakdownFilter = value; AdditionalData?.Remove("excludeBreakdownFilter"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("excludeBreakdownFilter"); else _explicitNullProperties?.Remove("excludeBreakdownFilter"); } }
         private bool? _explicitNullValueExcludeBreakdownFilter = default!;
         /// <summary>Type-ahead filter over the breakdown field&apos;s own values (case-insensitive substring match). An empty string means no filter. Lets a facet&apos;s value search reach past the row limit.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? FacetSearch { get => _explicitNullValueFacetSearch; set { _explicitNullValueFacetSearch = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("facetSearch"); else _explicitNullProperties?.Remove("facetSearch"); } }
+        public string? FacetSearch { get => _explicitNullValueFacetSearch; set { _explicitNullValueFacetSearch = value; AdditionalData?.Remove("facetSearch"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("facetSearch"); else _explicitNullProperties?.Remove("facetSearch"); } }
         private string? _explicitNullValueFacetSearch = default!;
 #nullable restore
 #else
-        public string FacetSearch { get => _explicitNullValueFacetSearch; set { _explicitNullValueFacetSearch = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("facetSearch"); else _explicitNullProperties?.Remove("facetSearch"); } }
+        public string FacetSearch { get => _explicitNullValueFacetSearch; set { _explicitNullValueFacetSearch = value; AdditionalData?.Remove("facetSearch"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("facetSearch"); else _explicitNullProperties?.Remove("facetSearch"); } }
         private string _explicitNullValueFacetSearch = default!;
 #endif
         /// <summary>Property filters scoping the spans the breakdown runs over (e.g. only error spans).</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.SpanPropertyFilter2>? FilterGroup { get => _explicitNullValueFilterGroup; set { _explicitNullValueFilterGroup = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("filterGroup"); else _explicitNullProperties?.Remove("filterGroup"); } }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.SpanPropertyFilter2>? FilterGroup { get => _explicitNullValueFilterGroup; set { _explicitNullValueFilterGroup = value; AdditionalData?.Remove("filterGroup"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("filterGroup"); else _explicitNullProperties?.Remove("filterGroup"); } }
         private List<global::Soenneker.PostHog.OpenApiClient.Models.SpanPropertyFilter2>? _explicitNullValueFilterGroup = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.SpanPropertyFilter2> FilterGroup { get => _explicitNullValueFilterGroup; set { _explicitNullValueFilterGroup = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("filterGroup"); else _explicitNullProperties?.Remove("filterGroup"); } }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.SpanPropertyFilter2> FilterGroup { get => _explicitNullValueFilterGroup; set { _explicitNullValueFilterGroup = value; AdditionalData?.Remove("filterGroup"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("filterGroup"); else _explicitNullProperties?.Remove("filterGroup"); } }
         private List<global::Soenneker.PostHog.OpenApiClient.Models.SpanPropertyFilter2> _explicitNullValueFilterGroup = default!;
 #endif
         /// <summary>* `count` - count* `error_count` - error_count</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.TracingAttributeBreakdownQueryBodyOrderBy? OrderBy { get => _explicitNullValueOrderBy; set { _explicitNullValueOrderBy = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("orderBy"); else _explicitNullProperties?.Remove("orderBy"); } }
+        public global::Soenneker.PostHog.OpenApiClient.Models.TracingAttributeBreakdownQueryBodyOrderBy? OrderBy { get => _explicitNullValueOrderBy; set { _explicitNullValueOrderBy = value; AdditionalData?.Remove("orderBy"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("orderBy"); else _explicitNullProperties?.Remove("orderBy"); } }
         private global::Soenneker.PostHog.OpenApiClient.Models.TracingAttributeBreakdownQueryBodyOrderBy? _explicitNullValueOrderBy = default!;
         /// <summary>Filter by service names.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<string>? ServiceNames { get => _explicitNullValueServiceNames; set { _explicitNullValueServiceNames = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("serviceNames"); else _explicitNullProperties?.Remove("serviceNames"); } }
+        public List<string>? ServiceNames { get => _explicitNullValueServiceNames; set { _explicitNullValueServiceNames = value; AdditionalData?.Remove("serviceNames"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("serviceNames"); else _explicitNullProperties?.Remove("serviceNames"); } }
         private List<string>? _explicitNullValueServiceNames = default!;
 #nullable restore
 #else
-        public List<string> ServiceNames { get => _explicitNullValueServiceNames; set { _explicitNullValueServiceNames = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("serviceNames"); else _explicitNullProperties?.Remove("serviceNames"); } }
+        public List<string> ServiceNames { get => _explicitNullValueServiceNames; set { _explicitNullValueServiceNames = value; AdditionalData?.Remove("serviceNames"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("serviceNames"); else _explicitNullProperties?.Remove("serviceNames"); } }
         private List<string> _explicitNullValueServiceNames = default!;
 #endif
         /// <summary>
@@ -127,13 +136,13 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "breakdownKey", n => { BreakdownKey = n.GetStringValue(); } },
-                { "breakdownType", n => { BreakdownType = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.TracingAttributeBreakdownQueryBodyBreakdownType>(); } },
+                { "breakdownType", n => { var parsed = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.TracingAttributeBreakdownQueryBodyBreakdownType>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValueBreakdownType = default; _explicitNullProperties?.Remove("breakdownType"); AdditionalData["breakdownType"] = unknown; } else { BreakdownType = parsed; AdditionalData.Remove("breakdownType"); } } },
                 { "compareFilter", n => { CompareFilter = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TracingAttributeBreakdownQueryBodyCompareFilter>(global::Soenneker.PostHog.OpenApiClient.Models.TracingAttributeBreakdownQueryBodyCompareFilter.CreateFromDiscriminatorValue); } },
                 { "dateRange", n => { DateRange = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.TracingAttributeBreakdownQueryBodyDateRange>(global::Soenneker.PostHog.OpenApiClient.Models.TracingAttributeBreakdownQueryBodyDateRange.CreateFromDiscriminatorValue); } },
                 { "excludeBreakdownFilter", n => { ExcludeBreakdownFilter = n.GetBoolValue(); } },
                 { "facetSearch", n => { FacetSearch = n.GetStringValue(); } },
                 { "filterGroup", n => { FilterGroup = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.SpanPropertyFilter2>(global::Soenneker.PostHog.OpenApiClient.Models.SpanPropertyFilter2.CreateFromDiscriminatorValue)?.AsList(); } },
-                { "orderBy", n => { OrderBy = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.TracingAttributeBreakdownQueryBodyOrderBy>(); } },
+                { "orderBy", n => { var parsed = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.TracingAttributeBreakdownQueryBodyOrderBy>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValueOrderBy = default; _explicitNullProperties?.Remove("orderBy"); AdditionalData["orderBy"] = unknown; } else { OrderBy = parsed; AdditionalData.Remove("orderBy"); } } },
                 { "serviceNames", n => { ServiceNames = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
             };
         }

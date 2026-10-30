@@ -17,7 +17,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("precheck_query") is { } nullNodePrecheckQuery && nullNodePrecheckQuery.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) PrecheckQuery = null;
+            if (parseNode.GetChildNode("precheck_query") is null) { _explicitNullValuePrecheckQuery = default!; _explicitNullProperties?.Remove("precheck_query"); }
+            else if (parseNode.GetChildNode("precheck_query") is { } nullNodePrecheckQuery && nullNodePrecheckQuery.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) PrecheckQuery = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -25,11 +26,11 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>HogQL `SELECT` to try, with the same `{since}`, `{now}` and `{interval_minutes}` placeholders a saved pre-check gets. Omit it, or pass null or blank, to try the scout&apos;s effective query: its own `precheck_query`, or the default its skill ships.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? PrecheckQuery { get => _explicitNullValuePrecheckQuery; set { _explicitNullValuePrecheckQuery = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("precheck_query"); else _explicitNullProperties?.Remove("precheck_query"); } }
+        public string? PrecheckQuery { get => _explicitNullValuePrecheckQuery; set { _explicitNullValuePrecheckQuery = value; AdditionalData?.Remove("precheck_query"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("precheck_query"); else _explicitNullProperties?.Remove("precheck_query"); } }
         private string? _explicitNullValuePrecheckQuery = default!;
 #nullable restore
 #else
-        public string PrecheckQuery { get => _explicitNullValuePrecheckQuery; set { _explicitNullValuePrecheckQuery = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("precheck_query"); else _explicitNullProperties?.Remove("precheck_query"); } }
+        public string PrecheckQuery { get => _explicitNullValuePrecheckQuery; set { _explicitNullValuePrecheckQuery = value; AdditionalData?.Remove("precheck_query"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("precheck_query"); else _explicitNullProperties?.Remove("precheck_query"); } }
         private string _explicitNullValuePrecheckQuery = default!;
 #endif
         /// <summary>

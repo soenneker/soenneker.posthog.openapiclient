@@ -17,109 +17,122 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("activity_page_url") is { } nullNodeActivityPageUrl && nullNodeActivityPageUrl.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ActivityPageUrl = null;
-            if (parseNode.GetChildNode("count") is { } nullNodeCount && nullNodeCount.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Count = null;
-            if (parseNode.GetChildNode("days_since_release") is { } nullNodeDaysSinceRelease && nullNodeDaysSinceRelease.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) DaysSinceRelease = null;
-            if (parseNode.GetChildNode("is_current_or_newer") is { } nullNodeIsCurrentOrNewer && nullNodeIsCurrentOrNewer.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) IsCurrentOrNewer = null;
-            if (parseNode.GetChildNode("is_old") is { } nullNodeIsOld && nullNodeIsOld.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) IsOld = null;
-            if (parseNode.GetChildNode("is_outdated") is { } nullNodeIsOutdated && nullNodeIsOutdated.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) IsOutdated = null;
-            if (parseNode.GetChildNode("max_timestamp") is { } nullNodeMaxTimestamp && nullNodeMaxTimestamp.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MaxTimestamp = null;
-            if (parseNode.GetChildNode("needs_updating") is { } nullNodeNeedsUpdating && nullNodeNeedsUpdating.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) NeedsUpdating = null;
-            if (parseNode.GetChildNode("released_ago") is { } nullNodeReleasedAgo && nullNodeReleasedAgo.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ReleasedAgo = null;
-            if (parseNode.GetChildNode("release_date") is { } nullNodeReleaseDate && nullNodeReleaseDate.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ReleaseDate = null;
-            if (parseNode.GetChildNode("sql_query") is { } nullNodeSqlQuery && nullNodeSqlQuery.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SqlQuery = null;
-            if (parseNode.GetChildNode("status_reason") is { } nullNodeStatusReason && nullNodeStatusReason.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) StatusReason = null;
-            if (parseNode.GetChildNode("version") is { } nullNodeVersion && nullNodeVersion.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Version = null;
+            if (parseNode.GetChildNode("activity_page_url") is null) { _explicitNullValueActivityPageUrl = default!; _explicitNullProperties?.Remove("activity_page_url"); }
+            else if (parseNode.GetChildNode("activity_page_url") is { } nullNodeActivityPageUrl && nullNodeActivityPageUrl.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ActivityPageUrl = null;
+            if (parseNode.GetChildNode("count") is null) { _explicitNullValueCount = default!; _explicitNullProperties?.Remove("count"); }
+            else if (parseNode.GetChildNode("count") is { } nullNodeCount && nullNodeCount.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Count = null;
+            if (parseNode.GetChildNode("days_since_release") is null) { _explicitNullValueDaysSinceRelease = default!; _explicitNullProperties?.Remove("days_since_release"); }
+            else if (parseNode.GetChildNode("days_since_release") is { } nullNodeDaysSinceRelease && nullNodeDaysSinceRelease.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) DaysSinceRelease = null;
+            if (parseNode.GetChildNode("is_current_or_newer") is null) { _explicitNullValueIsCurrentOrNewer = default!; _explicitNullProperties?.Remove("is_current_or_newer"); }
+            else if (parseNode.GetChildNode("is_current_or_newer") is { } nullNodeIsCurrentOrNewer && nullNodeIsCurrentOrNewer.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) IsCurrentOrNewer = null;
+            if (parseNode.GetChildNode("is_old") is null) { _explicitNullValueIsOld = default!; _explicitNullProperties?.Remove("is_old"); }
+            else if (parseNode.GetChildNode("is_old") is { } nullNodeIsOld && nullNodeIsOld.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) IsOld = null;
+            if (parseNode.GetChildNode("is_outdated") is null) { _explicitNullValueIsOutdated = default!; _explicitNullProperties?.Remove("is_outdated"); }
+            else if (parseNode.GetChildNode("is_outdated") is { } nullNodeIsOutdated && nullNodeIsOutdated.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) IsOutdated = null;
+            if (parseNode.GetChildNode("max_timestamp") is null) { _explicitNullValueMaxTimestamp = default!; _explicitNullProperties?.Remove("max_timestamp"); }
+            else if (parseNode.GetChildNode("max_timestamp") is { } nullNodeMaxTimestamp && nullNodeMaxTimestamp.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MaxTimestamp = null;
+            if (parseNode.GetChildNode("needs_updating") is null) { _explicitNullValueNeedsUpdating = default!; _explicitNullProperties?.Remove("needs_updating"); }
+            else if (parseNode.GetChildNode("needs_updating") is { } nullNodeNeedsUpdating && nullNodeNeedsUpdating.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) NeedsUpdating = null;
+            if (parseNode.GetChildNode("released_ago") is null) { _explicitNullValueReleasedAgo = default!; _explicitNullProperties?.Remove("released_ago"); }
+            else if (parseNode.GetChildNode("released_ago") is { } nullNodeReleasedAgo && nullNodeReleasedAgo.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ReleasedAgo = null;
+            if (parseNode.GetChildNode("release_date") is null) { _explicitNullValueReleaseDate = default!; _explicitNullProperties?.Remove("release_date"); }
+            else if (parseNode.GetChildNode("release_date") is { } nullNodeReleaseDate && nullNodeReleaseDate.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ReleaseDate = null;
+            if (parseNode.GetChildNode("sql_query") is null) { _explicitNullValueSqlQuery = default!; _explicitNullProperties?.Remove("sql_query"); }
+            else if (parseNode.GetChildNode("sql_query") is { } nullNodeSqlQuery && nullNodeSqlQuery.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SqlQuery = null;
+            if (parseNode.GetChildNode("status_reason") is null) { _explicitNullValueStatusReason = default!; _explicitNullProperties?.Remove("status_reason"); }
+            else if (parseNode.GetChildNode("status_reason") is { } nullNodeStatusReason && nullNodeStatusReason.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) StatusReason = null;
+            if (parseNode.GetChildNode("version") is null) { _explicitNullValueVersion = default!; _explicitNullProperties?.Remove("version"); }
+            else if (parseNode.GetChildNode("version") is { } nullNodeVersion && nullNodeVersion.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Version = null;
         }
 
         /// <summary>Relative URL path (starting with /project/{id}/) for the Activity &gt; Explore page pre-filtered to events captured with this lib and lib_version over the last 7 days. Combine with the user&apos;s PostHog host (e.g. us.posthog.com) for a clickable link.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? ActivityPageUrl { get => _explicitNullValueActivityPageUrl; set { _explicitNullValueActivityPageUrl = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("activity_page_url"); else _explicitNullProperties?.Remove("activity_page_url"); } }
+        public string? ActivityPageUrl { get => _explicitNullValueActivityPageUrl; set { _explicitNullValueActivityPageUrl = value; AdditionalData?.Remove("activity_page_url"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("activity_page_url"); else _explicitNullProperties?.Remove("activity_page_url"); } }
         private string? _explicitNullValueActivityPageUrl = default!;
 #nullable restore
 #else
-        public string ActivityPageUrl { get => _explicitNullValueActivityPageUrl; set { _explicitNullValueActivityPageUrl = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("activity_page_url"); else _explicitNullProperties?.Remove("activity_page_url"); } }
+        public string ActivityPageUrl { get => _explicitNullValueActivityPageUrl; set { _explicitNullValueActivityPageUrl = value; AdditionalData?.Remove("activity_page_url"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("activity_page_url"); else _explicitNullProperties?.Remove("activity_page_url"); } }
         private string _explicitNullValueActivityPageUrl = default!;
 #endif
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Number of events captured with this version in the last 7 days.</summary>
-        public int? Count { get => _explicitNullValueCount; set { _explicitNullValueCount = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("count"); else _explicitNullProperties?.Remove("count"); } }
+        public int? Count { get => _explicitNullValueCount; set { _explicitNullValueCount = value; AdditionalData?.Remove("count"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("count"); else _explicitNullProperties?.Remove("count"); } }
         private int? _explicitNullValueCount = default!;
         /// <summary>Days since this version was released, or null if unknown.</summary>
-        public int? DaysSinceRelease { get => _explicitNullValueDaysSinceRelease; set { _explicitNullValueDaysSinceRelease = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("days_since_release"); else _explicitNullProperties?.Remove("days_since_release"); } }
+        public int? DaysSinceRelease { get => _explicitNullValueDaysSinceRelease; set { _explicitNullValueDaysSinceRelease = value; AdditionalData?.Remove("days_since_release"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("days_since_release"); else _explicitNullProperties?.Remove("days_since_release"); } }
         private int? _explicitNullValueDaysSinceRelease = default!;
         /// <summary>True when this version equals or exceeds the latest known published version.</summary>
-        public bool? IsCurrentOrNewer { get => _explicitNullValueIsCurrentOrNewer; set { _explicitNullValueIsCurrentOrNewer = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("is_current_or_newer"); else _explicitNullProperties?.Remove("is_current_or_newer"); } }
+        public bool? IsCurrentOrNewer { get => _explicitNullValueIsCurrentOrNewer; set { _explicitNullValueIsCurrentOrNewer = value; AdditionalData?.Remove("is_current_or_newer"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("is_current_or_newer"); else _explicitNullProperties?.Remove("is_current_or_newer"); } }
         private bool? _explicitNullValueIsCurrentOrNewer = default!;
         /// <summary>True when this version is flagged as old by age alone (separate from semver rules).</summary>
-        public bool? IsOld { get => _explicitNullValueIsOld; set { _explicitNullValueIsOld = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("is_old"); else _explicitNullProperties?.Remove("is_old"); } }
+        public bool? IsOld { get => _explicitNullValueIsOld; set { _explicitNullValueIsOld = value; AdditionalData?.Remove("is_old"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("is_old"); else _explicitNullProperties?.Remove("is_old"); } }
         private bool? _explicitNullValueIsOld = default!;
         /// <summary>True when this version is flagged as outdated by smart-semver rules.</summary>
-        public bool? IsOutdated { get => _explicitNullValueIsOutdated; set { _explicitNullValueIsOutdated = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("is_outdated"); else _explicitNullProperties?.Remove("is_outdated"); } }
+        public bool? IsOutdated { get => _explicitNullValueIsOutdated; set { _explicitNullValueIsOutdated = value; AdditionalData?.Remove("is_outdated"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("is_outdated"); else _explicitNullProperties?.Remove("is_outdated"); } }
         private bool? _explicitNullValueIsOutdated = default!;
         /// <summary>Timestamp of the most recent event seen for this version (ISO 8601).</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? MaxTimestamp { get => _explicitNullValueMaxTimestamp; set { _explicitNullValueMaxTimestamp = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("max_timestamp"); else _explicitNullProperties?.Remove("max_timestamp"); } }
+        public string? MaxTimestamp { get => _explicitNullValueMaxTimestamp; set { _explicitNullValueMaxTimestamp = value; AdditionalData?.Remove("max_timestamp"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("max_timestamp"); else _explicitNullProperties?.Remove("max_timestamp"); } }
         private string? _explicitNullValueMaxTimestamp = default!;
 #nullable restore
 #else
-        public string MaxTimestamp { get => _explicitNullValueMaxTimestamp; set { _explicitNullValueMaxTimestamp = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("max_timestamp"); else _explicitNullProperties?.Remove("max_timestamp"); } }
+        public string MaxTimestamp { get => _explicitNullValueMaxTimestamp; set { _explicitNullValueMaxTimestamp = value; AdditionalData?.Remove("max_timestamp"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("max_timestamp"); else _explicitNullProperties?.Remove("max_timestamp"); } }
         private string _explicitNullValueMaxTimestamp = default!;
 #endif
         /// <summary>True if is_outdated OR is_old.</summary>
-        public bool? NeedsUpdating { get => _explicitNullValueNeedsUpdating; set { _explicitNullValueNeedsUpdating = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("needs_updating"); else _explicitNullProperties?.Remove("needs_updating"); } }
+        public bool? NeedsUpdating { get => _explicitNullValueNeedsUpdating; set { _explicitNullValueNeedsUpdating = value; AdditionalData?.Remove("needs_updating"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("needs_updating"); else _explicitNullProperties?.Remove("needs_updating"); } }
         private bool? _explicitNullValueNeedsUpdating = default!;
         /// <summary>Human-readable relative release age matching the UI (e.g. &apos;5 months ago&apos;). Null when release_date is unknown.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? ReleasedAgo { get => _explicitNullValueReleasedAgo; set { _explicitNullValueReleasedAgo = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("released_ago"); else _explicitNullProperties?.Remove("released_ago"); } }
+        public string? ReleasedAgo { get => _explicitNullValueReleasedAgo; set { _explicitNullValueReleasedAgo = value; AdditionalData?.Remove("released_ago"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("released_ago"); else _explicitNullProperties?.Remove("released_ago"); } }
         private string? _explicitNullValueReleasedAgo = default!;
 #nullable restore
 #else
-        public string ReleasedAgo { get => _explicitNullValueReleasedAgo; set { _explicitNullValueReleasedAgo = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("released_ago"); else _explicitNullProperties?.Remove("released_ago"); } }
+        public string ReleasedAgo { get => _explicitNullValueReleasedAgo; set { _explicitNullValueReleasedAgo = value; AdditionalData?.Remove("released_ago"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("released_ago"); else _explicitNullProperties?.Remove("released_ago"); } }
         private string _explicitNullValueReleasedAgo = default!;
 #endif
         /// <summary>When this version was published on GitHub (ISO 8601), or null if unknown.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? ReleaseDate { get => _explicitNullValueReleaseDate; set { _explicitNullValueReleaseDate = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("release_date"); else _explicitNullProperties?.Remove("release_date"); } }
+        public string? ReleaseDate { get => _explicitNullValueReleaseDate; set { _explicitNullValueReleaseDate = value; AdditionalData?.Remove("release_date"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("release_date"); else _explicitNullProperties?.Remove("release_date"); } }
         private string? _explicitNullValueReleaseDate = default!;
 #nullable restore
 #else
-        public string ReleaseDate { get => _explicitNullValueReleaseDate; set { _explicitNullValueReleaseDate = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("release_date"); else _explicitNullProperties?.Remove("release_date"); } }
+        public string ReleaseDate { get => _explicitNullValueReleaseDate; set { _explicitNullValueReleaseDate = value; AdditionalData?.Remove("release_date"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("release_date"); else _explicitNullProperties?.Remove("release_date"); } }
         private string _explicitNullValueReleaseDate = default!;
 #endif
         /// <summary>SQL SELECT statement for drilling into events for this SDK version over the last 7 days. Suitable to pass to the execute-sql tool or to display as a copy-paste snippet.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? SqlQuery { get => _explicitNullValueSqlQuery; set { _explicitNullValueSqlQuery = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("sql_query"); else _explicitNullProperties?.Remove("sql_query"); } }
+        public string? SqlQuery { get => _explicitNullValueSqlQuery; set { _explicitNullValueSqlQuery = value; AdditionalData?.Remove("sql_query"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("sql_query"); else _explicitNullProperties?.Remove("sql_query"); } }
         private string? _explicitNullValueSqlQuery = default!;
 #nullable restore
 #else
-        public string SqlQuery { get => _explicitNullValueSqlQuery; set { _explicitNullValueSqlQuery = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("sql_query"); else _explicitNullProperties?.Remove("sql_query"); } }
+        public string SqlQuery { get => _explicitNullValueSqlQuery; set { _explicitNullValueSqlQuery = value; AdditionalData?.Remove("sql_query"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("sql_query"); else _explicitNullProperties?.Remove("sql_query"); } }
         private string _explicitNullValueSqlQuery = default!;
 #endif
         /// <summary>Per-version badge tooltip text matching the SDK Health UI exactly. Quote verbatim when reporting to users. Varies by state: &apos;Released X ago. Upgrade recommended.&apos; for outdated versions, &apos;You have the latest available.&apos; for current versions, or &apos;Released X ago. Upgrading is a good idea, but it&apos;s not urgent yet.&apos; for recent-but-behind versions.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? StatusReason { get => _explicitNullValueStatusReason; set { _explicitNullValueStatusReason = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("status_reason"); else _explicitNullProperties?.Remove("status_reason"); } }
+        public string? StatusReason { get => _explicitNullValueStatusReason; set { _explicitNullValueStatusReason = value; AdditionalData?.Remove("status_reason"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("status_reason"); else _explicitNullProperties?.Remove("status_reason"); } }
         private string? _explicitNullValueStatusReason = default!;
 #nullable restore
 #else
-        public string StatusReason { get => _explicitNullValueStatusReason; set { _explicitNullValueStatusReason = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("status_reason"); else _explicitNullProperties?.Remove("status_reason"); } }
+        public string StatusReason { get => _explicitNullValueStatusReason; set { _explicitNullValueStatusReason = value; AdditionalData?.Remove("status_reason"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("status_reason"); else _explicitNullProperties?.Remove("status_reason"); } }
         private string _explicitNullValueStatusReason = default!;
 #endif
         /// <summary>In-use SDK version string, e.g. &apos;1.298.0&apos;.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Version { get => _explicitNullValueVersion; set { _explicitNullValueVersion = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("version"); else _explicitNullProperties?.Remove("version"); } }
+        public string? Version { get => _explicitNullValueVersion; set { _explicitNullValueVersion = value; AdditionalData?.Remove("version"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("version"); else _explicitNullProperties?.Remove("version"); } }
         private string? _explicitNullValueVersion = default!;
 #nullable restore
 #else
-        public string Version { get => _explicitNullValueVersion; set { _explicitNullValueVersion = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("version"); else _explicitNullProperties?.Remove("version"); } }
+        public string Version { get => _explicitNullValueVersion; set { _explicitNullValueVersion = value; AdditionalData?.Remove("version"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("version"); else _explicitNullProperties?.Remove("version"); } }
         private string _explicitNullValueVersion = default!;
 #endif
         /// <summary>

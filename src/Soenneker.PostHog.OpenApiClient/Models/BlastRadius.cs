@@ -17,65 +17,72 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("affected") is { } nullNodeAffected && nullNodeAffected.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Affected = null;
-            if (parseNode.GetChildNode("confirm_token") is { } nullNodeConfirmToken && nullNodeConfirmToken.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ConfirmToken = null;
-            if (parseNode.GetChildNode("dedupe_key") is { } nullNodeDedupeKey && nullNodeDedupeKey.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) DedupeKey = null;
-            if (parseNode.GetChildNode("limit") is { } nullNodeLimit && nullNodeLimit.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Limit = null;
-            if (parseNode.GetChildNode("realtime_cohort") is { } nullNodeRealtimeCohort && nullNodeRealtimeCohort.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) RealtimeCohort = null;
-            if (parseNode.GetChildNode("realtime_cohort_with_other_conditions") is { } nullNodeRealtimeCohortWithOtherConditions && nullNodeRealtimeCohortWithOtherConditions.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) RealtimeCohortWithOtherConditions = null;
-            if (parseNode.GetChildNode("total") is { } nullNodeTotal && nullNodeTotal.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Total = null;
+            if (parseNode.GetChildNode("affected") is null) { _explicitNullValueAffected = default!; _explicitNullProperties?.Remove("affected"); }
+            else if (parseNode.GetChildNode("affected") is { } nullNodeAffected && nullNodeAffected.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Affected = null;
+            if (parseNode.GetChildNode("confirm_token") is null) { _explicitNullValueConfirmToken = default!; _explicitNullProperties?.Remove("confirm_token"); }
+            else if (parseNode.GetChildNode("confirm_token") is { } nullNodeConfirmToken && nullNodeConfirmToken.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ConfirmToken = null;
+            if (parseNode.GetChildNode("dedupe_key") is null) { _explicitNullValueDedupeKey = default!; _explicitNullProperties?.Remove("dedupe_key"); }
+            else if (parseNode.GetChildNode("dedupe_key") is { } nullNodeDedupeKey && nullNodeDedupeKey.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) DedupeKey = null;
+            if (parseNode.GetChildNode("limit") is null) { _explicitNullValueLimit = default!; _explicitNullProperties?.Remove("limit"); }
+            else if (parseNode.GetChildNode("limit") is { } nullNodeLimit && nullNodeLimit.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Limit = null;
+            if (parseNode.GetChildNode("realtime_cohort") is null) { _explicitNullValueRealtimeCohort = default!; _explicitNullProperties?.Remove("realtime_cohort"); }
+            else if (parseNode.GetChildNode("realtime_cohort") is { } nullNodeRealtimeCohort && nullNodeRealtimeCohort.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) RealtimeCohort = null;
+            if (parseNode.GetChildNode("realtime_cohort_with_other_conditions") is null) { _explicitNullValueRealtimeCohortWithOtherConditions = default!; _explicitNullProperties?.Remove("realtime_cohort_with_other_conditions"); }
+            else if (parseNode.GetChildNode("realtime_cohort_with_other_conditions") is { } nullNodeRealtimeCohortWithOtherConditions && nullNodeRealtimeCohortWithOtherConditions.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) RealtimeCohortWithOtherConditions = null;
+            if (parseNode.GetChildNode("total") is null) { _explicitNullValueTotal = default!; _explicitNullProperties?.Remove("total"); }
+            else if (parseNode.GetChildNode("total") is { } nullNodeTotal && nullNodeTotal.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Total = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Number of users matching the filters</summary>
-        public int? Affected { get => _explicitNullValueAffected; set { _explicitNullValueAffected = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("affected"); else _explicitNullProperties?.Remove("affected"); } }
+        public int? Affected { get => _explicitNullValueAffected; set { _explicitNullValueAffected = value; AdditionalData?.Remove("affected"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("affected"); else _explicitNullProperties?.Remove("affected"); } }
         private int? _explicitNullValueAffected = default!;
         /// <summary>Proof this audience was previewed: pass it to the batch dispatch (confirm_token) after echoing &apos;affected&apos; to the user. Signs these exact filters; expires in 15 minutes.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? ConfirmToken { get => _explicitNullValueConfirmToken; set { _explicitNullValueConfirmToken = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("confirm_token"); else _explicitNullProperties?.Remove("confirm_token"); } }
+        public string? ConfirmToken { get => _explicitNullValueConfirmToken; set { _explicitNullValueConfirmToken = value; AdditionalData?.Remove("confirm_token"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("confirm_token"); else _explicitNullProperties?.Remove("confirm_token"); } }
         private string? _explicitNullValueConfirmToken = default!;
 #nullable restore
 #else
-        public string ConfirmToken { get => _explicitNullValueConfirmToken; set { _explicitNullValueConfirmToken = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("confirm_token"); else _explicitNullProperties?.Remove("confirm_token"); } }
+        public string ConfirmToken { get => _explicitNullValueConfirmToken; set { _explicitNullValueConfirmToken = value; AdditionalData?.Remove("confirm_token"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("confirm_token"); else _explicitNullProperties?.Remove("confirm_token"); } }
         private string _explicitNullValueConfirmToken = default!;
 #endif
         /// <summary>The dedupe key that was actually applied to &apos;affected&apos;. &apos;email&apos; means it counts unique email addresses; null means it counts persons.* `email` - email</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.BlastRadiusDedupeKey? DedupeKey { get => _explicitNullValueDedupeKey; set { _explicitNullValueDedupeKey = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("dedupe_key"); else _explicitNullProperties?.Remove("dedupe_key"); } }
+        public global::Soenneker.PostHog.OpenApiClient.Models.BlastRadiusDedupeKey? DedupeKey { get => _explicitNullValueDedupeKey; set { _explicitNullValueDedupeKey = value; AdditionalData?.Remove("dedupe_key"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("dedupe_key"); else _explicitNullProperties?.Remove("dedupe_key"); } }
         private global::Soenneker.PostHog.OpenApiClient.Models.BlastRadiusDedupeKey? _explicitNullValueDedupeKey = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.BlastRadiusDedupeKey DedupeKey { get => _explicitNullValueDedupeKey; set { _explicitNullValueDedupeKey = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("dedupe_key"); else _explicitNullProperties?.Remove("dedupe_key"); } }
+        public global::Soenneker.PostHog.OpenApiClient.Models.BlastRadiusDedupeKey DedupeKey { get => _explicitNullValueDedupeKey; set { _explicitNullValueDedupeKey = value; AdditionalData?.Remove("dedupe_key"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("dedupe_key"); else _explicitNullProperties?.Remove("dedupe_key"); } }
         private global::Soenneker.PostHog.OpenApiClient.Models.BlastRadiusDedupeKey _explicitNullValueDedupeKey = default!;
 #endif
         /// <summary>Maximum allowed audience size for batch triggers for this team.</summary>
-        public int? Limit { get => _explicitNullValueLimit; set { _explicitNullValueLimit = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("limit"); else _explicitNullProperties?.Remove("limit"); } }
+        public int? Limit { get => _explicitNullValueLimit; set { _explicitNullValueLimit = value; AdditionalData?.Remove("limit"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("limit"); else _explicitNullProperties?.Remove("limit"); } }
         private int? _explicitNullValueLimit = default!;
         /// <summary>Set when the audience is one realtime cohort. &apos;affected&apos; is then the cohort&apos;s last calculated size, and a batch run waits until the cohort is ready.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.RealtimeCohortStatus? RealtimeCohort { get => _explicitNullValueRealtimeCohort; set { _explicitNullValueRealtimeCohort = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("realtime_cohort"); else _explicitNullProperties?.Remove("realtime_cohort"); } }
+        public global::Soenneker.PostHog.OpenApiClient.Models.RealtimeCohortStatus? RealtimeCohort { get => _explicitNullValueRealtimeCohort; set { _explicitNullValueRealtimeCohort = value; AdditionalData?.Remove("realtime_cohort"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("realtime_cohort"); else _explicitNullProperties?.Remove("realtime_cohort"); } }
         private global::Soenneker.PostHog.OpenApiClient.Models.RealtimeCohortStatus? _explicitNullValueRealtimeCohort = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.RealtimeCohortStatus RealtimeCohort { get => _explicitNullValueRealtimeCohort; set { _explicitNullValueRealtimeCohort = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("realtime_cohort"); else _explicitNullProperties?.Remove("realtime_cohort"); } }
+        public global::Soenneker.PostHog.OpenApiClient.Models.RealtimeCohortStatus RealtimeCohort { get => _explicitNullValueRealtimeCohort; set { _explicitNullValueRealtimeCohort = value; AdditionalData?.Remove("realtime_cohort"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("realtime_cohort"); else _explicitNullProperties?.Remove("realtime_cohort"); } }
         private global::Soenneker.PostHog.OpenApiClient.Models.RealtimeCohortStatus _explicitNullValueRealtimeCohort = default!;
 #endif
         /// <summary>Set when a realtime cohort shares the audience with other conditions. Saving that audience fails: a realtime cohort has to be the only condition.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.RealtimeCohortRef? RealtimeCohortWithOtherConditions { get => _explicitNullValueRealtimeCohortWithOtherConditions; set { _explicitNullValueRealtimeCohortWithOtherConditions = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("realtime_cohort_with_other_conditions"); else _explicitNullProperties?.Remove("realtime_cohort_with_other_conditions"); } }
+        public global::Soenneker.PostHog.OpenApiClient.Models.RealtimeCohortRef? RealtimeCohortWithOtherConditions { get => _explicitNullValueRealtimeCohortWithOtherConditions; set { _explicitNullValueRealtimeCohortWithOtherConditions = value; AdditionalData?.Remove("realtime_cohort_with_other_conditions"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("realtime_cohort_with_other_conditions"); else _explicitNullProperties?.Remove("realtime_cohort_with_other_conditions"); } }
         private global::Soenneker.PostHog.OpenApiClient.Models.RealtimeCohortRef? _explicitNullValueRealtimeCohortWithOtherConditions = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.RealtimeCohortRef RealtimeCohortWithOtherConditions { get => _explicitNullValueRealtimeCohortWithOtherConditions; set { _explicitNullValueRealtimeCohortWithOtherConditions = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("realtime_cohort_with_other_conditions"); else _explicitNullProperties?.Remove("realtime_cohort_with_other_conditions"); } }
+        public global::Soenneker.PostHog.OpenApiClient.Models.RealtimeCohortRef RealtimeCohortWithOtherConditions { get => _explicitNullValueRealtimeCohortWithOtherConditions; set { _explicitNullValueRealtimeCohortWithOtherConditions = value; AdditionalData?.Remove("realtime_cohort_with_other_conditions"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("realtime_cohort_with_other_conditions"); else _explicitNullProperties?.Remove("realtime_cohort_with_other_conditions"); } }
         private global::Soenneker.PostHog.OpenApiClient.Models.RealtimeCohortRef _explicitNullValueRealtimeCohortWithOtherConditions = default!;
 #endif
         /// <summary>Total number of users</summary>
-        public int? Total { get => _explicitNullValueTotal; set { _explicitNullValueTotal = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("total"); else _explicitNullProperties?.Remove("total"); } }
+        public int? Total { get => _explicitNullValueTotal; set { _explicitNullValueTotal = value; AdditionalData?.Remove("total"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("total"); else _explicitNullProperties?.Remove("total"); } }
         private int? _explicitNullValueTotal = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.BlastRadius"/> and sets the default values.

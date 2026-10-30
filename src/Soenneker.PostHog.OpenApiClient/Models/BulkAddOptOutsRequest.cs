@@ -17,8 +17,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("category_key") is { } nullNodeCategoryKey && nullNodeCategoryKey.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CategoryKey = null;
-            if (parseNode.GetChildNode("opt_outs") is { } nullNodeOptOuts && nullNodeOptOuts.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) OptOuts = null;
+            if (parseNode.GetChildNode("category_key") is null) { _explicitNullValueCategoryKey = default!; _explicitNullProperties?.Remove("category_key"); }
+            else if (parseNode.GetChildNode("category_key") is { } nullNodeCategoryKey && nullNodeCategoryKey.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CategoryKey = null;
+            if (parseNode.GetChildNode("opt_outs") is null) { _explicitNullValueOptOuts = default!; _explicitNullProperties?.Remove("opt_outs"); }
+            else if (parseNode.GetChildNode("opt_outs") is { } nullNodeOptOuts && nullNodeOptOuts.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) OptOuts = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -26,21 +28,21 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Message category key applied to entries without their own. If omitted, recipients are opted out of all marketing messages.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? CategoryKey { get => _explicitNullValueCategoryKey; set { _explicitNullValueCategoryKey = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("category_key"); else _explicitNullProperties?.Remove("category_key"); } }
+        public string? CategoryKey { get => _explicitNullValueCategoryKey; set { _explicitNullValueCategoryKey = value; AdditionalData?.Remove("category_key"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("category_key"); else _explicitNullProperties?.Remove("category_key"); } }
         private string? _explicitNullValueCategoryKey = default!;
 #nullable restore
 #else
-        public string CategoryKey { get => _explicitNullValueCategoryKey; set { _explicitNullValueCategoryKey = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("category_key"); else _explicitNullProperties?.Remove("category_key"); } }
+        public string CategoryKey { get => _explicitNullValueCategoryKey; set { _explicitNullValueCategoryKey = value; AdditionalData?.Remove("category_key"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("category_key"); else _explicitNullProperties?.Remove("category_key"); } }
         private string _explicitNullValueCategoryKey = default!;
 #endif
         /// <summary>Recipients to opt out, at most 1000 per request.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.BulkOptOutEntry>? OptOuts { get => _explicitNullValueOptOuts; set { _explicitNullValueOptOuts = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("opt_outs"); else _explicitNullProperties?.Remove("opt_outs"); } }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.BulkOptOutEntry>? OptOuts { get => _explicitNullValueOptOuts; set { _explicitNullValueOptOuts = value; AdditionalData?.Remove("opt_outs"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("opt_outs"); else _explicitNullProperties?.Remove("opt_outs"); } }
         private List<global::Soenneker.PostHog.OpenApiClient.Models.BulkOptOutEntry>? _explicitNullValueOptOuts = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.BulkOptOutEntry> OptOuts { get => _explicitNullValueOptOuts; set { _explicitNullValueOptOuts = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("opt_outs"); else _explicitNullProperties?.Remove("opt_outs"); } }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.BulkOptOutEntry> OptOuts { get => _explicitNullValueOptOuts; set { _explicitNullValueOptOuts = value; AdditionalData?.Remove("opt_outs"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("opt_outs"); else _explicitNullProperties?.Remove("opt_outs"); } }
         private List<global::Soenneker.PostHog.OpenApiClient.Models.BulkOptOutEntry> _explicitNullValueOptOuts = default!;
 #endif
         /// <summary>

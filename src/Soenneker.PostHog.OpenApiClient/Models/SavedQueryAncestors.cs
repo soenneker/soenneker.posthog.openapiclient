@@ -17,7 +17,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("ancestors") is { } nullNodeAncestors && nullNodeAncestors.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Ancestors = null;
+            if (parseNode.GetChildNode("ancestors") is null) { _explicitNullValueAncestors = default!; _explicitNullProperties?.Remove("ancestors"); }
+            else if (parseNode.GetChildNode("ancestors") is { } nullNodeAncestors && nullNodeAncestors.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Ancestors = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -25,11 +26,11 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Ids of the saved queries and warehouse tables this query reads from, directly or through other queries, and the names of the PostHog tables among them.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<string>? Ancestors { get => _explicitNullValueAncestors; set { _explicitNullValueAncestors = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("ancestors"); else _explicitNullProperties?.Remove("ancestors"); } }
+        public List<string>? Ancestors { get => _explicitNullValueAncestors; set { _explicitNullValueAncestors = value; AdditionalData?.Remove("ancestors"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("ancestors"); else _explicitNullProperties?.Remove("ancestors"); } }
         private List<string>? _explicitNullValueAncestors = default!;
 #nullable restore
 #else
-        public List<string> Ancestors { get => _explicitNullValueAncestors; set { _explicitNullValueAncestors = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("ancestors"); else _explicitNullProperties?.Remove("ancestors"); } }
+        public List<string> Ancestors { get => _explicitNullValueAncestors; set { _explicitNullValueAncestors = value; AdditionalData?.Remove("ancestors"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("ancestors"); else _explicitNullProperties?.Remove("ancestors"); } }
         private List<string> _explicitNullValueAncestors = default!;
 #endif
         /// <summary>

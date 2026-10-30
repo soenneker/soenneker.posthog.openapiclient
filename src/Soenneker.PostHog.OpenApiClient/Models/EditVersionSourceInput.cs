@@ -17,45 +17,49 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("base_version") is { } nullNodeBaseVersion && nullNodeBaseVersion.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) BaseVersion = null;
-            if (parseNode.GetChildNode("create_files") is { } nullNodeCreateFiles && nullNodeCreateFiles.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CreateFiles = null;
-            if (parseNode.GetChildNode("delete_files") is { } nullNodeDeleteFiles && nullNodeDeleteFiles.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) DeleteFiles = null;
-            if (parseNode.GetChildNode("file_edits") is { } nullNodeFileEdits && nullNodeFileEdits.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) FileEdits = null;
+            if (parseNode.GetChildNode("base_version") is null) { _explicitNullValueBaseVersion = default!; _explicitNullProperties?.Remove("base_version"); }
+            else if (parseNode.GetChildNode("base_version") is { } nullNodeBaseVersion && nullNodeBaseVersion.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) BaseVersion = null;
+            if (parseNode.GetChildNode("create_files") is null) { _explicitNullValueCreateFiles = default!; _explicitNullProperties?.Remove("create_files"); }
+            else if (parseNode.GetChildNode("create_files") is { } nullNodeCreateFiles && nullNodeCreateFiles.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CreateFiles = null;
+            if (parseNode.GetChildNode("delete_files") is null) { _explicitNullValueDeleteFiles = default!; _explicitNullProperties?.Remove("delete_files"); }
+            else if (parseNode.GetChildNode("delete_files") is { } nullNodeDeleteFiles && nullNodeDeleteFiles.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) DeleteFiles = null;
+            if (parseNode.GetChildNode("file_edits") is null) { _explicitNullValueFileEdits = default!; _explicitNullProperties?.Remove("file_edits"); }
+            else if (parseNode.GetChildNode("file_edits") is { } nullNodeFileEdits && nullNodeFileEdits.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) FileEdits = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Version number that the changes apply to. Must be the active version of the app, otherwise the request fails with 409 and returns the active version number.</summary>
-        public int? BaseVersion { get => _explicitNullValueBaseVersion; set { _explicitNullValueBaseVersion = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("base_version"); else _explicitNullProperties?.Remove("base_version"); } }
+        public int? BaseVersion { get => _explicitNullValueBaseVersion; set { _explicitNullValueBaseVersion = value; AdditionalData?.Remove("base_version"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("base_version"); else _explicitNullProperties?.Remove("base_version"); } }
         private int? _explicitNullValueBaseVersion = default!;
         /// <summary>New text files keyed by project-relative path, each value the file&apos;s full text (max 1 MB). The path must not exist in the base version.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.EditVersionSourceInputCreateFilesProperty? CreateFiles { get => _explicitNullValueCreateFiles; set { _explicitNullValueCreateFiles = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("create_files"); else _explicitNullProperties?.Remove("create_files"); } }
+        public global::Soenneker.PostHog.OpenApiClient.Models.EditVersionSourceInputCreateFilesProperty? CreateFiles { get => _explicitNullValueCreateFiles; set { _explicitNullValueCreateFiles = value; AdditionalData?.Remove("create_files"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("create_files"); else _explicitNullProperties?.Remove("create_files"); } }
         private global::Soenneker.PostHog.OpenApiClient.Models.EditVersionSourceInputCreateFilesProperty? _explicitNullValueCreateFiles = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.EditVersionSourceInputCreateFilesProperty CreateFiles { get => _explicitNullValueCreateFiles; set { _explicitNullValueCreateFiles = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("create_files"); else _explicitNullProperties?.Remove("create_files"); } }
+        public global::Soenneker.PostHog.OpenApiClient.Models.EditVersionSourceInputCreateFilesProperty CreateFiles { get => _explicitNullValueCreateFiles; set { _explicitNullValueCreateFiles = value; AdditionalData?.Remove("create_files"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("create_files"); else _explicitNullProperties?.Remove("create_files"); } }
         private global::Soenneker.PostHog.OpenApiClient.Models.EditVersionSourceInputCreateFilesProperty _explicitNullValueCreateFiles = default!;
 #endif
         /// <summary>Paths of files to remove from the base version. app.py cannot be removed.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<string>? DeleteFiles { get => _explicitNullValueDeleteFiles; set { _explicitNullValueDeleteFiles = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("delete_files"); else _explicitNullProperties?.Remove("delete_files"); } }
+        public List<string>? DeleteFiles { get => _explicitNullValueDeleteFiles; set { _explicitNullValueDeleteFiles = value; AdditionalData?.Remove("delete_files"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("delete_files"); else _explicitNullProperties?.Remove("delete_files"); } }
         private List<string>? _explicitNullValueDeleteFiles = default!;
 #nullable restore
 #else
-        public List<string> DeleteFiles { get => _explicitNullValueDeleteFiles; set { _explicitNullValueDeleteFiles = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("delete_files"); else _explicitNullProperties?.Remove("delete_files"); } }
+        public List<string> DeleteFiles { get => _explicitNullValueDeleteFiles; set { _explicitNullValueDeleteFiles = value; AdditionalData?.Remove("delete_files"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("delete_files"); else _explicitNullProperties?.Remove("delete_files"); } }
         private List<string> _explicitNullValueDeleteFiles = default!;
 #endif
         /// <summary>Exact text edits to existing text files. Files that no change touches stay byte-for-byte the same.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.SourceFileEdit>? FileEdits { get => _explicitNullValueFileEdits; set { _explicitNullValueFileEdits = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("file_edits"); else _explicitNullProperties?.Remove("file_edits"); } }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.SourceFileEdit>? FileEdits { get => _explicitNullValueFileEdits; set { _explicitNullValueFileEdits = value; AdditionalData?.Remove("file_edits"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("file_edits"); else _explicitNullProperties?.Remove("file_edits"); } }
         private List<global::Soenneker.PostHog.OpenApiClient.Models.SourceFileEdit>? _explicitNullValueFileEdits = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.SourceFileEdit> FileEdits { get => _explicitNullValueFileEdits; set { _explicitNullValueFileEdits = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("file_edits"); else _explicitNullProperties?.Remove("file_edits"); } }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.SourceFileEdit> FileEdits { get => _explicitNullValueFileEdits; set { _explicitNullValueFileEdits = value; AdditionalData?.Remove("file_edits"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("file_edits"); else _explicitNullProperties?.Remove("file_edits"); } }
         private List<global::Soenneker.PostHog.OpenApiClient.Models.SourceFileEdit> _explicitNullValueFileEdits = default!;
 #endif
         /// <summary>

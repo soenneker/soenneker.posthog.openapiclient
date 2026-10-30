@@ -17,48 +17,57 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("cooldown_minutes") is { } nullNodeCooldownMinutes && nullNodeCooldownMinutes.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CooldownMinutes = null;
-            if (parseNode.GetChildNode("daily_run_cap") is { } nullNodeDailyRunCap && nullNodeDailyRunCap.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) DailyRunCap = null;
-            if (parseNode.GetChildNode("delivery_targets") is { } nullNodeDeliveryTargets && nullNodeDeliveryTargets.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) DeliveryTargets = null;
-            if (parseNode.GetChildNode("enabled") is { } nullNodeEnabled && nullNodeEnabled.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Enabled = null;
-            if (parseNode.GetChildNode("frequency") is { } nullNodeFrequency && nullNodeFrequency.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Frequency = null;
-            if (parseNode.GetChildNode("max_sample_size") is { } nullNodeMaxSampleSize && nullNodeMaxSampleSize.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MaxSampleSize = null;
-            if (parseNode.GetChildNode("report_prompt_guidance") is { } nullNodeReportPromptGuidance && nullNodeReportPromptGuidance.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ReportPromptGuidance = null;
-            if (parseNode.GetChildNode("rrule") is { } nullNodeRrule && nullNodeRrule.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Rrule = null;
-            if (parseNode.GetChildNode("trigger_threshold") is { } nullNodeTriggerThreshold && nullNodeTriggerThreshold.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TriggerThreshold = null;
+            if (parseNode.GetChildNode("cooldown_minutes") is null) { _explicitNullValueCooldownMinutes = default!; _explicitNullProperties?.Remove("cooldown_minutes"); }
+            else if (parseNode.GetChildNode("cooldown_minutes") is { } nullNodeCooldownMinutes && nullNodeCooldownMinutes.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CooldownMinutes = null;
+            if (parseNode.GetChildNode("daily_run_cap") is null) { _explicitNullValueDailyRunCap = default!; _explicitNullProperties?.Remove("daily_run_cap"); }
+            else if (parseNode.GetChildNode("daily_run_cap") is { } nullNodeDailyRunCap && nullNodeDailyRunCap.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) DailyRunCap = null;
+            if (parseNode.GetChildNode("delivery_targets") is null) { _explicitNullValueDeliveryTargets = default!; _explicitNullProperties?.Remove("delivery_targets"); }
+            else if (parseNode.GetChildNode("delivery_targets") is { } nullNodeDeliveryTargets && nullNodeDeliveryTargets.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) DeliveryTargets = null;
+            if (parseNode.GetChildNode("enabled") is null) { _explicitNullValueEnabled = default!; _explicitNullProperties?.Remove("enabled"); }
+            else if (parseNode.GetChildNode("enabled") is { } nullNodeEnabled && nullNodeEnabled.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Enabled = null;
+            if (parseNode.GetChildNode("frequency") is null) { _explicitNullValueFrequency = default!; _explicitNullProperties?.Remove("frequency"); }
+            else if (parseNode.GetChildNode("frequency") is { } nullNodeFrequency && nullNodeFrequency.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Frequency = null;
+            if (parseNode.GetChildNode("max_sample_size") is null) { _explicitNullValueMaxSampleSize = default!; _explicitNullProperties?.Remove("max_sample_size"); }
+            else if (parseNode.GetChildNode("max_sample_size") is { } nullNodeMaxSampleSize && nullNodeMaxSampleSize.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MaxSampleSize = null;
+            if (parseNode.GetChildNode("report_prompt_guidance") is null) { _explicitNullValueReportPromptGuidance = default!; _explicitNullProperties?.Remove("report_prompt_guidance"); }
+            else if (parseNode.GetChildNode("report_prompt_guidance") is { } nullNodeReportPromptGuidance && nullNodeReportPromptGuidance.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ReportPromptGuidance = null;
+            if (parseNode.GetChildNode("rrule") is null) { _explicitNullValueRrule = default!; _explicitNullProperties?.Remove("rrule"); }
+            else if (parseNode.GetChildNode("rrule") is { } nullNodeRrule && nullNodeRrule.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Rrule = null;
+            if (parseNode.GetChildNode("trigger_threshold") is null) { _explicitNullValueTriggerThreshold = default!; _explicitNullProperties?.Remove("trigger_threshold"); }
+            else if (parseNode.GetChildNode("trigger_threshold") is { } nullNodeTriggerThreshold && nullNodeTriggerThreshold.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TriggerThreshold = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Minimum minutes between count-triggered reports to prevent spam (every_n mode only). Min 60, max 1440 (24 hours). Defaults to 60.</summary>
-        public int? CooldownMinutes { get => _explicitNullValueCooldownMinutes; set { _explicitNullValueCooldownMinutes = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("cooldown_minutes"); else _explicitNullProperties?.Remove("cooldown_minutes"); } }
+        public int? CooldownMinutes { get => _explicitNullValueCooldownMinutes; set { _explicitNullValueCooldownMinutes = value; AdditionalData?.Remove("cooldown_minutes"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("cooldown_minutes"); else _explicitNullProperties?.Remove("cooldown_minutes"); } }
         private int? _explicitNullValueCooldownMinutes = default!;
         /// <summary>The created_at property</summary>
         public DateTimeOffset? CreatedAt { get; private set; }
         /// <summary>The created_by property</summary>
         public int? CreatedBy { get; private set; }
         /// <summary>Maximum count-triggered report runs per calendar day (UTC). Min 1, max 24 (one per cooldown window). Defaults to 10.</summary>
-        public int? DailyRunCap { get => _explicitNullValueDailyRunCap; set { _explicitNullValueDailyRunCap = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("daily_run_cap"); else _explicitNullProperties?.Remove("daily_run_cap"); } }
+        public int? DailyRunCap { get => _explicitNullValueDailyRunCap; set { _explicitNullValueDailyRunCap = value; AdditionalData?.Remove("daily_run_cap"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("daily_run_cap"); else _explicitNullProperties?.Remove("daily_run_cap"); } }
         private int? _explicitNullValueDailyRunCap = default!;
         /// <summary>Read-only. Report configs are soft-deleted only when their evaluation is deleted. Use enabled=false to stop deliveries.</summary>
         public bool? Deleted { get; private set; }
         /// <summary>List of delivery targets. Each entry is either {type: &apos;email&apos;, value: &apos;user@example.com&apos;} or {type: &apos;slack&apos;, integration_id: &lt;int&gt;, channel: &apos;&lt;channel&gt;&apos;}. Slack integration_id must belong to this team.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public UntypedNode? DeliveryTargets { get => _explicitNullValueDeliveryTargets; set { _explicitNullValueDeliveryTargets = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("delivery_targets"); else _explicitNullProperties?.Remove("delivery_targets"); } }
+        public UntypedNode? DeliveryTargets { get => _explicitNullValueDeliveryTargets; set { _explicitNullValueDeliveryTargets = value; AdditionalData?.Remove("delivery_targets"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("delivery_targets"); else _explicitNullProperties?.Remove("delivery_targets"); } }
         private UntypedNode? _explicitNullValueDeliveryTargets = default!;
 #nullable restore
 #else
-        public UntypedNode DeliveryTargets { get => _explicitNullValueDeliveryTargets; set { _explicitNullValueDeliveryTargets = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("delivery_targets"); else _explicitNullProperties?.Remove("delivery_targets"); } }
+        public UntypedNode DeliveryTargets { get => _explicitNullValueDeliveryTargets; set { _explicitNullValueDeliveryTargets = value; AdditionalData?.Remove("delivery_targets"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("delivery_targets"); else _explicitNullProperties?.Remove("delivery_targets"); } }
         private UntypedNode _explicitNullValueDeliveryTargets = default!;
 #endif
         /// <summary>Whether report delivery is active. Disabled configs do not fire.</summary>
-        public bool? Enabled { get => _explicitNullValueEnabled; set { _explicitNullValueEnabled = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("enabled"); else _explicitNullProperties?.Remove("enabled"); } }
+        public bool? Enabled { get => _explicitNullValueEnabled; set { _explicitNullValueEnabled = value; AdditionalData?.Remove("enabled"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("enabled"); else _explicitNullProperties?.Remove("enabled"); } }
         private bool? _explicitNullValueEnabled = default!;
         /// <summary>UUID of the evaluation this report config belongs to.</summary>
         public Guid? Evaluation { get; private set; }
         /// <summary>* `scheduled` - Scheduled* `every_n` - Every N</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedEvaluationReportUpdateFrequency? Frequency { get => _explicitNullValueFrequency; set { _explicitNullValueFrequency = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("frequency"); else _explicitNullProperties?.Remove("frequency"); } }
+        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedEvaluationReportUpdateFrequency? Frequency { get => _explicitNullValueFrequency; set { _explicitNullValueFrequency = value; AdditionalData?.Remove("frequency"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("frequency"); else _explicitNullProperties?.Remove("frequency"); } }
         private global::Soenneker.PostHog.OpenApiClient.Models.PatchedEvaluationReportUpdateFrequency? _explicitNullValueFrequency = default!;
         /// <summary>Number of reports generated from this evaluation report config.</summary>
         public int? GeneratedReportCount { get; private set; }
@@ -69,28 +78,28 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>When the most recent report was generated, or null if no reports have been generated.</summary>
         public DateTimeOffset? LastGeneratedAt { get; private set; }
         /// <summary>Maximum number of evaluation runs included in each report. Defaults to 200.</summary>
-        public int? MaxSampleSize { get => _explicitNullValueMaxSampleSize; set { _explicitNullValueMaxSampleSize = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("max_sample_size"); else _explicitNullProperties?.Remove("max_sample_size"); } }
+        public int? MaxSampleSize { get => _explicitNullValueMaxSampleSize; set { _explicitNullValueMaxSampleSize = value; AdditionalData?.Remove("max_sample_size"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("max_sample_size"); else _explicitNullProperties?.Remove("max_sample_size"); } }
         private int? _explicitNullValueMaxSampleSize = default!;
         /// <summary>The next_delivery_date property</summary>
         public DateTimeOffset? NextDeliveryDate { get; private set; }
         /// <summary>Optional custom instructions appended to the AI report prompt to steer focus, scope, or section choices without modifying the base prompt.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? ReportPromptGuidance { get => _explicitNullValueReportPromptGuidance; set { _explicitNullValueReportPromptGuidance = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("report_prompt_guidance"); else _explicitNullProperties?.Remove("report_prompt_guidance"); } }
+        public string? ReportPromptGuidance { get => _explicitNullValueReportPromptGuidance; set { _explicitNullValueReportPromptGuidance = value; AdditionalData?.Remove("report_prompt_guidance"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("report_prompt_guidance"); else _explicitNullProperties?.Remove("report_prompt_guidance"); } }
         private string? _explicitNullValueReportPromptGuidance = default!;
 #nullable restore
 #else
-        public string ReportPromptGuidance { get => _explicitNullValueReportPromptGuidance; set { _explicitNullValueReportPromptGuidance = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("report_prompt_guidance"); else _explicitNullProperties?.Remove("report_prompt_guidance"); } }
+        public string ReportPromptGuidance { get => _explicitNullValueReportPromptGuidance; set { _explicitNullValueReportPromptGuidance = value; AdditionalData?.Remove("report_prompt_guidance"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("report_prompt_guidance"); else _explicitNullProperties?.Remove("report_prompt_guidance"); } }
         private string _explicitNullValueReportPromptGuidance = default!;
 #endif
         /// <summary>RFC 5545 recurrence rule string for scheduled reports. Only daily and weekly cadences are supported: use &apos;FREQ=DAILY&apos; or &apos;FREQ=WEEKLY;BYDAY=MO,FR&apos;. Required when frequency is &apos;scheduled&apos;; ignored otherwise.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Rrule { get => _explicitNullValueRrule; set { _explicitNullValueRrule = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("rrule"); else _explicitNullProperties?.Remove("rrule"); } }
+        public string? Rrule { get => _explicitNullValueRrule; set { _explicitNullValueRrule = value; AdditionalData?.Remove("rrule"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("rrule"); else _explicitNullProperties?.Remove("rrule"); } }
         private string? _explicitNullValueRrule = default!;
 #nullable restore
 #else
-        public string Rrule { get => _explicitNullValueRrule; set { _explicitNullValueRrule = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("rrule"); else _explicitNullProperties?.Remove("rrule"); } }
+        public string Rrule { get => _explicitNullValueRrule; set { _explicitNullValueRrule = value; AdditionalData?.Remove("rrule"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("rrule"); else _explicitNullProperties?.Remove("rrule"); } }
         private string _explicitNullValueRrule = default!;
 #endif
         /// <summary>Read-only anchor datetime used to expand scheduled reports. The server sets this automatically when a report is switched to scheduled mode.</summary>
@@ -104,7 +113,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public string TimezoneName { get; private set; }
 #endif
         /// <summary>Number of new evaluation results that triggers a report (every_n mode only). Min 100, max 10000. Defaults to 100. Required when frequency is &apos;every_n&apos;.</summary>
-        public int? TriggerThreshold { get => _explicitNullValueTriggerThreshold; set { _explicitNullValueTriggerThreshold = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("trigger_threshold"); else _explicitNullProperties?.Remove("trigger_threshold"); } }
+        public int? TriggerThreshold { get => _explicitNullValueTriggerThreshold; set { _explicitNullValueTriggerThreshold = value; AdditionalData?.Remove("trigger_threshold"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("trigger_threshold"); else _explicitNullProperties?.Remove("trigger_threshold"); } }
         private int? _explicitNullValueTriggerThreshold = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.PatchedEvaluationReportUpdate"/> and sets the default values.
@@ -139,7 +148,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "delivery_targets", n => { DeliveryTargets = n.GetObjectValue<UntypedNode>(UntypedNode.CreateFromDiscriminatorValue); } },
                 { "enabled", n => { Enabled = n.GetBoolValue(); } },
                 { "evaluation", n => { Evaluation = n.GetGuidValue(); } },
-                { "frequency", n => { Frequency = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedEvaluationReportUpdateFrequency>(); } },
+                { "frequency", n => { var parsed = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedEvaluationReportUpdateFrequency>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValueFrequency = default; _explicitNullProperties?.Remove("frequency"); AdditionalData["frequency"] = unknown; } else { Frequency = parsed; AdditionalData.Remove("frequency"); } } },
                 { "generated_report_count", n => { GeneratedReportCount = n.GetIntValue(); } },
                 { "id", n => { Id = n.GetGuidValue(); } },
                 { "last_delivered_at", n => { LastDeliveredAt = n.GetDateTimeOffsetValue(); } },

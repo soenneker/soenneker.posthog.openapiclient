@@ -18,8 +18,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("emit_eligibility") is { } nullNodeEmitEligibility && nullNodeEmitEligibility.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) EmitEligibility = null;
-            if (parseNode.GetChildNode("existing_inbox_reports") is { } nullNodeExistingInboxReports && nullNodeExistingInboxReports.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ExistingInboxReports = null;
+            if (parseNode.GetChildNode("emit_eligibility") is null) { _explicitNullValueEmitEligibility = default!; _explicitNullProperties?.Remove("emit_eligibility"); }
+            else if (parseNode.GetChildNode("emit_eligibility") is { } nullNodeEmitEligibility && nullNodeEmitEligibility.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) EmitEligibility = null;
+            if (parseNode.GetChildNode("existing_inbox_reports") is null) { _explicitNullValueExistingInboxReports = default!; _explicitNullProperties?.Remove("existing_inbox_reports"); }
+            else if (parseNode.GetChildNode("existing_inbox_reports") is { } nullNodeExistingInboxReports && nullNodeExistingInboxReports.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ExistingInboxReports = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -27,21 +29,21 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The delivery gate: whether scout findings can reach the inbox for this team, with a one-line `remediation` when they cannot. Check `can_emit` before investigating anything, because when it is False every emit is silently dropped. Null only for a stored profile built before this section existed, which the caller should treat as unknown rather than as permission to emit.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.EmitEligibility? EmitEligibility { get => _explicitNullValueEmitEligibility; set { _explicitNullValueEmitEligibility = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("emit_eligibility"); else _explicitNullProperties?.Remove("emit_eligibility"); } }
+        public global::Soenneker.PostHog.OpenApiClient.Models.EmitEligibility? EmitEligibility { get => _explicitNullValueEmitEligibility; set { _explicitNullValueEmitEligibility = value; AdditionalData?.Remove("emit_eligibility"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("emit_eligibility"); else _explicitNullProperties?.Remove("emit_eligibility"); } }
         private global::Soenneker.PostHog.OpenApiClient.Models.EmitEligibility? _explicitNullValueEmitEligibility = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.EmitEligibility EmitEligibility { get => _explicitNullValueEmitEligibility; set { _explicitNullValueEmitEligibility = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("emit_eligibility"); else _explicitNullProperties?.Remove("emit_eligibility"); } }
+        public global::Soenneker.PostHog.OpenApiClient.Models.EmitEligibility EmitEligibility { get => _explicitNullValueEmitEligibility; set { _explicitNullValueEmitEligibility = value; AdditionalData?.Remove("emit_eligibility"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("emit_eligibility"); else _explicitNullProperties?.Remove("emit_eligibility"); } }
         private global::Soenneker.PostHog.OpenApiClient.Models.EmitEligibility _explicitNullValueEmitEligibility = default!;
 #endif
         /// <summary>Counts of reports already in the inbox, grouped by status, which is what a new finding would be deduped against. Null for a stored profile built before this section existed.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.ExistingInboxReports? ExistingInboxReports { get => _explicitNullValueExistingInboxReports; set { _explicitNullValueExistingInboxReports = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("existing_inbox_reports"); else _explicitNullProperties?.Remove("existing_inbox_reports"); } }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ExistingInboxReports? ExistingInboxReports { get => _explicitNullValueExistingInboxReports; set { _explicitNullValueExistingInboxReports = value; AdditionalData?.Remove("existing_inbox_reports"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("existing_inbox_reports"); else _explicitNullProperties?.Remove("existing_inbox_reports"); } }
         private global::Soenneker.PostHog.OpenApiClient.Models.ExistingInboxReports? _explicitNullValueExistingInboxReports = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ExistingInboxReports ExistingInboxReports { get => _explicitNullValueExistingInboxReports; set { _explicitNullValueExistingInboxReports = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("existing_inbox_reports"); else _explicitNullProperties?.Remove("existing_inbox_reports"); } }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ExistingInboxReports ExistingInboxReports { get => _explicitNullValueExistingInboxReports; set { _explicitNullValueExistingInboxReports = value; AdditionalData?.Remove("existing_inbox_reports"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("existing_inbox_reports"); else _explicitNullProperties?.Remove("existing_inbox_reports"); } }
         private global::Soenneker.PostHog.OpenApiClient.Models.ExistingInboxReports _explicitNullValueExistingInboxReports = default!;
 #endif
         /// <summary>

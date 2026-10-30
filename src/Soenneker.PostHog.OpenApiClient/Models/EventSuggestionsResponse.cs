@@ -17,9 +17,12 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("candidates") is { } nullNodeCandidates && nullNodeCandidates.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Candidates = null;
-            if (parseNode.GetChildNode("excluded_events_count") is { } nullNodeExcludedEventsCount && nullNodeExcludedEventsCount.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ExcludedEventsCount = null;
-            if (parseNode.GetChildNode("lookback_days") is { } nullNodeLookbackDays && nullNodeLookbackDays.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) LookbackDays = null;
+            if (parseNode.GetChildNode("candidates") is null) { _explicitNullValueCandidates = default!; _explicitNullProperties?.Remove("candidates"); }
+            else if (parseNode.GetChildNode("candidates") is { } nullNodeCandidates && nullNodeCandidates.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Candidates = null;
+            if (parseNode.GetChildNode("excluded_events_count") is null) { _explicitNullValueExcludedEventsCount = default!; _explicitNullProperties?.Remove("excluded_events_count"); }
+            else if (parseNode.GetChildNode("excluded_events_count") is { } nullNodeExcludedEventsCount && nullNodeExcludedEventsCount.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ExcludedEventsCount = null;
+            if (parseNode.GetChildNode("lookback_days") is null) { _explicitNullValueLookbackDays = default!; _explicitNullProperties?.Remove("lookback_days"); }
+            else if (parseNode.GetChildNode("lookback_days") is { } nullNodeLookbackDays && nullNodeLookbackDays.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) LookbackDays = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -27,18 +30,18 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Ranked candidate events for conversion goals</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.CandidateEvent>? Candidates { get => _explicitNullValueCandidates; set { _explicitNullValueCandidates = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("candidates"); else _explicitNullProperties?.Remove("candidates"); } }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.CandidateEvent>? Candidates { get => _explicitNullValueCandidates; set { _explicitNullValueCandidates = value; AdditionalData?.Remove("candidates"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("candidates"); else _explicitNullProperties?.Remove("candidates"); } }
         private List<global::Soenneker.PostHog.OpenApiClient.Models.CandidateEvent>? _explicitNullValueCandidates = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.CandidateEvent> Candidates { get => _explicitNullValueCandidates; set { _explicitNullValueCandidates = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("candidates"); else _explicitNullProperties?.Remove("candidates"); } }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.CandidateEvent> Candidates { get => _explicitNullValueCandidates; set { _explicitNullValueCandidates = value; AdditionalData?.Remove("candidates"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("candidates"); else _explicitNullProperties?.Remove("candidates"); } }
         private List<global::Soenneker.PostHog.OpenApiClient.Models.CandidateEvent> _explicitNullValueCandidates = default!;
 #endif
         /// <summary>Number of system/autocaptured events excluded</summary>
-        public int? ExcludedEventsCount { get => _explicitNullValueExcludedEventsCount; set { _explicitNullValueExcludedEventsCount = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("excluded_events_count"); else _explicitNullProperties?.Remove("excluded_events_count"); } }
+        public int? ExcludedEventsCount { get => _explicitNullValueExcludedEventsCount; set { _explicitNullValueExcludedEventsCount = value; AdditionalData?.Remove("excluded_events_count"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("excluded_events_count"); else _explicitNullProperties?.Remove("excluded_events_count"); } }
         private int? _explicitNullValueExcludedEventsCount = default!;
         /// <summary>Lookback window in days used for the analysis</summary>
-        public int? LookbackDays { get => _explicitNullValueLookbackDays; set { _explicitNullValueLookbackDays = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("lookback_days"); else _explicitNullProperties?.Remove("lookback_days"); } }
+        public int? LookbackDays { get => _explicitNullValueLookbackDays; set { _explicitNullValueLookbackDays = value; AdditionalData?.Remove("lookback_days"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("lookback_days"); else _explicitNullProperties?.Remove("lookback_days"); } }
         private int? _explicitNullValueLookbackDays = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.EventSuggestionsResponse"/> and sets the default values.

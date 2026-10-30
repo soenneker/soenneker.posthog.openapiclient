@@ -17,13 +17,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("approval_state") is { } nullNodeApprovalState && nullNodeApprovalState.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ApprovalState = null;
+            if (parseNode.GetChildNode("approval_state") is null) { _explicitNullValueApprovalState = default!; _explicitNullProperties?.Remove("approval_state"); }
+            else if (parseNode.GetChildNode("approval_state") is { } nullNodeApprovalState && nullNodeApprovalState.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ApprovalState = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>* `approved` - approved* `needs_approval` - needs_approval* `do_not_use` - do_not_use</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.ToolApprovalUpdateApprovalStateEnum? ApprovalState { get => _explicitNullValueApprovalState; set { _explicitNullValueApprovalState = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("approval_state"); else _explicitNullProperties?.Remove("approval_state"); } }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ToolApprovalUpdateApprovalStateEnum? ApprovalState { get => _explicitNullValueApprovalState; set { _explicitNullValueApprovalState = value; AdditionalData?.Remove("approval_state"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("approval_state"); else _explicitNullProperties?.Remove("approval_state"); } }
         private global::Soenneker.PostHog.OpenApiClient.Models.ToolApprovalUpdateApprovalStateEnum? _explicitNullValueApprovalState = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.PatchedToolApprovalUpdate"/> and sets the default values.
@@ -50,7 +51,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "approval_state", n => { ApprovalState = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ToolApprovalUpdateApprovalStateEnum>(); } },
+                { "approval_state", n => { var parsed = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ToolApprovalUpdateApprovalStateEnum>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValueApprovalState = default; _explicitNullProperties?.Remove("approval_state"); AdditionalData["approval_state"] = unknown; } else { ApprovalState = parsed; AdditionalData.Remove("approval_state"); } } },
             };
         }
         /// <summary>

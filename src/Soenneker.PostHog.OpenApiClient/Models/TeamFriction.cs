@@ -17,9 +17,12 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("github_team") is { } nullNodeGithubTeam && nullNodeGithubTeam.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) GithubTeam = null;
-            if (parseNode.GetChildNode("median_score") is { } nullNodeMedianScore && nullNodeMedianScore.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MedianScore = null;
-            if (parseNode.GetChildNode("scored_author_count") is { } nullNodeScoredAuthorCount && nullNodeScoredAuthorCount.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ScoredAuthorCount = null;
+            if (parseNode.GetChildNode("github_team") is null) { _explicitNullValueGithubTeam = default!; _explicitNullProperties?.Remove("github_team"); }
+            else if (parseNode.GetChildNode("github_team") is { } nullNodeGithubTeam && nullNodeGithubTeam.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) GithubTeam = null;
+            if (parseNode.GetChildNode("median_score") is null) { _explicitNullValueMedianScore = default!; _explicitNullProperties?.Remove("median_score"); }
+            else if (parseNode.GetChildNode("median_score") is { } nullNodeMedianScore && nullNodeMedianScore.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MedianScore = null;
+            if (parseNode.GetChildNode("scored_author_count") is null) { _explicitNullValueScoredAuthorCount = default!; _explicitNullProperties?.Remove("scored_author_count"); }
+            else if (parseNode.GetChildNode("scored_author_count") is { } nullNodeScoredAuthorCount && nullNodeScoredAuthorCount.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ScoredAuthorCount = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -27,18 +30,18 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>GitHub team slug.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? GithubTeam { get => _explicitNullValueGithubTeam; set { _explicitNullValueGithubTeam = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("github_team"); else _explicitNullProperties?.Remove("github_team"); } }
+        public string? GithubTeam { get => _explicitNullValueGithubTeam; set { _explicitNullValueGithubTeam = value; AdditionalData?.Remove("github_team"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("github_team"); else _explicitNullProperties?.Remove("github_team"); } }
         private string? _explicitNullValueGithubTeam = default!;
 #nullable restore
 #else
-        public string GithubTeam { get => _explicitNullValueGithubTeam; set { _explicitNullValueGithubTeam = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("github_team"); else _explicitNullProperties?.Remove("github_team"); } }
+        public string GithubTeam { get => _explicitNullValueGithubTeam; set { _explicitNullValueGithubTeam = value; AdditionalData?.Remove("github_team"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("github_team"); else _explicitNullProperties?.Remove("github_team"); } }
         private string _explicitNullValueGithubTeam = default!;
 #endif
         /// <summary>The median friction of the team&apos;s scored members, in &apos;x typical&apos; units.</summary>
-        public double? MedianScore { get => _explicitNullValueMedianScore; set { _explicitNullValueMedianScore = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("median_score"); else _explicitNullProperties?.Remove("median_score"); } }
+        public double? MedianScore { get => _explicitNullValueMedianScore; set { _explicitNullValueMedianScore = value; AdditionalData?.Remove("median_score"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("median_score"); else _explicitNullProperties?.Remove("median_score"); } }
         private double? _explicitNullValueMedianScore = default!;
         /// <summary>Members with enough merged pull requests to score. A team shows only above a floor, so one or two people never read as a team&apos;s figure.</summary>
-        public int? ScoredAuthorCount { get => _explicitNullValueScoredAuthorCount; set { _explicitNullValueScoredAuthorCount = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("scored_author_count"); else _explicitNullProperties?.Remove("scored_author_count"); } }
+        public int? ScoredAuthorCount { get => _explicitNullValueScoredAuthorCount; set { _explicitNullValueScoredAuthorCount = value; AdditionalData?.Remove("scored_author_count"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("scored_author_count"); else _explicitNullProperties?.Remove("scored_author_count"); } }
         private int? _explicitNullValueScoredAuthorCount = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.TeamFriction"/> and sets the default values.

@@ -17,9 +17,12 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("applied") is { } nullNodeApplied && nullNodeApplied.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Applied = null;
-            if (parseNode.GetChildNode("marketing_analytics_config") is { } nullNodeMarketingAnalyticsConfig && nullNodeMarketingAnalyticsConfig.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MarketingAnalyticsConfig = null;
-            if (parseNode.GetChildNode("undo_ops") is { } nullNodeUndoOps && nullNodeUndoOps.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) UndoOps = null;
+            if (parseNode.GetChildNode("applied") is null) { _explicitNullValueApplied = default!; _explicitNullProperties?.Remove("applied"); }
+            else if (parseNode.GetChildNode("applied") is { } nullNodeApplied && nullNodeApplied.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Applied = null;
+            if (parseNode.GetChildNode("marketing_analytics_config") is null) { _explicitNullValueMarketingAnalyticsConfig = default!; _explicitNullProperties?.Remove("marketing_analytics_config"); }
+            else if (parseNode.GetChildNode("marketing_analytics_config") is { } nullNodeMarketingAnalyticsConfig && nullNodeMarketingAnalyticsConfig.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MarketingAnalyticsConfig = null;
+            if (parseNode.GetChildNode("undo_ops") is null) { _explicitNullValueUndoOps = default!; _explicitNullProperties?.Remove("undo_ops"); }
+            else if (parseNode.GetChildNode("undo_ops") is { } nullNodeUndoOps && nullNodeUndoOps.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) UndoOps = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -27,31 +30,31 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The operations that were applied</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public UntypedNode? Applied { get => _explicitNullValueApplied; set { _explicitNullValueApplied = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("applied"); else _explicitNullProperties?.Remove("applied"); } }
+        public UntypedNode? Applied { get => _explicitNullValueApplied; set { _explicitNullValueApplied = value; AdditionalData?.Remove("applied"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("applied"); else _explicitNullProperties?.Remove("applied"); } }
         private UntypedNode? _explicitNullValueApplied = default!;
 #nullable restore
 #else
-        public UntypedNode Applied { get => _explicitNullValueApplied; set { _explicitNullValueApplied = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("applied"); else _explicitNullProperties?.Remove("applied"); } }
+        public UntypedNode Applied { get => _explicitNullValueApplied; set { _explicitNullValueApplied = value; AdditionalData?.Remove("applied"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("applied"); else _explicitNullProperties?.Remove("applied"); } }
         private UntypedNode _explicitNullValueApplied = default!;
 #endif
         /// <summary>The config as it now stands</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public UntypedNode? MarketingAnalyticsConfig { get => _explicitNullValueMarketingAnalyticsConfig; set { _explicitNullValueMarketingAnalyticsConfig = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("marketing_analytics_config"); else _explicitNullProperties?.Remove("marketing_analytics_config"); } }
+        public UntypedNode? MarketingAnalyticsConfig { get => _explicitNullValueMarketingAnalyticsConfig; set { _explicitNullValueMarketingAnalyticsConfig = value; AdditionalData?.Remove("marketing_analytics_config"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("marketing_analytics_config"); else _explicitNullProperties?.Remove("marketing_analytics_config"); } }
         private UntypedNode? _explicitNullValueMarketingAnalyticsConfig = default!;
 #nullable restore
 #else
-        public UntypedNode MarketingAnalyticsConfig { get => _explicitNullValueMarketingAnalyticsConfig; set { _explicitNullValueMarketingAnalyticsConfig = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("marketing_analytics_config"); else _explicitNullProperties?.Remove("marketing_analytics_config"); } }
+        public UntypedNode MarketingAnalyticsConfig { get => _explicitNullValueMarketingAnalyticsConfig; set { _explicitNullValueMarketingAnalyticsConfig = value; AdditionalData?.Remove("marketing_analytics_config"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("marketing_analytics_config"); else _explicitNullProperties?.Remove("marketing_analytics_config"); } }
         private UntypedNode _explicitNullValueMarketingAnalyticsConfig = default!;
 #endif
         /// <summary>Operations that reverse this batch, in the order they should be sent. Computed server-side from the pre-change state — POST them back to undo.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public UntypedNode? UndoOps { get => _explicitNullValueUndoOps; set { _explicitNullValueUndoOps = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("undo_ops"); else _explicitNullProperties?.Remove("undo_ops"); } }
+        public UntypedNode? UndoOps { get => _explicitNullValueUndoOps; set { _explicitNullValueUndoOps = value; AdditionalData?.Remove("undo_ops"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("undo_ops"); else _explicitNullProperties?.Remove("undo_ops"); } }
         private UntypedNode? _explicitNullValueUndoOps = default!;
 #nullable restore
 #else
-        public UntypedNode UndoOps { get => _explicitNullValueUndoOps; set { _explicitNullValueUndoOps = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("undo_ops"); else _explicitNullProperties?.Remove("undo_ops"); } }
+        public UntypedNode UndoOps { get => _explicitNullValueUndoOps; set { _explicitNullValueUndoOps = value; AdditionalData?.Remove("undo_ops"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("undo_ops"); else _explicitNullProperties?.Remove("undo_ops"); } }
         private UntypedNode _explicitNullValueUndoOps = default!;
 #endif
         /// <summary>

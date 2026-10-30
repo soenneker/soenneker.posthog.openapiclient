@@ -17,10 +17,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("custom_limits_usd") is { } nullNodeCustomLimitsUsd && nullNodeCustomLimitsUsd.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CustomLimitsUsd = null;
-            if (parseNode.GetChildNode("intent_product") is { } nullNodeIntentProduct && nullNodeIntentProduct.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) IntentProduct = null;
-            if (parseNode.GetChildNode("organization_id") is { } nullNodeOrganizationId && nullNodeOrganizationId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) OrganizationId = null;
-            if (parseNode.GetChildNode("products") is { } nullNodeProducts && nullNodeProducts.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Products = null;
+            if (parseNode.GetChildNode("custom_limits_usd") is null) { _explicitNullValueCustomLimitsUsd = default!; _explicitNullProperties?.Remove("custom_limits_usd"); }
+            else if (parseNode.GetChildNode("custom_limits_usd") is { } nullNodeCustomLimitsUsd && nullNodeCustomLimitsUsd.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CustomLimitsUsd = null;
+            if (parseNode.GetChildNode("intent_product") is null) { _explicitNullValueIntentProduct = default!; _explicitNullProperties?.Remove("intent_product"); }
+            else if (parseNode.GetChildNode("intent_product") is { } nullNodeIntentProduct && nullNodeIntentProduct.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) IntentProduct = null;
+            if (parseNode.GetChildNode("organization_id") is null) { _explicitNullValueOrganizationId = default!; _explicitNullProperties?.Remove("organization_id"); }
+            else if (parseNode.GetChildNode("organization_id") is { } nullNodeOrganizationId && nullNodeOrganizationId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) OrganizationId = null;
+            if (parseNode.GetChildNode("products") is null) { _explicitNullValueProducts = default!; _explicitNullProperties?.Remove("products"); }
+            else if (parseNode.GetChildNode("products") is { } nullNodeProducts && nullNodeProducts.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Products = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -28,34 +32,34 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>JSON-encoded custom product limits to apply on activation.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? CustomLimitsUsd { get => _explicitNullValueCustomLimitsUsd; set { _explicitNullValueCustomLimitsUsd = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("custom_limits_usd"); else _explicitNullProperties?.Remove("custom_limits_usd"); } }
+        public string? CustomLimitsUsd { get => _explicitNullValueCustomLimitsUsd; set { _explicitNullValueCustomLimitsUsd = value; AdditionalData?.Remove("custom_limits_usd"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("custom_limits_usd"); else _explicitNullProperties?.Remove("custom_limits_usd"); } }
         private string? _explicitNullValueCustomLimitsUsd = default!;
 #nullable restore
 #else
-        public string CustomLimitsUsd { get => _explicitNullValueCustomLimitsUsd; set { _explicitNullValueCustomLimitsUsd = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("custom_limits_usd"); else _explicitNullProperties?.Remove("custom_limits_usd"); } }
+        public string CustomLimitsUsd { get => _explicitNullValueCustomLimitsUsd; set { _explicitNullValueCustomLimitsUsd = value; AdditionalData?.Remove("custom_limits_usd"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("custom_limits_usd"); else _explicitNullProperties?.Remove("custom_limits_usd"); } }
         private string _explicitNullValueCustomLimitsUsd = default!;
 #endif
         /// <summary>Product that prompted the subscription upgrade.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? IntentProduct { get => _explicitNullValueIntentProduct; set { _explicitNullValueIntentProduct = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("intent_product"); else _explicitNullProperties?.Remove("intent_product"); } }
+        public string? IntentProduct { get => _explicitNullValueIntentProduct; set { _explicitNullValueIntentProduct = value; AdditionalData?.Remove("intent_product"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("intent_product"); else _explicitNullProperties?.Remove("intent_product"); } }
         private string? _explicitNullValueIntentProduct = default!;
 #nullable restore
 #else
-        public string IntentProduct { get => _explicitNullValueIntentProduct; set { _explicitNullValueIntentProduct = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("intent_product"); else _explicitNullProperties?.Remove("intent_product"); } }
+        public string IntentProduct { get => _explicitNullValueIntentProduct; set { _explicitNullValueIntentProduct = value; AdditionalData?.Remove("intent_product"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("intent_product"); else _explicitNullProperties?.Remove("intent_product"); } }
         private string _explicitNullValueIntentProduct = default!;
 #endif
         /// <summary>Organization selected when this payment flow started.</summary>
-        public Guid? OrganizationId { get => _explicitNullValueOrganizationId; set { _explicitNullValueOrganizationId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("organization_id"); else _explicitNullProperties?.Remove("organization_id"); } }
+        public Guid? OrganizationId { get => _explicitNullValueOrganizationId; set { _explicitNullValueOrganizationId = value; AdditionalData?.Remove("organization_id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("organization_id"); else _explicitNullProperties?.Remove("organization_id"); } }
         private Guid? _explicitNullValueOrganizationId = default!;
         /// <summary>Product and plan keys to activate.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Products { get => _explicitNullValueProducts; set { _explicitNullValueProducts = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("products"); else _explicitNullProperties?.Remove("products"); } }
+        public string? Products { get => _explicitNullValueProducts; set { _explicitNullValueProducts = value; AdditionalData?.Remove("products"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("products"); else _explicitNullProperties?.Remove("products"); } }
         private string? _explicitNullValueProducts = default!;
 #nullable restore
 #else
-        public string Products { get => _explicitNullValueProducts; set { _explicitNullValueProducts = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("products"); else _explicitNullProperties?.Remove("products"); } }
+        public string Products { get => _explicitNullValueProducts; set { _explicitNullValueProducts = value; AdditionalData?.Remove("products"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("products"); else _explicitNullProperties?.Remove("products"); } }
         private string _explicitNullValueProducts = default!;
 #endif
         /// <summary>

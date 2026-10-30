@@ -17,28 +17,31 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("locked_value") is { } nullNodeLockedValue && nullNodeLockedValue.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) LockedValue = null;
-            if (parseNode.GetChildNode("scope_id") is { } nullNodeScopeId && nullNodeScopeId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ScopeId = null;
-            if (parseNode.GetChildNode("setting") is { } nullNodeSetting && nullNodeSetting.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Setting = null;
+            if (parseNode.GetChildNode("locked_value") is null) { _explicitNullValueLockedValue = default!; _explicitNullProperties?.Remove("locked_value"); }
+            else if (parseNode.GetChildNode("locked_value") is { } nullNodeLockedValue && nullNodeLockedValue.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) LockedValue = null;
+            if (parseNode.GetChildNode("scope_id") is null) { _explicitNullValueScopeId = default!; _explicitNullProperties?.Remove("scope_id"); }
+            else if (parseNode.GetChildNode("scope_id") is { } nullNodeScopeId && nullNodeScopeId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ScopeId = null;
+            if (parseNode.GetChildNode("setting") is null) { _explicitNullValueSetting = default!; _explicitNullProperties?.Remove("setting"); }
+            else if (parseNode.GetChildNode("setting") is { } nullNodeSetting && nullNodeSetting.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Setting = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The value the organization enforces.</summary>
-        public bool? LockedValue { get => _explicitNullValueLockedValue; set { _explicitNullValueLockedValue = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("locked_value"); else _explicitNullProperties?.Remove("locked_value"); } }
+        public bool? LockedValue { get => _explicitNullValueLockedValue; set { _explicitNullValueLockedValue = value; AdditionalData?.Remove("locked_value"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("locked_value"); else _explicitNullProperties?.Remove("locked_value"); } }
         private bool? _explicitNullValueLockedValue = default!;
         /// <summary>What the setting applies to: a project ID or an organization ID. Empty for a setting that is a single switch.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? ScopeId { get => _explicitNullValueScopeId; set { _explicitNullValueScopeId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("scope_id"); else _explicitNullProperties?.Remove("scope_id"); } }
+        public string? ScopeId { get => _explicitNullValueScopeId; set { _explicitNullValueScopeId = value; AdditionalData?.Remove("scope_id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("scope_id"); else _explicitNullProperties?.Remove("scope_id"); } }
         private string? _explicitNullValueScopeId = default!;
 #nullable restore
 #else
-        public string ScopeId { get => _explicitNullValueScopeId; set { _explicitNullValueScopeId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("scope_id"); else _explicitNullProperties?.Remove("scope_id"); } }
+        public string ScopeId { get => _explicitNullValueScopeId; set { _explicitNullValueScopeId = value; AdditionalData?.Remove("scope_id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("scope_id"); else _explicitNullProperties?.Remove("scope_id"); } }
         private string _explicitNullValueScopeId = default!;
 #endif
         /// <summary>* `approval_requested` - approval_requested* `approval_resolved` - approval_resolved* `data_catalog_weekly_digest` - data_catalog_weekly_digest* `discussions_mentioned` - discussions_mentioned* `error_tracking_issue_assigned` - error_tracking_issue_assigned* `error_tracking_weekly_digest_project_enabled` - error_tracking_weekly_digest_project_enabled* `materialized_view_sync_failed` - materialized_view_sync_failed* `materialized_view_sync_failed_daily` - materialized_view_sync_failed_daily* `materialized_view_sync_failed_immediate` - materialized_view_sync_failed_immediate* `organization_member_join_email_disabled` - organization_member_join_email_disabled* `pipeline_notifications_disabled` - pipeline_notifications_disabled* `project_weekly_digest_disabled` - project_weekly_digest_disabled* `web_analytics_weekly_digest_project_enabled` - web_analytics_weekly_digest_project_enabled</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.OrganizationNotificationLockSetting? Setting { get => _explicitNullValueSetting; set { _explicitNullValueSetting = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("setting"); else _explicitNullProperties?.Remove("setting"); } }
+        public global::Soenneker.PostHog.OpenApiClient.Models.OrganizationNotificationLockSetting? Setting { get => _explicitNullValueSetting; set { _explicitNullValueSetting = value; AdditionalData?.Remove("setting"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("setting"); else _explicitNullProperties?.Remove("setting"); } }
         private global::Soenneker.PostHog.OpenApiClient.Models.OrganizationNotificationLockSetting? _explicitNullValueSetting = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.OrganizationNotificationLock"/> and sets the default values.
@@ -67,7 +70,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             {
                 { "locked_value", n => { LockedValue = n.GetBoolValue(); } },
                 { "scope_id", n => { ScopeId = n.GetStringValue(); } },
-                { "setting", n => { Setting = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.OrganizationNotificationLockSetting>(); } },
+                { "setting", n => { var parsed = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.OrganizationNotificationLockSetting>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValueSetting = default; _explicitNullProperties?.Remove("setting"); AdditionalData["setting"] = unknown; } else { Setting = parsed; AdditionalData.Remove("setting"); } } },
             };
         }
         /// <summary>

@@ -17,13 +17,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("check") is { } nullNodeCheck && nullNodeCheck.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Check = null;
+            if (parseNode.GetChildNode("check") is null) { _explicitNullValueCheck = default!; _explicitNullProperties?.Remove("check"); }
+            else if (parseNode.GetChildNode("check") is { } nullNodeCheck && nullNodeCheck.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Check = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>* `sessions` - sessions* `tool_calls` - tool_calls* `user_identity` - user_identity* `trace_structure` - trace_structure</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.InstrumentationCheckActionCheck? Check { get => _explicitNullValueCheck; set { _explicitNullValueCheck = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("check"); else _explicitNullProperties?.Remove("check"); } }
+        public global::Soenneker.PostHog.OpenApiClient.Models.InstrumentationCheckActionCheck? Check { get => _explicitNullValueCheck; set { _explicitNullValueCheck = value; AdditionalData?.Remove("check"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("check"); else _explicitNullProperties?.Remove("check"); } }
         private global::Soenneker.PostHog.OpenApiClient.Models.InstrumentationCheckActionCheck? _explicitNullValueCheck = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.InstrumentationCheckAction"/> and sets the default values.
@@ -50,7 +51,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "check", n => { Check = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.InstrumentationCheckActionCheck>(); } },
+                { "check", n => { var parsed = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.InstrumentationCheckActionCheck>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValueCheck = default; _explicitNullProperties?.Remove("check"); AdditionalData["check"] = unknown; } else { Check = parsed; AdditionalData.Remove("check"); } } },
             };
         }
         /// <summary>

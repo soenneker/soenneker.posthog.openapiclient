@@ -18,13 +18,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("gate_materialization_on_checks") is { } nullNodeGateMaterializationOnChecks && nullNodeGateMaterializationOnChecks.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) GateMaterializationOnChecks = null;
+            if (parseNode.GetChildNode("gate_materialization_on_checks") is null) { _explicitNullValueGateMaterializationOnChecks = default!; _explicitNullProperties?.Remove("gate_materialization_on_checks"); }
+            else if (parseNode.GetChildNode("gate_materialization_on_checks") is { } nullNodeGateMaterializationOnChecks && nullNodeGateMaterializationOnChecks.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) GateMaterializationOnChecks = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>When true, a materialization whose error-severity checks fail is not published; the previous version keeps serving and downstream models are skipped.</summary>
-        public bool? GateMaterializationOnChecks { get => _explicitNullValueGateMaterializationOnChecks; set { _explicitNullValueGateMaterializationOnChecks = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("gate_materialization_on_checks"); else _explicitNullProperties?.Remove("gate_materialization_on_checks"); } }
+        public bool? GateMaterializationOnChecks { get => _explicitNullValueGateMaterializationOnChecks; set { _explicitNullValueGateMaterializationOnChecks = value; AdditionalData?.Remove("gate_materialization_on_checks"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("gate_materialization_on_checks"); else _explicitNullProperties?.Remove("gate_materialization_on_checks"); } }
         private bool? _explicitNullValueGateMaterializationOnChecks = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.PatchedDataQualityGateConfig"/> and sets the default values.

@@ -17,11 +17,16 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("question_id") is { } nullNodeQuestionId && nullNodeQuestionId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) QuestionId = null;
-            if (parseNode.GetChildNode("question_index") is { } nullNodeQuestionIndex && nullNodeQuestionIndex.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) QuestionIndex = null;
-            if (parseNode.GetChildNode("question_text") is { } nullNodeQuestionText && nullNodeQuestionText.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) QuestionText = null;
-            if (parseNode.GetChildNode("survey_id") is { } nullNodeSurveyId && nullNodeSurveyId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SurveyId = null;
-            if (parseNode.GetChildNode("survey_name") is { } nullNodeSurveyName && nullNodeSurveyName.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SurveyName = null;
+            if (parseNode.GetChildNode("question_id") is null) { _explicitNullValueQuestionId = default!; _explicitNullProperties?.Remove("question_id"); }
+            else if (parseNode.GetChildNode("question_id") is { } nullNodeQuestionId && nullNodeQuestionId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) QuestionId = null;
+            if (parseNode.GetChildNode("question_index") is null) { _explicitNullValueQuestionIndex = default!; _explicitNullProperties?.Remove("question_index"); }
+            else if (parseNode.GetChildNode("question_index") is { } nullNodeQuestionIndex && nullNodeQuestionIndex.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) QuestionIndex = null;
+            if (parseNode.GetChildNode("question_text") is null) { _explicitNullValueQuestionText = default!; _explicitNullProperties?.Remove("question_text"); }
+            else if (parseNode.GetChildNode("question_text") is { } nullNodeQuestionText && nullNodeQuestionText.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) QuestionText = null;
+            if (parseNode.GetChildNode("survey_id") is null) { _explicitNullValueSurveyId = default!; _explicitNullProperties?.Remove("survey_id"); }
+            else if (parseNode.GetChildNode("survey_id") is { } nullNodeSurveyId && nullNodeSurveyId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SurveyId = null;
+            if (parseNode.GetChildNode("survey_name") is null) { _explicitNullValueSurveyName = default!; _explicitNullProperties?.Remove("survey_name"); }
+            else if (parseNode.GetChildNode("survey_name") is { } nullNodeSurveyName && nullNodeSurveyName.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SurveyName = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -29,44 +34,44 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>UUID assigned to the survey question.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? QuestionId { get => _explicitNullValueQuestionId; set { _explicitNullValueQuestionId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("question_id"); else _explicitNullProperties?.Remove("question_id"); } }
+        public string? QuestionId { get => _explicitNullValueQuestionId; set { _explicitNullValueQuestionId = value; AdditionalData?.Remove("question_id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("question_id"); else _explicitNullProperties?.Remove("question_id"); } }
         private string? _explicitNullValueQuestionId = default!;
 #nullable restore
 #else
-        public string QuestionId { get => _explicitNullValueQuestionId; set { _explicitNullValueQuestionId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("question_id"); else _explicitNullProperties?.Remove("question_id"); } }
+        public string QuestionId { get => _explicitNullValueQuestionId; set { _explicitNullValueQuestionId = value; AdditionalData?.Remove("question_id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("question_id"); else _explicitNullProperties?.Remove("question_id"); } }
         private string _explicitNullValueQuestionId = default!;
 #endif
         /// <summary>Zero-based index of the question within the survey.</summary>
-        public int? QuestionIndex { get => _explicitNullValueQuestionIndex; set { _explicitNullValueQuestionIndex = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("question_index"); else _explicitNullProperties?.Remove("question_index"); } }
+        public int? QuestionIndex { get => _explicitNullValueQuestionIndex; set { _explicitNullValueQuestionIndex = value; AdditionalData?.Remove("question_index"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("question_index"); else _explicitNullProperties?.Remove("question_index"); } }
         private int? _explicitNullValueQuestionIndex = default!;
         /// <summary>Untranslated question text as configured by the survey author.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? QuestionText { get => _explicitNullValueQuestionText; set { _explicitNullValueQuestionText = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("question_text"); else _explicitNullProperties?.Remove("question_text"); } }
+        public string? QuestionText { get => _explicitNullValueQuestionText; set { _explicitNullValueQuestionText = value; AdditionalData?.Remove("question_text"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("question_text"); else _explicitNullProperties?.Remove("question_text"); } }
         private string? _explicitNullValueQuestionText = default!;
 #nullable restore
 #else
-        public string QuestionText { get => _explicitNullValueQuestionText; set { _explicitNullValueQuestionText = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("question_text"); else _explicitNullProperties?.Remove("question_text"); } }
+        public string QuestionText { get => _explicitNullValueQuestionText; set { _explicitNullValueQuestionText = value; AdditionalData?.Remove("question_text"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("question_text"); else _explicitNullProperties?.Remove("question_text"); } }
         private string _explicitNullValueQuestionText = default!;
 #endif
         /// <summary>UUID of the survey this question belongs to.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? SurveyId { get => _explicitNullValueSurveyId; set { _explicitNullValueSurveyId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("survey_id"); else _explicitNullProperties?.Remove("survey_id"); } }
+        public string? SurveyId { get => _explicitNullValueSurveyId; set { _explicitNullValueSurveyId = value; AdditionalData?.Remove("survey_id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("survey_id"); else _explicitNullProperties?.Remove("survey_id"); } }
         private string? _explicitNullValueSurveyId = default!;
 #nullable restore
 #else
-        public string SurveyId { get => _explicitNullValueSurveyId; set { _explicitNullValueSurveyId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("survey_id"); else _explicitNullProperties?.Remove("survey_id"); } }
+        public string SurveyId { get => _explicitNullValueSurveyId; set { _explicitNullValueSurveyId = value; AdditionalData?.Remove("survey_id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("survey_id"); else _explicitNullProperties?.Remove("survey_id"); } }
         private string _explicitNullValueSurveyId = default!;
 #endif
         /// <summary>Display name of the survey.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? SurveyName { get => _explicitNullValueSurveyName; set { _explicitNullValueSurveyName = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("survey_name"); else _explicitNullProperties?.Remove("survey_name"); } }
+        public string? SurveyName { get => _explicitNullValueSurveyName; set { _explicitNullValueSurveyName = value; AdditionalData?.Remove("survey_name"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("survey_name"); else _explicitNullProperties?.Remove("survey_name"); } }
         private string? _explicitNullValueSurveyName = default!;
 #nullable restore
 #else
-        public string SurveyName { get => _explicitNullValueSurveyName; set { _explicitNullValueSurveyName = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("survey_name"); else _explicitNullProperties?.Remove("survey_name"); } }
+        public string SurveyName { get => _explicitNullValueSurveyName; set { _explicitNullValueSurveyName = value; AdditionalData?.Remove("survey_name"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("survey_name"); else _explicitNullProperties?.Remove("survey_name"); } }
         private string _explicitNullValueSurveyName = default!;
 #endif
         /// <summary>

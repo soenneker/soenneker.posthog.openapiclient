@@ -17,26 +17,33 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("account_group_type_index") is { } nullNodeAccountGroupTypeIndex && nullNodeAccountGroupTypeIndex.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AccountGroupTypeIndex = null;
-            if (parseNode.GetChildNode("activity_event") is { } nullNodeActivityEvent && nullNodeActivityEvent.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ActivityEvent = null;
-            if (parseNode.GetChildNode("default_pinned_properties") is { } nullNodeDefaultPinnedProperties && nullNodeDefaultPinnedProperties.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) DefaultPinnedProperties = null;
-            if (parseNode.GetChildNode("payment_event") is { } nullNodePaymentEvent && nullNodePaymentEvent.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) PaymentEvent = null;
-            if (parseNode.GetChildNode("signup_event") is { } nullNodeSignupEvent && nullNodeSignupEvent.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SignupEvent = null;
-            if (parseNode.GetChildNode("signup_pageview_event") is { } nullNodeSignupPageviewEvent && nullNodeSignupPageviewEvent.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SignupPageviewEvent = null;
-            if (parseNode.GetChildNode("subscription_event") is { } nullNodeSubscriptionEvent && nullNodeSubscriptionEvent.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SubscriptionEvent = null;
+            if (parseNode.GetChildNode("account_group_type_index") is null) { _explicitNullValueAccountGroupTypeIndex = default!; _explicitNullProperties?.Remove("account_group_type_index"); }
+            else if (parseNode.GetChildNode("account_group_type_index") is { } nullNodeAccountGroupTypeIndex && nullNodeAccountGroupTypeIndex.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AccountGroupTypeIndex = null;
+            if (parseNode.GetChildNode("activity_event") is null) { _explicitNullValueActivityEvent = default!; _explicitNullProperties?.Remove("activity_event"); }
+            else if (parseNode.GetChildNode("activity_event") is { } nullNodeActivityEvent && nullNodeActivityEvent.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ActivityEvent = null;
+            if (parseNode.GetChildNode("default_pinned_properties") is null) { _explicitNullValueDefaultPinnedProperties = default!; _explicitNullProperties?.Remove("default_pinned_properties"); }
+            else if (parseNode.GetChildNode("default_pinned_properties") is { } nullNodeDefaultPinnedProperties && nullNodeDefaultPinnedProperties.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) DefaultPinnedProperties = null;
+            if (parseNode.GetChildNode("payment_event") is null) { _explicitNullValuePaymentEvent = default!; _explicitNullProperties?.Remove("payment_event"); }
+            else if (parseNode.GetChildNode("payment_event") is { } nullNodePaymentEvent && nullNodePaymentEvent.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) PaymentEvent = null;
+            if (parseNode.GetChildNode("signup_event") is null) { _explicitNullValueSignupEvent = default!; _explicitNullProperties?.Remove("signup_event"); }
+            else if (parseNode.GetChildNode("signup_event") is { } nullNodeSignupEvent && nullNodeSignupEvent.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SignupEvent = null;
+            if (parseNode.GetChildNode("signup_pageview_event") is null) { _explicitNullValueSignupPageviewEvent = default!; _explicitNullProperties?.Remove("signup_pageview_event"); }
+            else if (parseNode.GetChildNode("signup_pageview_event") is { } nullNodeSignupPageviewEvent && nullNodeSignupPageviewEvent.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SignupPageviewEvent = null;
+            if (parseNode.GetChildNode("subscription_event") is null) { _explicitNullValueSubscriptionEvent = default!; _explicitNullProperties?.Remove("subscription_event"); }
+            else if (parseNode.GetChildNode("subscription_event") is { } nullNodeSubscriptionEvent && nullNodeSubscriptionEvent.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SubscriptionEvent = null;
         }
 
         /// <summary>Index of the group type to treat as an Account in customer analytics. Must reference an existing group type configured for the project.</summary>
-        public int? AccountGroupTypeIndex { get => _explicitNullValueAccountGroupTypeIndex; set { _explicitNullValueAccountGroupTypeIndex = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("account_group_type_index"); else _explicitNullProperties?.Remove("account_group_type_index"); } }
+        public int? AccountGroupTypeIndex { get => _explicitNullValueAccountGroupTypeIndex; set { _explicitNullValueAccountGroupTypeIndex = value; AdditionalData?.Remove("account_group_type_index"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("account_group_type_index"); else _explicitNullProperties?.Remove("account_group_type_index"); } }
         private int? _explicitNullValueAccountGroupTypeIndex = default!;
         /// <summary>Event used as the activity signal (DAU/WAU/MAU).</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public UntypedNode? ActivityEvent { get => _explicitNullValueActivityEvent; set { _explicitNullValueActivityEvent = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("activity_event"); else _explicitNullProperties?.Remove("activity_event"); } }
+        public UntypedNode? ActivityEvent { get => _explicitNullValueActivityEvent; set { _explicitNullValueActivityEvent = value; AdditionalData?.Remove("activity_event"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("activity_event"); else _explicitNullProperties?.Remove("activity_event"); } }
         private UntypedNode? _explicitNullValueActivityEvent = default!;
 #nullable restore
 #else
-        public UntypedNode ActivityEvent { get => _explicitNullValueActivityEvent; set { _explicitNullValueActivityEvent = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("activity_event"); else _explicitNullProperties?.Remove("activity_event"); } }
+        public UntypedNode ActivityEvent { get => _explicitNullValueActivityEvent; set { _explicitNullValueActivityEvent = value; AdditionalData?.Remove("activity_event"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("activity_event"); else _explicitNullProperties?.Remove("activity_event"); } }
         private UntypedNode _explicitNullValueActivityEvent = default!;
 #endif
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -44,51 +51,51 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Ordered account properties shown until a user saves a personal pinned-property selection. Pass an empty list to show no properties by default.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.TeamCustomerAnalyticsPinnedAccountProperty>? DefaultPinnedProperties { get => _explicitNullValueDefaultPinnedProperties; set { _explicitNullValueDefaultPinnedProperties = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("default_pinned_properties"); else _explicitNullProperties?.Remove("default_pinned_properties"); } }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.TeamCustomerAnalyticsPinnedAccountProperty>? DefaultPinnedProperties { get => _explicitNullValueDefaultPinnedProperties; set { _explicitNullValueDefaultPinnedProperties = value; AdditionalData?.Remove("default_pinned_properties"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("default_pinned_properties"); else _explicitNullProperties?.Remove("default_pinned_properties"); } }
         private List<global::Soenneker.PostHog.OpenApiClient.Models.TeamCustomerAnalyticsPinnedAccountProperty>? _explicitNullValueDefaultPinnedProperties = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.TeamCustomerAnalyticsPinnedAccountProperty> DefaultPinnedProperties { get => _explicitNullValueDefaultPinnedProperties; set { _explicitNullValueDefaultPinnedProperties = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("default_pinned_properties"); else _explicitNullProperties?.Remove("default_pinned_properties"); } }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.TeamCustomerAnalyticsPinnedAccountProperty> DefaultPinnedProperties { get => _explicitNullValueDefaultPinnedProperties; set { _explicitNullValueDefaultPinnedProperties = value; AdditionalData?.Remove("default_pinned_properties"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("default_pinned_properties"); else _explicitNullProperties?.Remove("default_pinned_properties"); } }
         private List<global::Soenneker.PostHog.OpenApiClient.Models.TeamCustomerAnalyticsPinnedAccountProperty> _explicitNullValueDefaultPinnedProperties = default!;
 #endif
         /// <summary>Event used to count payments on dashboards.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public UntypedNode? PaymentEvent { get => _explicitNullValuePaymentEvent; set { _explicitNullValuePaymentEvent = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("payment_event"); else _explicitNullProperties?.Remove("payment_event"); } }
+        public UntypedNode? PaymentEvent { get => _explicitNullValuePaymentEvent; set { _explicitNullValuePaymentEvent = value; AdditionalData?.Remove("payment_event"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("payment_event"); else _explicitNullProperties?.Remove("payment_event"); } }
         private UntypedNode? _explicitNullValuePaymentEvent = default!;
 #nullable restore
 #else
-        public UntypedNode PaymentEvent { get => _explicitNullValuePaymentEvent; set { _explicitNullValuePaymentEvent = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("payment_event"); else _explicitNullProperties?.Remove("payment_event"); } }
+        public UntypedNode PaymentEvent { get => _explicitNullValuePaymentEvent; set { _explicitNullValuePaymentEvent = value; AdditionalData?.Remove("payment_event"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("payment_event"); else _explicitNullProperties?.Remove("payment_event"); } }
         private UntypedNode _explicitNullValuePaymentEvent = default!;
 #endif
         /// <summary>Event used to count signups on dashboards.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public UntypedNode? SignupEvent { get => _explicitNullValueSignupEvent; set { _explicitNullValueSignupEvent = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("signup_event"); else _explicitNullProperties?.Remove("signup_event"); } }
+        public UntypedNode? SignupEvent { get => _explicitNullValueSignupEvent; set { _explicitNullValueSignupEvent = value; AdditionalData?.Remove("signup_event"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("signup_event"); else _explicitNullProperties?.Remove("signup_event"); } }
         private UntypedNode? _explicitNullValueSignupEvent = default!;
 #nullable restore
 #else
-        public UntypedNode SignupEvent { get => _explicitNullValueSignupEvent; set { _explicitNullValueSignupEvent = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("signup_event"); else _explicitNullProperties?.Remove("signup_event"); } }
+        public UntypedNode SignupEvent { get => _explicitNullValueSignupEvent; set { _explicitNullValueSignupEvent = value; AdditionalData?.Remove("signup_event"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("signup_event"); else _explicitNullProperties?.Remove("signup_event"); } }
         private UntypedNode _explicitNullValueSignupEvent = default!;
 #endif
         /// <summary>Event used to count signup pageviews on dashboards.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public UntypedNode? SignupPageviewEvent { get => _explicitNullValueSignupPageviewEvent; set { _explicitNullValueSignupPageviewEvent = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("signup_pageview_event"); else _explicitNullProperties?.Remove("signup_pageview_event"); } }
+        public UntypedNode? SignupPageviewEvent { get => _explicitNullValueSignupPageviewEvent; set { _explicitNullValueSignupPageviewEvent = value; AdditionalData?.Remove("signup_pageview_event"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("signup_pageview_event"); else _explicitNullProperties?.Remove("signup_pageview_event"); } }
         private UntypedNode? _explicitNullValueSignupPageviewEvent = default!;
 #nullable restore
 #else
-        public UntypedNode SignupPageviewEvent { get => _explicitNullValueSignupPageviewEvent; set { _explicitNullValueSignupPageviewEvent = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("signup_pageview_event"); else _explicitNullProperties?.Remove("signup_pageview_event"); } }
+        public UntypedNode SignupPageviewEvent { get => _explicitNullValueSignupPageviewEvent; set { _explicitNullValueSignupPageviewEvent = value; AdditionalData?.Remove("signup_pageview_event"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("signup_pageview_event"); else _explicitNullProperties?.Remove("signup_pageview_event"); } }
         private UntypedNode _explicitNullValueSignupPageviewEvent = default!;
 #endif
         /// <summary>Event used to count subscriptions on dashboards.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public UntypedNode? SubscriptionEvent { get => _explicitNullValueSubscriptionEvent; set { _explicitNullValueSubscriptionEvent = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("subscription_event"); else _explicitNullProperties?.Remove("subscription_event"); } }
+        public UntypedNode? SubscriptionEvent { get => _explicitNullValueSubscriptionEvent; set { _explicitNullValueSubscriptionEvent = value; AdditionalData?.Remove("subscription_event"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("subscription_event"); else _explicitNullProperties?.Remove("subscription_event"); } }
         private UntypedNode? _explicitNullValueSubscriptionEvent = default!;
 #nullable restore
 #else
-        public UntypedNode SubscriptionEvent { get => _explicitNullValueSubscriptionEvent; set { _explicitNullValueSubscriptionEvent = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("subscription_event"); else _explicitNullProperties?.Remove("subscription_event"); } }
+        public UntypedNode SubscriptionEvent { get => _explicitNullValueSubscriptionEvent; set { _explicitNullValueSubscriptionEvent = value; AdditionalData?.Remove("subscription_event"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("subscription_event"); else _explicitNullProperties?.Remove("subscription_event"); } }
         private UntypedNode _explicitNullValueSubscriptionEvent = default!;
 #endif
         /// <summary>

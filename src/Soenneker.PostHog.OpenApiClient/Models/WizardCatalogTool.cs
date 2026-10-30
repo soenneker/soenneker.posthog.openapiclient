@@ -17,13 +17,20 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("alternative_to") is { } nullNodeAlternativeTo && nullNodeAlternativeTo.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AlternativeTo = null;
-            if (parseNode.GetChildNode("kind") is { } nullNodeKind && nullNodeKind.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Kind = null;
-            if (parseNode.GetChildNode("label") is { } nullNodeLabel && nullNodeLabel.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Label = null;
-            if (parseNode.GetChildNode("signals") is { } nullNodeSignals && nullNodeSignals.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Signals = null;
-            if (parseNode.GetChildNode("superseded_by") is { } nullNodeSupersededBy && nullNodeSupersededBy.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SupersededBy = null;
-            if (parseNode.GetChildNode("warehouse_source_type") is { } nullNodeWarehouseSourceType && nullNodeWarehouseSourceType.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) WarehouseSourceType = null;
-            if (parseNode.GetChildNode("wizard_setup_mode") is { } nullNodeWizardSetupMode && nullNodeWizardSetupMode.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) WizardSetupMode = null;
+            if (parseNode.GetChildNode("alternative_to") is null) { _explicitNullValueAlternativeTo = default!; _explicitNullProperties?.Remove("alternative_to"); }
+            else if (parseNode.GetChildNode("alternative_to") is { } nullNodeAlternativeTo && nullNodeAlternativeTo.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AlternativeTo = null;
+            if (parseNode.GetChildNode("kind") is null) { _explicitNullValueKind = default!; _explicitNullProperties?.Remove("kind"); }
+            else if (parseNode.GetChildNode("kind") is { } nullNodeKind && nullNodeKind.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Kind = null;
+            if (parseNode.GetChildNode("label") is null) { _explicitNullValueLabel = default!; _explicitNullProperties?.Remove("label"); }
+            else if (parseNode.GetChildNode("label") is { } nullNodeLabel && nullNodeLabel.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Label = null;
+            if (parseNode.GetChildNode("signals") is null) { _explicitNullValueSignals = default!; _explicitNullProperties?.Remove("signals"); }
+            else if (parseNode.GetChildNode("signals") is { } nullNodeSignals && nullNodeSignals.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Signals = null;
+            if (parseNode.GetChildNode("superseded_by") is null) { _explicitNullValueSupersededBy = default!; _explicitNullProperties?.Remove("superseded_by"); }
+            else if (parseNode.GetChildNode("superseded_by") is { } nullNodeSupersededBy && nullNodeSupersededBy.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SupersededBy = null;
+            if (parseNode.GetChildNode("warehouse_source_type") is null) { _explicitNullValueWarehouseSourceType = default!; _explicitNullProperties?.Remove("warehouse_source_type"); }
+            else if (parseNode.GetChildNode("warehouse_source_type") is { } nullNodeWarehouseSourceType && nullNodeWarehouseSourceType.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) WarehouseSourceType = null;
+            if (parseNode.GetChildNode("wizard_setup_mode") is null) { _explicitNullValueWizardSetupMode = default!; _explicitNullProperties?.Remove("wizard_setup_mode"); }
+            else if (parseNode.GetChildNode("wizard_setup_mode") is { } nullNodeWizardSetupMode && nullNodeWizardSetupMode.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) WizardSetupMode = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -31,71 +38,71 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>PostHog products this tool is an alternative to.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<string>? AlternativeTo { get => _explicitNullValueAlternativeTo; set { _explicitNullValueAlternativeTo = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("alternative_to"); else _explicitNullProperties?.Remove("alternative_to"); } }
+        public List<string>? AlternativeTo { get => _explicitNullValueAlternativeTo; set { _explicitNullValueAlternativeTo = value; AdditionalData?.Remove("alternative_to"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("alternative_to"); else _explicitNullProperties?.Remove("alternative_to"); } }
         private List<string>? _explicitNullValueAlternativeTo = default!;
 #nullable restore
 #else
-        public List<string> AlternativeTo { get => _explicitNullValueAlternativeTo; set { _explicitNullValueAlternativeTo = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("alternative_to"); else _explicitNullProperties?.Remove("alternative_to"); } }
+        public List<string> AlternativeTo { get => _explicitNullValueAlternativeTo; set { _explicitNullValueAlternativeTo = value; AdditionalData?.Remove("alternative_to"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("alternative_to"); else _explicitNullProperties?.Remove("alternative_to"); } }
         private List<string> _explicitNullValueAlternativeTo = default!;
 #endif
         /// <summary>Unique tool identifier, such as `Stripe` or `Hotjar`.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Kind { get => _explicitNullValueKind; set { _explicitNullValueKind = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("kind"); else _explicitNullProperties?.Remove("kind"); } }
+        public string? Kind { get => _explicitNullValueKind; set { _explicitNullValueKind = value; AdditionalData?.Remove("kind"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("kind"); else _explicitNullProperties?.Remove("kind"); } }
         private string? _explicitNullValueKind = default!;
 #nullable restore
 #else
-        public string Kind { get => _explicitNullValueKind; set { _explicitNullValueKind = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("kind"); else _explicitNullProperties?.Remove("kind"); } }
+        public string Kind { get => _explicitNullValueKind; set { _explicitNullValueKind = value; AdditionalData?.Remove("kind"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("kind"); else _explicitNullProperties?.Remove("kind"); } }
         private string _explicitNullValueKind = default!;
 #endif
         /// <summary>Human-readable tool name.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Label { get => _explicitNullValueLabel; set { _explicitNullValueLabel = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("label"); else _explicitNullProperties?.Remove("label"); } }
+        public string? Label { get => _explicitNullValueLabel; set { _explicitNullValueLabel = value; AdditionalData?.Remove("label"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("label"); else _explicitNullProperties?.Remove("label"); } }
         private string? _explicitNullValueLabel = default!;
 #nullable restore
 #else
-        public string Label { get => _explicitNullValueLabel; set { _explicitNullValueLabel = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("label"); else _explicitNullProperties?.Remove("label"); } }
+        public string Label { get => _explicitNullValueLabel; set { _explicitNullValueLabel = value; AdditionalData?.Remove("label"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("label"); else _explicitNullProperties?.Remove("label"); } }
         private string _explicitNullValueLabel = default!;
 #endif
         /// <summary>How the wizard detects the tool in a codebase.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.WizardCatalogToolSignalsComposed? Signals { get => _explicitNullValueSignals; set { _explicitNullValueSignals = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("signals"); else _explicitNullProperties?.Remove("signals"); } }
+        public global::Soenneker.PostHog.OpenApiClient.Models.WizardCatalogToolSignalsComposed? Signals { get => _explicitNullValueSignals; set { _explicitNullValueSignals = value; AdditionalData?.Remove("signals"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("signals"); else _explicitNullProperties?.Remove("signals"); } }
         private global::Soenneker.PostHog.OpenApiClient.Models.WizardCatalogToolSignalsComposed? _explicitNullValueSignals = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.WizardCatalogToolSignalsComposed Signals { get => _explicitNullValueSignals; set { _explicitNullValueSignals = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("signals"); else _explicitNullProperties?.Remove("signals"); } }
+        public global::Soenneker.PostHog.OpenApiClient.Models.WizardCatalogToolSignalsComposed Signals { get => _explicitNullValueSignals; set { _explicitNullValueSignals = value; AdditionalData?.Remove("signals"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("signals"); else _explicitNullProperties?.Remove("signals"); } }
         private global::Soenneker.PostHog.OpenApiClient.Models.WizardCatalogToolSignalsComposed _explicitNullValueSignals = default!;
 #endif
         /// <summary>Kinds that reach the same data through a more specific source. When one of them also matches, the wizard drops this tool.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<string>? SupersededBy { get => _explicitNullValueSupersededBy; set { _explicitNullValueSupersededBy = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("superseded_by"); else _explicitNullProperties?.Remove("superseded_by"); } }
+        public List<string>? SupersededBy { get => _explicitNullValueSupersededBy; set { _explicitNullValueSupersededBy = value; AdditionalData?.Remove("superseded_by"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("superseded_by"); else _explicitNullProperties?.Remove("superseded_by"); } }
         private List<string>? _explicitNullValueSupersededBy = default!;
 #nullable restore
 #else
-        public List<string> SupersededBy { get => _explicitNullValueSupersededBy; set { _explicitNullValueSupersededBy = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("superseded_by"); else _explicitNullProperties?.Remove("superseded_by"); } }
+        public List<string> SupersededBy { get => _explicitNullValueSupersededBy; set { _explicitNullValueSupersededBy = value; AdditionalData?.Remove("superseded_by"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("superseded_by"); else _explicitNullProperties?.Remove("superseded_by"); } }
         private List<string> _explicitNullValueSupersededBy = default!;
 #endif
         /// <summary>Data warehouse source type the tool imports as, or null for a tool with no warehouse source.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? WarehouseSourceType { get => _explicitNullValueWarehouseSourceType; set { _explicitNullValueWarehouseSourceType = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("warehouse_source_type"); else _explicitNullProperties?.Remove("warehouse_source_type"); } }
+        public string? WarehouseSourceType { get => _explicitNullValueWarehouseSourceType; set { _explicitNullValueWarehouseSourceType = value; AdditionalData?.Remove("warehouse_source_type"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("warehouse_source_type"); else _explicitNullProperties?.Remove("warehouse_source_type"); } }
         private string? _explicitNullValueWarehouseSourceType = default!;
 #nullable restore
 #else
-        public string WarehouseSourceType { get => _explicitNullValueWarehouseSourceType; set { _explicitNullValueWarehouseSourceType = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("warehouse_source_type"); else _explicitNullProperties?.Remove("warehouse_source_type"); } }
+        public string WarehouseSourceType { get => _explicitNullValueWarehouseSourceType; set { _explicitNullValueWarehouseSourceType = value; AdditionalData?.Remove("warehouse_source_type"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("warehouse_source_type"); else _explicitNullProperties?.Remove("warehouse_source_type"); } }
         private string _explicitNullValueWarehouseSourceType = default!;
 #endif
         /// <summary>How the wizard sets up the source: in the terminal or in the app. Null for a tool with no warehouse source.* `in-cli` - In the terminal* `deep-link` - In the app</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.WizardCatalogToolWizardSetupMode? WizardSetupMode { get => _explicitNullValueWizardSetupMode; set { _explicitNullValueWizardSetupMode = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("wizard_setup_mode"); else _explicitNullProperties?.Remove("wizard_setup_mode"); } }
+        public global::Soenneker.PostHog.OpenApiClient.Models.WizardCatalogToolWizardSetupMode? WizardSetupMode { get => _explicitNullValueWizardSetupMode; set { _explicitNullValueWizardSetupMode = value; AdditionalData?.Remove("wizard_setup_mode"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("wizard_setup_mode"); else _explicitNullProperties?.Remove("wizard_setup_mode"); } }
         private global::Soenneker.PostHog.OpenApiClient.Models.WizardCatalogToolWizardSetupMode? _explicitNullValueWizardSetupMode = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.WizardCatalogToolWizardSetupMode WizardSetupMode { get => _explicitNullValueWizardSetupMode; set { _explicitNullValueWizardSetupMode = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("wizard_setup_mode"); else _explicitNullProperties?.Remove("wizard_setup_mode"); } }
+        public global::Soenneker.PostHog.OpenApiClient.Models.WizardCatalogToolWizardSetupMode WizardSetupMode { get => _explicitNullValueWizardSetupMode; set { _explicitNullValueWizardSetupMode = value; AdditionalData?.Remove("wizard_setup_mode"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("wizard_setup_mode"); else _explicitNullProperties?.Remove("wizard_setup_mode"); } }
         private global::Soenneker.PostHog.OpenApiClient.Models.WizardCatalogToolWizardSetupMode _explicitNullValueWizardSetupMode = default!;
 #endif
         /// <summary>

@@ -17,8 +17,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("artifact_ids") is { } nullNodeArtifactIds && nullNodeArtifactIds.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ArtifactIds = null;
-            if (parseNode.GetChildNode("dismissed") is { } nullNodeDismissed && nullNodeDismissed.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Dismissed = null;
+            if (parseNode.GetChildNode("artifact_ids") is null) { _explicitNullValueArtifactIds = default!; _explicitNullProperties?.Remove("artifact_ids"); }
+            else if (parseNode.GetChildNode("artifact_ids") is { } nullNodeArtifactIds && nullNodeArtifactIds.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ArtifactIds = null;
+            if (parseNode.GetChildNode("dismissed") is null) { _explicitNullValueDismissed = default!; _explicitNullProperties?.Remove("dismissed"); }
+            else if (parseNode.GetChildNode("dismissed") is { } nullNodeDismissed && nullNodeDismissed.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Dismissed = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -26,15 +28,15 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Manifest ids of the artifacts to update. Pass every version of a file together so the whole file is dismissed rather than a single upload of it.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<string>? ArtifactIds { get => _explicitNullValueArtifactIds; set { _explicitNullValueArtifactIds = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("artifact_ids"); else _explicitNullProperties?.Remove("artifact_ids"); } }
+        public List<string>? ArtifactIds { get => _explicitNullValueArtifactIds; set { _explicitNullValueArtifactIds = value; AdditionalData?.Remove("artifact_ids"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("artifact_ids"); else _explicitNullProperties?.Remove("artifact_ids"); } }
         private List<string>? _explicitNullValueArtifactIds = default!;
 #nullable restore
 #else
-        public List<string> ArtifactIds { get => _explicitNullValueArtifactIds; set { _explicitNullValueArtifactIds = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("artifact_ids"); else _explicitNullProperties?.Remove("artifact_ids"); } }
+        public List<string> ArtifactIds { get => _explicitNullValueArtifactIds; set { _explicitNullValueArtifactIds = value; AdditionalData?.Remove("artifact_ids"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("artifact_ids"); else _explicitNullProperties?.Remove("artifact_ids"); } }
         private List<string> _explicitNullValueArtifactIds = default!;
 #endif
         /// <summary>True to hide the artifacts from clients, false to show them again.</summary>
-        public bool? Dismissed { get => _explicitNullValueDismissed; set { _explicitNullValueDismissed = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("dismissed"); else _explicitNullProperties?.Remove("dismissed"); } }
+        public bool? Dismissed { get => _explicitNullValueDismissed; set { _explicitNullValueDismissed = value; AdditionalData?.Remove("dismissed"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("dismissed"); else _explicitNullProperties?.Remove("dismissed"); } }
         private bool? _explicitNullValueDismissed = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.TaskRunArtifactsDismissRequest"/> and sets the default values.

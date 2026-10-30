@@ -18,13 +18,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("report_outcome") is { } nullNodeReportOutcome && nullNodeReportOutcome.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ReportOutcome = null;
+            if (parseNode.GetChildNode("report_outcome") is null) { _explicitNullValueReportOutcome = default!; _explicitNullProperties?.Remove("report_outcome"); }
+            else if (parseNode.GetChildNode("report_outcome") is { } nullNodeReportOutcome && nullNodeReportOutcome.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ReportOutcome = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>* `filed` - filed* `duplicate` - duplicate* `no_authoring_task` - no_authoring_task* `skipped` - skipped</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.CanvasErrorReportResultReportOutcome? ReportOutcome { get => _explicitNullValueReportOutcome; set { _explicitNullValueReportOutcome = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("report_outcome"); else _explicitNullProperties?.Remove("report_outcome"); } }
+        public global::Soenneker.PostHog.OpenApiClient.Models.CanvasErrorReportResultReportOutcome? ReportOutcome { get => _explicitNullValueReportOutcome; set { _explicitNullValueReportOutcome = value; AdditionalData?.Remove("report_outcome"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("report_outcome"); else _explicitNullProperties?.Remove("report_outcome"); } }
         private global::Soenneker.PostHog.OpenApiClient.Models.CanvasErrorReportResultReportOutcome? _explicitNullValueReportOutcome = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.CanvasErrorReportResult"/> and sets the default values.
@@ -51,7 +52,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "report_outcome", n => { ReportOutcome = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.CanvasErrorReportResultReportOutcome>(); } },
+                { "report_outcome", n => { var parsed = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.CanvasErrorReportResultReportOutcome>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValueReportOutcome = default; _explicitNullProperties?.Remove("report_outcome"); AdditionalData["report_outcome"] = unknown; } else { ReportOutcome = parsed; AdditionalData.Remove("report_outcome"); } } },
             };
         }
         /// <summary>

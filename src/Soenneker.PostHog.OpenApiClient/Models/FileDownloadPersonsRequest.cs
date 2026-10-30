@@ -18,32 +18,36 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("data_interval_end") is { } nullNodeDataIntervalEnd && nullNodeDataIntervalEnd.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) DataIntervalEnd = null;
-            if (parseNode.GetChildNode("data_interval_start") is { } nullNodeDataIntervalStart && nullNodeDataIntervalStart.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) DataIntervalStart = null;
-            if (parseNode.GetChildNode("file") is { } nullNodeFile && nullNodeFile.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) File = null;
-            if (parseNode.GetChildNode("model") is { } nullNodeModel && nullNodeModel.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Model = null;
+            if (parseNode.GetChildNode("data_interval_end") is null) { _explicitNullValueDataIntervalEnd = default!; _explicitNullProperties?.Remove("data_interval_end"); }
+            else if (parseNode.GetChildNode("data_interval_end") is { } nullNodeDataIntervalEnd && nullNodeDataIntervalEnd.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) DataIntervalEnd = null;
+            if (parseNode.GetChildNode("data_interval_start") is null) { _explicitNullValueDataIntervalStart = default!; _explicitNullProperties?.Remove("data_interval_start"); }
+            else if (parseNode.GetChildNode("data_interval_start") is { } nullNodeDataIntervalStart && nullNodeDataIntervalStart.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) DataIntervalStart = null;
+            if (parseNode.GetChildNode("file") is null) { _explicitNullValueFile = default!; _explicitNullProperties?.Remove("file"); }
+            else if (parseNode.GetChildNode("file") is { } nullNodeFile && nullNodeFile.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) File = null;
+            if (parseNode.GetChildNode("model") is null) { _explicitNullValueModel = default!; _explicitNullProperties?.Remove("model"); }
+            else if (parseNode.GetChildNode("model") is { } nullNodeModel && nullNodeModel.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Model = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The data_interval_end property</summary>
-        public DateTimeOffset? DataIntervalEnd { get => _explicitNullValueDataIntervalEnd; set { _explicitNullValueDataIntervalEnd = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("data_interval_end"); else _explicitNullProperties?.Remove("data_interval_end"); } }
+        public DateTimeOffset? DataIntervalEnd { get => _explicitNullValueDataIntervalEnd; set { _explicitNullValueDataIntervalEnd = value; AdditionalData?.Remove("data_interval_end"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("data_interval_end"); else _explicitNullProperties?.Remove("data_interval_end"); } }
         private DateTimeOffset? _explicitNullValueDataIntervalEnd = default!;
         /// <summary>The data_interval_start property</summary>
-        public DateTimeOffset? DataIntervalStart { get => _explicitNullValueDataIntervalStart; set { _explicitNullValueDataIntervalStart = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("data_interval_start"); else _explicitNullProperties?.Remove("data_interval_start"); } }
+        public DateTimeOffset? DataIntervalStart { get => _explicitNullValueDataIntervalStart; set { _explicitNullValueDataIntervalStart = value; AdditionalData?.Remove("data_interval_start"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("data_interval_start"); else _explicitNullProperties?.Remove("data_interval_start"); } }
         private DateTimeOffset? _explicitNullValueDataIntervalStart = default!;
         /// <summary>Typed configuration for a FileDownload batch-export destination.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.FileDownloadDestinationFileConfig? File { get => _explicitNullValueFile; set { _explicitNullValueFile = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("file"); else _explicitNullProperties?.Remove("file"); } }
+        public global::Soenneker.PostHog.OpenApiClient.Models.FileDownloadDestinationFileConfig? File { get => _explicitNullValueFile; set { _explicitNullValueFile = value; AdditionalData?.Remove("file"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("file"); else _explicitNullProperties?.Remove("file"); } }
         private global::Soenneker.PostHog.OpenApiClient.Models.FileDownloadDestinationFileConfig? _explicitNullValueFile = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.FileDownloadDestinationFileConfig File { get => _explicitNullValueFile; set { _explicitNullValueFile = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("file"); else _explicitNullProperties?.Remove("file"); } }
+        public global::Soenneker.PostHog.OpenApiClient.Models.FileDownloadDestinationFileConfig File { get => _explicitNullValueFile; set { _explicitNullValueFile = value; AdditionalData?.Remove("file"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("file"); else _explicitNullProperties?.Remove("file"); } }
         private global::Soenneker.PostHog.OpenApiClient.Models.FileDownloadDestinationFileConfig _explicitNullValueFile = default!;
 #endif
         /// <summary>* `persons` - persons</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.FileDownloadPersonsRequestModelEnum? Model { get => _explicitNullValueModel; set { _explicitNullValueModel = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("model"); else _explicitNullProperties?.Remove("model"); } }
+        public global::Soenneker.PostHog.OpenApiClient.Models.FileDownloadPersonsRequestModelEnum? Model { get => _explicitNullValueModel; set { _explicitNullValueModel = value; AdditionalData?.Remove("model"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("model"); else _explicitNullProperties?.Remove("model"); } }
         private global::Soenneker.PostHog.OpenApiClient.Models.FileDownloadPersonsRequestModelEnum? _explicitNullValueModel = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.FileDownloadPersonsRequest"/> and sets the default values.
@@ -73,7 +77,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "data_interval_end", n => { DataIntervalEnd = n.GetDateTimeOffsetValue(); } },
                 { "data_interval_start", n => { DataIntervalStart = n.GetDateTimeOffsetValue(); } },
                 { "file", n => { File = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.FileDownloadDestinationFileConfig>(global::Soenneker.PostHog.OpenApiClient.Models.FileDownloadDestinationFileConfig.CreateFromDiscriminatorValue); } },
-                { "model", n => { Model = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.FileDownloadPersonsRequestModelEnum>(); } },
+                { "model", n => { var parsed = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.FileDownloadPersonsRequestModelEnum>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValueModel = default; _explicitNullProperties?.Remove("model"); AdditionalData["model"] = unknown; } else { Model = parsed; AdditionalData.Remove("model"); } } },
             };
         }
         /// <summary>

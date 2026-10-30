@@ -18,9 +18,12 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("default_tab_id") is { } nullNodeDefaultTabId && nullNodeDefaultTabId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) DefaultTabId = null;
-            if (parseNode.GetChildNode("hidden_tab_ids") is { } nullNodeHiddenTabIds && nullNodeHiddenTabIds.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) HiddenTabIds = null;
-            if (parseNode.GetChildNode("ordered_tab_ids") is { } nullNodeOrderedTabIds && nullNodeOrderedTabIds.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) OrderedTabIds = null;
+            if (parseNode.GetChildNode("default_tab_id") is null) { _explicitNullValueDefaultTabId = default!; _explicitNullProperties?.Remove("default_tab_id"); }
+            else if (parseNode.GetChildNode("default_tab_id") is { } nullNodeDefaultTabId && nullNodeDefaultTabId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) DefaultTabId = null;
+            if (parseNode.GetChildNode("hidden_tab_ids") is null) { _explicitNullValueHiddenTabIds = default!; _explicitNullProperties?.Remove("hidden_tab_ids"); }
+            else if (parseNode.GetChildNode("hidden_tab_ids") is { } nullNodeHiddenTabIds && nullNodeHiddenTabIds.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) HiddenTabIds = null;
+            if (parseNode.GetChildNode("ordered_tab_ids") is null) { _explicitNullValueOrderedTabIds = default!; _explicitNullProperties?.Remove("ordered_tab_ids"); }
+            else if (parseNode.GetChildNode("ordered_tab_ids") is { } nullNodeOrderedTabIds && nullNodeOrderedTabIds.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) OrderedTabIds = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -28,31 +31,31 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Tab identifier opened by default. Null uses the first available system tab.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? DefaultTabId { get => _explicitNullValueDefaultTabId; set { _explicitNullValueDefaultTabId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("default_tab_id"); else _explicitNullProperties?.Remove("default_tab_id"); } }
+        public string? DefaultTabId { get => _explicitNullValueDefaultTabId; set { _explicitNullValueDefaultTabId = value; AdditionalData?.Remove("default_tab_id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("default_tab_id"); else _explicitNullProperties?.Remove("default_tab_id"); } }
         private string? _explicitNullValueDefaultTabId = default!;
 #nullable restore
 #else
-        public string DefaultTabId { get => _explicitNullValueDefaultTabId; set { _explicitNullValueDefaultTabId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("default_tab_id"); else _explicitNullProperties?.Remove("default_tab_id"); } }
+        public string DefaultTabId { get => _explicitNullValueDefaultTabId; set { _explicitNullValueDefaultTabId = value; AdditionalData?.Remove("default_tab_id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("default_tab_id"); else _explicitNullProperties?.Remove("default_tab_id"); } }
         private string _explicitNullValueDefaultTabId = default!;
 #endif
         /// <summary>Tab identifiers hidden from the tab strip.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<string>? HiddenTabIds { get => _explicitNullValueHiddenTabIds; set { _explicitNullValueHiddenTabIds = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("hidden_tab_ids"); else _explicitNullProperties?.Remove("hidden_tab_ids"); } }
+        public List<string>? HiddenTabIds { get => _explicitNullValueHiddenTabIds; set { _explicitNullValueHiddenTabIds = value; AdditionalData?.Remove("hidden_tab_ids"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("hidden_tab_ids"); else _explicitNullProperties?.Remove("hidden_tab_ids"); } }
         private List<string>? _explicitNullValueHiddenTabIds = default!;
 #nullable restore
 #else
-        public List<string> HiddenTabIds { get => _explicitNullValueHiddenTabIds; set { _explicitNullValueHiddenTabIds = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("hidden_tab_ids"); else _explicitNullProperties?.Remove("hidden_tab_ids"); } }
+        public List<string> HiddenTabIds { get => _explicitNullValueHiddenTabIds; set { _explicitNullValueHiddenTabIds = value; AdditionalData?.Remove("hidden_tab_ids"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("hidden_tab_ids"); else _explicitNullProperties?.Remove("hidden_tab_ids"); } }
         private List<string> _explicitNullValueHiddenTabIds = default!;
 #endif
         /// <summary>Tab identifiers in the user&apos;s preferred order.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<string>? OrderedTabIds { get => _explicitNullValueOrderedTabIds; set { _explicitNullValueOrderedTabIds = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("ordered_tab_ids"); else _explicitNullProperties?.Remove("ordered_tab_ids"); } }
+        public List<string>? OrderedTabIds { get => _explicitNullValueOrderedTabIds; set { _explicitNullValueOrderedTabIds = value; AdditionalData?.Remove("ordered_tab_ids"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("ordered_tab_ids"); else _explicitNullProperties?.Remove("ordered_tab_ids"); } }
         private List<string>? _explicitNullValueOrderedTabIds = default!;
 #nullable restore
 #else
-        public List<string> OrderedTabIds { get => _explicitNullValueOrderedTabIds; set { _explicitNullValueOrderedTabIds = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("ordered_tab_ids"); else _explicitNullProperties?.Remove("ordered_tab_ids"); } }
+        public List<string> OrderedTabIds { get => _explicitNullValueOrderedTabIds; set { _explicitNullValueOrderedTabIds = value; AdditionalData?.Remove("ordered_tab_ids"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("ordered_tab_ids"); else _explicitNullProperties?.Remove("ordered_tab_ids"); } }
         private List<string> _explicitNullValueOrderedTabIds = default!;
 #endif
         /// <summary>

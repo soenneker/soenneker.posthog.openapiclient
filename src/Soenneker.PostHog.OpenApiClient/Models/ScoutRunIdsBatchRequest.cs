@@ -18,7 +18,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("run_ids") is { } nullNodeRunIds && nullNodeRunIds.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) RunIds = null;
+            if (parseNode.GetChildNode("run_ids") is null) { _explicitNullValueRunIds = default!; _explicitNullProperties?.Remove("run_ids"); }
+            else if (parseNode.GetChildNode("run_ids") is { } nullNodeRunIds && nullNodeRunIds.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) RunIds = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -26,11 +27,11 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>UUIDs of the `SignalScoutRun` rows to resolve in one batch. Run ids belonging to another team are silently ignored (they contribute no rows) rather than failing the whole request. Capped at 200 ids per call.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<Guid?>? RunIds { get => _explicitNullValueRunIds; set { _explicitNullValueRunIds = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("run_ids"); else _explicitNullProperties?.Remove("run_ids"); } }
+        public List<Guid?>? RunIds { get => _explicitNullValueRunIds; set { _explicitNullValueRunIds = value; AdditionalData?.Remove("run_ids"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("run_ids"); else _explicitNullProperties?.Remove("run_ids"); } }
         private List<Guid?>? _explicitNullValueRunIds = default!;
 #nullable restore
 #else
-        public List<Guid?> RunIds { get => _explicitNullValueRunIds; set { _explicitNullValueRunIds = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("run_ids"); else _explicitNullProperties?.Remove("run_ids"); } }
+        public List<Guid?> RunIds { get => _explicitNullValueRunIds; set { _explicitNullValueRunIds = value; AdditionalData?.Remove("run_ids"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("run_ids"); else _explicitNullProperties?.Remove("run_ids"); } }
         private List<Guid?> _explicitNullValueRunIds = default!;
 #endif
         /// <summary>

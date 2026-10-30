@@ -17,11 +17,16 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("engine") is { } nullNodeEngine && nullNodeEngine.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Engine = null;
-            if (parseNode.GetChildNode("negative") is { } nullNodeNegative && nullNodeNegative.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Negative = null;
-            if (parseNode.GetChildNode("neutral") is { } nullNodeNeutral && nullNodeNeutral.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Neutral = null;
-            if (parseNode.GetChildNode("positive") is { } nullNodePositive && nullNodePositive.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Positive = null;
-            if (parseNode.GetChildNode("unscored") is { } nullNodeUnscored && nullNodeUnscored.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Unscored = null;
+            if (parseNode.GetChildNode("engine") is null) { _explicitNullValueEngine = default!; _explicitNullProperties?.Remove("engine"); }
+            else if (parseNode.GetChildNode("engine") is { } nullNodeEngine && nullNodeEngine.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Engine = null;
+            if (parseNode.GetChildNode("negative") is null) { _explicitNullValueNegative = default!; _explicitNullProperties?.Remove("negative"); }
+            else if (parseNode.GetChildNode("negative") is { } nullNodeNegative && nullNodeNegative.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Negative = null;
+            if (parseNode.GetChildNode("neutral") is null) { _explicitNullValueNeutral = default!; _explicitNullProperties?.Remove("neutral"); }
+            else if (parseNode.GetChildNode("neutral") is { } nullNodeNeutral && nullNodeNeutral.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Neutral = null;
+            if (parseNode.GetChildNode("positive") is null) { _explicitNullValuePositive = default!; _explicitNullProperties?.Remove("positive"); }
+            else if (parseNode.GetChildNode("positive") is { } nullNodePositive && nullNodePositive.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Positive = null;
+            if (parseNode.GetChildNode("unscored") is null) { _explicitNullValueUnscored = default!; _explicitNullProperties?.Remove("unscored"); }
+            else if (parseNode.GetChildNode("unscored") is { } nullNodeUnscored && nullNodeUnscored.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Unscored = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -29,24 +34,24 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Answer engine that ran the prompt, for example &apos;claude-web-search&apos;, &apos;openai-web-search&apos; or &apos;exa-answer&apos;.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Engine { get => _explicitNullValueEngine; set { _explicitNullValueEngine = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("engine"); else _explicitNullProperties?.Remove("engine"); } }
+        public string? Engine { get => _explicitNullValueEngine; set { _explicitNullValueEngine = value; AdditionalData?.Remove("engine"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("engine"); else _explicitNullProperties?.Remove("engine"); } }
         private string? _explicitNullValueEngine = default!;
 #nullable restore
 #else
-        public string Engine { get => _explicitNullValueEngine; set { _explicitNullValueEngine = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("engine"); else _explicitNullProperties?.Remove("engine"); } }
+        public string Engine { get => _explicitNullValueEngine; set { _explicitNullValueEngine = value; AdditionalData?.Remove("engine"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("engine"); else _explicitNullProperties?.Remove("engine"); } }
         private string _explicitNullValueEngine = default!;
 #endif
         /// <summary>Answers in the last 30 days whose brand sentences read negative.</summary>
-        public int? Negative { get => _explicitNullValueNegative; set { _explicitNullValueNegative = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("negative"); else _explicitNullProperties?.Remove("negative"); } }
+        public int? Negative { get => _explicitNullValueNegative; set { _explicitNullValueNegative = value; AdditionalData?.Remove("negative"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("negative"); else _explicitNullProperties?.Remove("negative"); } }
         private int? _explicitNullValueNegative = default!;
         /// <summary>Answers in the last 30 days whose brand sentences read neutral.</summary>
-        public int? Neutral { get => _explicitNullValueNeutral; set { _explicitNullValueNeutral = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("neutral"); else _explicitNullProperties?.Remove("neutral"); } }
+        public int? Neutral { get => _explicitNullValueNeutral; set { _explicitNullValueNeutral = value; AdditionalData?.Remove("neutral"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("neutral"); else _explicitNullProperties?.Remove("neutral"); } }
         private int? _explicitNullValueNeutral = default!;
         /// <summary>Answers in the last 30 days whose brand sentences read positive.</summary>
-        public int? Positive { get => _explicitNullValuePositive; set { _explicitNullValuePositive = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("positive"); else _explicitNullProperties?.Remove("positive"); } }
+        public int? Positive { get => _explicitNullValuePositive; set { _explicitNullValuePositive = value; AdditionalData?.Remove("positive"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("positive"); else _explicitNullProperties?.Remove("positive"); } }
         private int? _explicitNullValuePositive = default!;
         /// <summary>Answers in the last 30 days that name the brand but have no sentiment yet.</summary>
-        public int? Unscored { get => _explicitNullValueUnscored; set { _explicitNullValueUnscored = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("unscored"); else _explicitNullProperties?.Remove("unscored"); } }
+        public int? Unscored { get => _explicitNullValueUnscored; set { _explicitNullValueUnscored = value; AdditionalData?.Remove("unscored"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("unscored"); else _explicitNullProperties?.Remove("unscored"); } }
         private int? _explicitNullValueUnscored = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.AeoPromptEngineSentiment"/> and sets the default values.

@@ -17,13 +17,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("retention_months") is { } nullNodeRetentionMonths && nullNodeRetentionMonths.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) RetentionMonths = null;
+            if (parseNode.GetChildNode("retention_months") is null) { _explicitNullValueRetentionMonths = default!; _explicitNullProperties?.Remove("retention_months"); }
+            else if (parseNode.GetChildNode("retention_months") is { } nullNodeRetentionMonths && nullNodeRetentionMonths.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) RetentionMonths = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The window in months. Events older than this are deleted on the next monthly cleanup and can&apos;t be restored. Null removes the window.</summary>
-        public int? RetentionMonths { get => _explicitNullValueRetentionMonths; set { _explicitNullValueRetentionMonths = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("retention_months"); else _explicitNullProperties?.Remove("retention_months"); } }
+        public int? RetentionMonths { get => _explicitNullValueRetentionMonths; set { _explicitNullValueRetentionMonths = value; AdditionalData?.Remove("retention_months"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("retention_months"); else _explicitNullProperties?.Remove("retention_months"); } }
         private int? _explicitNullValueRetentionMonths = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.EventsRetentionUpdateBody"/> and sets the default values.

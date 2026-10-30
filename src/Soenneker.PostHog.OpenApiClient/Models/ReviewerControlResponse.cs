@@ -17,53 +17,59 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("confirmed") is { } nullNodeConfirmed && nullNodeConfirmed.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Confirmed = null;
-            if (parseNode.GetChildNode("enabled") is { } nullNodeEnabled && nullNodeEnabled.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Enabled = null;
-            if (parseNode.GetChildNode("excluded_user_uuids") is { } nullNodeExcludedUserUuids && nullNodeExcludedUserUuids.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ExcludedUserUuids = null;
-            if (parseNode.GetChildNode("needs_review") is { } nullNodeNeedsReview && nullNodeNeedsReview.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) NeedsReview = null;
-            if (parseNode.GetChildNode("pinned_user_uuids") is { } nullNodePinnedUserUuids && nullNodePinnedUserUuids.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) PinnedUserUuids = null;
-            if (parseNode.GetChildNode("state") is { } nullNodeState && nullNodeState.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) State = null;
+            if (parseNode.GetChildNode("confirmed") is null) { _explicitNullValueConfirmed = default!; _explicitNullProperties?.Remove("confirmed"); }
+            else if (parseNode.GetChildNode("confirmed") is { } nullNodeConfirmed && nullNodeConfirmed.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Confirmed = null;
+            if (parseNode.GetChildNode("enabled") is null) { _explicitNullValueEnabled = default!; _explicitNullProperties?.Remove("enabled"); }
+            else if (parseNode.GetChildNode("enabled") is { } nullNodeEnabled && nullNodeEnabled.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Enabled = null;
+            if (parseNode.GetChildNode("excluded_user_uuids") is null) { _explicitNullValueExcludedUserUuids = default!; _explicitNullProperties?.Remove("excluded_user_uuids"); }
+            else if (parseNode.GetChildNode("excluded_user_uuids") is { } nullNodeExcludedUserUuids && nullNodeExcludedUserUuids.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ExcludedUserUuids = null;
+            if (parseNode.GetChildNode("needs_review") is null) { _explicitNullValueNeedsReview = default!; _explicitNullProperties?.Remove("needs_review"); }
+            else if (parseNode.GetChildNode("needs_review") is { } nullNodeNeedsReview && nullNodeNeedsReview.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) NeedsReview = null;
+            if (parseNode.GetChildNode("pinned_user_uuids") is null) { _explicitNullValuePinnedUserUuids = default!; _explicitNullProperties?.Remove("pinned_user_uuids"); }
+            else if (parseNode.GetChildNode("pinned_user_uuids") is { } nullNodePinnedUserUuids && nullNodePinnedUserUuids.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) PinnedUserUuids = null;
+            if (parseNode.GetChildNode("state") is null) { _explicitNullValueState = default!; _explicitNullProperties?.Remove("state"); }
+            else if (parseNode.GetChildNode("state") is { } nullNodeState && nullNodeState.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) State = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>A person explicitly confirmed the complete reviewer list.</summary>
-        public bool? Confirmed { get => _explicitNullValueConfirmed; set { _explicitNullValueConfirmed = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("confirmed"); else _explicitNullProperties?.Remove("confirmed"); } }
+        public bool? Confirmed { get => _explicitNullValueConfirmed; set { _explicitNullValueConfirmed = value; AdditionalData?.Remove("confirmed"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("confirmed"); else _explicitNullProperties?.Remove("confirmed"); } }
         private bool? _explicitNullValueConfirmed = default!;
         /// <summary>Whether this report uses saved reviewer corrections.</summary>
-        public bool? Enabled { get => _explicitNullValueEnabled; set { _explicitNullValueEnabled = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("enabled"); else _explicitNullProperties?.Remove("enabled"); } }
+        public bool? Enabled { get => _explicitNullValueEnabled; set { _explicitNullValueEnabled = value; AdditionalData?.Remove("enabled"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("enabled"); else _explicitNullProperties?.Remove("enabled"); } }
         private bool? _explicitNullValueEnabled = default!;
         /// <summary>People an automatic selection must not restore.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<Guid?>? ExcludedUserUuids { get => _explicitNullValueExcludedUserUuids; set { _explicitNullValueExcludedUserUuids = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("excluded_user_uuids"); else _explicitNullProperties?.Remove("excluded_user_uuids"); } }
+        public List<Guid?>? ExcludedUserUuids { get => _explicitNullValueExcludedUserUuids; set { _explicitNullValueExcludedUserUuids = value; AdditionalData?.Remove("excluded_user_uuids"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("excluded_user_uuids"); else _explicitNullProperties?.Remove("excluded_user_uuids"); } }
         private List<Guid?>? _explicitNullValueExcludedUserUuids = default!;
 #nullable restore
 #else
-        public List<Guid?> ExcludedUserUuids { get => _explicitNullValueExcludedUserUuids; set { _explicitNullValueExcludedUserUuids = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("excluded_user_uuids"); else _explicitNullProperties?.Remove("excluded_user_uuids"); } }
+        public List<Guid?> ExcludedUserUuids { get => _explicitNullValueExcludedUserUuids; set { _explicitNullValueExcludedUserUuids = value; AdditionalData?.Remove("excluded_user_uuids"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("excluded_user_uuids"); else _explicitNullProperties?.Remove("excluded_user_uuids"); } }
         private List<Guid?> _explicitNullValueExcludedUserUuids = default!;
 #endif
         /// <summary>Older edits need recovery on the next protected write, or have incomplete history. Automatic changes are paused until recovery or list confirmation.</summary>
-        public bool? NeedsReview { get => _explicitNullValueNeedsReview; set { _explicitNullValueNeedsReview = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("needs_review"); else _explicitNullProperties?.Remove("needs_review"); } }
+        public bool? NeedsReview { get => _explicitNullValueNeedsReview; set { _explicitNullValueNeedsReview = value; AdditionalData?.Remove("needs_review"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("needs_review"); else _explicitNullProperties?.Remove("needs_review"); } }
         private bool? _explicitNullValueNeedsReview = default!;
         /// <summary>People an automatic selection must retain.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<Guid?>? PinnedUserUuids { get => _explicitNullValuePinnedUserUuids; set { _explicitNullValuePinnedUserUuids = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("pinned_user_uuids"); else _explicitNullProperties?.Remove("pinned_user_uuids"); } }
+        public List<Guid?>? PinnedUserUuids { get => _explicitNullValuePinnedUserUuids; set { _explicitNullValuePinnedUserUuids = value; AdditionalData?.Remove("pinned_user_uuids"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("pinned_user_uuids"); else _explicitNullProperties?.Remove("pinned_user_uuids"); } }
         private List<Guid?>? _explicitNullValuePinnedUserUuids = default!;
 #nullable restore
 #else
-        public List<Guid?> PinnedUserUuids { get => _explicitNullValuePinnedUserUuids; set { _explicitNullValuePinnedUserUuids = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("pinned_user_uuids"); else _explicitNullProperties?.Remove("pinned_user_uuids"); } }
+        public List<Guid?> PinnedUserUuids { get => _explicitNullValuePinnedUserUuids; set { _explicitNullValuePinnedUserUuids = value; AdditionalData?.Remove("pinned_user_uuids"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("pinned_user_uuids"); else _explicitNullProperties?.Remove("pinned_user_uuids"); } }
         private List<Guid?> _explicitNullValuePinnedUserUuids = default!;
 #endif
         /// <summary>State token for a selection, replacement, or list confirmation.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.ReviewerControlResponseState? State { get => _explicitNullValueState; set { _explicitNullValueState = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("state"); else _explicitNullProperties?.Remove("state"); } }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ReviewerControlResponseState? State { get => _explicitNullValueState; set { _explicitNullValueState = value; AdditionalData?.Remove("state"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("state"); else _explicitNullProperties?.Remove("state"); } }
         private global::Soenneker.PostHog.OpenApiClient.Models.ReviewerControlResponseState? _explicitNullValueState = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ReviewerControlResponseState State { get => _explicitNullValueState; set { _explicitNullValueState = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("state"); else _explicitNullProperties?.Remove("state"); } }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ReviewerControlResponseState State { get => _explicitNullValueState; set { _explicitNullValueState = value; AdditionalData?.Remove("state"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("state"); else _explicitNullProperties?.Remove("state"); } }
         private global::Soenneker.PostHog.OpenApiClient.Models.ReviewerControlResponseState _explicitNullValueState = default!;
 #endif
         /// <summary>

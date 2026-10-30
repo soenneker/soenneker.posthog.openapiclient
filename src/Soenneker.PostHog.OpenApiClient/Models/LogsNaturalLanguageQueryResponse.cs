@@ -17,10 +17,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("candidates") is { } nullNodeCandidates && nullNodeCandidates.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Candidates = null;
-            if (parseNode.GetChildNode("confidence") is { } nullNodeConfidence && nullNodeConfidence.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Confidence = null;
-            if (parseNode.GetChildNode("dropped_count") is { } nullNodeDroppedCount && nullNodeDroppedCount.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) DroppedCount = null;
-            if (parseNode.GetChildNode("ranked_by") is { } nullNodeRankedBy && nullNodeRankedBy.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) RankedBy = null;
+            if (parseNode.GetChildNode("candidates") is null) { _explicitNullValueCandidates = default!; _explicitNullProperties?.Remove("candidates"); }
+            else if (parseNode.GetChildNode("candidates") is { } nullNodeCandidates && nullNodeCandidates.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Candidates = null;
+            if (parseNode.GetChildNode("confidence") is null) { _explicitNullValueConfidence = default!; _explicitNullProperties?.Remove("confidence"); }
+            else if (parseNode.GetChildNode("confidence") is { } nullNodeConfidence && nullNodeConfidence.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Confidence = null;
+            if (parseNode.GetChildNode("dropped_count") is null) { _explicitNullValueDroppedCount = default!; _explicitNullProperties?.Remove("dropped_count"); }
+            else if (parseNode.GetChildNode("dropped_count") is { } nullNodeDroppedCount && nullNodeDroppedCount.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) DroppedCount = null;
+            if (parseNode.GetChildNode("ranked_by") is null) { _explicitNullValueRankedBy = default!; _explicitNullProperties?.Remove("ranked_by"); }
+            else if (parseNode.GetChildNode("ranked_by") is { } nullNodeRankedBy && nullNodeRankedBy.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) RankedBy = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -28,21 +32,21 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Readings of the request, best first. Can be empty.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.LogsNaturalLanguageCandidate>? Candidates { get => _explicitNullValueCandidates; set { _explicitNullValueCandidates = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("candidates"); else _explicitNullProperties?.Remove("candidates"); } }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.LogsNaturalLanguageCandidate>? Candidates { get => _explicitNullValueCandidates; set { _explicitNullValueCandidates = value; AdditionalData?.Remove("candidates"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("candidates"); else _explicitNullProperties?.Remove("candidates"); } }
         private List<global::Soenneker.PostHog.OpenApiClient.Models.LogsNaturalLanguageCandidate>? _explicitNullValueCandidates = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.LogsNaturalLanguageCandidate> Candidates { get => _explicitNullValueCandidates; set { _explicitNullValueCandidates = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("candidates"); else _explicitNullProperties?.Remove("candidates"); } }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.LogsNaturalLanguageCandidate> Candidates { get => _explicitNullValueCandidates; set { _explicitNullValueCandidates = value; AdditionalData?.Remove("candidates"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("candidates"); else _explicitNullProperties?.Remove("candidates"); } }
         private List<global::Soenneker.PostHog.OpenApiClient.Models.LogsNaturalLanguageCandidate> _explicitNullValueCandidates = default!;
 #endif
         /// <summary>The first candidate&apos;s probability from the decision model. Null when it did not rank them.</summary>
-        public double? Confidence { get => _explicitNullValueConfidence; set { _explicitNullValueConfidence = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("confidence"); else _explicitNullProperties?.Remove("confidence"); } }
+        public double? Confidence { get => _explicitNullValueConfidence; set { _explicitNullValueConfidence = value; AdditionalData?.Remove("confidence"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("confidence"); else _explicitNullProperties?.Remove("confidence"); } }
         private double? _explicitNullValueConfidence = default!;
         /// <summary>Proposed readings dropped because they named a service or attribute key the project lacks.</summary>
-        public int? DroppedCount { get => _explicitNullValueDroppedCount; set { _explicitNullValueDroppedCount = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("dropped_count"); else _explicitNullProperties?.Remove("dropped_count"); } }
+        public int? DroppedCount { get => _explicitNullValueDroppedCount; set { _explicitNullValueDroppedCount = value; AdditionalData?.Remove("dropped_count"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("dropped_count"); else _explicitNullProperties?.Remove("dropped_count"); } }
         private int? _explicitNullValueDroppedCount = default!;
         /// <summary>* `decision_model` - Decision Model* `proposal_order` - Proposal Order</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.LogsNaturalLanguageQueryResponseRankedBy? RankedBy { get => _explicitNullValueRankedBy; set { _explicitNullValueRankedBy = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("ranked_by"); else _explicitNullProperties?.Remove("ranked_by"); } }
+        public global::Soenneker.PostHog.OpenApiClient.Models.LogsNaturalLanguageQueryResponseRankedBy? RankedBy { get => _explicitNullValueRankedBy; set { _explicitNullValueRankedBy = value; AdditionalData?.Remove("ranked_by"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("ranked_by"); else _explicitNullProperties?.Remove("ranked_by"); } }
         private global::Soenneker.PostHog.OpenApiClient.Models.LogsNaturalLanguageQueryResponseRankedBy? _explicitNullValueRankedBy = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.LogsNaturalLanguageQueryResponse"/> and sets the default values.
@@ -72,7 +76,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "candidates", n => { Candidates = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.LogsNaturalLanguageCandidate>(global::Soenneker.PostHog.OpenApiClient.Models.LogsNaturalLanguageCandidate.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "confidence", n => { Confidence = n.GetDoubleValue(); } },
                 { "dropped_count", n => { DroppedCount = n.GetIntValue(); } },
-                { "ranked_by", n => { RankedBy = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.LogsNaturalLanguageQueryResponseRankedBy>(); } },
+                { "ranked_by", n => { var parsed = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.LogsNaturalLanguageQueryResponseRankedBy>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValueRankedBy = default; _explicitNullProperties?.Remove("ranked_by"); AdditionalData["ranked_by"] = unknown; } else { RankedBy = parsed; AdditionalData.Remove("ranked_by"); } } },
             };
         }
         /// <summary>

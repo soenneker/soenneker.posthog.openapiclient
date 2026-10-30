@@ -17,11 +17,16 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("cpu_core_second_usd") is { } nullNodeCpuCoreSecondUsd && nullNodeCpuCoreSecondUsd.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CpuCoreSecondUsd = null;
-            if (parseNode.GetChildNode("effective_at") is { } nullNodeEffectiveAt && nullNodeEffectiveAt.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) EffectiveAt = null;
-            if (parseNode.GetChildNode("expires_at") is { } nullNodeExpiresAt && nullNodeExpiresAt.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ExpiresAt = null;
-            if (parseNode.GetChildNode("memory_gib_second_usd") is { } nullNodeMemoryGibSecondUsd && nullNodeMemoryGibSecondUsd.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MemoryGibSecondUsd = null;
-            if (parseNode.GetChildNode("version") is { } nullNodeVersion && nullNodeVersion.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Version = null;
+            if (parseNode.GetChildNode("cpu_core_second_usd") is null) { _explicitNullValueCpuCoreSecondUsd = default!; _explicitNullProperties?.Remove("cpu_core_second_usd"); }
+            else if (parseNode.GetChildNode("cpu_core_second_usd") is { } nullNodeCpuCoreSecondUsd && nullNodeCpuCoreSecondUsd.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CpuCoreSecondUsd = null;
+            if (parseNode.GetChildNode("effective_at") is null) { _explicitNullValueEffectiveAt = default!; _explicitNullProperties?.Remove("effective_at"); }
+            else if (parseNode.GetChildNode("effective_at") is { } nullNodeEffectiveAt && nullNodeEffectiveAt.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) EffectiveAt = null;
+            if (parseNode.GetChildNode("expires_at") is null) { _explicitNullValueExpiresAt = default!; _explicitNullProperties?.Remove("expires_at"); }
+            else if (parseNode.GetChildNode("expires_at") is { } nullNodeExpiresAt && nullNodeExpiresAt.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ExpiresAt = null;
+            if (parseNode.GetChildNode("memory_gib_second_usd") is null) { _explicitNullValueMemoryGibSecondUsd = default!; _explicitNullProperties?.Remove("memory_gib_second_usd"); }
+            else if (parseNode.GetChildNode("memory_gib_second_usd") is { } nullNodeMemoryGibSecondUsd && nullNodeMemoryGibSecondUsd.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MemoryGibSecondUsd = null;
+            if (parseNode.GetChildNode("version") is null) { _explicitNullValueVersion = default!; _explicitNullProperties?.Remove("version"); }
+            else if (parseNode.GetChildNode("version") is { } nullNodeVersion && nullNodeVersion.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Version = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -29,37 +34,37 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>USD charged per CPU core-second as an exact decimal string.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? CpuCoreSecondUsd { get => _explicitNullValueCpuCoreSecondUsd; set { _explicitNullValueCpuCoreSecondUsd = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("cpu_core_second_usd"); else _explicitNullProperties?.Remove("cpu_core_second_usd"); } }
+        public string? CpuCoreSecondUsd { get => _explicitNullValueCpuCoreSecondUsd; set { _explicitNullValueCpuCoreSecondUsd = value; AdditionalData?.Remove("cpu_core_second_usd"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("cpu_core_second_usd"); else _explicitNullProperties?.Remove("cpu_core_second_usd"); } }
         private string? _explicitNullValueCpuCoreSecondUsd = default!;
 #nullable restore
 #else
-        public string CpuCoreSecondUsd { get => _explicitNullValueCpuCoreSecondUsd; set { _explicitNullValueCpuCoreSecondUsd = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("cpu_core_second_usd"); else _explicitNullProperties?.Remove("cpu_core_second_usd"); } }
+        public string CpuCoreSecondUsd { get => _explicitNullValueCpuCoreSecondUsd; set { _explicitNullValueCpuCoreSecondUsd = value; AdditionalData?.Remove("cpu_core_second_usd"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("cpu_core_second_usd"); else _explicitNullProperties?.Remove("cpu_core_second_usd"); } }
         private string _explicitNullValueCpuCoreSecondUsd = default!;
 #endif
         /// <summary>Time when this rate card became effective.</summary>
-        public DateTimeOffset? EffectiveAt { get => _explicitNullValueEffectiveAt; set { _explicitNullValueEffectiveAt = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("effective_at"); else _explicitNullProperties?.Remove("effective_at"); } }
+        public DateTimeOffset? EffectiveAt { get => _explicitNullValueEffectiveAt; set { _explicitNullValueEffectiveAt = value; AdditionalData?.Remove("effective_at"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("effective_at"); else _explicitNullProperties?.Remove("effective_at"); } }
         private DateTimeOffset? _explicitNullValueEffectiveAt = default!;
         /// <summary>Time when this rate card stopped applying, or null while it remains current.</summary>
-        public DateTimeOffset? ExpiresAt { get => _explicitNullValueExpiresAt; set { _explicitNullValueExpiresAt = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("expires_at"); else _explicitNullProperties?.Remove("expires_at"); } }
+        public DateTimeOffset? ExpiresAt { get => _explicitNullValueExpiresAt; set { _explicitNullValueExpiresAt = value; AdditionalData?.Remove("expires_at"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("expires_at"); else _explicitNullProperties?.Remove("expires_at"); } }
         private DateTimeOffset? _explicitNullValueExpiresAt = default!;
         /// <summary>USD charged per GiB-second of memory as an exact decimal string.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? MemoryGibSecondUsd { get => _explicitNullValueMemoryGibSecondUsd; set { _explicitNullValueMemoryGibSecondUsd = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("memory_gib_second_usd"); else _explicitNullProperties?.Remove("memory_gib_second_usd"); } }
+        public string? MemoryGibSecondUsd { get => _explicitNullValueMemoryGibSecondUsd; set { _explicitNullValueMemoryGibSecondUsd = value; AdditionalData?.Remove("memory_gib_second_usd"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("memory_gib_second_usd"); else _explicitNullProperties?.Remove("memory_gib_second_usd"); } }
         private string? _explicitNullValueMemoryGibSecondUsd = default!;
 #nullable restore
 #else
-        public string MemoryGibSecondUsd { get => _explicitNullValueMemoryGibSecondUsd; set { _explicitNullValueMemoryGibSecondUsd = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("memory_gib_second_usd"); else _explicitNullProperties?.Remove("memory_gib_second_usd"); } }
+        public string MemoryGibSecondUsd { get => _explicitNullValueMemoryGibSecondUsd; set { _explicitNullValueMemoryGibSecondUsd = value; AdditionalData?.Remove("memory_gib_second_usd"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("memory_gib_second_usd"); else _explicitNullProperties?.Remove("memory_gib_second_usd"); } }
         private string _explicitNullValueMemoryGibSecondUsd = default!;
 #endif
         /// <summary>Stable identifier for this rate card.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Version { get => _explicitNullValueVersion; set { _explicitNullValueVersion = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("version"); else _explicitNullProperties?.Remove("version"); } }
+        public string? Version { get => _explicitNullValueVersion; set { _explicitNullValueVersion = value; AdditionalData?.Remove("version"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("version"); else _explicitNullProperties?.Remove("version"); } }
         private string? _explicitNullValueVersion = default!;
 #nullable restore
 #else
-        public string Version { get => _explicitNullValueVersion; set { _explicitNullValueVersion = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("version"); else _explicitNullProperties?.Remove("version"); } }
+        public string Version { get => _explicitNullValueVersion; set { _explicitNullValueVersion = value; AdditionalData?.Remove("version"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("version"); else _explicitNullProperties?.Remove("version"); } }
         private string _explicitNullValueVersion = default!;
 #endif
         /// <summary>

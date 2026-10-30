@@ -17,7 +17,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("$unset") is { } nullNodeUnset && nullNodeUnset.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Unset = null;
+            if (parseNode.GetChildNode("$unset") is null) { _explicitNullValueUnset = default!; _explicitNullProperties?.Remove("$unset"); }
+            else if (parseNode.GetChildNode("$unset") is { } nullNodeUnset && nullNodeUnset.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Unset = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -25,11 +26,11 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>A property key, or a list of property keys, to remove from this person.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.PersonDeletePropertyRequestUnset? Unset { get => _explicitNullValueUnset; set { _explicitNullValueUnset = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("$unset"); else _explicitNullProperties?.Remove("$unset"); } }
+        public global::Soenneker.PostHog.OpenApiClient.Models.PersonDeletePropertyRequestUnset? Unset { get => _explicitNullValueUnset; set { _explicitNullValueUnset = value; AdditionalData?.Remove("$unset"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("$unset"); else _explicitNullProperties?.Remove("$unset"); } }
         private global::Soenneker.PostHog.OpenApiClient.Models.PersonDeletePropertyRequestUnset? _explicitNullValueUnset = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.PersonDeletePropertyRequestUnset Unset { get => _explicitNullValueUnset; set { _explicitNullValueUnset = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("$unset"); else _explicitNullProperties?.Remove("$unset"); } }
+        public global::Soenneker.PostHog.OpenApiClient.Models.PersonDeletePropertyRequestUnset Unset { get => _explicitNullValueUnset; set { _explicitNullValueUnset = value; AdditionalData?.Remove("$unset"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("$unset"); else _explicitNullProperties?.Remove("$unset"); } }
         private global::Soenneker.PostHog.OpenApiClient.Models.PersonDeletePropertyRequestUnset _explicitNullValueUnset = default!;
 #endif
         /// <summary>

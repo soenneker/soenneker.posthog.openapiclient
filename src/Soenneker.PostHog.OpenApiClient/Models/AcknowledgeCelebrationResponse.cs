@@ -17,11 +17,12 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("acknowledged") is { } nullNodeAcknowledged && nullNodeAcknowledged.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Acknowledged = null;
+            if (parseNode.GetChildNode("acknowledged") is null) { _explicitNullValueAcknowledged = default!; _explicitNullProperties?.Remove("acknowledged"); }
+            else if (parseNode.GetChildNode("acknowledged") is { } nullNodeAcknowledged && nullNodeAcknowledged.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Acknowledged = null;
         }
 
         /// <summary>True if a matching pending celebration was cleared (idempotent).</summary>
-        public bool? Acknowledged { get => _explicitNullValueAcknowledged; set { _explicitNullValueAcknowledged = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("acknowledged"); else _explicitNullProperties?.Remove("acknowledged"); } }
+        public bool? Acknowledged { get => _explicitNullValueAcknowledged; set { _explicitNullValueAcknowledged = value; AdditionalData?.Remove("acknowledged"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("acknowledged"); else _explicitNullProperties?.Remove("acknowledged"); } }
         private bool? _explicitNullValueAcknowledged = default!;
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }

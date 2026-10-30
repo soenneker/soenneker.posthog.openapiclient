@@ -17,8 +17,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("current_amount_usd") is { } nullNodeCurrentAmountUsd && nullNodeCurrentAmountUsd.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CurrentAmountUsd = null;
-            if (parseNode.GetChildNode("up_to") is { } nullNodeUpTo && nullNodeUpTo.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) UpTo = null;
+            if (parseNode.GetChildNode("current_amount_usd") is null) { _explicitNullValueCurrentAmountUsd = default!; _explicitNullProperties?.Remove("current_amount_usd"); }
+            else if (parseNode.GetChildNode("current_amount_usd") is { } nullNodeCurrentAmountUsd && nullNodeCurrentAmountUsd.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CurrentAmountUsd = null;
+            if (parseNode.GetChildNode("up_to") is null) { _explicitNullValueUpTo = default!; _explicitNullProperties?.Remove("up_to"); }
+            else if (parseNode.GetChildNode("up_to") is { } nullNodeUpTo && nullNodeUpTo.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) UpTo = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -26,15 +28,15 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The current_amount_usd property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? CurrentAmountUsd { get => _explicitNullValueCurrentAmountUsd; set { _explicitNullValueCurrentAmountUsd = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("current_amount_usd"); else _explicitNullProperties?.Remove("current_amount_usd"); } }
+        public string? CurrentAmountUsd { get => _explicitNullValueCurrentAmountUsd; set { _explicitNullValueCurrentAmountUsd = value; AdditionalData?.Remove("current_amount_usd"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("current_amount_usd"); else _explicitNullProperties?.Remove("current_amount_usd"); } }
         private string? _explicitNullValueCurrentAmountUsd = default!;
 #nullable restore
 #else
-        public string CurrentAmountUsd { get => _explicitNullValueCurrentAmountUsd; set { _explicitNullValueCurrentAmountUsd = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("current_amount_usd"); else _explicitNullProperties?.Remove("current_amount_usd"); } }
+        public string CurrentAmountUsd { get => _explicitNullValueCurrentAmountUsd; set { _explicitNullValueCurrentAmountUsd = value; AdditionalData?.Remove("current_amount_usd"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("current_amount_usd"); else _explicitNullProperties?.Remove("current_amount_usd"); } }
         private string _explicitNullValueCurrentAmountUsd = default!;
 #endif
         /// <summary>The up_to property</summary>
-        public int? UpTo { get => _explicitNullValueUpTo; set { _explicitNullValueUpTo = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("up_to"); else _explicitNullProperties?.Remove("up_to"); } }
+        public int? UpTo { get => _explicitNullValueUpTo; set { _explicitNullValueUpTo = value; AdditionalData?.Remove("up_to"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("up_to"); else _explicitNullProperties?.Remove("up_to"); } }
         private int? _explicitNullValueUpTo = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.TierSpend"/> and sets the default values.

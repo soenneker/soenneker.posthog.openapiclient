@@ -17,10 +17,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("detail") is { } nullNodeDetail && nullNodeDetail.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Detail = null;
-            if (parseNode.GetChildNode("exclusion") is { } nullNodeExclusion && nullNodeExclusion.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Exclusion = null;
-            if (parseNode.GetChildNode("instruction_saved") is { } nullNodeInstructionSaved && nullNodeInstructionSaved.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) InstructionSaved = null;
-            if (parseNode.GetChildNode("report_removed") is { } nullNodeReportRemoved && nullNodeReportRemoved.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ReportRemoved = null;
+            if (parseNode.GetChildNode("detail") is null) { _explicitNullValueDetail = default!; _explicitNullProperties?.Remove("detail"); }
+            else if (parseNode.GetChildNode("detail") is { } nullNodeDetail && nullNodeDetail.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Detail = null;
+            if (parseNode.GetChildNode("exclusion") is null) { _explicitNullValueExclusion = default!; _explicitNullProperties?.Remove("exclusion"); }
+            else if (parseNode.GetChildNode("exclusion") is { } nullNodeExclusion && nullNodeExclusion.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Exclusion = null;
+            if (parseNode.GetChildNode("instruction_saved") is null) { _explicitNullValueInstructionSaved = default!; _explicitNullProperties?.Remove("instruction_saved"); }
+            else if (parseNode.GetChildNode("instruction_saved") is { } nullNodeInstructionSaved && nullNodeInstructionSaved.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) InstructionSaved = null;
+            if (parseNode.GetChildNode("report_removed") is null) { _explicitNullValueReportRemoved = default!; _explicitNullProperties?.Remove("report_removed"); }
+            else if (parseNode.GetChildNode("report_removed") is { } nullNodeReportRemoved && nullNodeReportRemoved.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ReportRemoved = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -28,28 +32,28 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>What happened, and what to do next.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Detail { get => _explicitNullValueDetail; set { _explicitNullValueDetail = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("detail"); else _explicitNullProperties?.Remove("detail"); } }
+        public string? Detail { get => _explicitNullValueDetail; set { _explicitNullValueDetail = value; AdditionalData?.Remove("detail"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("detail"); else _explicitNullProperties?.Remove("detail"); } }
         private string? _explicitNullValueDetail = default!;
 #nullable restore
 #else
-        public string Detail { get => _explicitNullValueDetail; set { _explicitNullValueDetail = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("detail"); else _explicitNullProperties?.Remove("detail"); } }
+        public string Detail { get => _explicitNullValueDetail; set { _explicitNullValueDetail = value; AdditionalData?.Remove("detail"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("detail"); else _explicitNullProperties?.Remove("detail"); } }
         private string _explicitNullValueDetail = default!;
 #endif
         /// <summary>The saved instruction, or null.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.ReviewerExclusion? Exclusion { get => _explicitNullValueExclusion; set { _explicitNullValueExclusion = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("exclusion"); else _explicitNullProperties?.Remove("exclusion"); } }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ReviewerExclusion? Exclusion { get => _explicitNullValueExclusion; set { _explicitNullValueExclusion = value; AdditionalData?.Remove("exclusion"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("exclusion"); else _explicitNullProperties?.Remove("exclusion"); } }
         private global::Soenneker.PostHog.OpenApiClient.Models.ReviewerExclusion? _explicitNullValueExclusion = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ReviewerExclusion Exclusion { get => _explicitNullValueExclusion; set { _explicitNullValueExclusion = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("exclusion"); else _explicitNullProperties?.Remove("exclusion"); } }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ReviewerExclusion Exclusion { get => _explicitNullValueExclusion; set { _explicitNullValueExclusion = value; AdditionalData?.Remove("exclusion"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("exclusion"); else _explicitNullProperties?.Remove("exclusion"); } }
         private global::Soenneker.PostHog.OpenApiClient.Models.ReviewerExclusion _explicitNullValueExclusion = default!;
 #endif
         /// <summary>True only when the instruction is saved. Only then does it keep you off automatic selection.</summary>
-        public bool? InstructionSaved { get => _explicitNullValueInstructionSaved; set { _explicitNullValueInstructionSaved = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("instruction_saved"); else _explicitNullProperties?.Remove("instruction_saved"); } }
+        public bool? InstructionSaved { get => _explicitNullValueInstructionSaved; set { _explicitNullValueInstructionSaved = value; AdditionalData?.Remove("instruction_saved"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("instruction_saved"); else _explicitNullProperties?.Remove("instruction_saved"); } }
         private bool? _explicitNullValueInstructionSaved = default!;
         /// <summary>True when the report removal succeeded. Null when no report was given.</summary>
-        public bool? ReportRemoved { get => _explicitNullValueReportRemoved; set { _explicitNullValueReportRemoved = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("report_removed"); else _explicitNullProperties?.Remove("report_removed"); } }
+        public bool? ReportRemoved { get => _explicitNullValueReportRemoved; set { _explicitNullValueReportRemoved = value; AdditionalData?.Remove("report_removed"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("report_removed"); else _explicitNullProperties?.Remove("report_removed"); } }
         private bool? _explicitNullValueReportRemoved = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ReviewerExclusionCreateResult"/> and sets the default values.

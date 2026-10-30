@@ -18,11 +18,16 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("brand_rules") is { } nullNodeBrandRules && nullNodeBrandRules.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) BrandRules = null;
-            if (parseNode.GetChildNode("confidence") is { } nullNodeConfidence && nullNodeConfidence.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Confidence = null;
-            if (parseNode.GetChildNode("content_boundaries") is { } nullNodeContentBoundaries && nullNodeContentBoundaries.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ContentBoundaries = null;
-            if (parseNode.GetChildNode("domain") is { } nullNodeDomain && nullNodeDomain.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Domain = null;
-            if (parseNode.GetChildNode("source_urls") is { } nullNodeSourceUrls && nullNodeSourceUrls.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SourceUrls = null;
+            if (parseNode.GetChildNode("brand_rules") is null) { _explicitNullValueBrandRules = default!; _explicitNullProperties?.Remove("brand_rules"); }
+            else if (parseNode.GetChildNode("brand_rules") is { } nullNodeBrandRules && nullNodeBrandRules.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) BrandRules = null;
+            if (parseNode.GetChildNode("confidence") is null) { _explicitNullValueConfidence = default!; _explicitNullProperties?.Remove("confidence"); }
+            else if (parseNode.GetChildNode("confidence") is { } nullNodeConfidence && nullNodeConfidence.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Confidence = null;
+            if (parseNode.GetChildNode("content_boundaries") is null) { _explicitNullValueContentBoundaries = default!; _explicitNullProperties?.Remove("content_boundaries"); }
+            else if (parseNode.GetChildNode("content_boundaries") is { } nullNodeContentBoundaries && nullNodeContentBoundaries.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ContentBoundaries = null;
+            if (parseNode.GetChildNode("domain") is null) { _explicitNullValueDomain = default!; _explicitNullProperties?.Remove("domain"); }
+            else if (parseNode.GetChildNode("domain") is { } nullNodeDomain && nullNodeDomain.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Domain = null;
+            if (parseNode.GetChildNode("source_urls") is null) { _explicitNullValueSourceUrls = default!; _explicitNullProperties?.Remove("source_urls"); }
+            else if (parseNode.GetChildNode("source_urls") is { } nullNodeSourceUrls && nullNodeSourceUrls.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SourceUrls = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -30,44 +35,44 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Editorial rules captured for this run.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<string>? BrandRules { get => _explicitNullValueBrandRules; set { _explicitNullValueBrandRules = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("brand_rules"); else _explicitNullProperties?.Remove("brand_rules"); } }
+        public List<string>? BrandRules { get => _explicitNullValueBrandRules; set { _explicitNullValueBrandRules = value; AdditionalData?.Remove("brand_rules"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("brand_rules"); else _explicitNullProperties?.Remove("brand_rules"); } }
         private List<string>? _explicitNullValueBrandRules = default!;
 #nullable restore
 #else
-        public List<string> BrandRules { get => _explicitNullValueBrandRules; set { _explicitNullValueBrandRules = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("brand_rules"); else _explicitNullProperties?.Remove("brand_rules"); } }
+        public List<string> BrandRules { get => _explicitNullValueBrandRules; set { _explicitNullValueBrandRules = value; AdditionalData?.Remove("brand_rules"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("brand_rules"); else _explicitNullProperties?.Remove("brand_rules"); } }
         private List<string> _explicitNullValueBrandRules = default!;
 #endif
         /// <summary>* `standard` - Standard* `lower` - Lower</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.ContentAutopilotSnapshotConfidence? Confidence { get => _explicitNullValueConfidence; set { _explicitNullValueConfidence = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("confidence"); else _explicitNullProperties?.Remove("confidence"); } }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ContentAutopilotSnapshotConfidence? Confidence { get => _explicitNullValueConfidence; set { _explicitNullValueConfidence = value; AdditionalData?.Remove("confidence"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("confidence"); else _explicitNullProperties?.Remove("confidence"); } }
         private global::Soenneker.PostHog.OpenApiClient.Models.ContentAutopilotSnapshotConfidence? _explicitNullValueConfidence = default!;
         /// <summary>Site paths authorized for this run.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<string>? ContentBoundaries { get => _explicitNullValueContentBoundaries; set { _explicitNullValueContentBoundaries = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("content_boundaries"); else _explicitNullProperties?.Remove("content_boundaries"); } }
+        public List<string>? ContentBoundaries { get => _explicitNullValueContentBoundaries; set { _explicitNullValueContentBoundaries = value; AdditionalData?.Remove("content_boundaries"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("content_boundaries"); else _explicitNullProperties?.Remove("content_boundaries"); } }
         private List<string>? _explicitNullValueContentBoundaries = default!;
 #nullable restore
 #else
-        public List<string> ContentBoundaries { get => _explicitNullValueContentBoundaries; set { _explicitNullValueContentBoundaries = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("content_boundaries"); else _explicitNullProperties?.Remove("content_boundaries"); } }
+        public List<string> ContentBoundaries { get => _explicitNullValueContentBoundaries; set { _explicitNullValueContentBoundaries = value; AdditionalData?.Remove("content_boundaries"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("content_boundaries"); else _explicitNullProperties?.Remove("content_boundaries"); } }
         private List<string> _explicitNullValueContentBoundaries = default!;
 #endif
         /// <summary>Site domain used for the run.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Domain { get => _explicitNullValueDomain; set { _explicitNullValueDomain = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("domain"); else _explicitNullProperties?.Remove("domain"); } }
+        public string? Domain { get => _explicitNullValueDomain; set { _explicitNullValueDomain = value; AdditionalData?.Remove("domain"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("domain"); else _explicitNullProperties?.Remove("domain"); } }
         private string? _explicitNullValueDomain = default!;
 #nullable restore
 #else
-        public string Domain { get => _explicitNullValueDomain; set { _explicitNullValueDomain = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("domain"); else _explicitNullProperties?.Remove("domain"); } }
+        public string Domain { get => _explicitNullValueDomain; set { _explicitNullValueDomain = value; AdditionalData?.Remove("domain"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("domain"); else _explicitNullProperties?.Remove("domain"); } }
         private string _explicitNullValueDomain = default!;
 #endif
         /// <summary>Public sources authorized for this run.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<string>? SourceUrls { get => _explicitNullValueSourceUrls; set { _explicitNullValueSourceUrls = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("source_urls"); else _explicitNullProperties?.Remove("source_urls"); } }
+        public List<string>? SourceUrls { get => _explicitNullValueSourceUrls; set { _explicitNullValueSourceUrls = value; AdditionalData?.Remove("source_urls"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("source_urls"); else _explicitNullProperties?.Remove("source_urls"); } }
         private List<string>? _explicitNullValueSourceUrls = default!;
 #nullable restore
 #else
-        public List<string> SourceUrls { get => _explicitNullValueSourceUrls; set { _explicitNullValueSourceUrls = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("source_urls"); else _explicitNullProperties?.Remove("source_urls"); } }
+        public List<string> SourceUrls { get => _explicitNullValueSourceUrls; set { _explicitNullValueSourceUrls = value; AdditionalData?.Remove("source_urls"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("source_urls"); else _explicitNullProperties?.Remove("source_urls"); } }
         private List<string> _explicitNullValueSourceUrls = default!;
 #endif
         /// <summary>
@@ -96,7 +101,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "brand_rules", n => { BrandRules = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
-                { "confidence", n => { Confidence = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ContentAutopilotSnapshotConfidence>(); } },
+                { "confidence", n => { var parsed = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ContentAutopilotSnapshotConfidence>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValueConfidence = default; _explicitNullProperties?.Remove("confidence"); AdditionalData["confidence"] = unknown; } else { Confidence = parsed; AdditionalData.Remove("confidence"); } } },
                 { "content_boundaries", n => { ContentBoundaries = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
                 { "domain", n => { Domain = n.GetStringValue(); } },
                 { "source_urls", n => { SourceUrls = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },

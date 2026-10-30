@@ -17,8 +17,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("pending_user_artifact_ids") is { } nullNodePendingUserArtifactIds && nullNodePendingUserArtifactIds.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) PendingUserArtifactIds = null;
-            if (parseNode.GetChildNode("pending_user_message") is { } nullNodePendingUserMessage && nullNodePendingUserMessage.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) PendingUserMessage = null;
+            if (parseNode.GetChildNode("pending_user_artifact_ids") is null) { _explicitNullValuePendingUserArtifactIds = default!; _explicitNullProperties?.Remove("pending_user_artifact_ids"); }
+            else if (parseNode.GetChildNode("pending_user_artifact_ids") is { } nullNodePendingUserArtifactIds && nullNodePendingUserArtifactIds.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) PendingUserArtifactIds = null;
+            if (parseNode.GetChildNode("pending_user_message") is null) { _explicitNullValuePendingUserMessage = default!; _explicitNullProperties?.Remove("pending_user_message"); }
+            else if (parseNode.GetChildNode("pending_user_message") is { } nullNodePendingUserMessage && nullNodePendingUserMessage.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) PendingUserMessage = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -26,21 +28,21 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Identifiers for run artifacts that should be attached to the next user message delivered to the sandbox.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<string>? PendingUserArtifactIds { get => _explicitNullValuePendingUserArtifactIds; set { _explicitNullValuePendingUserArtifactIds = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("pending_user_artifact_ids"); else _explicitNullProperties?.Remove("pending_user_artifact_ids"); } }
+        public List<string>? PendingUserArtifactIds { get => _explicitNullValuePendingUserArtifactIds; set { _explicitNullValuePendingUserArtifactIds = value; AdditionalData?.Remove("pending_user_artifact_ids"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("pending_user_artifact_ids"); else _explicitNullProperties?.Remove("pending_user_artifact_ids"); } }
         private List<string>? _explicitNullValuePendingUserArtifactIds = default!;
 #nullable restore
 #else
-        public List<string> PendingUserArtifactIds { get => _explicitNullValuePendingUserArtifactIds; set { _explicitNullValuePendingUserArtifactIds = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("pending_user_artifact_ids"); else _explicitNullProperties?.Remove("pending_user_artifact_ids"); } }
+        public List<string> PendingUserArtifactIds { get => _explicitNullValuePendingUserArtifactIds; set { _explicitNullValuePendingUserArtifactIds = value; AdditionalData?.Remove("pending_user_artifact_ids"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("pending_user_artifact_ids"); else _explicitNullProperties?.Remove("pending_user_artifact_ids"); } }
         private List<string> _explicitNullValuePendingUserArtifactIds = default!;
 #endif
         /// <summary>Initial or follow-up user message to include in the run prompt.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? PendingUserMessage { get => _explicitNullValuePendingUserMessage; set { _explicitNullValuePendingUserMessage = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("pending_user_message"); else _explicitNullProperties?.Remove("pending_user_message"); } }
+        public string? PendingUserMessage { get => _explicitNullValuePendingUserMessage; set { _explicitNullValuePendingUserMessage = value; AdditionalData?.Remove("pending_user_message"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("pending_user_message"); else _explicitNullProperties?.Remove("pending_user_message"); } }
         private string? _explicitNullValuePendingUserMessage = default!;
 #nullable restore
 #else
-        public string PendingUserMessage { get => _explicitNullValuePendingUserMessage; set { _explicitNullValuePendingUserMessage = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("pending_user_message"); else _explicitNullProperties?.Remove("pending_user_message"); } }
+        public string PendingUserMessage { get => _explicitNullValuePendingUserMessage; set { _explicitNullValuePendingUserMessage = value; AdditionalData?.Remove("pending_user_message"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("pending_user_message"); else _explicitNullProperties?.Remove("pending_user_message"); } }
         private string _explicitNullValuePendingUserMessage = default!;
 #endif
         /// <summary>

@@ -17,21 +17,24 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("mean_p_y") is { } nullNodeMeanPY && nullNodeMeanPY.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MeanPY = null;
-            if (parseNode.GetChildNode("n") is { } nullNodeN && nullNodeN.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) N = null;
-            if (parseNode.GetChildNode("positive_rate") is { } nullNodePositiveRate && nullNodePositiveRate.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) PositiveRate = null;
+            if (parseNode.GetChildNode("mean_p_y") is null) { _explicitNullValueMeanPY = default!; _explicitNullProperties?.Remove("mean_p_y"); }
+            else if (parseNode.GetChildNode("mean_p_y") is { } nullNodeMeanPY && nullNodeMeanPY.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MeanPY = null;
+            if (parseNode.GetChildNode("n") is null) { _explicitNullValueN = default!; _explicitNullProperties?.Remove("n"); }
+            else if (parseNode.GetChildNode("n") is { } nullNodeN && nullNodeN.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) N = null;
+            if (parseNode.GetChildNode("positive_rate") is null) { _explicitNullValuePositiveRate = default!; _explicitNullProperties?.Remove("positive_rate"); }
+            else if (parseNode.GetChildNode("positive_rate") is { } nullNodePositiveRate && nullNodePositiveRate.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) PositiveRate = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Mean predicted probability of the users in this bin.</summary>
-        public double? MeanPY { get => _explicitNullValueMeanPY; set { _explicitNullValueMeanPY = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("mean_p_y"); else _explicitNullProperties?.Remove("mean_p_y"); } }
+        public double? MeanPY { get => _explicitNullValueMeanPY; set { _explicitNullValueMeanPY = value; AdditionalData?.Remove("mean_p_y"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("mean_p_y"); else _explicitNullProperties?.Remove("mean_p_y"); } }
         private double? _explicitNullValueMeanPY = default!;
         /// <summary>Number of scored users in this bin.</summary>
-        public int? N { get => _explicitNullValueN; set { _explicitNullValueN = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("n"); else _explicitNullProperties?.Remove("n"); } }
+        public int? N { get => _explicitNullValueN; set { _explicitNullValueN = value; AdditionalData?.Remove("n"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("n"); else _explicitNullProperties?.Remove("n"); } }
         private int? _explicitNullValueN = default!;
         /// <summary>Fraction of the users in this bin who did the target event within the horizon.</summary>
-        public double? PositiveRate { get => _explicitNullValuePositiveRate; set { _explicitNullValuePositiveRate = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("positive_rate"); else _explicitNullProperties?.Remove("positive_rate"); } }
+        public double? PositiveRate { get => _explicitNullValuePositiveRate; set { _explicitNullValuePositiveRate = value; AdditionalData?.Remove("positive_rate"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("positive_rate"); else _explicitNullProperties?.Remove("positive_rate"); } }
         private double? _explicitNullValuePositiveRate = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.CalibrationBin"/> and sets the default values.

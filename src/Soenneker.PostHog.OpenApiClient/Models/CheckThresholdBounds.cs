@@ -17,8 +17,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("lower") is { } nullNodeLower && nullNodeLower.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Lower = null;
-            if (parseNode.GetChildNode("upper") is { } nullNodeUpper && nullNodeUpper.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Upper = null;
+            if (parseNode.GetChildNode("lower") is null) { _explicitNullValueLower = default!; _explicitNullProperties?.Remove("lower"); }
+            else if (parseNode.GetChildNode("lower") is { } nullNodeLower && nullNodeLower.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Lower = null;
+            if (parseNode.GetChildNode("upper") is null) { _explicitNullValueUpper = default!; _explicitNullProperties?.Remove("upper"); }
+            else if (parseNode.GetChildNode("upper") is { } nullNodeUpper && nullNodeUpper.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Upper = null;
         }
 
         /// <summary>The lower property</summary>

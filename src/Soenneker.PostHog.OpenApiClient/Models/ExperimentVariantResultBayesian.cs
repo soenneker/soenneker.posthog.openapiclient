@@ -17,7 +17,79 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
+            if (parseNode.GetChildNode("chance_to_win") is null) { _explicitNullValueChanceToWin = default!; _explicitNullProperties?.Remove("chance_to_win"); }
+            else if (parseNode.GetChildNode("chance_to_win") is { } nullNodeChanceToWin && nullNodeChanceToWin.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ChanceToWin = null;
+            if (parseNode.GetChildNode("covariate_sum") is null) { _explicitNullValueCovariateSum = default!; _explicitNullProperties?.Remove("covariate_sum"); }
+            else if (parseNode.GetChildNode("covariate_sum") is { } nullNodeCovariateSum && nullNodeCovariateSum.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CovariateSum = null;
+            if (parseNode.GetChildNode("covariate_sum_product") is null) { _explicitNullValueCovariateSumProduct = default!; _explicitNullProperties?.Remove("covariate_sum_product"); }
+            else if (parseNode.GetChildNode("covariate_sum_product") is { } nullNodeCovariateSumProduct && nullNodeCovariateSumProduct.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CovariateSumProduct = null;
+            if (parseNode.GetChildNode("covariate_sum_squares") is null) { _explicitNullValueCovariateSumSquares = default!; _explicitNullProperties?.Remove("covariate_sum_squares"); }
+            else if (parseNode.GetChildNode("covariate_sum_squares") is { } nullNodeCovariateSumSquares && nullNodeCovariateSumSquares.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CovariateSumSquares = null;
+            if (parseNode.GetChildNode("credible_interval") is null) { _explicitNullValueCredibleInterval = default!; _explicitNullProperties?.Remove("credible_interval"); }
+            else if (parseNode.GetChildNode("credible_interval") is { } nullNodeCredibleInterval && nullNodeCredibleInterval.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CredibleInterval = null;
+            if (parseNode.GetChildNode("denominator_sum") is null) { _explicitNullValueDenominatorSum = default!; _explicitNullProperties?.Remove("denominator_sum"); }
+            else if (parseNode.GetChildNode("denominator_sum") is { } nullNodeDenominatorSum && nullNodeDenominatorSum.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) DenominatorSum = null;
+            if (parseNode.GetChildNode("denominator_sum_squares") is null) { _explicitNullValueDenominatorSumSquares = default!; _explicitNullProperties?.Remove("denominator_sum_squares"); }
+            else if (parseNode.GetChildNode("denominator_sum_squares") is { } nullNodeDenominatorSumSquares && nullNodeDenominatorSumSquares.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) DenominatorSumSquares = null;
+            if (parseNode.GetChildNode("key") is null) { _explicitNullValueKey = default!; _explicitNullProperties?.Remove("key"); }
+            else if (parseNode.GetChildNode("key") is { } nullNodeKey && nullNodeKey.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Key = null;
+            if (parseNode.GetChildNode("method") is null) { _explicitNullValueMethod = default!; _explicitNullProperties?.Remove("method"); }
+            else if (parseNode.GetChildNode("method") is { } nullNodeMethod && nullNodeMethod.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Method = null;
+            if (parseNode.GetChildNode("number_of_samples") is null) { _explicitNullValueNumberOfSamples = default!; _explicitNullProperties?.Remove("number_of_samples"); }
+            else if (parseNode.GetChildNode("number_of_samples") is { } nullNodeNumberOfSamples && nullNodeNumberOfSamples.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) NumberOfSamples = null;
+            if (parseNode.GetChildNode("numerator_denominator_sum_product") is null) { _explicitNullValueNumeratorDenominatorSumProduct = default!; _explicitNullProperties?.Remove("numerator_denominator_sum_product"); }
+            else if (parseNode.GetChildNode("numerator_denominator_sum_product") is { } nullNodeNumeratorDenominatorSumProduct && nullNodeNumeratorDenominatorSumProduct.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) NumeratorDenominatorSumProduct = null;
+            if (parseNode.GetChildNode("significant") is null) { _explicitNullValueSignificant = default!; _explicitNullProperties?.Remove("significant"); }
+            else if (parseNode.GetChildNode("significant") is { } nullNodeSignificant && nullNodeSignificant.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Significant = null;
+            if (parseNode.GetChildNode("step_counts") is null) { _explicitNullValueStepCounts = default!; _explicitNullProperties?.Remove("step_counts"); }
+            else if (parseNode.GetChildNode("step_counts") is { } nullNodeStepCounts && nullNodeStepCounts.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) StepCounts = null;
+            if (parseNode.GetChildNode("step_sessions") is null) { _explicitNullValueStepSessions = default!; _explicitNullProperties?.Remove("step_sessions"); }
+            else if (parseNode.GetChildNode("step_sessions") is { } nullNodeStepSessions && nullNodeStepSessions.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) StepSessions = null;
+            if (parseNode.GetChildNode("sum") is null) { _explicitNullValueSum = default!; _explicitNullProperties?.Remove("sum"); }
+            else if (parseNode.GetChildNode("sum") is { } nullNodeSum && nullNodeSum.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Sum = null;
+            if (parseNode.GetChildNode("sum_squares") is null) { _explicitNullValueSumSquares = default!; _explicitNullProperties?.Remove("sum_squares"); }
+            else if (parseNode.GetChildNode("sum_squares") is { } nullNodeSumSquares && nullNodeSumSquares.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SumSquares = null;
+            if (parseNode.GetChildNode("validation_failures") is null) { _explicitNullValueValidationFailures = default!; _explicitNullProperties?.Remove("validation_failures"); }
+            else if (parseNode.GetChildNode("validation_failures") is { } nullNodeValidationFailures && nullNodeValidationFailures.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ValidationFailures = null;
         }
+
+        // Restore fields omitted by the generator's model-depth limit.
+#nullable enable
+        public global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode? ChanceToWin { get => _explicitNullValueChanceToWin; set { _explicitNullValueChanceToWin = value; AdditionalData?.Remove("chance_to_win"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("chance_to_win"); else _explicitNullProperties?.Remove("chance_to_win"); } }
+        private global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode? _explicitNullValueChanceToWin = default!;
+        public global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode? CovariateSum { get => _explicitNullValueCovariateSum; set { _explicitNullValueCovariateSum = value; AdditionalData?.Remove("covariate_sum"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("covariate_sum"); else _explicitNullProperties?.Remove("covariate_sum"); } }
+        private global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode? _explicitNullValueCovariateSum = default!;
+        public global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode? CovariateSumProduct { get => _explicitNullValueCovariateSumProduct; set { _explicitNullValueCovariateSumProduct = value; AdditionalData?.Remove("covariate_sum_product"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("covariate_sum_product"); else _explicitNullProperties?.Remove("covariate_sum_product"); } }
+        private global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode? _explicitNullValueCovariateSumProduct = default!;
+        public global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode? CovariateSumSquares { get => _explicitNullValueCovariateSumSquares; set { _explicitNullValueCovariateSumSquares = value; AdditionalData?.Remove("covariate_sum_squares"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("covariate_sum_squares"); else _explicitNullProperties?.Remove("covariate_sum_squares"); } }
+        private global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode? _explicitNullValueCovariateSumSquares = default!;
+        public global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode? CredibleInterval { get => _explicitNullValueCredibleInterval; set { _explicitNullValueCredibleInterval = value; AdditionalData?.Remove("credible_interval"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("credible_interval"); else _explicitNullProperties?.Remove("credible_interval"); } }
+        private global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode? _explicitNullValueCredibleInterval = default!;
+        public global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode? DenominatorSum { get => _explicitNullValueDenominatorSum; set { _explicitNullValueDenominatorSum = value; AdditionalData?.Remove("denominator_sum"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("denominator_sum"); else _explicitNullProperties?.Remove("denominator_sum"); } }
+        private global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode? _explicitNullValueDenominatorSum = default!;
+        public global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode? DenominatorSumSquares { get => _explicitNullValueDenominatorSumSquares; set { _explicitNullValueDenominatorSumSquares = value; AdditionalData?.Remove("denominator_sum_squares"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("denominator_sum_squares"); else _explicitNullProperties?.Remove("denominator_sum_squares"); } }
+        private global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode? _explicitNullValueDenominatorSumSquares = default!;
+        public string? Key { get => _explicitNullValueKey; set { _explicitNullValueKey = value; AdditionalData?.Remove("key"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("key"); else _explicitNullProperties?.Remove("key"); } }
+        private string? _explicitNullValueKey = default!;
+        public global::Soenneker.PostHog.OpenApiClient.Models.BayesianMethod? Method { get => _explicitNullValueMethod; set { _explicitNullValueMethod = value; AdditionalData?.Remove("method"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("method"); else _explicitNullProperties?.Remove("method"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.BayesianMethod? _explicitNullValueMethod = default!;
+        public long? NumberOfSamples { get => _explicitNullValueNumberOfSamples; set { _explicitNullValueNumberOfSamples = value; AdditionalData?.Remove("number_of_samples"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("number_of_samples"); else _explicitNullProperties?.Remove("number_of_samples"); } }
+        private long? _explicitNullValueNumberOfSamples = default!;
+        public global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode? NumeratorDenominatorSumProduct { get => _explicitNullValueNumeratorDenominatorSumProduct; set { _explicitNullValueNumeratorDenominatorSumProduct = value; AdditionalData?.Remove("numerator_denominator_sum_product"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("numerator_denominator_sum_product"); else _explicitNullProperties?.Remove("numerator_denominator_sum_product"); } }
+        private global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode? _explicitNullValueNumeratorDenominatorSumProduct = default!;
+        public global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode? Significant { get => _explicitNullValueSignificant; set { _explicitNullValueSignificant = value; AdditionalData?.Remove("significant"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("significant"); else _explicitNullProperties?.Remove("significant"); } }
+        private global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode? _explicitNullValueSignificant = default!;
+        public global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode? StepCounts { get => _explicitNullValueStepCounts; set { _explicitNullValueStepCounts = value; AdditionalData?.Remove("step_counts"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("step_counts"); else _explicitNullProperties?.Remove("step_counts"); } }
+        private global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode? _explicitNullValueStepCounts = default!;
+        public global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode? StepSessions { get => _explicitNullValueStepSessions; set { _explicitNullValueStepSessions = value; AdditionalData?.Remove("step_sessions"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("step_sessions"); else _explicitNullProperties?.Remove("step_sessions"); } }
+        private global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode? _explicitNullValueStepSessions = default!;
+        public double? Sum { get => _explicitNullValueSum; set { _explicitNullValueSum = value; AdditionalData?.Remove("sum"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("sum"); else _explicitNullProperties?.Remove("sum"); } }
+        private double? _explicitNullValueSum = default!;
+        public double? SumSquares { get => _explicitNullValueSumSquares; set { _explicitNullValueSumSquares = value; AdditionalData?.Remove("sum_squares"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("sum_squares"); else _explicitNullProperties?.Remove("sum_squares"); } }
+        private double? _explicitNullValueSumSquares = default!;
+        public global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode? ValidationFailures { get => _explicitNullValueValidationFailures; set { _explicitNullValueValidationFailures = value; AdditionalData?.Remove("validation_failures"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("validation_failures"); else _explicitNullProperties?.Remove("validation_failures"); } }
+        private global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode? _explicitNullValueValidationFailures = default!;
+#nullable restore
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
@@ -46,6 +118,23 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
+                { "chance_to_win", n => { ChanceToWin = n.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue); } },
+                { "covariate_sum", n => { CovariateSum = n.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue); } },
+                { "covariate_sum_product", n => { CovariateSumProduct = n.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue); } },
+                { "covariate_sum_squares", n => { CovariateSumSquares = n.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue); } },
+                { "credible_interval", n => { CredibleInterval = n.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue); } },
+                { "denominator_sum", n => { DenominatorSum = n.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue); } },
+                { "denominator_sum_squares", n => { DenominatorSumSquares = n.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue); } },
+                { "key", n => { Key = n.GetStringValue(); } },
+                { "method", n => { var parsed = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.BayesianMethod>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValueMethod = default; _explicitNullProperties?.Remove("method"); AdditionalData["method"] = unknown; } else { Method = parsed; AdditionalData.Remove("method"); } } },
+                { "number_of_samples", n => { NumberOfSamples = n.GetLongValue(); } },
+                { "numerator_denominator_sum_product", n => { NumeratorDenominatorSumProduct = n.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue); } },
+                { "significant", n => { Significant = n.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue); } },
+                { "step_counts", n => { StepCounts = n.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue); } },
+                { "step_sessions", n => { StepSessions = n.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue); } },
+                { "sum", n => { Sum = n.GetDoubleValue(); } },
+                { "sum_squares", n => { SumSquares = n.GetDoubleValue(); } },
+                { "validation_failures", n => { ValidationFailures = n.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue); } },
             };
         }
         /// <summary>
@@ -55,6 +144,23 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public virtual void Serialize(ISerializationWriter writer)
         {
             if(ReferenceEquals(writer, null)) throw new ArgumentNullException(nameof(writer));
+            writer.WriteObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>("chance_to_win", ChanceToWin);
+            writer.WriteObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>("covariate_sum", CovariateSum);
+            writer.WriteObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>("covariate_sum_product", CovariateSumProduct);
+            writer.WriteObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>("covariate_sum_squares", CovariateSumSquares);
+            writer.WriteObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>("credible_interval", CredibleInterval);
+            writer.WriteObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>("denominator_sum", DenominatorSum);
+            writer.WriteObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>("denominator_sum_squares", DenominatorSumSquares);
+            writer.WriteStringValue("key", Key);
+            writer.WriteEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.BayesianMethod>("method", Method);
+            writer.WriteLongValue("number_of_samples", NumberOfSamples);
+            writer.WriteObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>("numerator_denominator_sum_product", NumeratorDenominatorSumProduct);
+            writer.WriteObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>("significant", Significant);
+            writer.WriteObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>("step_counts", StepCounts);
+            writer.WriteObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>("step_sessions", StepSessions);
+            writer.WriteDoubleValue("sum", Sum);
+            writer.WriteDoubleValue("sum_squares", SumSquares);
+            writer.WriteObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>("validation_failures", ValidationFailures);
             if (_explicitNullProperties != null) foreach (string name in _explicitNullProperties) writer.WriteNullValue(name);
             writer.WriteAdditionalData(AdditionalData);
         }

@@ -18,23 +18,25 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("feed_load_id") is { } nullNodeFeedLoadId && nullNodeFeedLoadId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) FeedLoadId = null;
-            if (parseNode.GetChildNode("observation_ids") is { } nullNodeObservationIds && nullNodeObservationIds.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ObservationIds = null;
+            if (parseNode.GetChildNode("feed_load_id") is null) { _explicitNullValueFeedLoadId = default!; _explicitNullProperties?.Remove("feed_load_id"); }
+            else if (parseNode.GetChildNode("feed_load_id") is { } nullNodeFeedLoadId && nullNodeFeedLoadId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) FeedLoadId = null;
+            if (parseNode.GetChildNode("observation_ids") is null) { _explicitNullValueObservationIds = default!; _explicitNullProperties?.Remove("observation_ids"); }
+            else if (parseNode.GetChildNode("observation_ids") is { } nullNodeObservationIds && nullNodeObservationIds.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ObservationIds = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The client&apos;s id for the feed load that showed these cards. One load counts each card once.</summary>
-        public Guid? FeedLoadId { get => _explicitNullValueFeedLoadId; set { _explicitNullValueFeedLoadId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("feed_load_id"); else _explicitNullProperties?.Remove("feed_load_id"); } }
+        public Guid? FeedLoadId { get => _explicitNullValueFeedLoadId; set { _explicitNullValueFeedLoadId = value; AdditionalData?.Remove("feed_load_id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("feed_load_id"); else _explicitNullProperties?.Remove("feed_load_id"); } }
         private Guid? _explicitNullValueFeedLoadId = default!;
         /// <summary>Observations the calling user saw in the Highlights feed, at most 100. Ids the user cannot read are ignored.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<Guid?>? ObservationIds { get => _explicitNullValueObservationIds; set { _explicitNullValueObservationIds = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("observation_ids"); else _explicitNullProperties?.Remove("observation_ids"); } }
+        public List<Guid?>? ObservationIds { get => _explicitNullValueObservationIds; set { _explicitNullValueObservationIds = value; AdditionalData?.Remove("observation_ids"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("observation_ids"); else _explicitNullProperties?.Remove("observation_ids"); } }
         private List<Guid?>? _explicitNullValueObservationIds = default!;
 #nullable restore
 #else
-        public List<Guid?> ObservationIds { get => _explicitNullValueObservationIds; set { _explicitNullValueObservationIds = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("observation_ids"); else _explicitNullProperties?.Remove("observation_ids"); } }
+        public List<Guid?> ObservationIds { get => _explicitNullValueObservationIds; set { _explicitNullValueObservationIds = value; AdditionalData?.Remove("observation_ids"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("observation_ids"); else _explicitNullProperties?.Remove("observation_ids"); } }
         private List<Guid?> _explicitNullValueObservationIds = default!;
 #endif
         /// <summary>

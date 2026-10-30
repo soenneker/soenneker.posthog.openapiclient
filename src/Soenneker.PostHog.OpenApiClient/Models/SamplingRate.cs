@@ -17,8 +17,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("denominator") is { } nullNodeDenominator && nullNodeDenominator.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Denominator = null;
-            if (parseNode.GetChildNode("numerator") is { } nullNodeNumerator && nullNodeNumerator.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Numerator = null;
+            if (parseNode.GetChildNode("denominator") is null) { _explicitNullValueDenominator = default!; _explicitNullProperties?.Remove("denominator"); }
+            else if (parseNode.GetChildNode("denominator") is { } nullNodeDenominator && nullNodeDenominator.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Denominator = null;
+            if (parseNode.GetChildNode("numerator") is null) { _explicitNullValueNumerator = default!; _explicitNullProperties?.Remove("numerator"); }
+            else if (parseNode.GetChildNode("numerator") is { } nullNodeNumerator && nullNodeNumerator.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Numerator = null;
         }
 
         /// <summary>The denominator property</summary>

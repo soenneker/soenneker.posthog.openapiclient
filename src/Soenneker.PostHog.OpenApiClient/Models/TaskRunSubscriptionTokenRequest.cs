@@ -17,7 +17,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("rejected_access_token_sha256") is { } nullNodeRejectedAccessTokenSha256 && nullNodeRejectedAccessTokenSha256.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) RejectedAccessTokenSha256 = null;
+            if (parseNode.GetChildNode("rejected_access_token_sha256") is null) { _explicitNullValueRejectedAccessTokenSha256 = default!; _explicitNullProperties?.Remove("rejected_access_token_sha256"); }
+            else if (parseNode.GetChildNode("rejected_access_token_sha256") is { } nullNodeRejectedAccessTokenSha256 && nullNodeRejectedAccessTokenSha256.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) RejectedAccessTokenSha256 = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -25,11 +26,11 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>SHA-256 hex digest of the access token Codex rejected. The server refreshes only when this names its current token; otherwise it returns the newer token it already holds.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? RejectedAccessTokenSha256 { get => _explicitNullValueRejectedAccessTokenSha256; set { _explicitNullValueRejectedAccessTokenSha256 = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("rejected_access_token_sha256"); else _explicitNullProperties?.Remove("rejected_access_token_sha256"); } }
+        public string? RejectedAccessTokenSha256 { get => _explicitNullValueRejectedAccessTokenSha256; set { _explicitNullValueRejectedAccessTokenSha256 = value; AdditionalData?.Remove("rejected_access_token_sha256"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("rejected_access_token_sha256"); else _explicitNullProperties?.Remove("rejected_access_token_sha256"); } }
         private string? _explicitNullValueRejectedAccessTokenSha256 = default!;
 #nullable restore
 #else
-        public string RejectedAccessTokenSha256 { get => _explicitNullValueRejectedAccessTokenSha256; set { _explicitNullValueRejectedAccessTokenSha256 = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("rejected_access_token_sha256"); else _explicitNullProperties?.Remove("rejected_access_token_sha256"); } }
+        public string RejectedAccessTokenSha256 { get => _explicitNullValueRejectedAccessTokenSha256; set { _explicitNullValueRejectedAccessTokenSha256 = value; AdditionalData?.Remove("rejected_access_token_sha256"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("rejected_access_token_sha256"); else _explicitNullProperties?.Remove("rejected_access_token_sha256"); } }
         private string _explicitNullValueRejectedAccessTokenSha256 = default!;
 #endif
         /// <summary>

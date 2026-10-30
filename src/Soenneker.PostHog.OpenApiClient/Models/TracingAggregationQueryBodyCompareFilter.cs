@@ -18,23 +18,25 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("compare") is { } nullNodeCompare && nullNodeCompare.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Compare = null;
-            if (parseNode.GetChildNode("compare_to") is { } nullNodeCompareTo && nullNodeCompareTo.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CompareTo = null;
+            if (parseNode.GetChildNode("compare") is null) { _explicitNullValueCompare = default!; _explicitNullProperties?.Remove("compare"); }
+            else if (parseNode.GetChildNode("compare") is { } nullNodeCompare && nullNodeCompare.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Compare = null;
+            if (parseNode.GetChildNode("compare_to") is null) { _explicitNullValueCompareTo = default!; _explicitNullProperties?.Remove("compare_to"); }
+            else if (parseNode.GetChildNode("compare_to") is { } nullNodeCompareTo && nullNodeCompareTo.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CompareTo = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>When true, also fetch results for a comparison window and return them under `compare`.</summary>
-        public bool? Compare { get => _explicitNullValueCompare; set { _explicitNullValueCompare = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("compare"); else _explicitNullProperties?.Remove("compare"); } }
+        public bool? Compare { get => _explicitNullValueCompare; set { _explicitNullValueCompare = value; AdditionalData?.Remove("compare"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("compare"); else _explicitNullProperties?.Remove("compare"); } }
         private bool? _explicitNullValueCompare = default!;
         /// <summary>Relative date offset for the comparison window (e.g. &apos;-1h&apos;, &apos;-1d&apos;, &apos;-7d&apos;). Defaults to the immediately previous period of equal length.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? CompareTo { get => _explicitNullValueCompareTo; set { _explicitNullValueCompareTo = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("compare_to"); else _explicitNullProperties?.Remove("compare_to"); } }
+        public string? CompareTo { get => _explicitNullValueCompareTo; set { _explicitNullValueCompareTo = value; AdditionalData?.Remove("compare_to"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("compare_to"); else _explicitNullProperties?.Remove("compare_to"); } }
         private string? _explicitNullValueCompareTo = default!;
 #nullable restore
 #else
-        public string CompareTo { get => _explicitNullValueCompareTo; set { _explicitNullValueCompareTo = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("compare_to"); else _explicitNullProperties?.Remove("compare_to"); } }
+        public string CompareTo { get => _explicitNullValueCompareTo; set { _explicitNullValueCompareTo = value; AdditionalData?.Remove("compare_to"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("compare_to"); else _explicitNullProperties?.Remove("compare_to"); } }
         private string _explicitNullValueCompareTo = default!;
 #endif
         /// <summary>

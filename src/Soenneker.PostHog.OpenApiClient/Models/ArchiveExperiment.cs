@@ -17,13 +17,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("disable_feature_flag") is { } nullNodeDisableFeatureFlag && nullNodeDisableFeatureFlag.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) DisableFeatureFlag = null;
+            if (parseNode.GetChildNode("disable_feature_flag") is null) { _explicitNullValueDisableFeatureFlag = default!; _explicitNullProperties?.Remove("disable_feature_flag"); }
+            else if (parseNode.GetChildNode("disable_feature_flag") is { } nullNodeDisableFeatureFlag && nullNodeDisableFeatureFlag.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) DisableFeatureFlag = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>When the linked feature flag is still enabled, also disable and archive it along with the experiment. Has no effect if the flag is already disabled (it is archived either way).</summary>
-        public bool? DisableFeatureFlag { get => _explicitNullValueDisableFeatureFlag; set { _explicitNullValueDisableFeatureFlag = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("disable_feature_flag"); else _explicitNullProperties?.Remove("disable_feature_flag"); } }
+        public bool? DisableFeatureFlag { get => _explicitNullValueDisableFeatureFlag; set { _explicitNullValueDisableFeatureFlag = value; AdditionalData?.Remove("disable_feature_flag"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("disable_feature_flag"); else _explicitNullProperties?.Remove("disable_feature_flag"); } }
         private bool? _explicitNullValueDisableFeatureFlag = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ArchiveExperiment"/> and sets the default values.

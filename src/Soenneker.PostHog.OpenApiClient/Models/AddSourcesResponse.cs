@@ -17,10 +17,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("attached") is { } nullNodeAttached && nullNodeAttached.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Attached = null;
-            if (parseNode.GetChildNode("resync_failures") is { } nullNodeResyncFailures && nullNodeResyncFailures.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ResyncFailures = null;
-            if (parseNode.GetChildNode("skipped") is { } nullNodeSkipped && nullNodeSkipped.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Skipped = null;
-            if (parseNode.GetChildNode("tables_resyncing") is { } nullNodeTablesResyncing && nullNodeTablesResyncing.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TablesResyncing = null;
+            if (parseNode.GetChildNode("attached") is null) { _explicitNullValueAttached = default!; _explicitNullProperties?.Remove("attached"); }
+            else if (parseNode.GetChildNode("attached") is { } nullNodeAttached && nullNodeAttached.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Attached = null;
+            if (parseNode.GetChildNode("resync_failures") is null) { _explicitNullValueResyncFailures = default!; _explicitNullProperties?.Remove("resync_failures"); }
+            else if (parseNode.GetChildNode("resync_failures") is { } nullNodeResyncFailures && nullNodeResyncFailures.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ResyncFailures = null;
+            if (parseNode.GetChildNode("skipped") is null) { _explicitNullValueSkipped = default!; _explicitNullProperties?.Remove("skipped"); }
+            else if (parseNode.GetChildNode("skipped") is { } nullNodeSkipped && nullNodeSkipped.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Skipped = null;
+            if (parseNode.GetChildNode("tables_resyncing") is null) { _explicitNullValueTablesResyncing = default!; _explicitNullProperties?.Remove("tables_resyncing"); }
+            else if (parseNode.GetChildNode("tables_resyncing") is { } nullNodeTablesResyncing && nullNodeTablesResyncing.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TablesResyncing = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -28,35 +32,35 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Sources newly attached to this destination.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.SyncedSource>? Attached { get => _explicitNullValueAttached; set { _explicitNullValueAttached = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("attached"); else _explicitNullProperties?.Remove("attached"); } }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.SyncedSource>? Attached { get => _explicitNullValueAttached; set { _explicitNullValueAttached = value; AdditionalData?.Remove("attached"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("attached"); else _explicitNullProperties?.Remove("attached"); } }
         private List<global::Soenneker.PostHog.OpenApiClient.Models.SyncedSource>? _explicitNullValueAttached = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.SyncedSource> Attached { get => _explicitNullValueAttached; set { _explicitNullValueAttached = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("attached"); else _explicitNullProperties?.Remove("attached"); } }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.SyncedSource> Attached { get => _explicitNullValueAttached; set { _explicitNullValueAttached = value; AdditionalData?.Remove("attached"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("attached"); else _explicitNullProperties?.Remove("attached"); } }
         private List<global::Soenneker.PostHog.OpenApiClient.Models.SyncedSource> _explicitNullValueAttached = default!;
 #endif
         /// <summary>Tables whose resync did not start. The sources are still attached.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.ResyncFailure>? ResyncFailures { get => _explicitNullValueResyncFailures; set { _explicitNullValueResyncFailures = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("resync_failures"); else _explicitNullProperties?.Remove("resync_failures"); } }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.ResyncFailure>? ResyncFailures { get => _explicitNullValueResyncFailures; set { _explicitNullValueResyncFailures = value; AdditionalData?.Remove("resync_failures"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("resync_failures"); else _explicitNullProperties?.Remove("resync_failures"); } }
         private List<global::Soenneker.PostHog.OpenApiClient.Models.ResyncFailure>? _explicitNullValueResyncFailures = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.ResyncFailure> ResyncFailures { get => _explicitNullValueResyncFailures; set { _explicitNullValueResyncFailures = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("resync_failures"); else _explicitNullProperties?.Remove("resync_failures"); } }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.ResyncFailure> ResyncFailures { get => _explicitNullValueResyncFailures; set { _explicitNullValueResyncFailures = value; AdditionalData?.Remove("resync_failures"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("resync_failures"); else _explicitNullProperties?.Remove("resync_failures"); } }
         private List<global::Soenneker.PostHog.OpenApiClient.Models.ResyncFailure> _explicitNullValueResyncFailures = default!;
 #endif
         /// <summary>Sources that were not attached and their reasons.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.SkippedSource>? Skipped { get => _explicitNullValueSkipped; set { _explicitNullValueSkipped = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("skipped"); else _explicitNullProperties?.Remove("skipped"); } }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.SkippedSource>? Skipped { get => _explicitNullValueSkipped; set { _explicitNullValueSkipped = value; AdditionalData?.Remove("skipped"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("skipped"); else _explicitNullProperties?.Remove("skipped"); } }
         private List<global::Soenneker.PostHog.OpenApiClient.Models.SkippedSource>? _explicitNullValueSkipped = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.SkippedSource> Skipped { get => _explicitNullValueSkipped; set { _explicitNullValueSkipped = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("skipped"); else _explicitNullProperties?.Remove("skipped"); } }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.SkippedSource> Skipped { get => _explicitNullValueSkipped; set { _explicitNullValueSkipped = value; AdditionalData?.Remove("skipped"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("skipped"); else _explicitNullProperties?.Remove("skipped"); } }
         private List<global::Soenneker.PostHog.OpenApiClient.Models.SkippedSource> _explicitNullValueSkipped = default!;
 #endif
         /// <summary>Number of tables sent for a full resync.</summary>
-        public int? TablesResyncing { get => _explicitNullValueTablesResyncing; set { _explicitNullValueTablesResyncing = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("tables_resyncing"); else _explicitNullProperties?.Remove("tables_resyncing"); } }
+        public int? TablesResyncing { get => _explicitNullValueTablesResyncing; set { _explicitNullValueTablesResyncing = value; AdditionalData?.Remove("tables_resyncing"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("tables_resyncing"); else _explicitNullProperties?.Remove("tables_resyncing"); } }
         private int? _explicitNullValueTablesResyncing = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.AddSourcesResponse"/> and sets the default values.

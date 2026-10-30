@@ -17,21 +17,24 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("finished_runs") is { } nullNodeFinishedRuns && nullNodeFinishedRuns.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) FinishedRuns = null;
-            if (parseNode.GetChildNode("progress") is { } nullNodeProgress && nullNodeProgress.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Progress = null;
-            if (parseNode.GetChildNode("total_runs") is { } nullNodeTotalRuns && nullNodeTotalRuns.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TotalRuns = null;
+            if (parseNode.GetChildNode("finished_runs") is null) { _explicitNullValueFinishedRuns = default!; _explicitNullProperties?.Remove("finished_runs"); }
+            else if (parseNode.GetChildNode("finished_runs") is { } nullNodeFinishedRuns && nullNodeFinishedRuns.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) FinishedRuns = null;
+            if (parseNode.GetChildNode("progress") is null) { _explicitNullValueProgress = default!; _explicitNullProperties?.Remove("progress"); }
+            else if (parseNode.GetChildNode("progress") is { } nullNodeProgress && nullNodeProgress.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Progress = null;
+            if (parseNode.GetChildNode("total_runs") is null) { _explicitNullValueTotalRuns = default!; _explicitNullProperties?.Remove("total_runs"); }
+            else if (parseNode.GetChildNode("total_runs") is { } nullNodeTotalRuns && nullNodeTotalRuns.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TotalRuns = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The finished_runs property</summary>
-        public int? FinishedRuns { get => _explicitNullValueFinishedRuns; set { _explicitNullValueFinishedRuns = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("finished_runs"); else _explicitNullProperties?.Remove("finished_runs"); } }
+        public int? FinishedRuns { get => _explicitNullValueFinishedRuns; set { _explicitNullValueFinishedRuns = value; AdditionalData?.Remove("finished_runs"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("finished_runs"); else _explicitNullProperties?.Remove("finished_runs"); } }
         private int? _explicitNullValueFinishedRuns = default!;
         /// <summary>The progress property</summary>
-        public double? Progress { get => _explicitNullValueProgress; set { _explicitNullValueProgress = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("progress"); else _explicitNullProperties?.Remove("progress"); } }
+        public double? Progress { get => _explicitNullValueProgress; set { _explicitNullValueProgress = value; AdditionalData?.Remove("progress"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("progress"); else _explicitNullProperties?.Remove("progress"); } }
         private double? _explicitNullValueProgress = default!;
         /// <summary>The total_runs property</summary>
-        public int? TotalRuns { get => _explicitNullValueTotalRuns; set { _explicitNullValueTotalRuns = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("total_runs"); else _explicitNullProperties?.Remove("total_runs"); } }
+        public int? TotalRuns { get => _explicitNullValueTotalRuns; set { _explicitNullValueTotalRuns = value; AdditionalData?.Remove("total_runs"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("total_runs"); else _explicitNullProperties?.Remove("total_runs"); } }
         private int? _explicitNullValueTotalRuns = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.BatchExportBackfillProgress"/> and sets the default values.

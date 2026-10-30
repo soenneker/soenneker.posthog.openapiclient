@@ -17,7 +17,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("allowed_hostnames") is { } nullNodeAllowedHostnames && nullNodeAllowedHostnames.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AllowedHostnames = null;
+            if (parseNode.GetChildNode("allowed_hostnames") is null) { _explicitNullValueAllowedHostnames = default!; _explicitNullProperties?.Remove("allowed_hostnames"); }
+            else if (parseNode.GetChildNode("allowed_hostnames") is { } nullNodeAllowedHostnames && nullNodeAllowedHostnames.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AllowedHostnames = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -25,11 +26,11 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Exact DNS hostnames approved to receive the screenshot cookie. No URLs, wildcards, or IP addresses.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<string>? AllowedHostnames { get => _explicitNullValueAllowedHostnames; set { _explicitNullValueAllowedHostnames = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("allowed_hostnames"); else _explicitNullProperties?.Remove("allowed_hostnames"); } }
+        public List<string>? AllowedHostnames { get => _explicitNullValueAllowedHostnames; set { _explicitNullValueAllowedHostnames = value; AdditionalData?.Remove("allowed_hostnames"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("allowed_hostnames"); else _explicitNullProperties?.Remove("allowed_hostnames"); } }
         private List<string>? _explicitNullValueAllowedHostnames = default!;
 #nullable restore
 #else
-        public List<string> AllowedHostnames { get => _explicitNullValueAllowedHostnames; set { _explicitNullValueAllowedHostnames = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("allowed_hostnames"); else _explicitNullProperties?.Remove("allowed_hostnames"); } }
+        public List<string> AllowedHostnames { get => _explicitNullValueAllowedHostnames; set { _explicitNullValueAllowedHostnames = value; AdditionalData?.Remove("allowed_hostnames"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("allowed_hostnames"); else _explicitNullProperties?.Remove("allowed_hostnames"); } }
         private List<string> _explicitNullValueAllowedHostnames = default!;
 #endif
         /// <summary>

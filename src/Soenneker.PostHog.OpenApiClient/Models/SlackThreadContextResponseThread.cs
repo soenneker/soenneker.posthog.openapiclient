@@ -18,14 +18,22 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("channel") is { } nullNodeChannel && nullNodeChannel.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Channel = null;
-            if (parseNode.GetChildNode("mapping_admin_url") is { } nullNodeMappingAdminUrl && nullNodeMappingAdminUrl.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MappingAdminUrl = null;
-            if (parseNode.GetChildNode("mentioning_slack_user_id") is { } nullNodeMentioningSlackUserId && nullNodeMentioningSlackUserId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MentioningSlackUserId = null;
-            if (parseNode.GetChildNode("queue_workflow_id") is { } nullNodeQueueWorkflowId && nullNodeQueueWorkflowId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) QueueWorkflowId = null;
-            if (parseNode.GetChildNode("queue_workflow_url") is { } nullNodeQueueWorkflowUrl && nullNodeQueueWorkflowUrl.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) QueueWorkflowUrl = null;
-            if (parseNode.GetChildNode("slack_workspace_id") is { } nullNodeSlackWorkspaceId && nullNodeSlackWorkspaceId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SlackWorkspaceId = null;
-            if (parseNode.GetChildNode("thread_ts") is { } nullNodeThreadTs && nullNodeThreadTs.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ThreadTs = null;
-            if (parseNode.GetChildNode("url") is { } nullNodeUrl && nullNodeUrl.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Url = null;
+            if (parseNode.GetChildNode("channel") is null) { _explicitNullValueChannel = default!; _explicitNullProperties?.Remove("channel"); }
+            else if (parseNode.GetChildNode("channel") is { } nullNodeChannel && nullNodeChannel.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Channel = null;
+            if (parseNode.GetChildNode("mapping_admin_url") is null) { _explicitNullValueMappingAdminUrl = default!; _explicitNullProperties?.Remove("mapping_admin_url"); }
+            else if (parseNode.GetChildNode("mapping_admin_url") is { } nullNodeMappingAdminUrl && nullNodeMappingAdminUrl.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MappingAdminUrl = null;
+            if (parseNode.GetChildNode("mentioning_slack_user_id") is null) { _explicitNullValueMentioningSlackUserId = default!; _explicitNullProperties?.Remove("mentioning_slack_user_id"); }
+            else if (parseNode.GetChildNode("mentioning_slack_user_id") is { } nullNodeMentioningSlackUserId && nullNodeMentioningSlackUserId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MentioningSlackUserId = null;
+            if (parseNode.GetChildNode("queue_workflow_id") is null) { _explicitNullValueQueueWorkflowId = default!; _explicitNullProperties?.Remove("queue_workflow_id"); }
+            else if (parseNode.GetChildNode("queue_workflow_id") is { } nullNodeQueueWorkflowId && nullNodeQueueWorkflowId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) QueueWorkflowId = null;
+            if (parseNode.GetChildNode("queue_workflow_url") is null) { _explicitNullValueQueueWorkflowUrl = default!; _explicitNullProperties?.Remove("queue_workflow_url"); }
+            else if (parseNode.GetChildNode("queue_workflow_url") is { } nullNodeQueueWorkflowUrl && nullNodeQueueWorkflowUrl.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) QueueWorkflowUrl = null;
+            if (parseNode.GetChildNode("slack_workspace_id") is null) { _explicitNullValueSlackWorkspaceId = default!; _explicitNullProperties?.Remove("slack_workspace_id"); }
+            else if (parseNode.GetChildNode("slack_workspace_id") is { } nullNodeSlackWorkspaceId && nullNodeSlackWorkspaceId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SlackWorkspaceId = null;
+            if (parseNode.GetChildNode("thread_ts") is null) { _explicitNullValueThreadTs = default!; _explicitNullProperties?.Remove("thread_ts"); }
+            else if (parseNode.GetChildNode("thread_ts") is { } nullNodeThreadTs && nullNodeThreadTs.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ThreadTs = null;
+            if (parseNode.GetChildNode("url") is null) { _explicitNullValueUrl = default!; _explicitNullProperties?.Remove("url"); }
+            else if (parseNode.GetChildNode("url") is { } nullNodeUrl && nullNodeUrl.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Url = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -33,81 +41,81 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Slack channel id parsed from the URL (e.g. C0ACRAMJUAG).</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Channel { get => _explicitNullValueChannel; set { _explicitNullValueChannel = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("channel"); else _explicitNullProperties?.Remove("channel"); } }
+        public string? Channel { get => _explicitNullValueChannel; set { _explicitNullValueChannel = value; AdditionalData?.Remove("channel"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("channel"); else _explicitNullProperties?.Remove("channel"); } }
         private string? _explicitNullValueChannel = default!;
 #nullable restore
 #else
-        public string Channel { get => _explicitNullValueChannel; set { _explicitNullValueChannel = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("channel"); else _explicitNullProperties?.Remove("channel"); } }
+        public string Channel { get => _explicitNullValueChannel; set { _explicitNullValueChannel = value; AdditionalData?.Remove("channel"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("channel"); else _explicitNullProperties?.Remove("channel"); } }
         private string _explicitNullValueChannel = default!;
 #endif
         /// <summary>Absolute URL to the SlackThreadTaskMapping row in Django admin. Null when no mapping exists.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? MappingAdminUrl { get => _explicitNullValueMappingAdminUrl; set { _explicitNullValueMappingAdminUrl = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("mapping_admin_url"); else _explicitNullProperties?.Remove("mapping_admin_url"); } }
+        public string? MappingAdminUrl { get => _explicitNullValueMappingAdminUrl; set { _explicitNullValueMappingAdminUrl = value; AdditionalData?.Remove("mapping_admin_url"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("mapping_admin_url"); else _explicitNullProperties?.Remove("mapping_admin_url"); } }
         private string? _explicitNullValueMappingAdminUrl = default!;
 #nullable restore
 #else
-        public string MappingAdminUrl { get => _explicitNullValueMappingAdminUrl; set { _explicitNullValueMappingAdminUrl = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("mapping_admin_url"); else _explicitNullProperties?.Remove("mapping_admin_url"); } }
+        public string MappingAdminUrl { get => _explicitNullValueMappingAdminUrl; set { _explicitNullValueMappingAdminUrl = value; AdditionalData?.Remove("mapping_admin_url"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("mapping_admin_url"); else _explicitNullProperties?.Remove("mapping_admin_url"); } }
         private string _explicitNullValueMappingAdminUrl = default!;
 #endif
         /// <summary>The Slack user who triggered the task. Null when no mapping exists yet.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? MentioningSlackUserId { get => _explicitNullValueMentioningSlackUserId; set { _explicitNullValueMentioningSlackUserId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("mentioning_slack_user_id"); else _explicitNullProperties?.Remove("mentioning_slack_user_id"); } }
+        public string? MentioningSlackUserId { get => _explicitNullValueMentioningSlackUserId; set { _explicitNullValueMentioningSlackUserId = value; AdditionalData?.Remove("mentioning_slack_user_id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("mentioning_slack_user_id"); else _explicitNullProperties?.Remove("mentioning_slack_user_id"); } }
         private string? _explicitNullValueMentioningSlackUserId = default!;
 #nullable restore
 #else
-        public string MentioningSlackUserId { get => _explicitNullValueMentioningSlackUserId; set { _explicitNullValueMentioningSlackUserId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("mentioning_slack_user_id"); else _explicitNullProperties?.Remove("mentioning_slack_user_id"); } }
+        public string MentioningSlackUserId { get => _explicitNullValueMentioningSlackUserId; set { _explicitNullValueMentioningSlackUserId = value; AdditionalData?.Remove("mentioning_slack_user_id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("mentioning_slack_user_id"); else _explicitNullProperties?.Remove("mentioning_slack_user_id"); } }
         private string _explicitNullValueMentioningSlackUserId = default!;
 #endif
         /// <summary>Temporal workflow id of the per-conversation mention queue (`slack-app-mention-&lt;workspace&gt;:&lt;channel&gt;:&lt;thread_ts&gt;`) that serializes the thread&apos;s messages before any run exists. Null when the workspace id cannot be resolved.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? QueueWorkflowId { get => _explicitNullValueQueueWorkflowId; set { _explicitNullValueQueueWorkflowId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("queue_workflow_id"); else _explicitNullProperties?.Remove("queue_workflow_id"); } }
+        public string? QueueWorkflowId { get => _explicitNullValueQueueWorkflowId; set { _explicitNullValueQueueWorkflowId = value; AdditionalData?.Remove("queue_workflow_id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("queue_workflow_id"); else _explicitNullProperties?.Remove("queue_workflow_id"); } }
         private string? _explicitNullValueQueueWorkflowId = default!;
 #nullable restore
 #else
-        public string QueueWorkflowId { get => _explicitNullValueQueueWorkflowId; set { _explicitNullValueQueueWorkflowId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("queue_workflow_id"); else _explicitNullProperties?.Remove("queue_workflow_id"); } }
+        public string QueueWorkflowId { get => _explicitNullValueQueueWorkflowId; set { _explicitNullValueQueueWorkflowId = value; AdditionalData?.Remove("queue_workflow_id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("queue_workflow_id"); else _explicitNullProperties?.Remove("queue_workflow_id"); } }
         private string _explicitNullValueQueueWorkflowId = default!;
 #endif
         /// <summary>Full Temporal Web UI URL for the mention queue workflow; null when `TEMPORAL_UI_HOST` is unset.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? QueueWorkflowUrl { get => _explicitNullValueQueueWorkflowUrl; set { _explicitNullValueQueueWorkflowUrl = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("queue_workflow_url"); else _explicitNullProperties?.Remove("queue_workflow_url"); } }
+        public string? QueueWorkflowUrl { get => _explicitNullValueQueueWorkflowUrl; set { _explicitNullValueQueueWorkflowUrl = value; AdditionalData?.Remove("queue_workflow_url"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("queue_workflow_url"); else _explicitNullProperties?.Remove("queue_workflow_url"); } }
         private string? _explicitNullValueQueueWorkflowUrl = default!;
 #nullable restore
 #else
-        public string QueueWorkflowUrl { get => _explicitNullValueQueueWorkflowUrl; set { _explicitNullValueQueueWorkflowUrl = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("queue_workflow_url"); else _explicitNullProperties?.Remove("queue_workflow_url"); } }
+        public string QueueWorkflowUrl { get => _explicitNullValueQueueWorkflowUrl; set { _explicitNullValueQueueWorkflowUrl = value; AdditionalData?.Remove("queue_workflow_url"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("queue_workflow_url"); else _explicitNullProperties?.Remove("queue_workflow_url"); } }
         private string _explicitNullValueQueueWorkflowUrl = default!;
 #endif
         /// <summary>Slack workspace id (e.g. T…). Null when no mapping exists yet.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? SlackWorkspaceId { get => _explicitNullValueSlackWorkspaceId; set { _explicitNullValueSlackWorkspaceId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("slack_workspace_id"); else _explicitNullProperties?.Remove("slack_workspace_id"); } }
+        public string? SlackWorkspaceId { get => _explicitNullValueSlackWorkspaceId; set { _explicitNullValueSlackWorkspaceId = value; AdditionalData?.Remove("slack_workspace_id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("slack_workspace_id"); else _explicitNullProperties?.Remove("slack_workspace_id"); } }
         private string? _explicitNullValueSlackWorkspaceId = default!;
 #nullable restore
 #else
-        public string SlackWorkspaceId { get => _explicitNullValueSlackWorkspaceId; set { _explicitNullValueSlackWorkspaceId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("slack_workspace_id"); else _explicitNullProperties?.Remove("slack_workspace_id"); } }
+        public string SlackWorkspaceId { get => _explicitNullValueSlackWorkspaceId; set { _explicitNullValueSlackWorkspaceId = value; AdditionalData?.Remove("slack_workspace_id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("slack_workspace_id"); else _explicitNullProperties?.Remove("slack_workspace_id"); } }
         private string _explicitNullValueSlackWorkspaceId = default!;
 #endif
         /// <summary>Slack thread_ts (e.g. 1779956938.619299).</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? ThreadTs { get => _explicitNullValueThreadTs; set { _explicitNullValueThreadTs = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("thread_ts"); else _explicitNullProperties?.Remove("thread_ts"); } }
+        public string? ThreadTs { get => _explicitNullValueThreadTs; set { _explicitNullValueThreadTs = value; AdditionalData?.Remove("thread_ts"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("thread_ts"); else _explicitNullProperties?.Remove("thread_ts"); } }
         private string? _explicitNullValueThreadTs = default!;
 #nullable restore
 #else
-        public string ThreadTs { get => _explicitNullValueThreadTs; set { _explicitNullValueThreadTs = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("thread_ts"); else _explicitNullProperties?.Remove("thread_ts"); } }
+        public string ThreadTs { get => _explicitNullValueThreadTs; set { _explicitNullValueThreadTs = value; AdditionalData?.Remove("thread_ts"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("thread_ts"); else _explicitNullProperties?.Remove("thread_ts"); } }
         private string _explicitNullValueThreadTs = default!;
 #endif
         /// <summary>Echoed input URL.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Url { get => _explicitNullValueUrl; set { _explicitNullValueUrl = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("url"); else _explicitNullProperties?.Remove("url"); } }
+        public string? Url { get => _explicitNullValueUrl; set { _explicitNullValueUrl = value; AdditionalData?.Remove("url"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("url"); else _explicitNullProperties?.Remove("url"); } }
         private string? _explicitNullValueUrl = default!;
 #nullable restore
 #else
-        public string Url { get => _explicitNullValueUrl; set { _explicitNullValueUrl = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("url"); else _explicitNullProperties?.Remove("url"); } }
+        public string Url { get => _explicitNullValueUrl; set { _explicitNullValueUrl = value; AdditionalData?.Remove("url"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("url"); else _explicitNullProperties?.Remove("url"); } }
         private string _explicitNullValueUrl = default!;
 #endif
         /// <summary>

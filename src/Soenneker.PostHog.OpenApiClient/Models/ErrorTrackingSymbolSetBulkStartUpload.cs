@@ -17,13 +17,20 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("chunk_ids") is { } nullNodeChunkIds && nullNodeChunkIds.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ChunkIds = null;
-            if (parseNode.GetChildNode("force") is { } nullNodeForce && nullNodeForce.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Force = null;
-            if (parseNode.GetChildNode("release_id") is { } nullNodeReleaseId && nullNodeReleaseId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ReleaseId = null;
-            if (parseNode.GetChildNode("skip_on_conflict") is { } nullNodeSkipOnConflict && nullNodeSkipOnConflict.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SkipOnConflict = null;
-            if (parseNode.GetChildNode("symbol_sets") is { } nullNodeSymbolSets && nullNodeSymbolSets.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SymbolSets = null;
-            if (parseNode.GetChildNode("upload_attempt_id") is { } nullNodeUploadAttemptId && nullNodeUploadAttemptId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) UploadAttemptId = null;
-            if (parseNode.GetChildNode("upload_run_id") is { } nullNodeUploadRunId && nullNodeUploadRunId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) UploadRunId = null;
+            if (parseNode.GetChildNode("chunk_ids") is null) { _explicitNullValueChunkIds = default!; _explicitNullProperties?.Remove("chunk_ids"); }
+            else if (parseNode.GetChildNode("chunk_ids") is { } nullNodeChunkIds && nullNodeChunkIds.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ChunkIds = null;
+            if (parseNode.GetChildNode("force") is null) { _explicitNullValueForce = default!; _explicitNullProperties?.Remove("force"); }
+            else if (parseNode.GetChildNode("force") is { } nullNodeForce && nullNodeForce.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Force = null;
+            if (parseNode.GetChildNode("release_id") is null) { _explicitNullValueReleaseId = default!; _explicitNullProperties?.Remove("release_id"); }
+            else if (parseNode.GetChildNode("release_id") is { } nullNodeReleaseId && nullNodeReleaseId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ReleaseId = null;
+            if (parseNode.GetChildNode("skip_on_conflict") is null) { _explicitNullValueSkipOnConflict = default!; _explicitNullProperties?.Remove("skip_on_conflict"); }
+            else if (parseNode.GetChildNode("skip_on_conflict") is { } nullNodeSkipOnConflict && nullNodeSkipOnConflict.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SkipOnConflict = null;
+            if (parseNode.GetChildNode("symbol_sets") is null) { _explicitNullValueSymbolSets = default!; _explicitNullProperties?.Remove("symbol_sets"); }
+            else if (parseNode.GetChildNode("symbol_sets") is { } nullNodeSymbolSets && nullNodeSymbolSets.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SymbolSets = null;
+            if (parseNode.GetChildNode("upload_attempt_id") is null) { _explicitNullValueUploadAttemptId = default!; _explicitNullProperties?.Remove("upload_attempt_id"); }
+            else if (parseNode.GetChildNode("upload_attempt_id") is { } nullNodeUploadAttemptId && nullNodeUploadAttemptId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) UploadAttemptId = null;
+            if (parseNode.GetChildNode("upload_run_id") is null) { _explicitNullValueUploadRunId = default!; _explicitNullProperties?.Remove("upload_run_id"); }
+            else if (parseNode.GetChildNode("upload_run_id") is { } nullNodeUploadRunId && nullNodeUploadRunId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) UploadRunId = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -31,44 +38,44 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Legacy list of symbol set references to upload, all associated with `release_id`.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<string>? ChunkIds { get => _explicitNullValueChunkIds; set { _explicitNullValueChunkIds = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("chunk_ids"); else _explicitNullProperties?.Remove("chunk_ids"); } }
+        public List<string>? ChunkIds { get => _explicitNullValueChunkIds; set { _explicitNullValueChunkIds = value; AdditionalData?.Remove("chunk_ids"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("chunk_ids"); else _explicitNullProperties?.Remove("chunk_ids"); } }
         private List<string>? _explicitNullValueChunkIds = default!;
 #nullable restore
 #else
-        public List<string> ChunkIds { get => _explicitNullValueChunkIds; set { _explicitNullValueChunkIds = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("chunk_ids"); else _explicitNullProperties?.Remove("chunk_ids"); } }
+        public List<string> ChunkIds { get => _explicitNullValueChunkIds; set { _explicitNullValueChunkIds = value; AdditionalData?.Remove("chunk_ids"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("chunk_ids"); else _explicitNullProperties?.Remove("chunk_ids"); } }
         private List<string> _explicitNullValueChunkIds = default!;
 #endif
         /// <summary>Whether to overwrite uploaded symbol sets whose content hash changed.</summary>
-        public bool? Force { get => _explicitNullValueForce; set { _explicitNullValueForce = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("force"); else _explicitNullProperties?.Remove("force"); } }
+        public bool? Force { get => _explicitNullValueForce; set { _explicitNullValueForce = value; AdditionalData?.Remove("force"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("force"); else _explicitNullProperties?.Remove("force"); } }
         private bool? _explicitNullValueForce = default!;
         /// <summary>Optional error tracking release ID used with `chunk_ids`.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? ReleaseId { get => _explicitNullValueReleaseId; set { _explicitNullValueReleaseId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("release_id"); else _explicitNullProperties?.Remove("release_id"); } }
+        public string? ReleaseId { get => _explicitNullValueReleaseId; set { _explicitNullValueReleaseId = value; AdditionalData?.Remove("release_id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("release_id"); else _explicitNullProperties?.Remove("release_id"); } }
         private string? _explicitNullValueReleaseId = default!;
 #nullable restore
 #else
-        public string ReleaseId { get => _explicitNullValueReleaseId; set { _explicitNullValueReleaseId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("release_id"); else _explicitNullProperties?.Remove("release_id"); } }
+        public string ReleaseId { get => _explicitNullValueReleaseId; set { _explicitNullValueReleaseId = value; AdditionalData?.Remove("release_id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("release_id"); else _explicitNullProperties?.Remove("release_id"); } }
         private string _explicitNullValueReleaseId = default!;
 #endif
         /// <summary>Whether to skip uploaded symbol sets whose content hash changed instead of failing.</summary>
-        public bool? SkipOnConflict { get => _explicitNullValueSkipOnConflict; set { _explicitNullValueSkipOnConflict = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("skip_on_conflict"); else _explicitNullProperties?.Remove("skip_on_conflict"); } }
+        public bool? SkipOnConflict { get => _explicitNullValueSkipOnConflict; set { _explicitNullValueSkipOnConflict = value; AdditionalData?.Remove("skip_on_conflict"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("skip_on_conflict"); else _explicitNullProperties?.Remove("skip_on_conflict"); } }
         private bool? _explicitNullValueSkipOnConflict = default!;
         /// <summary>Symbol sets to upload with per-symbol release IDs and content hashes.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingSymbolSetUpload>? SymbolSets { get => _explicitNullValueSymbolSets; set { _explicitNullValueSymbolSets = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("symbol_sets"); else _explicitNullProperties?.Remove("symbol_sets"); } }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingSymbolSetUpload>? SymbolSets { get => _explicitNullValueSymbolSets; set { _explicitNullValueSymbolSets = value; AdditionalData?.Remove("symbol_sets"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("symbol_sets"); else _explicitNullProperties?.Remove("symbol_sets"); } }
         private List<global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingSymbolSetUpload>? _explicitNullValueSymbolSets = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingSymbolSetUpload> SymbolSets { get => _explicitNullValueSymbolSets; set { _explicitNullValueSymbolSets = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("symbol_sets"); else _explicitNullProperties?.Remove("symbol_sets"); } }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingSymbolSetUpload> SymbolSets { get => _explicitNullValueSymbolSets; set { _explicitNullValueSymbolSets = value; AdditionalData?.Remove("symbol_sets"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("symbol_sets"); else _explicitNullProperties?.Remove("symbol_sets"); } }
         private List<global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingSymbolSetUpload> _explicitNullValueSymbolSets = default!;
 #endif
         /// <summary>Optional ID used to correlate upload analytics across start and finish requests.</summary>
-        public Guid? UploadAttemptId { get => _explicitNullValueUploadAttemptId; set { _explicitNullValueUploadAttemptId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("upload_attempt_id"); else _explicitNullProperties?.Remove("upload_attempt_id"); } }
+        public Guid? UploadAttemptId { get => _explicitNullValueUploadAttemptId; set { _explicitNullValueUploadAttemptId = value; AdditionalData?.Remove("upload_attempt_id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("upload_attempt_id"); else _explicitNullProperties?.Remove("upload_attempt_id"); } }
         private Guid? _explicitNullValueUploadAttemptId = default!;
         /// <summary>Optional ID shared by every batch in one CLI upload run, including release-ID retries.</summary>
-        public Guid? UploadRunId { get => _explicitNullValueUploadRunId; set { _explicitNullValueUploadRunId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("upload_run_id"); else _explicitNullProperties?.Remove("upload_run_id"); } }
+        public Guid? UploadRunId { get => _explicitNullValueUploadRunId; set { _explicitNullValueUploadRunId = value; AdditionalData?.Remove("upload_run_id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("upload_run_id"); else _explicitNullProperties?.Remove("upload_run_id"); } }
         private Guid? _explicitNullValueUploadRunId = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingSymbolSetBulkStartUpload"/> and sets the default values.

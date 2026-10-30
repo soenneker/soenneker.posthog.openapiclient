@@ -18,17 +18,19 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("max_queued_queries") is { } nullNodeMaxQueuedQueries && nullNodeMaxQueuedQueries.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MaxQueuedQueries = null;
-            if (parseNode.GetChildNode("max_running_queries") is { } nullNodeMaxRunningQueries && nullNodeMaxRunningQueries.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MaxRunningQueries = null;
+            if (parseNode.GetChildNode("max_queued_queries") is null) { _explicitNullValueMaxQueuedQueries = default!; _explicitNullProperties?.Remove("max_queued_queries"); }
+            else if (parseNode.GetChildNode("max_queued_queries") is { } nullNodeMaxQueuedQueries && nullNodeMaxQueuedQueries.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MaxQueuedQueries = null;
+            if (parseNode.GetChildNode("max_running_queries") is null) { _explicitNullValueMaxRunningQueries = default!; _explicitNullProperties?.Remove("max_running_queries"); }
+            else if (parseNode.GetChildNode("max_running_queries") is { } nullNodeMaxRunningQueries && nullNodeMaxRunningQueries.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MaxRunningQueries = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Maximum number of the organization&apos;s queries that can wait in the queue. Zero when Trino is not enabled.</summary>
-        public int? MaxQueuedQueries { get => _explicitNullValueMaxQueuedQueries; set { _explicitNullValueMaxQueuedQueries = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("max_queued_queries"); else _explicitNullProperties?.Remove("max_queued_queries"); } }
+        public int? MaxQueuedQueries { get => _explicitNullValueMaxQueuedQueries; set { _explicitNullValueMaxQueuedQueries = value; AdditionalData?.Remove("max_queued_queries"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("max_queued_queries"); else _explicitNullProperties?.Remove("max_queued_queries"); } }
         private int? _explicitNullValueMaxQueuedQueries = default!;
         /// <summary>Maximum number of the organization&apos;s queries that run at the same time. Zero when Trino is not enabled.</summary>
-        public int? MaxRunningQueries { get => _explicitNullValueMaxRunningQueries; set { _explicitNullValueMaxRunningQueries = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("max_running_queries"); else _explicitNullProperties?.Remove("max_running_queries"); } }
+        public int? MaxRunningQueries { get => _explicitNullValueMaxRunningQueries; set { _explicitNullValueMaxRunningQueries = value; AdditionalData?.Remove("max_running_queries"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("max_running_queries"); else _explicitNullProperties?.Remove("max_running_queries"); } }
         private int? _explicitNullValueMaxRunningQueries = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ManagedWarehouseTrinoMonitoringSnapshotResponseLimits"/> and sets the default values.

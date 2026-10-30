@@ -17,8 +17,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("errors") is { } nullNodeErrors && nullNodeErrors.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Errors = null;
-            if (parseNode.GetChildNode("input_snapshot") is { } nullNodeInputSnapshot && nullNodeInputSnapshot.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) InputSnapshot = null;
+            if (parseNode.GetChildNode("errors") is null) { _explicitNullValueErrors = default!; _explicitNullProperties?.Remove("errors"); }
+            else if (parseNode.GetChildNode("errors") is { } nullNodeErrors && nullNodeErrors.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Errors = null;
+            if (parseNode.GetChildNode("input_snapshot") is null) { _explicitNullValueInputSnapshot = default!; _explicitNullProperties?.Remove("input_snapshot"); }
+            else if (parseNode.GetChildNode("input_snapshot") is { } nullNodeInputSnapshot && nullNodeInputSnapshot.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) InputSnapshot = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -30,11 +32,11 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Inspectable workflow errors from this run.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.ContentAutopilotError>? Errors { get => _explicitNullValueErrors; set { _explicitNullValueErrors = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("errors"); else _explicitNullProperties?.Remove("errors"); } }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.ContentAutopilotError>? Errors { get => _explicitNullValueErrors; set { _explicitNullValueErrors = value; AdditionalData?.Remove("errors"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("errors"); else _explicitNullProperties?.Remove("errors"); } }
         private List<global::Soenneker.PostHog.OpenApiClient.Models.ContentAutopilotError>? _explicitNullValueErrors = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.ContentAutopilotError> Errors { get => _explicitNullValueErrors; set { _explicitNullValueErrors = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("errors"); else _explicitNullProperties?.Remove("errors"); } }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.ContentAutopilotError> Errors { get => _explicitNullValueErrors; set { _explicitNullValueErrors = value; AdditionalData?.Remove("errors"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("errors"); else _explicitNullProperties?.Remove("errors"); } }
         private List<global::Soenneker.PostHog.OpenApiClient.Models.ContentAutopilotError> _explicitNullValueErrors = default!;
 #endif
         /// <summary>The id property</summary>
@@ -42,11 +44,11 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Immutable inputs captured at run start.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.ContentAutopilotRunInputSnapshot? InputSnapshot { get => _explicitNullValueInputSnapshot; set { _explicitNullValueInputSnapshot = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("input_snapshot"); else _explicitNullProperties?.Remove("input_snapshot"); } }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ContentAutopilotRunInputSnapshot? InputSnapshot { get => _explicitNullValueInputSnapshot; set { _explicitNullValueInputSnapshot = value; AdditionalData?.Remove("input_snapshot"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("input_snapshot"); else _explicitNullProperties?.Remove("input_snapshot"); } }
         private global::Soenneker.PostHog.OpenApiClient.Models.ContentAutopilotRunInputSnapshot? _explicitNullValueInputSnapshot = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ContentAutopilotRunInputSnapshot InputSnapshot { get => _explicitNullValueInputSnapshot; set { _explicitNullValueInputSnapshot = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("input_snapshot"); else _explicitNullProperties?.Remove("input_snapshot"); } }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ContentAutopilotRunInputSnapshot InputSnapshot { get => _explicitNullValueInputSnapshot; set { _explicitNullValueInputSnapshot = value; AdditionalData?.Remove("input_snapshot"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("input_snapshot"); else _explicitNullProperties?.Remove("input_snapshot"); } }
         private global::Soenneker.PostHog.OpenApiClient.Models.ContentAutopilotRunInputSnapshot _explicitNullValueInputSnapshot = default!;
 #endif
         /// <summary>Site profile used by this run.</summary>

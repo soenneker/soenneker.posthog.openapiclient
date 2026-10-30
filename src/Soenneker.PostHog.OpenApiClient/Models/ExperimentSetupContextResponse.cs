@@ -18,12 +18,18 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("candidate_metric") is { } nullNodeCandidateMetric && nullNodeCandidateMetric.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CandidateMetric = null;
-            if (parseNode.GetChildNode("previous_experiments") is { } nullNodePreviousExperiments && nullNodePreviousExperiments.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) PreviousExperiments = null;
-            if (parseNode.GetChildNode("sdk_profile") is { } nullNodeSdkProfile && nullNodeSdkProfile.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SdkProfile = null;
-            if (parseNode.GetChildNode("shared_metrics") is { } nullNodeSharedMetrics && nullNodeSharedMetrics.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SharedMetrics = null;
-            if (parseNode.GetChildNode("target_surface") is { } nullNodeTargetSurface && nullNodeTargetSurface.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TargetSurface = null;
-            if (parseNode.GetChildNode("team_defaults") is { } nullNodeTeamDefaults && nullNodeTeamDefaults.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TeamDefaults = null;
+            if (parseNode.GetChildNode("candidate_metric") is null) { _explicitNullValueCandidateMetric = default!; _explicitNullProperties?.Remove("candidate_metric"); }
+            else if (parseNode.GetChildNode("candidate_metric") is { } nullNodeCandidateMetric && nullNodeCandidateMetric.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CandidateMetric = null;
+            if (parseNode.GetChildNode("previous_experiments") is null) { _explicitNullValuePreviousExperiments = default!; _explicitNullProperties?.Remove("previous_experiments"); }
+            else if (parseNode.GetChildNode("previous_experiments") is { } nullNodePreviousExperiments && nullNodePreviousExperiments.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) PreviousExperiments = null;
+            if (parseNode.GetChildNode("sdk_profile") is null) { _explicitNullValueSdkProfile = default!; _explicitNullProperties?.Remove("sdk_profile"); }
+            else if (parseNode.GetChildNode("sdk_profile") is { } nullNodeSdkProfile && nullNodeSdkProfile.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SdkProfile = null;
+            if (parseNode.GetChildNode("shared_metrics") is null) { _explicitNullValueSharedMetrics = default!; _explicitNullProperties?.Remove("shared_metrics"); }
+            else if (parseNode.GetChildNode("shared_metrics") is { } nullNodeSharedMetrics && nullNodeSharedMetrics.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SharedMetrics = null;
+            if (parseNode.GetChildNode("target_surface") is null) { _explicitNullValueTargetSurface = default!; _explicitNullProperties?.Remove("target_surface"); }
+            else if (parseNode.GetChildNode("target_surface") is { } nullNodeTargetSurface && nullNodeTargetSurface.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TargetSurface = null;
+            if (parseNode.GetChildNode("team_defaults") is null) { _explicitNullValueTeamDefaults = default!; _explicitNullProperties?.Remove("team_defaults"); }
+            else if (parseNode.GetChildNode("team_defaults") is { } nullNodeTeamDefaults && nullNodeTeamDefaults.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TeamDefaults = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -31,61 +37,61 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Traffic and baseline of the candidate primary metric.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentSetupContextResponseCandidateMetric? CandidateMetric { get => _explicitNullValueCandidateMetric; set { _explicitNullValueCandidateMetric = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("candidate_metric"); else _explicitNullProperties?.Remove("candidate_metric"); } }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentSetupContextResponseCandidateMetric? CandidateMetric { get => _explicitNullValueCandidateMetric; set { _explicitNullValueCandidateMetric = value; AdditionalData?.Remove("candidate_metric"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("candidate_metric"); else _explicitNullProperties?.Remove("candidate_metric"); } }
         private global::Soenneker.PostHog.OpenApiClient.Models.ExperimentSetupContextResponseCandidateMetric? _explicitNullValueCandidateMetric = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentSetupContextResponseCandidateMetric CandidateMetric { get => _explicitNullValueCandidateMetric; set { _explicitNullValueCandidateMetric = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("candidate_metric"); else _explicitNullProperties?.Remove("candidate_metric"); } }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentSetupContextResponseCandidateMetric CandidateMetric { get => _explicitNullValueCandidateMetric; set { _explicitNullValueCandidateMetric = value; AdditionalData?.Remove("candidate_metric"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("candidate_metric"); else _explicitNullProperties?.Remove("candidate_metric"); } }
         private global::Soenneker.PostHog.OpenApiClient.Models.ExperimentSetupContextResponseCandidateMetric _explicitNullValueCandidateMetric = default!;
 #endif
         /// <summary>Recent experiments in the project.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentSetupContextResponsePreviousExperiments? PreviousExperiments { get => _explicitNullValuePreviousExperiments; set { _explicitNullValuePreviousExperiments = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("previous_experiments"); else _explicitNullProperties?.Remove("previous_experiments"); } }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentSetupContextResponsePreviousExperiments? PreviousExperiments { get => _explicitNullValuePreviousExperiments; set { _explicitNullValuePreviousExperiments = value; AdditionalData?.Remove("previous_experiments"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("previous_experiments"); else _explicitNullProperties?.Remove("previous_experiments"); } }
         private global::Soenneker.PostHog.OpenApiClient.Models.ExperimentSetupContextResponsePreviousExperiments? _explicitNullValuePreviousExperiments = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentSetupContextResponsePreviousExperiments PreviousExperiments { get => _explicitNullValuePreviousExperiments; set { _explicitNullValuePreviousExperiments = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("previous_experiments"); else _explicitNullProperties?.Remove("previous_experiments"); } }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentSetupContextResponsePreviousExperiments PreviousExperiments { get => _explicitNullValuePreviousExperiments; set { _explicitNullValuePreviousExperiments = value; AdditionalData?.Remove("previous_experiments"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("previous_experiments"); else _explicitNullProperties?.Remove("previous_experiments"); } }
         private global::Soenneker.PostHog.OpenApiClient.Models.ExperimentSetupContextResponsePreviousExperiments _explicitNullValuePreviousExperiments = default!;
 #endif
         /// <summary>Which SDKs call feature flags and where flags are evaluated.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentSetupContextResponseSdkProfile? SdkProfile { get => _explicitNullValueSdkProfile; set { _explicitNullValueSdkProfile = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("sdk_profile"); else _explicitNullProperties?.Remove("sdk_profile"); } }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentSetupContextResponseSdkProfile? SdkProfile { get => _explicitNullValueSdkProfile; set { _explicitNullValueSdkProfile = value; AdditionalData?.Remove("sdk_profile"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("sdk_profile"); else _explicitNullProperties?.Remove("sdk_profile"); } }
         private global::Soenneker.PostHog.OpenApiClient.Models.ExperimentSetupContextResponseSdkProfile? _explicitNullValueSdkProfile = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentSetupContextResponseSdkProfile SdkProfile { get => _explicitNullValueSdkProfile; set { _explicitNullValueSdkProfile = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("sdk_profile"); else _explicitNullProperties?.Remove("sdk_profile"); } }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentSetupContextResponseSdkProfile SdkProfile { get => _explicitNullValueSdkProfile; set { _explicitNullValueSdkProfile = value; AdditionalData?.Remove("sdk_profile"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("sdk_profile"); else _explicitNullProperties?.Remove("sdk_profile"); } }
         private global::Soenneker.PostHog.OpenApiClient.Models.ExperimentSetupContextResponseSdkProfile _explicitNullValueSdkProfile = default!;
 #endif
         /// <summary>Most reused shared metrics.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentSetupContextResponseSharedMetrics? SharedMetrics { get => _explicitNullValueSharedMetrics; set { _explicitNullValueSharedMetrics = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("shared_metrics"); else _explicitNullProperties?.Remove("shared_metrics"); } }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentSetupContextResponseSharedMetrics? SharedMetrics { get => _explicitNullValueSharedMetrics; set { _explicitNullValueSharedMetrics = value; AdditionalData?.Remove("shared_metrics"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("shared_metrics"); else _explicitNullProperties?.Remove("shared_metrics"); } }
         private global::Soenneker.PostHog.OpenApiClient.Models.ExperimentSetupContextResponseSharedMetrics? _explicitNullValueSharedMetrics = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentSetupContextResponseSharedMetrics SharedMetrics { get => _explicitNullValueSharedMetrics; set { _explicitNullValueSharedMetrics = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("shared_metrics"); else _explicitNullProperties?.Remove("shared_metrics"); } }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentSetupContextResponseSharedMetrics SharedMetrics { get => _explicitNullValueSharedMetrics; set { _explicitNullValueSharedMetrics = value; AdditionalData?.Remove("shared_metrics"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("shared_metrics"); else _explicitNullProperties?.Remove("shared_metrics"); } }
         private global::Soenneker.PostHog.OpenApiClient.Models.ExperimentSetupContextResponseSharedMetrics _explicitNullValueSharedMetrics = default!;
 #endif
         /// <summary>Traffic on the surface under test.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentSetupContextResponseTargetSurface? TargetSurface { get => _explicitNullValueTargetSurface; set { _explicitNullValueTargetSurface = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("target_surface"); else _explicitNullProperties?.Remove("target_surface"); } }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentSetupContextResponseTargetSurface? TargetSurface { get => _explicitNullValueTargetSurface; set { _explicitNullValueTargetSurface = value; AdditionalData?.Remove("target_surface"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("target_surface"); else _explicitNullProperties?.Remove("target_surface"); } }
         private global::Soenneker.PostHog.OpenApiClient.Models.ExperimentSetupContextResponseTargetSurface? _explicitNullValueTargetSurface = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentSetupContextResponseTargetSurface TargetSurface { get => _explicitNullValueTargetSurface; set { _explicitNullValueTargetSurface = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("target_surface"); else _explicitNullProperties?.Remove("target_surface"); } }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentSetupContextResponseTargetSurface TargetSurface { get => _explicitNullValueTargetSurface; set { _explicitNullValueTargetSurface = value; AdditionalData?.Remove("target_surface"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("target_surface"); else _explicitNullProperties?.Remove("target_surface"); } }
         private global::Soenneker.PostHog.OpenApiClient.Models.ExperimentSetupContextResponseTargetSurface _explicitNullValueTargetSurface = default!;
 #endif
         /// <summary>The project&apos;s experiment defaults.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentSetupContextResponseTeamDefaults? TeamDefaults { get => _explicitNullValueTeamDefaults; set { _explicitNullValueTeamDefaults = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("team_defaults"); else _explicitNullProperties?.Remove("team_defaults"); } }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentSetupContextResponseTeamDefaults? TeamDefaults { get => _explicitNullValueTeamDefaults; set { _explicitNullValueTeamDefaults = value; AdditionalData?.Remove("team_defaults"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("team_defaults"); else _explicitNullProperties?.Remove("team_defaults"); } }
         private global::Soenneker.PostHog.OpenApiClient.Models.ExperimentSetupContextResponseTeamDefaults? _explicitNullValueTeamDefaults = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentSetupContextResponseTeamDefaults TeamDefaults { get => _explicitNullValueTeamDefaults; set { _explicitNullValueTeamDefaults = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("team_defaults"); else _explicitNullProperties?.Remove("team_defaults"); } }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentSetupContextResponseTeamDefaults TeamDefaults { get => _explicitNullValueTeamDefaults; set { _explicitNullValueTeamDefaults = value; AdditionalData?.Remove("team_defaults"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("team_defaults"); else _explicitNullProperties?.Remove("team_defaults"); } }
         private global::Soenneker.PostHog.OpenApiClient.Models.ExperimentSetupContextResponseTeamDefaults _explicitNullValueTeamDefaults = default!;
 #endif
         /// <summary>

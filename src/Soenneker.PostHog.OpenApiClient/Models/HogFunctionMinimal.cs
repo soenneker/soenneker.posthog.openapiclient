@@ -82,10 +82,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>How this row matched the `search` query parameter: `exact` (the term is a case-insensitive substring of a searched field) or `similar` (a fuzzy trigram match, returned only when no exact match exists). Null when the list is not filtered by `search`.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.HogFunctionMinimalSearchMatchType? SearchMatchType { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.AlertSearchMatchType? SearchMatchType { get; private set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.HogFunctionMinimalSearchMatchType SearchMatchType { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.AlertSearchMatchType SearchMatchType { get; private set; }
 #endif
         /// <summary>The status property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -149,7 +149,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "icon_url", n => { IconUrl = n.GetStringValue(); } },
                 { "id", n => { Id = n.GetGuidValue(); } },
                 { "name", n => { Name = n.GetStringValue(); } },
-                { "search_match_type", n => { SearchMatchType = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogFunctionMinimalSearchMatchType>(global::Soenneker.PostHog.OpenApiClient.Models.HogFunctionMinimalSearchMatchType.CreateFromDiscriminatorValue); } },
+                { "search_match_type", n => { SearchMatchType = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.AlertSearchMatchType>(global::Soenneker.PostHog.OpenApiClient.Models.AlertSearchMatchType.CreateFromDiscriminatorValue); } },
                 { "status", n => { Status = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogFunctionStatus>(global::Soenneker.PostHog.OpenApiClient.Models.HogFunctionStatus.CreateFromDiscriminatorValue); } },
                 { "template", n => { Template = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.HogFunctionMinimalTemplate>(global::Soenneker.PostHog.OpenApiClient.Models.HogFunctionMinimalTemplate.CreateFromDiscriminatorValue); } },
                 { "type", n => { Type = n.GetStringValue(); } },

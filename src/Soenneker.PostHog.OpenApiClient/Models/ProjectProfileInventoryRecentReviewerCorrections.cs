@@ -18,8 +18,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("corrections") is { } nullNodeCorrections && nullNodeCorrections.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Corrections = null;
-            if (parseNode.GetChildNode("window_days") is { } nullNodeWindowDays && nullNodeWindowDays.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) WindowDays = null;
+            if (parseNode.GetChildNode("corrections") is null) { _explicitNullValueCorrections = default!; _explicitNullProperties?.Remove("corrections"); }
+            else if (parseNode.GetChildNode("corrections") is { } nullNodeCorrections && nullNodeCorrections.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Corrections = null;
+            if (parseNode.GetChildNode("window_days") is null) { _explicitNullValueWindowDays = default!; _explicitNullProperties?.Remove("window_days"); }
+            else if (parseNode.GetChildNode("window_days") is { } nullNodeWindowDays && nullNodeWindowDays.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) WindowDays = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -27,15 +29,15 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Human reviewer edits, newest first. A human swapping a report&apos;s suggested reviewers is authoritative ownership precedent — route to who they chose.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.ReviewerCorrectionEntry>? Corrections { get => _explicitNullValueCorrections; set { _explicitNullValueCorrections = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("corrections"); else _explicitNullProperties?.Remove("corrections"); } }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.ReviewerCorrectionEntry>? Corrections { get => _explicitNullValueCorrections; set { _explicitNullValueCorrections = value; AdditionalData?.Remove("corrections"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("corrections"); else _explicitNullProperties?.Remove("corrections"); } }
         private List<global::Soenneker.PostHog.OpenApiClient.Models.ReviewerCorrectionEntry>? _explicitNullValueCorrections = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.ReviewerCorrectionEntry> Corrections { get => _explicitNullValueCorrections; set { _explicitNullValueCorrections = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("corrections"); else _explicitNullProperties?.Remove("corrections"); } }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.ReviewerCorrectionEntry> Corrections { get => _explicitNullValueCorrections; set { _explicitNullValueCorrections = value; AdditionalData?.Remove("corrections"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("corrections"); else _explicitNullProperties?.Remove("corrections"); } }
         private List<global::Soenneker.PostHog.OpenApiClient.Models.ReviewerCorrectionEntry> _explicitNullValueCorrections = default!;
 #endif
         /// <summary>Lookback window in days the corrections cover.</summary>
-        public int? WindowDays { get => _explicitNullValueWindowDays; set { _explicitNullValueWindowDays = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("window_days"); else _explicitNullProperties?.Remove("window_days"); } }
+        public int? WindowDays { get => _explicitNullValueWindowDays; set { _explicitNullValueWindowDays = value; AdditionalData?.Remove("window_days"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("window_days"); else _explicitNullProperties?.Remove("window_days"); } }
         private int? _explicitNullValueWindowDays = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ProjectProfileInventoryRecentReviewerCorrections"/> and sets the default values.

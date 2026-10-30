@@ -17,9 +17,12 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("funnelPathType") is { } nullNodeFunnelPathType && nullNodeFunnelPathType.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) FunnelPathType = null;
-            if (parseNode.GetChildNode("funnelSource") is { } nullNodeFunnelSource && nullNodeFunnelSource.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) FunnelSource = null;
-            if (parseNode.GetChildNode("funnelStep") is { } nullNodeFunnelStep && nullNodeFunnelStep.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) FunnelStep = null;
+            if (parseNode.GetChildNode("funnelPathType") is null) { _explicitNullValueFunnelPathType = default!; _explicitNullProperties?.Remove("funnelPathType"); }
+            else if (parseNode.GetChildNode("funnelPathType") is { } nullNodeFunnelPathType && nullNodeFunnelPathType.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) FunnelPathType = null;
+            if (parseNode.GetChildNode("funnelSource") is null) { _explicitNullValueFunnelSource = default!; _explicitNullProperties?.Remove("funnelSource"); }
+            else if (parseNode.GetChildNode("funnelSource") is { } nullNodeFunnelSource && nullNodeFunnelSource.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) FunnelSource = null;
+            if (parseNode.GetChildNode("funnelStep") is null) { _explicitNullValueFunnelStep = default!; _explicitNullProperties?.Remove("funnelStep"); }
+            else if (parseNode.GetChildNode("funnelStep") is { } nullNodeFunnelStep && nullNodeFunnelStep.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) FunnelStep = null;
         }
 
         /// <summary>The funnelPathType property</summary>

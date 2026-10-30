@@ -17,27 +17,30 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("destination_count") is { } nullNodeDestinationCount && nullNodeDestinationCount.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) DestinationCount = null;
-            if (parseNode.GetChildNode("email_recipient_count") is { } nullNodeEmailRecipientCount && nullNodeEmailRecipientCount.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) EmailRecipientCount = null;
-            if (parseNode.GetChildNode("failed_delivery_channels") is { } nullNodeFailedDeliveryChannels && nullNodeFailedDeliveryChannels.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) FailedDeliveryChannels = null;
+            if (parseNode.GetChildNode("destination_count") is null) { _explicitNullValueDestinationCount = default!; _explicitNullProperties?.Remove("destination_count"); }
+            else if (parseNode.GetChildNode("destination_count") is { } nullNodeDestinationCount && nullNodeDestinationCount.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) DestinationCount = null;
+            if (parseNode.GetChildNode("email_recipient_count") is null) { _explicitNullValueEmailRecipientCount = default!; _explicitNullProperties?.Remove("email_recipient_count"); }
+            else if (parseNode.GetChildNode("email_recipient_count") is { } nullNodeEmailRecipientCount && nullNodeEmailRecipientCount.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) EmailRecipientCount = null;
+            if (parseNode.GetChildNode("failed_delivery_channels") is null) { _explicitNullValueFailedDeliveryChannels = default!; _explicitNullProperties?.Remove("failed_delivery_channels"); }
+            else if (parseNode.GetChildNode("failed_delivery_channels") is { } nullNodeFailedDeliveryChannels && nullNodeFailedDeliveryChannels.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) FailedDeliveryChannels = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Number of active destinations queued for test delivery.</summary>
-        public int? DestinationCount { get => _explicitNullValueDestinationCount; set { _explicitNullValueDestinationCount = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("destination_count"); else _explicitNullProperties?.Remove("destination_count"); } }
+        public int? DestinationCount { get => _explicitNullValueDestinationCount; set { _explicitNullValueDestinationCount = value; AdditionalData?.Remove("destination_count"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("destination_count"); else _explicitNullProperties?.Remove("destination_count"); } }
         private int? _explicitNullValueDestinationCount = default!;
         /// <summary>Number of subscribed users sent a test email.</summary>
-        public int? EmailRecipientCount { get => _explicitNullValueEmailRecipientCount; set { _explicitNullValueEmailRecipientCount = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("email_recipient_count"); else _explicitNullProperties?.Remove("email_recipient_count"); } }
+        public int? EmailRecipientCount { get => _explicitNullValueEmailRecipientCount; set { _explicitNullValueEmailRecipientCount = value; AdditionalData?.Remove("email_recipient_count"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("email_recipient_count"); else _explicitNullProperties?.Remove("email_recipient_count"); } }
         private int? _explicitNullValueEmailRecipientCount = default!;
         /// <summary>Configured delivery channels that failed to schedule or send.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.FailedDeliveryChannelsEnum?>? FailedDeliveryChannels { get => _explicitNullValueFailedDeliveryChannels; set { _explicitNullValueFailedDeliveryChannels = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("failed_delivery_channels"); else _explicitNullProperties?.Remove("failed_delivery_channels"); } }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.FailedDeliveryChannelsEnum?>? FailedDeliveryChannels { get => _explicitNullValueFailedDeliveryChannels; set { _explicitNullValueFailedDeliveryChannels = value; AdditionalData?.Remove("failed_delivery_channels"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("failed_delivery_channels"); else _explicitNullProperties?.Remove("failed_delivery_channels"); } }
         private List<global::Soenneker.PostHog.OpenApiClient.Models.FailedDeliveryChannelsEnum?>? _explicitNullValueFailedDeliveryChannels = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.FailedDeliveryChannelsEnum?> FailedDeliveryChannels { get => _explicitNullValueFailedDeliveryChannels; set { _explicitNullValueFailedDeliveryChannels = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("failed_delivery_channels"); else _explicitNullProperties?.Remove("failed_delivery_channels"); } }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.FailedDeliveryChannelsEnum?> FailedDeliveryChannels { get => _explicitNullValueFailedDeliveryChannels; set { _explicitNullValueFailedDeliveryChannels = value; AdditionalData?.Remove("failed_delivery_channels"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("failed_delivery_channels"); else _explicitNullProperties?.Remove("failed_delivery_channels"); } }
         private List<global::Soenneker.PostHog.OpenApiClient.Models.FailedDeliveryChannelsEnum?> _explicitNullValueFailedDeliveryChannels = default!;
 #endif
         /// <summary>

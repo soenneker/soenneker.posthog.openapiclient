@@ -17,8 +17,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("rows") is { } nullNodeRows && nullNodeRows.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Rows = null;
-            if (parseNode.GetChildNode("segment_thresholds") is { } nullNodeSegmentThresholds && nullNodeSegmentThresholds.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SegmentThresholds = null;
+            if (parseNode.GetChildNode("rows") is null) { _explicitNullValueRows = default!; _explicitNullProperties?.Remove("rows"); }
+            else if (parseNode.GetChildNode("rows") is { } nullNodeRows && nullNodeRows.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Rows = null;
+            if (parseNode.GetChildNode("segment_thresholds") is null) { _explicitNullValueSegmentThresholds = default!; _explicitNullProperties?.Remove("segment_thresholds"); }
+            else if (parseNode.GetChildNode("segment_thresholds") is { } nullNodeSegmentThresholds && nullNodeSegmentThresholds.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SegmentThresholds = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -26,21 +28,21 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>One row per model per validated prediction date, newest date first. Empty until a prediction horizon has elapsed and online validation has run.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.OnlinePerformanceRow>? Rows { get => _explicitNullValueRows; set { _explicitNullValueRows = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("rows"); else _explicitNullProperties?.Remove("rows"); } }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.OnlinePerformanceRow>? Rows { get => _explicitNullValueRows; set { _explicitNullValueRows = value; AdditionalData?.Remove("rows"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("rows"); else _explicitNullProperties?.Remove("rows"); } }
         private List<global::Soenneker.PostHog.OpenApiClient.Models.OnlinePerformanceRow>? _explicitNullValueRows = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.OnlinePerformanceRow> Rows { get => _explicitNullValueRows; set { _explicitNullValueRows = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("rows"); else _explicitNullProperties?.Remove("rows"); } }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.OnlinePerformanceRow> Rows { get => _explicitNullValueRows; set { _explicitNullValueRows = value; AdditionalData?.Remove("rows"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("rows"); else _explicitNullProperties?.Remove("rows"); } }
         private List<global::Soenneker.PostHog.OpenApiClient.Models.OnlinePerformanceRow> _explicitNullValueRows = default!;
 #endif
         /// <summary>The current cut points between the Likely, Possible and Unlikely segments, set by lift over the realized base rate. They do not depend on limit.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.OnlinePerformanceSegmentThresholds? SegmentThresholds { get => _explicitNullValueSegmentThresholds; set { _explicitNullValueSegmentThresholds = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("segment_thresholds"); else _explicitNullProperties?.Remove("segment_thresholds"); } }
+        public global::Soenneker.PostHog.OpenApiClient.Models.OnlinePerformanceSegmentThresholds? SegmentThresholds { get => _explicitNullValueSegmentThresholds; set { _explicitNullValueSegmentThresholds = value; AdditionalData?.Remove("segment_thresholds"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("segment_thresholds"); else _explicitNullProperties?.Remove("segment_thresholds"); } }
         private global::Soenneker.PostHog.OpenApiClient.Models.OnlinePerformanceSegmentThresholds? _explicitNullValueSegmentThresholds = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.OnlinePerformanceSegmentThresholds SegmentThresholds { get => _explicitNullValueSegmentThresholds; set { _explicitNullValueSegmentThresholds = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("segment_thresholds"); else _explicitNullProperties?.Remove("segment_thresholds"); } }
+        public global::Soenneker.PostHog.OpenApiClient.Models.OnlinePerformanceSegmentThresholds SegmentThresholds { get => _explicitNullValueSegmentThresholds; set { _explicitNullValueSegmentThresholds = value; AdditionalData?.Remove("segment_thresholds"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("segment_thresholds"); else _explicitNullProperties?.Remove("segment_thresholds"); } }
         private global::Soenneker.PostHog.OpenApiClient.Models.OnlinePerformanceSegmentThresholds _explicitNullValueSegmentThresholds = default!;
 #endif
         /// <summary>

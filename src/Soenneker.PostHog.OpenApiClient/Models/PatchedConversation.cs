@@ -94,10 +94,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Product domain the conversation is about, classified from the first question.* `web_analytics` - Web analytics* `product_analytics` - Product analytics* `session_replay` - Session replay* `surveys` - Surveys* `feature_flags` - Feature flags* `experiments` - Experiments* `error_tracking` - Error tracking* `data_warehouse` - Data warehouse* `other` - Other</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedConversationTopic? Topic { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ConversationMinimalTopic? Topic { get; private set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedConversationTopic Topic { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ConversationMinimalTopic Topic { get; private set; }
 #endif
         /// <summary>* `assistant` - Assistant* `tool_call` - Tool call* `deep_research` - Deep research* `slack` - Slack</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.PatchedConversationType? Type { get; private set; }
@@ -150,7 +150,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "status", n => { Status = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedConversationStatus>(); } },
                 { "task", n => { Task = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ConversationTask>(global::Soenneker.PostHog.OpenApiClient.Models.ConversationTask.CreateFromDiscriminatorValue); } },
                 { "title", n => { Title = n.GetStringValue(); } },
-                { "topic", n => { Topic = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedConversationTopic>(global::Soenneker.PostHog.OpenApiClient.Models.PatchedConversationTopic.CreateFromDiscriminatorValue); } },
+                { "topic", n => { Topic = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ConversationMinimalTopic>(global::Soenneker.PostHog.OpenApiClient.Models.ConversationMinimalTopic.CreateFromDiscriminatorValue); } },
                 { "type", n => { Type = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedConversationType>(); } },
                 { "updated_at", n => { UpdatedAt = n.GetDateTimeOffsetValue(); } },
                 { "user", n => { User = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedConversationUser>(global::Soenneker.PostHog.OpenApiClient.Models.PatchedConversationUser.CreateFromDiscriminatorValue); } },

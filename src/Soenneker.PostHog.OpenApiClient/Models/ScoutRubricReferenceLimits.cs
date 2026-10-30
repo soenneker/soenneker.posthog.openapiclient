@@ -17,8 +17,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("omitted_files") is { } nullNodeOmittedFiles && nullNodeOmittedFiles.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) OmittedFiles = null;
-            if (parseNode.GetChildNode("truncated_files") is { } nullNodeTruncatedFiles && nullNodeTruncatedFiles.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TruncatedFiles = null;
+            if (parseNode.GetChildNode("omitted_files") is null) { _explicitNullValueOmittedFiles = default!; _explicitNullProperties?.Remove("omitted_files"); }
+            else if (parseNode.GetChildNode("omitted_files") is { } nullNodeOmittedFiles && nullNodeOmittedFiles.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) OmittedFiles = null;
+            if (parseNode.GetChildNode("truncated_files") is null) { _explicitNullValueTruncatedFiles = default!; _explicitNullProperties?.Remove("truncated_files"); }
+            else if (parseNode.GetChildNode("truncated_files") is { } nullNodeTruncatedFiles && nullNodeTruncatedFiles.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TruncatedFiles = null;
         }
 
         /// <summary>The omitted_files property</summary>

@@ -17,34 +17,37 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("event_count") is { } nullNodeEventCount && nullNodeEventCount.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) EventCount = null;
-            if (parseNode.GetChildNode("raw_value") is { } nullNodeRawValue && nullNodeRawValue.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) RawValue = null;
-            if (parseNode.GetChildNode("suggested_integration") is { } nullNodeSuggestedIntegration && nullNodeSuggestedIntegration.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SuggestedIntegration = null;
+            if (parseNode.GetChildNode("event_count") is null) { _explicitNullValueEventCount = default!; _explicitNullProperties?.Remove("event_count"); }
+            else if (parseNode.GetChildNode("event_count") is { } nullNodeEventCount && nullNodeEventCount.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) EventCount = null;
+            if (parseNode.GetChildNode("raw_value") is null) { _explicitNullValueRawValue = default!; _explicitNullProperties?.Remove("raw_value"); }
+            else if (parseNode.GetChildNode("raw_value") is { } nullNodeRawValue && nullNodeRawValue.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) RawValue = null;
+            if (parseNode.GetChildNode("suggested_integration") is null) { _explicitNullValueSuggestedIntegration = default!; _explicitNullProperties?.Remove("suggested_integration"); }
+            else if (parseNode.GetChildNode("suggested_integration") is { } nullNodeSuggestedIntegration && nullNodeSuggestedIntegration.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SuggestedIntegration = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Number of events with this raw value in the window</summary>
-        public int? EventCount { get => _explicitNullValueEventCount; set { _explicitNullValueEventCount = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("event_count"); else _explicitNullProperties?.Remove("event_count"); } }
+        public int? EventCount { get => _explicitNullValueEventCount; set { _explicitNullValueEventCount = value; AdditionalData?.Remove("event_count"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("event_count"); else _explicitNullProperties?.Remove("event_count"); } }
         private int? _explicitNullValueEventCount = default!;
         /// <summary>A raw utm_source value that doesn&apos;t match the integration exactly</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? RawValue { get => _explicitNullValueRawValue; set { _explicitNullValueRawValue = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("raw_value"); else _explicitNullProperties?.Remove("raw_value"); } }
+        public string? RawValue { get => _explicitNullValueRawValue; set { _explicitNullValueRawValue = value; AdditionalData?.Remove("raw_value"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("raw_value"); else _explicitNullProperties?.Remove("raw_value"); } }
         private string? _explicitNullValueRawValue = default!;
 #nullable restore
 #else
-        public string RawValue { get => _explicitNullValueRawValue; set { _explicitNullValueRawValue = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("raw_value"); else _explicitNullProperties?.Remove("raw_value"); } }
+        public string RawValue { get => _explicitNullValueRawValue; set { _explicitNullValueRawValue = value; AdditionalData?.Remove("raw_value"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("raw_value"); else _explicitNullProperties?.Remove("raw_value"); } }
         private string _explicitNullValueRawValue = default!;
 #endif
         /// <summary>Integration suggested by token match, if any</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? SuggestedIntegration { get => _explicitNullValueSuggestedIntegration; set { _explicitNullValueSuggestedIntegration = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("suggested_integration"); else _explicitNullProperties?.Remove("suggested_integration"); } }
+        public string? SuggestedIntegration { get => _explicitNullValueSuggestedIntegration; set { _explicitNullValueSuggestedIntegration = value; AdditionalData?.Remove("suggested_integration"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("suggested_integration"); else _explicitNullProperties?.Remove("suggested_integration"); } }
         private string? _explicitNullValueSuggestedIntegration = default!;
 #nullable restore
 #else
-        public string SuggestedIntegration { get => _explicitNullValueSuggestedIntegration; set { _explicitNullValueSuggestedIntegration = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("suggested_integration"); else _explicitNullProperties?.Remove("suggested_integration"); } }
+        public string SuggestedIntegration { get => _explicitNullValueSuggestedIntegration; set { _explicitNullValueSuggestedIntegration = value; AdditionalData?.Remove("suggested_integration"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("suggested_integration"); else _explicitNullProperties?.Remove("suggested_integration"); } }
         private string _explicitNullValueSuggestedIntegration = default!;
 #endif
         /// <summary>

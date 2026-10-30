@@ -18,15 +18,24 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("aggregation") is { } nullNodeAggregation && nullNodeAggregation.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Aggregation = null;
-            if (parseNode.GetChildNode("anomalyFrom") is { } nullNodeAnomalyFrom && nullNodeAnomalyFrom.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AnomalyFrom = null;
-            if (parseNode.GetChildNode("anomalyTo") is { } nullNodeAnomalyTo && nullNodeAnomalyTo.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AnomalyTo = null;
-            if (parseNode.GetChildNode("baselineFrom") is { } nullNodeBaselineFrom && nullNodeBaselineFrom.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) BaselineFrom = null;
-            if (parseNode.GetChildNode("baselineTo") is { } nullNodeBaselineTo && nullNodeBaselineTo.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) BaselineTo = null;
-            if (parseNode.GetChildNode("candidateKeys") is { } nullNodeCandidateKeys && nullNodeCandidateKeys.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CandidateKeys = null;
-            if (parseNode.GetChildNode("filters") is { } nullNodeFilters && nullNodeFilters.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Filters = null;
-            if (parseNode.GetChildNode("metricName") is { } nullNodeMetricName && nullNodeMetricName.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MetricName = null;
-            if (parseNode.GetChildNode("quantile") is { } nullNodeQuantile && nullNodeQuantile.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Quantile = null;
+            if (parseNode.GetChildNode("aggregation") is null) { _explicitNullValueAggregation = default!; _explicitNullProperties?.Remove("aggregation"); }
+            else if (parseNode.GetChildNode("aggregation") is { } nullNodeAggregation && nullNodeAggregation.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Aggregation = null;
+            if (parseNode.GetChildNode("anomalyFrom") is null) { _explicitNullValueAnomalyFrom = default!; _explicitNullProperties?.Remove("anomalyFrom"); }
+            else if (parseNode.GetChildNode("anomalyFrom") is { } nullNodeAnomalyFrom && nullNodeAnomalyFrom.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AnomalyFrom = null;
+            if (parseNode.GetChildNode("anomalyTo") is null) { _explicitNullValueAnomalyTo = default!; _explicitNullProperties?.Remove("anomalyTo"); }
+            else if (parseNode.GetChildNode("anomalyTo") is { } nullNodeAnomalyTo && nullNodeAnomalyTo.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AnomalyTo = null;
+            if (parseNode.GetChildNode("baselineFrom") is null) { _explicitNullValueBaselineFrom = default!; _explicitNullProperties?.Remove("baselineFrom"); }
+            else if (parseNode.GetChildNode("baselineFrom") is { } nullNodeBaselineFrom && nullNodeBaselineFrom.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) BaselineFrom = null;
+            if (parseNode.GetChildNode("baselineTo") is null) { _explicitNullValueBaselineTo = default!; _explicitNullProperties?.Remove("baselineTo"); }
+            else if (parseNode.GetChildNode("baselineTo") is { } nullNodeBaselineTo && nullNodeBaselineTo.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) BaselineTo = null;
+            if (parseNode.GetChildNode("candidateKeys") is null) { _explicitNullValueCandidateKeys = default!; _explicitNullProperties?.Remove("candidateKeys"); }
+            else if (parseNode.GetChildNode("candidateKeys") is { } nullNodeCandidateKeys && nullNodeCandidateKeys.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CandidateKeys = null;
+            if (parseNode.GetChildNode("filters") is null) { _explicitNullValueFilters = default!; _explicitNullProperties?.Remove("filters"); }
+            else if (parseNode.GetChildNode("filters") is { } nullNodeFilters && nullNodeFilters.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Filters = null;
+            if (parseNode.GetChildNode("metricName") is null) { _explicitNullValueMetricName = default!; _explicitNullProperties?.Remove("metricName"); }
+            else if (parseNode.GetChildNode("metricName") is { } nullNodeMetricName && nullNodeMetricName.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MetricName = null;
+            if (parseNode.GetChildNode("quantile") is null) { _explicitNullValueQuantile = default!; _explicitNullProperties?.Remove("quantile"); }
+            else if (parseNode.GetChildNode("quantile") is { } nullNodeQuantile && nullNodeQuantile.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Quantile = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -34,57 +43,57 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Aggregation to characterize. Omit to auto-pick from the metric&apos;s OTel type (counter -&gt; rate, gauge -&gt; avg, histogram -&gt; histogram_quantile 0.95).* `sum` - sum* `avg` - avg* `count` - count* `min` - min* `max` - max* `p95` - p95* `rate` - rate* `increase` - increase* `histogram_quantile` - histogram_quantile</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.MetricAnomalyBodyAggregation? Aggregation { get => _explicitNullValueAggregation; set { _explicitNullValueAggregation = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("aggregation"); else _explicitNullProperties?.Remove("aggregation"); } }
+        public global::Soenneker.PostHog.OpenApiClient.Models.MetricAnomalyBodyAggregation? Aggregation { get => _explicitNullValueAggregation; set { _explicitNullValueAggregation = value; AdditionalData?.Remove("aggregation"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("aggregation"); else _explicitNullProperties?.Remove("aggregation"); } }
         private global::Soenneker.PostHog.OpenApiClient.Models.MetricAnomalyBodyAggregation? _explicitNullValueAggregation = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.MetricAnomalyBodyAggregation Aggregation { get => _explicitNullValueAggregation; set { _explicitNullValueAggregation = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("aggregation"); else _explicitNullProperties?.Remove("aggregation"); } }
+        public global::Soenneker.PostHog.OpenApiClient.Models.MetricAnomalyBodyAggregation Aggregation { get => _explicitNullValueAggregation; set { _explicitNullValueAggregation = value; AdditionalData?.Remove("aggregation"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("aggregation"); else _explicitNullProperties?.Remove("aggregation"); } }
         private global::Soenneker.PostHog.OpenApiClient.Models.MetricAnomalyBodyAggregation _explicitNullValueAggregation = default!;
 #endif
         /// <summary>Start of the suspicious window (inclusive). ISO 8601 — e.g. when the alert fired or the graph started looking wrong.</summary>
-        public DateTimeOffset? AnomalyFrom { get => _explicitNullValueAnomalyFrom; set { _explicitNullValueAnomalyFrom = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("anomalyFrom"); else _explicitNullProperties?.Remove("anomalyFrom"); } }
+        public DateTimeOffset? AnomalyFrom { get => _explicitNullValueAnomalyFrom; set { _explicitNullValueAnomalyFrom = value; AdditionalData?.Remove("anomalyFrom"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("anomalyFrom"); else _explicitNullProperties?.Remove("anomalyFrom"); } }
         private DateTimeOffset? _explicitNullValueAnomalyFrom = default!;
         /// <summary>End of the suspicious window (exclusive). Defaults to now.</summary>
-        public DateTimeOffset? AnomalyTo { get => _explicitNullValueAnomalyTo; set { _explicitNullValueAnomalyTo = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("anomalyTo"); else _explicitNullProperties?.Remove("anomalyTo"); } }
+        public DateTimeOffset? AnomalyTo { get => _explicitNullValueAnomalyTo; set { _explicitNullValueAnomalyTo = value; AdditionalData?.Remove("anomalyTo"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("anomalyTo"); else _explicitNullProperties?.Remove("anomalyTo"); } }
         private DateTimeOffset? _explicitNullValueAnomalyTo = default!;
         /// <summary>Start of the healthy comparison window. Defaults to one anomaly-window-length before baselineTo.</summary>
-        public DateTimeOffset? BaselineFrom { get => _explicitNullValueBaselineFrom; set { _explicitNullValueBaselineFrom = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("baselineFrom"); else _explicitNullProperties?.Remove("baselineFrom"); } }
+        public DateTimeOffset? BaselineFrom { get => _explicitNullValueBaselineFrom; set { _explicitNullValueBaselineFrom = value; AdditionalData?.Remove("baselineFrom"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("baselineFrom"); else _explicitNullProperties?.Remove("baselineFrom"); } }
         private DateTimeOffset? _explicitNullValueBaselineFrom = default!;
         /// <summary>End of the healthy comparison window. Defaults to anomalyFrom. Must not extend past anomalyFrom.</summary>
-        public DateTimeOffset? BaselineTo { get => _explicitNullValueBaselineTo; set { _explicitNullValueBaselineTo = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("baselineTo"); else _explicitNullProperties?.Remove("baselineTo"); } }
+        public DateTimeOffset? BaselineTo { get => _explicitNullValueBaselineTo; set { _explicitNullValueBaselineTo = value; AdditionalData?.Remove("baselineTo"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("baselineTo"); else _explicitNullProperties?.Remove("baselineTo"); } }
         private DateTimeOffset? _explicitNullValueBaselineTo = default!;
         /// <summary>Label keys to drill into when finding which label values moved. Omit to auto-discover the most common keys on this metric (plus service_name). Max 4 are used.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<string>? CandidateKeys { get => _explicitNullValueCandidateKeys; set { _explicitNullValueCandidateKeys = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("candidateKeys"); else _explicitNullProperties?.Remove("candidateKeys"); } }
+        public List<string>? CandidateKeys { get => _explicitNullValueCandidateKeys; set { _explicitNullValueCandidateKeys = value; AdditionalData?.Remove("candidateKeys"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("candidateKeys"); else _explicitNullProperties?.Remove("candidateKeys"); } }
         private List<string>? _explicitNullValueCandidateKeys = default!;
 #nullable restore
 #else
-        public List<string> CandidateKeys { get => _explicitNullValueCandidateKeys; set { _explicitNullValueCandidateKeys = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("candidateKeys"); else _explicitNullProperties?.Remove("candidateKeys"); } }
+        public List<string> CandidateKeys { get => _explicitNullValueCandidateKeys; set { _explicitNullValueCandidateKeys = value; AdditionalData?.Remove("candidateKeys"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("candidateKeys"); else _explicitNullProperties?.Remove("candidateKeys"); } }
         private List<string> _explicitNullValueCandidateKeys = default!;
 #endif
         /// <summary>Label predicates narrowing which series are characterized.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.MetricFilter>? Filters { get => _explicitNullValueFilters; set { _explicitNullValueFilters = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("filters"); else _explicitNullProperties?.Remove("filters"); } }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.MetricFilter>? Filters { get => _explicitNullValueFilters; set { _explicitNullValueFilters = value; AdditionalData?.Remove("filters"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("filters"); else _explicitNullProperties?.Remove("filters"); } }
         private List<global::Soenneker.PostHog.OpenApiClient.Models.MetricFilter>? _explicitNullValueFilters = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.MetricFilter> Filters { get => _explicitNullValueFilters; set { _explicitNullValueFilters = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("filters"); else _explicitNullProperties?.Remove("filters"); } }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.MetricFilter> Filters { get => _explicitNullValueFilters; set { _explicitNullValueFilters = value; AdditionalData?.Remove("filters"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("filters"); else _explicitNullProperties?.Remove("filters"); } }
         private List<global::Soenneker.PostHog.OpenApiClient.Models.MetricFilter> _explicitNullValueFilters = default!;
 #endif
         /// <summary>Exact metric name to characterize (e.g. &apos;metrics_rate_limiter_message_lag_seconds&apos;).</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? MetricName { get => _explicitNullValueMetricName; set { _explicitNullValueMetricName = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("metricName"); else _explicitNullProperties?.Remove("metricName"); } }
+        public string? MetricName { get => _explicitNullValueMetricName; set { _explicitNullValueMetricName = value; AdditionalData?.Remove("metricName"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("metricName"); else _explicitNullProperties?.Remove("metricName"); } }
         private string? _explicitNullValueMetricName = default!;
 #nullable restore
 #else
-        public string MetricName { get => _explicitNullValueMetricName; set { _explicitNullValueMetricName = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("metricName"); else _explicitNullProperties?.Remove("metricName"); } }
+        public string MetricName { get => _explicitNullValueMetricName; set { _explicitNullValueMetricName = value; AdditionalData?.Remove("metricName"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("metricName"); else _explicitNullProperties?.Remove("metricName"); } }
         private string _explicitNullValueMetricName = default!;
 #endif
         /// <summary>Quantile for histogram_quantile. Defaults to 0.95.</summary>
-        public double? Quantile { get => _explicitNullValueQuantile; set { _explicitNullValueQuantile = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("quantile"); else _explicitNullProperties?.Remove("quantile"); } }
+        public double? Quantile { get => _explicitNullValueQuantile; set { _explicitNullValueQuantile = value; AdditionalData?.Remove("quantile"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("quantile"); else _explicitNullProperties?.Remove("quantile"); } }
         private double? _explicitNullValueQuantile = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.MetricAnomalyRequestQuery"/> and sets the default values.

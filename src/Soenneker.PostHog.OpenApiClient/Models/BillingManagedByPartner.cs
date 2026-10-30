@@ -17,7 +17,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("partner_name") is { } nullNodePartnerName && nullNodePartnerName.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) PartnerName = null;
+            if (parseNode.GetChildNode("partner_name") is null) { _explicitNullValuePartnerName = default!; _explicitNullProperties?.Remove("partner_name"); }
+            else if (parseNode.GetChildNode("partner_name") is { } nullNodePartnerName && nullNodePartnerName.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) PartnerName = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -25,11 +26,11 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Name of the partner that pays for this organization. Can be empty.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? PartnerName { get => _explicitNullValuePartnerName; set { _explicitNullValuePartnerName = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("partner_name"); else _explicitNullProperties?.Remove("partner_name"); } }
+        public string? PartnerName { get => _explicitNullValuePartnerName; set { _explicitNullValuePartnerName = value; AdditionalData?.Remove("partner_name"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("partner_name"); else _explicitNullProperties?.Remove("partner_name"); } }
         private string? _explicitNullValuePartnerName = default!;
 #nullable restore
 #else
-        public string PartnerName { get => _explicitNullValuePartnerName; set { _explicitNullValuePartnerName = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("partner_name"); else _explicitNullProperties?.Remove("partner_name"); } }
+        public string PartnerName { get => _explicitNullValuePartnerName; set { _explicitNullValuePartnerName = value; AdditionalData?.Remove("partner_name"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("partner_name"); else _explicitNullProperties?.Remove("partner_name"); } }
         private string _explicitNullValuePartnerName = default!;
 #endif
         /// <summary>

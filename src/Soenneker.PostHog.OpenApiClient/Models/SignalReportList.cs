@@ -44,10 +44,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Non-null when this report is system-marked never-billable (PostHog-system origin, e.g. a health-check scout finding) — its implementation PRs are free and cannot be refunded because nothing was charged.* `posthog_health_check` - PostHog health check* `posthog_onboarding` - PostHog onboarding* `posthog_system` - PostHog system</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.SignalReportListBillingExemptReason? BillingExemptReason { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.SignalReportBillingExemptReason? BillingExemptReason { get; private set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.SignalReportListBillingExemptReason BillingExemptReason { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.SignalReportBillingExemptReason BillingExemptReason { get; private set; }
 #endif
         /// <summary>The space (task channel) this report is assigned to, or null when unassigned. The general view lists every report regardless of this value.</summary>
         public Guid? ChannelId { get; private set; }
@@ -86,10 +86,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Latest known pull request state: unknown, draft, open, closed, or merged.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.SignalReportListImplementationPrState? ImplementationPrState { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.SignalReportImplementationPrState? ImplementationPrState { get; private set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.SignalReportListImplementationPrState ImplementationPrState { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.SignalReportImplementationPrState ImplementationPrState { get; private set; }
 #endif
         /// <summary>Pull request attached to this report&apos;s claim, if available.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -341,7 +341,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "already_addressed", n => { AlreadyAddressed = n.GetBoolValue(); } },
                 { "artefact_count", n => { ArtefactCount = n.GetIntValue(); } },
                 { "assignee", n => { Assignee = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SignalReportAssignee>(global::Soenneker.PostHog.OpenApiClient.Models.SignalReportAssignee.CreateFromDiscriminatorValue); } },
-                { "billing_exempt_reason", n => { BillingExemptReason = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SignalReportListBillingExemptReason>(global::Soenneker.PostHog.OpenApiClient.Models.SignalReportListBillingExemptReason.CreateFromDiscriminatorValue); } },
+                { "billing_exempt_reason", n => { BillingExemptReason = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SignalReportBillingExemptReason>(global::Soenneker.PostHog.OpenApiClient.Models.SignalReportBillingExemptReason.CreateFromDiscriminatorValue); } },
                 { "channel_id", n => { ChannelId = n.GetGuidValue(); } },
                 { "charts", n => { Charts = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.ReportChart>(global::Soenneker.PostHog.OpenApiClient.Models.ReportChart.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "collapsed_note_count", n => { CollapsedNoteCount = n.GetIntValue(); } },
@@ -350,7 +350,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "dismissal_reason", n => { DismissalReason = n.GetStringValue(); } },
                 { "id", n => { Id = n.GetGuidValue(); } },
                 { "implementation_pr_merged", n => { ImplementationPrMerged = n.GetBoolValue(); } },
-                { "implementation_pr_state", n => { ImplementationPrState = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SignalReportListImplementationPrState>(global::Soenneker.PostHog.OpenApiClient.Models.SignalReportListImplementationPrState.CreateFromDiscriminatorValue); } },
+                { "implementation_pr_state", n => { ImplementationPrState = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SignalReportImplementationPrState>(global::Soenneker.PostHog.OpenApiClient.Models.SignalReportImplementationPrState.CreateFromDiscriminatorValue); } },
                 { "implementation_pr_url", n => { ImplementationPrUrl = n.GetStringValue(); } },
                 { "inbox_merge_key", n => { InboxMergeKey = n.GetIntValue(); } },
                 { "is_self_improvement_report", n => { IsSelfImprovementReport = n.GetBoolValue(); } },

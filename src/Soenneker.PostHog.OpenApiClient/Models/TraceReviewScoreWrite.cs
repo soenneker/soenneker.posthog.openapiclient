@@ -17,42 +17,47 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("boolean_value") is { } nullNodeBooleanValue && nullNodeBooleanValue.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) BooleanValue = null;
-            if (parseNode.GetChildNode("categorical_values") is { } nullNodeCategoricalValues && nullNodeCategoricalValues.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CategoricalValues = null;
-            if (parseNode.GetChildNode("definition_id") is { } nullNodeDefinitionId && nullNodeDefinitionId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) DefinitionId = null;
-            if (parseNode.GetChildNode("definition_version_id") is { } nullNodeDefinitionVersionId && nullNodeDefinitionVersionId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) DefinitionVersionId = null;
-            if (parseNode.GetChildNode("numeric_value") is { } nullNodeNumericValue && nullNodeNumericValue.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) NumericValue = null;
+            if (parseNode.GetChildNode("boolean_value") is null) { _explicitNullValueBooleanValue = default!; _explicitNullProperties?.Remove("boolean_value"); }
+            else if (parseNode.GetChildNode("boolean_value") is { } nullNodeBooleanValue && nullNodeBooleanValue.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) BooleanValue = null;
+            if (parseNode.GetChildNode("categorical_values") is null) { _explicitNullValueCategoricalValues = default!; _explicitNullProperties?.Remove("categorical_values"); }
+            else if (parseNode.GetChildNode("categorical_values") is { } nullNodeCategoricalValues && nullNodeCategoricalValues.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CategoricalValues = null;
+            if (parseNode.GetChildNode("definition_id") is null) { _explicitNullValueDefinitionId = default!; _explicitNullProperties?.Remove("definition_id"); }
+            else if (parseNode.GetChildNode("definition_id") is { } nullNodeDefinitionId && nullNodeDefinitionId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) DefinitionId = null;
+            if (parseNode.GetChildNode("definition_version_id") is null) { _explicitNullValueDefinitionVersionId = default!; _explicitNullProperties?.Remove("definition_version_id"); }
+            else if (parseNode.GetChildNode("definition_version_id") is { } nullNodeDefinitionVersionId && nullNodeDefinitionVersionId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) DefinitionVersionId = null;
+            if (parseNode.GetChildNode("numeric_value") is null) { _explicitNullValueNumericValue = default!; _explicitNullProperties?.Remove("numeric_value"); }
+            else if (parseNode.GetChildNode("numeric_value") is { } nullNodeNumericValue && nullNodeNumericValue.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) NumericValue = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Boolean value selected for this score.</summary>
-        public bool? BooleanValue { get => _explicitNullValueBooleanValue; set { _explicitNullValueBooleanValue = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("boolean_value"); else _explicitNullProperties?.Remove("boolean_value"); } }
+        public bool? BooleanValue { get => _explicitNullValueBooleanValue; set { _explicitNullValueBooleanValue = value; AdditionalData?.Remove("boolean_value"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("boolean_value"); else _explicitNullProperties?.Remove("boolean_value"); } }
         private bool? _explicitNullValueBooleanValue = default!;
         /// <summary>Categorical option keys selected for this score.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<string>? CategoricalValues { get => _explicitNullValueCategoricalValues; set { _explicitNullValueCategoricalValues = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("categorical_values"); else _explicitNullProperties?.Remove("categorical_values"); } }
+        public List<string>? CategoricalValues { get => _explicitNullValueCategoricalValues; set { _explicitNullValueCategoricalValues = value; AdditionalData?.Remove("categorical_values"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("categorical_values"); else _explicitNullProperties?.Remove("categorical_values"); } }
         private List<string>? _explicitNullValueCategoricalValues = default!;
 #nullable restore
 #else
-        public List<string> CategoricalValues { get => _explicitNullValueCategoricalValues; set { _explicitNullValueCategoricalValues = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("categorical_values"); else _explicitNullProperties?.Remove("categorical_values"); } }
+        public List<string> CategoricalValues { get => _explicitNullValueCategoricalValues; set { _explicitNullValueCategoricalValues = value; AdditionalData?.Remove("categorical_values"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("categorical_values"); else _explicitNullProperties?.Remove("categorical_values"); } }
         private List<string> _explicitNullValueCategoricalValues = default!;
 #endif
         /// <summary>Stable scorer definition ID.</summary>
-        public Guid? DefinitionId { get => _explicitNullValueDefinitionId; set { _explicitNullValueDefinitionId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("definition_id"); else _explicitNullProperties?.Remove("definition_id"); } }
+        public Guid? DefinitionId { get => _explicitNullValueDefinitionId; set { _explicitNullValueDefinitionId = value; AdditionalData?.Remove("definition_id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("definition_id"); else _explicitNullProperties?.Remove("definition_id"); } }
         private Guid? _explicitNullValueDefinitionId = default!;
         /// <summary>Optional immutable scorer version ID. Defaults to the scorer&apos;s current version.</summary>
-        public Guid? DefinitionVersionId { get => _explicitNullValueDefinitionVersionId; set { _explicitNullValueDefinitionVersionId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("definition_version_id"); else _explicitNullProperties?.Remove("definition_version_id"); } }
+        public Guid? DefinitionVersionId { get => _explicitNullValueDefinitionVersionId; set { _explicitNullValueDefinitionVersionId = value; AdditionalData?.Remove("definition_version_id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("definition_version_id"); else _explicitNullProperties?.Remove("definition_version_id"); } }
         private Guid? _explicitNullValueDefinitionVersionId = default!;
         /// <summary>Numeric value selected for this score.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? NumericValue { get => _explicitNullValueNumericValue; set { _explicitNullValueNumericValue = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("numeric_value"); else _explicitNullProperties?.Remove("numeric_value"); } }
+        public string? NumericValue { get => _explicitNullValueNumericValue; set { _explicitNullValueNumericValue = value; AdditionalData?.Remove("numeric_value"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("numeric_value"); else _explicitNullProperties?.Remove("numeric_value"); } }
         private string? _explicitNullValueNumericValue = default!;
 #nullable restore
 #else
-        public string NumericValue { get => _explicitNullValueNumericValue; set { _explicitNullValueNumericValue = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("numeric_value"); else _explicitNullProperties?.Remove("numeric_value"); } }
+        public string NumericValue { get => _explicitNullValueNumericValue; set { _explicitNullValueNumericValue = value; AdditionalData?.Remove("numeric_value"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("numeric_value"); else _explicitNullProperties?.Remove("numeric_value"); } }
         private string _explicitNullValueNumericValue = default!;
 #endif
         /// <summary>

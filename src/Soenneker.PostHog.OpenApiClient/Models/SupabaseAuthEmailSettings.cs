@@ -17,11 +17,16 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("email_types") is { } nullNodeEmailTypes && nullNodeEmailTypes.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) EmailTypes = null;
-            if (parseNode.GetChildNode("has_hook_secret") is { } nullNodeHasHookSecret && nullNodeHasHookSecret.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) HasHookSecret = null;
-            if (parseNode.GetChildNode("hook_url") is { } nullNodeHookUrl && nullNodeHookUrl.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) HookUrl = null;
-            if (parseNode.GetChildNode("supabase_url") is { } nullNodeSupabaseUrl && nullNodeSupabaseUrl.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SupabaseUrl = null;
-            if (parseNode.GetChildNode("templates") is { } nullNodeTemplates && nullNodeTemplates.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Templates = null;
+            if (parseNode.GetChildNode("email_types") is null) { _explicitNullValueEmailTypes = default!; _explicitNullProperties?.Remove("email_types"); }
+            else if (parseNode.GetChildNode("email_types") is { } nullNodeEmailTypes && nullNodeEmailTypes.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) EmailTypes = null;
+            if (parseNode.GetChildNode("has_hook_secret") is null) { _explicitNullValueHasHookSecret = default!; _explicitNullProperties?.Remove("has_hook_secret"); }
+            else if (parseNode.GetChildNode("has_hook_secret") is { } nullNodeHasHookSecret && nullNodeHasHookSecret.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) HasHookSecret = null;
+            if (parseNode.GetChildNode("hook_url") is null) { _explicitNullValueHookUrl = default!; _explicitNullProperties?.Remove("hook_url"); }
+            else if (parseNode.GetChildNode("hook_url") is { } nullNodeHookUrl && nullNodeHookUrl.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) HookUrl = null;
+            if (parseNode.GetChildNode("supabase_url") is null) { _explicitNullValueSupabaseUrl = default!; _explicitNullProperties?.Remove("supabase_url"); }
+            else if (parseNode.GetChildNode("supabase_url") is { } nullNodeSupabaseUrl && nullNodeSupabaseUrl.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SupabaseUrl = null;
+            if (parseNode.GetChildNode("templates") is null) { _explicitNullValueTemplates = default!; _explicitNullProperties?.Remove("templates"); }
+            else if (parseNode.GetChildNode("templates") is { } nullNodeTemplates && nullNodeTemplates.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Templates = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -29,44 +34,44 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Every email Supabase can send through the hook, core auth emails first.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.SupabaseEmailType>? EmailTypes { get => _explicitNullValueEmailTypes; set { _explicitNullValueEmailTypes = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("email_types"); else _explicitNullProperties?.Remove("email_types"); } }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.SupabaseEmailType>? EmailTypes { get => _explicitNullValueEmailTypes; set { _explicitNullValueEmailTypes = value; AdditionalData?.Remove("email_types"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("email_types"); else _explicitNullProperties?.Remove("email_types"); } }
         private List<global::Soenneker.PostHog.OpenApiClient.Models.SupabaseEmailType>? _explicitNullValueEmailTypes = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.SupabaseEmailType> EmailTypes { get => _explicitNullValueEmailTypes; set { _explicitNullValueEmailTypes = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("email_types"); else _explicitNullProperties?.Remove("email_types"); } }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.SupabaseEmailType> EmailTypes { get => _explicitNullValueEmailTypes; set { _explicitNullValueEmailTypes = value; AdditionalData?.Remove("email_types"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("email_types"); else _explicitNullProperties?.Remove("email_types"); } }
         private List<global::Soenneker.PostHog.OpenApiClient.Models.SupabaseEmailType> _explicitNullValueEmailTypes = default!;
 #endif
         /// <summary>Whether a Send Email Hook secret is stored. The secret itself is never returned.</summary>
-        public bool? HasHookSecret { get => _explicitNullValueHasHookSecret; set { _explicitNullValueHasHookSecret = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("has_hook_secret"); else _explicitNullProperties?.Remove("has_hook_secret"); } }
+        public bool? HasHookSecret { get => _explicitNullValueHasHookSecret; set { _explicitNullValueHasHookSecret = value; AdditionalData?.Remove("has_hook_secret"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("has_hook_secret"); else _explicitNullProperties?.Remove("has_hook_secret"); } }
         private bool? _explicitNullValueHasHookSecret = default!;
         /// <summary>The URL to paste into Supabase as the HTTPS endpoint of the Send Email Hook.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? HookUrl { get => _explicitNullValueHookUrl; set { _explicitNullValueHookUrl = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("hook_url"); else _explicitNullProperties?.Remove("hook_url"); } }
+        public string? HookUrl { get => _explicitNullValueHookUrl; set { _explicitNullValueHookUrl = value; AdditionalData?.Remove("hook_url"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("hook_url"); else _explicitNullProperties?.Remove("hook_url"); } }
         private string? _explicitNullValueHookUrl = default!;
 #nullable restore
 #else
-        public string HookUrl { get => _explicitNullValueHookUrl; set { _explicitNullValueHookUrl = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("hook_url"); else _explicitNullProperties?.Remove("hook_url"); } }
+        public string HookUrl { get => _explicitNullValueHookUrl; set { _explicitNullValueHookUrl = value; AdditionalData?.Remove("hook_url"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("hook_url"); else _explicitNullProperties?.Remove("hook_url"); } }
         private string _explicitNullValueHookUrl = default!;
 #endif
         /// <summary>The Supabase project URL, such as https://abcdefgh.supabase.co. Confirmation links point at its /auth/v1/verify endpoint.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? SupabaseUrl { get => _explicitNullValueSupabaseUrl; set { _explicitNullValueSupabaseUrl = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("supabase_url"); else _explicitNullProperties?.Remove("supabase_url"); } }
+        public string? SupabaseUrl { get => _explicitNullValueSupabaseUrl; set { _explicitNullValueSupabaseUrl = value; AdditionalData?.Remove("supabase_url"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("supabase_url"); else _explicitNullProperties?.Remove("supabase_url"); } }
         private string? _explicitNullValueSupabaseUrl = default!;
 #nullable restore
 #else
-        public string SupabaseUrl { get => _explicitNullValueSupabaseUrl; set { _explicitNullValueSupabaseUrl = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("supabase_url"); else _explicitNullProperties?.Remove("supabase_url"); } }
+        public string SupabaseUrl { get => _explicitNullValueSupabaseUrl; set { _explicitNullValueSupabaseUrl = value; AdditionalData?.Remove("supabase_url"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("supabase_url"); else _explicitNullProperties?.Remove("supabase_url"); } }
         private string _explicitNullValueSupabaseUrl = default!;
 #endif
         /// <summary>Supabase email action type (such as `signup` or `recovery`) to the transactional message template that sends it. An auth email with no template fails in Supabase.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.SupabaseAuthEmailSettingsTemplatesProperty? Templates { get => _explicitNullValueTemplates; set { _explicitNullValueTemplates = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("templates"); else _explicitNullProperties?.Remove("templates"); } }
+        public global::Soenneker.PostHog.OpenApiClient.Models.SupabaseAuthEmailSettingsTemplatesProperty? Templates { get => _explicitNullValueTemplates; set { _explicitNullValueTemplates = value; AdditionalData?.Remove("templates"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("templates"); else _explicitNullProperties?.Remove("templates"); } }
         private global::Soenneker.PostHog.OpenApiClient.Models.SupabaseAuthEmailSettingsTemplatesProperty? _explicitNullValueTemplates = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.SupabaseAuthEmailSettingsTemplatesProperty Templates { get => _explicitNullValueTemplates; set { _explicitNullValueTemplates = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("templates"); else _explicitNullProperties?.Remove("templates"); } }
+        public global::Soenneker.PostHog.OpenApiClient.Models.SupabaseAuthEmailSettingsTemplatesProperty Templates { get => _explicitNullValueTemplates; set { _explicitNullValueTemplates = value; AdditionalData?.Remove("templates"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("templates"); else _explicitNullProperties?.Remove("templates"); } }
         private global::Soenneker.PostHog.OpenApiClient.Models.SupabaseAuthEmailSettingsTemplatesProperty _explicitNullValueTemplates = default!;
 #endif
         /// <summary>

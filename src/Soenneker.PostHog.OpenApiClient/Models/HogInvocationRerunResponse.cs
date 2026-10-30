@@ -19,9 +19,12 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("queued_count") is { } nullNodeQueuedCount && nullNodeQueuedCount.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) QueuedCount = null;
-            if (parseNode.GetChildNode("rerun_job_id") is { } nullNodeRerunJobId && nullNodeRerunJobId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) RerunJobId = null;
-            if (parseNode.GetChildNode("skipped_count") is { } nullNodeSkippedCount && nullNodeSkippedCount.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SkippedCount = null;
+            if (parseNode.GetChildNode("queued_count") is null) { _explicitNullValueQueuedCount = default!; _explicitNullProperties?.Remove("queued_count"); }
+            else if (parseNode.GetChildNode("queued_count") is { } nullNodeQueuedCount && nullNodeQueuedCount.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) QueuedCount = null;
+            if (parseNode.GetChildNode("rerun_job_id") is null) { _explicitNullValueRerunJobId = default!; _explicitNullProperties?.Remove("rerun_job_id"); }
+            else if (parseNode.GetChildNode("rerun_job_id") is { } nullNodeRerunJobId && nullNodeRerunJobId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) RerunJobId = null;
+            if (parseNode.GetChildNode("skipped_count") is null) { _explicitNullValueSkippedCount = default!; _explicitNullProperties?.Remove("skipped_count"); }
+            else if (parseNode.GetChildNode("skipped_count") is { } nullNodeSkippedCount && nullNodeSkippedCount.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SkippedCount = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -29,20 +32,20 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The primary error message.</summary>
         public override string Message { get => base.Message; }
         /// <summary>Always 0 — rerun runs asynchronously. Kept for response shape stability.</summary>
-        public int? QueuedCount { get => _explicitNullValueQueuedCount; set { _explicitNullValueQueuedCount = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("queued_count"); else _explicitNullProperties?.Remove("queued_count"); } }
+        public int? QueuedCount { get => _explicitNullValueQueuedCount; set { _explicitNullValueQueuedCount = value; AdditionalData?.Remove("queued_count"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("queued_count"); else _explicitNullProperties?.Remove("queued_count"); } }
         private int? _explicitNullValueQueuedCount = default!;
         /// <summary>ID of the cyclotron wrapper job that will run the rerun. Use this to poll status.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? RerunJobId { get => _explicitNullValueRerunJobId; set { _explicitNullValueRerunJobId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("rerun_job_id"); else _explicitNullProperties?.Remove("rerun_job_id"); } }
+        public string? RerunJobId { get => _explicitNullValueRerunJobId; set { _explicitNullValueRerunJobId = value; AdditionalData?.Remove("rerun_job_id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("rerun_job_id"); else _explicitNullProperties?.Remove("rerun_job_id"); } }
         private string? _explicitNullValueRerunJobId = default!;
 #nullable restore
 #else
-        public string RerunJobId { get => _explicitNullValueRerunJobId; set { _explicitNullValueRerunJobId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("rerun_job_id"); else _explicitNullProperties?.Remove("rerun_job_id"); } }
+        public string RerunJobId { get => _explicitNullValueRerunJobId; set { _explicitNullValueRerunJobId = value; AdditionalData?.Remove("rerun_job_id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("rerun_job_id"); else _explicitNullProperties?.Remove("rerun_job_id"); } }
         private string _explicitNullValueRerunJobId = default!;
 #endif
         /// <summary>Always 0 — rerun runs asynchronously. Kept for response shape stability.</summary>
-        public int? SkippedCount { get => _explicitNullValueSkippedCount; set { _explicitNullValueSkippedCount = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("skipped_count"); else _explicitNullProperties?.Remove("skipped_count"); } }
+        public int? SkippedCount { get => _explicitNullValueSkippedCount; set { _explicitNullValueSkippedCount = value; AdditionalData?.Remove("skipped_count"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("skipped_count"); else _explicitNullProperties?.Remove("skipped_count"); } }
         private int? _explicitNullValueSkippedCount = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.HogInvocationRerunResponse"/> and sets the default values.

@@ -17,8 +17,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("scim_bearer_token") is { } nullNodeScimBearerToken && nullNodeScimBearerToken.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ScimBearerToken = null;
-            if (parseNode.GetChildNode("scim_enabled") is { } nullNodeScimEnabled && nullNodeScimEnabled.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ScimEnabled = null;
+            if (parseNode.GetChildNode("scim_bearer_token") is null) { _explicitNullValueScimBearerToken = default!; _explicitNullProperties?.Remove("scim_bearer_token"); }
+            else if (parseNode.GetChildNode("scim_bearer_token") is { } nullNodeScimBearerToken && nullNodeScimBearerToken.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ScimBearerToken = null;
+            if (parseNode.GetChildNode("scim_enabled") is null) { _explicitNullValueScimEnabled = default!; _explicitNullProperties?.Remove("scim_enabled"); }
+            else if (parseNode.GetChildNode("scim_enabled") is { } nullNodeScimEnabled && nullNodeScimEnabled.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ScimEnabled = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -26,15 +28,15 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Newly generated plaintext SCIM bearer token. Only returned once.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? ScimBearerToken { get => _explicitNullValueScimBearerToken; set { _explicitNullValueScimBearerToken = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("scim_bearer_token"); else _explicitNullProperties?.Remove("scim_bearer_token"); } }
+        public string? ScimBearerToken { get => _explicitNullValueScimBearerToken; set { _explicitNullValueScimBearerToken = value; AdditionalData?.Remove("scim_bearer_token"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("scim_bearer_token"); else _explicitNullProperties?.Remove("scim_bearer_token"); } }
         private string? _explicitNullValueScimBearerToken = default!;
 #nullable restore
 #else
-        public string ScimBearerToken { get => _explicitNullValueScimBearerToken; set { _explicitNullValueScimBearerToken = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("scim_bearer_token"); else _explicitNullProperties?.Remove("scim_bearer_token"); } }
+        public string ScimBearerToken { get => _explicitNullValueScimBearerToken; set { _explicitNullValueScimBearerToken = value; AdditionalData?.Remove("scim_bearer_token"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("scim_bearer_token"); else _explicitNullProperties?.Remove("scim_bearer_token"); } }
         private string _explicitNullValueScimBearerToken = default!;
 #endif
         /// <summary>Whether SCIM is enabled for this config.</summary>
-        public bool? ScimEnabled { get => _explicitNullValueScimEnabled; set { _explicitNullValueScimEnabled = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("scim_enabled"); else _explicitNullProperties?.Remove("scim_enabled"); } }
+        public bool? ScimEnabled { get => _explicitNullValueScimEnabled; set { _explicitNullValueScimEnabled = value; AdditionalData?.Remove("scim_enabled"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("scim_enabled"); else _explicitNullProperties?.Remove("scim_enabled"); } }
         private bool? _explicitNullValueScimEnabled = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ScimTokenResponse"/> and sets the default values.

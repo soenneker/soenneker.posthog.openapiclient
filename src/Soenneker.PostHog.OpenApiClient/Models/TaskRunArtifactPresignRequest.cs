@@ -17,7 +17,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("storage_path") is { } nullNodeStoragePath && nullNodeStoragePath.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) StoragePath = null;
+            if (parseNode.GetChildNode("storage_path") is null) { _explicitNullValueStoragePath = default!; _explicitNullProperties?.Remove("storage_path"); }
+            else if (parseNode.GetChildNode("storage_path") is { } nullNodeStoragePath && nullNodeStoragePath.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) StoragePath = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -25,11 +26,11 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>S3 storage path returned in the artifact manifest</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? StoragePath { get => _explicitNullValueStoragePath; set { _explicitNullValueStoragePath = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("storage_path"); else _explicitNullProperties?.Remove("storage_path"); } }
+        public string? StoragePath { get => _explicitNullValueStoragePath; set { _explicitNullValueStoragePath = value; AdditionalData?.Remove("storage_path"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("storage_path"); else _explicitNullProperties?.Remove("storage_path"); } }
         private string? _explicitNullValueStoragePath = default!;
 #nullable restore
 #else
-        public string StoragePath { get => _explicitNullValueStoragePath; set { _explicitNullValueStoragePath = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("storage_path"); else _explicitNullProperties?.Remove("storage_path"); } }
+        public string StoragePath { get => _explicitNullValueStoragePath; set { _explicitNullValueStoragePath = value; AdditionalData?.Remove("storage_path"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("storage_path"); else _explicitNullProperties?.Remove("storage_path"); } }
         private string _explicitNullValueStoragePath = default!;
 #endif
         /// <summary>

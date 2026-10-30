@@ -18,10 +18,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("agent_description") is { } nullNodeAgentDescription && nullNodeAgentDescription.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AgentDescription = null;
-            if (parseNode.GetChildNode("holdout_score") is { } nullNodeHoldoutScore && nullNodeHoldoutScore.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) HoldoutScore = null;
-            if (parseNode.GetChildNode("iteration_number") is { } nullNodeIterationNumber && nullNodeIterationNumber.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) IterationNumber = null;
-            if (parseNode.GetChildNode("model_class") is { } nullNodeModelClass && nullNodeModelClass.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ModelClass = null;
+            if (parseNode.GetChildNode("agent_description") is null) { _explicitNullValueAgentDescription = default!; _explicitNullProperties?.Remove("agent_description"); }
+            else if (parseNode.GetChildNode("agent_description") is { } nullNodeAgentDescription && nullNodeAgentDescription.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AgentDescription = null;
+            if (parseNode.GetChildNode("holdout_score") is null) { _explicitNullValueHoldoutScore = default!; _explicitNullProperties?.Remove("holdout_score"); }
+            else if (parseNode.GetChildNode("holdout_score") is { } nullNodeHoldoutScore && nullNodeHoldoutScore.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) HoldoutScore = null;
+            if (parseNode.GetChildNode("iteration_number") is null) { _explicitNullValueIterationNumber = default!; _explicitNullProperties?.Remove("iteration_number"); }
+            else if (parseNode.GetChildNode("iteration_number") is { } nullNodeIterationNumber && nullNodeIterationNumber.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) IterationNumber = null;
+            if (parseNode.GetChildNode("model_class") is null) { _explicitNullValueModelClass = default!; _explicitNullProperties?.Remove("model_class"); }
+            else if (parseNode.GetChildNode("model_class") is { } nullNodeModelClass && nullNodeModelClass.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ModelClass = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -29,27 +33,27 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The agent&apos;s rationale for this attempt.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? AgentDescription { get => _explicitNullValueAgentDescription; set { _explicitNullValueAgentDescription = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("agent_description"); else _explicitNullProperties?.Remove("agent_description"); } }
+        public string? AgentDescription { get => _explicitNullValueAgentDescription; set { _explicitNullValueAgentDescription = value; AdditionalData?.Remove("agent_description"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("agent_description"); else _explicitNullProperties?.Remove("agent_description"); } }
         private string? _explicitNullValueAgentDescription = default!;
 #nullable restore
 #else
-        public string AgentDescription { get => _explicitNullValueAgentDescription; set { _explicitNullValueAgentDescription = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("agent_description"); else _explicitNullProperties?.Remove("agent_description"); } }
+        public string AgentDescription { get => _explicitNullValueAgentDescription; set { _explicitNullValueAgentDescription = value; AdditionalData?.Remove("agent_description"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("agent_description"); else _explicitNullProperties?.Remove("agent_description"); } }
         private string _explicitNullValueAgentDescription = default!;
 #endif
         /// <summary>Holdout AUC for this iteration.</summary>
-        public double? HoldoutScore { get => _explicitNullValueHoldoutScore; set { _explicitNullValueHoldoutScore = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("holdout_score"); else _explicitNullProperties?.Remove("holdout_score"); } }
+        public double? HoldoutScore { get => _explicitNullValueHoldoutScore; set { _explicitNullValueHoldoutScore = value; AdditionalData?.Remove("holdout_score"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("holdout_score"); else _explicitNullProperties?.Remove("holdout_score"); } }
         private double? _explicitNullValueHoldoutScore = default!;
         /// <summary>Iteration index this entry refers to.</summary>
-        public int? IterationNumber { get => _explicitNullValueIterationNumber; set { _explicitNullValueIterationNumber = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("iteration_number"); else _explicitNullProperties?.Remove("iteration_number"); } }
+        public int? IterationNumber { get => _explicitNullValueIterationNumber; set { _explicitNullValueIterationNumber = value; AdditionalData?.Remove("iteration_number"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("iteration_number"); else _explicitNullProperties?.Remove("iteration_number"); } }
         private int? _explicitNullValueIterationNumber = default!;
         /// <summary>Model class tried in this iteration.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? ModelClass { get => _explicitNullValueModelClass; set { _explicitNullValueModelClass = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("model_class"); else _explicitNullProperties?.Remove("model_class"); } }
+        public string? ModelClass { get => _explicitNullValueModelClass; set { _explicitNullValueModelClass = value; AdditionalData?.Remove("model_class"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("model_class"); else _explicitNullProperties?.Remove("model_class"); } }
         private string? _explicitNullValueModelClass = default!;
 #nullable restore
 #else
-        public string ModelClass { get => _explicitNullValueModelClass; set { _explicitNullValueModelClass = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("model_class"); else _explicitNullProperties?.Remove("model_class"); } }
+        public string ModelClass { get => _explicitNullValueModelClass; set { _explicitNullValueModelClass = value; AdditionalData?.Remove("model_class"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("model_class"); else _explicitNullProperties?.Remove("model_class"); } }
         private string _explicitNullValueModelClass = default!;
 #endif
         /// <summary>

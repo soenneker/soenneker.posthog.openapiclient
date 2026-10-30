@@ -17,13 +17,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("iteration_budget") is { } nullNodeIterationBudget && nullNodeIterationBudget.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) IterationBudget = null;
+            if (parseNode.GetChildNode("iteration_budget") is null) { _explicitNullValueIterationBudget = default!; _explicitNullProperties?.Remove("iteration_budget"); }
+            else if (parseNode.GetChildNode("iteration_budget") is { } nullNodeIterationBudget && nullNodeIterationBudget.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) IterationBudget = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Iterations for this training run. Defaults to the pipeline&apos;s iterations_per_run.</summary>
-        public int? IterationBudget { get => _explicitNullValueIterationBudget; set { _explicitNullValueIterationBudget = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("iteration_budget"); else _explicitNullProperties?.Remove("iteration_budget"); } }
+        public int? IterationBudget { get => _explicitNullValueIterationBudget; set { _explicitNullValueIterationBudget = value; AdditionalData?.Remove("iteration_budget"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("iteration_budget"); else _explicitNullProperties?.Remove("iteration_budget"); } }
         private int? _explicitNullValueIterationBudget = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.StartTrainingRequest"/> and sets the default values.

@@ -17,9 +17,12 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("likely") is { } nullNodeLikely && nullNodeLikely.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Likely = null;
-            if (parseNode.GetChildNode("top_10") is { } nullNodeTop10 && nullNodeTop10.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Top10 = null;
-            if (parseNode.GetChildNode("top_20") is { } nullNodeTop20 && nullNodeTop20.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Top20 = null;
+            if (parseNode.GetChildNode("likely") is null) { _explicitNullValueLikely = default!; _explicitNullProperties?.Remove("likely"); }
+            else if (parseNode.GetChildNode("likely") is { } nullNodeLikely && nullNodeLikely.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Likely = null;
+            if (parseNode.GetChildNode("top_10") is null) { _explicitNullValueTop10 = default!; _explicitNullProperties?.Remove("top_10"); }
+            else if (parseNode.GetChildNode("top_10") is { } nullNodeTop10 && nullNodeTop10.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Top10 = null;
+            if (parseNode.GetChildNode("top_20") is null) { _explicitNullValueTop20 = default!; _explicitNullProperties?.Remove("top_20"); }
+            else if (parseNode.GetChildNode("top_20") is { } nullNodeTop20 && nullNodeTop20.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Top20 = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -27,31 +30,31 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Counts when users in the Likely segment, with a score of likely_threshold or higher, are flagged.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.ConfusionByCutoffLikely? Likely { get => _explicitNullValueLikely; set { _explicitNullValueLikely = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("likely"); else _explicitNullProperties?.Remove("likely"); } }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ConfusionByCutoffLikely? Likely { get => _explicitNullValueLikely; set { _explicitNullValueLikely = value; AdditionalData?.Remove("likely"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("likely"); else _explicitNullProperties?.Remove("likely"); } }
         private global::Soenneker.PostHog.OpenApiClient.Models.ConfusionByCutoffLikely? _explicitNullValueLikely = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ConfusionByCutoffLikely Likely { get => _explicitNullValueLikely; set { _explicitNullValueLikely = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("likely"); else _explicitNullProperties?.Remove("likely"); } }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ConfusionByCutoffLikely Likely { get => _explicitNullValueLikely; set { _explicitNullValueLikely = value; AdditionalData?.Remove("likely"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("likely"); else _explicitNullProperties?.Remove("likely"); } }
         private global::Soenneker.PostHog.OpenApiClient.Models.ConfusionByCutoffLikely _explicitNullValueLikely = default!;
 #endif
         /// <summary>Counts when the top 10% of users by score are flagged.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.ConfusionByCutoffTop10? Top10 { get => _explicitNullValueTop10; set { _explicitNullValueTop10 = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("top_10"); else _explicitNullProperties?.Remove("top_10"); } }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ConfusionByCutoffTop10? Top10 { get => _explicitNullValueTop10; set { _explicitNullValueTop10 = value; AdditionalData?.Remove("top_10"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("top_10"); else _explicitNullProperties?.Remove("top_10"); } }
         private global::Soenneker.PostHog.OpenApiClient.Models.ConfusionByCutoffTop10? _explicitNullValueTop10 = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ConfusionByCutoffTop10 Top10 { get => _explicitNullValueTop10; set { _explicitNullValueTop10 = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("top_10"); else _explicitNullProperties?.Remove("top_10"); } }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ConfusionByCutoffTop10 Top10 { get => _explicitNullValueTop10; set { _explicitNullValueTop10 = value; AdditionalData?.Remove("top_10"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("top_10"); else _explicitNullProperties?.Remove("top_10"); } }
         private global::Soenneker.PostHog.OpenApiClient.Models.ConfusionByCutoffTop10 _explicitNullValueTop10 = default!;
 #endif
         /// <summary>Counts when the top 20% of users by score are flagged.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.ConfusionByCutoffTop20? Top20 { get => _explicitNullValueTop20; set { _explicitNullValueTop20 = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("top_20"); else _explicitNullProperties?.Remove("top_20"); } }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ConfusionByCutoffTop20? Top20 { get => _explicitNullValueTop20; set { _explicitNullValueTop20 = value; AdditionalData?.Remove("top_20"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("top_20"); else _explicitNullProperties?.Remove("top_20"); } }
         private global::Soenneker.PostHog.OpenApiClient.Models.ConfusionByCutoffTop20? _explicitNullValueTop20 = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ConfusionByCutoffTop20 Top20 { get => _explicitNullValueTop20; set { _explicitNullValueTop20 = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("top_20"); else _explicitNullProperties?.Remove("top_20"); } }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ConfusionByCutoffTop20 Top20 { get => _explicitNullValueTop20; set { _explicitNullValueTop20 = value; AdditionalData?.Remove("top_20"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("top_20"); else _explicitNullProperties?.Remove("top_20"); } }
         private global::Soenneker.PostHog.OpenApiClient.Models.ConfusionByCutoffTop20 _explicitNullValueTop20 = default!;
 #endif
         /// <summary>

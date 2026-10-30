@@ -17,10 +17,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("connect_url") is { } nullNodeConnectUrl && nullNodeConnectUrl.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ConnectUrl = null;
-            if (parseNode.GetChildNode("destination_type") is { } nullNodeDestinationType && nullNodeDestinationType.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) DestinationType = null;
-            if (parseNode.GetChildNode("instructions") is { } nullNodeInstructions && nullNodeInstructions.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Instructions = null;
-            if (parseNode.GetChildNode("integration_kind") is { } nullNodeIntegrationKind && nullNodeIntegrationKind.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) IntegrationKind = null;
+            if (parseNode.GetChildNode("connect_url") is null) { _explicitNullValueConnectUrl = default!; _explicitNullProperties?.Remove("connect_url"); }
+            else if (parseNode.GetChildNode("connect_url") is { } nullNodeConnectUrl && nullNodeConnectUrl.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ConnectUrl = null;
+            if (parseNode.GetChildNode("destination_type") is null) { _explicitNullValueDestinationType = default!; _explicitNullProperties?.Remove("destination_type"); }
+            else if (parseNode.GetChildNode("destination_type") is { } nullNodeDestinationType && nullNodeDestinationType.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) DestinationType = null;
+            if (parseNode.GetChildNode("instructions") is null) { _explicitNullValueInstructions = default!; _explicitNullProperties?.Remove("instructions"); }
+            else if (parseNode.GetChildNode("instructions") is { } nullNodeInstructions && nullNodeInstructions.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Instructions = null;
+            if (parseNode.GetChildNode("integration_kind") is null) { _explicitNullValueIntegrationKind = default!; _explicitNullProperties?.Remove("integration_kind"); }
+            else if (parseNode.GetChildNode("integration_kind") is { } nullNodeIntegrationKind && nullNodeIntegrationKind.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) IntegrationKind = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -28,41 +32,41 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Full URL to share with the user. It opens the connection form for this integration kind in PostHog, so credentials never pass through the agent or the chat.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? ConnectUrl { get => _explicitNullValueConnectUrl; set { _explicitNullValueConnectUrl = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("connect_url"); else _explicitNullProperties?.Remove("connect_url"); } }
+        public string? ConnectUrl { get => _explicitNullValueConnectUrl; set { _explicitNullValueConnectUrl = value; AdditionalData?.Remove("connect_url"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("connect_url"); else _explicitNullProperties?.Remove("connect_url"); } }
         private string? _explicitNullValueConnectUrl = default!;
 #nullable restore
 #else
-        public string ConnectUrl { get => _explicitNullValueConnectUrl; set { _explicitNullValueConnectUrl = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("connect_url"); else _explicitNullProperties?.Remove("connect_url"); } }
+        public string ConnectUrl { get => _explicitNullValueConnectUrl; set { _explicitNullValueConnectUrl = value; AdditionalData?.Remove("connect_url"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("connect_url"); else _explicitNullProperties?.Remove("connect_url"); } }
         private string _explicitNullValueConnectUrl = default!;
 #endif
         /// <summary>The destination type the link is for.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? DestinationType { get => _explicitNullValueDestinationType; set { _explicitNullValueDestinationType = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("destination_type"); else _explicitNullProperties?.Remove("destination_type"); } }
+        public string? DestinationType { get => _explicitNullValueDestinationType; set { _explicitNullValueDestinationType = value; AdditionalData?.Remove("destination_type"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("destination_type"); else _explicitNullProperties?.Remove("destination_type"); } }
         private string? _explicitNullValueDestinationType = default!;
 #nullable restore
 #else
-        public string DestinationType { get => _explicitNullValueDestinationType; set { _explicitNullValueDestinationType = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("destination_type"); else _explicitNullProperties?.Remove("destination_type"); } }
+        public string DestinationType { get => _explicitNullValueDestinationType; set { _explicitNullValueDestinationType = value; AdditionalData?.Remove("destination_type"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("destination_type"); else _explicitNullProperties?.Remove("destination_type"); } }
         private string _explicitNullValueDestinationType = default!;
 #endif
         /// <summary>Next steps for the agent to relay to the user.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Instructions { get => _explicitNullValueInstructions; set { _explicitNullValueInstructions = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("instructions"); else _explicitNullProperties?.Remove("instructions"); } }
+        public string? Instructions { get => _explicitNullValueInstructions; set { _explicitNullValueInstructions = value; AdditionalData?.Remove("instructions"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("instructions"); else _explicitNullProperties?.Remove("instructions"); } }
         private string? _explicitNullValueInstructions = default!;
 #nullable restore
 #else
-        public string Instructions { get => _explicitNullValueInstructions; set { _explicitNullValueInstructions = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("instructions"); else _explicitNullProperties?.Remove("instructions"); } }
+        public string Instructions { get => _explicitNullValueInstructions; set { _explicitNullValueInstructions = value; AdditionalData?.Remove("instructions"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("instructions"); else _explicitNullProperties?.Remove("instructions"); } }
         private string _explicitNullValueInstructions = default!;
 #endif
         /// <summary>The integration kind the page creates.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? IntegrationKind { get => _explicitNullValueIntegrationKind; set { _explicitNullValueIntegrationKind = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("integration_kind"); else _explicitNullProperties?.Remove("integration_kind"); } }
+        public string? IntegrationKind { get => _explicitNullValueIntegrationKind; set { _explicitNullValueIntegrationKind = value; AdditionalData?.Remove("integration_kind"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("integration_kind"); else _explicitNullProperties?.Remove("integration_kind"); } }
         private string? _explicitNullValueIntegrationKind = default!;
 #nullable restore
 #else
-        public string IntegrationKind { get => _explicitNullValueIntegrationKind; set { _explicitNullValueIntegrationKind = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("integration_kind"); else _explicitNullProperties?.Remove("integration_kind"); } }
+        public string IntegrationKind { get => _explicitNullValueIntegrationKind; set { _explicitNullValueIntegrationKind = value; AdditionalData?.Remove("integration_kind"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("integration_kind"); else _explicitNullProperties?.Remove("integration_kind"); } }
         private string _explicitNullValueIntegrationKind = default!;
 #endif
         /// <summary>

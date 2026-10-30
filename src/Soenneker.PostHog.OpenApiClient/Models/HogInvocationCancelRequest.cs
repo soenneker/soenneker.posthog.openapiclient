@@ -18,23 +18,25 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("all") is { } nullNodeAll && nullNodeAll.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) All = null;
-            if (parseNode.GetChildNode("invocation_ids") is { } nullNodeInvocationIds && nullNodeInvocationIds.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) InvocationIds = null;
+            if (parseNode.GetChildNode("all") is null) { _explicitNullValueAll = default!; _explicitNullProperties?.Remove("all"); }
+            else if (parseNode.GetChildNode("all") is { } nullNodeAll && nullNodeAll.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) All = null;
+            if (parseNode.GetChildNode("invocation_ids") is null) { _explicitNullValueInvocationIds = default!; _explicitNullProperties?.Remove("invocation_ids"); }
+            else if (parseNode.GetChildNode("invocation_ids") is { } nullNodeInvocationIds && nullNodeInvocationIds.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) InvocationIds = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Cancel every in-flight invocation of this workflow, including parked delays and waits.</summary>
-        public bool? All { get => _explicitNullValueAll; set { _explicitNullValueAll = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("all"); else _explicitNullProperties?.Remove("all"); } }
+        public bool? All { get => _explicitNullValueAll; set { _explicitNullValueAll = value; AdditionalData?.Remove("all"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("all"); else _explicitNullProperties?.Remove("all"); } }
         private bool? _explicitNullValueAll = default!;
         /// <summary>Cancel these specific invocations. Capped at 10000 per request. Invocations that already finished are skipped rather than failing the request.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<Guid?>? InvocationIds { get => _explicitNullValueInvocationIds; set { _explicitNullValueInvocationIds = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("invocation_ids"); else _explicitNullProperties?.Remove("invocation_ids"); } }
+        public List<Guid?>? InvocationIds { get => _explicitNullValueInvocationIds; set { _explicitNullValueInvocationIds = value; AdditionalData?.Remove("invocation_ids"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("invocation_ids"); else _explicitNullProperties?.Remove("invocation_ids"); } }
         private List<Guid?>? _explicitNullValueInvocationIds = default!;
 #nullable restore
 #else
-        public List<Guid?> InvocationIds { get => _explicitNullValueInvocationIds; set { _explicitNullValueInvocationIds = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("invocation_ids"); else _explicitNullProperties?.Remove("invocation_ids"); } }
+        public List<Guid?> InvocationIds { get => _explicitNullValueInvocationIds; set { _explicitNullValueInvocationIds = value; AdditionalData?.Remove("invocation_ids"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("invocation_ids"); else _explicitNullProperties?.Remove("invocation_ids"); } }
         private List<Guid?> _explicitNullValueInvocationIds = default!;
 #endif
         /// <summary>

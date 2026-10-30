@@ -18,12 +18,18 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("is_active") is { } nullNodeIsActive && nullNodeIsActive.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) IsActive = null;
-            if (parseNode.GetChildNode("is_not_active_reason") is { } nullNodeIsNotActiveReason && nullNodeIsNotActiveReason.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) IsNotActiveReason = null;
-            if (parseNode.GetChildNode("is_pending_deletion") is { } nullNodeIsPendingDeletion && nullNodeIsPendingDeletion.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) IsPendingDeletion = null;
-            if (parseNode.GetChildNode("members_can_use_personal_api_keys") is { } nullNodeMembersCanUsePersonalApiKeys && nullNodeMembersCanUsePersonalApiKeys.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MembersCanUsePersonalApiKeys = null;
-            if (parseNode.GetChildNode("name") is { } nullNodeName && nullNodeName.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Name = null;
-            if (parseNode.GetChildNode("slug") is { } nullNodeSlug && nullNodeSlug.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Slug = null;
+            if (parseNode.GetChildNode("is_active") is null) { _explicitNullValueIsActive = default!; _explicitNullProperties?.Remove("is_active"); }
+            else if (parseNode.GetChildNode("is_active") is { } nullNodeIsActive && nullNodeIsActive.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) IsActive = null;
+            if (parseNode.GetChildNode("is_not_active_reason") is null) { _explicitNullValueIsNotActiveReason = default!; _explicitNullProperties?.Remove("is_not_active_reason"); }
+            else if (parseNode.GetChildNode("is_not_active_reason") is { } nullNodeIsNotActiveReason && nullNodeIsNotActiveReason.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) IsNotActiveReason = null;
+            if (parseNode.GetChildNode("is_pending_deletion") is null) { _explicitNullValueIsPendingDeletion = default!; _explicitNullProperties?.Remove("is_pending_deletion"); }
+            else if (parseNode.GetChildNode("is_pending_deletion") is { } nullNodeIsPendingDeletion && nullNodeIsPendingDeletion.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) IsPendingDeletion = null;
+            if (parseNode.GetChildNode("members_can_use_personal_api_keys") is null) { _explicitNullValueMembersCanUsePersonalApiKeys = default!; _explicitNullProperties?.Remove("members_can_use_personal_api_keys"); }
+            else if (parseNode.GetChildNode("members_can_use_personal_api_keys") is { } nullNodeMembersCanUsePersonalApiKeys && nullNodeMembersCanUsePersonalApiKeys.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MembersCanUsePersonalApiKeys = null;
+            if (parseNode.GetChildNode("name") is null) { _explicitNullValueName = default!; _explicitNullProperties?.Remove("name"); }
+            else if (parseNode.GetChildNode("name") is { } nullNodeName && nullNodeName.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Name = null;
+            if (parseNode.GetChildNode("slug") is null) { _explicitNullValueSlug = default!; _explicitNullProperties?.Remove("slug"); }
+            else if (parseNode.GetChildNode("slug") is { } nullNodeSlug && nullNodeSlug.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Slug = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -31,46 +37,46 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The id property</summary>
         public Guid? Id { get; private set; }
         /// <summary>Set this to &apos;No&apos; to temporarily disable an organization.</summary>
-        public bool? IsActive { get => _explicitNullValueIsActive; set { _explicitNullValueIsActive = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("is_active"); else _explicitNullProperties?.Remove("is_active"); } }
+        public bool? IsActive { get => _explicitNullValueIsActive; set { _explicitNullValueIsActive = value; AdditionalData?.Remove("is_active"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("is_active"); else _explicitNullProperties?.Remove("is_active"); } }
         private bool? _explicitNullValueIsActive = default!;
         /// <summary>(optional) reason for why the organization has been de-activated. This will be displayed to users on the web app.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? IsNotActiveReason { get => _explicitNullValueIsNotActiveReason; set { _explicitNullValueIsNotActiveReason = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("is_not_active_reason"); else _explicitNullProperties?.Remove("is_not_active_reason"); } }
+        public string? IsNotActiveReason { get => _explicitNullValueIsNotActiveReason; set { _explicitNullValueIsNotActiveReason = value; AdditionalData?.Remove("is_not_active_reason"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("is_not_active_reason"); else _explicitNullProperties?.Remove("is_not_active_reason"); } }
         private string? _explicitNullValueIsNotActiveReason = default!;
 #nullable restore
 #else
-        public string IsNotActiveReason { get => _explicitNullValueIsNotActiveReason; set { _explicitNullValueIsNotActiveReason = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("is_not_active_reason"); else _explicitNullProperties?.Remove("is_not_active_reason"); } }
+        public string IsNotActiveReason { get => _explicitNullValueIsNotActiveReason; set { _explicitNullValueIsNotActiveReason = value; AdditionalData?.Remove("is_not_active_reason"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("is_not_active_reason"); else _explicitNullProperties?.Remove("is_not_active_reason"); } }
         private string _explicitNullValueIsNotActiveReason = default!;
 #endif
         /// <summary>Set to True when org deletion has been initiated. Blocks all UI access until the async task completes.</summary>
-        public bool? IsPendingDeletion { get => _explicitNullValueIsPendingDeletion; set { _explicitNullValueIsPendingDeletion = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("is_pending_deletion"); else _explicitNullProperties?.Remove("is_pending_deletion"); } }
+        public bool? IsPendingDeletion { get => _explicitNullValueIsPendingDeletion; set { _explicitNullValueIsPendingDeletion = value; AdditionalData?.Remove("is_pending_deletion"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("is_pending_deletion"); else _explicitNullProperties?.Remove("is_pending_deletion"); } }
         private bool? _explicitNullValueIsPendingDeletion = default!;
         /// <summary>The logo_media_id property</summary>
         public Guid? LogoMediaId { get; private set; }
         /// <summary>The members_can_use_personal_api_keys property</summary>
-        public bool? MembersCanUsePersonalApiKeys { get => _explicitNullValueMembersCanUsePersonalApiKeys; set { _explicitNullValueMembersCanUsePersonalApiKeys = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("members_can_use_personal_api_keys"); else _explicitNullProperties?.Remove("members_can_use_personal_api_keys"); } }
+        public bool? MembersCanUsePersonalApiKeys { get => _explicitNullValueMembersCanUsePersonalApiKeys; set { _explicitNullValueMembersCanUsePersonalApiKeys = value; AdditionalData?.Remove("members_can_use_personal_api_keys"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("members_can_use_personal_api_keys"); else _explicitNullProperties?.Remove("members_can_use_personal_api_keys"); } }
         private bool? _explicitNullValueMembersCanUsePersonalApiKeys = default!;
         /// <summary>* `1` - member* `8` - administrator* `15` - owner</summary>
         public int? MembershipLevel { get; private set; }
         /// <summary>The name property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Name { get => _explicitNullValueName; set { _explicitNullValueName = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("name"); else _explicitNullProperties?.Remove("name"); } }
+        public string? Name { get => _explicitNullValueName; set { _explicitNullValueName = value; AdditionalData?.Remove("name"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("name"); else _explicitNullProperties?.Remove("name"); } }
         private string? _explicitNullValueName = default!;
 #nullable restore
 #else
-        public string Name { get => _explicitNullValueName; set { _explicitNullValueName = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("name"); else _explicitNullProperties?.Remove("name"); } }
+        public string Name { get => _explicitNullValueName; set { _explicitNullValueName = value; AdditionalData?.Remove("name"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("name"); else _explicitNullProperties?.Remove("name"); } }
         private string _explicitNullValueName = default!;
 #endif
         /// <summary>The slug property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Slug { get => _explicitNullValueSlug; set { _explicitNullValueSlug = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("slug"); else _explicitNullProperties?.Remove("slug"); } }
+        public string? Slug { get => _explicitNullValueSlug; set { _explicitNullValueSlug = value; AdditionalData?.Remove("slug"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("slug"); else _explicitNullProperties?.Remove("slug"); } }
         private string? _explicitNullValueSlug = default!;
 #nullable restore
 #else
-        public string Slug { get => _explicitNullValueSlug; set { _explicitNullValueSlug = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("slug"); else _explicitNullProperties?.Remove("slug"); } }
+        public string Slug { get => _explicitNullValueSlug; set { _explicitNullValueSlug = value; AdditionalData?.Remove("slug"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("slug"); else _explicitNullProperties?.Remove("slug"); } }
         private string _explicitNullValueSlug = default!;
 #endif
         /// <summary>

@@ -17,8 +17,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("excerpts") is { } nullNodeExcerpts && nullNodeExcerpts.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Excerpts = null;
-            if (parseNode.GetChildNode("finding") is { } nullNodeFinding && nullNodeFinding.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Finding = null;
+            if (parseNode.GetChildNode("excerpts") is null) { _explicitNullValueExcerpts = default!; _explicitNullProperties?.Remove("excerpts"); }
+            else if (parseNode.GetChildNode("excerpts") is { } nullNodeExcerpts && nullNodeExcerpts.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Excerpts = null;
+            if (parseNode.GetChildNode("finding") is null) { _explicitNullValueFinding = default!; _explicitNullProperties?.Remove("finding"); }
+            else if (parseNode.GetChildNode("finding") is { } nullNodeFinding && nullNodeFinding.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Finding = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -26,21 +28,21 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Candidate code excerpts, best scored first.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<string>? Excerpts { get => _explicitNullValueExcerpts; set { _explicitNullValueExcerpts = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("excerpts"); else _explicitNullProperties?.Remove("excerpts"); } }
+        public List<string>? Excerpts { get => _explicitNullValueExcerpts; set { _explicitNullValueExcerpts = value; AdditionalData?.Remove("excerpts"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("excerpts"); else _explicitNullProperties?.Remove("excerpts"); } }
         private List<string>? _explicitNullValueExcerpts = default!;
 #nullable restore
 #else
-        public List<string> Excerpts { get => _explicitNullValueExcerpts; set { _explicitNullValueExcerpts = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("excerpts"); else _explicitNullProperties?.Remove("excerpts"); } }
+        public List<string> Excerpts { get => _explicitNullValueExcerpts; set { _explicitNullValueExcerpts = value; AdditionalData?.Remove("excerpts"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("excerpts"); else _explicitNullProperties?.Remove("excerpts"); } }
         private List<string> _explicitNullValueExcerpts = default!;
 #endif
         /// <summary>The finding the code excerpts should show.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Finding { get => _explicitNullValueFinding; set { _explicitNullValueFinding = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("finding"); else _explicitNullProperties?.Remove("finding"); } }
+        public string? Finding { get => _explicitNullValueFinding; set { _explicitNullValueFinding = value; AdditionalData?.Remove("finding"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("finding"); else _explicitNullProperties?.Remove("finding"); } }
         private string? _explicitNullValueFinding = default!;
 #nullable restore
 #else
-        public string Finding { get => _explicitNullValueFinding; set { _explicitNullValueFinding = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("finding"); else _explicitNullProperties?.Remove("finding"); } }
+        public string Finding { get => _explicitNullValueFinding; set { _explicitNullValueFinding = value; AdditionalData?.Remove("finding"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("finding"); else _explicitNullProperties?.Remove("finding"); } }
         private string _explicitNullValueFinding = default!;
 #endif
         /// <summary>

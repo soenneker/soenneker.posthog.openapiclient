@@ -17,13 +17,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("cohortId") is { } nullNodeCohortId && nullNodeCohortId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CohortId = null;
+            if (parseNode.GetChildNode("cohortId") is null) { _explicitNullValueCohortId = default!; _explicitNullProperties?.Remove("cohortId"); }
+            else if (parseNode.GetChildNode("cohortId") is { } nullNodeCohortId && nullNodeCohortId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CohortId = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>ID of the cohort to attach to the issue.</summary>
-        public int? CohortId { get => _explicitNullValueCohortId; set { _explicitNullValueCohortId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("cohortId"); else _explicitNullProperties?.Remove("cohortId"); } }
+        public int? CohortId { get => _explicitNullValueCohortId; set { _explicitNullValueCohortId = value; AdditionalData?.Remove("cohortId"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("cohortId"); else _explicitNullProperties?.Remove("cohortId"); } }
         private int? _explicitNullValueCohortId = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ErrorTrackingIssueCohortRequest"/> and sets the default values.

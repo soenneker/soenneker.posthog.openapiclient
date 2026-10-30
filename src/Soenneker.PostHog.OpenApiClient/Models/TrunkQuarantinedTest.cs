@@ -17,86 +17,95 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("age_days") is { } nullNodeAgeDays && nullNodeAgeDays.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AgeDays = null;
-            if (parseNode.GetChildNode("file") is { } nullNodeFile && nullNodeFile.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) File = null;
-            if (parseNode.GetChildNode("nodeid") is { } nullNodeNodeid && nullNodeNodeid.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Nodeid = null;
-            if (parseNode.GetChildNode("overdue") is { } nullNodeOverdue && nullNodeOverdue.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Overdue = null;
-            if (parseNode.GetChildNode("owner_team") is { } nullNodeOwnerTeam && nullNodeOwnerTeam.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) OwnerTeam = null;
-            if (parseNode.GetChildNode("quarantined_at") is { } nullNodeQuarantinedAt && nullNodeQuarantinedAt.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) QuarantinedAt = null;
-            if (parseNode.GetChildNode("runner") is { } nullNodeRunner && nullNodeRunner.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Runner = null;
-            if (parseNode.GetChildNode("status") is { } nullNodeStatus && nullNodeStatus.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Status = null;
-            if (parseNode.GetChildNode("trunk_url") is { } nullNodeTrunkUrl && nullNodeTrunkUrl.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TrunkUrl = null;
+            if (parseNode.GetChildNode("age_days") is null) { _explicitNullValueAgeDays = default!; _explicitNullProperties?.Remove("age_days"); }
+            else if (parseNode.GetChildNode("age_days") is { } nullNodeAgeDays && nullNodeAgeDays.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AgeDays = null;
+            if (parseNode.GetChildNode("file") is null) { _explicitNullValueFile = default!; _explicitNullProperties?.Remove("file"); }
+            else if (parseNode.GetChildNode("file") is { } nullNodeFile && nullNodeFile.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) File = null;
+            if (parseNode.GetChildNode("nodeid") is null) { _explicitNullValueNodeid = default!; _explicitNullProperties?.Remove("nodeid"); }
+            else if (parseNode.GetChildNode("nodeid") is { } nullNodeNodeid && nullNodeNodeid.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Nodeid = null;
+            if (parseNode.GetChildNode("overdue") is null) { _explicitNullValueOverdue = default!; _explicitNullProperties?.Remove("overdue"); }
+            else if (parseNode.GetChildNode("overdue") is { } nullNodeOverdue && nullNodeOverdue.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Overdue = null;
+            if (parseNode.GetChildNode("owner_team") is null) { _explicitNullValueOwnerTeam = default!; _explicitNullProperties?.Remove("owner_team"); }
+            else if (parseNode.GetChildNode("owner_team") is { } nullNodeOwnerTeam && nullNodeOwnerTeam.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) OwnerTeam = null;
+            if (parseNode.GetChildNode("quarantined_at") is null) { _explicitNullValueQuarantinedAt = default!; _explicitNullProperties?.Remove("quarantined_at"); }
+            else if (parseNode.GetChildNode("quarantined_at") is { } nullNodeQuarantinedAt && nullNodeQuarantinedAt.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) QuarantinedAt = null;
+            if (parseNode.GetChildNode("runner") is null) { _explicitNullValueRunner = default!; _explicitNullProperties?.Remove("runner"); }
+            else if (parseNode.GetChildNode("runner") is { } nullNodeRunner && nullNodeRunner.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Runner = null;
+            if (parseNode.GetChildNode("status") is null) { _explicitNullValueStatus = default!; _explicitNullProperties?.Remove("status"); }
+            else if (parseNode.GetChildNode("status") is { } nullNodeStatus && nullNodeStatus.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Status = null;
+            if (parseNode.GetChildNode("trunk_url") is null) { _explicitNullValueTrunkUrl = default!; _explicitNullProperties?.Remove("trunk_url"); }
+            else if (parseNode.GetChildNode("trunk_url") is { } nullNodeTrunkUrl && nullNodeTrunkUrl.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TrunkUrl = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Whole days since the quarantine started.</summary>
-        public int? AgeDays { get => _explicitNullValueAgeDays; set { _explicitNullValueAgeDays = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("age_days"); else _explicitNullProperties?.Remove("age_days"); } }
+        public int? AgeDays { get => _explicitNullValueAgeDays; set { _explicitNullValueAgeDays = value; AdditionalData?.Remove("age_days"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("age_days"); else _explicitNullProperties?.Remove("age_days"); } }
         private int? _explicitNullValueAgeDays = default!;
         /// <summary>Repo-relative path of the test file, empty when neither the repository nor Trunk places it.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? File { get => _explicitNullValueFile; set { _explicitNullValueFile = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("file"); else _explicitNullProperties?.Remove("file"); } }
+        public string? File { get => _explicitNullValueFile; set { _explicitNullValueFile = value; AdditionalData?.Remove("file"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("file"); else _explicitNullProperties?.Remove("file"); } }
         private string? _explicitNullValueFile = default!;
 #nullable restore
 #else
-        public string File { get => _explicitNullValueFile; set { _explicitNullValueFile = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("file"); else _explicitNullProperties?.Remove("file"); } }
+        public string File { get => _explicitNullValueFile; set { _explicitNullValueFile = value; AdditionalData?.Remove("file"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("file"); else _explicitNullProperties?.Remove("file"); } }
         private string _explicitNullValueFile = default!;
 #endif
         /// <summary>Runner-native test id reconstructed from Trunk&apos;s (file, classname, name) key.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Nodeid { get => _explicitNullValueNodeid; set { _explicitNullValueNodeid = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("nodeid"); else _explicitNullProperties?.Remove("nodeid"); } }
+        public string? Nodeid { get => _explicitNullValueNodeid; set { _explicitNullValueNodeid = value; AdditionalData?.Remove("nodeid"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("nodeid"); else _explicitNullProperties?.Remove("nodeid"); } }
         private string? _explicitNullValueNodeid = default!;
 #nullable restore
 #else
-        public string Nodeid { get => _explicitNullValueNodeid; set { _explicitNullValueNodeid = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("nodeid"); else _explicitNullProperties?.Remove("nodeid"); } }
+        public string Nodeid { get => _explicitNullValueNodeid; set { _explicitNullValueNodeid = value; AdditionalData?.Remove("nodeid"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("nodeid"); else _explicitNullProperties?.Remove("nodeid"); } }
         private string _explicitNullValueNodeid = default!;
 #endif
         /// <summary>True once age_days exceeds ttl_days: the quarantine has outlived the TTL.</summary>
-        public bool? Overdue { get => _explicitNullValueOverdue; set { _explicitNullValueOverdue = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("overdue"); else _explicitNullProperties?.Remove("overdue"); } }
+        public bool? Overdue { get => _explicitNullValueOverdue; set { _explicitNullValueOverdue = value; AdditionalData?.Remove("overdue"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("overdue"); else _explicitNullProperties?.Remove("overdue"); } }
         private bool? _explicitNullValueOverdue = default!;
         /// <summary>Owning team slug from the repository&apos;s ownership files, or &apos;unowned&apos; when the test&apos;s file cannot be placed or no team claims its path.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? OwnerTeam { get => _explicitNullValueOwnerTeam; set { _explicitNullValueOwnerTeam = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("owner_team"); else _explicitNullProperties?.Remove("owner_team"); } }
+        public string? OwnerTeam { get => _explicitNullValueOwnerTeam; set { _explicitNullValueOwnerTeam = value; AdditionalData?.Remove("owner_team"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("owner_team"); else _explicitNullProperties?.Remove("owner_team"); } }
         private string? _explicitNullValueOwnerTeam = default!;
 #nullable restore
 #else
-        public string OwnerTeam { get => _explicitNullValueOwnerTeam; set { _explicitNullValueOwnerTeam = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("owner_team"); else _explicitNullProperties?.Remove("owner_team"); } }
+        public string OwnerTeam { get => _explicitNullValueOwnerTeam; set { _explicitNullValueOwnerTeam = value; AdditionalData?.Remove("owner_team"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("owner_team"); else _explicitNullProperties?.Remove("owner_team"); } }
         private string _explicitNullValueOwnerTeam = default!;
 #endif
         /// <summary>When Trunk quarantined the test.</summary>
-        public DateTimeOffset? QuarantinedAt { get => _explicitNullValueQuarantinedAt; set { _explicitNullValueQuarantinedAt = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("quarantined_at"); else _explicitNullProperties?.Remove("quarantined_at"); } }
+        public DateTimeOffset? QuarantinedAt { get => _explicitNullValueQuarantinedAt; set { _explicitNullValueQuarantinedAt = value; AdditionalData?.Remove("quarantined_at"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("quarantined_at"); else _explicitNullProperties?.Remove("quarantined_at"); } }
         private DateTimeOffset? _explicitNullValueQuarantinedAt = default!;
         /// <summary>Test runner: &apos;pytest&apos; or &apos;jest&apos;.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Runner { get => _explicitNullValueRunner; set { _explicitNullValueRunner = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("runner"); else _explicitNullProperties?.Remove("runner"); } }
+        public string? Runner { get => _explicitNullValueRunner; set { _explicitNullValueRunner = value; AdditionalData?.Remove("runner"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("runner"); else _explicitNullProperties?.Remove("runner"); } }
         private string? _explicitNullValueRunner = default!;
 #nullable restore
 #else
-        public string Runner { get => _explicitNullValueRunner; set { _explicitNullValueRunner = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("runner"); else _explicitNullProperties?.Remove("runner"); } }
+        public string Runner { get => _explicitNullValueRunner; set { _explicitNullValueRunner = value; AdditionalData?.Remove("runner"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("runner"); else _explicitNullProperties?.Remove("runner"); } }
         private string _explicitNullValueRunner = default!;
 #endif
         /// <summary>Trunk&apos;s current health verdict on the test, e.g. &apos;flaky&apos; or &apos;broken&apos;.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Status { get => _explicitNullValueStatus; set { _explicitNullValueStatus = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("status"); else _explicitNullProperties?.Remove("status"); } }
+        public string? Status { get => _explicitNullValueStatus; set { _explicitNullValueStatus = value; AdditionalData?.Remove("status"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("status"); else _explicitNullProperties?.Remove("status"); } }
         private string? _explicitNullValueStatus = default!;
 #nullable restore
 #else
-        public string Status { get => _explicitNullValueStatus; set { _explicitNullValueStatus = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("status"); else _explicitNullProperties?.Remove("status"); } }
+        public string Status { get => _explicitNullValueStatus; set { _explicitNullValueStatus = value; AdditionalData?.Remove("status"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("status"); else _explicitNullProperties?.Remove("status"); } }
         private string _explicitNullValueStatus = default!;
 #endif
         /// <summary>The Trunk app&apos;s page for this test; null when Trunk returned no URL and the source has no organization slug or the row carries no test id.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? TrunkUrl { get => _explicitNullValueTrunkUrl; set { _explicitNullValueTrunkUrl = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("trunk_url"); else _explicitNullProperties?.Remove("trunk_url"); } }
+        public string? TrunkUrl { get => _explicitNullValueTrunkUrl; set { _explicitNullValueTrunkUrl = value; AdditionalData?.Remove("trunk_url"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("trunk_url"); else _explicitNullProperties?.Remove("trunk_url"); } }
         private string? _explicitNullValueTrunkUrl = default!;
 #nullable restore
 #else
-        public string TrunkUrl { get => _explicitNullValueTrunkUrl; set { _explicitNullValueTrunkUrl = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("trunk_url"); else _explicitNullProperties?.Remove("trunk_url"); } }
+        public string TrunkUrl { get => _explicitNullValueTrunkUrl; set { _explicitNullValueTrunkUrl = value; AdditionalData?.Remove("trunk_url"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("trunk_url"); else _explicitNullProperties?.Remove("trunk_url"); } }
         private string _explicitNullValueTrunkUrl = default!;
 #endif
         /// <summary>

@@ -17,34 +17,37 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("added") is { } nullNodeAdded && nullNodeAdded.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Added = null;
-            if (parseNode.GetChildNode("story_index_upload") is { } nullNodeStoryIndexUpload && nullNodeStoryIndexUpload.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) StoryIndexUpload = null;
-            if (parseNode.GetChildNode("uploads") is { } nullNodeUploads && nullNodeUploads.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Uploads = null;
+            if (parseNode.GetChildNode("added") is null) { _explicitNullValueAdded = default!; _explicitNullProperties?.Remove("added"); }
+            else if (parseNode.GetChildNode("added") is { } nullNodeAdded && nullNodeAdded.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Added = null;
+            if (parseNode.GetChildNode("story_index_upload") is null) { _explicitNullValueStoryIndexUpload = default!; _explicitNullProperties?.Remove("story_index_upload"); }
+            else if (parseNode.GetChildNode("story_index_upload") is { } nullNodeStoryIndexUpload && nullNodeStoryIndexUpload.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) StoryIndexUpload = null;
+            if (parseNode.GetChildNode("uploads") is null) { _explicitNullValueUploads = default!; _explicitNullProperties?.Remove("uploads"); }
+            else if (parseNode.GetChildNode("uploads") is { } nullNodeUploads && nullNodeUploads.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Uploads = null;
         }
 
         /// <summary>The added property</summary>
-        public int? Added { get => _explicitNullValueAdded; set { _explicitNullValueAdded = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("added"); else _explicitNullProperties?.Remove("added"); } }
+        public int? Added { get => _explicitNullValueAdded; set { _explicitNullValueAdded = value; AdditionalData?.Remove("added"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("added"); else _explicitNullProperties?.Remove("added"); } }
         private int? _explicitNullValueAdded = default!;
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Where to upload the story-to-file map, as a presigned POST with a JSON body. Null when the request sent no map, or the store already holds a map with that hash.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.UploadTarget? StoryIndexUpload { get => _explicitNullValueStoryIndexUpload; set { _explicitNullValueStoryIndexUpload = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("story_index_upload"); else _explicitNullProperties?.Remove("story_index_upload"); } }
+        public global::Soenneker.PostHog.OpenApiClient.Models.UploadTarget? StoryIndexUpload { get => _explicitNullValueStoryIndexUpload; set { _explicitNullValueStoryIndexUpload = value; AdditionalData?.Remove("story_index_upload"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("story_index_upload"); else _explicitNullProperties?.Remove("story_index_upload"); } }
         private global::Soenneker.PostHog.OpenApiClient.Models.UploadTarget? _explicitNullValueStoryIndexUpload = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.UploadTarget StoryIndexUpload { get => _explicitNullValueStoryIndexUpload; set { _explicitNullValueStoryIndexUpload = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("story_index_upload"); else _explicitNullProperties?.Remove("story_index_upload"); } }
+        public global::Soenneker.PostHog.OpenApiClient.Models.UploadTarget StoryIndexUpload { get => _explicitNullValueStoryIndexUpload; set { _explicitNullValueStoryIndexUpload = value; AdditionalData?.Remove("story_index_upload"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("story_index_upload"); else _explicitNullProperties?.Remove("story_index_upload"); } }
         private global::Soenneker.PostHog.OpenApiClient.Models.UploadTarget _explicitNullValueStoryIndexUpload = default!;
 #endif
         /// <summary>The uploads property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.UploadTarget>? Uploads { get => _explicitNullValueUploads; set { _explicitNullValueUploads = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("uploads"); else _explicitNullProperties?.Remove("uploads"); } }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.UploadTarget>? Uploads { get => _explicitNullValueUploads; set { _explicitNullValueUploads = value; AdditionalData?.Remove("uploads"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("uploads"); else _explicitNullProperties?.Remove("uploads"); } }
         private List<global::Soenneker.PostHog.OpenApiClient.Models.UploadTarget>? _explicitNullValueUploads = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.UploadTarget> Uploads { get => _explicitNullValueUploads; set { _explicitNullValueUploads = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("uploads"); else _explicitNullProperties?.Remove("uploads"); } }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.UploadTarget> Uploads { get => _explicitNullValueUploads; set { _explicitNullValueUploads = value; AdditionalData?.Remove("uploads"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("uploads"); else _explicitNullProperties?.Remove("uploads"); } }
         private List<global::Soenneker.PostHog.OpenApiClient.Models.UploadTarget> _explicitNullValueUploads = default!;
 #endif
         /// <summary>

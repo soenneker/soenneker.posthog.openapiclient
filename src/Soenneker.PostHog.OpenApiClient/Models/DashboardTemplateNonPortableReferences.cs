@@ -18,27 +18,30 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("actions") is { } nullNodeActions && nullNodeActions.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Actions = null;
-            if (parseNode.GetChildNode("cohorts") is { } nullNodeCohorts && nullNodeCohorts.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Cohorts = null;
-            if (parseNode.GetChildNode("warehouse_tables") is { } nullNodeWarehouseTables && nullNodeWarehouseTables.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) WarehouseTables = null;
+            if (parseNode.GetChildNode("actions") is null) { _explicitNullValueActions = default!; _explicitNullProperties?.Remove("actions"); }
+            else if (parseNode.GetChildNode("actions") is { } nullNodeActions && nullNodeActions.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Actions = null;
+            if (parseNode.GetChildNode("cohorts") is null) { _explicitNullValueCohorts = default!; _explicitNullProperties?.Remove("cohorts"); }
+            else if (parseNode.GetChildNode("cohorts") is { } nullNodeCohorts && nullNodeCohorts.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Cohorts = null;
+            if (parseNode.GetChildNode("warehouse_tables") is null) { _explicitNullValueWarehouseTables = default!; _explicitNullProperties?.Remove("warehouse_tables"); }
+            else if (parseNode.GetChildNode("warehouse_tables") is { } nullNodeWarehouseTables && nullNodeWarehouseTables.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) WarehouseTables = null;
         }
 
         /// <summary>Count of distinct action references in the template&apos;s tiles that are specific to the source project.</summary>
-        public int? Actions { get => _explicitNullValueActions; set { _explicitNullValueActions = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("actions"); else _explicitNullProperties?.Remove("actions"); } }
+        public int? Actions { get => _explicitNullValueActions; set { _explicitNullValueActions = value; AdditionalData?.Remove("actions"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("actions"); else _explicitNullProperties?.Remove("actions"); } }
         private int? _explicitNullValueActions = default!;
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Count of distinct cohort references in the template&apos;s tiles that are specific to the source project.</summary>
-        public int? Cohorts { get => _explicitNullValueCohorts; set { _explicitNullValueCohorts = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("cohorts"); else _explicitNullProperties?.Remove("cohorts"); } }
+        public int? Cohorts { get => _explicitNullValueCohorts; set { _explicitNullValueCohorts = value; AdditionalData?.Remove("cohorts"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("cohorts"); else _explicitNullProperties?.Remove("cohorts"); } }
         private int? _explicitNullValueCohorts = default!;
         /// <summary>Names of data warehouse tables referenced by the template&apos;s tiles that are specific to the source project.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<string>? WarehouseTables { get => _explicitNullValueWarehouseTables; set { _explicitNullValueWarehouseTables = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("warehouse_tables"); else _explicitNullProperties?.Remove("warehouse_tables"); } }
+        public List<string>? WarehouseTables { get => _explicitNullValueWarehouseTables; set { _explicitNullValueWarehouseTables = value; AdditionalData?.Remove("warehouse_tables"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("warehouse_tables"); else _explicitNullProperties?.Remove("warehouse_tables"); } }
         private List<string>? _explicitNullValueWarehouseTables = default!;
 #nullable restore
 #else
-        public List<string> WarehouseTables { get => _explicitNullValueWarehouseTables; set { _explicitNullValueWarehouseTables = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("warehouse_tables"); else _explicitNullProperties?.Remove("warehouse_tables"); } }
+        public List<string> WarehouseTables { get => _explicitNullValueWarehouseTables; set { _explicitNullValueWarehouseTables = value; AdditionalData?.Remove("warehouse_tables"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("warehouse_tables"); else _explicitNullProperties?.Remove("warehouse_tables"); } }
         private List<string> _explicitNullValueWarehouseTables = default!;
 #endif
         /// <summary>

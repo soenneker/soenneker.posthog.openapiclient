@@ -17,10 +17,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("default_branch") is { } nullNodeDefaultBranch && nullNodeDefaultBranch.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) DefaultBranch = null;
-            if (parseNode.GetChildNode("failing_workflow_names") is { } nullNodeFailingWorkflowNames && nullNodeFailingWorkflowNames.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) FailingWorkflowNames = null;
-            if (parseNode.GetChildNode("failing_workflows") is { } nullNodeFailingWorkflows && nullNodeFailingWorkflows.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) FailingWorkflows = null;
-            if (parseNode.GetChildNode("settled_workflows") is { } nullNodeSettledWorkflows && nullNodeSettledWorkflows.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SettledWorkflows = null;
+            if (parseNode.GetChildNode("default_branch") is null) { _explicitNullValueDefaultBranch = default!; _explicitNullProperties?.Remove("default_branch"); }
+            else if (parseNode.GetChildNode("default_branch") is { } nullNodeDefaultBranch && nullNodeDefaultBranch.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) DefaultBranch = null;
+            if (parseNode.GetChildNode("failing_workflow_names") is null) { _explicitNullValueFailingWorkflowNames = default!; _explicitNullProperties?.Remove("failing_workflow_names"); }
+            else if (parseNode.GetChildNode("failing_workflow_names") is { } nullNodeFailingWorkflowNames && nullNodeFailingWorkflowNames.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) FailingWorkflowNames = null;
+            if (parseNode.GetChildNode("failing_workflows") is null) { _explicitNullValueFailingWorkflows = default!; _explicitNullProperties?.Remove("failing_workflows"); }
+            else if (parseNode.GetChildNode("failing_workflows") is { } nullNodeFailingWorkflows && nullNodeFailingWorkflows.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) FailingWorkflows = null;
+            if (parseNode.GetChildNode("settled_workflows") is null) { _explicitNullValueSettledWorkflows = default!; _explicitNullProperties?.Remove("settled_workflows"); }
+            else if (parseNode.GetChildNode("settled_workflows") is { } nullNodeSettledWorkflows && nullNodeSettledWorkflows.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SettledWorkflows = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -28,28 +32,28 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Detected default branch (&apos;master&apos; or &apos;main&apos;) from runs in the same 24-hour window.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? DefaultBranch { get => _explicitNullValueDefaultBranch; set { _explicitNullValueDefaultBranch = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("default_branch"); else _explicitNullProperties?.Remove("default_branch"); } }
+        public string? DefaultBranch { get => _explicitNullValueDefaultBranch; set { _explicitNullValueDefaultBranch = value; AdditionalData?.Remove("default_branch"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("default_branch"); else _explicitNullProperties?.Remove("default_branch"); } }
         private string? _explicitNullValueDefaultBranch = default!;
 #nullable restore
 #else
-        public string DefaultBranch { get => _explicitNullValueDefaultBranch; set { _explicitNullValueDefaultBranch = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("default_branch"); else _explicitNullProperties?.Remove("default_branch"); } }
+        public string DefaultBranch { get => _explicitNullValueDefaultBranch; set { _explicitNullValueDefaultBranch = value; AdditionalData?.Remove("default_branch"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("default_branch"); else _explicitNullProperties?.Remove("default_branch"); } }
         private string _explicitNullValueDefaultBranch = default!;
 #endif
         /// <summary>Alphabetical preview of failing workflow names, capped at 20; use failing_workflows for the complete count.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<string>? FailingWorkflowNames { get => _explicitNullValueFailingWorkflowNames; set { _explicitNullValueFailingWorkflowNames = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("failing_workflow_names"); else _explicitNullProperties?.Remove("failing_workflow_names"); } }
+        public List<string>? FailingWorkflowNames { get => _explicitNullValueFailingWorkflowNames; set { _explicitNullValueFailingWorkflowNames = value; AdditionalData?.Remove("failing_workflow_names"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("failing_workflow_names"); else _explicitNullProperties?.Remove("failing_workflow_names"); } }
         private List<string>? _explicitNullValueFailingWorkflowNames = default!;
 #nullable restore
 #else
-        public List<string> FailingWorkflowNames { get => _explicitNullValueFailingWorkflowNames; set { _explicitNullValueFailingWorkflowNames = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("failing_workflow_names"); else _explicitNullProperties?.Remove("failing_workflow_names"); } }
+        public List<string> FailingWorkflowNames { get => _explicitNullValueFailingWorkflowNames; set { _explicitNullValueFailingWorkflowNames = value; AdditionalData?.Remove("failing_workflow_names"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("failing_workflow_names"); else _explicitNullProperties?.Remove("failing_workflow_names"); } }
         private List<string> _explicitNullValueFailingWorkflowNames = default!;
 #endif
         /// <summary>Workflows whose latest completed run in the last 24 hours failed or timed out.</summary>
-        public int? FailingWorkflows { get => _explicitNullValueFailingWorkflows; set { _explicitNullValueFailingWorkflows = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("failing_workflows"); else _explicitNullProperties?.Remove("failing_workflows"); } }
+        public int? FailingWorkflows { get => _explicitNullValueFailingWorkflows; set { _explicitNullValueFailingWorkflows = value; AdditionalData?.Remove("failing_workflows"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("failing_workflows"); else _explicitNullProperties?.Remove("failing_workflows"); } }
         private int? _explicitNullValueFailingWorkflows = default!;
         /// <summary>Workflows with at least one completed run in the last 24 hours.</summary>
-        public int? SettledWorkflows { get => _explicitNullValueSettledWorkflows; set { _explicitNullValueSettledWorkflows = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("settled_workflows"); else _explicitNullProperties?.Remove("settled_workflows"); } }
+        public int? SettledWorkflows { get => _explicitNullValueSettledWorkflows; set { _explicitNullValueSettledWorkflows = value; AdditionalData?.Remove("settled_workflows"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("settled_workflows"); else _explicitNullProperties?.Remove("settled_workflows"); } }
         private int? _explicitNullValueSettledWorkflows = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.CurrentBranchHealth"/> and sets the default values.

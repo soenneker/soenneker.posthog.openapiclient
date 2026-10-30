@@ -17,14 +17,22 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("failed_job") is { } nullNodeFailedJob && nullNodeFailedJob.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) FailedJob = null;
-            if (parseNode.GetChildNode("first_seen") is { } nullNodeFirstSeen && nullNodeFirstSeen.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) FirstSeen = null;
-            if (parseNode.GetChildNode("last_seen") is { } nullNodeLastSeen && nullNodeLastSeen.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) LastSeen = null;
-            if (parseNode.GetChildNode("latest_ci_engine") is { } nullNodeLatestCiEngine && nullNodeLatestCiEngine.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) LatestCiEngine = null;
-            if (parseNode.GetChildNode("latest_run_id") is { } nullNodeLatestRunId && nullNodeLatestRunId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) LatestRunId = null;
-            if (parseNode.GetChildNode("repo") is { } nullNodeRepo && nullNodeRepo.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Repo = null;
-            if (parseNode.GetChildNode("run_count") is { } nullNodeRunCount && nullNodeRunCount.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) RunCount = null;
-            if (parseNode.GetChildNode("workflow_name") is { } nullNodeWorkflowName && nullNodeWorkflowName.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) WorkflowName = null;
+            if (parseNode.GetChildNode("failed_job") is null) { _explicitNullValueFailedJob = default!; _explicitNullProperties?.Remove("failed_job"); }
+            else if (parseNode.GetChildNode("failed_job") is { } nullNodeFailedJob && nullNodeFailedJob.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) FailedJob = null;
+            if (parseNode.GetChildNode("first_seen") is null) { _explicitNullValueFirstSeen = default!; _explicitNullProperties?.Remove("first_seen"); }
+            else if (parseNode.GetChildNode("first_seen") is { } nullNodeFirstSeen && nullNodeFirstSeen.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) FirstSeen = null;
+            if (parseNode.GetChildNode("last_seen") is null) { _explicitNullValueLastSeen = default!; _explicitNullProperties?.Remove("last_seen"); }
+            else if (parseNode.GetChildNode("last_seen") is { } nullNodeLastSeen && nullNodeLastSeen.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) LastSeen = null;
+            if (parseNode.GetChildNode("latest_ci_engine") is null) { _explicitNullValueLatestCiEngine = default!; _explicitNullProperties?.Remove("latest_ci_engine"); }
+            else if (parseNode.GetChildNode("latest_ci_engine") is { } nullNodeLatestCiEngine && nullNodeLatestCiEngine.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) LatestCiEngine = null;
+            if (parseNode.GetChildNode("latest_run_id") is null) { _explicitNullValueLatestRunId = default!; _explicitNullProperties?.Remove("latest_run_id"); }
+            else if (parseNode.GetChildNode("latest_run_id") is { } nullNodeLatestRunId && nullNodeLatestRunId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) LatestRunId = null;
+            if (parseNode.GetChildNode("repo") is null) { _explicitNullValueRepo = default!; _explicitNullProperties?.Remove("repo"); }
+            else if (parseNode.GetChildNode("repo") is { } nullNodeRepo && nullNodeRepo.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Repo = null;
+            if (parseNode.GetChildNode("run_count") is null) { _explicitNullValueRunCount = default!; _explicitNullProperties?.Remove("run_count"); }
+            else if (parseNode.GetChildNode("run_count") is { } nullNodeRunCount && nullNodeRunCount.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) RunCount = null;
+            if (parseNode.GetChildNode("workflow_name") is null) { _explicitNullValueWorkflowName = default!; _explicitNullProperties?.Remove("workflow_name"); }
+            else if (parseNode.GetChildNode("workflow_name") is { } nullNodeWorkflowName && nullNodeWorkflowName.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) WorkflowName = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -32,53 +40,53 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>De-sharded failing job name (matrix &apos;(G/N)&apos; suffix stripped): the group&apos;s failure signature together with the workflow. &apos;&apos; when the job-level source isn&apos;t synced and the group degrades to workflow level.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? FailedJob { get => _explicitNullValueFailedJob; set { _explicitNullValueFailedJob = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("failed_job"); else _explicitNullProperties?.Remove("failed_job"); } }
+        public string? FailedJob { get => _explicitNullValueFailedJob; set { _explicitNullValueFailedJob = value; AdditionalData?.Remove("failed_job"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("failed_job"); else _explicitNullProperties?.Remove("failed_job"); } }
         private string? _explicitNullValueFailedJob = default!;
 #nullable restore
 #else
-        public string FailedJob { get => _explicitNullValueFailedJob; set { _explicitNullValueFailedJob = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("failed_job"); else _explicitNullProperties?.Remove("failed_job"); } }
+        public string FailedJob { get => _explicitNullValueFailedJob; set { _explicitNullValueFailedJob = value; AdditionalData?.Remove("failed_job"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("failed_job"); else _explicitNullProperties?.Remove("failed_job"); } }
         private string _explicitNullValueFailedJob = default!;
 #endif
         /// <summary>When the oldest failing run in the group started.</summary>
-        public DateTimeOffset? FirstSeen { get => _explicitNullValueFirstSeen; set { _explicitNullValueFirstSeen = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("first_seen"); else _explicitNullProperties?.Remove("first_seen"); } }
+        public DateTimeOffset? FirstSeen { get => _explicitNullValueFirstSeen; set { _explicitNullValueFirstSeen = value; AdditionalData?.Remove("first_seen"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("first_seen"); else _explicitNullProperties?.Remove("first_seen"); } }
         private DateTimeOffset? _explicitNullValueFirstSeen = default!;
         /// <summary>When the newest failing run in the group started.</summary>
-        public DateTimeOffset? LastSeen { get => _explicitNullValueLastSeen; set { _explicitNullValueLastSeen = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("last_seen"); else _explicitNullProperties?.Remove("last_seen"); } }
+        public DateTimeOffset? LastSeen { get => _explicitNullValueLastSeen; set { _explicitNullValueLastSeen = value; AdditionalData?.Remove("last_seen"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("last_seen"); else _explicitNullProperties?.Remove("last_seen"); } }
         private DateTimeOffset? _explicitNullValueLastSeen = default!;
         /// <summary>CI execution engine; null when unknown.* `github_actions` - GitHub Actions* `depot_ci` - Depot CI</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.MasterFailureGroupLatestCiEngine? LatestCiEngine { get => _explicitNullValueLatestCiEngine; set { _explicitNullValueLatestCiEngine = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("latest_ci_engine"); else _explicitNullProperties?.Remove("latest_ci_engine"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.MasterFailureGroupLatestCiEngine? _explicitNullValueLatestCiEngine = default!;
+        public global::Soenneker.PostHog.OpenApiClient.Models.BrokenTestRowLatestCiEngine? LatestCiEngine { get => _explicitNullValueLatestCiEngine; set { _explicitNullValueLatestCiEngine = value; AdditionalData?.Remove("latest_ci_engine"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("latest_ci_engine"); else _explicitNullProperties?.Remove("latest_ci_engine"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.BrokenTestRowLatestCiEngine? _explicitNullValueLatestCiEngine = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.MasterFailureGroupLatestCiEngine LatestCiEngine { get => _explicitNullValueLatestCiEngine; set { _explicitNullValueLatestCiEngine = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("latest_ci_engine"); else _explicitNullProperties?.Remove("latest_ci_engine"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.MasterFailureGroupLatestCiEngine _explicitNullValueLatestCiEngine = default!;
+        public global::Soenneker.PostHog.OpenApiClient.Models.BrokenTestRowLatestCiEngine LatestCiEngine { get => _explicitNullValueLatestCiEngine; set { _explicitNullValueLatestCiEngine = value; AdditionalData?.Remove("latest_ci_engine"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("latest_ci_engine"); else _explicitNullProperties?.Remove("latest_ci_engine"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.BrokenTestRowLatestCiEngine _explicitNullValueLatestCiEngine = default!;
 #endif
         /// <summary>Run id of the newest failing run: the drill-down anchor.</summary>
-        public int? LatestRunId { get => _explicitNullValueLatestRunId; set { _explicitNullValueLatestRunId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("latest_run_id"); else _explicitNullProperties?.Remove("latest_run_id"); } }
+        public int? LatestRunId { get => _explicitNullValueLatestRunId; set { _explicitNullValueLatestRunId = value; AdditionalData?.Remove("latest_run_id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("latest_run_id"); else _explicitNullProperties?.Remove("latest_run_id"); } }
         private int? _explicitNullValueLatestRunId = default!;
         /// <summary>Repository the failures occurred in.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.MasterFailureGroupRepo? Repo { get => _explicitNullValueRepo; set { _explicitNullValueRepo = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("repo"); else _explicitNullProperties?.Remove("repo"); } }
+        public global::Soenneker.PostHog.OpenApiClient.Models.MasterFailureGroupRepo? Repo { get => _explicitNullValueRepo; set { _explicitNullValueRepo = value; AdditionalData?.Remove("repo"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("repo"); else _explicitNullProperties?.Remove("repo"); } }
         private global::Soenneker.PostHog.OpenApiClient.Models.MasterFailureGroupRepo? _explicitNullValueRepo = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.MasterFailureGroupRepo Repo { get => _explicitNullValueRepo; set { _explicitNullValueRepo = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("repo"); else _explicitNullProperties?.Remove("repo"); } }
+        public global::Soenneker.PostHog.OpenApiClient.Models.MasterFailureGroupRepo Repo { get => _explicitNullValueRepo; set { _explicitNullValueRepo = value; AdditionalData?.Remove("repo"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("repo"); else _explicitNullProperties?.Remove("repo"); } }
         private global::Soenneker.PostHog.OpenApiClient.Models.MasterFailureGroupRepo _explicitNullValueRepo = default!;
 #endif
         /// <summary>Distinct failing default-branch runs in this group within the window.</summary>
-        public int? RunCount { get => _explicitNullValueRunCount; set { _explicitNullValueRunCount = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("run_count"); else _explicitNullProperties?.Remove("run_count"); } }
+        public int? RunCount { get => _explicitNullValueRunCount; set { _explicitNullValueRunCount = value; AdditionalData?.Remove("run_count"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("run_count"); else _explicitNullProperties?.Remove("run_count"); } }
         private int? _explicitNullValueRunCount = default!;
         /// <summary>GitHub Actions workflow name the failing runs belong to.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? WorkflowName { get => _explicitNullValueWorkflowName; set { _explicitNullValueWorkflowName = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("workflow_name"); else _explicitNullProperties?.Remove("workflow_name"); } }
+        public string? WorkflowName { get => _explicitNullValueWorkflowName; set { _explicitNullValueWorkflowName = value; AdditionalData?.Remove("workflow_name"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("workflow_name"); else _explicitNullProperties?.Remove("workflow_name"); } }
         private string? _explicitNullValueWorkflowName = default!;
 #nullable restore
 #else
-        public string WorkflowName { get => _explicitNullValueWorkflowName; set { _explicitNullValueWorkflowName = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("workflow_name"); else _explicitNullProperties?.Remove("workflow_name"); } }
+        public string WorkflowName { get => _explicitNullValueWorkflowName; set { _explicitNullValueWorkflowName = value; AdditionalData?.Remove("workflow_name"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("workflow_name"); else _explicitNullProperties?.Remove("workflow_name"); } }
         private string _explicitNullValueWorkflowName = default!;
 #endif
         /// <summary>
@@ -109,7 +117,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "failed_job", n => { FailedJob = n.GetStringValue(); } },
                 { "first_seen", n => { FirstSeen = n.GetDateTimeOffsetValue(); } },
                 { "last_seen", n => { LastSeen = n.GetDateTimeOffsetValue(); } },
-                { "latest_ci_engine", n => { LatestCiEngine = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.MasterFailureGroupLatestCiEngine>(global::Soenneker.PostHog.OpenApiClient.Models.MasterFailureGroupLatestCiEngine.CreateFromDiscriminatorValue); } },
+                { "latest_ci_engine", n => { LatestCiEngine = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.BrokenTestRowLatestCiEngine>(global::Soenneker.PostHog.OpenApiClient.Models.BrokenTestRowLatestCiEngine.CreateFromDiscriminatorValue); } },
                 { "latest_run_id", n => { LatestRunId = n.GetIntValue(); } },
                 { "repo", n => { Repo = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.MasterFailureGroupRepo>(global::Soenneker.PostHog.OpenApiClient.Models.MasterFailureGroupRepo.CreateFromDiscriminatorValue); } },
                 { "run_count", n => { RunCount = n.GetIntValue(); } },
@@ -126,7 +134,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteStringValue("failed_job", FailedJob);
             writer.WriteDateTimeOffsetValue("first_seen", FirstSeen);
             writer.WriteDateTimeOffsetValue("last_seen", LastSeen);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.MasterFailureGroupLatestCiEngine>("latest_ci_engine", LatestCiEngine);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.BrokenTestRowLatestCiEngine>("latest_ci_engine", LatestCiEngine);
             writer.WriteIntValue("latest_run_id", LatestRunId);
             writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.MasterFailureGroupRepo>("repo", Repo);
             writer.WriteIntValue("run_count", RunCount);

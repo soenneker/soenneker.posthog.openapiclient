@@ -18,14 +18,22 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("assets") is { } nullNodeAssets && nullNodeAssets.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Assets = null;
-            if (parseNode.GetChildNode("canvasSdkVersion") is { } nullNodeCanvasSdkVersion && nullNodeCanvasSdkVersion.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CanvasSdkVersion = null;
-            if (parseNode.GetChildNode("capabilities") is { } nullNodeCapabilities && nullNodeCapabilities.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Capabilities = null;
-            if (parseNode.GetChildNode("component") is { } nullNodeComponent && nullNodeComponent.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Component = null;
-            if (parseNode.GetChildNode("dependencies") is { } nullNodeDependencies && nullNodeDependencies.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Dependencies = null;
-            if (parseNode.GetChildNode("entryHtml") is { } nullNodeEntryHtml && nullNodeEntryHtml.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) EntryHtml = null;
-            if (parseNode.GetChildNode("legacyCode") is { } nullNodeLegacyCode && nullNodeLegacyCode.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) LegacyCode = null;
-            if (parseNode.GetChildNode("legacyComponentPath") is { } nullNodeLegacyComponentPath && nullNodeLegacyComponentPath.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) LegacyComponentPath = null;
+            if (parseNode.GetChildNode("assets") is null) { _explicitNullValueAssets = default!; _explicitNullProperties?.Remove("assets"); }
+            else if (parseNode.GetChildNode("assets") is { } nullNodeAssets && nullNodeAssets.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Assets = null;
+            if (parseNode.GetChildNode("canvasSdkVersion") is null) { _explicitNullValueCanvasSdkVersion = default!; _explicitNullProperties?.Remove("canvasSdkVersion"); }
+            else if (parseNode.GetChildNode("canvasSdkVersion") is { } nullNodeCanvasSdkVersion && nullNodeCanvasSdkVersion.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CanvasSdkVersion = null;
+            if (parseNode.GetChildNode("capabilities") is null) { _explicitNullValueCapabilities = default!; _explicitNullProperties?.Remove("capabilities"); }
+            else if (parseNode.GetChildNode("capabilities") is { } nullNodeCapabilities && nullNodeCapabilities.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Capabilities = null;
+            if (parseNode.GetChildNode("component") is null) { _explicitNullValueComponent = default!; _explicitNullProperties?.Remove("component"); }
+            else if (parseNode.GetChildNode("component") is { } nullNodeComponent && nullNodeComponent.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Component = null;
+            if (parseNode.GetChildNode("dependencies") is null) { _explicitNullValueDependencies = default!; _explicitNullProperties?.Remove("dependencies"); }
+            else if (parseNode.GetChildNode("dependencies") is { } nullNodeDependencies && nullNodeDependencies.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Dependencies = null;
+            if (parseNode.GetChildNode("entryHtml") is null) { _explicitNullValueEntryHtml = default!; _explicitNullProperties?.Remove("entryHtml"); }
+            else if (parseNode.GetChildNode("entryHtml") is { } nullNodeEntryHtml && nullNodeEntryHtml.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) EntryHtml = null;
+            if (parseNode.GetChildNode("legacyCode") is null) { _explicitNullValueLegacyCode = default!; _explicitNullProperties?.Remove("legacyCode"); }
+            else if (parseNode.GetChildNode("legacyCode") is { } nullNodeLegacyCode && nullNodeLegacyCode.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) LegacyCode = null;
+            if (parseNode.GetChildNode("legacyComponentPath") is null) { _explicitNullValueLegacyComponentPath = default!; _explicitNullProperties?.Remove("legacyComponentPath"); }
+            else if (parseNode.GetChildNode("legacyComponentPath") is { } nullNodeLegacyComponentPath && nullNodeLegacyComponentPath.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) LegacyComponentPath = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -33,81 +41,81 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Every emitted artifact file with its content hash.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.CanvasArtifactAsset>? Assets { get => _explicitNullValueAssets; set { _explicitNullValueAssets = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("assets"); else _explicitNullProperties?.Remove("assets"); } }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.CanvasArtifactAsset>? Assets { get => _explicitNullValueAssets; set { _explicitNullValueAssets = value; AdditionalData?.Remove("assets"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("assets"); else _explicitNullProperties?.Remove("assets"); } }
         private List<global::Soenneker.PostHog.OpenApiClient.Models.CanvasArtifactAsset>? _explicitNullValueAssets = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.CanvasArtifactAsset> Assets { get => _explicitNullValueAssets; set { _explicitNullValueAssets = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("assets"); else _explicitNullProperties?.Remove("assets"); } }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.CanvasArtifactAsset> Assets { get => _explicitNullValueAssets; set { _explicitNullValueAssets = value; AdditionalData?.Remove("assets"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("assets"); else _explicitNullProperties?.Remove("assets"); } }
         private List<global::Soenneker.PostHog.OpenApiClient.Models.CanvasArtifactAsset> _explicitNullValueAssets = default!;
 #endif
         /// <summary>Version of the `ph` canvas SDK the artifact targets.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? CanvasSdkVersion { get => _explicitNullValueCanvasSdkVersion; set { _explicitNullValueCanvasSdkVersion = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("canvasSdkVersion"); else _explicitNullProperties?.Remove("canvasSdkVersion"); } }
+        public string? CanvasSdkVersion { get => _explicitNullValueCanvasSdkVersion; set { _explicitNullValueCanvasSdkVersion = value; AdditionalData?.Remove("canvasSdkVersion"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("canvasSdkVersion"); else _explicitNullProperties?.Remove("canvasSdkVersion"); } }
         private string? _explicitNullValueCanvasSdkVersion = default!;
 #nullable restore
 #else
-        public string CanvasSdkVersion { get => _explicitNullValueCanvasSdkVersion; set { _explicitNullValueCanvasSdkVersion = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("canvasSdkVersion"); else _explicitNullProperties?.Remove("canvasSdkVersion"); } }
+        public string CanvasSdkVersion { get => _explicitNullValueCanvasSdkVersion; set { _explicitNullValueCanvasSdkVersion = value; AdditionalData?.Remove("canvasSdkVersion"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("canvasSdkVersion"); else _explicitNullProperties?.Remove("canvasSdkVersion"); } }
         private string _explicitNullValueCanvasSdkVersion = default!;
 #endif
         /// <summary>Declared PostHog/network capabilities the artifact is held to at runtime.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.CanvasArtifactManifestCapabilitiesProperty? Capabilities { get => _explicitNullValueCapabilities; set { _explicitNullValueCapabilities = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("capabilities"); else _explicitNullProperties?.Remove("capabilities"); } }
+        public global::Soenneker.PostHog.OpenApiClient.Models.CanvasArtifactManifestCapabilitiesProperty? Capabilities { get => _explicitNullValueCapabilities; set { _explicitNullValueCapabilities = value; AdditionalData?.Remove("capabilities"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("capabilities"); else _explicitNullProperties?.Remove("capabilities"); } }
         private global::Soenneker.PostHog.OpenApiClient.Models.CanvasArtifactManifestCapabilitiesProperty? _explicitNullValueCapabilities = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.CanvasArtifactManifestCapabilitiesProperty Capabilities { get => _explicitNullValueCapabilities; set { _explicitNullValueCapabilities = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("capabilities"); else _explicitNullProperties?.Remove("capabilities"); } }
+        public global::Soenneker.PostHog.OpenApiClient.Models.CanvasArtifactManifestCapabilitiesProperty Capabilities { get => _explicitNullValueCapabilities; set { _explicitNullValueCapabilities = value; AdditionalData?.Remove("capabilities"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("capabilities"); else _explicitNullProperties?.Remove("capabilities"); } }
         private global::Soenneker.PostHog.OpenApiClient.Models.CanvasArtifactManifestCapabilitiesProperty _explicitNullValueCapabilities = default!;
 #endif
         /// <summary>For component artifacts: the placement contract (size, configSchema) frozen into the build.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.CanvasArtifactManifestComponentProperty? Component { get => _explicitNullValueComponent; set { _explicitNullValueComponent = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("component"); else _explicitNullProperties?.Remove("component"); } }
+        public global::Soenneker.PostHog.OpenApiClient.Models.CanvasArtifactManifestComponentProperty? Component { get => _explicitNullValueComponent; set { _explicitNullValueComponent = value; AdditionalData?.Remove("component"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("component"); else _explicitNullProperties?.Remove("component"); } }
         private global::Soenneker.PostHog.OpenApiClient.Models.CanvasArtifactManifestComponentProperty? _explicitNullValueComponent = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.CanvasArtifactManifestComponentProperty Component { get => _explicitNullValueComponent; set { _explicitNullValueComponent = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("component"); else _explicitNullProperties?.Remove("component"); } }
+        public global::Soenneker.PostHog.OpenApiClient.Models.CanvasArtifactManifestComponentProperty Component { get => _explicitNullValueComponent; set { _explicitNullValueComponent = value; AdditionalData?.Remove("component"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("component"); else _explicitNullProperties?.Remove("component"); } }
         private global::Soenneker.PostHog.OpenApiClient.Models.CanvasArtifactManifestComponentProperty _explicitNullValueComponent = default!;
 #endif
         /// <summary>Exact dependency versions the artifact was built against.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.CanvasArtifactManifestDependenciesProperty? Dependencies { get => _explicitNullValueDependencies; set { _explicitNullValueDependencies = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("dependencies"); else _explicitNullProperties?.Remove("dependencies"); } }
+        public global::Soenneker.PostHog.OpenApiClient.Models.CanvasArtifactManifestDependenciesProperty? Dependencies { get => _explicitNullValueDependencies; set { _explicitNullValueDependencies = value; AdditionalData?.Remove("dependencies"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("dependencies"); else _explicitNullProperties?.Remove("dependencies"); } }
         private global::Soenneker.PostHog.OpenApiClient.Models.CanvasArtifactManifestDependenciesProperty? _explicitNullValueDependencies = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.CanvasArtifactManifestDependenciesProperty Dependencies { get => _explicitNullValueDependencies; set { _explicitNullValueDependencies = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("dependencies"); else _explicitNullProperties?.Remove("dependencies"); } }
+        public global::Soenneker.PostHog.OpenApiClient.Models.CanvasArtifactManifestDependenciesProperty Dependencies { get => _explicitNullValueDependencies; set { _explicitNullValueDependencies = value; AdditionalData?.Remove("dependencies"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("dependencies"); else _explicitNullProperties?.Remove("dependencies"); } }
         private global::Soenneker.PostHog.OpenApiClient.Models.CanvasArtifactManifestDependenciesProperty _explicitNullValueDependencies = default!;
 #endif
         /// <summary>The artifact&apos;s entry HTML file.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? EntryHtml { get => _explicitNullValueEntryHtml; set { _explicitNullValueEntryHtml = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("entryHtml"); else _explicitNullProperties?.Remove("entryHtml"); } }
+        public string? EntryHtml { get => _explicitNullValueEntryHtml; set { _explicitNullValueEntryHtml = value; AdditionalData?.Remove("entryHtml"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("entryHtml"); else _explicitNullProperties?.Remove("entryHtml"); } }
         private string? _explicitNullValueEntryHtml = default!;
 #nullable restore
 #else
-        public string EntryHtml { get => _explicitNullValueEntryHtml; set { _explicitNullValueEntryHtml = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("entryHtml"); else _explicitNullProperties?.Remove("entryHtml"); } }
+        public string EntryHtml { get => _explicitNullValueEntryHtml; set { _explicitNullValueEntryHtml = value; AdditionalData?.Remove("entryHtml"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("entryHtml"); else _explicitNullProperties?.Remove("entryHtml"); } }
         private string _explicitNullValueEntryHtml = default!;
 #endif
         /// <summary>The runtime-mounted component source, for legacy-tier artifacts.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? LegacyCode { get => _explicitNullValueLegacyCode; set { _explicitNullValueLegacyCode = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("legacyCode"); else _explicitNullProperties?.Remove("legacyCode"); } }
+        public string? LegacyCode { get => _explicitNullValueLegacyCode; set { _explicitNullValueLegacyCode = value; AdditionalData?.Remove("legacyCode"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("legacyCode"); else _explicitNullProperties?.Remove("legacyCode"); } }
         private string? _explicitNullValueLegacyCode = default!;
 #nullable restore
 #else
-        public string LegacyCode { get => _explicitNullValueLegacyCode; set { _explicitNullValueLegacyCode = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("legacyCode"); else _explicitNullProperties?.Remove("legacyCode"); } }
+        public string LegacyCode { get => _explicitNullValueLegacyCode; set { _explicitNullValueLegacyCode = value; AdditionalData?.Remove("legacyCode"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("legacyCode"); else _explicitNullProperties?.Remove("legacyCode"); } }
         private string _explicitNullValueLegacyCode = default!;
 #endif
         /// <summary>Path of the runtime-mounted React component, for legacy-tier artifacts.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? LegacyComponentPath { get => _explicitNullValueLegacyComponentPath; set { _explicitNullValueLegacyComponentPath = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("legacyComponentPath"); else _explicitNullProperties?.Remove("legacyComponentPath"); } }
+        public string? LegacyComponentPath { get => _explicitNullValueLegacyComponentPath; set { _explicitNullValueLegacyComponentPath = value; AdditionalData?.Remove("legacyComponentPath"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("legacyComponentPath"); else _explicitNullProperties?.Remove("legacyComponentPath"); } }
         private string? _explicitNullValueLegacyComponentPath = default!;
 #nullable restore
 #else
-        public string LegacyComponentPath { get => _explicitNullValueLegacyComponentPath; set { _explicitNullValueLegacyComponentPath = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("legacyComponentPath"); else _explicitNullProperties?.Remove("legacyComponentPath"); } }
+        public string LegacyComponentPath { get => _explicitNullValueLegacyComponentPath; set { _explicitNullValueLegacyComponentPath = value; AdditionalData?.Remove("legacyComponentPath"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("legacyComponentPath"); else _explicitNullProperties?.Remove("legacyComponentPath"); } }
         private string _explicitNullValueLegacyComponentPath = default!;
 #endif
         /// <summary>

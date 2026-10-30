@@ -17,17 +17,19 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("bucket_start") is { } nullNodeBucketStart && nullNodeBucketStart.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) BucketStart = null;
-            if (parseNode.GetChildNode("deployment_count") is { } nullNodeDeploymentCount && nullNodeDeploymentCount.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) DeploymentCount = null;
+            if (parseNode.GetChildNode("bucket_start") is null) { _explicitNullValueBucketStart = default!; _explicitNullProperties?.Remove("bucket_start"); }
+            else if (parseNode.GetChildNode("bucket_start") is { } nullNodeBucketStart && nullNodeBucketStart.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) BucketStart = null;
+            if (parseNode.GetChildNode("deployment_count") is null) { _explicitNullValueDeploymentCount = default!; _explicitNullProperties?.Remove("deployment_count"); }
+            else if (parseNode.GetChildNode("deployment_count") is { } nullNodeDeploymentCount && nullNodeDeploymentCount.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) DeploymentCount = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Bucket start, aligned to series_granularity (top of hour, midnight, or Monday).</summary>
-        public DateTimeOffset? BucketStart { get => _explicitNullValueBucketStart; set { _explicitNullValueBucketStart = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("bucket_start"); else _explicitNullProperties?.Remove("bucket_start"); } }
+        public DateTimeOffset? BucketStart { get => _explicitNullValueBucketStart; set { _explicitNullValueBucketStart = value; AdditionalData?.Remove("bucket_start"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("bucket_start"); else _explicitNullProperties?.Remove("bucket_start"); } }
         private DateTimeOffset? _explicitNullValueBucketStart = default!;
         /// <summary>Deployments whose first success status landed in this bucket, within the environment scope. Zero-filled: 0 means nothing shipped.</summary>
-        public int? DeploymentCount { get => _explicitNullValueDeploymentCount; set { _explicitNullValueDeploymentCount = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("deployment_count"); else _explicitNullProperties?.Remove("deployment_count"); } }
+        public int? DeploymentCount { get => _explicitNullValueDeploymentCount; set { _explicitNullValueDeploymentCount = value; AdditionalData?.Remove("deployment_count"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("deployment_count"); else _explicitNullProperties?.Remove("deployment_count"); } }
         private int? _explicitNullValueDeploymentCount = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.DeploymentFrequencyBucket"/> and sets the default values.

@@ -18,10 +18,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("flow_diagram") is { } nullNodeFlowDiagram && nullNodeFlowDiagram.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) FlowDiagram = null;
-            if (parseNode.GetChildNode("interesting_notes") is { } nullNodeInterestingNotes && nullNodeInterestingNotes.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) InterestingNotes = null;
-            if (parseNode.GetChildNode("summary_bullets") is { } nullNodeSummaryBullets && nullNodeSummaryBullets.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SummaryBullets = null;
-            if (parseNode.GetChildNode("title") is { } nullNodeTitle && nullNodeTitle.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Title = null;
+            if (parseNode.GetChildNode("flow_diagram") is null) { _explicitNullValueFlowDiagram = default!; _explicitNullProperties?.Remove("flow_diagram"); }
+            else if (parseNode.GetChildNode("flow_diagram") is { } nullNodeFlowDiagram && nullNodeFlowDiagram.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) FlowDiagram = null;
+            if (parseNode.GetChildNode("interesting_notes") is null) { _explicitNullValueInterestingNotes = default!; _explicitNullProperties?.Remove("interesting_notes"); }
+            else if (parseNode.GetChildNode("interesting_notes") is { } nullNodeInterestingNotes && nullNodeInterestingNotes.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) InterestingNotes = null;
+            if (parseNode.GetChildNode("summary_bullets") is null) { _explicitNullValueSummaryBullets = default!; _explicitNullProperties?.Remove("summary_bullets"); }
+            else if (parseNode.GetChildNode("summary_bullets") is { } nullNodeSummaryBullets && nullNodeSummaryBullets.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SummaryBullets = null;
+            if (parseNode.GetChildNode("title") is null) { _explicitNullValueTitle = default!; _explicitNullProperties?.Remove("title"); }
+            else if (parseNode.GetChildNode("title") is { } nullNodeTitle && nullNodeTitle.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Title = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -29,41 +33,41 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Mermaid flowchart code showing the main flow</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? FlowDiagram { get => _explicitNullValueFlowDiagram; set { _explicitNullValueFlowDiagram = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("flow_diagram"); else _explicitNullProperties?.Remove("flow_diagram"); } }
+        public string? FlowDiagram { get => _explicitNullValueFlowDiagram; set { _explicitNullValueFlowDiagram = value; AdditionalData?.Remove("flow_diagram"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("flow_diagram"); else _explicitNullProperties?.Remove("flow_diagram"); } }
         private string? _explicitNullValueFlowDiagram = default!;
 #nullable restore
 #else
-        public string FlowDiagram { get => _explicitNullValueFlowDiagram; set { _explicitNullValueFlowDiagram = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("flow_diagram"); else _explicitNullProperties?.Remove("flow_diagram"); } }
+        public string FlowDiagram { get => _explicitNullValueFlowDiagram; set { _explicitNullValueFlowDiagram = value; AdditionalData?.Remove("flow_diagram"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("flow_diagram"); else _explicitNullProperties?.Remove("flow_diagram"); } }
         private string _explicitNullValueFlowDiagram = default!;
 #endif
         /// <summary>Interesting notes (0-2 for minimal, more for detailed)</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.InterestingNote>? InterestingNotes { get => _explicitNullValueInterestingNotes; set { _explicitNullValueInterestingNotes = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("interesting_notes"); else _explicitNullProperties?.Remove("interesting_notes"); } }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.InterestingNote>? InterestingNotes { get => _explicitNullValueInterestingNotes; set { _explicitNullValueInterestingNotes = value; AdditionalData?.Remove("interesting_notes"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("interesting_notes"); else _explicitNullProperties?.Remove("interesting_notes"); } }
         private List<global::Soenneker.PostHog.OpenApiClient.Models.InterestingNote>? _explicitNullValueInterestingNotes = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.InterestingNote> InterestingNotes { get => _explicitNullValueInterestingNotes; set { _explicitNullValueInterestingNotes = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("interesting_notes"); else _explicitNullProperties?.Remove("interesting_notes"); } }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.InterestingNote> InterestingNotes { get => _explicitNullValueInterestingNotes; set { _explicitNullValueInterestingNotes = value; AdditionalData?.Remove("interesting_notes"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("interesting_notes"); else _explicitNullProperties?.Remove("interesting_notes"); } }
         private List<global::Soenneker.PostHog.OpenApiClient.Models.InterestingNote> _explicitNullValueInterestingNotes = default!;
 #endif
         /// <summary>Main summary bullets</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.SummaryBullet>? SummaryBullets { get => _explicitNullValueSummaryBullets; set { _explicitNullValueSummaryBullets = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("summary_bullets"); else _explicitNullProperties?.Remove("summary_bullets"); } }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.SummaryBullet>? SummaryBullets { get => _explicitNullValueSummaryBullets; set { _explicitNullValueSummaryBullets = value; AdditionalData?.Remove("summary_bullets"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("summary_bullets"); else _explicitNullProperties?.Remove("summary_bullets"); } }
         private List<global::Soenneker.PostHog.OpenApiClient.Models.SummaryBullet>? _explicitNullValueSummaryBullets = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.SummaryBullet> SummaryBullets { get => _explicitNullValueSummaryBullets; set { _explicitNullValueSummaryBullets = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("summary_bullets"); else _explicitNullProperties?.Remove("summary_bullets"); } }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.SummaryBullet> SummaryBullets { get => _explicitNullValueSummaryBullets; set { _explicitNullValueSummaryBullets = value; AdditionalData?.Remove("summary_bullets"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("summary_bullets"); else _explicitNullProperties?.Remove("summary_bullets"); } }
         private List<global::Soenneker.PostHog.OpenApiClient.Models.SummaryBullet> _explicitNullValueSummaryBullets = default!;
 #endif
         /// <summary>Concise title (no longer than 10 words) summarizing the trace/event</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Title { get => _explicitNullValueTitle; set { _explicitNullValueTitle = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("title"); else _explicitNullProperties?.Remove("title"); } }
+        public string? Title { get => _explicitNullValueTitle; set { _explicitNullValueTitle = value; AdditionalData?.Remove("title"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("title"); else _explicitNullProperties?.Remove("title"); } }
         private string? _explicitNullValueTitle = default!;
 #nullable restore
 #else
-        public string Title { get => _explicitNullValueTitle; set { _explicitNullValueTitle = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("title"); else _explicitNullProperties?.Remove("title"); } }
+        public string Title { get => _explicitNullValueTitle; set { _explicitNullValueTitle = value; AdditionalData?.Remove("title"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("title"); else _explicitNullProperties?.Remove("title"); } }
         private string _explicitNullValueTitle = default!;
 #endif
         /// <summary>

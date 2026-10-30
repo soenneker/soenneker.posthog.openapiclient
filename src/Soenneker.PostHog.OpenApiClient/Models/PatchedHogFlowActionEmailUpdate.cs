@@ -17,34 +17,37 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("base_updated_at") is { } nullNodeBaseUpdatedAt && nullNodeBaseUpdatedAt.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) BaseUpdatedAt = null;
-            if (parseNode.GetChildNode("email_patch") is { } nullNodeEmailPatch && nullNodeEmailPatch.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) EmailPatch = null;
-            if (parseNode.GetChildNode("operations") is { } nullNodeOperations && nullNodeOperations.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Operations = null;
+            if (parseNode.GetChildNode("base_updated_at") is null) { _explicitNullValueBaseUpdatedAt = default!; _explicitNullProperties?.Remove("base_updated_at"); }
+            else if (parseNode.GetChildNode("base_updated_at") is { } nullNodeBaseUpdatedAt && nullNodeBaseUpdatedAt.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) BaseUpdatedAt = null;
+            if (parseNode.GetChildNode("email_patch") is null) { _explicitNullValueEmailPatch = default!; _explicitNullProperties?.Remove("email_patch"); }
+            else if (parseNode.GetChildNode("email_patch") is { } nullNodeEmailPatch && nullNodeEmailPatch.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) EmailPatch = null;
+            if (parseNode.GetChildNode("operations") is null) { _explicitNullValueOperations = default!; _explicitNullProperties?.Remove("operations"); }
+            else if (parseNode.GetChildNode("operations") is { } nullNodeOperations && nullNodeOperations.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Operations = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Optimistic concurrency: the updated_at (or draft_updated_at) last loaded. If the stored workflow is newer, the patch is rejected with 409 instead of clobbering a concurrent edit.</summary>
-        public DateTimeOffset? BaseUpdatedAt { get => _explicitNullValueBaseUpdatedAt; set { _explicitNullValueBaseUpdatedAt = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("base_updated_at"); else _explicitNullProperties?.Remove("base_updated_at"); } }
+        public DateTimeOffset? BaseUpdatedAt { get => _explicitNullValueBaseUpdatedAt; set { _explicitNullValueBaseUpdatedAt = value; AdditionalData?.Remove("base_updated_at"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("base_updated_at"); else _explicitNullProperties?.Remove("base_updated_at"); } }
         private DateTimeOffset? _explicitNullValueBaseUpdatedAt = default!;
         /// <summary>Partial email fields deep-merged into the step&apos;s email (a null leaf deletes the key): subject, preheader, text, to, from, replyTo, cc, bcc. The sender is from: {integrationId, email?, name?}, where email and name are optional templated overrides resolved per invocation; the address must resolve to the selected sender&apos;s verified domain or the send fails. The design is edited via operations, and html is always re-rendered from it.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public UntypedNode? EmailPatch { get => _explicitNullValueEmailPatch; set { _explicitNullValueEmailPatch = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("email_patch"); else _explicitNullProperties?.Remove("email_patch"); } }
+        public UntypedNode? EmailPatch { get => _explicitNullValueEmailPatch; set { _explicitNullValueEmailPatch = value; AdditionalData?.Remove("email_patch"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("email_patch"); else _explicitNullProperties?.Remove("email_patch"); } }
         private UntypedNode? _explicitNullValueEmailPatch = default!;
 #nullable restore
 #else
-        public UntypedNode EmailPatch { get => _explicitNullValueEmailPatch; set { _explicitNullValueEmailPatch = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("email_patch"); else _explicitNullProperties?.Remove("email_patch"); } }
+        public UntypedNode EmailPatch { get => _explicitNullValueEmailPatch; set { _explicitNullValueEmailPatch = value; AdditionalData?.Remove("email_patch"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("email_patch"); else _explicitNullProperties?.Remove("email_patch"); } }
         private UntypedNode _explicitNullValueEmailPatch = default!;
 #endif
         /// <summary>Ordered design edits applied atomically to this step&apos;s email design - the same operations as the email template patch. The result is re-rendered to HTML server-side, so the sent email always matches the patched design.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.DesignOperation>? Operations { get => _explicitNullValueOperations; set { _explicitNullValueOperations = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("operations"); else _explicitNullProperties?.Remove("operations"); } }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.DesignOperation>? Operations { get => _explicitNullValueOperations; set { _explicitNullValueOperations = value; AdditionalData?.Remove("operations"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("operations"); else _explicitNullProperties?.Remove("operations"); } }
         private List<global::Soenneker.PostHog.OpenApiClient.Models.DesignOperation>? _explicitNullValueOperations = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.DesignOperation> Operations { get => _explicitNullValueOperations; set { _explicitNullValueOperations = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("operations"); else _explicitNullProperties?.Remove("operations"); } }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.DesignOperation> Operations { get => _explicitNullValueOperations; set { _explicitNullValueOperations = value; AdditionalData?.Remove("operations"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("operations"); else _explicitNullProperties?.Remove("operations"); } }
         private List<global::Soenneker.PostHog.OpenApiClient.Models.DesignOperation> _explicitNullValueOperations = default!;
 #endif
         /// <summary>

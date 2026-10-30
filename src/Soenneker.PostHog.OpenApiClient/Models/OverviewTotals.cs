@@ -17,45 +17,49 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("graded") is { } nullNodeGraded && nullNodeGraded.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Graded = null;
-            if (parseNode.GetChildNode("gradedComparison") is { } nullNodeGradedComparison && nullNodeGradedComparison.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) GradedComparison = null;
-            if (parseNode.GetChildNode("gradedTrend") is { } nullNodeGradedTrend && nullNodeGradedTrend.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) GradedTrend = null;
-            if (parseNode.GetChildNode("sentiment") is { } nullNodeSentiment && nullNodeSentiment.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Sentiment = null;
+            if (parseNode.GetChildNode("graded") is null) { _explicitNullValueGraded = default!; _explicitNullProperties?.Remove("graded"); }
+            else if (parseNode.GetChildNode("graded") is { } nullNodeGraded && nullNodeGraded.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Graded = null;
+            if (parseNode.GetChildNode("gradedComparison") is null) { _explicitNullValueGradedComparison = default!; _explicitNullProperties?.Remove("gradedComparison"); }
+            else if (parseNode.GetChildNode("gradedComparison") is { } nullNodeGradedComparison && nullNodeGradedComparison.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) GradedComparison = null;
+            if (parseNode.GetChildNode("gradedTrend") is null) { _explicitNullValueGradedTrend = default!; _explicitNullProperties?.Remove("gradedTrend"); }
+            else if (parseNode.GetChildNode("gradedTrend") is { } nullNodeGradedTrend && nullNodeGradedTrend.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) GradedTrend = null;
+            if (parseNode.GetChildNode("sentiment") is null) { _explicitNullValueSentiment = default!; _explicitNullProperties?.Remove("sentiment"); }
+            else if (parseNode.GetChildNode("sentiment") is { } nullNodeSentiment && nullNodeSentiment.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Sentiment = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The graded property</summary>
-        public int? Graded { get => _explicitNullValueGraded; set { _explicitNullValueGraded = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("graded"); else _explicitNullProperties?.Remove("graded"); } }
+        public int? Graded { get => _explicitNullValueGraded; set { _explicitNullValueGraded = value; AdditionalData?.Remove("graded"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("graded"); else _explicitNullProperties?.Remove("graded"); } }
         private int? _explicitNullValueGraded = default!;
         /// <summary>Graded runs in each period, over evaluations with results in both. Null when none has.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.PeriodComparison? GradedComparison { get => _explicitNullValueGradedComparison; set { _explicitNullValueGradedComparison = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("gradedComparison"); else _explicitNullProperties?.Remove("gradedComparison"); } }
+        public global::Soenneker.PostHog.OpenApiClient.Models.PeriodComparison? GradedComparison { get => _explicitNullValueGradedComparison; set { _explicitNullValueGradedComparison = value; AdditionalData?.Remove("gradedComparison"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("gradedComparison"); else _explicitNullProperties?.Remove("gradedComparison"); } }
         private global::Soenneker.PostHog.OpenApiClient.Models.PeriodComparison? _explicitNullValueGradedComparison = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.PeriodComparison GradedComparison { get => _explicitNullValueGradedComparison; set { _explicitNullValueGradedComparison = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("gradedComparison"); else _explicitNullProperties?.Remove("gradedComparison"); } }
+        public global::Soenneker.PostHog.OpenApiClient.Models.PeriodComparison GradedComparison { get => _explicitNullValueGradedComparison; set { _explicitNullValueGradedComparison = value; AdditionalData?.Remove("gradedComparison"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("gradedComparison"); else _explicitNullProperties?.Remove("gradedComparison"); } }
         private global::Soenneker.PostHog.OpenApiClient.Models.PeriodComparison _explicitNullValueGradedComparison = default!;
 #endif
         /// <summary>The gradedTrend property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<int?>? GradedTrend { get => _explicitNullValueGradedTrend; set { _explicitNullValueGradedTrend = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("gradedTrend"); else _explicitNullProperties?.Remove("gradedTrend"); } }
+        public List<int?>? GradedTrend { get => _explicitNullValueGradedTrend; set { _explicitNullValueGradedTrend = value; AdditionalData?.Remove("gradedTrend"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("gradedTrend"); else _explicitNullProperties?.Remove("gradedTrend"); } }
         private List<int?>? _explicitNullValueGradedTrend = default!;
 #nullable restore
 #else
-        public List<int?> GradedTrend { get => _explicitNullValueGradedTrend; set { _explicitNullValueGradedTrend = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("gradedTrend"); else _explicitNullProperties?.Remove("gradedTrend"); } }
+        public List<int?> GradedTrend { get => _explicitNullValueGradedTrend; set { _explicitNullValueGradedTrend = value; AdditionalData?.Remove("gradedTrend"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("gradedTrend"); else _explicitNullProperties?.Remove("gradedTrend"); } }
         private List<int?> _explicitNullValueGradedTrend = default!;
 #endif
         /// <summary>The sentiment property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.OverviewSentiment? Sentiment { get => _explicitNullValueSentiment; set { _explicitNullValueSentiment = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("sentiment"); else _explicitNullProperties?.Remove("sentiment"); } }
+        public global::Soenneker.PostHog.OpenApiClient.Models.OverviewSentiment? Sentiment { get => _explicitNullValueSentiment; set { _explicitNullValueSentiment = value; AdditionalData?.Remove("sentiment"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("sentiment"); else _explicitNullProperties?.Remove("sentiment"); } }
         private global::Soenneker.PostHog.OpenApiClient.Models.OverviewSentiment? _explicitNullValueSentiment = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.OverviewSentiment Sentiment { get => _explicitNullValueSentiment; set { _explicitNullValueSentiment = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("sentiment"); else _explicitNullProperties?.Remove("sentiment"); } }
+        public global::Soenneker.PostHog.OpenApiClient.Models.OverviewSentiment Sentiment { get => _explicitNullValueSentiment; set { _explicitNullValueSentiment = value; AdditionalData?.Remove("sentiment"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("sentiment"); else _explicitNullProperties?.Remove("sentiment"); } }
         private global::Soenneker.PostHog.OpenApiClient.Models.OverviewSentiment _explicitNullValueSentiment = default!;
 #endif
         /// <summary>

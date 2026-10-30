@@ -17,17 +17,19 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("evidence_id") is { } nullNodeEvidenceId && nullNodeEvidenceId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) EvidenceId = null;
-            if (parseNode.GetChildNode("expected_version") is { } nullNodeExpectedVersion && nullNodeExpectedVersion.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ExpectedVersion = null;
+            if (parseNode.GetChildNode("evidence_id") is null) { _explicitNullValueEvidenceId = default!; _explicitNullProperties?.Remove("evidence_id"); }
+            else if (parseNode.GetChildNode("evidence_id") is { } nullNodeEvidenceId && nullNodeEvidenceId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) EvidenceId = null;
+            if (parseNode.GetChildNode("expected_version") is null) { _explicitNullValueExpectedVersion = default!; _explicitNullProperties?.Remove("expected_version"); }
+            else if (parseNode.GetChildNode("expected_version") is { } nullNodeExpectedVersion && nullNodeExpectedVersion.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ExpectedVersion = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Evidence item to delete.</summary>
-        public Guid? EvidenceId { get => _explicitNullValueEvidenceId; set { _explicitNullValueEvidenceId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("evidence_id"); else _explicitNullProperties?.Remove("evidence_id"); } }
+        public Guid? EvidenceId { get => _explicitNullValueEvidenceId; set { _explicitNullValueEvidenceId = value; AdditionalData?.Remove("evidence_id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("evidence_id"); else _explicitNullProperties?.Remove("evidence_id"); } }
         private Guid? _explicitNullValueEvidenceId = default!;
         /// <summary>Request version loaded by the editor. Stale versions return 409 Conflict.</summary>
-        public int? ExpectedVersion { get => _explicitNullValueExpectedVersion; set { _explicitNullValueExpectedVersion = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("expected_version"); else _explicitNullProperties?.Remove("expected_version"); } }
+        public int? ExpectedVersion { get => _explicitNullValueExpectedVersion; set { _explicitNullValueExpectedVersion = value; AdditionalData?.Remove("expected_version"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("expected_version"); else _explicitNullProperties?.Remove("expected_version"); } }
         private int? _explicitNullValueExpectedVersion = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.FeatureRequestEvidenceDelete"/> and sets the default values.

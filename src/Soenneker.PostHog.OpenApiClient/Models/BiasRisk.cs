@@ -17,7 +17,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("multiple_variant_percentage") is { } nullNodeMultipleVariantPercentage && nullNodeMultipleVariantPercentage.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MultipleVariantPercentage = null;
+            if (parseNode.GetChildNode("multiple_variant_percentage") is null) { _explicitNullValueMultipleVariantPercentage = default!; _explicitNullProperties?.Remove("multiple_variant_percentage"); }
+            else if (parseNode.GetChildNode("multiple_variant_percentage") is { } nullNodeMultipleVariantPercentage && nullNodeMultipleVariantPercentage.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MultipleVariantPercentage = null;
         }
 
         /// <summary>Observed share of users assigned to `$multiple`, as a percentage (0-100).</summary>

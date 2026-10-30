@@ -17,27 +17,30 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("refresh_bytes_per_month") is { } nullNodeRefreshBytesPerMonth && nullNodeRefreshBytesPerMonth.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) RefreshBytesPerMonth = null;
-            if (parseNode.GetChildNode("refresh_seconds_per_month") is { } nullNodeRefreshSecondsPerMonth && nullNodeRefreshSecondsPerMonth.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) RefreshSecondsPerMonth = null;
-            if (parseNode.GetChildNode("subject_name") is { } nullNodeSubjectName && nullNodeSubjectName.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SubjectName = null;
+            if (parseNode.GetChildNode("refresh_bytes_per_month") is null) { _explicitNullValueRefreshBytesPerMonth = default!; _explicitNullProperties?.Remove("refresh_bytes_per_month"); }
+            else if (parseNode.GetChildNode("refresh_bytes_per_month") is { } nullNodeRefreshBytesPerMonth && nullNodeRefreshBytesPerMonth.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) RefreshBytesPerMonth = null;
+            if (parseNode.GetChildNode("refresh_seconds_per_month") is null) { _explicitNullValueRefreshSecondsPerMonth = default!; _explicitNullProperties?.Remove("refresh_seconds_per_month"); }
+            else if (parseNode.GetChildNode("refresh_seconds_per_month") is { } nullNodeRefreshSecondsPerMonth && nullNodeRefreshSecondsPerMonth.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) RefreshSecondsPerMonth = null;
+            if (parseNode.GetChildNode("subject_name") is null) { _explicitNullValueSubjectName = default!; _explicitNullProperties?.Remove("subject_name"); }
+            else if (parseNode.GetChildNode("subject_name") is { } nullNodeSubjectName && nullNodeSubjectName.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SubjectName = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Bytes its refreshes read in a month.</summary>
-        public double? RefreshBytesPerMonth { get => _explicitNullValueRefreshBytesPerMonth; set { _explicitNullValueRefreshBytesPerMonth = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("refresh_bytes_per_month"); else _explicitNullProperties?.Remove("refresh_bytes_per_month"); } }
+        public double? RefreshBytesPerMonth { get => _explicitNullValueRefreshBytesPerMonth; set { _explicitNullValueRefreshBytesPerMonth = value; AdditionalData?.Remove("refresh_bytes_per_month"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("refresh_bytes_per_month"); else _explicitNullProperties?.Remove("refresh_bytes_per_month"); } }
         private double? _explicitNullValueRefreshBytesPerMonth = default!;
         /// <summary>Time its refreshes take in a month, in seconds.</summary>
-        public double? RefreshSecondsPerMonth { get => _explicitNullValueRefreshSecondsPerMonth; set { _explicitNullValueRefreshSecondsPerMonth = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("refresh_seconds_per_month"); else _explicitNullProperties?.Remove("refresh_seconds_per_month"); } }
+        public double? RefreshSecondsPerMonth { get => _explicitNullValueRefreshSecondsPerMonth; set { _explicitNullValueRefreshSecondsPerMonth = value; AdditionalData?.Remove("refresh_seconds_per_month"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("refresh_seconds_per_month"); else _explicitNullProperties?.Remove("refresh_seconds_per_month"); } }
         private double? _explicitNullValueRefreshSecondsPerMonth = default!;
         /// <summary>Name of the unread view to deprecate.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? SubjectName { get => _explicitNullValueSubjectName; set { _explicitNullValueSubjectName = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("subject_name"); else _explicitNullProperties?.Remove("subject_name"); } }
+        public string? SubjectName { get => _explicitNullValueSubjectName; set { _explicitNullValueSubjectName = value; AdditionalData?.Remove("subject_name"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("subject_name"); else _explicitNullProperties?.Remove("subject_name"); } }
         private string? _explicitNullValueSubjectName = default!;
 #nullable restore
 #else
-        public string SubjectName { get => _explicitNullValueSubjectName; set { _explicitNullValueSubjectName = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("subject_name"); else _explicitNullProperties?.Remove("subject_name"); } }
+        public string SubjectName { get => _explicitNullValueSubjectName; set { _explicitNullValueSubjectName = value; AdditionalData?.Remove("subject_name"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("subject_name"); else _explicitNullProperties?.Remove("subject_name"); } }
         private string _explicitNullValueSubjectName = default!;
 #endif
         /// <summary>

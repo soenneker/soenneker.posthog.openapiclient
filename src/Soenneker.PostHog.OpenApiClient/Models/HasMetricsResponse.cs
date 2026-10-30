@@ -17,13 +17,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("hasMetrics") is { } nullNodeHasMetrics && nullNodeHasMetrics.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) HasMetrics = null;
+            if (parseNode.GetChildNode("hasMetrics") is null) { _explicitNullValueHasMetrics = default!; _explicitNullProperties?.Remove("hasMetrics"); }
+            else if (parseNode.GetChildNode("hasMetrics") is { } nullNodeHasMetrics && nullNodeHasMetrics.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) HasMetrics = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Whether the team has ingested any metrics.</summary>
-        public bool? HasMetrics { get => _explicitNullValueHasMetrics; set { _explicitNullValueHasMetrics = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("hasMetrics"); else _explicitNullProperties?.Remove("hasMetrics"); } }
+        public bool? HasMetrics { get => _explicitNullValueHasMetrics; set { _explicitNullValueHasMetrics = value; AdditionalData?.Remove("hasMetrics"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("hasMetrics"); else _explicitNullProperties?.Remove("hasMetrics"); } }
         private bool? _explicitNullValueHasMetrics = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.HasMetricsResponse"/> and sets the default values.

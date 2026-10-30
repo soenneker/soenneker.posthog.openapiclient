@@ -18,8 +18,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("sm") is { } nullNodeSm && nullNodeSm.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Sm = null;
-            if (parseNode.GetChildNode("xs") is { } nullNodeXs && nullNodeXs.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Xs = null;
+            if (parseNode.GetChildNode("sm") is null) { _explicitNullValueSm = default!; _explicitNullProperties?.Remove("sm"); }
+            else if (parseNode.GetChildNode("sm") is { } nullNodeSm && nullNodeSm.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Sm = null;
+            if (parseNode.GetChildNode("xs") is null) { _explicitNullValueXs = default!; _explicitNullProperties?.Remove("xs"); }
+            else if (parseNode.GetChildNode("xs") is { } nullNodeXs && nullNodeXs.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Xs = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -27,21 +29,21 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Layout for the standard (desktop) breakpoint. The grid is 12 columns wide.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.TileLayoutsOpenApiSm? Sm { get => _explicitNullValueSm; set { _explicitNullValueSm = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("sm"); else _explicitNullProperties?.Remove("sm"); } }
+        public global::Soenneker.PostHog.OpenApiClient.Models.TileLayoutsOpenApiSm? Sm { get => _explicitNullValueSm; set { _explicitNullValueSm = value; AdditionalData?.Remove("sm"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("sm"); else _explicitNullProperties?.Remove("sm"); } }
         private global::Soenneker.PostHog.OpenApiClient.Models.TileLayoutsOpenApiSm? _explicitNullValueSm = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.TileLayoutsOpenApiSm Sm { get => _explicitNullValueSm; set { _explicitNullValueSm = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("sm"); else _explicitNullProperties?.Remove("sm"); } }
+        public global::Soenneker.PostHog.OpenApiClient.Models.TileLayoutsOpenApiSm Sm { get => _explicitNullValueSm; set { _explicitNullValueSm = value; AdditionalData?.Remove("sm"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("sm"); else _explicitNullProperties?.Remove("sm"); } }
         private global::Soenneker.PostHog.OpenApiClient.Models.TileLayoutsOpenApiSm _explicitNullValueSm = default!;
 #endif
         /// <summary>Layout for the small (mobile) breakpoint, on a 1-column grid. The dashboard derives this layout from the sm order and heights, so a stored xs box does not change what renders.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.TileLayoutsOpenApiXs? Xs { get => _explicitNullValueXs; set { _explicitNullValueXs = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("xs"); else _explicitNullProperties?.Remove("xs"); } }
+        public global::Soenneker.PostHog.OpenApiClient.Models.TileLayoutsOpenApiXs? Xs { get => _explicitNullValueXs; set { _explicitNullValueXs = value; AdditionalData?.Remove("xs"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("xs"); else _explicitNullProperties?.Remove("xs"); } }
         private global::Soenneker.PostHog.OpenApiClient.Models.TileLayoutsOpenApiXs? _explicitNullValueXs = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.TileLayoutsOpenApiXs Xs { get => _explicitNullValueXs; set { _explicitNullValueXs = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("xs"); else _explicitNullProperties?.Remove("xs"); } }
+        public global::Soenneker.PostHog.OpenApiClient.Models.TileLayoutsOpenApiXs Xs { get => _explicitNullValueXs; set { _explicitNullValueXs = value; AdditionalData?.Remove("xs"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("xs"); else _explicitNullProperties?.Remove("xs"); } }
         private global::Soenneker.PostHog.OpenApiClient.Models.TileLayoutsOpenApiXs _explicitNullValueXs = default!;
 #endif
         /// <summary>

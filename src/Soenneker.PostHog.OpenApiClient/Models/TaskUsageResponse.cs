@@ -17,21 +17,24 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("compute_cost_usd") is { } nullNodeComputeCostUsd && nullNodeComputeCostUsd.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ComputeCostUsd = null;
-            if (parseNode.GetChildNode("token_cost_usd") is { } nullNodeTokenCostUsd && nullNodeTokenCostUsd.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TokenCostUsd = null;
-            if (parseNode.GetChildNode("total_cost_usd") is { } nullNodeTotalCostUsd && nullNodeTotalCostUsd.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TotalCostUsd = null;
+            if (parseNode.GetChildNode("compute_cost_usd") is null) { _explicitNullValueComputeCostUsd = default!; _explicitNullProperties?.Remove("compute_cost_usd"); }
+            else if (parseNode.GetChildNode("compute_cost_usd") is { } nullNodeComputeCostUsd && nullNodeComputeCostUsd.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ComputeCostUsd = null;
+            if (parseNode.GetChildNode("token_cost_usd") is null) { _explicitNullValueTokenCostUsd = default!; _explicitNullProperties?.Remove("token_cost_usd"); }
+            else if (parseNode.GetChildNode("token_cost_usd") is { } nullNodeTokenCostUsd && nullNodeTokenCostUsd.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TokenCostUsd = null;
+            if (parseNode.GetChildNode("total_cost_usd") is null) { _explicitNullValueTotalCostUsd = default!; _explicitNullProperties?.Remove("total_cost_usd"); }
+            else if (parseNode.GetChildNode("total_cost_usd") is { } nullNodeTotalCostUsd && nullNodeTotalCostUsd.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TotalCostUsd = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Estimated cloud compute cost attributed to this task in US dollars.</summary>
-        public double? ComputeCostUsd { get => _explicitNullValueComputeCostUsd; set { _explicitNullValueComputeCostUsd = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("compute_cost_usd"); else _explicitNullProperties?.Remove("compute_cost_usd"); } }
+        public double? ComputeCostUsd { get => _explicitNullValueComputeCostUsd; set { _explicitNullValueComputeCostUsd = value; AdditionalData?.Remove("compute_cost_usd"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("compute_cost_usd"); else _explicitNullProperties?.Remove("compute_cost_usd"); } }
         private double? _explicitNullValueComputeCostUsd = default!;
         /// <summary>Estimated model cost attributed to this task in US dollars.</summary>
-        public double? TokenCostUsd { get => _explicitNullValueTokenCostUsd; set { _explicitNullValueTokenCostUsd = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("token_cost_usd"); else _explicitNullProperties?.Remove("token_cost_usd"); } }
+        public double? TokenCostUsd { get => _explicitNullValueTokenCostUsd; set { _explicitNullValueTokenCostUsd = value; AdditionalData?.Remove("token_cost_usd"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("token_cost_usd"); else _explicitNullProperties?.Remove("token_cost_usd"); } }
         private double? _explicitNullValueTokenCostUsd = default!;
         /// <summary>Estimated total cost attributed to this task in US dollars.</summary>
-        public double? TotalCostUsd { get => _explicitNullValueTotalCostUsd; set { _explicitNullValueTotalCostUsd = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("total_cost_usd"); else _explicitNullProperties?.Remove("total_cost_usd"); } }
+        public double? TotalCostUsd { get => _explicitNullValueTotalCostUsd; set { _explicitNullValueTotalCostUsd = value; AdditionalData?.Remove("total_cost_usd"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("total_cost_usd"); else _explicitNullProperties?.Remove("total_cost_usd"); } }
         private double? _explicitNullValueTotalCostUsd = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.TaskUsageResponse"/> and sets the default values.

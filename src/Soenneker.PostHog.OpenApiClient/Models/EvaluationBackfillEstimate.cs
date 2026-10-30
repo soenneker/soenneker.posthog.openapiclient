@@ -17,29 +17,34 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("already_evaluated_units") is { } nullNodeAlreadyEvaluatedUnits && nullNodeAlreadyEvaluatedUnits.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AlreadyEvaluatedUnits = null;
-            if (parseNode.GetChildNode("total_units") is { } nullNodeTotalUnits && nullNodeTotalUnits.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TotalUnits = null;
-            if (parseNode.GetChildNode("unit") is { } nullNodeUnit && nullNodeUnit.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Unit = null;
-            if (parseNode.GetChildNode("window_end") is { } nullNodeWindowEnd && nullNodeWindowEnd.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) WindowEnd = null;
-            if (parseNode.GetChildNode("window_start") is { } nullNodeWindowStart && nullNodeWindowStart.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) WindowStart = null;
+            if (parseNode.GetChildNode("already_evaluated_units") is null) { _explicitNullValueAlreadyEvaluatedUnits = default!; _explicitNullProperties?.Remove("already_evaluated_units"); }
+            else if (parseNode.GetChildNode("already_evaluated_units") is { } nullNodeAlreadyEvaluatedUnits && nullNodeAlreadyEvaluatedUnits.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AlreadyEvaluatedUnits = null;
+            if (parseNode.GetChildNode("total_units") is null) { _explicitNullValueTotalUnits = default!; _explicitNullProperties?.Remove("total_units"); }
+            else if (parseNode.GetChildNode("total_units") is { } nullNodeTotalUnits && nullNodeTotalUnits.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TotalUnits = null;
+            if (parseNode.GetChildNode("unit") is null) { _explicitNullValueUnit = default!; _explicitNullProperties?.Remove("unit"); }
+            else if (parseNode.GetChildNode("unit") is { } nullNodeUnit && nullNodeUnit.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Unit = null;
+            if (parseNode.GetChildNode("window_end") is null) { _explicitNullValueWindowEnd = default!; _explicitNullProperties?.Remove("window_end"); }
+            else if (parseNode.GetChildNode("window_end") is { } nullNodeWindowEnd && nullNodeWindowEnd.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) WindowEnd = null;
+            if (parseNode.GetChildNode("window_start") is null) { _explicitNullValueWindowStart = default!; _explicitNullProperties?.Remove("window_start"); }
+            else if (parseNode.GetChildNode("window_start") is { } nullNodeWindowStart && nullNodeWindowStart.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) WindowStart = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Units in the range this evaluation has already judged. They are excluded from total_units unless rerun_existing is set.</summary>
-        public int? AlreadyEvaluatedUnits { get => _explicitNullValueAlreadyEvaluatedUnits; set { _explicitNullValueAlreadyEvaluatedUnits = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("already_evaluated_units"); else _explicitNullProperties?.Remove("already_evaluated_units"); } }
+        public int? AlreadyEvaluatedUnits { get => _explicitNullValueAlreadyEvaluatedUnits; set { _explicitNullValueAlreadyEvaluatedUnits = value; AdditionalData?.Remove("already_evaluated_units"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("already_evaluated_units"); else _explicitNullProperties?.Remove("already_evaluated_units"); } }
         private int? _explicitNullValueAlreadyEvaluatedUnits = default!;
         /// <summary>Units that would be evaluated.</summary>
-        public int? TotalUnits { get => _explicitNullValueTotalUnits; set { _explicitNullValueTotalUnits = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("total_units"); else _explicitNullProperties?.Remove("total_units"); } }
+        public int? TotalUnits { get => _explicitNullValueTotalUnits; set { _explicitNullValueTotalUnits = value; AdditionalData?.Remove("total_units"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("total_units"); else _explicitNullProperties?.Remove("total_units"); } }
         private int? _explicitNullValueTotalUnits = default!;
         /// <summary>* `generation` - Generation* `trace` - Trace* `session` - Session</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.EvaluationBackfillEstimateUnit? Unit { get => _explicitNullValueUnit; set { _explicitNullValueUnit = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("unit"); else _explicitNullProperties?.Remove("unit"); } }
+        public global::Soenneker.PostHog.OpenApiClient.Models.EvaluationBackfillEstimateUnit? Unit { get => _explicitNullValueUnit; set { _explicitNullValueUnit = value; AdditionalData?.Remove("unit"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("unit"); else _explicitNullProperties?.Remove("unit"); } }
         private global::Soenneker.PostHog.OpenApiClient.Models.EvaluationBackfillEstimateUnit? _explicitNullValueUnit = default!;
         /// <summary>Window end after clamping.</summary>
-        public DateTimeOffset? WindowEnd { get => _explicitNullValueWindowEnd; set { _explicitNullValueWindowEnd = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("window_end"); else _explicitNullProperties?.Remove("window_end"); } }
+        public DateTimeOffset? WindowEnd { get => _explicitNullValueWindowEnd; set { _explicitNullValueWindowEnd = value; AdditionalData?.Remove("window_end"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("window_end"); else _explicitNullProperties?.Remove("window_end"); } }
         private DateTimeOffset? _explicitNullValueWindowEnd = default!;
         /// <summary>Window start after clamping.</summary>
-        public DateTimeOffset? WindowStart { get => _explicitNullValueWindowStart; set { _explicitNullValueWindowStart = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("window_start"); else _explicitNullProperties?.Remove("window_start"); } }
+        public DateTimeOffset? WindowStart { get => _explicitNullValueWindowStart; set { _explicitNullValueWindowStart = value; AdditionalData?.Remove("window_start"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("window_start"); else _explicitNullProperties?.Remove("window_start"); } }
         private DateTimeOffset? _explicitNullValueWindowStart = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.EvaluationBackfillEstimate"/> and sets the default values.
@@ -68,7 +73,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             {
                 { "already_evaluated_units", n => { AlreadyEvaluatedUnits = n.GetIntValue(); } },
                 { "total_units", n => { TotalUnits = n.GetIntValue(); } },
-                { "unit", n => { Unit = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.EvaluationBackfillEstimateUnit>(); } },
+                { "unit", n => { var parsed = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.EvaluationBackfillEstimateUnit>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValueUnit = default; _explicitNullProperties?.Remove("unit"); AdditionalData["unit"] = unknown; } else { Unit = parsed; AdditionalData.Remove("unit"); } } },
                 { "window_end", n => { WindowEnd = n.GetDateTimeOffsetValue(); } },
                 { "window_start", n => { WindowStart = n.GetDateTimeOffsetValue(); } },
             };

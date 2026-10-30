@@ -17,39 +17,45 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("limit") is { } nullNodeLimit && nullNodeLimit.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Limit = null;
-            if (parseNode.GetChildNode("quota_limited_until") is { } nullNodeQuotaLimitedUntil && nullNodeQuotaLimitedUntil.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) QuotaLimitedUntil = null;
-            if (parseNode.GetChildNode("quota_limiting_suspended_until") is { } nullNodeQuotaLimitingSuspendedUntil && nullNodeQuotaLimitingSuspendedUntil.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) QuotaLimitingSuspendedUntil = null;
-            if (parseNode.GetChildNode("todays_usage") is { } nullNodeTodaysUsage && nullNodeTodaysUsage.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TodaysUsage = null;
-            if (parseNode.GetChildNode("usage") is { } nullNodeUsage && nullNodeUsage.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Usage = null;
-            if (parseNode.GetChildNode("usage_key") is { } nullNodeUsageKey && nullNodeUsageKey.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) UsageKey = null;
+            if (parseNode.GetChildNode("limit") is null) { _explicitNullValueLimit = default!; _explicitNullProperties?.Remove("limit"); }
+            else if (parseNode.GetChildNode("limit") is { } nullNodeLimit && nullNodeLimit.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Limit = null;
+            if (parseNode.GetChildNode("quota_limited_until") is null) { _explicitNullValueQuotaLimitedUntil = default!; _explicitNullProperties?.Remove("quota_limited_until"); }
+            else if (parseNode.GetChildNode("quota_limited_until") is { } nullNodeQuotaLimitedUntil && nullNodeQuotaLimitedUntil.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) QuotaLimitedUntil = null;
+            if (parseNode.GetChildNode("quota_limiting_suspended_until") is null) { _explicitNullValueQuotaLimitingSuspendedUntil = default!; _explicitNullProperties?.Remove("quota_limiting_suspended_until"); }
+            else if (parseNode.GetChildNode("quota_limiting_suspended_until") is { } nullNodeQuotaLimitingSuspendedUntil && nullNodeQuotaLimitingSuspendedUntil.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) QuotaLimitingSuspendedUntil = null;
+            if (parseNode.GetChildNode("todays_usage") is null) { _explicitNullValueTodaysUsage = default!; _explicitNullProperties?.Remove("todays_usage"); }
+            else if (parseNode.GetChildNode("todays_usage") is { } nullNodeTodaysUsage && nullNodeTodaysUsage.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TodaysUsage = null;
+            if (parseNode.GetChildNode("usage") is null) { _explicitNullValueUsage = default!; _explicitNullProperties?.Remove("usage"); }
+            else if (parseNode.GetChildNode("usage") is { } nullNodeUsage && nullNodeUsage.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Usage = null;
+            if (parseNode.GetChildNode("usage_key") is null) { _explicitNullValueUsageKey = default!; _explicitNullProperties?.Remove("usage_key"); }
+            else if (parseNode.GetChildNode("usage_key") is { } nullNodeUsageKey && nullNodeUsageKey.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) UsageKey = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The limit property</summary>
-        public int? Limit { get => _explicitNullValueLimit; set { _explicitNullValueLimit = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("limit"); else _explicitNullProperties?.Remove("limit"); } }
+        public int? Limit { get => _explicitNullValueLimit; set { _explicitNullValueLimit = value; AdditionalData?.Remove("limit"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("limit"); else _explicitNullProperties?.Remove("limit"); } }
         private int? _explicitNullValueLimit = default!;
         /// <summary>The quota_limited_until property</summary>
-        public DateTimeOffset? QuotaLimitedUntil { get => _explicitNullValueQuotaLimitedUntil; set { _explicitNullValueQuotaLimitedUntil = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("quota_limited_until"); else _explicitNullProperties?.Remove("quota_limited_until"); } }
+        public DateTimeOffset? QuotaLimitedUntil { get => _explicitNullValueQuotaLimitedUntil; set { _explicitNullValueQuotaLimitedUntil = value; AdditionalData?.Remove("quota_limited_until"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("quota_limited_until"); else _explicitNullProperties?.Remove("quota_limited_until"); } }
         private DateTimeOffset? _explicitNullValueQuotaLimitedUntil = default!;
         /// <summary>The quota_limiting_suspended_until property</summary>
-        public DateTimeOffset? QuotaLimitingSuspendedUntil { get => _explicitNullValueQuotaLimitingSuspendedUntil; set { _explicitNullValueQuotaLimitingSuspendedUntil = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("quota_limiting_suspended_until"); else _explicitNullProperties?.Remove("quota_limiting_suspended_until"); } }
+        public DateTimeOffset? QuotaLimitingSuspendedUntil { get => _explicitNullValueQuotaLimitingSuspendedUntil; set { _explicitNullValueQuotaLimitingSuspendedUntil = value; AdditionalData?.Remove("quota_limiting_suspended_until"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("quota_limiting_suspended_until"); else _explicitNullProperties?.Remove("quota_limiting_suspended_until"); } }
         private DateTimeOffset? _explicitNullValueQuotaLimitingSuspendedUntil = default!;
         /// <summary>The todays_usage property</summary>
-        public int? TodaysUsage { get => _explicitNullValueTodaysUsage; set { _explicitNullValueTodaysUsage = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("todays_usage"); else _explicitNullProperties?.Remove("todays_usage"); } }
+        public int? TodaysUsage { get => _explicitNullValueTodaysUsage; set { _explicitNullValueTodaysUsage = value; AdditionalData?.Remove("todays_usage"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("todays_usage"); else _explicitNullProperties?.Remove("todays_usage"); } }
         private int? _explicitNullValueTodaysUsage = default!;
         /// <summary>The usage property</summary>
-        public int? Usage { get => _explicitNullValueUsage; set { _explicitNullValueUsage = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("usage"); else _explicitNullProperties?.Remove("usage"); } }
+        public int? Usage { get => _explicitNullValueUsage; set { _explicitNullValueUsage = value; AdditionalData?.Remove("usage"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("usage"); else _explicitNullProperties?.Remove("usage"); } }
         private int? _explicitNullValueUsage = default!;
         /// <summary>The usage_key property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? UsageKey { get => _explicitNullValueUsageKey; set { _explicitNullValueUsageKey = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("usage_key"); else _explicitNullProperties?.Remove("usage_key"); } }
+        public string? UsageKey { get => _explicitNullValueUsageKey; set { _explicitNullValueUsageKey = value; AdditionalData?.Remove("usage_key"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("usage_key"); else _explicitNullProperties?.Remove("usage_key"); } }
         private string? _explicitNullValueUsageKey = default!;
 #nullable restore
 #else
-        public string UsageKey { get => _explicitNullValueUsageKey; set { _explicitNullValueUsageKey = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("usage_key"); else _explicitNullProperties?.Remove("usage_key"); } }
+        public string UsageKey { get => _explicitNullValueUsageKey; set { _explicitNullValueUsageKey = value; AdditionalData?.Remove("usage_key"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("usage_key"); else _explicitNullProperties?.Remove("usage_key"); } }
         private string _explicitNullValueUsageKey = default!;
 #endif
         /// <summary>

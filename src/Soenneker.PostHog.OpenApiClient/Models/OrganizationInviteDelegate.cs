@@ -17,9 +17,12 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("message") is { } nullNodeMessage && nullNodeMessage.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Message = null;
-            if (parseNode.GetChildNode("step_at_delegation") is { } nullNodeStepAtDelegation && nullNodeStepAtDelegation.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) StepAtDelegation = null;
-            if (parseNode.GetChildNode("target_email") is { } nullNodeTargetEmail && nullNodeTargetEmail.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TargetEmail = null;
+            if (parseNode.GetChildNode("message") is null) { _explicitNullValueMessage = default!; _explicitNullProperties?.Remove("message"); }
+            else if (parseNode.GetChildNode("message") is { } nullNodeMessage && nullNodeMessage.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Message = null;
+            if (parseNode.GetChildNode("step_at_delegation") is null) { _explicitNullValueStepAtDelegation = default!; _explicitNullProperties?.Remove("step_at_delegation"); }
+            else if (parseNode.GetChildNode("step_at_delegation") is { } nullNodeStepAtDelegation && nullNodeStepAtDelegation.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) StepAtDelegation = null;
+            if (parseNode.GetChildNode("target_email") is null) { _explicitNullValueTargetEmail = default!; _explicitNullProperties?.Remove("target_email"); }
+            else if (parseNode.GetChildNode("target_email") is { } nullNodeTargetEmail && nullNodeTargetEmail.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TargetEmail = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -27,31 +30,31 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Optional personal message included in the delegation email (up to 1000 characters).</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Message { get => _explicitNullValueMessage; set { _explicitNullValueMessage = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("message"); else _explicitNullProperties?.Remove("message"); } }
+        public string? Message { get => _explicitNullValueMessage; set { _explicitNullValueMessage = value; AdditionalData?.Remove("message"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("message"); else _explicitNullProperties?.Remove("message"); } }
         private string? _explicitNullValueMessage = default!;
 #nullable restore
 #else
-        public string Message { get => _explicitNullValueMessage; set { _explicitNullValueMessage = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("message"); else _explicitNullProperties?.Remove("message"); } }
+        public string Message { get => _explicitNullValueMessage; set { _explicitNullValueMessage = value; AdditionalData?.Remove("message"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("message"); else _explicitNullProperties?.Remove("message"); } }
         private string _explicitNullValueMessage = default!;
 #endif
         /// <summary>Onboarding step key the delegator was on when delegating, for analytics only.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? StepAtDelegation { get => _explicitNullValueStepAtDelegation; set { _explicitNullValueStepAtDelegation = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("step_at_delegation"); else _explicitNullProperties?.Remove("step_at_delegation"); } }
+        public string? StepAtDelegation { get => _explicitNullValueStepAtDelegation; set { _explicitNullValueStepAtDelegation = value; AdditionalData?.Remove("step_at_delegation"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("step_at_delegation"); else _explicitNullProperties?.Remove("step_at_delegation"); } }
         private string? _explicitNullValueStepAtDelegation = default!;
 #nullable restore
 #else
-        public string StepAtDelegation { get => _explicitNullValueStepAtDelegation; set { _explicitNullValueStepAtDelegation = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("step_at_delegation"); else _explicitNullProperties?.Remove("step_at_delegation"); } }
+        public string StepAtDelegation { get => _explicitNullValueStepAtDelegation; set { _explicitNullValueStepAtDelegation = value; AdditionalData?.Remove("step_at_delegation"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("step_at_delegation"); else _explicitNullProperties?.Remove("step_at_delegation"); } }
         private string _explicitNullValueStepAtDelegation = default!;
 #endif
         /// <summary>Email of the teammate who should complete setup on the inviter&apos;s behalf. Receives a PostHog-branded delegation invite granting admin-level membership on accept.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? TargetEmail { get => _explicitNullValueTargetEmail; set { _explicitNullValueTargetEmail = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("target_email"); else _explicitNullProperties?.Remove("target_email"); } }
+        public string? TargetEmail { get => _explicitNullValueTargetEmail; set { _explicitNullValueTargetEmail = value; AdditionalData?.Remove("target_email"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("target_email"); else _explicitNullProperties?.Remove("target_email"); } }
         private string? _explicitNullValueTargetEmail = default!;
 #nullable restore
 #else
-        public string TargetEmail { get => _explicitNullValueTargetEmail; set { _explicitNullValueTargetEmail = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("target_email"); else _explicitNullProperties?.Remove("target_email"); } }
+        public string TargetEmail { get => _explicitNullValueTargetEmail; set { _explicitNullValueTargetEmail = value; AdditionalData?.Remove("target_email"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("target_email"); else _explicitNullProperties?.Remove("target_email"); } }
         private string _explicitNullValueTargetEmail = default!;
 #endif
         /// <summary>

@@ -17,7 +17,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("errors_by_source") is { } nullNodeErrorsBySource && nullNodeErrorsBySource.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ErrorsBySource = null;
+            if (parseNode.GetChildNode("errors_by_source") is null) { _explicitNullValueErrorsBySource = default!; _explicitNullProperties?.Remove("errors_by_source"); }
+            else if (parseNode.GetChildNode("errors_by_source") is { } nullNodeErrorsBySource && nullNodeErrorsBySource.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ErrorsBySource = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -25,11 +26,11 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Validation errors keyed by the source or mapped table ID. Valid sources are omitted.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.SourceValidationErrorsBySourceProperty? ErrorsBySource { get => _explicitNullValueErrorsBySource; set { _explicitNullValueErrorsBySource = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("errors_by_source"); else _explicitNullProperties?.Remove("errors_by_source"); } }
+        public global::Soenneker.PostHog.OpenApiClient.Models.SourceValidationErrorsBySourceProperty? ErrorsBySource { get => _explicitNullValueErrorsBySource; set { _explicitNullValueErrorsBySource = value; AdditionalData?.Remove("errors_by_source"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("errors_by_source"); else _explicitNullProperties?.Remove("errors_by_source"); } }
         private global::Soenneker.PostHog.OpenApiClient.Models.SourceValidationErrorsBySourceProperty? _explicitNullValueErrorsBySource = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.SourceValidationErrorsBySourceProperty ErrorsBySource { get => _explicitNullValueErrorsBySource; set { _explicitNullValueErrorsBySource = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("errors_by_source"); else _explicitNullProperties?.Remove("errors_by_source"); } }
+        public global::Soenneker.PostHog.OpenApiClient.Models.SourceValidationErrorsBySourceProperty ErrorsBySource { get => _explicitNullValueErrorsBySource; set { _explicitNullValueErrorsBySource = value; AdditionalData?.Remove("errors_by_source"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("errors_by_source"); else _explicitNullProperties?.Remove("errors_by_source"); } }
         private global::Soenneker.PostHog.OpenApiClient.Models.SourceValidationErrorsBySourceProperty _explicitNullValueErrorsBySource = default!;
 #endif
         /// <summary>

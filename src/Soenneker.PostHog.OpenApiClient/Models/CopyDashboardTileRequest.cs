@@ -17,17 +17,19 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("fromDashboardId") is { } nullNodeFromDashboardId && nullNodeFromDashboardId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) FromDashboardId = null;
-            if (parseNode.GetChildNode("tileId") is { } nullNodeTileId && nullNodeTileId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TileId = null;
+            if (parseNode.GetChildNode("fromDashboardId") is null) { _explicitNullValueFromDashboardId = default!; _explicitNullProperties?.Remove("fromDashboardId"); }
+            else if (parseNode.GetChildNode("fromDashboardId") is { } nullNodeFromDashboardId && nullNodeFromDashboardId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) FromDashboardId = null;
+            if (parseNode.GetChildNode("tileId") is null) { _explicitNullValueTileId = default!; _explicitNullProperties?.Remove("tileId"); }
+            else if (parseNode.GetChildNode("tileId") is { } nullNodeTileId && nullNodeTileId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TileId = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Dashboard id the tile currently belongs to.</summary>
-        public int? FromDashboardId { get => _explicitNullValueFromDashboardId; set { _explicitNullValueFromDashboardId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("fromDashboardId"); else _explicitNullProperties?.Remove("fromDashboardId"); } }
+        public int? FromDashboardId { get => _explicitNullValueFromDashboardId; set { _explicitNullValueFromDashboardId = value; AdditionalData?.Remove("fromDashboardId"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("fromDashboardId"); else _explicitNullProperties?.Remove("fromDashboardId"); } }
         private int? _explicitNullValueFromDashboardId = default!;
         /// <summary>Dashboard tile id to copy.</summary>
-        public int? TileId { get => _explicitNullValueTileId; set { _explicitNullValueTileId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("tileId"); else _explicitNullProperties?.Remove("tileId"); } }
+        public int? TileId { get => _explicitNullValueTileId; set { _explicitNullValueTileId = value; AdditionalData?.Remove("tileId"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("tileId"); else _explicitNullProperties?.Remove("tileId"); } }
         private int? _explicitNullValueTileId = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.CopyDashboardTileRequest"/> and sets the default values.

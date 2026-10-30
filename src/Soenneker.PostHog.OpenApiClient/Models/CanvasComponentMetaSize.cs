@@ -18,33 +18,39 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("defaultH") is { } nullNodeDefaultH && nullNodeDefaultH.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) DefaultH = null;
-            if (parseNode.GetChildNode("defaultW") is { } nullNodeDefaultW && nullNodeDefaultW.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) DefaultW = null;
-            if (parseNode.GetChildNode("maxH") is { } nullNodeMaxH && nullNodeMaxH.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MaxH = null;
-            if (parseNode.GetChildNode("maxW") is { } nullNodeMaxW && nullNodeMaxW.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MaxW = null;
-            if (parseNode.GetChildNode("minH") is { } nullNodeMinH && nullNodeMinH.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MinH = null;
-            if (parseNode.GetChildNode("minW") is { } nullNodeMinW && nullNodeMinW.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MinW = null;
+            if (parseNode.GetChildNode("defaultH") is null) { _explicitNullValueDefaultH = default!; _explicitNullProperties?.Remove("defaultH"); }
+            else if (parseNode.GetChildNode("defaultH") is { } nullNodeDefaultH && nullNodeDefaultH.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) DefaultH = null;
+            if (parseNode.GetChildNode("defaultW") is null) { _explicitNullValueDefaultW = default!; _explicitNullProperties?.Remove("defaultW"); }
+            else if (parseNode.GetChildNode("defaultW") is { } nullNodeDefaultW && nullNodeDefaultW.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) DefaultW = null;
+            if (parseNode.GetChildNode("maxH") is null) { _explicitNullValueMaxH = default!; _explicitNullProperties?.Remove("maxH"); }
+            else if (parseNode.GetChildNode("maxH") is { } nullNodeMaxH && nullNodeMaxH.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MaxH = null;
+            if (parseNode.GetChildNode("maxW") is null) { _explicitNullValueMaxW = default!; _explicitNullProperties?.Remove("maxW"); }
+            else if (parseNode.GetChildNode("maxW") is { } nullNodeMaxW && nullNodeMaxW.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MaxW = null;
+            if (parseNode.GetChildNode("minH") is null) { _explicitNullValueMinH = default!; _explicitNullProperties?.Remove("minH"); }
+            else if (parseNode.GetChildNode("minH") is { } nullNodeMinH && nullNodeMinH.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MinH = null;
+            if (parseNode.GetChildNode("minW") is null) { _explicitNullValueMinW = default!; _explicitNullProperties?.Remove("minW"); }
+            else if (parseNode.GetChildNode("minW") is { } nullNodeMinW && nullNodeMinW.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MinW = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Height a new placement starts at, in grid rows.</summary>
-        public int? DefaultH { get => _explicitNullValueDefaultH; set { _explicitNullValueDefaultH = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("defaultH"); else _explicitNullProperties?.Remove("defaultH"); } }
+        public int? DefaultH { get => _explicitNullValueDefaultH; set { _explicitNullValueDefaultH = value; AdditionalData?.Remove("defaultH"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("defaultH"); else _explicitNullProperties?.Remove("defaultH"); } }
         private int? _explicitNullValueDefaultH = default!;
         /// <summary>Width a new placement starts at, in grid columns.</summary>
-        public int? DefaultW { get => _explicitNullValueDefaultW; set { _explicitNullValueDefaultW = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("defaultW"); else _explicitNullProperties?.Remove("defaultW"); } }
+        public int? DefaultW { get => _explicitNullValueDefaultW; set { _explicitNullValueDefaultW = value; AdditionalData?.Remove("defaultW"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("defaultW"); else _explicitNullProperties?.Remove("defaultW"); } }
         private int? _explicitNullValueDefaultW = default!;
         /// <summary>Tallest allowed height; omit for no cap.</summary>
-        public int? MaxH { get => _explicitNullValueMaxH; set { _explicitNullValueMaxH = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("maxH"); else _explicitNullProperties?.Remove("maxH"); } }
+        public int? MaxH { get => _explicitNullValueMaxH; set { _explicitNullValueMaxH = value; AdditionalData?.Remove("maxH"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("maxH"); else _explicitNullProperties?.Remove("maxH"); } }
         private int? _explicitNullValueMaxH = default!;
         /// <summary>Widest allowed width; omit for no cap below the grid&apos;s width.</summary>
-        public int? MaxW { get => _explicitNullValueMaxW; set { _explicitNullValueMaxW = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("maxW"); else _explicitNullProperties?.Remove("maxW"); } }
+        public int? MaxW { get => _explicitNullValueMaxW; set { _explicitNullValueMaxW = value; AdditionalData?.Remove("maxW"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("maxW"); else _explicitNullProperties?.Remove("maxW"); } }
         private int? _explicitNullValueMaxW = default!;
         /// <summary>Shortest height the component renders usefully at.</summary>
-        public int? MinH { get => _explicitNullValueMinH; set { _explicitNullValueMinH = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("minH"); else _explicitNullProperties?.Remove("minH"); } }
+        public int? MinH { get => _explicitNullValueMinH; set { _explicitNullValueMinH = value; AdditionalData?.Remove("minH"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("minH"); else _explicitNullProperties?.Remove("minH"); } }
         private int? _explicitNullValueMinH = default!;
         /// <summary>Narrowest width the component renders usefully at.</summary>
-        public int? MinW { get => _explicitNullValueMinW; set { _explicitNullValueMinW = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("minW"); else _explicitNullProperties?.Remove("minW"); } }
+        public int? MinW { get => _explicitNullValueMinW; set { _explicitNullValueMinW = value; AdditionalData?.Remove("minW"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("minW"); else _explicitNullProperties?.Remove("minW"); } }
         private int? _explicitNullValueMinW = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.CanvasComponentMetaSize"/> and sets the default values.

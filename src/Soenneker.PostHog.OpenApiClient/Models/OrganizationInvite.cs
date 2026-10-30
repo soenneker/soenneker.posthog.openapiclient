@@ -17,19 +17,26 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("combine_pending_invites") is { } nullNodeCombinePendingInvites && nullNodeCombinePendingInvites.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CombinePendingInvites = null;
-            if (parseNode.GetChildNode("first_name") is { } nullNodeFirstName && nullNodeFirstName.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) FirstName = null;
-            if (parseNode.GetChildNode("level") is { } nullNodeLevel && nullNodeLevel.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Level = null;
-            if (parseNode.GetChildNode("message") is { } nullNodeMessage && nullNodeMessage.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Message = null;
-            if (parseNode.GetChildNode("private_project_access") is { } nullNodePrivateProjectAccess && nullNodePrivateProjectAccess.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) PrivateProjectAccess = null;
-            if (parseNode.GetChildNode("send_email") is { } nullNodeSendEmail && nullNodeSendEmail.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SendEmail = null;
-            if (parseNode.GetChildNode("target_email") is { } nullNodeTargetEmail && nullNodeTargetEmail.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TargetEmail = null;
+            if (parseNode.GetChildNode("combine_pending_invites") is null) { _explicitNullValueCombinePendingInvites = default!; _explicitNullProperties?.Remove("combine_pending_invites"); }
+            else if (parseNode.GetChildNode("combine_pending_invites") is { } nullNodeCombinePendingInvites && nullNodeCombinePendingInvites.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CombinePendingInvites = null;
+            if (parseNode.GetChildNode("first_name") is null) { _explicitNullValueFirstName = default!; _explicitNullProperties?.Remove("first_name"); }
+            else if (parseNode.GetChildNode("first_name") is { } nullNodeFirstName && nullNodeFirstName.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) FirstName = null;
+            if (parseNode.GetChildNode("level") is null) { _explicitNullValueLevel = default!; _explicitNullProperties?.Remove("level"); }
+            else if (parseNode.GetChildNode("level") is { } nullNodeLevel && nullNodeLevel.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Level = null;
+            if (parseNode.GetChildNode("message") is null) { _explicitNullValueMessage = default!; _explicitNullProperties?.Remove("message"); }
+            else if (parseNode.GetChildNode("message") is { } nullNodeMessage && nullNodeMessage.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Message = null;
+            if (parseNode.GetChildNode("private_project_access") is null) { _explicitNullValuePrivateProjectAccess = default!; _explicitNullProperties?.Remove("private_project_access"); }
+            else if (parseNode.GetChildNode("private_project_access") is { } nullNodePrivateProjectAccess && nullNodePrivateProjectAccess.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) PrivateProjectAccess = null;
+            if (parseNode.GetChildNode("send_email") is null) { _explicitNullValueSendEmail = default!; _explicitNullProperties?.Remove("send_email"); }
+            else if (parseNode.GetChildNode("send_email") is { } nullNodeSendEmail && nullNodeSendEmail.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SendEmail = null;
+            if (parseNode.GetChildNode("target_email") is null) { _explicitNullValueTargetEmail = default!; _explicitNullProperties?.Remove("target_email"); }
+            else if (parseNode.GetChildNode("target_email") is { } nullNodeTargetEmail && nullNodeTargetEmail.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TargetEmail = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The combine_pending_invites property</summary>
-        public bool? CombinePendingInvites { get => _explicitNullValueCombinePendingInvites; set { _explicitNullValueCombinePendingInvites = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("combine_pending_invites"); else _explicitNullProperties?.Remove("combine_pending_invites"); } }
+        public bool? CombinePendingInvites { get => _explicitNullValueCombinePendingInvites; set { _explicitNullValueCombinePendingInvites = value; AdditionalData?.Remove("combine_pending_invites"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("combine_pending_invites"); else _explicitNullProperties?.Remove("combine_pending_invites"); } }
         private bool? _explicitNullValueCombinePendingInvites = default!;
         /// <summary>The created_at property</summary>
         public DateTimeOffset? CreatedAt { get; private set; }
@@ -46,11 +53,11 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The first_name property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? FirstName { get => _explicitNullValueFirstName; set { _explicitNullValueFirstName = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("first_name"); else _explicitNullProperties?.Remove("first_name"); } }
+        public string? FirstName { get => _explicitNullValueFirstName; set { _explicitNullValueFirstName = value; AdditionalData?.Remove("first_name"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("first_name"); else _explicitNullProperties?.Remove("first_name"); } }
         private string? _explicitNullValueFirstName = default!;
 #nullable restore
 #else
-        public string FirstName { get => _explicitNullValueFirstName; set { _explicitNullValueFirstName = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("first_name"); else _explicitNullProperties?.Remove("first_name"); } }
+        public string FirstName { get => _explicitNullValueFirstName; set { _explicitNullValueFirstName = value; AdditionalData?.Remove("first_name"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("first_name"); else _explicitNullProperties?.Remove("first_name"); } }
         private string _explicitNullValueFirstName = default!;
 #endif
         /// <summary>The id property</summary>
@@ -58,39 +65,39 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Check if invite is older than INVITE_DAYS_VALIDITY days.</summary>
         public bool? IsExpired { get; private set; }
         /// <summary>* `1` - member* `8` - administrator* `15` - owner</summary>
-        public int? Level { get => _explicitNullValueLevel; set { _explicitNullValueLevel = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("level"); else _explicitNullProperties?.Remove("level"); } }
+        public int? Level { get => _explicitNullValueLevel; set { _explicitNullValueLevel = value; AdditionalData?.Remove("level"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("level"); else _explicitNullProperties?.Remove("level"); } }
         private int? _explicitNullValueLevel = default!;
         /// <summary>The message property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Message { get => _explicitNullValueMessage; set { _explicitNullValueMessage = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("message"); else _explicitNullProperties?.Remove("message"); } }
+        public string? Message { get => _explicitNullValueMessage; set { _explicitNullValueMessage = value; AdditionalData?.Remove("message"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("message"); else _explicitNullProperties?.Remove("message"); } }
         private string? _explicitNullValueMessage = default!;
 #nullable restore
 #else
-        public string Message { get => _explicitNullValueMessage; set { _explicitNullValueMessage = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("message"); else _explicitNullProperties?.Remove("message"); } }
+        public string Message { get => _explicitNullValueMessage; set { _explicitNullValueMessage = value; AdditionalData?.Remove("message"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("message"); else _explicitNullProperties?.Remove("message"); } }
         private string _explicitNullValueMessage = default!;
 #endif
         /// <summary>List of team IDs and corresponding access levels to private projects.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public UntypedNode? PrivateProjectAccess { get => _explicitNullValuePrivateProjectAccess; set { _explicitNullValuePrivateProjectAccess = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("private_project_access"); else _explicitNullProperties?.Remove("private_project_access"); } }
+        public UntypedNode? PrivateProjectAccess { get => _explicitNullValuePrivateProjectAccess; set { _explicitNullValuePrivateProjectAccess = value; AdditionalData?.Remove("private_project_access"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("private_project_access"); else _explicitNullProperties?.Remove("private_project_access"); } }
         private UntypedNode? _explicitNullValuePrivateProjectAccess = default!;
 #nullable restore
 #else
-        public UntypedNode PrivateProjectAccess { get => _explicitNullValuePrivateProjectAccess; set { _explicitNullValuePrivateProjectAccess = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("private_project_access"); else _explicitNullProperties?.Remove("private_project_access"); } }
+        public UntypedNode PrivateProjectAccess { get => _explicitNullValuePrivateProjectAccess; set { _explicitNullValuePrivateProjectAccess = value; AdditionalData?.Remove("private_project_access"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("private_project_access"); else _explicitNullProperties?.Remove("private_project_access"); } }
         private UntypedNode _explicitNullValuePrivateProjectAccess = default!;
 #endif
         /// <summary>The send_email property</summary>
-        public bool? SendEmail { get => _explicitNullValueSendEmail; set { _explicitNullValueSendEmail = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("send_email"); else _explicitNullProperties?.Remove("send_email"); } }
+        public bool? SendEmail { get => _explicitNullValueSendEmail; set { _explicitNullValueSendEmail = value; AdditionalData?.Remove("send_email"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("send_email"); else _explicitNullProperties?.Remove("send_email"); } }
         private bool? _explicitNullValueSendEmail = default!;
         /// <summary>The target_email property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? TargetEmail { get => _explicitNullValueTargetEmail; set { _explicitNullValueTargetEmail = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("target_email"); else _explicitNullProperties?.Remove("target_email"); } }
+        public string? TargetEmail { get => _explicitNullValueTargetEmail; set { _explicitNullValueTargetEmail = value; AdditionalData?.Remove("target_email"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("target_email"); else _explicitNullProperties?.Remove("target_email"); } }
         private string? _explicitNullValueTargetEmail = default!;
 #nullable restore
 #else
-        public string TargetEmail { get => _explicitNullValueTargetEmail; set { _explicitNullValueTargetEmail = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("target_email"); else _explicitNullProperties?.Remove("target_email"); } }
+        public string TargetEmail { get => _explicitNullValueTargetEmail; set { _explicitNullValueTargetEmail = value; AdditionalData?.Remove("target_email"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("target_email"); else _explicitNullProperties?.Remove("target_email"); } }
         private string _explicitNullValueTargetEmail = default!;
 #endif
         /// <summary>The updated_at property</summary>

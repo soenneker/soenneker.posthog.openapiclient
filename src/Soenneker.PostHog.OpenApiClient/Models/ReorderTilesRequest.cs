@@ -17,23 +17,25 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("layout") is { } nullNodeLayout && nullNodeLayout.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Layout = null;
-            if (parseNode.GetChildNode("tile_order") is { } nullNodeTileOrder && nullNodeTileOrder.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TileOrder = null;
+            if (parseNode.GetChildNode("layout") is null) { _explicitNullValueLayout = default!; _explicitNullProperties?.Remove("layout"); }
+            else if (parseNode.GetChildNode("layout") is { } nullNodeLayout && nullNodeLayout.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Layout = null;
+            if (parseNode.GetChildNode("tile_order") is null) { _explicitNullValueTileOrder = default!; _explicitNullProperties?.Remove("tile_order"); }
+            else if (parseNode.GetChildNode("tile_order") is { } nullNodeTileOrder && nullNodeTileOrder.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TileOrder = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>* `preserve` - preserve* `two_column` - two_column* `three_column` - three_column* `full_width` - full_width</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.ReorderTilesRequestLayout? Layout { get => _explicitNullValueLayout; set { _explicitNullValueLayout = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("layout"); else _explicitNullProperties?.Remove("layout"); } }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ReorderTilesRequestLayout? Layout { get => _explicitNullValueLayout; set { _explicitNullValueLayout = value; AdditionalData?.Remove("layout"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("layout"); else _explicitNullProperties?.Remove("layout"); } }
         private global::Soenneker.PostHog.OpenApiClient.Models.ReorderTilesRequestLayout? _explicitNullValueLayout = default!;
         /// <summary>Array of tile IDs in the desired display order (top to bottom, left to right).</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<int?>? TileOrder { get => _explicitNullValueTileOrder; set { _explicitNullValueTileOrder = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("tile_order"); else _explicitNullProperties?.Remove("tile_order"); } }
+        public List<int?>? TileOrder { get => _explicitNullValueTileOrder; set { _explicitNullValueTileOrder = value; AdditionalData?.Remove("tile_order"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("tile_order"); else _explicitNullProperties?.Remove("tile_order"); } }
         private List<int?>? _explicitNullValueTileOrder = default!;
 #nullable restore
 #else
-        public List<int?> TileOrder { get => _explicitNullValueTileOrder; set { _explicitNullValueTileOrder = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("tile_order"); else _explicitNullProperties?.Remove("tile_order"); } }
+        public List<int?> TileOrder { get => _explicitNullValueTileOrder; set { _explicitNullValueTileOrder = value; AdditionalData?.Remove("tile_order"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("tile_order"); else _explicitNullProperties?.Remove("tile_order"); } }
         private List<int?> _explicitNullValueTileOrder = default!;
 #endif
         /// <summary>
@@ -61,7 +63,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "layout", n => { Layout = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ReorderTilesRequestLayout>(); } },
+                { "layout", n => { var parsed = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ReorderTilesRequestLayout>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValueLayout = default; _explicitNullProperties?.Remove("layout"); AdditionalData["layout"] = unknown; } else { Layout = parsed; AdditionalData.Remove("layout"); } } },
                 { "tile_order", n => { TileOrder = n.GetCollectionOfPrimitiveValues<int?>()?.AsList(); } },
             };
         }

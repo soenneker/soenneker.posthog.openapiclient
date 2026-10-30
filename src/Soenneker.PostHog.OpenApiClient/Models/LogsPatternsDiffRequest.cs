@@ -17,8 +17,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("baselineDateRange") is { } nullNodeBaselineDateRange && nullNodeBaselineDateRange.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) BaselineDateRange = null;
-            if (parseNode.GetChildNode("query") is { } nullNodeQuery && nullNodeQuery.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Query = null;
+            if (parseNode.GetChildNode("baselineDateRange") is null) { _explicitNullValueBaselineDateRange = default!; _explicitNullProperties?.Remove("baselineDateRange"); }
+            else if (parseNode.GetChildNode("baselineDateRange") is { } nullNodeBaselineDateRange && nullNodeBaselineDateRange.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) BaselineDateRange = null;
+            if (parseNode.GetChildNode("query") is null) { _explicitNullValueQuery = default!; _explicitNullProperties?.Remove("query"); }
+            else if (parseNode.GetChildNode("query") is { } nullNodeQuery && nullNodeQuery.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Query = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -26,21 +28,21 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Baseline window to compare against. Omit to default to the current window shifted back exactly one week, which absorbs daily and weekly log-volume cycles. Pass an explicit range to compare against a specific period, e.g. pre-deploy or pre-incident.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.LogsPatternsDiffRequestBaselineDateRange? BaselineDateRange { get => _explicitNullValueBaselineDateRange; set { _explicitNullValueBaselineDateRange = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("baselineDateRange"); else _explicitNullProperties?.Remove("baselineDateRange"); } }
+        public global::Soenneker.PostHog.OpenApiClient.Models.LogsPatternsDiffRequestBaselineDateRange? BaselineDateRange { get => _explicitNullValueBaselineDateRange; set { _explicitNullValueBaselineDateRange = value; AdditionalData?.Remove("baselineDateRange"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("baselineDateRange"); else _explicitNullProperties?.Remove("baselineDateRange"); } }
         private global::Soenneker.PostHog.OpenApiClient.Models.LogsPatternsDiffRequestBaselineDateRange? _explicitNullValueBaselineDateRange = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.LogsPatternsDiffRequestBaselineDateRange BaselineDateRange { get => _explicitNullValueBaselineDateRange; set { _explicitNullValueBaselineDateRange = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("baselineDateRange"); else _explicitNullProperties?.Remove("baselineDateRange"); } }
+        public global::Soenneker.PostHog.OpenApiClient.Models.LogsPatternsDiffRequestBaselineDateRange BaselineDateRange { get => _explicitNullValueBaselineDateRange; set { _explicitNullValueBaselineDateRange = value; AdditionalData?.Remove("baselineDateRange"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("baselineDateRange"); else _explicitNullProperties?.Remove("baselineDateRange"); } }
         private global::Soenneker.PostHog.OpenApiClient.Models.LogsPatternsDiffRequestBaselineDateRange _explicitNullValueBaselineDateRange = default!;
 #endif
         /// <summary>The patterns query for the current (foreground) window: date range plus any severity/service/search/property filters. The same filters are applied to the baseline window.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.LogsPatternsDiffRequestQuery? Query { get => _explicitNullValueQuery; set { _explicitNullValueQuery = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("query"); else _explicitNullProperties?.Remove("query"); } }
+        public global::Soenneker.PostHog.OpenApiClient.Models.LogsPatternsDiffRequestQuery? Query { get => _explicitNullValueQuery; set { _explicitNullValueQuery = value; AdditionalData?.Remove("query"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("query"); else _explicitNullProperties?.Remove("query"); } }
         private global::Soenneker.PostHog.OpenApiClient.Models.LogsPatternsDiffRequestQuery? _explicitNullValueQuery = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.LogsPatternsDiffRequestQuery Query { get => _explicitNullValueQuery; set { _explicitNullValueQuery = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("query"); else _explicitNullProperties?.Remove("query"); } }
+        public global::Soenneker.PostHog.OpenApiClient.Models.LogsPatternsDiffRequestQuery Query { get => _explicitNullValueQuery; set { _explicitNullValueQuery = value; AdditionalData?.Remove("query"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("query"); else _explicitNullProperties?.Remove("query"); } }
         private global::Soenneker.PostHog.OpenApiClient.Models.LogsPatternsDiffRequestQuery _explicitNullValueQuery = default!;
 #endif
         /// <summary>

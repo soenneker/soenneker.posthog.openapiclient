@@ -17,13 +17,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("regenerate") is { } nullNodeRegenerate && nullNodeRegenerate.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Regenerate = null;
+            if (parseNode.GetChildNode("regenerate") is null) { _explicitNullValueRegenerate = default!; _explicitNullProperties?.Remove("regenerate"); }
+            else if (parseNode.GetChildNode("regenerate") is { } nullNodeRegenerate && nullNodeRegenerate.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Regenerate = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Replace a ready summary with a new one. A pending summary is never replaced.</summary>
-        public bool? Regenerate { get => _explicitNullValueRegenerate; set { _explicitNullValueRegenerate = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("regenerate"); else _explicitNullProperties?.Remove("regenerate"); } }
+        public bool? Regenerate { get => _explicitNullValueRegenerate; set { _explicitNullValueRegenerate = value; AdditionalData?.Remove("regenerate"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("regenerate"); else _explicitNullProperties?.Remove("regenerate"); } }
         private bool? _explicitNullValueRegenerate = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.TraceSummaryRequest"/> and sets the default values.

@@ -17,8 +17,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("content_package") is { } nullNodeContentPackage && nullNodeContentPackage.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ContentPackage = null;
-            if (parseNode.GetChildNode("proposed_markdown") is { } nullNodeProposedMarkdown && nullNodeProposedMarkdown.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ProposedMarkdown = null;
+            if (parseNode.GetChildNode("content_package") is null) { _explicitNullValueContentPackage = default!; _explicitNullProperties?.Remove("content_package"); }
+            else if (parseNode.GetChildNode("content_package") is { } nullNodeContentPackage && nullNodeContentPackage.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ContentPackage = null;
+            if (parseNode.GetChildNode("proposed_markdown") is null) { _explicitNullValueProposedMarkdown = default!; _explicitNullProperties?.Remove("proposed_markdown"); }
+            else if (parseNode.GetChildNode("proposed_markdown") is { } nullNodeProposedMarkdown && nullNodeProposedMarkdown.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ProposedMarkdown = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -26,21 +28,21 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Updated structured package to save with the proposal.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.ContentAutopilotProposalEditRequestContentPackage? ContentPackage { get => _explicitNullValueContentPackage; set { _explicitNullValueContentPackage = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("content_package"); else _explicitNullProperties?.Remove("content_package"); } }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ContentAutopilotProposalEditRequestContentPackage? ContentPackage { get => _explicitNullValueContentPackage; set { _explicitNullValueContentPackage = value; AdditionalData?.Remove("content_package"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("content_package"); else _explicitNullProperties?.Remove("content_package"); } }
         private global::Soenneker.PostHog.OpenApiClient.Models.ContentAutopilotProposalEditRequestContentPackage? _explicitNullValueContentPackage = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ContentAutopilotProposalEditRequestContentPackage ContentPackage { get => _explicitNullValueContentPackage; set { _explicitNullValueContentPackage = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("content_package"); else _explicitNullProperties?.Remove("content_package"); } }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ContentAutopilotProposalEditRequestContentPackage ContentPackage { get => _explicitNullValueContentPackage; set { _explicitNullValueContentPackage = value; AdditionalData?.Remove("content_package"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("content_package"); else _explicitNullProperties?.Remove("content_package"); } }
         private global::Soenneker.PostHog.OpenApiClient.Models.ContentAutopilotProposalEditRequestContentPackage _explicitNullValueContentPackage = default!;
 #endif
         /// <summary>Edited Markdown to save for review.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? ProposedMarkdown { get => _explicitNullValueProposedMarkdown; set { _explicitNullValueProposedMarkdown = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("proposed_markdown"); else _explicitNullProperties?.Remove("proposed_markdown"); } }
+        public string? ProposedMarkdown { get => _explicitNullValueProposedMarkdown; set { _explicitNullValueProposedMarkdown = value; AdditionalData?.Remove("proposed_markdown"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("proposed_markdown"); else _explicitNullProperties?.Remove("proposed_markdown"); } }
         private string? _explicitNullValueProposedMarkdown = default!;
 #nullable restore
 #else
-        public string ProposedMarkdown { get => _explicitNullValueProposedMarkdown; set { _explicitNullValueProposedMarkdown = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("proposed_markdown"); else _explicitNullProperties?.Remove("proposed_markdown"); } }
+        public string ProposedMarkdown { get => _explicitNullValueProposedMarkdown; set { _explicitNullValueProposedMarkdown = value; AdditionalData?.Remove("proposed_markdown"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("proposed_markdown"); else _explicitNullProperties?.Remove("proposed_markdown"); } }
         private string _explicitNullValueProposedMarkdown = default!;
 #endif
         /// <summary>

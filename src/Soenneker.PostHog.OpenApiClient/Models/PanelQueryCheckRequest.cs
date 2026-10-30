@@ -17,23 +17,25 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("import_id") is { } nullNodeImportId && nullNodeImportId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ImportId = null;
-            if (parseNode.GetChildNode("panels") is { } nullNodePanels && nullNodePanels.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Panels = null;
+            if (parseNode.GetChildNode("import_id") is null) { _explicitNullValueImportId = default!; _explicitNullProperties?.Remove("import_id"); }
+            else if (parseNode.GetChildNode("import_id") is { } nullNodeImportId && nullNodeImportId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ImportId = null;
+            if (parseNode.GetChildNode("panels") is null) { _explicitNullValuePanels = default!; _explicitNullProperties?.Remove("panels"); }
+            else if (parseNode.GetChildNode("panels") is { } nullNodePanels && nullNodePanels.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Panels = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The import that these panels belong to, from the import instructions. The import progress shows which panels pass.</summary>
-        public Guid? ImportId { get => _explicitNullValueImportId; set { _explicitNullValueImportId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("import_id"); else _explicitNullProperties?.Remove("import_id"); } }
+        public Guid? ImportId { get => _explicitNullValueImportId; set { _explicitNullValueImportId = value; AdditionalData?.Remove("import_id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("import_id"); else _explicitNullProperties?.Remove("import_id"); } }
         private Guid? _explicitNullValueImportId = default!;
         /// <summary>Up to 20 panel queries to check.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.PanelQueryCheck>? Panels { get => _explicitNullValuePanels; set { _explicitNullValuePanels = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("panels"); else _explicitNullProperties?.Remove("panels"); } }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.PanelQueryCheck>? Panels { get => _explicitNullValuePanels; set { _explicitNullValuePanels = value; AdditionalData?.Remove("panels"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("panels"); else _explicitNullProperties?.Remove("panels"); } }
         private List<global::Soenneker.PostHog.OpenApiClient.Models.PanelQueryCheck>? _explicitNullValuePanels = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.PanelQueryCheck> Panels { get => _explicitNullValuePanels; set { _explicitNullValuePanels = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("panels"); else _explicitNullProperties?.Remove("panels"); } }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.PanelQueryCheck> Panels { get => _explicitNullValuePanels; set { _explicitNullValuePanels = value; AdditionalData?.Remove("panels"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("panels"); else _explicitNullProperties?.Remove("panels"); } }
         private List<global::Soenneker.PostHog.OpenApiClient.Models.PanelQueryCheck> _explicitNullValuePanels = default!;
 #endif
         /// <summary>

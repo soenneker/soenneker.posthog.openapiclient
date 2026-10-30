@@ -18,37 +18,44 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("fn") is { } nullNodeFn && nullNodeFn.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Fn = null;
-            if (parseNode.GetChildNode("fp") is { } nullNodeFp && nullNodeFp.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Fp = null;
-            if (parseNode.GetChildNode("n_flagged") is { } nullNodeNFlagged && nullNodeNFlagged.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) NFlagged = null;
-            if (parseNode.GetChildNode("precision") is { } nullNodePrecision && nullNodePrecision.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Precision = null;
-            if (parseNode.GetChildNode("recall") is { } nullNodeRecall && nullNodeRecall.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Recall = null;
-            if (parseNode.GetChildNode("tn") is { } nullNodeTn && nullNodeTn.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Tn = null;
-            if (parseNode.GetChildNode("tp") is { } nullNodeTp && nullNodeTp.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Tp = null;
+            if (parseNode.GetChildNode("fn") is null) { _explicitNullValueFn = default!; _explicitNullProperties?.Remove("fn"); }
+            else if (parseNode.GetChildNode("fn") is { } nullNodeFn && nullNodeFn.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Fn = null;
+            if (parseNode.GetChildNode("fp") is null) { _explicitNullValueFp = default!; _explicitNullProperties?.Remove("fp"); }
+            else if (parseNode.GetChildNode("fp") is { } nullNodeFp && nullNodeFp.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Fp = null;
+            if (parseNode.GetChildNode("n_flagged") is null) { _explicitNullValueNFlagged = default!; _explicitNullProperties?.Remove("n_flagged"); }
+            else if (parseNode.GetChildNode("n_flagged") is { } nullNodeNFlagged && nullNodeNFlagged.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) NFlagged = null;
+            if (parseNode.GetChildNode("precision") is null) { _explicitNullValuePrecision = default!; _explicitNullProperties?.Remove("precision"); }
+            else if (parseNode.GetChildNode("precision") is { } nullNodePrecision && nullNodePrecision.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Precision = null;
+            if (parseNode.GetChildNode("recall") is null) { _explicitNullValueRecall = default!; _explicitNullProperties?.Remove("recall"); }
+            else if (parseNode.GetChildNode("recall") is { } nullNodeRecall && nullNodeRecall.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Recall = null;
+            if (parseNode.GetChildNode("tn") is null) { _explicitNullValueTn = default!; _explicitNullProperties?.Remove("tn"); }
+            else if (parseNode.GetChildNode("tn") is { } nullNodeTn && nullNodeTn.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Tn = null;
+            if (parseNode.GetChildNode("tp") is null) { _explicitNullValueTp = default!; _explicitNullProperties?.Remove("tp"); }
+            else if (parseNode.GetChildNode("tp") is { } nullNodeTp && nullNodeTp.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Tp = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>False negatives: users not flagged who did the target event.</summary>
-        public int? Fn { get => _explicitNullValueFn; set { _explicitNullValueFn = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("fn"); else _explicitNullProperties?.Remove("fn"); } }
+        public int? Fn { get => _explicitNullValueFn; set { _explicitNullValueFn = value; AdditionalData?.Remove("fn"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("fn"); else _explicitNullProperties?.Remove("fn"); } }
         private int? _explicitNullValueFn = default!;
         /// <summary>False positives: flagged users who did not do the target event.</summary>
-        public int? Fp { get => _explicitNullValueFp; set { _explicitNullValueFp = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("fp"); else _explicitNullProperties?.Remove("fp"); } }
+        public int? Fp { get => _explicitNullValueFp; set { _explicitNullValueFp = value; AdditionalData?.Remove("fp"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("fp"); else _explicitNullProperties?.Remove("fp"); } }
         private int? _explicitNullValueFp = default!;
         /// <summary>Number of users the cutoff flagged (tp + fp). Top-k cutoffs flag every user tied at the boundary score, so this can be a little above k.</summary>
-        public int? NFlagged { get => _explicitNullValueNFlagged; set { _explicitNullValueNFlagged = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("n_flagged"); else _explicitNullProperties?.Remove("n_flagged"); } }
+        public int? NFlagged { get => _explicitNullValueNFlagged; set { _explicitNullValueNFlagged = value; AdditionalData?.Remove("n_flagged"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("n_flagged"); else _explicitNullProperties?.Remove("n_flagged"); } }
         private int? _explicitNullValueNFlagged = default!;
         /// <summary>tp / n_flagged: share of flagged users who did the target event. Null when no user was flagged.</summary>
-        public double? Precision { get => _explicitNullValuePrecision; set { _explicitNullValuePrecision = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("precision"); else _explicitNullProperties?.Remove("precision"); } }
+        public double? Precision { get => _explicitNullValuePrecision; set { _explicitNullValuePrecision = value; AdditionalData?.Remove("precision"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("precision"); else _explicitNullProperties?.Remove("precision"); } }
         private double? _explicitNullValuePrecision = default!;
         /// <summary>tp / (tp + fn): share of users who did the target event that the cutoff flagged. Null when no user did it.</summary>
-        public double? Recall { get => _explicitNullValueRecall; set { _explicitNullValueRecall = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("recall"); else _explicitNullProperties?.Remove("recall"); } }
+        public double? Recall { get => _explicitNullValueRecall; set { _explicitNullValueRecall = value; AdditionalData?.Remove("recall"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("recall"); else _explicitNullProperties?.Remove("recall"); } }
         private double? _explicitNullValueRecall = default!;
         /// <summary>True negatives: users not flagged who did not do the target event.</summary>
-        public int? Tn { get => _explicitNullValueTn; set { _explicitNullValueTn = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("tn"); else _explicitNullProperties?.Remove("tn"); } }
+        public int? Tn { get => _explicitNullValueTn; set { _explicitNullValueTn = value; AdditionalData?.Remove("tn"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("tn"); else _explicitNullProperties?.Remove("tn"); } }
         private int? _explicitNullValueTn = default!;
         /// <summary>True positives: flagged users who did the target event.</summary>
-        public int? Tp { get => _explicitNullValueTp; set { _explicitNullValueTp = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("tp"); else _explicitNullProperties?.Remove("tp"); } }
+        public int? Tp { get => _explicitNullValueTp; set { _explicitNullValueTp = value; AdditionalData?.Remove("tp"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("tp"); else _explicitNullProperties?.Remove("tp"); } }
         private int? _explicitNullValueTp = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ConfusionByCutoffLikely"/> and sets the default values.

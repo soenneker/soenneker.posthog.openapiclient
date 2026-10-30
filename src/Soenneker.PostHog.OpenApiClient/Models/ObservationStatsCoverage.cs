@@ -18,21 +18,24 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("recent_days") is { } nullNodeRecentDays && nullNodeRecentDays.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) RecentDays = null;
-            if (parseNode.GetChildNode("recent_sessions") is { } nullNodeRecentSessions && nullNodeRecentSessions.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) RecentSessions = null;
-            if (parseNode.GetChildNode("total_sessions") is { } nullNodeTotalSessions && nullNodeTotalSessions.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TotalSessions = null;
+            if (parseNode.GetChildNode("recent_days") is null) { _explicitNullValueRecentDays = default!; _explicitNullProperties?.Remove("recent_days"); }
+            else if (parseNode.GetChildNode("recent_days") is { } nullNodeRecentDays && nullNodeRecentDays.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) RecentDays = null;
+            if (parseNode.GetChildNode("recent_sessions") is null) { _explicitNullValueRecentSessions = default!; _explicitNullProperties?.Remove("recent_sessions"); }
+            else if (parseNode.GetChildNode("recent_sessions") is { } nullNodeRecentSessions && nullNodeRecentSessions.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) RecentSessions = null;
+            if (parseNode.GetChildNode("total_sessions") is null) { _explicitNullValueTotalSessions = default!; _explicitNullProperties?.Remove("total_sessions"); }
+            else if (parseNode.GetChildNode("total_sessions") is { } nullNodeTotalSessions && nullNodeTotalSessions.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TotalSessions = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Window size in days used for `recent_sessions`.</summary>
-        public int? RecentDays { get => _explicitNullValueRecentDays; set { _explicitNullValueRecentDays = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("recent_days"); else _explicitNullProperties?.Remove("recent_days"); } }
+        public int? RecentDays { get => _explicitNullValueRecentDays; set { _explicitNullValueRecentDays = value; AdditionalData?.Remove("recent_days"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("recent_days"); else _explicitNullProperties?.Remove("recent_days"); } }
         private int? _explicitNullValueRecentDays = default!;
         /// <summary>Distinct sessions observed within the last `recent_days` days.</summary>
-        public int? RecentSessions { get => _explicitNullValueRecentSessions; set { _explicitNullValueRecentSessions = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("recent_sessions"); else _explicitNullProperties?.Remove("recent_sessions"); } }
+        public int? RecentSessions { get => _explicitNullValueRecentSessions; set { _explicitNullValueRecentSessions = value; AdditionalData?.Remove("recent_sessions"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("recent_sessions"); else _explicitNullProperties?.Remove("recent_sessions"); } }
         private int? _explicitNullValueRecentSessions = default!;
         /// <summary>Distinct sessions observed overall.</summary>
-        public int? TotalSessions { get => _explicitNullValueTotalSessions; set { _explicitNullValueTotalSessions = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("total_sessions"); else _explicitNullProperties?.Remove("total_sessions"); } }
+        public int? TotalSessions { get => _explicitNullValueTotalSessions; set { _explicitNullValueTotalSessions = value; AdditionalData?.Remove("total_sessions"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("total_sessions"); else _explicitNullProperties?.Remove("total_sessions"); } }
         private int? _explicitNullValueTotalSessions = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ObservationStatsCoverage"/> and sets the default values.

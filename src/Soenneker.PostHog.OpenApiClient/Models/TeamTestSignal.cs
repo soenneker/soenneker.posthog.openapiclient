@@ -17,47 +17,53 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("last_seen_at") is { } nullNodeLastSeenAt && nullNodeLastSeenAt.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) LastSeenAt = null;
-            if (parseNode.GetChildNode("nodeid") is { } nullNodeNodeid && nullNodeNodeid.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Nodeid = null;
-            if (parseNode.GetChildNode("runner") is { } nullNodeRunner && nullNodeRunner.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Runner = null;
-            if (parseNode.GetChildNode("selector") is { } nullNodeSelector && nullNodeSelector.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Selector = null;
-            if (parseNode.GetChildNode("signal_count") is { } nullNodeSignalCount && nullNodeSignalCount.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SignalCount = null;
-            if (parseNode.GetChildNode("signal_count_prior") is { } nullNodeSignalCountPrior && nullNodeSignalCountPrior.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SignalCountPrior = null;
+            if (parseNode.GetChildNode("last_seen_at") is null) { _explicitNullValueLastSeenAt = default!; _explicitNullProperties?.Remove("last_seen_at"); }
+            else if (parseNode.GetChildNode("last_seen_at") is { } nullNodeLastSeenAt && nullNodeLastSeenAt.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) LastSeenAt = null;
+            if (parseNode.GetChildNode("nodeid") is null) { _explicitNullValueNodeid = default!; _explicitNullProperties?.Remove("nodeid"); }
+            else if (parseNode.GetChildNode("nodeid") is { } nullNodeNodeid && nullNodeNodeid.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Nodeid = null;
+            if (parseNode.GetChildNode("runner") is null) { _explicitNullValueRunner = default!; _explicitNullProperties?.Remove("runner"); }
+            else if (parseNode.GetChildNode("runner") is { } nullNodeRunner && nullNodeRunner.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Runner = null;
+            if (parseNode.GetChildNode("selector") is null) { _explicitNullValueSelector = default!; _explicitNullProperties?.Remove("selector"); }
+            else if (parseNode.GetChildNode("selector") is { } nullNodeSelector && nullNodeSelector.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Selector = null;
+            if (parseNode.GetChildNode("signal_count") is null) { _explicitNullValueSignalCount = default!; _explicitNullProperties?.Remove("signal_count"); }
+            else if (parseNode.GetChildNode("signal_count") is { } nullNodeSignalCount && nullNodeSignalCount.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SignalCount = null;
+            if (parseNode.GetChildNode("signal_count_prior") is null) { _explicitNullValueSignalCountPrior = default!; _explicitNullProperties?.Remove("signal_count_prior"); }
+            else if (parseNode.GetChildNode("signal_count_prior") is { } nullNodeSignalCountPrior && nullNodeSignalCountPrior.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SignalCountPrior = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Most recent failure, recovery, or quarantined-failure run for this test, either window.</summary>
-        public DateTimeOffset? LastSeenAt { get => _explicitNullValueLastSeenAt; set { _explicitNullValueLastSeenAt = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("last_seen_at"); else _explicitNullProperties?.Remove("last_seen_at"); } }
+        public DateTimeOffset? LastSeenAt { get => _explicitNullValueLastSeenAt; set { _explicitNullValueLastSeenAt = value; AdditionalData?.Remove("last_seen_at"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("last_seen_at"); else _explicitNullProperties?.Remove("last_seen_at"); } }
         private DateTimeOffset? _explicitNullValueLastSeenAt = default!;
         /// <summary>Runner-specific test identity (the CI span name), a stable grouping key.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Nodeid { get => _explicitNullValueNodeid; set { _explicitNullValueNodeid = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("nodeid"); else _explicitNullProperties?.Remove("nodeid"); } }
+        public string? Nodeid { get => _explicitNullValueNodeid; set { _explicitNullValueNodeid = value; AdditionalData?.Remove("nodeid"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("nodeid"); else _explicitNullProperties?.Remove("nodeid"); } }
         private string? _explicitNullValueNodeid = default!;
 #nullable restore
 #else
-        public string Nodeid { get => _explicitNullValueNodeid; set { _explicitNullValueNodeid = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("nodeid"); else _explicitNullProperties?.Remove("nodeid"); } }
+        public string Nodeid { get => _explicitNullValueNodeid; set { _explicitNullValueNodeid = value; AdditionalData?.Remove("nodeid"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("nodeid"); else _explicitNullProperties?.Remove("nodeid"); } }
         private string _explicitNullValueNodeid = default!;
 #endif
         /// <summary>* `pytest` - Pytest* `jest` - Jest</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.TeamTestSignalRunner? Runner { get => _explicitNullValueRunner; set { _explicitNullValueRunner = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("runner"); else _explicitNullProperties?.Remove("runner"); } }
+        public global::Soenneker.PostHog.OpenApiClient.Models.TeamTestSignalRunner? Runner { get => _explicitNullValueRunner; set { _explicitNullValueRunner = value; AdditionalData?.Remove("runner"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("runner"); else _explicitNullProperties?.Remove("runner"); } }
         private global::Soenneker.PostHog.OpenApiClient.Models.TeamTestSignalRunner? _explicitNullValueRunner = default!;
         /// <summary>Runnable pytest or Jest selector; exact for newly emitted spans.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Selector { get => _explicitNullValueSelector; set { _explicitNullValueSelector = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("selector"); else _explicitNullProperties?.Remove("selector"); } }
+        public string? Selector { get => _explicitNullValueSelector; set { _explicitNullValueSelector = value; AdditionalData?.Remove("selector"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("selector"); else _explicitNullProperties?.Remove("selector"); } }
         private string? _explicitNullValueSelector = default!;
 #nullable restore
 #else
-        public string Selector { get => _explicitNullValueSelector; set { _explicitNullValueSelector = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("selector"); else _explicitNullProperties?.Remove("selector"); } }
+        public string Selector { get => _explicitNullValueSelector; set { _explicitNullValueSelector = value; AdditionalData?.Remove("selector"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("selector"); else _explicitNullProperties?.Remove("selector"); } }
         private string _explicitNullValueSelector = default!;
 #endif
         /// <summary>Runs in the current window where the test failed, errored, or a retry recovered it (quarantined failures excluded).</summary>
-        public int? SignalCount { get => _explicitNullValueSignalCount; set { _explicitNullValueSignalCount = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("signal_count"); else _explicitNullProperties?.Remove("signal_count"); } }
+        public int? SignalCount { get => _explicitNullValueSignalCount; set { _explicitNullValueSignalCount = value; AdditionalData?.Remove("signal_count"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("signal_count"); else _explicitNullProperties?.Remove("signal_count"); } }
         private int? _explicitNullValueSignalCount = default!;
         /// <summary>Same count over the equal-length window before date_from.</summary>
-        public int? SignalCountPrior { get => _explicitNullValueSignalCountPrior; set { _explicitNullValueSignalCountPrior = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("signal_count_prior"); else _explicitNullProperties?.Remove("signal_count_prior"); } }
+        public int? SignalCountPrior { get => _explicitNullValueSignalCountPrior; set { _explicitNullValueSignalCountPrior = value; AdditionalData?.Remove("signal_count_prior"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("signal_count_prior"); else _explicitNullProperties?.Remove("signal_count_prior"); } }
         private int? _explicitNullValueSignalCountPrior = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.TeamTestSignal"/> and sets the default values.
@@ -86,7 +92,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             {
                 { "last_seen_at", n => { LastSeenAt = n.GetDateTimeOffsetValue(); } },
                 { "nodeid", n => { Nodeid = n.GetStringValue(); } },
-                { "runner", n => { Runner = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.TeamTestSignalRunner>(); } },
+                { "runner", n => { var parsed = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.TeamTestSignalRunner>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValueRunner = default; _explicitNullProperties?.Remove("runner"); AdditionalData["runner"] = unknown; } else { Runner = parsed; AdditionalData.Remove("runner"); } } },
                 { "selector", n => { Selector = n.GetStringValue(); } },
                 { "signal_count", n => { SignalCount = n.GetIntValue(); } },
                 { "signal_count_prior", n => { SignalCountPrior = n.GetIntValue(); } },

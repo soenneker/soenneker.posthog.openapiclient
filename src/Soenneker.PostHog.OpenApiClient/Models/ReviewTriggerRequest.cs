@@ -17,8 +17,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("pr_url") is { } nullNodePrUrl && nullNodePrUrl.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) PrUrl = null;
-            if (parseNode.GetChildNode("run_mode") is { } nullNodeRunMode && nullNodeRunMode.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) RunMode = null;
+            if (parseNode.GetChildNode("pr_url") is null) { _explicitNullValuePrUrl = default!; _explicitNullProperties?.Remove("pr_url"); }
+            else if (parseNode.GetChildNode("pr_url") is { } nullNodePrUrl && nullNodePrUrl.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) PrUrl = null;
+            if (parseNode.GetChildNode("run_mode") is null) { _explicitNullValueRunMode = default!; _explicitNullProperties?.Remove("run_mode"); }
+            else if (parseNode.GetChildNode("run_mode") is { } nullNodeRunMode && nullNodeRunMode.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) RunMode = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -26,15 +28,15 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>GitHub pull request URL to review, e.g. &apos;https://github.com/PostHog/posthog.com/pull/123&apos;. The repository must be accessible to the project&apos;s GitHub App installation.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? PrUrl { get => _explicitNullValuePrUrl; set { _explicitNullValuePrUrl = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("pr_url"); else _explicitNullProperties?.Remove("pr_url"); } }
+        public string? PrUrl { get => _explicitNullValuePrUrl; set { _explicitNullValuePrUrl = value; AdditionalData?.Remove("pr_url"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("pr_url"); else _explicitNullProperties?.Remove("pr_url"); } }
         private string? _explicitNullValuePrUrl = default!;
 #nullable restore
 #else
-        public string PrUrl { get => _explicitNullValuePrUrl; set { _explicitNullValuePrUrl = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("pr_url"); else _explicitNullProperties?.Remove("pr_url"); } }
+        public string PrUrl { get => _explicitNullValuePrUrl; set { _explicitNullValuePrUrl = value; AdditionalData?.Remove("pr_url"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("pr_url"); else _explicitNullProperties?.Remove("pr_url"); } }
         private string _explicitNullValuePrUrl = default!;
 #endif
         /// <summary>* `review` - Review* `review_only` - Review only* `resolve_only` - Resolve only* `flash` - Standard</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.ReviewTriggerRequestRunMode? RunMode { get => _explicitNullValueRunMode; set { _explicitNullValueRunMode = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("run_mode"); else _explicitNullProperties?.Remove("run_mode"); } }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ReviewTriggerRequestRunMode? RunMode { get => _explicitNullValueRunMode; set { _explicitNullValueRunMode = value; AdditionalData?.Remove("run_mode"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("run_mode"); else _explicitNullProperties?.Remove("run_mode"); } }
         private global::Soenneker.PostHog.OpenApiClient.Models.ReviewTriggerRequestRunMode? _explicitNullValueRunMode = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ReviewTriggerRequest"/> and sets the default values.
@@ -62,7 +64,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "pr_url", n => { PrUrl = n.GetStringValue(); } },
-                { "run_mode", n => { RunMode = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ReviewTriggerRequestRunMode>(); } },
+                { "run_mode", n => { var parsed = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ReviewTriggerRequestRunMode>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValueRunMode = default; _explicitNullProperties?.Remove("run_mode"); AdditionalData["run_mode"] = unknown; } else { RunMode = parsed; AdditionalData.Remove("run_mode"); } } },
             };
         }
         /// <summary>

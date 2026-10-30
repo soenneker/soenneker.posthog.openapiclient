@@ -18,21 +18,26 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("access_level") is { } nullNodeAccessLevel && nullNodeAccessLevel.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AccessLevel = null;
-            if (parseNode.GetChildNode("effective_access_level") is { } nullNodeEffectiveAccessLevel && nullNodeEffectiveAccessLevel.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) EffectiveAccessLevel = null;
-            if (parseNode.GetChildNode("inherited_access") is { } nullNodeInheritedAccess && nullNodeInheritedAccess.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) InheritedAccess = null;
-            if (parseNode.GetChildNode("maximum") is { } nullNodeMaximum && nullNodeMaximum.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Maximum = null;
-            if (parseNode.GetChildNode("minimum") is { } nullNodeMinimum && nullNodeMinimum.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Minimum = null;
+            if (parseNode.GetChildNode("access_level") is null) { _explicitNullValueAccessLevel = default!; _explicitNullProperties?.Remove("access_level"); }
+            else if (parseNode.GetChildNode("access_level") is { } nullNodeAccessLevel && nullNodeAccessLevel.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AccessLevel = null;
+            if (parseNode.GetChildNode("effective_access_level") is null) { _explicitNullValueEffectiveAccessLevel = default!; _explicitNullProperties?.Remove("effective_access_level"); }
+            else if (parseNode.GetChildNode("effective_access_level") is { } nullNodeEffectiveAccessLevel && nullNodeEffectiveAccessLevel.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) EffectiveAccessLevel = null;
+            if (parseNode.GetChildNode("inherited_access") is null) { _explicitNullValueInheritedAccess = default!; _explicitNullProperties?.Remove("inherited_access"); }
+            else if (parseNode.GetChildNode("inherited_access") is { } nullNodeInheritedAccess && nullNodeInheritedAccess.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) InheritedAccess = null;
+            if (parseNode.GetChildNode("maximum") is null) { _explicitNullValueMaximum = default!; _explicitNullProperties?.Remove("maximum"); }
+            else if (parseNode.GetChildNode("maximum") is { } nullNodeMaximum && nullNodeMaximum.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Maximum = null;
+            if (parseNode.GetChildNode("minimum") is null) { _explicitNullValueMinimum = default!; _explicitNullProperties?.Remove("minimum"); }
+            else if (parseNode.GetChildNode("minimum") is { } nullNodeMinimum && nullNodeMinimum.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Minimum = null;
         }
 
         /// <summary>The subject&apos;s own stored rule for this scope. Null when the subject has no rule of its own here.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? AccessLevel { get => _explicitNullValueAccessLevel; set { _explicitNullValueAccessLevel = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("access_level"); else _explicitNullProperties?.Remove("access_level"); } }
+        public string? AccessLevel { get => _explicitNullValueAccessLevel; set { _explicitNullValueAccessLevel = value; AdditionalData?.Remove("access_level"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("access_level"); else _explicitNullProperties?.Remove("access_level"); } }
         private string? _explicitNullValueAccessLevel = default!;
 #nullable restore
 #else
-        public string AccessLevel { get => _explicitNullValueAccessLevel; set { _explicitNullValueAccessLevel = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("access_level"); else _explicitNullProperties?.Remove("access_level"); } }
+        public string AccessLevel { get => _explicitNullValueAccessLevel; set { _explicitNullValueAccessLevel = value; AdditionalData?.Remove("access_level"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("access_level"); else _explicitNullProperties?.Remove("access_level"); } }
         private string _explicitNullValueAccessLevel = default!;
 #endif
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -40,41 +45,41 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The level that is enforced for the subject after defaults, roles and bypasses are resolved. Null when nothing resolves for this scope.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? EffectiveAccessLevel { get => _explicitNullValueEffectiveAccessLevel; set { _explicitNullValueEffectiveAccessLevel = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("effective_access_level"); else _explicitNullProperties?.Remove("effective_access_level"); } }
+        public string? EffectiveAccessLevel { get => _explicitNullValueEffectiveAccessLevel; set { _explicitNullValueEffectiveAccessLevel = value; AdditionalData?.Remove("effective_access_level"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("effective_access_level"); else _explicitNullProperties?.Remove("effective_access_level"); } }
         private string? _explicitNullValueEffectiveAccessLevel = default!;
 #nullable restore
 #else
-        public string EffectiveAccessLevel { get => _explicitNullValueEffectiveAccessLevel; set { _explicitNullValueEffectiveAccessLevel = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("effective_access_level"); else _explicitNullProperties?.Remove("effective_access_level"); } }
+        public string EffectiveAccessLevel { get => _explicitNullValueEffectiveAccessLevel; set { _explicitNullValueEffectiveAccessLevel = value; AdditionalData?.Remove("effective_access_level"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("effective_access_level"); else _explicitNullProperties?.Remove("effective_access_level"); } }
         private string _explicitNullValueEffectiveAccessLevel = default!;
 #endif
         /// <summary>The level the subject falls back to without a rule of its own, with the rule that supplies it. Read `source` and `source_subject` to tell a role rule from the project default, or an organization admin&apos;s full access.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.ResolvedAccess? InheritedAccess { get => _explicitNullValueInheritedAccess; set { _explicitNullValueInheritedAccess = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("inherited_access"); else _explicitNullProperties?.Remove("inherited_access"); } }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ResolvedAccess? InheritedAccess { get => _explicitNullValueInheritedAccess; set { _explicitNullValueInheritedAccess = value; AdditionalData?.Remove("inherited_access"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("inherited_access"); else _explicitNullProperties?.Remove("inherited_access"); } }
         private global::Soenneker.PostHog.OpenApiClient.Models.ResolvedAccess? _explicitNullValueInheritedAccess = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ResolvedAccess InheritedAccess { get => _explicitNullValueInheritedAccess; set { _explicitNullValueInheritedAccess = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("inherited_access"); else _explicitNullProperties?.Remove("inherited_access"); } }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ResolvedAccess InheritedAccess { get => _explicitNullValueInheritedAccess; set { _explicitNullValueInheritedAccess = value; AdditionalData?.Remove("inherited_access"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("inherited_access"); else _explicitNullProperties?.Remove("inherited_access"); } }
         private global::Soenneker.PostHog.OpenApiClient.Models.ResolvedAccess _explicitNullValueInheritedAccess = default!;
 #endif
         /// <summary>The highest level this scope allows.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Maximum { get => _explicitNullValueMaximum; set { _explicitNullValueMaximum = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("maximum"); else _explicitNullProperties?.Remove("maximum"); } }
+        public string? Maximum { get => _explicitNullValueMaximum; set { _explicitNullValueMaximum = value; AdditionalData?.Remove("maximum"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("maximum"); else _explicitNullProperties?.Remove("maximum"); } }
         private string? _explicitNullValueMaximum = default!;
 #nullable restore
 #else
-        public string Maximum { get => _explicitNullValueMaximum; set { _explicitNullValueMaximum = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("maximum"); else _explicitNullProperties?.Remove("maximum"); } }
+        public string Maximum { get => _explicitNullValueMaximum; set { _explicitNullValueMaximum = value; AdditionalData?.Remove("maximum"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("maximum"); else _explicitNullProperties?.Remove("maximum"); } }
         private string _explicitNullValueMaximum = default!;
 #endif
         /// <summary>The lowest level this scope allows.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Minimum { get => _explicitNullValueMinimum; set { _explicitNullValueMinimum = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("minimum"); else _explicitNullProperties?.Remove("minimum"); } }
+        public string? Minimum { get => _explicitNullValueMinimum; set { _explicitNullValueMinimum = value; AdditionalData?.Remove("minimum"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("minimum"); else _explicitNullProperties?.Remove("minimum"); } }
         private string? _explicitNullValueMinimum = default!;
 #nullable restore
 #else
-        public string Minimum { get => _explicitNullValueMinimum; set { _explicitNullValueMinimum = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("minimum"); else _explicitNullProperties?.Remove("minimum"); } }
+        public string Minimum { get => _explicitNullValueMinimum; set { _explicitNullValueMinimum = value; AdditionalData?.Remove("minimum"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("minimum"); else _explicitNullProperties?.Remove("minimum"); } }
         private string _explicitNullValueMinimum = default!;
 #endif
         /// <summary>

@@ -17,75 +17,83 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("async") is { } nullNodeAsync && nullNodeAsync.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Async = null;
-            if (parseNode.GetChildNode("client_query_id") is { } nullNodeClientQueryId && nullNodeClientQueryId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ClientQueryId = null;
-            if (parseNode.GetChildNode("filters_override") is { } nullNodeFiltersOverride && nullNodeFiltersOverride.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) FiltersOverride = null;
-            if (parseNode.GetChildNode("limit_context") is { } nullNodeLimitContext && nullNodeLimitContext.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) LimitContext = null;
-            if (parseNode.GetChildNode("name") is { } nullNodeName && nullNodeName.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Name = null;
-            if (parseNode.GetChildNode("query") is { } nullNodeQuery && nullNodeQuery.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Query = null;
-            if (parseNode.GetChildNode("refresh") is { } nullNodeRefresh && nullNodeRefresh.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Refresh = null;
-            if (parseNode.GetChildNode("variables_override") is { } nullNodeVariablesOverride && nullNodeVariablesOverride.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) VariablesOverride = null;
+            if (parseNode.GetChildNode("async") is null) { _explicitNullValueAsync = default!; _explicitNullProperties?.Remove("async"); }
+            else if (parseNode.GetChildNode("async") is { } nullNodeAsync && nullNodeAsync.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Async = null;
+            if (parseNode.GetChildNode("client_query_id") is null) { _explicitNullValueClientQueryId = default!; _explicitNullProperties?.Remove("client_query_id"); }
+            else if (parseNode.GetChildNode("client_query_id") is { } nullNodeClientQueryId && nullNodeClientQueryId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ClientQueryId = null;
+            if (parseNode.GetChildNode("filters_override") is null) { _explicitNullValueFiltersOverride = default!; _explicitNullProperties?.Remove("filters_override"); }
+            else if (parseNode.GetChildNode("filters_override") is { } nullNodeFiltersOverride && nullNodeFiltersOverride.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) FiltersOverride = null;
+            if (parseNode.GetChildNode("limit_context") is null) { _explicitNullValueLimitContext = default!; _explicitNullProperties?.Remove("limit_context"); }
+            else if (parseNode.GetChildNode("limit_context") is { } nullNodeLimitContext && nullNodeLimitContext.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) LimitContext = null;
+            if (parseNode.GetChildNode("name") is null) { _explicitNullValueName = default!; _explicitNullProperties?.Remove("name"); }
+            else if (parseNode.GetChildNode("name") is { } nullNodeName && nullNodeName.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Name = null;
+            if (parseNode.GetChildNode("query") is null) { _explicitNullValueQuery = default!; _explicitNullProperties?.Remove("query"); }
+            else if (parseNode.GetChildNode("query") is { } nullNodeQuery && nullNodeQuery.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Query = null;
+            if (parseNode.GetChildNode("refresh") is null) { _explicitNullValueRefresh = default!; _explicitNullProperties?.Remove("refresh"); }
+            else if (parseNode.GetChildNode("refresh") is { } nullNodeRefresh && nullNodeRefresh.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Refresh = null;
+            if (parseNode.GetChildNode("variables_override") is null) { _explicitNullValueVariablesOverride = default!; _explicitNullProperties?.Remove("variables_override"); }
+            else if (parseNode.GetChildNode("variables_override") is { } nullNodeVariablesOverride && nullNodeVariablesOverride.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) VariablesOverride = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The async property</summary>
-        public bool? Async { get => _explicitNullValueAsync; set { _explicitNullValueAsync = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("async"); else _explicitNullProperties?.Remove("async"); } }
+        public bool? Async { get => _explicitNullValueAsync; set { _explicitNullValueAsync = value; AdditionalData?.Remove("async"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("async"); else _explicitNullProperties?.Remove("async"); } }
         private bool? _explicitNullValueAsync = default!;
         /// <summary>Client-provided query ID for checking status or canceling an asynchronous query.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? ClientQueryId { get => _explicitNullValueClientQueryId; set { _explicitNullValueClientQueryId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("client_query_id"); else _explicitNullProperties?.Remove("client_query_id"); } }
+        public string? ClientQueryId { get => _explicitNullValueClientQueryId; set { _explicitNullValueClientQueryId = value; AdditionalData?.Remove("client_query_id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("client_query_id"); else _explicitNullProperties?.Remove("client_query_id"); } }
         private string? _explicitNullValueClientQueryId = default!;
 #nullable restore
 #else
-        public string ClientQueryId { get => _explicitNullValueClientQueryId; set { _explicitNullValueClientQueryId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("client_query_id"); else _explicitNullProperties?.Remove("client_query_id"); } }
+        public string ClientQueryId { get => _explicitNullValueClientQueryId; set { _explicitNullValueClientQueryId = value; AdditionalData?.Remove("client_query_id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("client_query_id"); else _explicitNullProperties?.Remove("client_query_id"); } }
         private string _explicitNullValueClientQueryId = default!;
 #endif
         /// <summary>The filters_override property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.DashboardFilter? FiltersOverride { get => _explicitNullValueFiltersOverride; set { _explicitNullValueFiltersOverride = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("filters_override"); else _explicitNullProperties?.Remove("filters_override"); } }
+        public global::Soenneker.PostHog.OpenApiClient.Models.DashboardFilter? FiltersOverride { get => _explicitNullValueFiltersOverride; set { _explicitNullValueFiltersOverride = value; AdditionalData?.Remove("filters_override"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("filters_override"); else _explicitNullProperties?.Remove("filters_override"); } }
         private global::Soenneker.PostHog.OpenApiClient.Models.DashboardFilter? _explicitNullValueFiltersOverride = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.DashboardFilter FiltersOverride { get => _explicitNullValueFiltersOverride; set { _explicitNullValueFiltersOverride = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("filters_override"); else _explicitNullProperties?.Remove("filters_override"); } }
+        public global::Soenneker.PostHog.OpenApiClient.Models.DashboardFilter FiltersOverride { get => _explicitNullValueFiltersOverride; set { _explicitNullValueFiltersOverride = value; AdditionalData?.Remove("filters_override"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("filters_override"); else _explicitNullProperties?.Remove("filters_override"); } }
         private global::Soenneker.PostHog.OpenApiClient.Models.DashboardFilter _explicitNullValueFiltersOverride = default!;
 #endif
         /// <summary>Limit context for the query. Only &apos;posthog_ai&apos; is allowed as a client-provided value.</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.LimitContext? LimitContext { get => _explicitNullValueLimitContext; set { _explicitNullValueLimitContext = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("limit_context"); else _explicitNullProperties?.Remove("limit_context"); } }
+        public global::Soenneker.PostHog.OpenApiClient.Models.LimitContext? LimitContext { get => _explicitNullValueLimitContext; set { _explicitNullValueLimitContext = value; AdditionalData?.Remove("limit_context"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("limit_context"); else _explicitNullProperties?.Remove("limit_context"); } }
         private global::Soenneker.PostHog.OpenApiClient.Models.LimitContext? _explicitNullValueLimitContext = default!;
         /// <summary>Name given to a query. It&apos;s used to identify the query in the UI. Up to 128 characters for a name.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Name { get => _explicitNullValueName; set { _explicitNullValueName = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("name"); else _explicitNullProperties?.Remove("name"); } }
+        public string? Name { get => _explicitNullValueName; set { _explicitNullValueName = value; AdditionalData?.Remove("name"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("name"); else _explicitNullProperties?.Remove("name"); } }
         private string? _explicitNullValueName = default!;
 #nullable restore
 #else
-        public string Name { get => _explicitNullValueName; set { _explicitNullValueName = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("name"); else _explicitNullProperties?.Remove("name"); } }
+        public string Name { get => _explicitNullValueName; set { _explicitNullValueName = value; AdditionalData?.Remove("name"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("name"); else _explicitNullProperties?.Remove("name"); } }
         private string _explicitNullValueName = default!;
 #endif
         /// <summary>Accounts table query to run.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.AccountsTableQuery? Query { get => _explicitNullValueQuery; set { _explicitNullValueQuery = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("query"); else _explicitNullProperties?.Remove("query"); } }
+        public global::Soenneker.PostHog.OpenApiClient.Models.AccountsTableQuery? Query { get => _explicitNullValueQuery; set { _explicitNullValueQuery = value; AdditionalData?.Remove("query"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("query"); else _explicitNullProperties?.Remove("query"); } }
         private global::Soenneker.PostHog.OpenApiClient.Models.AccountsTableQuery? _explicitNullValueQuery = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.AccountsTableQuery Query { get => _explicitNullValueQuery; set { _explicitNullValueQuery = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("query"); else _explicitNullProperties?.Remove("query"); } }
+        public global::Soenneker.PostHog.OpenApiClient.Models.AccountsTableQuery Query { get => _explicitNullValueQuery; set { _explicitNullValueQuery = value; AdditionalData?.Remove("query"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("query"); else _explicitNullProperties?.Remove("query"); } }
         private global::Soenneker.PostHog.OpenApiClient.Models.AccountsTableQuery _explicitNullValueQuery = default!;
 #endif
         /// <summary>Cache and execution behavior for the query.</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.RefreshType? Refresh { get => _explicitNullValueRefresh; set { _explicitNullValueRefresh = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("refresh"); else _explicitNullProperties?.Remove("refresh"); } }
+        public global::Soenneker.PostHog.OpenApiClient.Models.RefreshType? Refresh { get => _explicitNullValueRefresh; set { _explicitNullValueRefresh = value; AdditionalData?.Remove("refresh"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("refresh"); else _explicitNullProperties?.Remove("refresh"); } }
         private global::Soenneker.PostHog.OpenApiClient.Models.RefreshType? _explicitNullValueRefresh = default!;
         /// <summary>The variables_override property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.AccountsTableQueryRequestVariablesOverrideProperty? VariablesOverride { get => _explicitNullValueVariablesOverride; set { _explicitNullValueVariablesOverride = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("variables_override"); else _explicitNullProperties?.Remove("variables_override"); } }
+        public global::Soenneker.PostHog.OpenApiClient.Models.AccountsTableQueryRequestVariablesOverrideProperty? VariablesOverride { get => _explicitNullValueVariablesOverride; set { _explicitNullValueVariablesOverride = value; AdditionalData?.Remove("variables_override"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("variables_override"); else _explicitNullProperties?.Remove("variables_override"); } }
         private global::Soenneker.PostHog.OpenApiClient.Models.AccountsTableQueryRequestVariablesOverrideProperty? _explicitNullValueVariablesOverride = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.AccountsTableQueryRequestVariablesOverrideProperty VariablesOverride { get => _explicitNullValueVariablesOverride; set { _explicitNullValueVariablesOverride = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("variables_override"); else _explicitNullProperties?.Remove("variables_override"); } }
+        public global::Soenneker.PostHog.OpenApiClient.Models.AccountsTableQueryRequestVariablesOverrideProperty VariablesOverride { get => _explicitNullValueVariablesOverride; set { _explicitNullValueVariablesOverride = value; AdditionalData?.Remove("variables_override"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("variables_override"); else _explicitNullProperties?.Remove("variables_override"); } }
         private global::Soenneker.PostHog.OpenApiClient.Models.AccountsTableQueryRequestVariablesOverrideProperty _explicitNullValueVariablesOverride = default!;
 #endif
         /// <summary>
@@ -117,10 +125,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "async", n => { Async = n.GetBoolValue(); } },
                 { "client_query_id", n => { ClientQueryId = n.GetStringValue(); } },
                 { "filters_override", n => { FiltersOverride = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.DashboardFilter>(global::Soenneker.PostHog.OpenApiClient.Models.DashboardFilter.CreateFromDiscriminatorValue); } },
-                { "limit_context", n => { LimitContext = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.LimitContext>(); } },
+                { "limit_context", n => { var parsed = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.LimitContext>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValueLimitContext = default; _explicitNullProperties?.Remove("limit_context"); AdditionalData["limit_context"] = unknown; } else { LimitContext = parsed; AdditionalData.Remove("limit_context"); } } },
                 { "name", n => { Name = n.GetStringValue(); } },
                 { "query", n => { Query = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.AccountsTableQuery>(global::Soenneker.PostHog.OpenApiClient.Models.AccountsTableQuery.CreateFromDiscriminatorValue); } },
-                { "refresh", n => { Refresh = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.RefreshType>(); } },
+                { "refresh", n => { var parsed = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.RefreshType>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValueRefresh = default; _explicitNullProperties?.Remove("refresh"); AdditionalData["refresh"] = unknown; } else { Refresh = parsed; AdditionalData.Remove("refresh"); } } },
                 { "variables_override", n => { VariablesOverride = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.AccountsTableQueryRequestVariablesOverrideProperty>(global::Soenneker.PostHog.OpenApiClient.Models.AccountsTableQueryRequestVariablesOverrideProperty.CreateFromDiscriminatorValue); } },
             };
         }

@@ -17,7 +17,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("available_product_features") is { } nullNodeAvailableProductFeatures && nullNodeAvailableProductFeatures.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AvailableProductFeatures = null;
+            if (parseNode.GetChildNode("available_product_features") is null) { _explicitNullValueAvailableProductFeatures = default!; _explicitNullProperties?.Remove("available_product_features"); }
+            else if (parseNode.GetChildNode("available_product_features") is { } nullNodeAvailableProductFeatures && nullNodeAvailableProductFeatures.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AvailableProductFeatures = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -25,11 +26,11 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The available_product_features property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.ProductFeature>? AvailableProductFeatures { get => _explicitNullValueAvailableProductFeatures; set { _explicitNullValueAvailableProductFeatures = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("available_product_features"); else _explicitNullProperties?.Remove("available_product_features"); } }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.ProductFeature>? AvailableProductFeatures { get => _explicitNullValueAvailableProductFeatures; set { _explicitNullValueAvailableProductFeatures = value; AdditionalData?.Remove("available_product_features"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("available_product_features"); else _explicitNullProperties?.Remove("available_product_features"); } }
         private List<global::Soenneker.PostHog.OpenApiClient.Models.ProductFeature>? _explicitNullValueAvailableProductFeatures = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.ProductFeature> AvailableProductFeatures { get => _explicitNullValueAvailableProductFeatures; set { _explicitNullValueAvailableProductFeatures = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("available_product_features"); else _explicitNullProperties?.Remove("available_product_features"); } }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.ProductFeature> AvailableProductFeatures { get => _explicitNullValueAvailableProductFeatures; set { _explicitNullValueAvailableProductFeatures = value; AdditionalData?.Remove("available_product_features"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("available_product_features"); else _explicitNullProperties?.Remove("available_product_features"); } }
         private List<global::Soenneker.PostHog.OpenApiClient.Models.ProductFeature> _explicitNullValueAvailableProductFeatures = default!;
 #endif
         /// <summary>

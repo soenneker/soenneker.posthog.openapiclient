@@ -18,8 +18,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("estimated_rows_total") is { } nullNodeEstimatedRowsTotal && nullNodeEstimatedRowsTotal.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) EstimatedRowsTotal = null;
-            if (parseNode.GetChildNode("rows_read") is { } nullNodeRowsRead && nullNodeRowsRead.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) RowsRead = null;
+            if (parseNode.GetChildNode("estimated_rows_total") is null) { _explicitNullValueEstimatedRowsTotal = default!; _explicitNullProperties?.Remove("estimated_rows_total"); }
+            else if (parseNode.GetChildNode("estimated_rows_total") is { } nullNodeEstimatedRowsTotal && nullNodeEstimatedRowsTotal.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) EstimatedRowsTotal = null;
+            if (parseNode.GetChildNode("rows_read") is null) { _explicitNullValueRowsRead = default!; _explicitNullProperties?.Remove("rows_read"); }
+            else if (parseNode.GetChildNode("rows_read") is { } nullNodeRowsRead && nullNodeRowsRead.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) RowsRead = null;
         }
 
         /// <summary>Run currently executing for this experiment, if any; poll it by id for live progress</summary>
@@ -39,7 +41,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>When the job was created</summary>
         public DateTimeOffset? CreatedAt { get; private set; }
         /// <summary>ClickHouse&apos;s total_rows_approx across running queries plus the final read_rows of finished ones. A soft ceiling revised mid-scan, so it can exceed or trail rows_read; treat rows_read as the reliable signal</summary>
-        public int? EstimatedRowsTotal { get => _explicitNullValueEstimatedRowsTotal; set { _explicitNullValueEstimatedRowsTotal = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("estimated_rows_total"); else _explicitNullProperties?.Remove("estimated_rows_total"); } }
+        public int? EstimatedRowsTotal { get => _explicitNullValueEstimatedRowsTotal; set { _explicitNullValueEstimatedRowsTotal = value; AdditionalData?.Remove("estimated_rows_total"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("estimated_rows_total"); else _explicitNullProperties?.Remove("estimated_rows_total"); } }
         private int? _explicitNullValueEstimatedRowsTotal = default!;
         /// <summary>ID of the experiment being recalculated</summary>
         public int? ExperimentId { get; private set; }
@@ -76,7 +78,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>* `recalculation` - recalculation* `timeseries_fallback` - timeseries_fallback</summary>
         public global::Soenneker.PostHog.OpenApiClient.Models.ExperimentMetricsRecalculationLatestResultSource? ResultSource { get; private set; }
         /// <summary>Rows read by the run&apos;s metric queries so far, both finished and currently running. Cumulative and roughly monotonic across the run; the primary live progress signal</summary>
-        public int? RowsRead { get => _explicitNullValueRowsRead; set { _explicitNullValueRowsRead = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("rows_read"); else _explicitNullProperties?.Remove("rows_read"); } }
+        public int? RowsRead { get => _explicitNullValueRowsRead; set { _explicitNullValueRowsRead = value; AdditionalData?.Remove("rows_read"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("rows_read"); else _explicitNullProperties?.Remove("rows_read"); } }
         private int? _explicitNullValueRowsRead = default!;
         /// <summary>When processing started</summary>
         public DateTimeOffset? StartedAt { get; private set; }

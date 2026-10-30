@@ -17,63 +17,73 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("cpu_microseconds") is { } nullNodeCpuMicroseconds && nullNodeCpuMicroseconds.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CpuMicroseconds = null;
-            if (parseNode.GetChildNode("deleted") is { } nullNodeDeleted && nullNodeDeleted.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Deleted = null;
-            if (parseNode.GetChildNode("engines") is { } nullNodeEngines && nullNodeEngines.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Engines = null;
-            if (parseNode.GetChildNode("measured_runs") is { } nullNodeMeasuredRuns && nullNodeMeasuredRuns.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MeasuredRuns = null;
-            if (parseNode.GetChildNode("name") is { } nullNodeName && nullNodeName.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Name = null;
-            if (parseNode.GetChildNode("query_count") is { } nullNodeQueryCount && nullNodeQueryCount.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) QueryCount = null;
-            if (parseNode.GetChildNode("read_bytes") is { } nullNodeReadBytes && nullNodeReadBytes.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ReadBytes = null;
-            if (parseNode.GetChildNode("read_rows") is { } nullNodeReadRows && nullNodeReadRows.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ReadRows = null;
-            if (parseNode.GetChildNode("runs") is { } nullNodeRuns && nullNodeRuns.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Runs = null;
-            if (parseNode.GetChildNode("saved_query_id") is { } nullNodeSavedQueryId && nullNodeSavedQueryId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SavedQueryId = null;
+            if (parseNode.GetChildNode("cpu_microseconds") is null) { _explicitNullValueCpuMicroseconds = default!; _explicitNullProperties?.Remove("cpu_microseconds"); }
+            else if (parseNode.GetChildNode("cpu_microseconds") is { } nullNodeCpuMicroseconds && nullNodeCpuMicroseconds.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CpuMicroseconds = null;
+            if (parseNode.GetChildNode("deleted") is null) { _explicitNullValueDeleted = default!; _explicitNullProperties?.Remove("deleted"); }
+            else if (parseNode.GetChildNode("deleted") is { } nullNodeDeleted && nullNodeDeleted.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Deleted = null;
+            if (parseNode.GetChildNode("engines") is null) { _explicitNullValueEngines = default!; _explicitNullProperties?.Remove("engines"); }
+            else if (parseNode.GetChildNode("engines") is { } nullNodeEngines && nullNodeEngines.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Engines = null;
+            if (parseNode.GetChildNode("measured_runs") is null) { _explicitNullValueMeasuredRuns = default!; _explicitNullProperties?.Remove("measured_runs"); }
+            else if (parseNode.GetChildNode("measured_runs") is { } nullNodeMeasuredRuns && nullNodeMeasuredRuns.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MeasuredRuns = null;
+            if (parseNode.GetChildNode("name") is null) { _explicitNullValueName = default!; _explicitNullProperties?.Remove("name"); }
+            else if (parseNode.GetChildNode("name") is { } nullNodeName && nullNodeName.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Name = null;
+            if (parseNode.GetChildNode("query_count") is null) { _explicitNullValueQueryCount = default!; _explicitNullProperties?.Remove("query_count"); }
+            else if (parseNode.GetChildNode("query_count") is { } nullNodeQueryCount && nullNodeQueryCount.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) QueryCount = null;
+            if (parseNode.GetChildNode("read_bytes") is null) { _explicitNullValueReadBytes = default!; _explicitNullProperties?.Remove("read_bytes"); }
+            else if (parseNode.GetChildNode("read_bytes") is { } nullNodeReadBytes && nullNodeReadBytes.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ReadBytes = null;
+            if (parseNode.GetChildNode("read_rows") is null) { _explicitNullValueReadRows = default!; _explicitNullProperties?.Remove("read_rows"); }
+            else if (parseNode.GetChildNode("read_rows") is { } nullNodeReadRows && nullNodeReadRows.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ReadRows = null;
+            if (parseNode.GetChildNode("runs") is null) { _explicitNullValueRuns = default!; _explicitNullProperties?.Remove("runs"); }
+            else if (parseNode.GetChildNode("runs") is { } nullNodeRuns && nullNodeRuns.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Runs = null;
+            if (parseNode.GetChildNode("saved_query_id") is null) { _explicitNullValueSavedQueryId = default!; _explicitNullProperties?.Remove("saved_query_id"); }
+            else if (parseNode.GetChildNode("saved_query_id") is { } nullNodeSavedQueryId && nullNodeSavedQueryId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SavedQueryId = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Measured CPU microseconds. Null if unmeasured.</summary>
-        public int? CpuMicroseconds { get => _explicitNullValueCpuMicroseconds; set { _explicitNullValueCpuMicroseconds = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("cpu_microseconds"); else _explicitNullProperties?.Remove("cpu_microseconds"); } }
+        public int? CpuMicroseconds { get => _explicitNullValueCpuMicroseconds; set { _explicitNullValueCpuMicroseconds = value; AdditionalData?.Remove("cpu_microseconds"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("cpu_microseconds"); else _explicitNullProperties?.Remove("cpu_microseconds"); } }
         private int? _explicitNullValueCpuMicroseconds = default!;
         /// <summary>Whether this model has been deleted.</summary>
-        public bool? Deleted { get => _explicitNullValueDeleted; set { _explicitNullValueDeleted = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("deleted"); else _explicitNullProperties?.Remove("deleted"); } }
+        public bool? Deleted { get => _explicitNullValueDeleted; set { _explicitNullValueDeleted = value; AdditionalData?.Remove("deleted"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("deleted"); else _explicitNullProperties?.Remove("deleted"); } }
         private bool? _explicitNullValueDeleted = default!;
         /// <summary>Usage totals for each selected engine.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.ModelUsageEngine>? Engines { get => _explicitNullValueEngines; set { _explicitNullValueEngines = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("engines"); else _explicitNullProperties?.Remove("engines"); } }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.ModelUsageEngine>? Engines { get => _explicitNullValueEngines; set { _explicitNullValueEngines = value; AdditionalData?.Remove("engines"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("engines"); else _explicitNullProperties?.Remove("engines"); } }
         private List<global::Soenneker.PostHog.OpenApiClient.Models.ModelUsageEngine>? _explicitNullValueEngines = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.ModelUsageEngine> Engines { get => _explicitNullValueEngines; set { _explicitNullValueEngines = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("engines"); else _explicitNullProperties?.Remove("engines"); } }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.ModelUsageEngine> Engines { get => _explicitNullValueEngines; set { _explicitNullValueEngines = value; AdditionalData?.Remove("engines"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("engines"); else _explicitNullProperties?.Remove("engines"); } }
         private List<global::Soenneker.PostHog.OpenApiClient.Models.ModelUsageEngine> _explicitNullValueEngines = default!;
 #endif
         /// <summary>Runs with recorded usage. Other runs have unknown cost.</summary>
-        public int? MeasuredRuns { get => _explicitNullValueMeasuredRuns; set { _explicitNullValueMeasuredRuns = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("measured_runs"); else _explicitNullProperties?.Remove("measured_runs"); } }
+        public int? MeasuredRuns { get => _explicitNullValueMeasuredRuns; set { _explicitNullValueMeasuredRuns = value; AdditionalData?.Remove("measured_runs"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("measured_runs"); else _explicitNullProperties?.Remove("measured_runs"); } }
         private int? _explicitNullValueMeasuredRuns = default!;
         /// <summary>Model name.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Name { get => _explicitNullValueName; set { _explicitNullValueName = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("name"); else _explicitNullProperties?.Remove("name"); } }
+        public string? Name { get => _explicitNullValueName; set { _explicitNullValueName = value; AdditionalData?.Remove("name"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("name"); else _explicitNullProperties?.Remove("name"); } }
         private string? _explicitNullValueName = default!;
 #nullable restore
 #else
-        public string Name { get => _explicitNullValueName; set { _explicitNullValueName = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("name"); else _explicitNullProperties?.Remove("name"); } }
+        public string Name { get => _explicitNullValueName; set { _explicitNullValueName = value; AdditionalData?.Remove("name"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("name"); else _explicitNullProperties?.Remove("name"); } }
         private string _explicitNullValueName = default!;
 #endif
         /// <summary>Measured ClickHouse query count. Null if unmeasured.</summary>
-        public int? QueryCount { get => _explicitNullValueQueryCount; set { _explicitNullValueQueryCount = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("query_count"); else _explicitNullProperties?.Remove("query_count"); } }
+        public int? QueryCount { get => _explicitNullValueQueryCount; set { _explicitNullValueQueryCount = value; AdditionalData?.Remove("query_count"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("query_count"); else _explicitNullProperties?.Remove("query_count"); } }
         private int? _explicitNullValueQueryCount = default!;
         /// <summary>Measured bytes read, including probes and retries. Null if unmeasured.</summary>
-        public int? ReadBytes { get => _explicitNullValueReadBytes; set { _explicitNullValueReadBytes = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("read_bytes"); else _explicitNullProperties?.Remove("read_bytes"); } }
+        public int? ReadBytes { get => _explicitNullValueReadBytes; set { _explicitNullValueReadBytes = value; AdditionalData?.Remove("read_bytes"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("read_bytes"); else _explicitNullProperties?.Remove("read_bytes"); } }
         private int? _explicitNullValueReadBytes = default!;
         /// <summary>Measured rows read. Null if unmeasured.</summary>
-        public int? ReadRows { get => _explicitNullValueReadRows; set { _explicitNullValueReadRows = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("read_rows"); else _explicitNullProperties?.Remove("read_rows"); } }
+        public int? ReadRows { get => _explicitNullValueReadRows; set { _explicitNullValueReadRows = value; AdditionalData?.Remove("read_rows"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("read_rows"); else _explicitNullProperties?.Remove("read_rows"); } }
         private int? _explicitNullValueReadRows = default!;
         /// <summary>Finished materialization runs, including failures and cancellations.</summary>
-        public int? Runs { get => _explicitNullValueRuns; set { _explicitNullValueRuns = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("runs"); else _explicitNullProperties?.Remove("runs"); } }
+        public int? Runs { get => _explicitNullValueRuns; set { _explicitNullValueRuns = value; AdditionalData?.Remove("runs"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("runs"); else _explicitNullProperties?.Remove("runs"); } }
         private int? _explicitNullValueRuns = default!;
         /// <summary>Model ID, or null if permanently deleted.</summary>
-        public Guid? SavedQueryId { get => _explicitNullValueSavedQueryId; set { _explicitNullValueSavedQueryId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("saved_query_id"); else _explicitNullProperties?.Remove("saved_query_id"); } }
+        public Guid? SavedQueryId { get => _explicitNullValueSavedQueryId; set { _explicitNullValueSavedQueryId = value; AdditionalData?.Remove("saved_query_id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("saved_query_id"); else _explicitNullProperties?.Remove("saved_query_id"); } }
         private Guid? _explicitNullValueSavedQueryId = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ModelUsageRow"/> and sets the default values.

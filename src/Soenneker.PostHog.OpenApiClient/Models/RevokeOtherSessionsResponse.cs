@@ -17,13 +17,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("revoked_count") is { } nullNodeRevokedCount && nullNodeRevokedCount.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) RevokedCount = null;
+            if (parseNode.GetChildNode("revoked_count") is null) { _explicitNullValueRevokedCount = default!; _explicitNullProperties?.Remove("revoked_count"); }
+            else if (parseNode.GetChildNode("revoked_count") is { } nullNodeRevokedCount && nullNodeRevokedCount.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) RevokedCount = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Number of other login sessions that were revoked.</summary>
-        public int? RevokedCount { get => _explicitNullValueRevokedCount; set { _explicitNullValueRevokedCount = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("revoked_count"); else _explicitNullProperties?.Remove("revoked_count"); } }
+        public int? RevokedCount { get => _explicitNullValueRevokedCount; set { _explicitNullValueRevokedCount = value; AdditionalData?.Remove("revoked_count"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("revoked_count"); else _explicitNullProperties?.Remove("revoked_count"); } }
         private int? _explicitNullValueRevokedCount = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.RevokeOtherSessionsResponse"/> and sets the default values.

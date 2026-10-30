@@ -18,17 +18,18 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("activities") is { } nullNodeActivities && nullNodeActivities.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Activities = null;
+            if (parseNode.GetChildNode("activities") is null) { _explicitNullValueActivities = default!; _explicitNullProperties?.Remove("activities"); }
+            else if (parseNode.GetChildNode("activities") is { } nullNodeActivities && nullNodeActivities.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Activities = null;
         }
 
         /// <summary>Displayed task activities to mark read if they have not changed.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.TaskActivityReadMarker>? Activities { get => _explicitNullValueActivities; set { _explicitNullValueActivities = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("activities"); else _explicitNullProperties?.Remove("activities"); } }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.TaskActivityReadMarker>? Activities { get => _explicitNullValueActivities; set { _explicitNullValueActivities = value; AdditionalData?.Remove("activities"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("activities"); else _explicitNullProperties?.Remove("activities"); } }
         private List<global::Soenneker.PostHog.OpenApiClient.Models.TaskActivityReadMarker>? _explicitNullValueActivities = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.TaskActivityReadMarker> Activities { get => _explicitNullValueActivities; set { _explicitNullValueActivities = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("activities"); else _explicitNullProperties?.Remove("activities"); } }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.TaskActivityReadMarker> Activities { get => _explicitNullValueActivities; set { _explicitNullValueActivities = value; AdditionalData?.Remove("activities"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("activities"); else _explicitNullProperties?.Remove("activities"); } }
         private List<global::Soenneker.PostHog.OpenApiClient.Models.TaskActivityReadMarker> _explicitNullValueActivities = default!;
 #endif
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>

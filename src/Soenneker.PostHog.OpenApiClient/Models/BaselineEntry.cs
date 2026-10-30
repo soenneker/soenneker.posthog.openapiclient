@@ -17,100 +17,114 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("active_variants_current_baseline") is { } nullNodeActiveVariantsCurrentBaseline && nullNodeActiveVariantsCurrentBaseline.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ActiveVariantsCurrentBaseline = null;
-            if (parseNode.GetChildNode("baseline_change_count") is { } nullNodeBaselineChangeCount && nullNodeBaselineChangeCount.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) BaselineChangeCount = null;
-            if (parseNode.GetChildNode("browser") is { } nullNodeBrowser && nullNodeBrowser.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Browser = null;
-            if (parseNode.GetChildNode("height") is { } nullNodeHeight && nullNodeHeight.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Height = null;
-            if (parseNode.GetChildNode("identifier") is { } nullNodeIdentifier && nullNodeIdentifier.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Identifier = null;
-            if (parseNode.GetChildNode("is_quarantined") is { } nullNodeIsQuarantined && nullNodeIsQuarantined.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) IsQuarantined = null;
-            if (parseNode.GetChildNode("last_run_at") is { } nullNodeLastRunAt && nullNodeLastRunAt.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) LastRunAt = null;
-            if (parseNode.GetChildNode("quarantine") is { } nullNodeQuarantine && nullNodeQuarantine.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Quarantine = null;
-            if (parseNode.GetChildNode("recent_drift_avg") is { } nullNodeRecentDriftAvg && nullNodeRecentDriftAvg.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) RecentDriftAvg = null;
-            if (parseNode.GetChildNode("run_type") is { } nullNodeRunType && nullNodeRunType.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) RunType = null;
-            if (parseNode.GetChildNode("thumbnail_hash") is { } nullNodeThumbnailHash && nullNodeThumbnailHash.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ThumbnailHash = null;
-            if (parseNode.GetChildNode("tolerate_count_30d") is { } nullNodeTolerateCount30d && nullNodeTolerateCount30d.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TolerateCount30d = null;
-            if (parseNode.GetChildNode("tolerate_count_90d") is { } nullNodeTolerateCount90d && nullNodeTolerateCount90d.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TolerateCount90d = null;
-            if (parseNode.GetChildNode("width") is { } nullNodeWidth && nullNodeWidth.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Width = null;
+            if (parseNode.GetChildNode("active_variants_current_baseline") is null) { _explicitNullValueActiveVariantsCurrentBaseline = default!; _explicitNullProperties?.Remove("active_variants_current_baseline"); }
+            else if (parseNode.GetChildNode("active_variants_current_baseline") is { } nullNodeActiveVariantsCurrentBaseline && nullNodeActiveVariantsCurrentBaseline.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ActiveVariantsCurrentBaseline = null;
+            if (parseNode.GetChildNode("baseline_change_count") is null) { _explicitNullValueBaselineChangeCount = default!; _explicitNullProperties?.Remove("baseline_change_count"); }
+            else if (parseNode.GetChildNode("baseline_change_count") is { } nullNodeBaselineChangeCount && nullNodeBaselineChangeCount.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) BaselineChangeCount = null;
+            if (parseNode.GetChildNode("browser") is null) { _explicitNullValueBrowser = default!; _explicitNullProperties?.Remove("browser"); }
+            else if (parseNode.GetChildNode("browser") is { } nullNodeBrowser && nullNodeBrowser.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Browser = null;
+            if (parseNode.GetChildNode("height") is null) { _explicitNullValueHeight = default!; _explicitNullProperties?.Remove("height"); }
+            else if (parseNode.GetChildNode("height") is { } nullNodeHeight && nullNodeHeight.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Height = null;
+            if (parseNode.GetChildNode("identifier") is null) { _explicitNullValueIdentifier = default!; _explicitNullProperties?.Remove("identifier"); }
+            else if (parseNode.GetChildNode("identifier") is { } nullNodeIdentifier && nullNodeIdentifier.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Identifier = null;
+            if (parseNode.GetChildNode("is_quarantined") is null) { _explicitNullValueIsQuarantined = default!; _explicitNullProperties?.Remove("is_quarantined"); }
+            else if (parseNode.GetChildNode("is_quarantined") is { } nullNodeIsQuarantined && nullNodeIsQuarantined.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) IsQuarantined = null;
+            if (parseNode.GetChildNode("last_run_at") is null) { _explicitNullValueLastRunAt = default!; _explicitNullProperties?.Remove("last_run_at"); }
+            else if (parseNode.GetChildNode("last_run_at") is { } nullNodeLastRunAt && nullNodeLastRunAt.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) LastRunAt = null;
+            if (parseNode.GetChildNode("quarantine") is null) { _explicitNullValueQuarantine = default!; _explicitNullProperties?.Remove("quarantine"); }
+            else if (parseNode.GetChildNode("quarantine") is { } nullNodeQuarantine && nullNodeQuarantine.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Quarantine = null;
+            if (parseNode.GetChildNode("recent_drift_avg") is null) { _explicitNullValueRecentDriftAvg = default!; _explicitNullProperties?.Remove("recent_drift_avg"); }
+            else if (parseNode.GetChildNode("recent_drift_avg") is { } nullNodeRecentDriftAvg && nullNodeRecentDriftAvg.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) RecentDriftAvg = null;
+            if (parseNode.GetChildNode("run_type") is null) { _explicitNullValueRunType = default!; _explicitNullProperties?.Remove("run_type"); }
+            else if (parseNode.GetChildNode("run_type") is { } nullNodeRunType && nullNodeRunType.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) RunType = null;
+            if (parseNode.GetChildNode("thumbnail_hash") is null) { _explicitNullValueThumbnailHash = default!; _explicitNullProperties?.Remove("thumbnail_hash"); }
+            else if (parseNode.GetChildNode("thumbnail_hash") is { } nullNodeThumbnailHash && nullNodeThumbnailHash.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ThumbnailHash = null;
+            if (parseNode.GetChildNode("tolerate_count_30d") is null) { _explicitNullValueTolerateCount30d = default!; _explicitNullProperties?.Remove("tolerate_count_30d"); }
+            else if (parseNode.GetChildNode("tolerate_count_30d") is { } nullNodeTolerateCount30d && nullNodeTolerateCount30d.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TolerateCount30d = null;
+            if (parseNode.GetChildNode("tolerate_count_90d") is null) { _explicitNullValueTolerateCount90d = default!; _explicitNullProperties?.Remove("tolerate_count_90d"); }
+            else if (parseNode.GetChildNode("tolerate_count_90d") is { } nullNodeTolerateCount90d && nullNodeTolerateCount90d.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TolerateCount90d = null;
+            if (parseNode.GetChildNode("width") is null) { _explicitNullValueWidth = default!; _explicitNullProperties?.Remove("width"); }
+            else if (parseNode.GetChildNode("width") is { } nullNodeWidth && nullNodeWidth.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Width = null;
         }
 
         /// <summary>Accepted variants still recorded against this baseline&apos;s current hash. Unlike the 30-day and 90-day counts, this has no time window: an accepted variant keeps matching without a new record. A baseline change resets it to zero.</summary>
-        public int? ActiveVariantsCurrentBaseline { get => _explicitNullValueActiveVariantsCurrentBaseline; set { _explicitNullValueActiveVariantsCurrentBaseline = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("active_variants_current_baseline"); else _explicitNullProperties?.Remove("active_variants_current_baseline"); } }
+        public int? ActiveVariantsCurrentBaseline { get => _explicitNullValueActiveVariantsCurrentBaseline; set { _explicitNullValueActiveVariantsCurrentBaseline = value; AdditionalData?.Remove("active_variants_current_baseline"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("active_variants_current_baseline"); else _explicitNullProperties?.Remove("active_variants_current_baseline"); } }
         private int? _explicitNullValueActiveVariantsCurrentBaseline = default!;
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The baseline_change_count property</summary>
-        public int? BaselineChangeCount { get => _explicitNullValueBaselineChangeCount; set { _explicitNullValueBaselineChangeCount = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("baseline_change_count"); else _explicitNullProperties?.Remove("baseline_change_count"); } }
+        public int? BaselineChangeCount { get => _explicitNullValueBaselineChangeCount; set { _explicitNullValueBaselineChangeCount = value; AdditionalData?.Remove("baseline_change_count"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("baseline_change_count"); else _explicitNullProperties?.Remove("baseline_change_count"); } }
         private int? _explicitNullValueBaselineChangeCount = default!;
         /// <summary>The browser property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Browser { get => _explicitNullValueBrowser; set { _explicitNullValueBrowser = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("browser"); else _explicitNullProperties?.Remove("browser"); } }
+        public string? Browser { get => _explicitNullValueBrowser; set { _explicitNullValueBrowser = value; AdditionalData?.Remove("browser"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("browser"); else _explicitNullProperties?.Remove("browser"); } }
         private string? _explicitNullValueBrowser = default!;
 #nullable restore
 #else
-        public string Browser { get => _explicitNullValueBrowser; set { _explicitNullValueBrowser = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("browser"); else _explicitNullProperties?.Remove("browser"); } }
+        public string Browser { get => _explicitNullValueBrowser; set { _explicitNullValueBrowser = value; AdditionalData?.Remove("browser"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("browser"); else _explicitNullProperties?.Remove("browser"); } }
         private string _explicitNullValueBrowser = default!;
 #endif
         /// <summary>The height property</summary>
-        public int? Height { get => _explicitNullValueHeight; set { _explicitNullValueHeight = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("height"); else _explicitNullProperties?.Remove("height"); } }
+        public int? Height { get => _explicitNullValueHeight; set { _explicitNullValueHeight = value; AdditionalData?.Remove("height"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("height"); else _explicitNullProperties?.Remove("height"); } }
         private int? _explicitNullValueHeight = default!;
         /// <summary>The identifier property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Identifier { get => _explicitNullValueIdentifier; set { _explicitNullValueIdentifier = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("identifier"); else _explicitNullProperties?.Remove("identifier"); } }
+        public string? Identifier { get => _explicitNullValueIdentifier; set { _explicitNullValueIdentifier = value; AdditionalData?.Remove("identifier"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("identifier"); else _explicitNullProperties?.Remove("identifier"); } }
         private string? _explicitNullValueIdentifier = default!;
 #nullable restore
 #else
-        public string Identifier { get => _explicitNullValueIdentifier; set { _explicitNullValueIdentifier = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("identifier"); else _explicitNullProperties?.Remove("identifier"); } }
+        public string Identifier { get => _explicitNullValueIdentifier; set { _explicitNullValueIdentifier = value; AdditionalData?.Remove("identifier"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("identifier"); else _explicitNullProperties?.Remove("identifier"); } }
         private string _explicitNullValueIdentifier = default!;
 #endif
         /// <summary>The is_quarantined property</summary>
-        public bool? IsQuarantined { get => _explicitNullValueIsQuarantined; set { _explicitNullValueIsQuarantined = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("is_quarantined"); else _explicitNullProperties?.Remove("is_quarantined"); } }
+        public bool? IsQuarantined { get => _explicitNullValueIsQuarantined; set { _explicitNullValueIsQuarantined = value; AdditionalData?.Remove("is_quarantined"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("is_quarantined"); else _explicitNullProperties?.Remove("is_quarantined"); } }
         private bool? _explicitNullValueIsQuarantined = default!;
         /// <summary>The last_run_at property</summary>
-        public DateTimeOffset? LastRunAt { get => _explicitNullValueLastRunAt; set { _explicitNullValueLastRunAt = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("last_run_at"); else _explicitNullProperties?.Remove("last_run_at"); } }
+        public DateTimeOffset? LastRunAt { get => _explicitNullValueLastRunAt; set { _explicitNullValueLastRunAt = value; AdditionalData?.Remove("last_run_at"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("last_run_at"); else _explicitNullProperties?.Remove("last_run_at"); } }
         private DateTimeOffset? _explicitNullValueLastRunAt = default!;
         /// <summary>Active quarantine details when `is_quarantined` is true. Null otherwise.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.BaselineQuarantineSummary? Quarantine { get => _explicitNullValueQuarantine; set { _explicitNullValueQuarantine = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("quarantine"); else _explicitNullProperties?.Remove("quarantine"); } }
+        public global::Soenneker.PostHog.OpenApiClient.Models.BaselineQuarantineSummary? Quarantine { get => _explicitNullValueQuarantine; set { _explicitNullValueQuarantine = value; AdditionalData?.Remove("quarantine"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("quarantine"); else _explicitNullProperties?.Remove("quarantine"); } }
         private global::Soenneker.PostHog.OpenApiClient.Models.BaselineQuarantineSummary? _explicitNullValueQuarantine = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.BaselineQuarantineSummary Quarantine { get => _explicitNullValueQuarantine; set { _explicitNullValueQuarantine = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("quarantine"); else _explicitNullProperties?.Remove("quarantine"); } }
+        public global::Soenneker.PostHog.OpenApiClient.Models.BaselineQuarantineSummary Quarantine { get => _explicitNullValueQuarantine; set { _explicitNullValueQuarantine = value; AdditionalData?.Remove("quarantine"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("quarantine"); else _explicitNullProperties?.Remove("quarantine"); } }
         private global::Soenneker.PostHog.OpenApiClient.Models.BaselineQuarantineSummary _explicitNullValueQuarantine = default!;
 #endif
         /// <summary>The recent_drift_avg property</summary>
-        public double? RecentDriftAvg { get => _explicitNullValueRecentDriftAvg; set { _explicitNullValueRecentDriftAvg = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("recent_drift_avg"); else _explicitNullProperties?.Remove("recent_drift_avg"); } }
+        public double? RecentDriftAvg { get => _explicitNullValueRecentDriftAvg; set { _explicitNullValueRecentDriftAvg = value; AdditionalData?.Remove("recent_drift_avg"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("recent_drift_avg"); else _explicitNullProperties?.Remove("recent_drift_avg"); } }
         private double? _explicitNullValueRecentDriftAvg = default!;
         /// <summary>The run_type property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? RunType { get => _explicitNullValueRunType; set { _explicitNullValueRunType = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("run_type"); else _explicitNullProperties?.Remove("run_type"); } }
+        public string? RunType { get => _explicitNullValueRunType; set { _explicitNullValueRunType = value; AdditionalData?.Remove("run_type"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("run_type"); else _explicitNullProperties?.Remove("run_type"); } }
         private string? _explicitNullValueRunType = default!;
 #nullable restore
 #else
-        public string RunType { get => _explicitNullValueRunType; set { _explicitNullValueRunType = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("run_type"); else _explicitNullProperties?.Remove("run_type"); } }
+        public string RunType { get => _explicitNullValueRunType; set { _explicitNullValueRunType = value; AdditionalData?.Remove("run_type"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("run_type"); else _explicitNullProperties?.Remove("run_type"); } }
         private string _explicitNullValueRunType = default!;
 #endif
         /// <summary>The thumbnail_hash property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? ThumbnailHash { get => _explicitNullValueThumbnailHash; set { _explicitNullValueThumbnailHash = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("thumbnail_hash"); else _explicitNullProperties?.Remove("thumbnail_hash"); } }
+        public string? ThumbnailHash { get => _explicitNullValueThumbnailHash; set { _explicitNullValueThumbnailHash = value; AdditionalData?.Remove("thumbnail_hash"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("thumbnail_hash"); else _explicitNullProperties?.Remove("thumbnail_hash"); } }
         private string? _explicitNullValueThumbnailHash = default!;
 #nullable restore
 #else
-        public string ThumbnailHash { get => _explicitNullValueThumbnailHash; set { _explicitNullValueThumbnailHash = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("thumbnail_hash"); else _explicitNullProperties?.Remove("thumbnail_hash"); } }
+        public string ThumbnailHash { get => _explicitNullValueThumbnailHash; set { _explicitNullValueThumbnailHash = value; AdditionalData?.Remove("thumbnail_hash"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("thumbnail_hash"); else _explicitNullProperties?.Remove("thumbnail_hash"); } }
         private string _explicitNullValueThumbnailHash = default!;
 #endif
         /// <summary>The tolerate_count_30d property</summary>
-        public int? TolerateCount30d { get => _explicitNullValueTolerateCount30d; set { _explicitNullValueTolerateCount30d = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("tolerate_count_30d"); else _explicitNullProperties?.Remove("tolerate_count_30d"); } }
+        public int? TolerateCount30d { get => _explicitNullValueTolerateCount30d; set { _explicitNullValueTolerateCount30d = value; AdditionalData?.Remove("tolerate_count_30d"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("tolerate_count_30d"); else _explicitNullProperties?.Remove("tolerate_count_30d"); } }
         private int? _explicitNullValueTolerateCount30d = default!;
         /// <summary>The tolerate_count_90d property</summary>
-        public int? TolerateCount90d { get => _explicitNullValueTolerateCount90d; set { _explicitNullValueTolerateCount90d = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("tolerate_count_90d"); else _explicitNullProperties?.Remove("tolerate_count_90d"); } }
+        public int? TolerateCount90d { get => _explicitNullValueTolerateCount90d; set { _explicitNullValueTolerateCount90d = value; AdditionalData?.Remove("tolerate_count_90d"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("tolerate_count_90d"); else _explicitNullProperties?.Remove("tolerate_count_90d"); } }
         private int? _explicitNullValueTolerateCount90d = default!;
         /// <summary>The width property</summary>
-        public int? Width { get => _explicitNullValueWidth; set { _explicitNullValueWidth = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("width"); else _explicitNullProperties?.Remove("width"); } }
+        public int? Width { get => _explicitNullValueWidth; set { _explicitNullValueWidth = value; AdditionalData?.Remove("width"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("width"); else _explicitNullProperties?.Remove("width"); } }
         private int? _explicitNullValueWidth = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.BaselineEntry"/> and sets the default values.

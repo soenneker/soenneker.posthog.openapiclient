@@ -17,13 +17,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("comparison_id") is { } nullNodeComparisonId && nullNodeComparisonId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ComparisonId = null;
+            if (parseNode.GetChildNode("comparison_id") is null) { _explicitNullValueComparisonId = default!; _explicitNullProperties?.Remove("comparison_id"); }
+            else if (parseNode.GetChildNode("comparison_id") is { } nullNodeComparisonId && nullNodeComparisonId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ComparisonId = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Saved comparison identity.</summary>
-        public Guid? ComparisonId { get => _explicitNullValueComparisonId; set { _explicitNullValueComparisonId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("comparison_id"); else _explicitNullProperties?.Remove("comparison_id"); } }
+        public Guid? ComparisonId { get => _explicitNullValueComparisonId; set { _explicitNullValueComparisonId = value; AdditionalData?.Remove("comparison_id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("comparison_id"); else _explicitNullProperties?.Remove("comparison_id"); } }
         private Guid? _explicitNullValueComparisonId = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ScoutTrialComparisonQuery"/> and sets the default values.

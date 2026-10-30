@@ -17,7 +17,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("check_run_id") is { } nullNodeCheckRunId && nullNodeCheckRunId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CheckRunId = null;
+            if (parseNode.GetChildNode("check_run_id") is null) { _explicitNullValueCheckRunId = default!; _explicitNullProperties?.Remove("check_run_id"); }
+            else if (parseNode.GetChildNode("check_run_id") is { } nullNodeCheckRunId && nullNodeCheckRunId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CheckRunId = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -25,11 +26,11 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Numeric GitHub Actions job ID of the CI job that completes the run, from `${{ job.check_run_id }}`. Recompute re-runs this job, so it re-reads the verdict without capturing the snapshots again. Omit it outside GitHub Actions.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? CheckRunId { get => _explicitNullValueCheckRunId; set { _explicitNullValueCheckRunId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("check_run_id"); else _explicitNullProperties?.Remove("check_run_id"); } }
+        public string? CheckRunId { get => _explicitNullValueCheckRunId; set { _explicitNullValueCheckRunId = value; AdditionalData?.Remove("check_run_id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("check_run_id"); else _explicitNullProperties?.Remove("check_run_id"); } }
         private string? _explicitNullValueCheckRunId = default!;
 #nullable restore
 #else
-        public string CheckRunId { get => _explicitNullValueCheckRunId; set { _explicitNullValueCheckRunId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("check_run_id"); else _explicitNullProperties?.Remove("check_run_id"); } }
+        public string CheckRunId { get => _explicitNullValueCheckRunId; set { _explicitNullValueCheckRunId = value; AdditionalData?.Remove("check_run_id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("check_run_id"); else _explicitNullProperties?.Remove("check_run_id"); } }
         private string _explicitNullValueCheckRunId = default!;
 #endif
         /// <summary>

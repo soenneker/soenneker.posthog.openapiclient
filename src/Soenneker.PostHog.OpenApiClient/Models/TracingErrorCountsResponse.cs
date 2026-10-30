@@ -17,9 +17,12 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("sessionResults") is { } nullNodeSessionResults && nullNodeSessionResults.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SessionResults = null;
-            if (parseNode.GetChildNode("spanResults") is { } nullNodeSpanResults && nullNodeSpanResults.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SpanResults = null;
-            if (parseNode.GetChildNode("traceResults") is { } nullNodeTraceResults && nullNodeTraceResults.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TraceResults = null;
+            if (parseNode.GetChildNode("sessionResults") is null) { _explicitNullValueSessionResults = default!; _explicitNullProperties?.Remove("sessionResults"); }
+            else if (parseNode.GetChildNode("sessionResults") is { } nullNodeSessionResults && nullNodeSessionResults.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SessionResults = null;
+            if (parseNode.GetChildNode("spanResults") is null) { _explicitNullValueSpanResults = default!; _explicitNullProperties?.Remove("spanResults"); }
+            else if (parseNode.GetChildNode("spanResults") is { } nullNodeSpanResults && nullNodeSpanResults.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SpanResults = null;
+            if (parseNode.GetChildNode("traceResults") is null) { _explicitNullValueTraceResults = default!; _explicitNullProperties?.Remove("traceResults"); }
+            else if (parseNode.GetChildNode("traceResults") is { } nullNodeTraceResults && nullNodeTraceResults.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TraceResults = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -27,31 +30,31 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>One entry per requested session that had exceptions. Sessions with none are omitted.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.TracingSessionErrorCount>? SessionResults { get => _explicitNullValueSessionResults; set { _explicitNullValueSessionResults = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("sessionResults"); else _explicitNullProperties?.Remove("sessionResults"); } }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.TracingSessionErrorCount>? SessionResults { get => _explicitNullValueSessionResults; set { _explicitNullValueSessionResults = value; AdditionalData?.Remove("sessionResults"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("sessionResults"); else _explicitNullProperties?.Remove("sessionResults"); } }
         private List<global::Soenneker.PostHog.OpenApiClient.Models.TracingSessionErrorCount>? _explicitNullValueSessionResults = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.TracingSessionErrorCount> SessionResults { get => _explicitNullValueSessionResults; set { _explicitNullValueSessionResults = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("sessionResults"); else _explicitNullProperties?.Remove("sessionResults"); } }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.TracingSessionErrorCount> SessionResults { get => _explicitNullValueSessionResults; set { _explicitNullValueSessionResults = value; AdditionalData?.Remove("sessionResults"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("sessionResults"); else _explicitNullProperties?.Remove("sessionResults"); } }
         private List<global::Soenneker.PostHog.OpenApiClient.Models.TracingSessionErrorCount> _explicitNullValueSessionResults = default!;
 #endif
         /// <summary>One entry per requested span that had exceptions. Spans with none are omitted.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.TracingSpanErrorCount>? SpanResults { get => _explicitNullValueSpanResults; set { _explicitNullValueSpanResults = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("spanResults"); else _explicitNullProperties?.Remove("spanResults"); } }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.TracingSpanErrorCount>? SpanResults { get => _explicitNullValueSpanResults; set { _explicitNullValueSpanResults = value; AdditionalData?.Remove("spanResults"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("spanResults"); else _explicitNullProperties?.Remove("spanResults"); } }
         private List<global::Soenneker.PostHog.OpenApiClient.Models.TracingSpanErrorCount>? _explicitNullValueSpanResults = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.TracingSpanErrorCount> SpanResults { get => _explicitNullValueSpanResults; set { _explicitNullValueSpanResults = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("spanResults"); else _explicitNullProperties?.Remove("spanResults"); } }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.TracingSpanErrorCount> SpanResults { get => _explicitNullValueSpanResults; set { _explicitNullValueSpanResults = value; AdditionalData?.Remove("spanResults"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("spanResults"); else _explicitNullProperties?.Remove("spanResults"); } }
         private List<global::Soenneker.PostHog.OpenApiClient.Models.TracingSpanErrorCount> _explicitNullValueSpanResults = default!;
 #endif
         /// <summary>One entry per requested trace that had exceptions. Traces with none are omitted.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.TracingTraceErrorCount>? TraceResults { get => _explicitNullValueTraceResults; set { _explicitNullValueTraceResults = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("traceResults"); else _explicitNullProperties?.Remove("traceResults"); } }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.TracingTraceErrorCount>? TraceResults { get => _explicitNullValueTraceResults; set { _explicitNullValueTraceResults = value; AdditionalData?.Remove("traceResults"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("traceResults"); else _explicitNullProperties?.Remove("traceResults"); } }
         private List<global::Soenneker.PostHog.OpenApiClient.Models.TracingTraceErrorCount>? _explicitNullValueTraceResults = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.TracingTraceErrorCount> TraceResults { get => _explicitNullValueTraceResults; set { _explicitNullValueTraceResults = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("traceResults"); else _explicitNullProperties?.Remove("traceResults"); } }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.TracingTraceErrorCount> TraceResults { get => _explicitNullValueTraceResults; set { _explicitNullValueTraceResults = value; AdditionalData?.Remove("traceResults"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("traceResults"); else _explicitNullProperties?.Remove("traceResults"); } }
         private List<global::Soenneker.PostHog.OpenApiClient.Models.TracingTraceErrorCount> _explicitNullValueTraceResults = default!;
 #endif
         /// <summary>

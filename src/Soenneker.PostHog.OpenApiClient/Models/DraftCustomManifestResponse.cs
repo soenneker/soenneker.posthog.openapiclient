@@ -17,49 +17,54 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("attempts") is { } nullNodeAttempts && nullNodeAttempts.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Attempts = null;
-            if (parseNode.GetChildNode("draft_status") is { } nullNodeDraftStatus && nullNodeDraftStatus.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) DraftStatus = null;
-            if (parseNode.GetChildNode("error") is { } nullNodeError && nullNodeError.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Error = null;
-            if (parseNode.GetChildNode("manifest_json") is { } nullNodeManifestJson && nullNodeManifestJson.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ManifestJson = null;
-            if (parseNode.GetChildNode("resource_names") is { } nullNodeResourceNames && nullNodeResourceNames.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ResourceNames = null;
+            if (parseNode.GetChildNode("attempts") is null) { _explicitNullValueAttempts = default!; _explicitNullProperties?.Remove("attempts"); }
+            else if (parseNode.GetChildNode("attempts") is { } nullNodeAttempts && nullNodeAttempts.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Attempts = null;
+            if (parseNode.GetChildNode("draft_status") is null) { _explicitNullValueDraftStatus = default!; _explicitNullProperties?.Remove("draft_status"); }
+            else if (parseNode.GetChildNode("draft_status") is { } nullNodeDraftStatus && nullNodeDraftStatus.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) DraftStatus = null;
+            if (parseNode.GetChildNode("error") is null) { _explicitNullValueError = default!; _explicitNullProperties?.Remove("error"); }
+            else if (parseNode.GetChildNode("error") is { } nullNodeError && nullNodeError.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Error = null;
+            if (parseNode.GetChildNode("manifest_json") is null) { _explicitNullValueManifestJson = default!; _explicitNullProperties?.Remove("manifest_json"); }
+            else if (parseNode.GetChildNode("manifest_json") is { } nullNodeManifestJson && nullNodeManifestJson.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ManifestJson = null;
+            if (parseNode.GetChildNode("resource_names") is null) { _explicitNullValueResourceNames = default!; _explicitNullProperties?.Remove("resource_names"); }
+            else if (parseNode.GetChildNode("resource_names") is { } nullNodeResourceNames && nullNodeResourceNames.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ResourceNames = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>How many draft→validate→repair rounds were run.</summary>
-        public int? Attempts { get => _explicitNullValueAttempts; set { _explicitNullValueAttempts = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("attempts"); else _explicitNullProperties?.Remove("attempts"); } }
+        public int? Attempts { get => _explicitNullValueAttempts; set { _explicitNullValueAttempts = value; AdditionalData?.Remove("attempts"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("attempts"); else _explicitNullProperties?.Remove("attempts"); } }
         private int? _explicitNullValueAttempts = default!;
         /// <summary>* `ok` - ok* `invalid` - invalid* `model_error` - model_error</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.DraftCustomManifestResponseDraftStatus? DraftStatus { get => _explicitNullValueDraftStatus; set { _explicitNullValueDraftStatus = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("draft_status"); else _explicitNullProperties?.Remove("draft_status"); } }
+        public global::Soenneker.PostHog.OpenApiClient.Models.DraftCustomManifestResponseDraftStatus? DraftStatus { get => _explicitNullValueDraftStatus; set { _explicitNullValueDraftStatus = value; AdditionalData?.Remove("draft_status"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("draft_status"); else _explicitNullProperties?.Remove("draft_status"); } }
         private global::Soenneker.PostHog.OpenApiClient.Models.DraftCustomManifestResponseDraftStatus? _explicitNullValueDraftStatus = default!;
         /// <summary>The last validation error when draft_status is not &apos;ok&apos;; null on success.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Error { get => _explicitNullValueError; set { _explicitNullValueError = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("error"); else _explicitNullProperties?.Remove("error"); } }
+        public string? Error { get => _explicitNullValueError; set { _explicitNullValueError = value; AdditionalData?.Remove("error"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("error"); else _explicitNullProperties?.Remove("error"); } }
         private string? _explicitNullValueError = default!;
 #nullable restore
 #else
-        public string Error { get => _explicitNullValueError; set { _explicitNullValueError = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("error"); else _explicitNullProperties?.Remove("error"); } }
+        public string Error { get => _explicitNullValueError; set { _explicitNullValueError = value; AdditionalData?.Remove("error"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("error"); else _explicitNullProperties?.Remove("error"); } }
         private string _explicitNullValueError = default!;
 #endif
         /// <summary>The drafted RESTAPIConfig manifest as a JSON string (non-secret), or null if none was produced.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? ManifestJson { get => _explicitNullValueManifestJson; set { _explicitNullValueManifestJson = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("manifest_json"); else _explicitNullProperties?.Remove("manifest_json"); } }
+        public string? ManifestJson { get => _explicitNullValueManifestJson; set { _explicitNullValueManifestJson = value; AdditionalData?.Remove("manifest_json"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("manifest_json"); else _explicitNullProperties?.Remove("manifest_json"); } }
         private string? _explicitNullValueManifestJson = default!;
 #nullable restore
 #else
-        public string ManifestJson { get => _explicitNullValueManifestJson; set { _explicitNullValueManifestJson = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("manifest_json"); else _explicitNullProperties?.Remove("manifest_json"); } }
+        public string ManifestJson { get => _explicitNullValueManifestJson; set { _explicitNullValueManifestJson = value; AdditionalData?.Remove("manifest_json"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("manifest_json"); else _explicitNullProperties?.Remove("manifest_json"); } }
         private string _explicitNullValueManifestJson = default!;
 #endif
         /// <summary>Names of the resources (tables) the validated manifest exposes. Empty unless draft_status is &apos;ok&apos;.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<string>? ResourceNames { get => _explicitNullValueResourceNames; set { _explicitNullValueResourceNames = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("resource_names"); else _explicitNullProperties?.Remove("resource_names"); } }
+        public List<string>? ResourceNames { get => _explicitNullValueResourceNames; set { _explicitNullValueResourceNames = value; AdditionalData?.Remove("resource_names"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("resource_names"); else _explicitNullProperties?.Remove("resource_names"); } }
         private List<string>? _explicitNullValueResourceNames = default!;
 #nullable restore
 #else
-        public List<string> ResourceNames { get => _explicitNullValueResourceNames; set { _explicitNullValueResourceNames = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("resource_names"); else _explicitNullProperties?.Remove("resource_names"); } }
+        public List<string> ResourceNames { get => _explicitNullValueResourceNames; set { _explicitNullValueResourceNames = value; AdditionalData?.Remove("resource_names"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("resource_names"); else _explicitNullProperties?.Remove("resource_names"); } }
         private List<string> _explicitNullValueResourceNames = default!;
 #endif
         /// <summary>
@@ -88,7 +93,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "attempts", n => { Attempts = n.GetIntValue(); } },
-                { "draft_status", n => { DraftStatus = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.DraftCustomManifestResponseDraftStatus>(); } },
+                { "draft_status", n => { var parsed = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.DraftCustomManifestResponseDraftStatus>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValueDraftStatus = default; _explicitNullProperties?.Remove("draft_status"); AdditionalData["draft_status"] = unknown; } else { DraftStatus = parsed; AdditionalData.Remove("draft_status"); } } },
                 { "error", n => { Error = n.GetStringValue(); } },
                 { "manifest_json", n => { ManifestJson = n.GetStringValue(); } },
                 { "resource_names", n => { ResourceNames = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },

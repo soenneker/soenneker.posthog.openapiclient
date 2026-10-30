@@ -17,8 +17,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("failed_distinct_ids") is { } nullNodeFailedDistinctIds && nullNodeFailedDistinctIds.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) FailedDistinctIds = null;
-            if (parseNode.GetChildNode("imported") is { } nullNodeImported && nullNodeImported.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Imported = null;
+            if (parseNode.GetChildNode("failed_distinct_ids") is null) { _explicitNullValueFailedDistinctIds = default!; _explicitNullProperties?.Remove("failed_distinct_ids"); }
+            else if (parseNode.GetChildNode("failed_distinct_ids") is { } nullNodeFailedDistinctIds && nullNodeFailedDistinctIds.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) FailedDistinctIds = null;
+            if (parseNode.GetChildNode("imported") is null) { _explicitNullValueImported = default!; _explicitNullProperties?.Remove("imported"); }
+            else if (parseNode.GetChildNode("imported") is { } nullNodeImported && nullNodeImported.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Imported = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -26,15 +28,15 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Distinct IDs with at least one device that was not stored. Send those rows again.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<string>? FailedDistinctIds { get => _explicitNullValueFailedDistinctIds; set { _explicitNullValueFailedDistinctIds = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("failed_distinct_ids"); else _explicitNullProperties?.Remove("failed_distinct_ids"); } }
+        public List<string>? FailedDistinctIds { get => _explicitNullValueFailedDistinctIds; set { _explicitNullValueFailedDistinctIds = value; AdditionalData?.Remove("failed_distinct_ids"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("failed_distinct_ids"); else _explicitNullProperties?.Remove("failed_distinct_ids"); } }
         private List<string>? _explicitNullValueFailedDistinctIds = default!;
 #nullable restore
 #else
-        public List<string> FailedDistinctIds { get => _explicitNullValueFailedDistinctIds; set { _explicitNullValueFailedDistinctIds = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("failed_distinct_ids"); else _explicitNullProperties?.Remove("failed_distinct_ids"); } }
+        public List<string> FailedDistinctIds { get => _explicitNullValueFailedDistinctIds; set { _explicitNullValueFailedDistinctIds = value; AdditionalData?.Remove("failed_distinct_ids"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("failed_distinct_ids"); else _explicitNullProperties?.Remove("failed_distinct_ids"); } }
         private List<string> _explicitNullValueFailedDistinctIds = default!;
 #endif
         /// <summary>Number of devices stored on their person.</summary>
-        public int? Imported { get => _explicitNullValueImported; set { _explicitNullValueImported = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("imported"); else _explicitNullProperties?.Remove("imported"); } }
+        public int? Imported { get => _explicitNullValueImported; set { _explicitNullValueImported = value; AdditionalData?.Remove("imported"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("imported"); else _explicitNullProperties?.Remove("imported"); } }
         private int? _explicitNullValueImported = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.PushTokenImportResponse"/> and sets the default values.

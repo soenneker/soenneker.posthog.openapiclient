@@ -17,14 +17,22 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("config") is { } nullNodeConfig && nullNodeConfig.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Config = null;
-            if (parseNode.GetChildNode("enabled") is { } nullNodeEnabled && nullNodeEnabled.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Enabled = null;
-            if (parseNode.GetChildNode("name") is { } nullNodeName && nullNodeName.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Name = null;
-            if (parseNode.GetChildNode("priority") is { } nullNodePriority && nullNodePriority.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Priority = null;
-            if (parseNode.GetChildNode("rule_type") is { } nullNodeRuleType && nullNodeRuleType.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) RuleType = null;
-            if (parseNode.GetChildNode("scope_attribute_filters") is { } nullNodeScopeAttributeFilters && nullNodeScopeAttributeFilters.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ScopeAttributeFilters = null;
-            if (parseNode.GetChildNode("scope_path_pattern") is { } nullNodeScopePathPattern && nullNodeScopePathPattern.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ScopePathPattern = null;
-            if (parseNode.GetChildNode("scope_service") is { } nullNodeScopeService && nullNodeScopeService.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ScopeService = null;
+            if (parseNode.GetChildNode("config") is null) { _explicitNullValueConfig = default!; _explicitNullProperties?.Remove("config"); }
+            else if (parseNode.GetChildNode("config") is { } nullNodeConfig && nullNodeConfig.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Config = null;
+            if (parseNode.GetChildNode("enabled") is null) { _explicitNullValueEnabled = default!; _explicitNullProperties?.Remove("enabled"); }
+            else if (parseNode.GetChildNode("enabled") is { } nullNodeEnabled && nullNodeEnabled.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Enabled = null;
+            if (parseNode.GetChildNode("name") is null) { _explicitNullValueName = default!; _explicitNullProperties?.Remove("name"); }
+            else if (parseNode.GetChildNode("name") is { } nullNodeName && nullNodeName.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Name = null;
+            if (parseNode.GetChildNode("priority") is null) { _explicitNullValuePriority = default!; _explicitNullProperties?.Remove("priority"); }
+            else if (parseNode.GetChildNode("priority") is { } nullNodePriority && nullNodePriority.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Priority = null;
+            if (parseNode.GetChildNode("rule_type") is null) { _explicitNullValueRuleType = default!; _explicitNullProperties?.Remove("rule_type"); }
+            else if (parseNode.GetChildNode("rule_type") is { } nullNodeRuleType && nullNodeRuleType.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) RuleType = null;
+            if (parseNode.GetChildNode("scope_attribute_filters") is null) { _explicitNullValueScopeAttributeFilters = default!; _explicitNullProperties?.Remove("scope_attribute_filters"); }
+            else if (parseNode.GetChildNode("scope_attribute_filters") is { } nullNodeScopeAttributeFilters && nullNodeScopeAttributeFilters.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ScopeAttributeFilters = null;
+            if (parseNode.GetChildNode("scope_path_pattern") is null) { _explicitNullValueScopePathPattern = default!; _explicitNullProperties?.Remove("scope_path_pattern"); }
+            else if (parseNode.GetChildNode("scope_path_pattern") is { } nullNodeScopePathPattern && nullNodeScopePathPattern.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ScopePathPattern = null;
+            if (parseNode.GetChildNode("scope_service") is null) { _explicitNullValueScopeService = default!; _explicitNullProperties?.Remove("scope_service"); }
+            else if (parseNode.GetChildNode("scope_service") is { } nullNodeScopeService && nullNodeScopeService.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ScopeService = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -32,11 +40,11 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Type-specific JSON. For path_drop: object with optional `filter_group` (PropertyGroupFilter shape — AND/OR tree of property predicates evaluated per record) and/or legacy `patterns` (list of regex strings) + `match_attribute_key` (string). When both are present a record is dropped if EITHER matches. Filter group example: `{&quot;type&quot;:&quot;AND&quot;,&quot;values&quot;:[{&quot;type&quot;:&quot;AND&quot;,&quot;values&quot;:[{&quot;key&quot;:&quot;service.name&quot;,&quot;operator&quot;:&quot;exact&quot;,&quot;value&quot;:&quot;api&quot;}]}]}`. Every group in `filter_group` must contain at least one filter — empty groups never match, so the rule would never apply. For severity_sampling: object with `actions` per severity level and optional `always_keep`. For rate_limit: object with EITHER `logs_per_second` (integer 1–1000000, optional `burst_logs` integer ≥ logs_per_second, max 10000000) OR `kb_per_second` (integer 1–1000000 = 1 GB/s, optional `burst_kb` integer ≥ kb_per_second, max 10000000) — not both. Plus optional `filter_group` to narrow which logs the cap applies to. KB-mode charges each log its own uncompressed byte size, matching how billing measures ingested bytes.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public UntypedNode? Config { get => _explicitNullValueConfig; set { _explicitNullValueConfig = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("config"); else _explicitNullProperties?.Remove("config"); } }
+        public UntypedNode? Config { get => _explicitNullValueConfig; set { _explicitNullValueConfig = value; AdditionalData?.Remove("config"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("config"); else _explicitNullProperties?.Remove("config"); } }
         private UntypedNode? _explicitNullValueConfig = default!;
 #nullable restore
 #else
-        public UntypedNode Config { get => _explicitNullValueConfig; set { _explicitNullValueConfig = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("config"); else _explicitNullProperties?.Remove("config"); } }
+        public UntypedNode Config { get => _explicitNullValueConfig; set { _explicitNullValueConfig = value; AdditionalData?.Remove("config"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("config"); else _explicitNullProperties?.Remove("config"); } }
         private UntypedNode _explicitNullValueConfig = default!;
 #endif
         /// <summary>The created_at property</summary>
@@ -44,54 +52,54 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The created_by property</summary>
         public int? CreatedBy { get; private set; }
         /// <summary>When false, the rule is ignored by ingestion and listing UIs that show active rules only.</summary>
-        public bool? Enabled { get => _explicitNullValueEnabled; set { _explicitNullValueEnabled = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("enabled"); else _explicitNullProperties?.Remove("enabled"); } }
+        public bool? Enabled { get => _explicitNullValueEnabled; set { _explicitNullValueEnabled = value; AdditionalData?.Remove("enabled"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("enabled"); else _explicitNullProperties?.Remove("enabled"); } }
         private bool? _explicitNullValueEnabled = default!;
         /// <summary>Unique identifier for this sampling rule.</summary>
         public Guid? Id { get; private set; }
         /// <summary>User-visible label for this rule.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Name { get => _explicitNullValueName; set { _explicitNullValueName = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("name"); else _explicitNullProperties?.Remove("name"); } }
+        public string? Name { get => _explicitNullValueName; set { _explicitNullValueName = value; AdditionalData?.Remove("name"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("name"); else _explicitNullProperties?.Remove("name"); } }
         private string? _explicitNullValueName = default!;
 #nullable restore
 #else
-        public string Name { get => _explicitNullValueName; set { _explicitNullValueName = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("name"); else _explicitNullProperties?.Remove("name"); } }
+        public string Name { get => _explicitNullValueName; set { _explicitNullValueName = value; AdditionalData?.Remove("name"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("name"); else _explicitNullProperties?.Remove("name"); } }
         private string _explicitNullValueName = default!;
 #endif
         /// <summary>Lower numbers are evaluated first; the first matching rule wins. Omit to append after existing rules.</summary>
-        public int? Priority { get => _explicitNullValuePriority; set { _explicitNullValuePriority = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("priority"); else _explicitNullProperties?.Remove("priority"); } }
+        public int? Priority { get => _explicitNullValuePriority; set { _explicitNullValuePriority = value; AdditionalData?.Remove("priority"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("priority"); else _explicitNullProperties?.Remove("priority"); } }
         private int? _explicitNullValuePriority = default!;
         /// <summary>* `severity_sampling` - Severity-based reduction* `path_drop` - Path exclusion* `rate_limit` - Rate limit</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedLogsSamplingRuleRuleType? RuleType { get => _explicitNullValueRuleType; set { _explicitNullValueRuleType = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("rule_type"); else _explicitNullProperties?.Remove("rule_type"); } }
+        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedLogsSamplingRuleRuleType? RuleType { get => _explicitNullValueRuleType; set { _explicitNullValueRuleType = value; AdditionalData?.Remove("rule_type"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("rule_type"); else _explicitNullProperties?.Remove("rule_type"); } }
         private global::Soenneker.PostHog.OpenApiClient.Models.PatchedLogsSamplingRuleRuleType? _explicitNullValueRuleType = default!;
         /// <summary>Optional list of predicates over string attributes, e.g. [{&quot;key&quot;:&quot;http.route&quot;,&quot;op&quot;:&quot;eq&quot;,&quot;value&quot;:&quot;/api&quot;}].</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.PatchedLogsSamplingRuleScopeAttributeFiltersItemProperty>? ScopeAttributeFilters { get => _explicitNullValueScopeAttributeFilters; set { _explicitNullValueScopeAttributeFilters = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("scope_attribute_filters"); else _explicitNullProperties?.Remove("scope_attribute_filters"); } }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.PatchedLogsSamplingRuleScopeAttributeFiltersItemProperty>? ScopeAttributeFilters { get => _explicitNullValueScopeAttributeFilters; set { _explicitNullValueScopeAttributeFilters = value; AdditionalData?.Remove("scope_attribute_filters"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("scope_attribute_filters"); else _explicitNullProperties?.Remove("scope_attribute_filters"); } }
         private List<global::Soenneker.PostHog.OpenApiClient.Models.PatchedLogsSamplingRuleScopeAttributeFiltersItemProperty>? _explicitNullValueScopeAttributeFilters = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.PatchedLogsSamplingRuleScopeAttributeFiltersItemProperty> ScopeAttributeFilters { get => _explicitNullValueScopeAttributeFilters; set { _explicitNullValueScopeAttributeFilters = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("scope_attribute_filters"); else _explicitNullProperties?.Remove("scope_attribute_filters"); } }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.PatchedLogsSamplingRuleScopeAttributeFiltersItemProperty> ScopeAttributeFilters { get => _explicitNullValueScopeAttributeFilters; set { _explicitNullValueScopeAttributeFilters = value; AdditionalData?.Remove("scope_attribute_filters"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("scope_attribute_filters"); else _explicitNullProperties?.Remove("scope_attribute_filters"); } }
         private List<global::Soenneker.PostHog.OpenApiClient.Models.PatchedLogsSamplingRuleScopeAttributeFiltersItemProperty> _explicitNullValueScopeAttributeFilters = default!;
 #endif
         /// <summary>Optional regex matched against a path-like log attribute when present.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? ScopePathPattern { get => _explicitNullValueScopePathPattern; set { _explicitNullValueScopePathPattern = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("scope_path_pattern"); else _explicitNullProperties?.Remove("scope_path_pattern"); } }
+        public string? ScopePathPattern { get => _explicitNullValueScopePathPattern; set { _explicitNullValueScopePathPattern = value; AdditionalData?.Remove("scope_path_pattern"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("scope_path_pattern"); else _explicitNullProperties?.Remove("scope_path_pattern"); } }
         private string? _explicitNullValueScopePathPattern = default!;
 #nullable restore
 #else
-        public string ScopePathPattern { get => _explicitNullValueScopePathPattern; set { _explicitNullValueScopePathPattern = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("scope_path_pattern"); else _explicitNullProperties?.Remove("scope_path_pattern"); } }
+        public string ScopePathPattern { get => _explicitNullValueScopePathPattern; set { _explicitNullValueScopePathPattern = value; AdditionalData?.Remove("scope_path_pattern"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("scope_path_pattern"); else _explicitNullProperties?.Remove("scope_path_pattern"); } }
         private string _explicitNullValueScopePathPattern = default!;
 #endif
         /// <summary>Optional legacy service-name scope; new rules use `config.filter_group` for matching instead.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? ScopeService { get => _explicitNullValueScopeService; set { _explicitNullValueScopeService = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("scope_service"); else _explicitNullProperties?.Remove("scope_service"); } }
+        public string? ScopeService { get => _explicitNullValueScopeService; set { _explicitNullValueScopeService = value; AdditionalData?.Remove("scope_service"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("scope_service"); else _explicitNullProperties?.Remove("scope_service"); } }
         private string? _explicitNullValueScopeService = default!;
 #nullable restore
 #else
-        public string ScopeService { get => _explicitNullValueScopeService; set { _explicitNullValueScopeService = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("scope_service"); else _explicitNullProperties?.Remove("scope_service"); } }
+        public string ScopeService { get => _explicitNullValueScopeService; set { _explicitNullValueScopeService = value; AdditionalData?.Remove("scope_service"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("scope_service"); else _explicitNullProperties?.Remove("scope_service"); } }
         private string _explicitNullValueScopeService = default!;
 #endif
         /// <summary>The updated_at property</summary>
@@ -131,7 +139,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "id", n => { Id = n.GetGuidValue(); } },
                 { "name", n => { Name = n.GetStringValue(); } },
                 { "priority", n => { Priority = n.GetIntValue(); } },
-                { "rule_type", n => { RuleType = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedLogsSamplingRuleRuleType>(); } },
+                { "rule_type", n => { var parsed = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedLogsSamplingRuleRuleType>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValueRuleType = default; _explicitNullProperties?.Remove("rule_type"); AdditionalData["rule_type"] = unknown; } else { RuleType = parsed; AdditionalData.Remove("rule_type"); } } },
                 { "scope_attribute_filters", n => { ScopeAttributeFilters = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.PatchedLogsSamplingRuleScopeAttributeFiltersItemProperty>(global::Soenneker.PostHog.OpenApiClient.Models.PatchedLogsSamplingRuleScopeAttributeFiltersItemProperty.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "scope_path_pattern", n => { ScopePathPattern = n.GetStringValue(); } },
                 { "scope_service", n => { ScopeService = n.GetStringValue(); } },

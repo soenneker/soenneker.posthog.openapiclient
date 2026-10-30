@@ -17,7 +17,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("event_filters") is { } nullNodeEventFilters && nullNodeEventFilters.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) EventFilters = null;
+            if (parseNode.GetChildNode("event_filters") is null) { _explicitNullValueEventFilters = default!; _explicitNullProperties?.Remove("event_filters"); }
+            else if (parseNode.GetChildNode("event_filters") is { } nullNodeEventFilters && nullNodeEventFilters.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) EventFilters = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -25,11 +26,11 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>PostHog property filters to save for automated clustering jobs. Pass an empty array to clear filters.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.ClusteringConfigSetEventFiltersEventFiltersItemProperty>? EventFilters { get => _explicitNullValueEventFilters; set { _explicitNullValueEventFilters = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("event_filters"); else _explicitNullProperties?.Remove("event_filters"); } }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.ClusteringConfigSetEventFiltersEventFiltersItemProperty>? EventFilters { get => _explicitNullValueEventFilters; set { _explicitNullValueEventFilters = value; AdditionalData?.Remove("event_filters"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("event_filters"); else _explicitNullProperties?.Remove("event_filters"); } }
         private List<global::Soenneker.PostHog.OpenApiClient.Models.ClusteringConfigSetEventFiltersEventFiltersItemProperty>? _explicitNullValueEventFilters = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.ClusteringConfigSetEventFiltersEventFiltersItemProperty> EventFilters { get => _explicitNullValueEventFilters; set { _explicitNullValueEventFilters = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("event_filters"); else _explicitNullProperties?.Remove("event_filters"); } }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.ClusteringConfigSetEventFiltersEventFiltersItemProperty> EventFilters { get => _explicitNullValueEventFilters; set { _explicitNullValueEventFilters = value; AdditionalData?.Remove("event_filters"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("event_filters"); else _explicitNullProperties?.Remove("event_filters"); } }
         private List<global::Soenneker.PostHog.OpenApiClient.Models.ClusteringConfigSetEventFiltersEventFiltersItemProperty> _explicitNullValueEventFilters = default!;
 #endif
         /// <summary>

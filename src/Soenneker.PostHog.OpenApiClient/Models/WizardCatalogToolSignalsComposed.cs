@@ -18,9 +18,12 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("env_key_patterns") is { } nullNodeEnvKeyPatterns && nullNodeEnvKeyPatterns.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) EnvKeyPatterns = null;
-            if (parseNode.GetChildNode("packages") is { } nullNodePackages && nullNodePackages.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Packages = null;
-            if (parseNode.GetChildNode("script_hosts") is { } nullNodeScriptHosts && nullNodeScriptHosts.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ScriptHosts = null;
+            if (parseNode.GetChildNode("env_key_patterns") is null) { _explicitNullValueEnvKeyPatterns = default!; _explicitNullProperties?.Remove("env_key_patterns"); }
+            else if (parseNode.GetChildNode("env_key_patterns") is { } nullNodeEnvKeyPatterns && nullNodeEnvKeyPatterns.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) EnvKeyPatterns = null;
+            if (parseNode.GetChildNode("packages") is null) { _explicitNullValuePackages = default!; _explicitNullProperties?.Remove("packages"); }
+            else if (parseNode.GetChildNode("packages") is { } nullNodePackages && nullNodePackages.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Packages = null;
+            if (parseNode.GetChildNode("script_hosts") is null) { _explicitNullValueScriptHosts = default!; _explicitNullProperties?.Remove("script_hosts"); }
+            else if (parseNode.GetChildNode("script_hosts") is { } nullNodeScriptHosts && nullNodeScriptHosts.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ScriptHosts = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -28,31 +31,31 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Anchored regexes matched against `.env` key names. Values are never read.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<string>? EnvKeyPatterns { get => _explicitNullValueEnvKeyPatterns; set { _explicitNullValueEnvKeyPatterns = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("env_key_patterns"); else _explicitNullProperties?.Remove("env_key_patterns"); } }
+        public List<string>? EnvKeyPatterns { get => _explicitNullValueEnvKeyPatterns; set { _explicitNullValueEnvKeyPatterns = value; AdditionalData?.Remove("env_key_patterns"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("env_key_patterns"); else _explicitNullProperties?.Remove("env_key_patterns"); } }
         private List<string>? _explicitNullValueEnvKeyPatterns = default!;
 #nullable restore
 #else
-        public List<string> EnvKeyPatterns { get => _explicitNullValueEnvKeyPatterns; set { _explicitNullValueEnvKeyPatterns = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("env_key_patterns"); else _explicitNullProperties?.Remove("env_key_patterns"); } }
+        public List<string> EnvKeyPatterns { get => _explicitNullValueEnvKeyPatterns; set { _explicitNullValueEnvKeyPatterns = value; AdditionalData?.Remove("env_key_patterns"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("env_key_patterns"); else _explicitNullProperties?.Remove("env_key_patterns"); } }
         private List<string> _explicitNullValueEnvKeyPatterns = default!;
 #endif
         /// <summary>Package names keyed by ecosystem, such as `npm`, `pypi` or `maven`.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.WizardCatalogToolSignalsComposedPackages? Packages { get => _explicitNullValuePackages; set { _explicitNullValuePackages = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("packages"); else _explicitNullProperties?.Remove("packages"); } }
+        public global::Soenneker.PostHog.OpenApiClient.Models.WizardCatalogToolSignalsComposedPackages? Packages { get => _explicitNullValuePackages; set { _explicitNullValuePackages = value; AdditionalData?.Remove("packages"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("packages"); else _explicitNullProperties?.Remove("packages"); } }
         private global::Soenneker.PostHog.OpenApiClient.Models.WizardCatalogToolSignalsComposedPackages? _explicitNullValuePackages = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.WizardCatalogToolSignalsComposedPackages Packages { get => _explicitNullValuePackages; set { _explicitNullValuePackages = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("packages"); else _explicitNullProperties?.Remove("packages"); } }
+        public global::Soenneker.PostHog.OpenApiClient.Models.WizardCatalogToolSignalsComposedPackages Packages { get => _explicitNullValuePackages; set { _explicitNullValuePackages = value; AdditionalData?.Remove("packages"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("packages"); else _explicitNullProperties?.Remove("packages"); } }
         private global::Soenneker.PostHog.OpenApiClient.Models.WizardCatalogToolSignalsComposedPackages _explicitNullValuePackages = default!;
 #endif
         /// <summary>Hosts matched against script URLs. A host also matches its subdomains.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<string>? ScriptHosts { get => _explicitNullValueScriptHosts; set { _explicitNullValueScriptHosts = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("script_hosts"); else _explicitNullProperties?.Remove("script_hosts"); } }
+        public List<string>? ScriptHosts { get => _explicitNullValueScriptHosts; set { _explicitNullValueScriptHosts = value; AdditionalData?.Remove("script_hosts"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("script_hosts"); else _explicitNullProperties?.Remove("script_hosts"); } }
         private List<string>? _explicitNullValueScriptHosts = default!;
 #nullable restore
 #else
-        public List<string> ScriptHosts { get => _explicitNullValueScriptHosts; set { _explicitNullValueScriptHosts = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("script_hosts"); else _explicitNullProperties?.Remove("script_hosts"); } }
+        public List<string> ScriptHosts { get => _explicitNullValueScriptHosts; set { _explicitNullValueScriptHosts = value; AdditionalData?.Remove("script_hosts"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("script_hosts"); else _explicitNullProperties?.Remove("script_hosts"); } }
         private List<string> _explicitNullValueScriptHosts = default!;
 #endif
         /// <summary>

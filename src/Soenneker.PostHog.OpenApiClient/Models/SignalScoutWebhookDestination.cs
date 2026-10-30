@@ -17,7 +17,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("hog_function_id") is { } nullNodeHogFunctionId && nullNodeHogFunctionId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) HogFunctionId = null;
+            if (parseNode.GetChildNode("hog_function_id") is null) { _explicitNullValueHogFunctionId = default!; _explicitNullProperties?.Remove("hog_function_id"); }
+            else if (parseNode.GetChildNode("hog_function_id") is { } nullNodeHogFunctionId && nullNodeHogFunctionId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) HogFunctionId = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -25,11 +26,11 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Id of the CDP destination delivering this scout&apos;s reports. Set by the product that provisioned it, so it can find that destination again to update or remove it.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? HogFunctionId { get => _explicitNullValueHogFunctionId; set { _explicitNullValueHogFunctionId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("hog_function_id"); else _explicitNullProperties?.Remove("hog_function_id"); } }
+        public string? HogFunctionId { get => _explicitNullValueHogFunctionId; set { _explicitNullValueHogFunctionId = value; AdditionalData?.Remove("hog_function_id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("hog_function_id"); else _explicitNullProperties?.Remove("hog_function_id"); } }
         private string? _explicitNullValueHogFunctionId = default!;
 #nullable restore
 #else
-        public string HogFunctionId { get => _explicitNullValueHogFunctionId; set { _explicitNullValueHogFunctionId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("hog_function_id"); else _explicitNullProperties?.Remove("hog_function_id"); } }
+        public string HogFunctionId { get => _explicitNullValueHogFunctionId; set { _explicitNullValueHogFunctionId = value; AdditionalData?.Remove("hog_function_id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("hog_function_id"); else _explicitNullProperties?.Remove("hog_function_id"); } }
         private string _explicitNullValueHogFunctionId = default!;
 #endif
         /// <summary>

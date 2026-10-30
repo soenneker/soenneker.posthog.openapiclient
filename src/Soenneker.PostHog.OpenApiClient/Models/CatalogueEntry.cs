@@ -17,56 +17,61 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("event_count") is { } nullNodeEventCount && nullNodeEventCount.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) EventCount = null;
-            if (parseNode.GetChildNode("matched_integration") is { } nullNodeMatchedIntegration && nullNodeMatchedIntegration.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MatchedIntegration = null;
-            if (parseNode.GetChildNode("matched_integration_display_name") is { } nullNodeMatchedIntegrationDisplayName && nullNodeMatchedIntegrationDisplayName.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MatchedIntegrationDisplayName = null;
-            if (parseNode.GetChildNode("raw_utm_source") is { } nullNodeRawUtmSource && nullNodeRawUtmSource.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) RawUtmSource = null;
-            if (parseNode.GetChildNode("suggested_integration") is { } nullNodeSuggestedIntegration && nullNodeSuggestedIntegration.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SuggestedIntegration = null;
+            if (parseNode.GetChildNode("event_count") is null) { _explicitNullValueEventCount = default!; _explicitNullProperties?.Remove("event_count"); }
+            else if (parseNode.GetChildNode("event_count") is { } nullNodeEventCount && nullNodeEventCount.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) EventCount = null;
+            if (parseNode.GetChildNode("matched_integration") is null) { _explicitNullValueMatchedIntegration = default!; _explicitNullProperties?.Remove("matched_integration"); }
+            else if (parseNode.GetChildNode("matched_integration") is { } nullNodeMatchedIntegration && nullNodeMatchedIntegration.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MatchedIntegration = null;
+            if (parseNode.GetChildNode("matched_integration_display_name") is null) { _explicitNullValueMatchedIntegrationDisplayName = default!; _explicitNullProperties?.Remove("matched_integration_display_name"); }
+            else if (parseNode.GetChildNode("matched_integration_display_name") is { } nullNodeMatchedIntegrationDisplayName && nullNodeMatchedIntegrationDisplayName.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MatchedIntegrationDisplayName = null;
+            if (parseNode.GetChildNode("raw_utm_source") is null) { _explicitNullValueRawUtmSource = default!; _explicitNullProperties?.Remove("raw_utm_source"); }
+            else if (parseNode.GetChildNode("raw_utm_source") is { } nullNodeRawUtmSource && nullNodeRawUtmSource.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) RawUtmSource = null;
+            if (parseNode.GetChildNode("suggested_integration") is null) { _explicitNullValueSuggestedIntegration = default!; _explicitNullProperties?.Remove("suggested_integration"); }
+            else if (parseNode.GetChildNode("suggested_integration") is { } nullNodeSuggestedIntegration && nullNodeSuggestedIntegration.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SuggestedIntegration = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Number of events with this value</summary>
-        public int? EventCount { get => _explicitNullValueEventCount; set { _explicitNullValueEventCount = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("event_count"); else _explicitNullProperties?.Remove("event_count"); } }
+        public int? EventCount { get => _explicitNullValueEventCount; set { _explicitNullValueEventCount = value; AdditionalData?.Remove("event_count"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("event_count"); else _explicitNullProperties?.Remove("event_count"); } }
         private int? _explicitNullValueEventCount = default!;
         /// <summary>Integration this value exactly matches, if any</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? MatchedIntegration { get => _explicitNullValueMatchedIntegration; set { _explicitNullValueMatchedIntegration = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("matched_integration"); else _explicitNullProperties?.Remove("matched_integration"); } }
+        public string? MatchedIntegration { get => _explicitNullValueMatchedIntegration; set { _explicitNullValueMatchedIntegration = value; AdditionalData?.Remove("matched_integration"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("matched_integration"); else _explicitNullProperties?.Remove("matched_integration"); } }
         private string? _explicitNullValueMatchedIntegration = default!;
 #nullable restore
 #else
-        public string MatchedIntegration { get => _explicitNullValueMatchedIntegration; set { _explicitNullValueMatchedIntegration = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("matched_integration"); else _explicitNullProperties?.Remove("matched_integration"); } }
+        public string MatchedIntegration { get => _explicitNullValueMatchedIntegration; set { _explicitNullValueMatchedIntegration = value; AdditionalData?.Remove("matched_integration"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("matched_integration"); else _explicitNullProperties?.Remove("matched_integration"); } }
         private string _explicitNullValueMatchedIntegration = default!;
 #endif
         /// <summary>Human-readable name of the matched integration, if any</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? MatchedIntegrationDisplayName { get => _explicitNullValueMatchedIntegrationDisplayName; set { _explicitNullValueMatchedIntegrationDisplayName = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("matched_integration_display_name"); else _explicitNullProperties?.Remove("matched_integration_display_name"); } }
+        public string? MatchedIntegrationDisplayName { get => _explicitNullValueMatchedIntegrationDisplayName; set { _explicitNullValueMatchedIntegrationDisplayName = value; AdditionalData?.Remove("matched_integration_display_name"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("matched_integration_display_name"); else _explicitNullProperties?.Remove("matched_integration_display_name"); } }
         private string? _explicitNullValueMatchedIntegrationDisplayName = default!;
 #nullable restore
 #else
-        public string MatchedIntegrationDisplayName { get => _explicitNullValueMatchedIntegrationDisplayName; set { _explicitNullValueMatchedIntegrationDisplayName = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("matched_integration_display_name"); else _explicitNullProperties?.Remove("matched_integration_display_name"); } }
+        public string MatchedIntegrationDisplayName { get => _explicitNullValueMatchedIntegrationDisplayName; set { _explicitNullValueMatchedIntegrationDisplayName = value; AdditionalData?.Remove("matched_integration_display_name"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("matched_integration_display_name"); else _explicitNullProperties?.Remove("matched_integration_display_name"); } }
         private string _explicitNullValueMatchedIntegrationDisplayName = default!;
 #endif
         /// <summary>A raw utm_source value seen in the window</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? RawUtmSource { get => _explicitNullValueRawUtmSource; set { _explicitNullValueRawUtmSource = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("raw_utm_source"); else _explicitNullProperties?.Remove("raw_utm_source"); } }
+        public string? RawUtmSource { get => _explicitNullValueRawUtmSource; set { _explicitNullValueRawUtmSource = value; AdditionalData?.Remove("raw_utm_source"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("raw_utm_source"); else _explicitNullProperties?.Remove("raw_utm_source"); } }
         private string? _explicitNullValueRawUtmSource = default!;
 #nullable restore
 #else
-        public string RawUtmSource { get => _explicitNullValueRawUtmSource; set { _explicitNullValueRawUtmSource = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("raw_utm_source"); else _explicitNullProperties?.Remove("raw_utm_source"); } }
+        public string RawUtmSource { get => _explicitNullValueRawUtmSource; set { _explicitNullValueRawUtmSource = value; AdditionalData?.Remove("raw_utm_source"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("raw_utm_source"); else _explicitNullProperties?.Remove("raw_utm_source"); } }
         private string _explicitNullValueRawUtmSource = default!;
 #endif
         /// <summary>Integration suggested by token match, if any</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? SuggestedIntegration { get => _explicitNullValueSuggestedIntegration; set { _explicitNullValueSuggestedIntegration = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("suggested_integration"); else _explicitNullProperties?.Remove("suggested_integration"); } }
+        public string? SuggestedIntegration { get => _explicitNullValueSuggestedIntegration; set { _explicitNullValueSuggestedIntegration = value; AdditionalData?.Remove("suggested_integration"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("suggested_integration"); else _explicitNullProperties?.Remove("suggested_integration"); } }
         private string? _explicitNullValueSuggestedIntegration = default!;
 #nullable restore
 #else
-        public string SuggestedIntegration { get => _explicitNullValueSuggestedIntegration; set { _explicitNullValueSuggestedIntegration = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("suggested_integration"); else _explicitNullProperties?.Remove("suggested_integration"); } }
+        public string SuggestedIntegration { get => _explicitNullValueSuggestedIntegration; set { _explicitNullValueSuggestedIntegration = value; AdditionalData?.Remove("suggested_integration"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("suggested_integration"); else _explicitNullProperties?.Remove("suggested_integration"); } }
         private string _explicitNullValueSuggestedIntegration = default!;
 #endif
         /// <summary>

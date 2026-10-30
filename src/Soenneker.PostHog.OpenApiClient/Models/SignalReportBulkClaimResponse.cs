@@ -17,31 +17,35 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("claimed_count") is { } nullNodeClaimedCount && nullNodeClaimedCount.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ClaimedCount = null;
-            if (parseNode.GetChildNode("conflict_count") is { } nullNodeConflictCount && nullNodeConflictCount.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ConflictCount = null;
-            if (parseNode.GetChildNode("not_found_count") is { } nullNodeNotFoundCount && nullNodeNotFoundCount.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) NotFoundCount = null;
-            if (parseNode.GetChildNode("results") is { } nullNodeResults && nullNodeResults.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Results = null;
+            if (parseNode.GetChildNode("claimed_count") is null) { _explicitNullValueClaimedCount = default!; _explicitNullProperties?.Remove("claimed_count"); }
+            else if (parseNode.GetChildNode("claimed_count") is { } nullNodeClaimedCount && nullNodeClaimedCount.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ClaimedCount = null;
+            if (parseNode.GetChildNode("conflict_count") is null) { _explicitNullValueConflictCount = default!; _explicitNullProperties?.Remove("conflict_count"); }
+            else if (parseNode.GetChildNode("conflict_count") is { } nullNodeConflictCount && nullNodeConflictCount.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ConflictCount = null;
+            if (parseNode.GetChildNode("not_found_count") is null) { _explicitNullValueNotFoundCount = default!; _explicitNullProperties?.Remove("not_found_count"); }
+            else if (parseNode.GetChildNode("not_found_count") is { } nullNodeNotFoundCount && nullNodeNotFoundCount.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) NotFoundCount = null;
+            if (parseNode.GetChildNode("results") is null) { _explicitNullValueResults = default!; _explicitNullProperties?.Remove("results"); }
+            else if (parseNode.GetChildNode("results") is { } nullNodeResults && nullNodeResults.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Results = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Number of reports the caller now holds.</summary>
-        public int? ClaimedCount { get => _explicitNullValueClaimedCount; set { _explicitNullValueClaimedCount = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("claimed_count"); else _explicitNullProperties?.Remove("claimed_count"); } }
+        public int? ClaimedCount { get => _explicitNullValueClaimedCount; set { _explicitNullValueClaimedCount = value; AdditionalData?.Remove("claimed_count"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("claimed_count"); else _explicitNullProperties?.Remove("claimed_count"); } }
         private int? _explicitNullValueClaimedCount = default!;
         /// <summary>Number of reports whose claim was refused.</summary>
-        public int? ConflictCount { get => _explicitNullValueConflictCount; set { _explicitNullValueConflictCount = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("conflict_count"); else _explicitNullProperties?.Remove("conflict_count"); } }
+        public int? ConflictCount { get => _explicitNullValueConflictCount; set { _explicitNullValueConflictCount = value; AdditionalData?.Remove("conflict_count"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("conflict_count"); else _explicitNullProperties?.Remove("conflict_count"); } }
         private int? _explicitNullValueConflictCount = default!;
         /// <summary>Number of requested ids not visible to the caller.</summary>
-        public int? NotFoundCount { get => _explicitNullValueNotFoundCount; set { _explicitNullValueNotFoundCount = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("not_found_count"); else _explicitNullProperties?.Remove("not_found_count"); } }
+        public int? NotFoundCount { get => _explicitNullValueNotFoundCount; set { _explicitNullValueNotFoundCount = value; AdditionalData?.Remove("not_found_count"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("not_found_count"); else _explicitNullProperties?.Remove("not_found_count"); } }
         private int? _explicitNullValueNotFoundCount = default!;
         /// <summary>One result per requested id, in request order (after de-duplication).</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.SignalReportBulkClaimResult>? Results { get => _explicitNullValueResults; set { _explicitNullValueResults = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("results"); else _explicitNullProperties?.Remove("results"); } }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.SignalReportBulkClaimResult>? Results { get => _explicitNullValueResults; set { _explicitNullValueResults = value; AdditionalData?.Remove("results"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("results"); else _explicitNullProperties?.Remove("results"); } }
         private List<global::Soenneker.PostHog.OpenApiClient.Models.SignalReportBulkClaimResult>? _explicitNullValueResults = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.SignalReportBulkClaimResult> Results { get => _explicitNullValueResults; set { _explicitNullValueResults = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("results"); else _explicitNullProperties?.Remove("results"); } }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.SignalReportBulkClaimResult> Results { get => _explicitNullValueResults; set { _explicitNullValueResults = value; AdditionalData?.Remove("results"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("results"); else _explicitNullProperties?.Remove("results"); } }
         private List<global::Soenneker.PostHog.OpenApiClient.Models.SignalReportBulkClaimResult> _explicitNullValueResults = default!;
 #endif
         /// <summary>

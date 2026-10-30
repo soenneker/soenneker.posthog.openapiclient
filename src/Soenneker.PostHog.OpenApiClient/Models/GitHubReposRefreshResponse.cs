@@ -17,23 +17,25 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("installation_status") is { } nullNodeInstallationStatus && nullNodeInstallationStatus.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) InstallationStatus = null;
-            if (parseNode.GetChildNode("repositories") is { } nullNodeRepositories && nullNodeRepositories.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Repositories = null;
+            if (parseNode.GetChildNode("installation_status") is null) { _explicitNullValueInstallationStatus = default!; _explicitNullProperties?.Remove("installation_status"); }
+            else if (parseNode.GetChildNode("installation_status") is { } nullNodeInstallationStatus && nullNodeInstallationStatus.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) InstallationStatus = null;
+            if (parseNode.GetChildNode("repositories") is null) { _explicitNullValueRepositories = default!; _explicitNullProperties?.Remove("repositories"); }
+            else if (parseNode.GetChildNode("repositories") is { } nullNodeRepositories && nullNodeRepositories.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Repositories = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>* `connected` - connected* `unavailable` - unavailable</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.GitHubReposRefreshResponseInstallationStatus? InstallationStatus { get => _explicitNullValueInstallationStatus; set { _explicitNullValueInstallationStatus = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("installation_status"); else _explicitNullProperties?.Remove("installation_status"); } }
+        public global::Soenneker.PostHog.OpenApiClient.Models.GitHubReposRefreshResponseInstallationStatus? InstallationStatus { get => _explicitNullValueInstallationStatus; set { _explicitNullValueInstallationStatus = value; AdditionalData?.Remove("installation_status"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("installation_status"); else _explicitNullProperties?.Remove("installation_status"); } }
         private global::Soenneker.PostHog.OpenApiClient.Models.GitHubReposRefreshResponseInstallationStatus? _explicitNullValueInstallationStatus = default!;
         /// <summary>The refreshed repository cache.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.GitHubRepo>? Repositories { get => _explicitNullValueRepositories; set { _explicitNullValueRepositories = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("repositories"); else _explicitNullProperties?.Remove("repositories"); } }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.GitHubRepo>? Repositories { get => _explicitNullValueRepositories; set { _explicitNullValueRepositories = value; AdditionalData?.Remove("repositories"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("repositories"); else _explicitNullProperties?.Remove("repositories"); } }
         private List<global::Soenneker.PostHog.OpenApiClient.Models.GitHubRepo>? _explicitNullValueRepositories = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.GitHubRepo> Repositories { get => _explicitNullValueRepositories; set { _explicitNullValueRepositories = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("repositories"); else _explicitNullProperties?.Remove("repositories"); } }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.GitHubRepo> Repositories { get => _explicitNullValueRepositories; set { _explicitNullValueRepositories = value; AdditionalData?.Remove("repositories"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("repositories"); else _explicitNullProperties?.Remove("repositories"); } }
         private List<global::Soenneker.PostHog.OpenApiClient.Models.GitHubRepo> _explicitNullValueRepositories = default!;
 #endif
         /// <summary>
@@ -61,7 +63,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "installation_status", n => { InstallationStatus = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.GitHubReposRefreshResponseInstallationStatus>(); } },
+                { "installation_status", n => { var parsed = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.GitHubReposRefreshResponseInstallationStatus>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValueInstallationStatus = default; _explicitNullProperties?.Remove("installation_status"); AdditionalData["installation_status"] = unknown; } else { InstallationStatus = parsed; AdditionalData.Remove("installation_status"); } } },
                 { "repositories", n => { Repositories = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.GitHubRepo>(global::Soenneker.PostHog.OpenApiClient.Models.GitHubRepo.CreateFromDiscriminatorValue)?.AsList(); } },
             };
         }

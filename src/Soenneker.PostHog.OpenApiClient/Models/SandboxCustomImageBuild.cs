@@ -18,7 +18,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("spec_yaml") is { } nullNodeSpecYaml && nullNodeSpecYaml.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SpecYaml = null;
+            if (parseNode.GetChildNode("spec_yaml") is null) { _explicitNullValueSpecYaml = default!; _explicitNullProperties?.Remove("spec_yaml"); }
+            else if (parseNode.GetChildNode("spec_yaml") is { } nullNodeSpecYaml && nullNodeSpecYaml.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SpecYaml = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -26,11 +27,11 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Image spec YAML to build. When omitted, the spec is read from the builder agent&apos;s live sandbox.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? SpecYaml { get => _explicitNullValueSpecYaml; set { _explicitNullValueSpecYaml = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("spec_yaml"); else _explicitNullProperties?.Remove("spec_yaml"); } }
+        public string? SpecYaml { get => _explicitNullValueSpecYaml; set { _explicitNullValueSpecYaml = value; AdditionalData?.Remove("spec_yaml"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("spec_yaml"); else _explicitNullProperties?.Remove("spec_yaml"); } }
         private string? _explicitNullValueSpecYaml = default!;
 #nullable restore
 #else
-        public string SpecYaml { get => _explicitNullValueSpecYaml; set { _explicitNullValueSpecYaml = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("spec_yaml"); else _explicitNullProperties?.Remove("spec_yaml"); } }
+        public string SpecYaml { get => _explicitNullValueSpecYaml; set { _explicitNullValueSpecYaml = value; AdditionalData?.Remove("spec_yaml"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("spec_yaml"); else _explicitNullProperties?.Remove("spec_yaml"); } }
         private string _explicitNullValueSpecYaml = default!;
 #endif
         /// <summary>

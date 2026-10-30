@@ -18,23 +18,25 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("omitted_files") is { } nullNodeOmittedFiles && nullNodeOmittedFiles.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) OmittedFiles = null;
-            if (parseNode.GetChildNode("truncated_files") is { } nullNodeTruncatedFiles && nullNodeTruncatedFiles.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TruncatedFiles = null;
+            if (parseNode.GetChildNode("omitted_files") is null) { _explicitNullValueOmittedFiles = default!; _explicitNullProperties?.Remove("omitted_files"); }
+            else if (parseNode.GetChildNode("omitted_files") is { } nullNodeOmittedFiles && nullNodeOmittedFiles.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) OmittedFiles = null;
+            if (parseNode.GetChildNode("truncated_files") is null) { _explicitNullValueTruncatedFiles = default!; _explicitNullProperties?.Remove("truncated_files"); }
+            else if (parseNode.GetChildNode("truncated_files") is { } nullNodeTruncatedFiles && nullNodeTruncatedFiles.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TruncatedFiles = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Number of files missing from the saved reference.</summary>
-        public int? OmittedFiles { get => _explicitNullValueOmittedFiles; set { _explicitNullValueOmittedFiles = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("omitted_files"); else _explicitNullProperties?.Remove("omitted_files"); } }
+        public int? OmittedFiles { get => _explicitNullValueOmittedFiles; set { _explicitNullValueOmittedFiles = value; AdditionalData?.Remove("omitted_files"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("omitted_files"); else _explicitNullProperties?.Remove("omitted_files"); } }
         private int? _explicitNullValueOmittedFiles = default!;
         /// <summary>Paths of files truncated in the saved reference.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<string>? TruncatedFiles { get => _explicitNullValueTruncatedFiles; set { _explicitNullValueTruncatedFiles = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("truncated_files"); else _explicitNullProperties?.Remove("truncated_files"); } }
+        public List<string>? TruncatedFiles { get => _explicitNullValueTruncatedFiles; set { _explicitNullValueTruncatedFiles = value; AdditionalData?.Remove("truncated_files"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("truncated_files"); else _explicitNullProperties?.Remove("truncated_files"); } }
         private List<string>? _explicitNullValueTruncatedFiles = default!;
 #nullable restore
 #else
-        public List<string> TruncatedFiles { get => _explicitNullValueTruncatedFiles; set { _explicitNullValueTruncatedFiles = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("truncated_files"); else _explicitNullProperties?.Remove("truncated_files"); } }
+        public List<string> TruncatedFiles { get => _explicitNullValueTruncatedFiles; set { _explicitNullValueTruncatedFiles = value; AdditionalData?.Remove("truncated_files"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("truncated_files"); else _explicitNullProperties?.Remove("truncated_files"); } }
         private List<string> _explicitNullValueTruncatedFiles = default!;
 #endif
         /// <summary>

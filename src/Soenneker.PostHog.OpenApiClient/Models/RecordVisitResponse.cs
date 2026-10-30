@@ -17,13 +17,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("recorded") is { } nullNodeRecorded && nullNodeRecorded.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Recorded = null;
+            if (parseNode.GetChildNode("recorded") is null) { _explicitNullValueRecorded = default!; _explicitNullProperties?.Remove("recorded"); }
+            else if (parseNode.GetChildNode("recorded") is { } nullNodeRecorded && nullNodeRecorded.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Recorded = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>True once today&apos;s visit row exists for the user.</summary>
-        public bool? Recorded { get => _explicitNullValueRecorded; set { _explicitNullValueRecorded = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("recorded"); else _explicitNullProperties?.Remove("recorded"); } }
+        public bool? Recorded { get => _explicitNullValueRecorded; set { _explicitNullValueRecorded = value; AdditionalData?.Remove("recorded"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("recorded"); else _explicitNullProperties?.Remove("recorded"); } }
         private bool? _explicitNullValueRecorded = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.RecordVisitResponse"/> and sets the default values.

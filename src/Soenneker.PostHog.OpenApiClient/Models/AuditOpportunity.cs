@@ -18,9 +18,12 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("audit_id") is { } nullNodeAuditId && nullNodeAuditId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AuditId = null;
-            if (parseNode.GetChildNode("savings_ms") is { } nullNodeSavingsMs && nullNodeSavingsMs.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SavingsMs = null;
-            if (parseNode.GetChildNode("title") is { } nullNodeTitle && nullNodeTitle.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Title = null;
+            if (parseNode.GetChildNode("audit_id") is null) { _explicitNullValueAuditId = default!; _explicitNullProperties?.Remove("audit_id"); }
+            else if (parseNode.GetChildNode("audit_id") is { } nullNodeAuditId && nullNodeAuditId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AuditId = null;
+            if (parseNode.GetChildNode("savings_ms") is null) { _explicitNullValueSavingsMs = default!; _explicitNullProperties?.Remove("savings_ms"); }
+            else if (parseNode.GetChildNode("savings_ms") is { } nullNodeSavingsMs && nullNodeSavingsMs.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SavingsMs = null;
+            if (parseNode.GetChildNode("title") is null) { _explicitNullValueTitle = default!; _explicitNullProperties?.Remove("title"); }
+            else if (parseNode.GetChildNode("title") is { } nullNodeTitle && nullNodeTitle.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Title = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -28,24 +31,24 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Lighthouse audit id, for example `prioritize-lcp-image`.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? AuditId { get => _explicitNullValueAuditId; set { _explicitNullValueAuditId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("audit_id"); else _explicitNullProperties?.Remove("audit_id"); } }
+        public string? AuditId { get => _explicitNullValueAuditId; set { _explicitNullValueAuditId = value; AdditionalData?.Remove("audit_id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("audit_id"); else _explicitNullProperties?.Remove("audit_id"); } }
         private string? _explicitNullValueAuditId = default!;
 #nullable restore
 #else
-        public string AuditId { get => _explicitNullValueAuditId; set { _explicitNullValueAuditId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("audit_id"); else _explicitNullProperties?.Remove("audit_id"); } }
+        public string AuditId { get => _explicitNullValueAuditId; set { _explicitNullValueAuditId = value; AdditionalData?.Remove("audit_id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("audit_id"); else _explicitNullProperties?.Remove("audit_id"); } }
         private string _explicitNullValueAuditId = default!;
 #endif
         /// <summary>Estimated milliseconds this would save. Null for a pass/fail check with no estimate.</summary>
-        public double? SavingsMs { get => _explicitNullValueSavingsMs; set { _explicitNullValueSavingsMs = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("savings_ms"); else _explicitNullProperties?.Remove("savings_ms"); } }
+        public double? SavingsMs { get => _explicitNullValueSavingsMs; set { _explicitNullValueSavingsMs = value; AdditionalData?.Remove("savings_ms"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("savings_ms"); else _explicitNullProperties?.Remove("savings_ms"); } }
         private double? _explicitNullValueSavingsMs = default!;
         /// <summary>Lighthouse&apos;s own title for the check.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Title { get => _explicitNullValueTitle; set { _explicitNullValueTitle = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("title"); else _explicitNullProperties?.Remove("title"); } }
+        public string? Title { get => _explicitNullValueTitle; set { _explicitNullValueTitle = value; AdditionalData?.Remove("title"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("title"); else _explicitNullProperties?.Remove("title"); } }
         private string? _explicitNullValueTitle = default!;
 #nullable restore
 #else
-        public string Title { get => _explicitNullValueTitle; set { _explicitNullValueTitle = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("title"); else _explicitNullProperties?.Remove("title"); } }
+        public string Title { get => _explicitNullValueTitle; set { _explicitNullValueTitle = value; AdditionalData?.Remove("title"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("title"); else _explicitNullProperties?.Remove("title"); } }
         private string _explicitNullValueTitle = default!;
 #endif
         /// <summary>

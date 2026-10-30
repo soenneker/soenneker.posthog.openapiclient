@@ -17,9 +17,12 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("hideLineGraph") is { } nullNodeHideLineGraph && nullNodeHideLineGraph.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) HideLineGraph = null;
-            if (parseNode.GetChildNode("hideSizeColumn") is { } nullNodeHideSizeColumn && nullNodeHideSizeColumn.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) HideSizeColumn = null;
-            if (parseNode.GetChildNode("useSmallLayout") is { } nullNodeUseSmallLayout && nullNodeUseSmallLayout.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) UseSmallLayout = null;
+            if (parseNode.GetChildNode("hideLineGraph") is null) { _explicitNullValueHideLineGraph = default!; _explicitNullProperties?.Remove("hideLineGraph"); }
+            else if (parseNode.GetChildNode("hideLineGraph") is { } nullNodeHideLineGraph && nullNodeHideLineGraph.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) HideLineGraph = null;
+            if (parseNode.GetChildNode("hideSizeColumn") is null) { _explicitNullValueHideSizeColumn = default!; _explicitNullProperties?.Remove("hideSizeColumn"); }
+            else if (parseNode.GetChildNode("hideSizeColumn") is { } nullNodeHideSizeColumn && nullNodeHideSizeColumn.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) HideSizeColumn = null;
+            if (parseNode.GetChildNode("useSmallLayout") is null) { _explicitNullValueUseSmallLayout = default!; _explicitNullProperties?.Remove("useSmallLayout"); }
+            else if (parseNode.GetChildNode("useSmallLayout") is { } nullNodeUseSmallLayout && nullNodeUseSmallLayout.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) UseSmallLayout = null;
         }
 
         /// <summary>The hideLineGraph property</summary>

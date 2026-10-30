@@ -17,36 +17,41 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("health") is { } nullNodeHealth && nullNodeHealth.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Health = null;
-            if (parseNode.GetChildNode("needs_updating_count") is { } nullNodeNeedsUpdatingCount && nullNodeNeedsUpdatingCount.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) NeedsUpdatingCount = null;
-            if (parseNode.GetChildNode("overall_health") is { } nullNodeOverallHealth && nullNodeOverallHealth.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) OverallHealth = null;
-            if (parseNode.GetChildNode("sdks") is { } nullNodeSdks && nullNodeSdks.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Sdks = null;
-            if (parseNode.GetChildNode("team_sdk_count") is { } nullNodeTeamSdkCount && nullNodeTeamSdkCount.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TeamSdkCount = null;
+            if (parseNode.GetChildNode("health") is null) { _explicitNullValueHealth = default!; _explicitNullProperties?.Remove("health"); }
+            else if (parseNode.GetChildNode("health") is { } nullNodeHealth && nullNodeHealth.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Health = null;
+            if (parseNode.GetChildNode("needs_updating_count") is null) { _explicitNullValueNeedsUpdatingCount = default!; _explicitNullProperties?.Remove("needs_updating_count"); }
+            else if (parseNode.GetChildNode("needs_updating_count") is { } nullNodeNeedsUpdatingCount && nullNodeNeedsUpdatingCount.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) NeedsUpdatingCount = null;
+            if (parseNode.GetChildNode("overall_health") is null) { _explicitNullValueOverallHealth = default!; _explicitNullProperties?.Remove("overall_health"); }
+            else if (parseNode.GetChildNode("overall_health") is { } nullNodeOverallHealth && nullNodeOverallHealth.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) OverallHealth = null;
+            if (parseNode.GetChildNode("sdks") is null) { _explicitNullValueSdks = default!; _explicitNullProperties?.Remove("sdks"); }
+            else if (parseNode.GetChildNode("sdks") is { } nullNodeSdks && nullNodeSdks.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Sdks = null;
+            if (parseNode.GetChildNode("team_sdk_count") is null) { _explicitNullValueTeamSdkCount = default!; _explicitNullProperties?.Remove("team_sdk_count"); }
+            else if (parseNode.GetChildNode("team_sdk_count") is { } nullNodeTeamSdkCount && nullNodeTeamSdkCount.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TeamSdkCount = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>* `success` - success* `warning` - warning* `danger` - danger</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.SdkHealthReportHealth? Health { get => _explicitNullValueHealth; set { _explicitNullValueHealth = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("health"); else _explicitNullProperties?.Remove("health"); } }
+        public global::Soenneker.PostHog.OpenApiClient.Models.SdkHealthReportHealth? Health { get => _explicitNullValueHealth; set { _explicitNullValueHealth = value; AdditionalData?.Remove("health"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("health"); else _explicitNullProperties?.Remove("health"); } }
         private global::Soenneker.PostHog.OpenApiClient.Models.SdkHealthReportHealth? _explicitNullValueHealth = default!;
         /// <summary>Number of SDKs that need updating.</summary>
-        public int? NeedsUpdatingCount { get => _explicitNullValueNeedsUpdatingCount; set { _explicitNullValueNeedsUpdatingCount = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("needs_updating_count"); else _explicitNullProperties?.Remove("needs_updating_count"); } }
+        public int? NeedsUpdatingCount { get => _explicitNullValueNeedsUpdatingCount; set { _explicitNullValueNeedsUpdatingCount = value; AdditionalData?.Remove("needs_updating_count"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("needs_updating_count"); else _explicitNullProperties?.Remove("needs_updating_count"); } }
         private int? _explicitNullValueNeedsUpdatingCount = default!;
         /// <summary>* `healthy` - healthy* `needs_attention` - needs_attention</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.SdkHealthReportOverallHealth? OverallHealth { get => _explicitNullValueOverallHealth; set { _explicitNullValueOverallHealth = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("overall_health"); else _explicitNullProperties?.Remove("overall_health"); } }
+        public global::Soenneker.PostHog.OpenApiClient.Models.SdkHealthReportOverallHealth? OverallHealth { get => _explicitNullValueOverallHealth; set { _explicitNullValueOverallHealth = value; AdditionalData?.Remove("overall_health"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("overall_health"); else _explicitNullProperties?.Remove("overall_health"); } }
         private global::Soenneker.PostHog.OpenApiClient.Models.SdkHealthReportOverallHealth? _explicitNullValueOverallHealth = default!;
         /// <summary>Per-SDK health assessments.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.SdkAssessment>? Sdks { get => _explicitNullValueSdks; set { _explicitNullValueSdks = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("sdks"); else _explicitNullProperties?.Remove("sdks"); } }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.SdkAssessment>? Sdks { get => _explicitNullValueSdks; set { _explicitNullValueSdks = value; AdditionalData?.Remove("sdks"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("sdks"); else _explicitNullProperties?.Remove("sdks"); } }
         private List<global::Soenneker.PostHog.OpenApiClient.Models.SdkAssessment>? _explicitNullValueSdks = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.SdkAssessment> Sdks { get => _explicitNullValueSdks; set { _explicitNullValueSdks = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("sdks"); else _explicitNullProperties?.Remove("sdks"); } }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.SdkAssessment> Sdks { get => _explicitNullValueSdks; set { _explicitNullValueSdks = value; AdditionalData?.Remove("sdks"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("sdks"); else _explicitNullProperties?.Remove("sdks"); } }
         private List<global::Soenneker.PostHog.OpenApiClient.Models.SdkAssessment> _explicitNullValueSdks = default!;
 #endif
         /// <summary>Number of distinct PostHog SDKs the project is actively using.</summary>
-        public int? TeamSdkCount { get => _explicitNullValueTeamSdkCount; set { _explicitNullValueTeamSdkCount = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("team_sdk_count"); else _explicitNullProperties?.Remove("team_sdk_count"); } }
+        public int? TeamSdkCount { get => _explicitNullValueTeamSdkCount; set { _explicitNullValueTeamSdkCount = value; AdditionalData?.Remove("team_sdk_count"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("team_sdk_count"); else _explicitNullProperties?.Remove("team_sdk_count"); } }
         private int? _explicitNullValueTeamSdkCount = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.SdkHealthReport"/> and sets the default values.
@@ -73,9 +78,9 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "health", n => { Health = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.SdkHealthReportHealth>(); } },
+                { "health", n => { var parsed = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.SdkHealthReportHealth>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValueHealth = default; _explicitNullProperties?.Remove("health"); AdditionalData["health"] = unknown; } else { Health = parsed; AdditionalData.Remove("health"); } } },
                 { "needs_updating_count", n => { NeedsUpdatingCount = n.GetIntValue(); } },
-                { "overall_health", n => { OverallHealth = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.SdkHealthReportOverallHealth>(); } },
+                { "overall_health", n => { var parsed = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.SdkHealthReportOverallHealth>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValueOverallHealth = default; _explicitNullProperties?.Remove("overall_health"); AdditionalData["overall_health"] = unknown; } else { OverallHealth = parsed; AdditionalData.Remove("overall_health"); } } },
                 { "sdks", n => { Sdks = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.SdkAssessment>(global::Soenneker.PostHog.OpenApiClient.Models.SdkAssessment.CreateFromDiscriminatorValue)?.AsList(); } },
                 { "team_sdk_count", n => { TeamSdkCount = n.GetIntValue(); } },
             };

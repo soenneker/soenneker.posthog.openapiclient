@@ -17,16 +17,26 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("claim_scope") is { } nullNodeClaimScope && nullNodeClaimScope.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ClaimScope = null;
-            if (parseNode.GetChildNode("folded") is { } nullNodeFolded && nullNodeFolded.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Folded = null;
-            if (parseNode.GetChildNode("folded_preview") is { } nullNodeFoldedPreview && nullNodeFoldedPreview.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) FoldedPreview = null;
-            if (parseNode.GetChildNode("folded_result") is { } nullNodeFoldedResult && nullNodeFoldedResult.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) FoldedResult = null;
-            if (parseNode.GetChildNode("has_more") is { } nullNodeHasMore && nullNodeHasMore.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) HasMore = null;
-            if (parseNode.GetChildNode("installation_id") is { } nullNodeInstallationId && nullNodeInstallationId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) InstallationId = null;
-            if (parseNode.GetChildNode("my_choices_unlike_default") is { } nullNodeMyChoicesUnlikeDefault && nullNodeMyChoicesUnlikeDefault.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MyChoicesUnlikeDefault = null;
-            if (parseNode.GetChildNode("next_offset") is { } nullNodeNextOffset && nullNodeNextOffset.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) NextOffset = null;
-            if (parseNode.GetChildNode("results") is { } nullNodeResults && nullNodeResults.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Results = null;
-            if (parseNode.GetChildNode("total") is { } nullNodeTotal && nullNodeTotal.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Total = null;
+            if (parseNode.GetChildNode("claim_scope") is null) { _explicitNullValueClaimScope = default!; _explicitNullProperties?.Remove("claim_scope"); }
+            else if (parseNode.GetChildNode("claim_scope") is { } nullNodeClaimScope && nullNodeClaimScope.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ClaimScope = null;
+            if (parseNode.GetChildNode("folded") is null) { _explicitNullValueFolded = default!; _explicitNullProperties?.Remove("folded"); }
+            else if (parseNode.GetChildNode("folded") is { } nullNodeFolded && nullNodeFolded.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Folded = null;
+            if (parseNode.GetChildNode("folded_preview") is null) { _explicitNullValueFoldedPreview = default!; _explicitNullProperties?.Remove("folded_preview"); }
+            else if (parseNode.GetChildNode("folded_preview") is { } nullNodeFoldedPreview && nullNodeFoldedPreview.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) FoldedPreview = null;
+            if (parseNode.GetChildNode("folded_result") is null) { _explicitNullValueFoldedResult = default!; _explicitNullProperties?.Remove("folded_result"); }
+            else if (parseNode.GetChildNode("folded_result") is { } nullNodeFoldedResult && nullNodeFoldedResult.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) FoldedResult = null;
+            if (parseNode.GetChildNode("has_more") is null) { _explicitNullValueHasMore = default!; _explicitNullProperties?.Remove("has_more"); }
+            else if (parseNode.GetChildNode("has_more") is { } nullNodeHasMore && nullNodeHasMore.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) HasMore = null;
+            if (parseNode.GetChildNode("installation_id") is null) { _explicitNullValueInstallationId = default!; _explicitNullProperties?.Remove("installation_id"); }
+            else if (parseNode.GetChildNode("installation_id") is { } nullNodeInstallationId && nullNodeInstallationId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) InstallationId = null;
+            if (parseNode.GetChildNode("my_choices_unlike_default") is null) { _explicitNullValueMyChoicesUnlikeDefault = default!; _explicitNullProperties?.Remove("my_choices_unlike_default"); }
+            else if (parseNode.GetChildNode("my_choices_unlike_default") is { } nullNodeMyChoicesUnlikeDefault && nullNodeMyChoicesUnlikeDefault.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MyChoicesUnlikeDefault = null;
+            if (parseNode.GetChildNode("next_offset") is null) { _explicitNullValueNextOffset = default!; _explicitNullProperties?.Remove("next_offset"); }
+            else if (parseNode.GetChildNode("next_offset") is { } nullNodeNextOffset && nullNodeNextOffset.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) NextOffset = null;
+            if (parseNode.GetChildNode("results") is null) { _explicitNullValueResults = default!; _explicitNullProperties?.Remove("results"); }
+            else if (parseNode.GetChildNode("results") is { } nullNodeResults && nullNodeResults.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Results = null;
+            if (parseNode.GetChildNode("total") is null) { _explicitNullValueTotal = default!; _explicitNullProperties?.Remove("total"); }
+            else if (parseNode.GetChildNode("total") is { } nullNodeTotal && nullNodeTotal.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Total = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -34,67 +44,67 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>This project&apos;s claim on the installation: &apos;all&apos;, &apos;selected&apos;, or null.* `all` - All repositories* `selected` - Only selected repositories</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.ReviewRepositoryOverviewClaimScope? ClaimScope { get => _explicitNullValueClaimScope; set { _explicitNullValueClaimScope = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("claim_scope"); else _explicitNullProperties?.Remove("claim_scope"); } }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ReviewRepositoryOverviewClaimScope? ClaimScope { get => _explicitNullValueClaimScope; set { _explicitNullValueClaimScope = value; AdditionalData?.Remove("claim_scope"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("claim_scope"); else _explicitNullProperties?.Remove("claim_scope"); } }
         private global::Soenneker.PostHog.OpenApiClient.Models.ReviewRepositoryOverviewClaimScope? _explicitNullValueClaimScope = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ReviewRepositoryOverviewClaimScope ClaimScope { get => _explicitNullValueClaimScope; set { _explicitNullValueClaimScope = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("claim_scope"); else _explicitNullProperties?.Remove("claim_scope"); } }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ReviewRepositoryOverviewClaimScope ClaimScope { get => _explicitNullValueClaimScope; set { _explicitNullValueClaimScope = value; AdditionalData?.Remove("claim_scope"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("claim_scope"); else _explicitNullProperties?.Remove("claim_scope"); } }
         private global::Soenneker.PostHog.OpenApiClient.Models.ReviewRepositoryOverviewClaimScope _explicitNullValueClaimScope = default!;
 #endif
         /// <summary>With view &apos;differs&apos;, or &apos;all&apos; without a search: how many repositories &apos;differs&apos; leaves out because this project reviews them with no exception and no own choice. 0 otherwise.</summary>
-        public int? Folded { get => _explicitNullValueFolded; set { _explicitNullValueFolded = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("folded"); else _explicitNullProperties?.Remove("folded"); } }
+        public int? Folded { get => _explicitNullValueFolded; set { _explicitNullValueFolded = value; AdditionalData?.Remove("folded"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("folded"); else _explicitNullProperties?.Remove("folded"); } }
         private int? _explicitNullValueFolded = default!;
         /// <summary>With view &apos;differs&apos;, or &apos;all&apos; without a search: the names of the first left-out repositories, at most 3. Empty otherwise.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<string>? FoldedPreview { get => _explicitNullValueFoldedPreview; set { _explicitNullValueFoldedPreview = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("folded_preview"); else _explicitNullProperties?.Remove("folded_preview"); } }
+        public List<string>? FoldedPreview { get => _explicitNullValueFoldedPreview; set { _explicitNullValueFoldedPreview = value; AdditionalData?.Remove("folded_preview"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("folded_preview"); else _explicitNullProperties?.Remove("folded_preview"); } }
         private List<string>? _explicitNullValueFoldedPreview = default!;
 #nullable restore
 #else
-        public List<string> FoldedPreview { get => _explicitNullValueFoldedPreview; set { _explicitNullValueFoldedPreview = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("folded_preview"); else _explicitNullProperties?.Remove("folded_preview"); } }
+        public List<string> FoldedPreview { get => _explicitNullValueFoldedPreview; set { _explicitNullValueFoldedPreview = value; AdditionalData?.Remove("folded_preview"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("folded_preview"); else _explicitNullProperties?.Remove("folded_preview"); } }
         private List<string> _explicitNullValueFoldedPreview = default!;
 #endif
         /// <summary>With view &apos;differs&apos;, or &apos;all&apos; without a search: what the requesting user&apos;s own pull requests get in every left-out repository, which is the same for all of them. Null otherwise, or when nothing is left out.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.AutomaticReviewDecision? FoldedResult { get => _explicitNullValueFoldedResult; set { _explicitNullValueFoldedResult = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("folded_result"); else _explicitNullProperties?.Remove("folded_result"); } }
+        public global::Soenneker.PostHog.OpenApiClient.Models.AutomaticReviewDecision? FoldedResult { get => _explicitNullValueFoldedResult; set { _explicitNullValueFoldedResult = value; AdditionalData?.Remove("folded_result"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("folded_result"); else _explicitNullProperties?.Remove("folded_result"); } }
         private global::Soenneker.PostHog.OpenApiClient.Models.AutomaticReviewDecision? _explicitNullValueFoldedResult = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.AutomaticReviewDecision FoldedResult { get => _explicitNullValueFoldedResult; set { _explicitNullValueFoldedResult = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("folded_result"); else _explicitNullProperties?.Remove("folded_result"); } }
+        public global::Soenneker.PostHog.OpenApiClient.Models.AutomaticReviewDecision FoldedResult { get => _explicitNullValueFoldedResult; set { _explicitNullValueFoldedResult = value; AdditionalData?.Remove("folded_result"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("folded_result"); else _explicitNullProperties?.Remove("folded_result"); } }
         private global::Soenneker.PostHog.OpenApiClient.Models.AutomaticReviewDecision _explicitNullValueFoldedResult = default!;
 #endif
         /// <summary>Whether more entries follow this page.</summary>
-        public bool? HasMore { get => _explicitNullValueHasMore; set { _explicitNullValueHasMore = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("has_more"); else _explicitNullProperties?.Remove("has_more"); } }
+        public bool? HasMore { get => _explicitNullValueHasMore; set { _explicitNullValueHasMore = value; AdditionalData?.Remove("has_more"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("has_more"); else _explicitNullProperties?.Remove("has_more"); } }
         private bool? _explicitNullValueHasMore = default!;
         /// <summary>The listed GitHub App installation.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? InstallationId { get => _explicitNullValueInstallationId; set { _explicitNullValueInstallationId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("installation_id"); else _explicitNullProperties?.Remove("installation_id"); } }
+        public string? InstallationId { get => _explicitNullValueInstallationId; set { _explicitNullValueInstallationId = value; AdditionalData?.Remove("installation_id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("installation_id"); else _explicitNullProperties?.Remove("installation_id"); } }
         private string? _explicitNullValueInstallationId = default!;
 #nullable restore
 #else
-        public string InstallationId { get => _explicitNullValueInstallationId; set { _explicitNullValueInstallationId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("installation_id"); else _explicitNullProperties?.Remove("installation_id"); } }
+        public string InstallationId { get => _explicitNullValueInstallationId; set { _explicitNullValueInstallationId = value; AdditionalData?.Remove("installation_id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("installation_id"); else _explicitNullProperties?.Remove("installation_id"); } }
         private string _explicitNullValueInstallationId = default!;
 #endif
         /// <summary>How many of the requesting user&apos;s own repository choices in this project give something other than their default. Counts every installation, so the search, the view, and the page do not change it.</summary>
-        public int? MyChoicesUnlikeDefault { get => _explicitNullValueMyChoicesUnlikeDefault; set { _explicitNullValueMyChoicesUnlikeDefault = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("my_choices_unlike_default"); else _explicitNullProperties?.Remove("my_choices_unlike_default"); } }
+        public int? MyChoicesUnlikeDefault { get => _explicitNullValueMyChoicesUnlikeDefault; set { _explicitNullValueMyChoicesUnlikeDefault = value; AdditionalData?.Remove("my_choices_unlike_default"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("my_choices_unlike_default"); else _explicitNullProperties?.Remove("my_choices_unlike_default"); } }
         private int? _explicitNullValueMyChoicesUnlikeDefault = default!;
         /// <summary>Offset of the next page, or null.</summary>
-        public int? NextOffset { get => _explicitNullValueNextOffset; set { _explicitNullValueNextOffset = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("next_offset"); else _explicitNullProperties?.Remove("next_offset"); } }
+        public int? NextOffset { get => _explicitNullValueNextOffset; set { _explicitNullValueNextOffset = value; AdditionalData?.Remove("next_offset"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("next_offset"); else _explicitNullProperties?.Remove("next_offset"); } }
         private int? _explicitNullValueNextOffset = default!;
         /// <summary>One page of repositories.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.ReviewRepositoryOverviewEntry>? Results { get => _explicitNullValueResults; set { _explicitNullValueResults = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("results"); else _explicitNullProperties?.Remove("results"); } }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.ReviewRepositoryOverviewEntry>? Results { get => _explicitNullValueResults; set { _explicitNullValueResults = value; AdditionalData?.Remove("results"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("results"); else _explicitNullProperties?.Remove("results"); } }
         private List<global::Soenneker.PostHog.OpenApiClient.Models.ReviewRepositoryOverviewEntry>? _explicitNullValueResults = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.ReviewRepositoryOverviewEntry> Results { get => _explicitNullValueResults; set { _explicitNullValueResults = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("results"); else _explicitNullProperties?.Remove("results"); } }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.ReviewRepositoryOverviewEntry> Results { get => _explicitNullValueResults; set { _explicitNullValueResults = value; AdditionalData?.Remove("results"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("results"); else _explicitNullProperties?.Remove("results"); } }
         private List<global::Soenneker.PostHog.OpenApiClient.Models.ReviewRepositoryOverviewEntry> _explicitNullValueResults = default!;
 #endif
         /// <summary>Repositories that match the search and the view.</summary>
-        public int? Total { get => _explicitNullValueTotal; set { _explicitNullValueTotal = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("total"); else _explicitNullProperties?.Remove("total"); } }
+        public int? Total { get => _explicitNullValueTotal; set { _explicitNullValueTotal = value; AdditionalData?.Remove("total"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("total"); else _explicitNullProperties?.Remove("total"); } }
         private int? _explicitNullValueTotal = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ReviewRepositoryOverview"/> and sets the default values.

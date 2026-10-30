@@ -17,13 +17,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("from_integration_id") is { } nullNodeFromIntegrationId && nullNodeFromIntegrationId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) FromIntegrationId = null;
+            if (parseNode.GetChildNode("from_integration_id") is null) { _explicitNullValueFromIntegrationId = default!; _explicitNullProperties?.Remove("from_integration_id"); }
+            else if (parseNode.GetChildNode("from_integration_id") is { } nullNodeFromIntegrationId && nullNodeFromIntegrationId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) FromIntegrationId = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>ID of the verified email sender integration the email is sent from. Defaults to the project&apos;s default sender.</summary>
-        public int? FromIntegrationId { get => _explicitNullValueFromIntegrationId; set { _explicitNullValueFromIntegrationId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("from_integration_id"); else _explicitNullProperties?.Remove("from_integration_id"); } }
+        public int? FromIntegrationId { get => _explicitNullValueFromIntegrationId; set { _explicitNullValueFromIntegrationId = value; AdditionalData?.Remove("from_integration_id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("from_integration_id"); else _explicitNullProperties?.Remove("from_integration_id"); } }
         private int? _explicitNullValueFromIntegrationId = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.MakeTransactional"/> and sets the default values.

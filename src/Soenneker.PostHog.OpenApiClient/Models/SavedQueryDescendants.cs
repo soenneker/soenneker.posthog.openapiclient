@@ -17,7 +17,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("descendants") is { } nullNodeDescendants && nullNodeDescendants.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Descendants = null;
+            if (parseNode.GetChildNode("descendants") is null) { _explicitNullValueDescendants = default!; _explicitNullProperties?.Remove("descendants"); }
+            else if (parseNode.GetChildNode("descendants") is { } nullNodeDescendants && nullNodeDescendants.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Descendants = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -25,11 +26,11 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Ids of the saved queries that read from this query, directly or through other queries.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<string>? Descendants { get => _explicitNullValueDescendants; set { _explicitNullValueDescendants = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("descendants"); else _explicitNullProperties?.Remove("descendants"); } }
+        public List<string>? Descendants { get => _explicitNullValueDescendants; set { _explicitNullValueDescendants = value; AdditionalData?.Remove("descendants"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("descendants"); else _explicitNullProperties?.Remove("descendants"); } }
         private List<string>? _explicitNullValueDescendants = default!;
 #nullable restore
 #else
-        public List<string> Descendants { get => _explicitNullValueDescendants; set { _explicitNullValueDescendants = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("descendants"); else _explicitNullProperties?.Remove("descendants"); } }
+        public List<string> Descendants { get => _explicitNullValueDescendants; set { _explicitNullValueDescendants = value; AdditionalData?.Remove("descendants"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("descendants"); else _explicitNullProperties?.Remove("descendants"); } }
         private List<string> _explicitNullValueDescendants = default!;
 #endif
         /// <summary>

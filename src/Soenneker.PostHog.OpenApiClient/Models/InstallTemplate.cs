@@ -17,62 +17,70 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("agent_scope") is { } nullNodeAgentScope && nullNodeAgentScope.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AgentScope = null;
-            if (parseNode.GetChildNode("api_key") is { } nullNodeApiKey && nullNodeApiKey.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ApiKey = null;
-            if (parseNode.GetChildNode("install_source") is { } nullNodeInstallSource && nullNodeInstallSource.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) InstallSource = null;
-            if (parseNode.GetChildNode("posthog_code_callback_url") is { } nullNodePosthogCodeCallbackUrl && nullNodePosthogCodeCallbackUrl.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) PosthogCodeCallbackUrl = null;
-            if (parseNode.GetChildNode("return_path") is { } nullNodeReturnPath && nullNodeReturnPath.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ReturnPath = null;
-            if (parseNode.GetChildNode("scope") is { } nullNodeScope && nullNodeScope.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Scope = null;
-            if (parseNode.GetChildNode("team_enabled") is { } nullNodeTeamEnabled && nullNodeTeamEnabled.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TeamEnabled = null;
-            if (parseNode.GetChildNode("template_id") is { } nullNodeTemplateId && nullNodeTemplateId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TemplateId = null;
+            if (parseNode.GetChildNode("agent_scope") is null) { _explicitNullValueAgentScope = default!; _explicitNullProperties?.Remove("agent_scope"); }
+            else if (parseNode.GetChildNode("agent_scope") is { } nullNodeAgentScope && nullNodeAgentScope.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AgentScope = null;
+            if (parseNode.GetChildNode("api_key") is null) { _explicitNullValueApiKey = default!; _explicitNullProperties?.Remove("api_key"); }
+            else if (parseNode.GetChildNode("api_key") is { } nullNodeApiKey && nullNodeApiKey.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ApiKey = null;
+            if (parseNode.GetChildNode("install_source") is null) { _explicitNullValueInstallSource = default!; _explicitNullProperties?.Remove("install_source"); }
+            else if (parseNode.GetChildNode("install_source") is { } nullNodeInstallSource && nullNodeInstallSource.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) InstallSource = null;
+            if (parseNode.GetChildNode("posthog_code_callback_url") is null) { _explicitNullValuePosthogCodeCallbackUrl = default!; _explicitNullProperties?.Remove("posthog_code_callback_url"); }
+            else if (parseNode.GetChildNode("posthog_code_callback_url") is { } nullNodePosthogCodeCallbackUrl && nullNodePosthogCodeCallbackUrl.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) PosthogCodeCallbackUrl = null;
+            if (parseNode.GetChildNode("return_path") is null) { _explicitNullValueReturnPath = default!; _explicitNullProperties?.Remove("return_path"); }
+            else if (parseNode.GetChildNode("return_path") is { } nullNodeReturnPath && nullNodeReturnPath.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ReturnPath = null;
+            if (parseNode.GetChildNode("scope") is null) { _explicitNullValueScope = default!; _explicitNullProperties?.Remove("scope"); }
+            else if (parseNode.GetChildNode("scope") is { } nullNodeScope && nullNodeScope.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Scope = null;
+            if (parseNode.GetChildNode("team_enabled") is null) { _explicitNullValueTeamEnabled = default!; _explicitNullProperties?.Remove("team_enabled"); }
+            else if (parseNode.GetChildNode("team_enabled") is { } nullNodeTeamEnabled && nullNodeTeamEnabled.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TeamEnabled = null;
+            if (parseNode.GetChildNode("template_id") is null) { _explicitNullValueTemplateId = default!; _explicitNullProperties?.Remove("template_id"); }
+            else if (parseNode.GetChildNode("template_id") is { } nullNodeTemplateId && nullNodeTemplateId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TemplateId = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>* `personal` - Personal* `team` - Team</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.InstallTemplateAgentScope? AgentScope { get => _explicitNullValueAgentScope; set { _explicitNullValueAgentScope = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("agent_scope"); else _explicitNullProperties?.Remove("agent_scope"); } }
+        public global::Soenneker.PostHog.OpenApiClient.Models.InstallTemplateAgentScope? AgentScope { get => _explicitNullValueAgentScope; set { _explicitNullValueAgentScope = value; AdditionalData?.Remove("agent_scope"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("agent_scope"); else _explicitNullProperties?.Remove("agent_scope"); } }
         private global::Soenneker.PostHog.OpenApiClient.Models.InstallTemplateAgentScope? _explicitNullValueAgentScope = default!;
         /// <summary>The api_key property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? ApiKey { get => _explicitNullValueApiKey; set { _explicitNullValueApiKey = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("api_key"); else _explicitNullProperties?.Remove("api_key"); } }
+        public string? ApiKey { get => _explicitNullValueApiKey; set { _explicitNullValueApiKey = value; AdditionalData?.Remove("api_key"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("api_key"); else _explicitNullProperties?.Remove("api_key"); } }
         private string? _explicitNullValueApiKey = default!;
 #nullable restore
 #else
-        public string ApiKey { get => _explicitNullValueApiKey; set { _explicitNullValueApiKey = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("api_key"); else _explicitNullProperties?.Remove("api_key"); } }
+        public string ApiKey { get => _explicitNullValueApiKey; set { _explicitNullValueApiKey = value; AdditionalData?.Remove("api_key"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("api_key"); else _explicitNullProperties?.Remove("api_key"); } }
         private string _explicitNullValueApiKey = default!;
 #endif
         /// <summary>* `posthog` - posthog* `posthog-code` - posthog-code</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.InstallTemplateInstallSource? InstallSource { get => _explicitNullValueInstallSource; set { _explicitNullValueInstallSource = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("install_source"); else _explicitNullProperties?.Remove("install_source"); } }
+        public global::Soenneker.PostHog.OpenApiClient.Models.InstallTemplateInstallSource? InstallSource { get => _explicitNullValueInstallSource; set { _explicitNullValueInstallSource = value; AdditionalData?.Remove("install_source"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("install_source"); else _explicitNullProperties?.Remove("install_source"); } }
         private global::Soenneker.PostHog.OpenApiClient.Models.InstallTemplateInstallSource? _explicitNullValueInstallSource = default!;
         /// <summary>The posthog_code_callback_url property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? PosthogCodeCallbackUrl { get => _explicitNullValuePosthogCodeCallbackUrl; set { _explicitNullValuePosthogCodeCallbackUrl = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("posthog_code_callback_url"); else _explicitNullProperties?.Remove("posthog_code_callback_url"); } }
+        public string? PosthogCodeCallbackUrl { get => _explicitNullValuePosthogCodeCallbackUrl; set { _explicitNullValuePosthogCodeCallbackUrl = value; AdditionalData?.Remove("posthog_code_callback_url"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("posthog_code_callback_url"); else _explicitNullProperties?.Remove("posthog_code_callback_url"); } }
         private string? _explicitNullValuePosthogCodeCallbackUrl = default!;
 #nullable restore
 #else
-        public string PosthogCodeCallbackUrl { get => _explicitNullValuePosthogCodeCallbackUrl; set { _explicitNullValuePosthogCodeCallbackUrl = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("posthog_code_callback_url"); else _explicitNullProperties?.Remove("posthog_code_callback_url"); } }
+        public string PosthogCodeCallbackUrl { get => _explicitNullValuePosthogCodeCallbackUrl; set { _explicitNullValuePosthogCodeCallbackUrl = value; AdditionalData?.Remove("posthog_code_callback_url"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("posthog_code_callback_url"); else _explicitNullProperties?.Remove("posthog_code_callback_url"); } }
         private string _explicitNullValuePosthogCodeCallbackUrl = default!;
 #endif
         /// <summary>In-app path to land back on after the OAuth round-trip. Must be a same-app relative path.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? ReturnPath { get => _explicitNullValueReturnPath; set { _explicitNullValueReturnPath = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("return_path"); else _explicitNullProperties?.Remove("return_path"); } }
+        public string? ReturnPath { get => _explicitNullValueReturnPath; set { _explicitNullValueReturnPath = value; AdditionalData?.Remove("return_path"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("return_path"); else _explicitNullProperties?.Remove("return_path"); } }
         private string? _explicitNullValueReturnPath = default!;
 #nullable restore
 #else
-        public string ReturnPath { get => _explicitNullValueReturnPath; set { _explicitNullValueReturnPath = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("return_path"); else _explicitNullProperties?.Remove("return_path"); } }
+        public string ReturnPath { get => _explicitNullValueReturnPath; set { _explicitNullValueReturnPath = value; AdditionalData?.Remove("return_path"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("return_path"); else _explicitNullProperties?.Remove("return_path"); } }
         private string _explicitNullValueReturnPath = default!;
 #endif
         /// <summary>* `personal` - personal* `shared` - shared</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.InstallTemplateScope? Scope { get => _explicitNullValueScope; set { _explicitNullValueScope = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("scope"); else _explicitNullProperties?.Remove("scope"); } }
+        public global::Soenneker.PostHog.OpenApiClient.Models.InstallTemplateScope? Scope { get => _explicitNullValueScope; set { _explicitNullValueScope = value; AdditionalData?.Remove("scope"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("scope"); else _explicitNullProperties?.Remove("scope"); } }
         private global::Soenneker.PostHog.OpenApiClient.Models.InstallTemplateScope? _explicitNullValueScope = default!;
         /// <summary>Whether the server starts enabled for the whole team. Non-default values are admin-only.</summary>
-        public bool? TeamEnabled { get => _explicitNullValueTeamEnabled; set { _explicitNullValueTeamEnabled = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("team_enabled"); else _explicitNullProperties?.Remove("team_enabled"); } }
+        public bool? TeamEnabled { get => _explicitNullValueTeamEnabled; set { _explicitNullValueTeamEnabled = value; AdditionalData?.Remove("team_enabled"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("team_enabled"); else _explicitNullProperties?.Remove("team_enabled"); } }
         private bool? _explicitNullValueTeamEnabled = default!;
         /// <summary>The template_id property</summary>
-        public Guid? TemplateId { get => _explicitNullValueTemplateId; set { _explicitNullValueTemplateId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("template_id"); else _explicitNullProperties?.Remove("template_id"); } }
+        public Guid? TemplateId { get => _explicitNullValueTemplateId; set { _explicitNullValueTemplateId = value; AdditionalData?.Remove("template_id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("template_id"); else _explicitNullProperties?.Remove("template_id"); } }
         private Guid? _explicitNullValueTemplateId = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.InstallTemplate"/> and sets the default values.
@@ -100,12 +108,12 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "agent_scope", n => { AgentScope = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.InstallTemplateAgentScope>(); } },
+                { "agent_scope", n => { var parsed = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.InstallTemplateAgentScope>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValueAgentScope = default; _explicitNullProperties?.Remove("agent_scope"); AdditionalData["agent_scope"] = unknown; } else { AgentScope = parsed; AdditionalData.Remove("agent_scope"); } } },
                 { "api_key", n => { ApiKey = n.GetStringValue(); } },
-                { "install_source", n => { InstallSource = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.InstallTemplateInstallSource>(); } },
+                { "install_source", n => { var parsed = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.InstallTemplateInstallSource>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValueInstallSource = default; _explicitNullProperties?.Remove("install_source"); AdditionalData["install_source"] = unknown; } else { InstallSource = parsed; AdditionalData.Remove("install_source"); } } },
                 { "posthog_code_callback_url", n => { PosthogCodeCallbackUrl = n.GetStringValue(); } },
                 { "return_path", n => { ReturnPath = n.GetStringValue(); } },
-                { "scope", n => { Scope = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.InstallTemplateScope>(); } },
+                { "scope", n => { var parsed = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.InstallTemplateScope>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValueScope = default; _explicitNullProperties?.Remove("scope"); AdditionalData["scope"] = unknown; } else { Scope = parsed; AdditionalData.Remove("scope"); } } },
                 { "team_enabled", n => { TeamEnabled = n.GetBoolValue(); } },
                 { "template_id", n => { TemplateId = n.GetGuidValue(); } },
             };

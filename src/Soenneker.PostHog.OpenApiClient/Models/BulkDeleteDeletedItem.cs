@@ -17,39 +17,43 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("active_variant") is { } nullNodeActiveVariant && nullNodeActiveVariant.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ActiveVariant = null;
-            if (parseNode.GetChildNode("id") is { } nullNodeId && nullNodeId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Id = null;
-            if (parseNode.GetChildNode("key") is { } nullNodeKey && nullNodeKey.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Key = null;
-            if (parseNode.GetChildNode("rollout_state") is { } nullNodeRolloutState && nullNodeRolloutState.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) RolloutState = null;
+            if (parseNode.GetChildNode("active_variant") is null) { _explicitNullValueActiveVariant = default!; _explicitNullProperties?.Remove("active_variant"); }
+            else if (parseNode.GetChildNode("active_variant") is { } nullNodeActiveVariant && nullNodeActiveVariant.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ActiveVariant = null;
+            if (parseNode.GetChildNode("id") is null) { _explicitNullValueId = default!; _explicitNullProperties?.Remove("id"); }
+            else if (parseNode.GetChildNode("id") is { } nullNodeId && nullNodeId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Id = null;
+            if (parseNode.GetChildNode("key") is null) { _explicitNullValueKey = default!; _explicitNullProperties?.Remove("key"); }
+            else if (parseNode.GetChildNode("key") is { } nullNodeKey && nullNodeKey.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Key = null;
+            if (parseNode.GetChildNode("rollout_state") is null) { _explicitNullValueRolloutState = default!; _explicitNullProperties?.Remove("rollout_state"); }
+            else if (parseNode.GetChildNode("rollout_state") is { } nullNodeRolloutState && nullNodeRolloutState.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) RolloutState = null;
         }
 
         /// <summary>Variant key when a multivariate flag was fully rolled out to a single variant; otherwise null.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? ActiveVariant { get => _explicitNullValueActiveVariant; set { _explicitNullValueActiveVariant = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("active_variant"); else _explicitNullProperties?.Remove("active_variant"); } }
+        public string? ActiveVariant { get => _explicitNullValueActiveVariant; set { _explicitNullValueActiveVariant = value; AdditionalData?.Remove("active_variant"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("active_variant"); else _explicitNullProperties?.Remove("active_variant"); } }
         private string? _explicitNullValueActiveVariant = default!;
 #nullable restore
 #else
-        public string ActiveVariant { get => _explicitNullValueActiveVariant; set { _explicitNullValueActiveVariant = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("active_variant"); else _explicitNullProperties?.Remove("active_variant"); } }
+        public string ActiveVariant { get => _explicitNullValueActiveVariant; set { _explicitNullValueActiveVariant = value; AdditionalData?.Remove("active_variant"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("active_variant"); else _explicitNullProperties?.Remove("active_variant"); } }
         private string _explicitNullValueActiveVariant = default!;
 #endif
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>ID of the soft-deleted flag.</summary>
-        public int? Id { get => _explicitNullValueId; set { _explicitNullValueId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("id"); else _explicitNullProperties?.Remove("id"); } }
+        public int? Id { get => _explicitNullValueId; set { _explicitNullValueId = value; AdditionalData?.Remove("id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("id"); else _explicitNullProperties?.Remove("id"); } }
         private int? _explicitNullValueId = default!;
         /// <summary>The flag key at the time of deletion.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Key { get => _explicitNullValueKey; set { _explicitNullValueKey = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("key"); else _explicitNullProperties?.Remove("key"); } }
+        public string? Key { get => _explicitNullValueKey; set { _explicitNullValueKey = value; AdditionalData?.Remove("key"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("key"); else _explicitNullProperties?.Remove("key"); } }
         private string? _explicitNullValueKey = default!;
 #nullable restore
 #else
-        public string Key { get => _explicitNullValueKey; set { _explicitNullValueKey = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("key"); else _explicitNullProperties?.Remove("key"); } }
+        public string Key { get => _explicitNullValueKey; set { _explicitNullValueKey = value; AdditionalData?.Remove("key"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("key"); else _explicitNullProperties?.Remove("key"); } }
         private string _explicitNullValueKey = default!;
 #endif
         /// <summary>* `fully_rolled_out` - fully_rolled_out* `not_rolled_out` - not_rolled_out* `partial` - partial</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.BulkDeleteDeletedItemRolloutState? RolloutState { get => _explicitNullValueRolloutState; set { _explicitNullValueRolloutState = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("rollout_state"); else _explicitNullProperties?.Remove("rollout_state"); } }
+        public global::Soenneker.PostHog.OpenApiClient.Models.BulkDeleteDeletedItemRolloutState? RolloutState { get => _explicitNullValueRolloutState; set { _explicitNullValueRolloutState = value; AdditionalData?.Remove("rollout_state"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("rollout_state"); else _explicitNullProperties?.Remove("rollout_state"); } }
         private global::Soenneker.PostHog.OpenApiClient.Models.BulkDeleteDeletedItemRolloutState? _explicitNullValueRolloutState = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.BulkDeleteDeletedItem"/> and sets the default values.
@@ -79,7 +83,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "active_variant", n => { ActiveVariant = n.GetStringValue(); } },
                 { "id", n => { Id = n.GetIntValue(); } },
                 { "key", n => { Key = n.GetStringValue(); } },
-                { "rollout_state", n => { RolloutState = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.BulkDeleteDeletedItemRolloutState>(); } },
+                { "rollout_state", n => { var parsed = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.BulkDeleteDeletedItemRolloutState>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValueRolloutState = default; _explicitNullProperties?.Remove("rollout_state"); AdditionalData["rollout_state"] = unknown; } else { RolloutState = parsed; AdditionalData.Remove("rollout_state"); } } },
             };
         }
         /// <summary>

@@ -17,9 +17,12 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("domain") is { } nullNodeDomain && nullNodeDomain.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Domain = null;
-            if (parseNode.GetChildNode("jit_provisioning_enabled") is { } nullNodeJitProvisioningEnabled && nullNodeJitProvisioningEnabled.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) JitProvisioningEnabled = null;
-            if (parseNode.GetChildNode("sso_enforcement") is { } nullNodeSsoEnforcement && nullNodeSsoEnforcement.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SsoEnforcement = null;
+            if (parseNode.GetChildNode("domain") is null) { _explicitNullValueDomain = default!; _explicitNullProperties?.Remove("domain"); }
+            else if (parseNode.GetChildNode("domain") is { } nullNodeDomain && nullNodeDomain.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Domain = null;
+            if (parseNode.GetChildNode("jit_provisioning_enabled") is null) { _explicitNullValueJitProvisioningEnabled = default!; _explicitNullProperties?.Remove("jit_provisioning_enabled"); }
+            else if (parseNode.GetChildNode("jit_provisioning_enabled") is { } nullNodeJitProvisioningEnabled && nullNodeJitProvisioningEnabled.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) JitProvisioningEnabled = null;
+            if (parseNode.GetChildNode("sso_enforcement") is null) { _explicitNullValueSsoEnforcement = default!; _explicitNullProperties?.Remove("sso_enforcement"); }
+            else if (parseNode.GetChildNode("sso_enforcement") is { } nullNodeSsoEnforcement && nullNodeSsoEnforcement.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SsoEnforcement = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -27,11 +30,11 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The domain property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Domain { get => _explicitNullValueDomain; set { _explicitNullValueDomain = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("domain"); else _explicitNullProperties?.Remove("domain"); } }
+        public string? Domain { get => _explicitNullValueDomain; set { _explicitNullValueDomain = value; AdditionalData?.Remove("domain"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("domain"); else _explicitNullProperties?.Remove("domain"); } }
         private string? _explicitNullValueDomain = default!;
 #nullable restore
 #else
-        public string Domain { get => _explicitNullValueDomain; set { _explicitNullValueDomain = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("domain"); else _explicitNullProperties?.Remove("domain"); } }
+        public string Domain { get => _explicitNullValueDomain; set { _explicitNullValueDomain = value; AdditionalData?.Remove("domain"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("domain"); else _explicitNullProperties?.Remove("domain"); } }
         private string _explicitNullValueDomain = default!;
 #endif
         /// <summary>The id property</summary>
@@ -39,7 +42,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Determines whether a domain is verified or not.</summary>
         public bool? IsVerified { get; private set; }
         /// <summary>The jit_provisioning_enabled property</summary>
-        public bool? JitProvisioningEnabled { get => _explicitNullValueJitProvisioningEnabled; set { _explicitNullValueJitProvisioningEnabled = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("jit_provisioning_enabled"); else _explicitNullProperties?.Remove("jit_provisioning_enabled"); } }
+        public bool? JitProvisioningEnabled { get => _explicitNullValueJitProvisioningEnabled; set { _explicitNullValueJitProvisioningEnabled = value; AdditionalData?.Remove("jit_provisioning_enabled"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("jit_provisioning_enabled"); else _explicitNullProperties?.Remove("jit_provisioning_enabled"); } }
         private bool? _explicitNullValueJitProvisioningEnabled = default!;
         /// <summary>The scim_base_url property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
@@ -52,11 +55,11 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The sso_enforcement property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? SsoEnforcement { get => _explicitNullValueSsoEnforcement; set { _explicitNullValueSsoEnforcement = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("sso_enforcement"); else _explicitNullProperties?.Remove("sso_enforcement"); } }
+        public string? SsoEnforcement { get => _explicitNullValueSsoEnforcement; set { _explicitNullValueSsoEnforcement = value; AdditionalData?.Remove("sso_enforcement"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("sso_enforcement"); else _explicitNullProperties?.Remove("sso_enforcement"); } }
         private string? _explicitNullValueSsoEnforcement = default!;
 #nullable restore
 #else
-        public string SsoEnforcement { get => _explicitNullValueSsoEnforcement; set { _explicitNullValueSsoEnforcement = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("sso_enforcement"); else _explicitNullProperties?.Remove("sso_enforcement"); } }
+        public string SsoEnforcement { get => _explicitNullValueSsoEnforcement; set { _explicitNullValueSsoEnforcement = value; AdditionalData?.Remove("sso_enforcement"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("sso_enforcement"); else _explicitNullProperties?.Remove("sso_enforcement"); } }
         private string _explicitNullValueSsoEnforcement = default!;
 #endif
         /// <summary>The verification_challenge property</summary>

@@ -17,14 +17,22 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("inviter") is { } nullNodeInviter && nullNodeInviter.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Inviter = null;
-            if (parseNode.GetChildNode("is_organization_first_user") is { } nullNodeIsOrganizationFirstUser && nullNodeIsOrganizationFirstUser.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) IsOrganizationFirstUser = null;
-            if (parseNode.GetChildNode("organization_name") is { } nullNodeOrganizationName && nullNodeOrganizationName.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) OrganizationName = null;
-            if (parseNode.GetChildNode("popular_dashboards") is { } nullNodePopularDashboards && nullNodePopularDashboards.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) PopularDashboards = null;
-            if (parseNode.GetChildNode("products_in_use") is { } nullNodeProductsInUse && nullNodeProductsInUse.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ProductsInUse = null;
-            if (parseNode.GetChildNode("recent_activity") is { } nullNodeRecentActivity && nullNodeRecentActivity.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) RecentActivity = null;
-            if (parseNode.GetChildNode("suggested_next_steps") is { } nullNodeSuggestedNextSteps && nullNodeSuggestedNextSteps.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SuggestedNextSteps = null;
-            if (parseNode.GetChildNode("team_members") is { } nullNodeTeamMembers && nullNodeTeamMembers.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TeamMembers = null;
+            if (parseNode.GetChildNode("inviter") is null) { _explicitNullValueInviter = default!; _explicitNullProperties?.Remove("inviter"); }
+            else if (parseNode.GetChildNode("inviter") is { } nullNodeInviter && nullNodeInviter.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Inviter = null;
+            if (parseNode.GetChildNode("is_organization_first_user") is null) { _explicitNullValueIsOrganizationFirstUser = default!; _explicitNullProperties?.Remove("is_organization_first_user"); }
+            else if (parseNode.GetChildNode("is_organization_first_user") is { } nullNodeIsOrganizationFirstUser && nullNodeIsOrganizationFirstUser.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) IsOrganizationFirstUser = null;
+            if (parseNode.GetChildNode("organization_name") is null) { _explicitNullValueOrganizationName = default!; _explicitNullProperties?.Remove("organization_name"); }
+            else if (parseNode.GetChildNode("organization_name") is { } nullNodeOrganizationName && nullNodeOrganizationName.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) OrganizationName = null;
+            if (parseNode.GetChildNode("popular_dashboards") is null) { _explicitNullValuePopularDashboards = default!; _explicitNullProperties?.Remove("popular_dashboards"); }
+            else if (parseNode.GetChildNode("popular_dashboards") is { } nullNodePopularDashboards && nullNodePopularDashboards.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) PopularDashboards = null;
+            if (parseNode.GetChildNode("products_in_use") is null) { _explicitNullValueProductsInUse = default!; _explicitNullProperties?.Remove("products_in_use"); }
+            else if (parseNode.GetChildNode("products_in_use") is { } nullNodeProductsInUse && nullNodeProductsInUse.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ProductsInUse = null;
+            if (parseNode.GetChildNode("recent_activity") is null) { _explicitNullValueRecentActivity = default!; _explicitNullProperties?.Remove("recent_activity"); }
+            else if (parseNode.GetChildNode("recent_activity") is { } nullNodeRecentActivity && nullNodeRecentActivity.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) RecentActivity = null;
+            if (parseNode.GetChildNode("suggested_next_steps") is null) { _explicitNullValueSuggestedNextSteps = default!; _explicitNullProperties?.Remove("suggested_next_steps"); }
+            else if (parseNode.GetChildNode("suggested_next_steps") is { } nullNodeSuggestedNextSteps && nullNodeSuggestedNextSteps.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SuggestedNextSteps = null;
+            if (parseNode.GetChildNode("team_members") is null) { _explicitNullValueTeamMembers = default!; _explicitNullProperties?.Remove("team_members"); }
+            else if (parseNode.GetChildNode("team_members") is { } nullNodeTeamMembers && nullNodeTeamMembers.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TeamMembers = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -32,74 +40,74 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The inviter property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.WelcomeInviter? Inviter { get => _explicitNullValueInviter; set { _explicitNullValueInviter = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("inviter"); else _explicitNullProperties?.Remove("inviter"); } }
+        public global::Soenneker.PostHog.OpenApiClient.Models.WelcomeInviter? Inviter { get => _explicitNullValueInviter; set { _explicitNullValueInviter = value; AdditionalData?.Remove("inviter"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("inviter"); else _explicitNullProperties?.Remove("inviter"); } }
         private global::Soenneker.PostHog.OpenApiClient.Models.WelcomeInviter? _explicitNullValueInviter = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.WelcomeInviter Inviter { get => _explicitNullValueInviter; set { _explicitNullValueInviter = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("inviter"); else _explicitNullProperties?.Remove("inviter"); } }
+        public global::Soenneker.PostHog.OpenApiClient.Models.WelcomeInviter Inviter { get => _explicitNullValueInviter; set { _explicitNullValueInviter = value; AdditionalData?.Remove("inviter"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("inviter"); else _explicitNullProperties?.Remove("inviter"); } }
         private global::Soenneker.PostHog.OpenApiClient.Models.WelcomeInviter _explicitNullValueInviter = default!;
 #endif
         /// <summary>The is_organization_first_user property</summary>
-        public bool? IsOrganizationFirstUser { get => _explicitNullValueIsOrganizationFirstUser; set { _explicitNullValueIsOrganizationFirstUser = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("is_organization_first_user"); else _explicitNullProperties?.Remove("is_organization_first_user"); } }
+        public bool? IsOrganizationFirstUser { get => _explicitNullValueIsOrganizationFirstUser; set { _explicitNullValueIsOrganizationFirstUser = value; AdditionalData?.Remove("is_organization_first_user"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("is_organization_first_user"); else _explicitNullProperties?.Remove("is_organization_first_user"); } }
         private bool? _explicitNullValueIsOrganizationFirstUser = default!;
         /// <summary>The organization_name property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? OrganizationName { get => _explicitNullValueOrganizationName; set { _explicitNullValueOrganizationName = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("organization_name"); else _explicitNullProperties?.Remove("organization_name"); } }
+        public string? OrganizationName { get => _explicitNullValueOrganizationName; set { _explicitNullValueOrganizationName = value; AdditionalData?.Remove("organization_name"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("organization_name"); else _explicitNullProperties?.Remove("organization_name"); } }
         private string? _explicitNullValueOrganizationName = default!;
 #nullable restore
 #else
-        public string OrganizationName { get => _explicitNullValueOrganizationName; set { _explicitNullValueOrganizationName = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("organization_name"); else _explicitNullProperties?.Remove("organization_name"); } }
+        public string OrganizationName { get => _explicitNullValueOrganizationName; set { _explicitNullValueOrganizationName = value; AdditionalData?.Remove("organization_name"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("organization_name"); else _explicitNullProperties?.Remove("organization_name"); } }
         private string _explicitNullValueOrganizationName = default!;
 #endif
         /// <summary>The popular_dashboards property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.WelcomePopularDashboard>? PopularDashboards { get => _explicitNullValuePopularDashboards; set { _explicitNullValuePopularDashboards = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("popular_dashboards"); else _explicitNullProperties?.Remove("popular_dashboards"); } }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.WelcomePopularDashboard>? PopularDashboards { get => _explicitNullValuePopularDashboards; set { _explicitNullValuePopularDashboards = value; AdditionalData?.Remove("popular_dashboards"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("popular_dashboards"); else _explicitNullProperties?.Remove("popular_dashboards"); } }
         private List<global::Soenneker.PostHog.OpenApiClient.Models.WelcomePopularDashboard>? _explicitNullValuePopularDashboards = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.WelcomePopularDashboard> PopularDashboards { get => _explicitNullValuePopularDashboards; set { _explicitNullValuePopularDashboards = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("popular_dashboards"); else _explicitNullProperties?.Remove("popular_dashboards"); } }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.WelcomePopularDashboard> PopularDashboards { get => _explicitNullValuePopularDashboards; set { _explicitNullValuePopularDashboards = value; AdditionalData?.Remove("popular_dashboards"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("popular_dashboards"); else _explicitNullProperties?.Remove("popular_dashboards"); } }
         private List<global::Soenneker.PostHog.OpenApiClient.Models.WelcomePopularDashboard> _explicitNullValuePopularDashboards = default!;
 #endif
         /// <summary>The products_in_use property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<string>? ProductsInUse { get => _explicitNullValueProductsInUse; set { _explicitNullValueProductsInUse = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("products_in_use"); else _explicitNullProperties?.Remove("products_in_use"); } }
+        public List<string>? ProductsInUse { get => _explicitNullValueProductsInUse; set { _explicitNullValueProductsInUse = value; AdditionalData?.Remove("products_in_use"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("products_in_use"); else _explicitNullProperties?.Remove("products_in_use"); } }
         private List<string>? _explicitNullValueProductsInUse = default!;
 #nullable restore
 #else
-        public List<string> ProductsInUse { get => _explicitNullValueProductsInUse; set { _explicitNullValueProductsInUse = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("products_in_use"); else _explicitNullProperties?.Remove("products_in_use"); } }
+        public List<string> ProductsInUse { get => _explicitNullValueProductsInUse; set { _explicitNullValueProductsInUse = value; AdditionalData?.Remove("products_in_use"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("products_in_use"); else _explicitNullProperties?.Remove("products_in_use"); } }
         private List<string> _explicitNullValueProductsInUse = default!;
 #endif
         /// <summary>The recent_activity property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.WelcomeRecentActivity>? RecentActivity { get => _explicitNullValueRecentActivity; set { _explicitNullValueRecentActivity = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("recent_activity"); else _explicitNullProperties?.Remove("recent_activity"); } }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.WelcomeRecentActivity>? RecentActivity { get => _explicitNullValueRecentActivity; set { _explicitNullValueRecentActivity = value; AdditionalData?.Remove("recent_activity"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("recent_activity"); else _explicitNullProperties?.Remove("recent_activity"); } }
         private List<global::Soenneker.PostHog.OpenApiClient.Models.WelcomeRecentActivity>? _explicitNullValueRecentActivity = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.WelcomeRecentActivity> RecentActivity { get => _explicitNullValueRecentActivity; set { _explicitNullValueRecentActivity = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("recent_activity"); else _explicitNullProperties?.Remove("recent_activity"); } }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.WelcomeRecentActivity> RecentActivity { get => _explicitNullValueRecentActivity; set { _explicitNullValueRecentActivity = value; AdditionalData?.Remove("recent_activity"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("recent_activity"); else _explicitNullProperties?.Remove("recent_activity"); } }
         private List<global::Soenneker.PostHog.OpenApiClient.Models.WelcomeRecentActivity> _explicitNullValueRecentActivity = default!;
 #endif
         /// <summary>The suggested_next_steps property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.WelcomeSuggestedStep>? SuggestedNextSteps { get => _explicitNullValueSuggestedNextSteps; set { _explicitNullValueSuggestedNextSteps = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("suggested_next_steps"); else _explicitNullProperties?.Remove("suggested_next_steps"); } }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.WelcomeSuggestedStep>? SuggestedNextSteps { get => _explicitNullValueSuggestedNextSteps; set { _explicitNullValueSuggestedNextSteps = value; AdditionalData?.Remove("suggested_next_steps"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("suggested_next_steps"); else _explicitNullProperties?.Remove("suggested_next_steps"); } }
         private List<global::Soenneker.PostHog.OpenApiClient.Models.WelcomeSuggestedStep>? _explicitNullValueSuggestedNextSteps = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.WelcomeSuggestedStep> SuggestedNextSteps { get => _explicitNullValueSuggestedNextSteps; set { _explicitNullValueSuggestedNextSteps = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("suggested_next_steps"); else _explicitNullProperties?.Remove("suggested_next_steps"); } }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.WelcomeSuggestedStep> SuggestedNextSteps { get => _explicitNullValueSuggestedNextSteps; set { _explicitNullValueSuggestedNextSteps = value; AdditionalData?.Remove("suggested_next_steps"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("suggested_next_steps"); else _explicitNullProperties?.Remove("suggested_next_steps"); } }
         private List<global::Soenneker.PostHog.OpenApiClient.Models.WelcomeSuggestedStep> _explicitNullValueSuggestedNextSteps = default!;
 #endif
         /// <summary>The team_members property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.WelcomeTeamMember>? TeamMembers { get => _explicitNullValueTeamMembers; set { _explicitNullValueTeamMembers = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("team_members"); else _explicitNullProperties?.Remove("team_members"); } }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.WelcomeTeamMember>? TeamMembers { get => _explicitNullValueTeamMembers; set { _explicitNullValueTeamMembers = value; AdditionalData?.Remove("team_members"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("team_members"); else _explicitNullProperties?.Remove("team_members"); } }
         private List<global::Soenneker.PostHog.OpenApiClient.Models.WelcomeTeamMember>? _explicitNullValueTeamMembers = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.WelcomeTeamMember> TeamMembers { get => _explicitNullValueTeamMembers; set { _explicitNullValueTeamMembers = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("team_members"); else _explicitNullProperties?.Remove("team_members"); } }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.WelcomeTeamMember> TeamMembers { get => _explicitNullValueTeamMembers; set { _explicitNullValueTeamMembers = value; AdditionalData?.Remove("team_members"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("team_members"); else _explicitNullProperties?.Remove("team_members"); } }
         private List<global::Soenneker.PostHog.OpenApiClient.Models.WelcomeTeamMember> _explicitNullValueTeamMembers = default!;
 #endif
         /// <summary>

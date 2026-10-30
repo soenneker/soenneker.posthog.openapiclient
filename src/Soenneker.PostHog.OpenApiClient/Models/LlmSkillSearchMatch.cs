@@ -17,10 +17,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("excerpt") is { } nullNodeExcerpt && nullNodeExcerpt.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Excerpt = null;
-            if (parseNode.GetChildNode("line") is { } nullNodeLine && nullNodeLine.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Line = null;
-            if (parseNode.GetChildNode("matched_field") is { } nullNodeMatchedField && nullNodeMatchedField.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MatchedField = null;
-            if (parseNode.GetChildNode("path") is { } nullNodePath && nullNodePath.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Path = null;
+            if (parseNode.GetChildNode("excerpt") is null) { _explicitNullValueExcerpt = default!; _explicitNullProperties?.Remove("excerpt"); }
+            else if (parseNode.GetChildNode("excerpt") is { } nullNodeExcerpt && nullNodeExcerpt.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Excerpt = null;
+            if (parseNode.GetChildNode("line") is null) { _explicitNullValueLine = default!; _explicitNullProperties?.Remove("line"); }
+            else if (parseNode.GetChildNode("line") is { } nullNodeLine && nullNodeLine.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Line = null;
+            if (parseNode.GetChildNode("matched_field") is null) { _explicitNullValueMatchedField = default!; _explicitNullProperties?.Remove("matched_field"); }
+            else if (parseNode.GetChildNode("matched_field") is { } nullNodeMatchedField && nullNodeMatchedField.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MatchedField = null;
+            if (parseNode.GetChildNode("path") is null) { _explicitNullValuePath = default!; _explicitNullProperties?.Remove("path"); }
+            else if (parseNode.GetChildNode("path") is { } nullNodePath && nullNodePath.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Path = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -28,27 +32,27 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Short excerpt showing why this skill matched.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Excerpt { get => _explicitNullValueExcerpt; set { _explicitNullValueExcerpt = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("excerpt"); else _explicitNullProperties?.Remove("excerpt"); } }
+        public string? Excerpt { get => _explicitNullValueExcerpt; set { _explicitNullValueExcerpt = value; AdditionalData?.Remove("excerpt"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("excerpt"); else _explicitNullProperties?.Remove("excerpt"); } }
         private string? _explicitNullValueExcerpt = default!;
 #nullable restore
 #else
-        public string Excerpt { get => _explicitNullValueExcerpt; set { _explicitNullValueExcerpt = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("excerpt"); else _explicitNullProperties?.Remove("excerpt"); } }
+        public string Excerpt { get => _explicitNullValueExcerpt; set { _explicitNullValueExcerpt = value; AdditionalData?.Remove("excerpt"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("excerpt"); else _explicitNullProperties?.Remove("excerpt"); } }
         private string _explicitNullValueExcerpt = default!;
 #endif
         /// <summary>One-based line containing the match when the result came from a body or bundled file.</summary>
-        public int? Line { get => _explicitNullValueLine; set { _explicitNullValueLine = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("line"); else _explicitNullProperties?.Remove("line"); } }
+        public int? Line { get => _explicitNullValueLine; set { _explicitNullValueLine = value; AdditionalData?.Remove("line"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("line"); else _explicitNullProperties?.Remove("line"); } }
         private int? _explicitNullValueLine = default!;
         /// <summary>* `name` - name* `description` - description* `body` - body* `file_path` - file_path* `file_content` - file_content</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.LlmSkillSearchMatchMatchedField? MatchedField { get => _explicitNullValueMatchedField; set { _explicitNullValueMatchedField = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("matched_field"); else _explicitNullProperties?.Remove("matched_field"); } }
+        public global::Soenneker.PostHog.OpenApiClient.Models.LlmSkillSearchMatchMatchedField? MatchedField { get => _explicitNullValueMatchedField; set { _explicitNullValueMatchedField = value; AdditionalData?.Remove("matched_field"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("matched_field"); else _explicitNullProperties?.Remove("matched_field"); } }
         private global::Soenneker.PostHog.OpenApiClient.Models.LlmSkillSearchMatchMatchedField? _explicitNullValueMatchedField = default!;
         /// <summary>Skill-relative file path for body or bundled-file matches. Omitted for name and description matches.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Path { get => _explicitNullValuePath; set { _explicitNullValuePath = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("path"); else _explicitNullProperties?.Remove("path"); } }
+        public string? Path { get => _explicitNullValuePath; set { _explicitNullValuePath = value; AdditionalData?.Remove("path"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("path"); else _explicitNullProperties?.Remove("path"); } }
         private string? _explicitNullValuePath = default!;
 #nullable restore
 #else
-        public string Path { get => _explicitNullValuePath; set { _explicitNullValuePath = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("path"); else _explicitNullProperties?.Remove("path"); } }
+        public string Path { get => _explicitNullValuePath; set { _explicitNullValuePath = value; AdditionalData?.Remove("path"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("path"); else _explicitNullProperties?.Remove("path"); } }
         private string _explicitNullValuePath = default!;
 #endif
         /// <summary>
@@ -78,7 +82,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             {
                 { "excerpt", n => { Excerpt = n.GetStringValue(); } },
                 { "line", n => { Line = n.GetIntValue(); } },
-                { "matched_field", n => { MatchedField = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.LlmSkillSearchMatchMatchedField>(); } },
+                { "matched_field", n => { var parsed = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.LlmSkillSearchMatchMatchedField>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValueMatchedField = default; _explicitNullProperties?.Remove("matched_field"); AdditionalData["matched_field"] = unknown; } else { MatchedField = parsed; AdditionalData.Remove("matched_field"); } } },
                 { "path", n => { Path = n.GetStringValue(); } },
             };
         }

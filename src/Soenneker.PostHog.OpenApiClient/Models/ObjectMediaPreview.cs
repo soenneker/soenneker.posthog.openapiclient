@@ -17,10 +17,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("event_definition_id") is { } nullNodeEventDefinitionId && nullNodeEventDefinitionId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) EventDefinitionId = null;
-            if (parseNode.GetChildNode("exported_asset_id") is { } nullNodeExportedAssetId && nullNodeExportedAssetId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ExportedAssetId = null;
-            if (parseNode.GetChildNode("metadata") is { } nullNodeMetadata && nullNodeMetadata.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Metadata = null;
-            if (parseNode.GetChildNode("uploaded_media_id") is { } nullNodeUploadedMediaId && nullNodeUploadedMediaId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) UploadedMediaId = null;
+            if (parseNode.GetChildNode("event_definition_id") is null) { _explicitNullValueEventDefinitionId = default!; _explicitNullProperties?.Remove("event_definition_id"); }
+            else if (parseNode.GetChildNode("event_definition_id") is { } nullNodeEventDefinitionId && nullNodeEventDefinitionId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) EventDefinitionId = null;
+            if (parseNode.GetChildNode("exported_asset_id") is null) { _explicitNullValueExportedAssetId = default!; _explicitNullProperties?.Remove("exported_asset_id"); }
+            else if (parseNode.GetChildNode("exported_asset_id") is { } nullNodeExportedAssetId && nullNodeExportedAssetId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ExportedAssetId = null;
+            if (parseNode.GetChildNode("metadata") is null) { _explicitNullValueMetadata = default!; _explicitNullProperties?.Remove("metadata"); }
+            else if (parseNode.GetChildNode("metadata") is { } nullNodeMetadata && nullNodeMetadata.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Metadata = null;
+            if (parseNode.GetChildNode("uploaded_media_id") is null) { _explicitNullValueUploadedMediaId = default!; _explicitNullProperties?.Remove("uploaded_media_id"); }
+            else if (parseNode.GetChildNode("uploaded_media_id") is { } nullNodeUploadedMediaId && nullNodeUploadedMediaId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) UploadedMediaId = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -28,10 +32,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The created_at property</summary>
         public DateTimeOffset? CreatedAt { get; private set; }
         /// <summary>The event_definition_id property</summary>
-        public Guid? EventDefinitionId { get => _explicitNullValueEventDefinitionId; set { _explicitNullValueEventDefinitionId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("event_definition_id"); else _explicitNullProperties?.Remove("event_definition_id"); } }
+        public Guid? EventDefinitionId { get => _explicitNullValueEventDefinitionId; set { _explicitNullValueEventDefinitionId = value; AdditionalData?.Remove("event_definition_id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("event_definition_id"); else _explicitNullProperties?.Remove("event_definition_id"); } }
         private Guid? _explicitNullValueEventDefinitionId = default!;
         /// <summary>The exported_asset_id property</summary>
-        public Guid? ExportedAssetId { get => _explicitNullValueExportedAssetId; set { _explicitNullValueExportedAssetId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("exported_asset_id"); else _explicitNullProperties?.Remove("exported_asset_id"); } }
+        public Guid? ExportedAssetId { get => _explicitNullValueExportedAssetId; set { _explicitNullValueExportedAssetId = value; AdditionalData?.Remove("exported_asset_id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("exported_asset_id"); else _explicitNullProperties?.Remove("exported_asset_id"); } }
         private Guid? _explicitNullValueExportedAssetId = default!;
         /// <summary>The id property</summary>
         public Guid? Id { get; private set; }
@@ -54,17 +58,17 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The metadata property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public UntypedNode? Metadata { get => _explicitNullValueMetadata; set { _explicitNullValueMetadata = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("metadata"); else _explicitNullProperties?.Remove("metadata"); } }
+        public UntypedNode? Metadata { get => _explicitNullValueMetadata; set { _explicitNullValueMetadata = value; AdditionalData?.Remove("metadata"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("metadata"); else _explicitNullProperties?.Remove("metadata"); } }
         private UntypedNode? _explicitNullValueMetadata = default!;
 #nullable restore
 #else
-        public UntypedNode Metadata { get => _explicitNullValueMetadata; set { _explicitNullValueMetadata = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("metadata"); else _explicitNullProperties?.Remove("metadata"); } }
+        public UntypedNode Metadata { get => _explicitNullValueMetadata; set { _explicitNullValueMetadata = value; AdditionalData?.Remove("metadata"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("metadata"); else _explicitNullProperties?.Remove("metadata"); } }
         private UntypedNode _explicitNullValueMetadata = default!;
 #endif
         /// <summary>The updated_at property</summary>
         public DateTimeOffset? UpdatedAt { get; private set; }
         /// <summary>The uploaded_media_id property</summary>
-        public Guid? UploadedMediaId { get => _explicitNullValueUploadedMediaId; set { _explicitNullValueUploadedMediaId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("uploaded_media_id"); else _explicitNullProperties?.Remove("uploaded_media_id"); } }
+        public Guid? UploadedMediaId { get => _explicitNullValueUploadedMediaId; set { _explicitNullValueUploadedMediaId = value; AdditionalData?.Remove("uploaded_media_id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("uploaded_media_id"); else _explicitNullProperties?.Remove("uploaded_media_id"); } }
         private Guid? _explicitNullValueUploadedMediaId = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.ObjectMediaPreview"/> and sets the default values.

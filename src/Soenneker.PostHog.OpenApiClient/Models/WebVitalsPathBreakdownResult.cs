@@ -17,9 +17,12 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("good") is { } nullNodeGood && nullNodeGood.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Good = null;
-            if (parseNode.GetChildNode("needs_improvements") is { } nullNodeNeedsImprovements && nullNodeNeedsImprovements.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) NeedsImprovements = null;
-            if (parseNode.GetChildNode("poor") is { } nullNodePoor && nullNodePoor.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Poor = null;
+            if (parseNode.GetChildNode("good") is null) { _explicitNullValueGood = default!; _explicitNullProperties?.Remove("good"); }
+            else if (parseNode.GetChildNode("good") is { } nullNodeGood && nullNodeGood.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Good = null;
+            if (parseNode.GetChildNode("needs_improvements") is null) { _explicitNullValueNeedsImprovements = default!; _explicitNullProperties?.Remove("needs_improvements"); }
+            else if (parseNode.GetChildNode("needs_improvements") is { } nullNodeNeedsImprovements && nullNodeNeedsImprovements.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) NeedsImprovements = null;
+            if (parseNode.GetChildNode("poor") is null) { _explicitNullValuePoor = default!; _explicitNullProperties?.Remove("poor"); }
+            else if (parseNode.GetChildNode("poor") is { } nullNodePoor && nullNodePoor.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Poor = null;
         }
 
         /// <summary>The good property</summary>

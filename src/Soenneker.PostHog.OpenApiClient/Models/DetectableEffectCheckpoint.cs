@@ -17,17 +17,19 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("detectable_effect") is { } nullNodeDetectableEffect && nullNodeDetectableEffect.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) DetectableEffect = null;
-            if (parseNode.GetChildNode("weeks_since_launch") is { } nullNodeWeeksSinceLaunch && nullNodeWeeksSinceLaunch.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) WeeksSinceLaunch = null;
+            if (parseNode.GetChildNode("detectable_effect") is null) { _explicitNullValueDetectableEffect = default!; _explicitNullProperties?.Remove("detectable_effect"); }
+            else if (parseNode.GetChildNode("detectable_effect") is { } nullNodeDetectableEffect && nullNodeDetectableEffect.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) DetectableEffect = null;
+            if (parseNode.GetChildNode("weeks_since_launch") is null) { _explicitNullValueWeeksSinceLaunch = default!; _explicitNullProperties?.Remove("weeks_since_launch"); }
+            else if (parseNode.GetChildNode("weeks_since_launch") is { } nullNodeWeeksSinceLaunch && nullNodeWeeksSinceLaunch.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) WeeksSinceLaunch = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The smallest relative change, as a percentage, that the exposures by this week mark can detect.</summary>
-        public double? DetectableEffect { get => _explicitNullValueDetectableEffect; set { _explicitNullValueDetectableEffect = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("detectable_effect"); else _explicitNullProperties?.Remove("detectable_effect"); } }
+        public double? DetectableEffect { get => _explicitNullValueDetectableEffect; set { _explicitNullValueDetectableEffect = value; AdditionalData?.Remove("detectable_effect"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("detectable_effect"); else _explicitNullProperties?.Remove("detectable_effect"); } }
         private double? _explicitNullValueDetectableEffect = default!;
         /// <summary>The week mark, in whole weeks since launch.</summary>
-        public int? WeeksSinceLaunch { get => _explicitNullValueWeeksSinceLaunch; set { _explicitNullValueWeeksSinceLaunch = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("weeks_since_launch"); else _explicitNullProperties?.Remove("weeks_since_launch"); } }
+        public int? WeeksSinceLaunch { get => _explicitNullValueWeeksSinceLaunch; set { _explicitNullValueWeeksSinceLaunch = value; AdditionalData?.Remove("weeks_since_launch"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("weeks_since_launch"); else _explicitNullProperties?.Remove("weeks_since_launch"); } }
         private int? _explicitNullValueWeeksSinceLaunch = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.DetectableEffectCheckpoint"/> and sets the default values.

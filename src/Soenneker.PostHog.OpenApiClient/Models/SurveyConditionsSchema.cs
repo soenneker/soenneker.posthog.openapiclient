@@ -17,14 +17,22 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("deviceTypes") is { } nullNodeDeviceTypes && nullNodeDeviceTypes.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) DeviceTypes = null;
-            if (parseNode.GetChildNode("deviceTypesMatchType") is { } nullNodeDeviceTypesMatchType && nullNodeDeviceTypesMatchType.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) DeviceTypesMatchType = null;
-            if (parseNode.GetChildNode("events") is { } nullNodeEvents && nullNodeEvents.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Events = null;
-            if (parseNode.GetChildNode("linkedFlagVariant") is { } nullNodeLinkedFlagVariant && nullNodeLinkedFlagVariant.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) LinkedFlagVariant = null;
-            if (parseNode.GetChildNode("seenSurveyWaitPeriodInDays") is { } nullNodeSeenSurveyWaitPeriodInDays && nullNodeSeenSurveyWaitPeriodInDays.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SeenSurveyWaitPeriodInDays = null;
-            if (parseNode.GetChildNode("selector") is { } nullNodeSelector && nullNodeSelector.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Selector = null;
-            if (parseNode.GetChildNode("url") is { } nullNodeUrl && nullNodeUrl.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Url = null;
-            if (parseNode.GetChildNode("urlMatchType") is { } nullNodeUrlMatchType && nullNodeUrlMatchType.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) UrlMatchType = null;
+            if (parseNode.GetChildNode("deviceTypes") is null) { _explicitNullValueDeviceTypes = default!; _explicitNullProperties?.Remove("deviceTypes"); }
+            else if (parseNode.GetChildNode("deviceTypes") is { } nullNodeDeviceTypes && nullNodeDeviceTypes.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) DeviceTypes = null;
+            if (parseNode.GetChildNode("deviceTypesMatchType") is null) { _explicitNullValueDeviceTypesMatchType = default!; _explicitNullProperties?.Remove("deviceTypesMatchType"); }
+            else if (parseNode.GetChildNode("deviceTypesMatchType") is { } nullNodeDeviceTypesMatchType && nullNodeDeviceTypesMatchType.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) DeviceTypesMatchType = null;
+            if (parseNode.GetChildNode("events") is null) { _explicitNullValueEvents = default!; _explicitNullProperties?.Remove("events"); }
+            else if (parseNode.GetChildNode("events") is { } nullNodeEvents && nullNodeEvents.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Events = null;
+            if (parseNode.GetChildNode("linkedFlagVariant") is null) { _explicitNullValueLinkedFlagVariant = default!; _explicitNullProperties?.Remove("linkedFlagVariant"); }
+            else if (parseNode.GetChildNode("linkedFlagVariant") is { } nullNodeLinkedFlagVariant && nullNodeLinkedFlagVariant.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) LinkedFlagVariant = null;
+            if (parseNode.GetChildNode("seenSurveyWaitPeriodInDays") is null) { _explicitNullValueSeenSurveyWaitPeriodInDays = default!; _explicitNullProperties?.Remove("seenSurveyWaitPeriodInDays"); }
+            else if (parseNode.GetChildNode("seenSurveyWaitPeriodInDays") is { } nullNodeSeenSurveyWaitPeriodInDays && nullNodeSeenSurveyWaitPeriodInDays.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SeenSurveyWaitPeriodInDays = null;
+            if (parseNode.GetChildNode("selector") is null) { _explicitNullValueSelector = default!; _explicitNullProperties?.Remove("selector"); }
+            else if (parseNode.GetChildNode("selector") is { } nullNodeSelector && nullNodeSelector.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Selector = null;
+            if (parseNode.GetChildNode("url") is null) { _explicitNullValueUrl = default!; _explicitNullProperties?.Remove("url"); }
+            else if (parseNode.GetChildNode("url") is { } nullNodeUrl && nullNodeUrl.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Url = null;
+            if (parseNode.GetChildNode("urlMatchType") is null) { _explicitNullValueUrlMatchType = default!; _explicitNullProperties?.Remove("urlMatchType"); }
+            else if (parseNode.GetChildNode("urlMatchType") is { } nullNodeUrlMatchType && nullNodeUrlMatchType.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) UrlMatchType = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -32,61 +40,61 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Device types that should match for this survey to be shown.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.DeviceTypesEnum?>? DeviceTypes { get => _explicitNullValueDeviceTypes; set { _explicitNullValueDeviceTypes = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("deviceTypes"); else _explicitNullProperties?.Remove("deviceTypes"); } }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.DeviceTypesEnum?>? DeviceTypes { get => _explicitNullValueDeviceTypes; set { _explicitNullValueDeviceTypes = value; AdditionalData?.Remove("deviceTypes"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("deviceTypes"); else _explicitNullProperties?.Remove("deviceTypes"); } }
         private List<global::Soenneker.PostHog.OpenApiClient.Models.DeviceTypesEnum?>? _explicitNullValueDeviceTypes = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.DeviceTypesEnum?> DeviceTypes { get => _explicitNullValueDeviceTypes; set { _explicitNullValueDeviceTypes = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("deviceTypes"); else _explicitNullProperties?.Remove("deviceTypes"); } }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.DeviceTypesEnum?> DeviceTypes { get => _explicitNullValueDeviceTypes; set { _explicitNullValueDeviceTypes = value; AdditionalData?.Remove("deviceTypes"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("deviceTypes"); else _explicitNullProperties?.Remove("deviceTypes"); } }
         private List<global::Soenneker.PostHog.OpenApiClient.Models.DeviceTypesEnum?> _explicitNullValueDeviceTypes = default!;
 #endif
         /// <summary>* `regex` - regex* `not_regex` - not_regex* `exact` - exact* `is_not` - is_not* `icontains` - icontains* `not_icontains` - not_icontains</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.SurveyConditionsSchemaDeviceTypesMatchType? DeviceTypesMatchType { get => _explicitNullValueDeviceTypesMatchType; set { _explicitNullValueDeviceTypesMatchType = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("deviceTypesMatchType"); else _explicitNullProperties?.Remove("deviceTypesMatchType"); } }
+        public global::Soenneker.PostHog.OpenApiClient.Models.SurveyConditionsSchemaDeviceTypesMatchType? DeviceTypesMatchType { get => _explicitNullValueDeviceTypesMatchType; set { _explicitNullValueDeviceTypesMatchType = value; AdditionalData?.Remove("deviceTypesMatchType"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("deviceTypesMatchType"); else _explicitNullProperties?.Remove("deviceTypesMatchType"); } }
         private global::Soenneker.PostHog.OpenApiClient.Models.SurveyConditionsSchemaDeviceTypesMatchType? _explicitNullValueDeviceTypesMatchType = default!;
         /// <summary>The events property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.SurveyEventsConditionSchema? Events { get => _explicitNullValueEvents; set { _explicitNullValueEvents = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("events"); else _explicitNullProperties?.Remove("events"); } }
+        public global::Soenneker.PostHog.OpenApiClient.Models.SurveyEventsConditionSchema? Events { get => _explicitNullValueEvents; set { _explicitNullValueEvents = value; AdditionalData?.Remove("events"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("events"); else _explicitNullProperties?.Remove("events"); } }
         private global::Soenneker.PostHog.OpenApiClient.Models.SurveyEventsConditionSchema? _explicitNullValueEvents = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.SurveyEventsConditionSchema Events { get => _explicitNullValueEvents; set { _explicitNullValueEvents = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("events"); else _explicitNullProperties?.Remove("events"); } }
+        public global::Soenneker.PostHog.OpenApiClient.Models.SurveyEventsConditionSchema Events { get => _explicitNullValueEvents; set { _explicitNullValueEvents = value; AdditionalData?.Remove("events"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("events"); else _explicitNullProperties?.Remove("events"); } }
         private global::Soenneker.PostHog.OpenApiClient.Models.SurveyEventsConditionSchema _explicitNullValueEvents = default!;
 #endif
         /// <summary>The variant of the feature flag linked to this survey.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? LinkedFlagVariant { get => _explicitNullValueLinkedFlagVariant; set { _explicitNullValueLinkedFlagVariant = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("linkedFlagVariant"); else _explicitNullProperties?.Remove("linkedFlagVariant"); } }
+        public string? LinkedFlagVariant { get => _explicitNullValueLinkedFlagVariant; set { _explicitNullValueLinkedFlagVariant = value; AdditionalData?.Remove("linkedFlagVariant"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("linkedFlagVariant"); else _explicitNullProperties?.Remove("linkedFlagVariant"); } }
         private string? _explicitNullValueLinkedFlagVariant = default!;
 #nullable restore
 #else
-        public string LinkedFlagVariant { get => _explicitNullValueLinkedFlagVariant; set { _explicitNullValueLinkedFlagVariant = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("linkedFlagVariant"); else _explicitNullProperties?.Remove("linkedFlagVariant"); } }
+        public string LinkedFlagVariant { get => _explicitNullValueLinkedFlagVariant; set { _explicitNullValueLinkedFlagVariant = value; AdditionalData?.Remove("linkedFlagVariant"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("linkedFlagVariant"); else _explicitNullProperties?.Remove("linkedFlagVariant"); } }
         private string _explicitNullValueLinkedFlagVariant = default!;
 #endif
         /// <summary>Don&apos;t show this survey to users who saw any survey in the last x days.</summary>
-        public int? SeenSurveyWaitPeriodInDays { get => _explicitNullValueSeenSurveyWaitPeriodInDays; set { _explicitNullValueSeenSurveyWaitPeriodInDays = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("seenSurveyWaitPeriodInDays"); else _explicitNullProperties?.Remove("seenSurveyWaitPeriodInDays"); } }
+        public int? SeenSurveyWaitPeriodInDays { get => _explicitNullValueSeenSurveyWaitPeriodInDays; set { _explicitNullValueSeenSurveyWaitPeriodInDays = value; AdditionalData?.Remove("seenSurveyWaitPeriodInDays"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("seenSurveyWaitPeriodInDays"); else _explicitNullProperties?.Remove("seenSurveyWaitPeriodInDays"); } }
         private int? _explicitNullValueSeenSurveyWaitPeriodInDays = default!;
         /// <summary>The selector property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Selector { get => _explicitNullValueSelector; set { _explicitNullValueSelector = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("selector"); else _explicitNullProperties?.Remove("selector"); } }
+        public string? Selector { get => _explicitNullValueSelector; set { _explicitNullValueSelector = value; AdditionalData?.Remove("selector"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("selector"); else _explicitNullProperties?.Remove("selector"); } }
         private string? _explicitNullValueSelector = default!;
 #nullable restore
 #else
-        public string Selector { get => _explicitNullValueSelector; set { _explicitNullValueSelector = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("selector"); else _explicitNullProperties?.Remove("selector"); } }
+        public string Selector { get => _explicitNullValueSelector; set { _explicitNullValueSelector = value; AdditionalData?.Remove("selector"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("selector"); else _explicitNullProperties?.Remove("selector"); } }
         private string _explicitNullValueSelector = default!;
 #endif
         /// <summary>The url property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Url { get => _explicitNullValueUrl; set { _explicitNullValueUrl = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("url"); else _explicitNullProperties?.Remove("url"); } }
+        public string? Url { get => _explicitNullValueUrl; set { _explicitNullValueUrl = value; AdditionalData?.Remove("url"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("url"); else _explicitNullProperties?.Remove("url"); } }
         private string? _explicitNullValueUrl = default!;
 #nullable restore
 #else
-        public string Url { get => _explicitNullValueUrl; set { _explicitNullValueUrl = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("url"); else _explicitNullProperties?.Remove("url"); } }
+        public string Url { get => _explicitNullValueUrl; set { _explicitNullValueUrl = value; AdditionalData?.Remove("url"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("url"); else _explicitNullProperties?.Remove("url"); } }
         private string _explicitNullValueUrl = default!;
 #endif
         /// <summary>* `regex` - regex* `not_regex` - not_regex* `exact` - exact* `is_not` - is_not* `icontains` - icontains* `not_icontains` - not_icontains</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.SurveyConditionsSchemaUrlMatchType? UrlMatchType { get => _explicitNullValueUrlMatchType; set { _explicitNullValueUrlMatchType = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("urlMatchType"); else _explicitNullProperties?.Remove("urlMatchType"); } }
+        public global::Soenneker.PostHog.OpenApiClient.Models.SurveyConditionsSchemaUrlMatchType? UrlMatchType { get => _explicitNullValueUrlMatchType; set { _explicitNullValueUrlMatchType = value; AdditionalData?.Remove("urlMatchType"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("urlMatchType"); else _explicitNullProperties?.Remove("urlMatchType"); } }
         private global::Soenneker.PostHog.OpenApiClient.Models.SurveyConditionsSchemaUrlMatchType? _explicitNullValueUrlMatchType = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.SurveyConditionsSchema"/> and sets the default values.
@@ -114,13 +122,13 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "deviceTypes", n => { DeviceTypes = n.GetCollectionOfEnumValues<global::Soenneker.PostHog.OpenApiClient.Models.DeviceTypesEnum>()?.AsList(); } },
-                { "deviceTypesMatchType", n => { DeviceTypesMatchType = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.SurveyConditionsSchemaDeviceTypesMatchType>(); } },
+                { "deviceTypesMatchType", n => { var parsed = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.SurveyConditionsSchemaDeviceTypesMatchType>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValueDeviceTypesMatchType = default; _explicitNullProperties?.Remove("deviceTypesMatchType"); AdditionalData["deviceTypesMatchType"] = unknown; } else { DeviceTypesMatchType = parsed; AdditionalData.Remove("deviceTypesMatchType"); } } },
                 { "events", n => { Events = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.SurveyEventsConditionSchema>(global::Soenneker.PostHog.OpenApiClient.Models.SurveyEventsConditionSchema.CreateFromDiscriminatorValue); } },
                 { "linkedFlagVariant", n => { LinkedFlagVariant = n.GetStringValue(); } },
                 { "seenSurveyWaitPeriodInDays", n => { SeenSurveyWaitPeriodInDays = n.GetIntValue(); } },
                 { "selector", n => { Selector = n.GetStringValue(); } },
                 { "url", n => { Url = n.GetStringValue(); } },
-                { "urlMatchType", n => { UrlMatchType = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.SurveyConditionsSchemaUrlMatchType>(); } },
+                { "urlMatchType", n => { var parsed = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.SurveyConditionsSchemaUrlMatchType>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValueUrlMatchType = default; _explicitNullProperties?.Remove("urlMatchType"); AdditionalData["urlMatchType"] = unknown; } else { UrlMatchType = parsed; AdditionalData.Remove("urlMatchType"); } } },
             };
         }
         /// <summary>

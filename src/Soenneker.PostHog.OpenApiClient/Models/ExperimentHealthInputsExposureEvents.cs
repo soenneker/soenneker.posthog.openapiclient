@@ -17,20 +17,24 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("activation") is { } nullNodeActivation && nullNodeActivation.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Activation = null;
-            if (parseNode.GetChildNode("custom_event") is { } nullNodeCustomEvent && nullNodeCustomEvent.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CustomEvent = null;
-            if (parseNode.GetChildNode("required_flag_key") is { } nullNodeRequiredFlagKey && nullNodeRequiredFlagKey.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) RequiredFlagKey = null;
-            if (parseNode.GetChildNode("variant_property") is { } nullNodeVariantProperty && nullNodeVariantProperty.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) VariantProperty = null;
+            if (parseNode.GetChildNode("activation") is null) { _explicitNullValueActivation = default!; _explicitNullProperties?.Remove("activation"); }
+            else if (parseNode.GetChildNode("activation") is { } nullNodeActivation && nullNodeActivation.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Activation = null;
+            if (parseNode.GetChildNode("custom_event") is null) { _explicitNullValueCustomEvent = default!; _explicitNullProperties?.Remove("custom_event"); }
+            else if (parseNode.GetChildNode("custom_event") is { } nullNodeCustomEvent && nullNodeCustomEvent.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CustomEvent = null;
+            if (parseNode.GetChildNode("required_flag_key") is null) { _explicitNullValueRequiredFlagKey = default!; _explicitNullProperties?.Remove("required_flag_key"); }
+            else if (parseNode.GetChildNode("required_flag_key") is { } nullNodeRequiredFlagKey && nullNodeRequiredFlagKey.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) RequiredFlagKey = null;
+            if (parseNode.GetChildNode("variant_property") is null) { _explicitNullValueVariantProperty = default!; _explicitNullProperties?.Remove("variant_property"); }
+            else if (parseNode.GetChildNode("variant_property") is { } nullNodeVariantProperty && nullNodeVariantProperty.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) VariantProperty = null;
         }
 
         /// <summary>The event, or the action&apos;s name, that has to follow a user&apos;s flag call before the user counts. Null without an activation.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Activation { get => _explicitNullValueActivation; set { _explicitNullValueActivation = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("activation"); else _explicitNullProperties?.Remove("activation"); } }
+        public string? Activation { get => _explicitNullValueActivation; set { _explicitNullValueActivation = value; AdditionalData?.Remove("activation"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("activation"); else _explicitNullProperties?.Remove("activation"); } }
         private string? _explicitNullValueActivation = default!;
 #nullable restore
 #else
-        public string Activation { get => _explicitNullValueActivation; set { _explicitNullValueActivation = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("activation"); else _explicitNullProperties?.Remove("activation"); } }
+        public string Activation { get => _explicitNullValueActivation; set { _explicitNullValueActivation = value; AdditionalData?.Remove("activation"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("activation"); else _explicitNullProperties?.Remove("activation"); } }
         private string _explicitNullValueActivation = default!;
 #endif
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -38,31 +42,31 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The event the exposure criteria count in place of the flag calls. Null for flag calls or an action.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? CustomEvent { get => _explicitNullValueCustomEvent; set { _explicitNullValueCustomEvent = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("custom_event"); else _explicitNullProperties?.Remove("custom_event"); } }
+        public string? CustomEvent { get => _explicitNullValueCustomEvent; set { _explicitNullValueCustomEvent = value; AdditionalData?.Remove("custom_event"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("custom_event"); else _explicitNullProperties?.Remove("custom_event"); } }
         private string? _explicitNullValueCustomEvent = default!;
 #nullable restore
 #else
-        public string CustomEvent { get => _explicitNullValueCustomEvent; set { _explicitNullValueCustomEvent = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("custom_event"); else _explicitNullProperties?.Remove("custom_event"); } }
+        public string CustomEvent { get => _explicitNullValueCustomEvent; set { _explicitNullValueCustomEvent = value; AdditionalData?.Remove("custom_event"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("custom_event"); else _explicitNullProperties?.Remove("custom_event"); } }
         private string _explicitNullValueCustomEvent = default!;
 #endif
         /// <summary>The flag key the exposure query requires on the flag call events. Null for a custom event or an action.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? RequiredFlagKey { get => _explicitNullValueRequiredFlagKey; set { _explicitNullValueRequiredFlagKey = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("required_flag_key"); else _explicitNullProperties?.Remove("required_flag_key"); } }
+        public string? RequiredFlagKey { get => _explicitNullValueRequiredFlagKey; set { _explicitNullValueRequiredFlagKey = value; AdditionalData?.Remove("required_flag_key"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("required_flag_key"); else _explicitNullProperties?.Remove("required_flag_key"); } }
         private string? _explicitNullValueRequiredFlagKey = default!;
 #nullable restore
 #else
-        public string RequiredFlagKey { get => _explicitNullValueRequiredFlagKey; set { _explicitNullValueRequiredFlagKey = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("required_flag_key"); else _explicitNullProperties?.Remove("required_flag_key"); } }
+        public string RequiredFlagKey { get => _explicitNullValueRequiredFlagKey; set { _explicitNullValueRequiredFlagKey = value; AdditionalData?.Remove("required_flag_key"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("required_flag_key"); else _explicitNullProperties?.Remove("required_flag_key"); } }
         private string _explicitNullValueRequiredFlagKey = default!;
 #endif
         /// <summary>The event property that holds the variant.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? VariantProperty { get => _explicitNullValueVariantProperty; set { _explicitNullValueVariantProperty = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("variant_property"); else _explicitNullProperties?.Remove("variant_property"); } }
+        public string? VariantProperty { get => _explicitNullValueVariantProperty; set { _explicitNullValueVariantProperty = value; AdditionalData?.Remove("variant_property"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("variant_property"); else _explicitNullProperties?.Remove("variant_property"); } }
         private string? _explicitNullValueVariantProperty = default!;
 #nullable restore
 #else
-        public string VariantProperty { get => _explicitNullValueVariantProperty; set { _explicitNullValueVariantProperty = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("variant_property"); else _explicitNullProperties?.Remove("variant_property"); } }
+        public string VariantProperty { get => _explicitNullValueVariantProperty; set { _explicitNullValueVariantProperty = value; AdditionalData?.Remove("variant_property"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("variant_property"); else _explicitNullProperties?.Remove("variant_property"); } }
         private string _explicitNullValueVariantProperty = default!;
 #endif
         /// <summary>

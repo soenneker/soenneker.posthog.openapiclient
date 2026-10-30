@@ -17,12 +17,18 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("brand_rules") is { } nullNodeBrandRules && nullNodeBrandRules.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) BrandRules = null;
-            if (parseNode.GetChildNode("content_boundaries") is { } nullNodeContentBoundaries && nullNodeContentBoundaries.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ContentBoundaries = null;
-            if (parseNode.GetChildNode("domain") is { } nullNodeDomain && nullNodeDomain.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Domain = null;
-            if (parseNode.GetChildNode("name") is { } nullNodeName && nullNodeName.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Name = null;
-            if (parseNode.GetChildNode("search_console_enabled") is { } nullNodeSearchConsoleEnabled && nullNodeSearchConsoleEnabled.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SearchConsoleEnabled = null;
-            if (parseNode.GetChildNode("source_urls") is { } nullNodeSourceUrls && nullNodeSourceUrls.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SourceUrls = null;
+            if (parseNode.GetChildNode("brand_rules") is null) { _explicitNullValueBrandRules = default!; _explicitNullProperties?.Remove("brand_rules"); }
+            else if (parseNode.GetChildNode("brand_rules") is { } nullNodeBrandRules && nullNodeBrandRules.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) BrandRules = null;
+            if (parseNode.GetChildNode("content_boundaries") is null) { _explicitNullValueContentBoundaries = default!; _explicitNullProperties?.Remove("content_boundaries"); }
+            else if (parseNode.GetChildNode("content_boundaries") is { } nullNodeContentBoundaries && nullNodeContentBoundaries.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ContentBoundaries = null;
+            if (parseNode.GetChildNode("domain") is null) { _explicitNullValueDomain = default!; _explicitNullProperties?.Remove("domain"); }
+            else if (parseNode.GetChildNode("domain") is { } nullNodeDomain && nullNodeDomain.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Domain = null;
+            if (parseNode.GetChildNode("name") is null) { _explicitNullValueName = default!; _explicitNullProperties?.Remove("name"); }
+            else if (parseNode.GetChildNode("name") is { } nullNodeName && nullNodeName.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Name = null;
+            if (parseNode.GetChildNode("search_console_enabled") is null) { _explicitNullValueSearchConsoleEnabled = default!; _explicitNullProperties?.Remove("search_console_enabled"); }
+            else if (parseNode.GetChildNode("search_console_enabled") is { } nullNodeSearchConsoleEnabled && nullNodeSearchConsoleEnabled.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SearchConsoleEnabled = null;
+            if (parseNode.GetChildNode("source_urls") is null) { _explicitNullValueSourceUrls = default!; _explicitNullProperties?.Remove("source_urls"); }
+            else if (parseNode.GetChildNode("source_urls") is { } nullNodeSourceUrls && nullNodeSourceUrls.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SourceUrls = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -30,21 +36,21 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Brand, terminology, and editorial rules applied to every proposal.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<string>? BrandRules { get => _explicitNullValueBrandRules; set { _explicitNullValueBrandRules = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("brand_rules"); else _explicitNullProperties?.Remove("brand_rules"); } }
+        public List<string>? BrandRules { get => _explicitNullValueBrandRules; set { _explicitNullValueBrandRules = value; AdditionalData?.Remove("brand_rules"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("brand_rules"); else _explicitNullProperties?.Remove("brand_rules"); } }
         private List<string>? _explicitNullValueBrandRules = default!;
 #nullable restore
 #else
-        public List<string> BrandRules { get => _explicitNullValueBrandRules; set { _explicitNullValueBrandRules = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("brand_rules"); else _explicitNullProperties?.Remove("brand_rules"); } }
+        public List<string> BrandRules { get => _explicitNullValueBrandRules; set { _explicitNullValueBrandRules = value; AdditionalData?.Remove("brand_rules"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("brand_rules"); else _explicitNullProperties?.Remove("brand_rules"); } }
         private List<string> _explicitNullValueBrandRules = default!;
 #endif
         /// <summary>Same-origin URL path prefixes allowed for research.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<string>? ContentBoundaries { get => _explicitNullValueContentBoundaries; set { _explicitNullValueContentBoundaries = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("content_boundaries"); else _explicitNullProperties?.Remove("content_boundaries"); } }
+        public List<string>? ContentBoundaries { get => _explicitNullValueContentBoundaries; set { _explicitNullValueContentBoundaries = value; AdditionalData?.Remove("content_boundaries"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("content_boundaries"); else _explicitNullProperties?.Remove("content_boundaries"); } }
         private List<string>? _explicitNullValueContentBoundaries = default!;
 #nullable restore
 #else
-        public List<string> ContentBoundaries { get => _explicitNullValueContentBoundaries; set { _explicitNullValueContentBoundaries = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("content_boundaries"); else _explicitNullProperties?.Remove("content_boundaries"); } }
+        public List<string> ContentBoundaries { get => _explicitNullValueContentBoundaries; set { _explicitNullValueContentBoundaries = value; AdditionalData?.Remove("content_boundaries"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("content_boundaries"); else _explicitNullProperties?.Remove("content_boundaries"); } }
         private List<string> _explicitNullValueContentBoundaries = default!;
 #endif
         /// <summary>The created_at property</summary>
@@ -52,11 +58,11 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Authorized site origin for this profile.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Domain { get => _explicitNullValueDomain; set { _explicitNullValueDomain = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("domain"); else _explicitNullProperties?.Remove("domain"); } }
+        public string? Domain { get => _explicitNullValueDomain; set { _explicitNullValueDomain = value; AdditionalData?.Remove("domain"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("domain"); else _explicitNullProperties?.Remove("domain"); } }
         private string? _explicitNullValueDomain = default!;
 #nullable restore
 #else
-        public string Domain { get => _explicitNullValueDomain; set { _explicitNullValueDomain = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("domain"); else _explicitNullProperties?.Remove("domain"); } }
+        public string Domain { get => _explicitNullValueDomain; set { _explicitNullValueDomain = value; AdditionalData?.Remove("domain"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("domain"); else _explicitNullProperties?.Remove("domain"); } }
         private string _explicitNullValueDomain = default!;
 #endif
         /// <summary>The id property</summary>
@@ -64,24 +70,24 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Name used to identify this site in the workspace.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Name { get => _explicitNullValueName; set { _explicitNullValueName = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("name"); else _explicitNullProperties?.Remove("name"); } }
+        public string? Name { get => _explicitNullValueName; set { _explicitNullValueName = value; AdditionalData?.Remove("name"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("name"); else _explicitNullProperties?.Remove("name"); } }
         private string? _explicitNullValueName = default!;
 #nullable restore
 #else
-        public string Name { get => _explicitNullValueName; set { _explicitNullValueName = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("name"); else _explicitNullProperties?.Remove("name"); } }
+        public string Name { get => _explicitNullValueName; set { _explicitNullValueName = value; AdditionalData?.Remove("name"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("name"); else _explicitNullProperties?.Remove("name"); } }
         private string _explicitNullValueName = default!;
 #endif
         /// <summary>Whether to use connected Google Search Console data.</summary>
-        public bool? SearchConsoleEnabled { get => _explicitNullValueSearchConsoleEnabled; set { _explicitNullValueSearchConsoleEnabled = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("search_console_enabled"); else _explicitNullProperties?.Remove("search_console_enabled"); } }
+        public bool? SearchConsoleEnabled { get => _explicitNullValueSearchConsoleEnabled; set { _explicitNullValueSearchConsoleEnabled = value; AdditionalData?.Remove("search_console_enabled"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("search_console_enabled"); else _explicitNullProperties?.Remove("search_console_enabled"); } }
         private bool? _explicitNullValueSearchConsoleEnabled = default!;
         /// <summary>Public sitemap and factual source URLs used to build the site profile.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<string>? SourceUrls { get => _explicitNullValueSourceUrls; set { _explicitNullValueSourceUrls = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("source_urls"); else _explicitNullProperties?.Remove("source_urls"); } }
+        public List<string>? SourceUrls { get => _explicitNullValueSourceUrls; set { _explicitNullValueSourceUrls = value; AdditionalData?.Remove("source_urls"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("source_urls"); else _explicitNullProperties?.Remove("source_urls"); } }
         private List<string>? _explicitNullValueSourceUrls = default!;
 #nullable restore
 #else
-        public List<string> SourceUrls { get => _explicitNullValueSourceUrls; set { _explicitNullValueSourceUrls = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("source_urls"); else _explicitNullProperties?.Remove("source_urls"); } }
+        public List<string> SourceUrls { get => _explicitNullValueSourceUrls; set { _explicitNullValueSourceUrls = value; AdditionalData?.Remove("source_urls"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("source_urls"); else _explicitNullProperties?.Remove("source_urls"); } }
         private List<string> _explicitNullValueSourceUrls = default!;
 #endif
         /// <summary>The updated_at property</summary>

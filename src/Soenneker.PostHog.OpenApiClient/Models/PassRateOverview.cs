@@ -17,10 +17,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("entries") is { } nullNodeEntries && nullNodeEntries.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Entries = null;
-            if (parseNode.GetChildNode("median") is { } nullNodeMedian && nullNodeMedian.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Median = null;
-            if (parseNode.GetChildNode("medianComparison") is { } nullNodeMedianComparison && nullNodeMedianComparison.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MedianComparison = null;
-            if (parseNode.GetChildNode("medianTrend") is { } nullNodeMedianTrend && nullNodeMedianTrend.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MedianTrend = null;
+            if (parseNode.GetChildNode("entries") is null) { _explicitNullValueEntries = default!; _explicitNullProperties?.Remove("entries"); }
+            else if (parseNode.GetChildNode("entries") is { } nullNodeEntries && nullNodeEntries.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Entries = null;
+            if (parseNode.GetChildNode("median") is null) { _explicitNullValueMedian = default!; _explicitNullProperties?.Remove("median"); }
+            else if (parseNode.GetChildNode("median") is { } nullNodeMedian && nullNodeMedian.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Median = null;
+            if (parseNode.GetChildNode("medianComparison") is null) { _explicitNullValueMedianComparison = default!; _explicitNullProperties?.Remove("medianComparison"); }
+            else if (parseNode.GetChildNode("medianComparison") is { } nullNodeMedianComparison && nullNodeMedianComparison.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MedianComparison = null;
+            if (parseNode.GetChildNode("medianTrend") is null) { _explicitNullValueMedianTrend = default!; _explicitNullProperties?.Remove("medianTrend"); }
+            else if (parseNode.GetChildNode("medianTrend") is { } nullNodeMedianTrend && nullNodeMedianTrend.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) MedianTrend = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -28,34 +32,34 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Pass rate evaluations with results in the period, paused ones included, lowest rate first.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.PassRateOverviewEntry>? Entries { get => _explicitNullValueEntries; set { _explicitNullValueEntries = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("entries"); else _explicitNullProperties?.Remove("entries"); } }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.PassRateOverviewEntry>? Entries { get => _explicitNullValueEntries; set { _explicitNullValueEntries = value; AdditionalData?.Remove("entries"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("entries"); else _explicitNullProperties?.Remove("entries"); } }
         private List<global::Soenneker.PostHog.OpenApiClient.Models.PassRateOverviewEntry>? _explicitNullValueEntries = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.PassRateOverviewEntry> Entries { get => _explicitNullValueEntries; set { _explicitNullValueEntries = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("entries"); else _explicitNullProperties?.Remove("entries"); } }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.PassRateOverviewEntry> Entries { get => _explicitNullValueEntries; set { _explicitNullValueEntries = value; AdditionalData?.Remove("entries"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("entries"); else _explicitNullProperties?.Remove("entries"); } }
         private List<global::Soenneker.PostHog.OpenApiClient.Models.PassRateOverviewEntry> _explicitNullValueEntries = default!;
 #endif
         /// <summary>Median of the per-evaluation pass rates without low evidence.</summary>
-        public double? Median { get => _explicitNullValueMedian; set { _explicitNullValueMedian = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("median"); else _explicitNullProperties?.Remove("median"); } }
+        public double? Median { get => _explicitNullValueMedian; set { _explicitNullValueMedian = value; AdditionalData?.Remove("median"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("median"); else _explicitNullProperties?.Remove("median"); } }
         private double? _explicitNullValueMedian = default!;
         /// <summary>Median pass rate in each period, over evaluations with results in both. Null when none has.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.PeriodComparison? MedianComparison { get => _explicitNullValueMedianComparison; set { _explicitNullValueMedianComparison = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("medianComparison"); else _explicitNullProperties?.Remove("medianComparison"); } }
+        public global::Soenneker.PostHog.OpenApiClient.Models.PeriodComparison? MedianComparison { get => _explicitNullValueMedianComparison; set { _explicitNullValueMedianComparison = value; AdditionalData?.Remove("medianComparison"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("medianComparison"); else _explicitNullProperties?.Remove("medianComparison"); } }
         private global::Soenneker.PostHog.OpenApiClient.Models.PeriodComparison? _explicitNullValueMedianComparison = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.PeriodComparison MedianComparison { get => _explicitNullValueMedianComparison; set { _explicitNullValueMedianComparison = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("medianComparison"); else _explicitNullProperties?.Remove("medianComparison"); } }
+        public global::Soenneker.PostHog.OpenApiClient.Models.PeriodComparison MedianComparison { get => _explicitNullValueMedianComparison; set { _explicitNullValueMedianComparison = value; AdditionalData?.Remove("medianComparison"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("medianComparison"); else _explicitNullProperties?.Remove("medianComparison"); } }
         private global::Soenneker.PostHog.OpenApiClient.Models.PeriodComparison _explicitNullValueMedianComparison = default!;
 #endif
         /// <summary>Median pass rate per bucket, aligned with `buckets`.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<double?>? MedianTrend { get => _explicitNullValueMedianTrend; set { _explicitNullValueMedianTrend = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("medianTrend"); else _explicitNullProperties?.Remove("medianTrend"); } }
+        public List<double?>? MedianTrend { get => _explicitNullValueMedianTrend; set { _explicitNullValueMedianTrend = value; AdditionalData?.Remove("medianTrend"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("medianTrend"); else _explicitNullProperties?.Remove("medianTrend"); } }
         private List<double?>? _explicitNullValueMedianTrend = default!;
 #nullable restore
 #else
-        public List<double?> MedianTrend { get => _explicitNullValueMedianTrend; set { _explicitNullValueMedianTrend = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("medianTrend"); else _explicitNullProperties?.Remove("medianTrend"); } }
+        public List<double?> MedianTrend { get => _explicitNullValueMedianTrend; set { _explicitNullValueMedianTrend = value; AdditionalData?.Remove("medianTrend"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("medianTrend"); else _explicitNullProperties?.Remove("medianTrend"); } }
         private List<double?> _explicitNullValueMedianTrend = default!;
 #endif
         /// <summary>

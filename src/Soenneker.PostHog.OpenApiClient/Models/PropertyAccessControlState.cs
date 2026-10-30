@@ -18,19 +18,22 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("access_controls") is { } nullNodeAccessControls && nullNodeAccessControls.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AccessControls = null;
-            if (parseNode.GetChildNode("available_access_levels") is { } nullNodeAvailableAccessLevels && nullNodeAvailableAccessLevels.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AvailableAccessLevels = null;
-            if (parseNode.GetChildNode("default_access_level") is { } nullNodeDefaultAccessLevel && nullNodeDefaultAccessLevel.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) DefaultAccessLevel = null;
+            if (parseNode.GetChildNode("access_controls") is null) { _explicitNullValueAccessControls = default!; _explicitNullProperties?.Remove("access_controls"); }
+            else if (parseNode.GetChildNode("access_controls") is { } nullNodeAccessControls && nullNodeAccessControls.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AccessControls = null;
+            if (parseNode.GetChildNode("available_access_levels") is null) { _explicitNullValueAvailableAccessLevels = default!; _explicitNullProperties?.Remove("available_access_levels"); }
+            else if (parseNode.GetChildNode("available_access_levels") is { } nullNodeAvailableAccessLevels && nullNodeAvailableAccessLevels.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AvailableAccessLevels = null;
+            if (parseNode.GetChildNode("default_access_level") is null) { _explicitNullValueDefaultAccessLevel = default!; _explicitNullProperties?.Remove("default_access_level"); }
+            else if (parseNode.GetChildNode("default_access_level") is { } nullNodeDefaultAccessLevel && nullNodeDefaultAccessLevel.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) DefaultAccessLevel = null;
         }
 
         /// <summary>List of all access control rules for this property definition.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.PropertyAccessControlRule>? AccessControls { get => _explicitNullValueAccessControls; set { _explicitNullValueAccessControls = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("access_controls"); else _explicitNullProperties?.Remove("access_controls"); } }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.PropertyAccessControlRule>? AccessControls { get => _explicitNullValueAccessControls; set { _explicitNullValueAccessControls = value; AdditionalData?.Remove("access_controls"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("access_controls"); else _explicitNullProperties?.Remove("access_controls"); } }
         private List<global::Soenneker.PostHog.OpenApiClient.Models.PropertyAccessControlRule>? _explicitNullValueAccessControls = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.PropertyAccessControlRule> AccessControls { get => _explicitNullValueAccessControls; set { _explicitNullValueAccessControls = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("access_controls"); else _explicitNullProperties?.Remove("access_controls"); } }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.PropertyAccessControlRule> AccessControls { get => _explicitNullValueAccessControls; set { _explicitNullValueAccessControls = value; AdditionalData?.Remove("access_controls"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("access_controls"); else _explicitNullProperties?.Remove("access_controls"); } }
         private List<global::Soenneker.PostHog.OpenApiClient.Models.PropertyAccessControlRule> _explicitNullValueAccessControls = default!;
 #endif
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -38,21 +41,21 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Available access levels that can be assigned.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<string>? AvailableAccessLevels { get => _explicitNullValueAvailableAccessLevels; set { _explicitNullValueAvailableAccessLevels = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("available_access_levels"); else _explicitNullProperties?.Remove("available_access_levels"); } }
+        public List<string>? AvailableAccessLevels { get => _explicitNullValueAvailableAccessLevels; set { _explicitNullValueAvailableAccessLevels = value; AdditionalData?.Remove("available_access_levels"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("available_access_levels"); else _explicitNullProperties?.Remove("available_access_levels"); } }
         private List<string>? _explicitNullValueAvailableAccessLevels = default!;
 #nullable restore
 #else
-        public List<string> AvailableAccessLevels { get => _explicitNullValueAvailableAccessLevels; set { _explicitNullValueAvailableAccessLevels = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("available_access_levels"); else _explicitNullProperties?.Remove("available_access_levels"); } }
+        public List<string> AvailableAccessLevels { get => _explicitNullValueAvailableAccessLevels; set { _explicitNullValueAvailableAccessLevels = value; AdditionalData?.Remove("available_access_levels"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("available_access_levels"); else _explicitNullProperties?.Remove("available_access_levels"); } }
         private List<string> _explicitNullValueAvailableAccessLevels = default!;
 #endif
         /// <summary>The default access level when no rules match.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? DefaultAccessLevel { get => _explicitNullValueDefaultAccessLevel; set { _explicitNullValueDefaultAccessLevel = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("default_access_level"); else _explicitNullProperties?.Remove("default_access_level"); } }
+        public string? DefaultAccessLevel { get => _explicitNullValueDefaultAccessLevel; set { _explicitNullValueDefaultAccessLevel = value; AdditionalData?.Remove("default_access_level"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("default_access_level"); else _explicitNullProperties?.Remove("default_access_level"); } }
         private string? _explicitNullValueDefaultAccessLevel = default!;
 #nullable restore
 #else
-        public string DefaultAccessLevel { get => _explicitNullValueDefaultAccessLevel; set { _explicitNullValueDefaultAccessLevel = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("default_access_level"); else _explicitNullProperties?.Remove("default_access_level"); } }
+        public string DefaultAccessLevel { get => _explicitNullValueDefaultAccessLevel; set { _explicitNullValueDefaultAccessLevel = value; AdditionalData?.Remove("default_access_level"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("default_access_level"); else _explicitNullProperties?.Remove("default_access_level"); } }
         private string _explicitNullValueDefaultAccessLevel = default!;
 #endif
         /// <summary>

@@ -18,23 +18,25 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("recorded_count") is { } nullNodeRecordedCount && nullNodeRecordedCount.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) RecordedCount = null;
-            if (parseNode.GetChildNode("record_ids") is { } nullNodeRecordIds && nullNodeRecordIds.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) RecordIds = null;
+            if (parseNode.GetChildNode("recorded_count") is null) { _explicitNullValueRecordedCount = default!; _explicitNullProperties?.Remove("recorded_count"); }
+            else if (parseNode.GetChildNode("recorded_count") is { } nullNodeRecordedCount && nullNodeRecordedCount.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) RecordedCount = null;
+            if (parseNode.GetChildNode("record_ids") is null) { _explicitNullValueRecordIds = default!; _explicitNullProperties?.Remove("record_ids"); }
+            else if (parseNode.GetChildNode("record_ids") is { } nullNodeRecordIds && nullNodeRecordIds.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) RecordIds = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>How many records were recorded (all of them, or none).</summary>
-        public int? RecordedCount { get => _explicitNullValueRecordedCount; set { _explicitNullValueRecordedCount = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("recorded_count"); else _explicitNullProperties?.Remove("recorded_count"); } }
+        public int? RecordedCount { get => _explicitNullValueRecordedCount; set { _explicitNullValueRecordedCount = value; AdditionalData?.Remove("recorded_count"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("recorded_count"); else _explicitNullProperties?.Remove("recorded_count"); } }
         private int? _explicitNullValueRecordedCount = default!;
         /// <summary>Deterministic event ids of the recorded `$scout_structured_output` events, in submission order. Stable across a resubmission of the identical batch, which is what makes retrying a failed delivery safe.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<Guid?>? RecordIds { get => _explicitNullValueRecordIds; set { _explicitNullValueRecordIds = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("record_ids"); else _explicitNullProperties?.Remove("record_ids"); } }
+        public List<Guid?>? RecordIds { get => _explicitNullValueRecordIds; set { _explicitNullValueRecordIds = value; AdditionalData?.Remove("record_ids"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("record_ids"); else _explicitNullProperties?.Remove("record_ids"); } }
         private List<Guid?>? _explicitNullValueRecordIds = default!;
 #nullable restore
 #else
-        public List<Guid?> RecordIds { get => _explicitNullValueRecordIds; set { _explicitNullValueRecordIds = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("record_ids"); else _explicitNullProperties?.Remove("record_ids"); } }
+        public List<Guid?> RecordIds { get => _explicitNullValueRecordIds; set { _explicitNullValueRecordIds = value; AdditionalData?.Remove("record_ids"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("record_ids"); else _explicitNullProperties?.Remove("record_ids"); } }
         private List<Guid?> _explicitNullValueRecordIds = default!;
 #endif
         /// <summary>

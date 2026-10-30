@@ -10,7 +10,6 @@ using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Persons.Cohorts;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Persons.Deletion_status;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Persons.Item;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Persons.Properties_at_time;
-using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Persons.Reset_person_distinct_id;
 using Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Persons.Values;
 using System.Collections.Generic;
 using System.IO;
@@ -63,11 +62,6 @@ namespace Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Persons
         public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Persons.Properties_at_time.Properties_at_timeRequestBuilder Properties_at_time
         {
             get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Persons.Properties_at_time.Properties_at_timeRequestBuilder(PathParameters, RequestAdapter);
-        }
-        /// <summary>The reset_person_distinct_id property</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Persons.Reset_person_distinct_id.Reset_person_distinct_idRequestBuilder Reset_person_distinct_id
-        {
-            get => new global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Persons.Reset_person_distinct_id.Reset_person_distinct_idRequestBuilder(PathParameters, RequestAdapter);
         }
         /// <summary>The values property</summary>
         public global::Soenneker.PostHog.OpenApiClient.Api.Projects.Item.Persons.Values.ValuesRequestBuilder Values

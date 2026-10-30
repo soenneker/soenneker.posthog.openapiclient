@@ -17,11 +17,12 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("achievements_opt_out") is { } nullNodeAchievementsOptOut && nullNodeAchievementsOptOut.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AchievementsOptOut = null;
+            if (parseNode.GetChildNode("achievements_opt_out") is null) { _explicitNullValueAchievementsOptOut = default!; _explicitNullProperties?.Remove("achievements_opt_out"); }
+            else if (parseNode.GetChildNode("achievements_opt_out") is { } nullNodeAchievementsOptOut && nullNodeAchievementsOptOut.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AchievementsOptOut = null;
         }
 
         /// <summary>When true, the requesting user has hidden the Web analytics achievements gamification UI and suppressed achievement-unlocked notifications for this project. Scoped per (project, user).</summary>
-        public bool? AchievementsOptOut { get => _explicitNullValueAchievementsOptOut; set { _explicitNullValueAchievementsOptOut = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("achievements_opt_out"); else _explicitNullProperties?.Remove("achievements_opt_out"); } }
+        public bool? AchievementsOptOut { get => _explicitNullValueAchievementsOptOut; set { _explicitNullValueAchievementsOptOut = value; AdditionalData?.Remove("achievements_opt_out"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("achievements_opt_out"); else _explicitNullProperties?.Remove("achievements_opt_out"); } }
         private bool? _explicitNullValueAchievementsOptOut = default!;
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }

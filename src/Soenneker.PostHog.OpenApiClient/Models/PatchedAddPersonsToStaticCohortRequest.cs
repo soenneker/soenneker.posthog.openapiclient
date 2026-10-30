@@ -17,7 +17,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("person_ids") is { } nullNodePersonIds && nullNodePersonIds.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) PersonIds = null;
+            if (parseNode.GetChildNode("person_ids") is null) { _explicitNullValuePersonIds = default!; _explicitNullProperties?.Remove("person_ids"); }
+            else if (parseNode.GetChildNode("person_ids") is { } nullNodePersonIds && nullNodePersonIds.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) PersonIds = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -25,11 +26,11 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Person UUIDs to add to the cohort (the `id` column of the persons table, not distinct IDs). At most 1000 per request.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<Guid?>? PersonIds { get => _explicitNullValuePersonIds; set { _explicitNullValuePersonIds = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("person_ids"); else _explicitNullProperties?.Remove("person_ids"); } }
+        public List<Guid?>? PersonIds { get => _explicitNullValuePersonIds; set { _explicitNullValuePersonIds = value; AdditionalData?.Remove("person_ids"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("person_ids"); else _explicitNullProperties?.Remove("person_ids"); } }
         private List<Guid?>? _explicitNullValuePersonIds = default!;
 #nullable restore
 #else
-        public List<Guid?> PersonIds { get => _explicitNullValuePersonIds; set { _explicitNullValuePersonIds = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("person_ids"); else _explicitNullProperties?.Remove("person_ids"); } }
+        public List<Guid?> PersonIds { get => _explicitNullValuePersonIds; set { _explicitNullValuePersonIds = value; AdditionalData?.Remove("person_ids"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("person_ids"); else _explicitNullProperties?.Remove("person_ids"); } }
         private List<Guid?> _explicitNullValuePersonIds = default!;
 #endif
         /// <summary>

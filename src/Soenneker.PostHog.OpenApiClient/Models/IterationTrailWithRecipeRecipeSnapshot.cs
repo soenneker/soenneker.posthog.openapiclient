@@ -18,8 +18,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("feature_sql") is { } nullNodeFeatureSql && nullNodeFeatureSql.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) FeatureSql = null;
-            if (parseNode.GetChildNode("feature_transforms") is { } nullNodeFeatureTransforms && nullNodeFeatureTransforms.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) FeatureTransforms = null;
+            if (parseNode.GetChildNode("feature_sql") is null) { _explicitNullValueFeatureSql = default!; _explicitNullProperties?.Remove("feature_sql"); }
+            else if (parseNode.GetChildNode("feature_sql") is { } nullNodeFeatureSql && nullNodeFeatureSql.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) FeatureSql = null;
+            if (parseNode.GetChildNode("feature_transforms") is null) { _explicitNullValueFeatureTransforms = default!; _explicitNullProperties?.Remove("feature_transforms"); }
+            else if (parseNode.GetChildNode("feature_transforms") is { } nullNodeFeatureTransforms && nullNodeFeatureTransforms.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) FeatureTransforms = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -27,21 +29,21 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>A read-only HogQL SELECT from {anchors}, one row per person, keyed on person_id.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? FeatureSql { get => _explicitNullValueFeatureSql; set { _explicitNullValueFeatureSql = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("feature_sql"); else _explicitNullProperties?.Remove("feature_sql"); } }
+        public string? FeatureSql { get => _explicitNullValueFeatureSql; set { _explicitNullValueFeatureSql = value; AdditionalData?.Remove("feature_sql"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("feature_sql"); else _explicitNullProperties?.Remove("feature_sql"); } }
         private string? _explicitNullValueFeatureSql = default!;
 #nullable restore
 #else
-        public string FeatureSql { get => _explicitNullValueFeatureSql; set { _explicitNullValueFeatureSql = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("feature_sql"); else _explicitNullProperties?.Remove("feature_sql"); } }
+        public string FeatureSql { get => _explicitNullValueFeatureSql; set { _explicitNullValueFeatureSql = value; AdditionalData?.Remove("feature_sql"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("feature_sql"); else _explicitNullProperties?.Remove("feature_sql"); } }
         private string _explicitNullValueFeatureSql = default!;
 #endif
         /// <summary>Transforms the bundle applies to the feature columns; null or absent means none, and the in-process path accepts none.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.IterationTrailWithRecipeRecipeSnapshotFeatureTransformsItemProperty>? FeatureTransforms { get => _explicitNullValueFeatureTransforms; set { _explicitNullValueFeatureTransforms = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("feature_transforms"); else _explicitNullProperties?.Remove("feature_transforms"); } }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.IterationTrailWithRecipeRecipeSnapshotFeatureTransformsItemProperty>? FeatureTransforms { get => _explicitNullValueFeatureTransforms; set { _explicitNullValueFeatureTransforms = value; AdditionalData?.Remove("feature_transforms"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("feature_transforms"); else _explicitNullProperties?.Remove("feature_transforms"); } }
         private List<global::Soenneker.PostHog.OpenApiClient.Models.IterationTrailWithRecipeRecipeSnapshotFeatureTransformsItemProperty>? _explicitNullValueFeatureTransforms = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.IterationTrailWithRecipeRecipeSnapshotFeatureTransformsItemProperty> FeatureTransforms { get => _explicitNullValueFeatureTransforms; set { _explicitNullValueFeatureTransforms = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("feature_transforms"); else _explicitNullProperties?.Remove("feature_transforms"); } }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.IterationTrailWithRecipeRecipeSnapshotFeatureTransformsItemProperty> FeatureTransforms { get => _explicitNullValueFeatureTransforms; set { _explicitNullValueFeatureTransforms = value; AdditionalData?.Remove("feature_transforms"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("feature_transforms"); else _explicitNullProperties?.Remove("feature_transforms"); } }
         private List<global::Soenneker.PostHog.OpenApiClient.Models.IterationTrailWithRecipeRecipeSnapshotFeatureTransformsItemProperty> _explicitNullValueFeatureTransforms = default!;
 #endif
         /// <summary>

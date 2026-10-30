@@ -17,13 +17,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("rotate") is { } nullNodeRotate && nullNodeRotate.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Rotate = null;
+            if (parseNode.GetChildNode("rotate") is null) { _explicitNullValueRotate = default!; _explicitNullProperties?.Remove("rotate"); }
+            else if (parseNode.GetChildNode("rotate") is { } nullNodeRotate && nullNodeRotate.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Rotate = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Roll the existing marketplace credential to issue a fresh token, replacing the old one (this invalidates any setup using the previous token). Ignored when no credential exists yet — the first call always mints one. Only affects this user&apos;s own credential.</summary>
-        public bool? Rotate { get => _explicitNullValueRotate; set { _explicitNullValueRotate = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("rotate"); else _explicitNullProperties?.Remove("rotate"); } }
+        public bool? Rotate { get => _explicitNullValueRotate; set { _explicitNullValueRotate = value; AdditionalData?.Remove("rotate"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("rotate"); else _explicitNullProperties?.Remove("rotate"); } }
         private bool? _explicitNullValueRotate = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.LlmSkillMarketplaceIssue"/> and sets the default values.

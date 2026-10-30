@@ -17,21 +17,24 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("thumbsDown") is { } nullNodeThumbsDown && nullNodeThumbsDown.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ThumbsDown = null;
-            if (parseNode.GetChildNode("thumbsUp") is { } nullNodeThumbsUp && nullNodeThumbsUp.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ThumbsUp = null;
-            if (parseNode.GetChildNode("total") is { } nullNodeTotal && nullNodeTotal.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Total = null;
+            if (parseNode.GetChildNode("thumbsDown") is null) { _explicitNullValueThumbsDown = default!; _explicitNullProperties?.Remove("thumbsDown"); }
+            else if (parseNode.GetChildNode("thumbsDown") is { } nullNodeThumbsDown && nullNodeThumbsDown.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ThumbsDown = null;
+            if (parseNode.GetChildNode("thumbsUp") is null) { _explicitNullValueThumbsUp = default!; _explicitNullProperties?.Remove("thumbsUp"); }
+            else if (parseNode.GetChildNode("thumbsUp") is { } nullNodeThumbsUp && nullNodeThumbsUp.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ThumbsUp = null;
+            if (parseNode.GetChildNode("total") is null) { _explicitNullValueTotal = default!; _explicitNullProperties?.Remove("total"); }
+            else if (parseNode.GetChildNode("total") is { } nullNodeTotal && nullNodeTotal.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Total = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Thumbs down answers to 2-point survey rating questions.</summary>
-        public int? ThumbsDown { get => _explicitNullValueThumbsDown; set { _explicitNullValueThumbsDown = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("thumbsDown"); else _explicitNullProperties?.Remove("thumbsDown"); } }
+        public int? ThumbsDown { get => _explicitNullValueThumbsDown; set { _explicitNullValueThumbsDown = value; AdditionalData?.Remove("thumbsDown"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("thumbsDown"); else _explicitNullProperties?.Remove("thumbsDown"); } }
         private int? _explicitNullValueThumbsDown = default!;
         /// <summary>Thumbs up answers to 2-point survey rating questions.</summary>
-        public int? ThumbsUp { get => _explicitNullValueThumbsUp; set { _explicitNullValueThumbsUp = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("thumbsUp"); else _explicitNullProperties?.Remove("thumbsUp"); } }
+        public int? ThumbsUp { get => _explicitNullValueThumbsUp; set { _explicitNullValueThumbsUp = value; AdditionalData?.Remove("thumbsUp"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("thumbsUp"); else _explicitNullProperties?.Remove("thumbsUp"); } }
         private int? _explicitNullValueThumbsUp = default!;
         /// <summary>Scores plus responses.</summary>
-        public int? Total { get => _explicitNullValueTotal; set { _explicitNullValueTotal = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("total"); else _explicitNullProperties?.Remove("total"); } }
+        public int? Total { get => _explicitNullValueTotal; set { _explicitNullValueTotal = value; AdditionalData?.Remove("total"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("total"); else _explicitNullProperties?.Remove("total"); } }
         private int? _explicitNullValueTotal = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.TraceFeedbackSummary"/> and sets the default values.

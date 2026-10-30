@@ -17,8 +17,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("bucket_overrides") is { } nullNodeBucketOverrides && nullNodeBucketOverrides.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) BucketOverrides = null;
-            if (parseNode.GetChildNode("version") is { } nullNodeVersion && nullNodeVersion.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Version = null;
+            if (parseNode.GetChildNode("bucket_overrides") is null) { _explicitNullValueBucketOverrides = default!; _explicitNullProperties?.Remove("bucket_overrides"); }
+            else if (parseNode.GetChildNode("bucket_overrides") is { } nullNodeBucketOverrides && nullNodeBucketOverrides.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) BucketOverrides = null;
+            if (parseNode.GetChildNode("version") is null) { _explicitNullValueVersion = default!; _explicitNullProperties?.Remove("version"); }
+            else if (parseNode.GetChildNode("version") is { } nullNodeVersion && nullNodeVersion.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Version = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -26,15 +28,15 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Per-column bucket function overrides, e.g. {&quot;timestamp&quot;: &quot;hour&quot;}</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.MaterializationPreviewRequestBucketOverridesProperty? BucketOverrides { get => _explicitNullValueBucketOverrides; set { _explicitNullValueBucketOverrides = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("bucket_overrides"); else _explicitNullProperties?.Remove("bucket_overrides"); } }
+        public global::Soenneker.PostHog.OpenApiClient.Models.MaterializationPreviewRequestBucketOverridesProperty? BucketOverrides { get => _explicitNullValueBucketOverrides; set { _explicitNullValueBucketOverrides = value; AdditionalData?.Remove("bucket_overrides"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("bucket_overrides"); else _explicitNullProperties?.Remove("bucket_overrides"); } }
         private global::Soenneker.PostHog.OpenApiClient.Models.MaterializationPreviewRequestBucketOverridesProperty? _explicitNullValueBucketOverrides = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.MaterializationPreviewRequestBucketOverridesProperty BucketOverrides { get => _explicitNullValueBucketOverrides; set { _explicitNullValueBucketOverrides = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("bucket_overrides"); else _explicitNullProperties?.Remove("bucket_overrides"); } }
+        public global::Soenneker.PostHog.OpenApiClient.Models.MaterializationPreviewRequestBucketOverridesProperty BucketOverrides { get => _explicitNullValueBucketOverrides; set { _explicitNullValueBucketOverrides = value; AdditionalData?.Remove("bucket_overrides"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("bucket_overrides"); else _explicitNullProperties?.Remove("bucket_overrides"); } }
         private global::Soenneker.PostHog.OpenApiClient.Models.MaterializationPreviewRequestBucketOverridesProperty _explicitNullValueBucketOverrides = default!;
 #endif
         /// <summary>Endpoint version to preview. Defaults to the current version.</summary>
-        public int? Version { get => _explicitNullValueVersion; set { _explicitNullValueVersion = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("version"); else _explicitNullProperties?.Remove("version"); } }
+        public int? Version { get => _explicitNullValueVersion; set { _explicitNullValueVersion = value; AdditionalData?.Remove("version"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("version"); else _explicitNullProperties?.Remove("version"); } }
         private int? _explicitNullValueVersion = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.MaterializationPreviewRequest"/> and sets the default values.

@@ -17,34 +17,37 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("chat_type") is { } nullNodeChatType && nullNodeChatType.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ChatType = null;
-            if (parseNode.GetChildNode("suggestion_id") is { } nullNodeSuggestionId && nullNodeSuggestionId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SuggestionId = null;
-            if (parseNode.GetChildNode("user_prompt") is { } nullNodeUserPrompt && nullNodeUserPrompt.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) UserPrompt = null;
+            if (parseNode.GetChildNode("chat_type") is null) { _explicitNullValueChatType = default!; _explicitNullProperties?.Remove("chat_type"); }
+            else if (parseNode.GetChildNode("chat_type") is { } nullNodeChatType && nullNodeChatType.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ChatType = null;
+            if (parseNode.GetChildNode("suggestion_id") is null) { _explicitNullValueSuggestionId = default!; _explicitNullProperties?.Remove("suggestion_id"); }
+            else if (parseNode.GetChildNode("suggestion_id") is { } nullNodeSuggestionId && nullNodeSuggestionId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SuggestionId = null;
+            if (parseNode.GetChildNode("user_prompt") is null) { _explicitNullValueUserPrompt = default!; _explicitNullProperties?.Remove("user_prompt"); }
+            else if (parseNode.GetChildNode("user_prompt") is { } nullNodeUserPrompt && nullNodeUserPrompt.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) UserPrompt = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>* `author_scout` - author_scout* `fleet_overview` - fleet_overview* `recent_signals` - recent_signals</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.ScoutChatTaskCreateChatType? ChatType { get => _explicitNullValueChatType; set { _explicitNullValueChatType = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("chat_type"); else _explicitNullProperties?.Remove("chat_type"); } }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ScoutChatTaskCreateChatType? ChatType { get => _explicitNullValueChatType; set { _explicitNullValueChatType = value; AdditionalData?.Remove("chat_type"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("chat_type"); else _explicitNullProperties?.Remove("chat_type"); } }
         private global::Soenneker.PostHog.OpenApiClient.Models.ScoutChatTaskCreateChatType? _explicitNullValueChatType = default!;
         /// <summary>Optional id of a suggestion from this project&apos;s scout suggestion batch. The chat then opens on that draft instead of scanning from scratch. `author_scout` only.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? SuggestionId { get => _explicitNullValueSuggestionId; set { _explicitNullValueSuggestionId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("suggestion_id"); else _explicitNullProperties?.Remove("suggestion_id"); } }
+        public string? SuggestionId { get => _explicitNullValueSuggestionId; set { _explicitNullValueSuggestionId = value; AdditionalData?.Remove("suggestion_id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("suggestion_id"); else _explicitNullProperties?.Remove("suggestion_id"); } }
         private string? _explicitNullValueSuggestionId = default!;
 #nullable restore
 #else
-        public string SuggestionId { get => _explicitNullValueSuggestionId; set { _explicitNullValueSuggestionId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("suggestion_id"); else _explicitNullProperties?.Remove("suggestion_id"); } }
+        public string SuggestionId { get => _explicitNullValueSuggestionId; set { _explicitNullValueSuggestionId = value; AdditionalData?.Remove("suggestion_id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("suggestion_id"); else _explicitNullProperties?.Remove("suggestion_id"); } }
         private string _explicitNullValueSuggestionId = default!;
 #endif
         /// <summary>Optional description, in the user&apos;s own words, of what the new scout should watch. The chat then opens on this request instead of asking from scratch. `author_scout` only, and not together with `suggestion_id`.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? UserPrompt { get => _explicitNullValueUserPrompt; set { _explicitNullValueUserPrompt = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("user_prompt"); else _explicitNullProperties?.Remove("user_prompt"); } }
+        public string? UserPrompt { get => _explicitNullValueUserPrompt; set { _explicitNullValueUserPrompt = value; AdditionalData?.Remove("user_prompt"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("user_prompt"); else _explicitNullProperties?.Remove("user_prompt"); } }
         private string? _explicitNullValueUserPrompt = default!;
 #nullable restore
 #else
-        public string UserPrompt { get => _explicitNullValueUserPrompt; set { _explicitNullValueUserPrompt = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("user_prompt"); else _explicitNullProperties?.Remove("user_prompt"); } }
+        public string UserPrompt { get => _explicitNullValueUserPrompt; set { _explicitNullValueUserPrompt = value; AdditionalData?.Remove("user_prompt"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("user_prompt"); else _explicitNullProperties?.Remove("user_prompt"); } }
         private string _explicitNullValueUserPrompt = default!;
 #endif
         /// <summary>
@@ -72,7 +75,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "chat_type", n => { ChatType = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ScoutChatTaskCreateChatType>(); } },
+                { "chat_type", n => { var parsed = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.ScoutChatTaskCreateChatType>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValueChatType = default; _explicitNullProperties?.Remove("chat_type"); AdditionalData["chat_type"] = unknown; } else { ChatType = parsed; AdditionalData.Remove("chat_type"); } } },
                 { "suggestion_id", n => { SuggestionId = n.GetStringValue(); } },
                 { "user_prompt", n => { UserPrompt = n.GetStringValue(); } },
             };

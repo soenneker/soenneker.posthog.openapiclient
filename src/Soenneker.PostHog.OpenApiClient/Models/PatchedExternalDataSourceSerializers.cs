@@ -18,15 +18,24 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("account_id") is { } nullNodeAccountId && nullNodeAccountId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AccountId = null;
-            if (parseNode.GetChildNode("auto_sync_new_schemas") is { } nullNodeAutoSyncNewSchemas && nullNodeAutoSyncNewSchemas.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AutoSyncNewSchemas = null;
-            if (parseNode.GetChildNode("auto_sync_schema_patterns") is { } nullNodeAutoSyncSchemaPatterns && nullNodeAutoSyncSchemaPatterns.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AutoSyncSchemaPatterns = null;
-            if (parseNode.GetChildNode("client_secret") is { } nullNodeClientSecret && nullNodeClientSecret.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ClientSecret = null;
-            if (parseNode.GetChildNode("created_via") is { } nullNodeCreatedVia && nullNodeCreatedVia.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CreatedVia = null;
-            if (parseNode.GetChildNode("description") is { } nullNodeDescription && nullNodeDescription.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Description = null;
-            if (parseNode.GetChildNode("direct_query_enabled") is { } nullNodeDirectQueryEnabled && nullNodeDirectQueryEnabled.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) DirectQueryEnabled = null;
-            if (parseNode.GetChildNode("job_inputs") is { } nullNodeJobInputs && nullNodeJobInputs.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) JobInputs = null;
-            if (parseNode.GetChildNode("prefix") is { } nullNodePrefix && nullNodePrefix.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Prefix = null;
+            if (parseNode.GetChildNode("account_id") is null) { _explicitNullValueAccountId = default!; _explicitNullProperties?.Remove("account_id"); }
+            else if (parseNode.GetChildNode("account_id") is { } nullNodeAccountId && nullNodeAccountId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AccountId = null;
+            if (parseNode.GetChildNode("auto_sync_new_schemas") is null) { _explicitNullValueAutoSyncNewSchemas = default!; _explicitNullProperties?.Remove("auto_sync_new_schemas"); }
+            else if (parseNode.GetChildNode("auto_sync_new_schemas") is { } nullNodeAutoSyncNewSchemas && nullNodeAutoSyncNewSchemas.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AutoSyncNewSchemas = null;
+            if (parseNode.GetChildNode("auto_sync_schema_patterns") is null) { _explicitNullValueAutoSyncSchemaPatterns = default!; _explicitNullProperties?.Remove("auto_sync_schema_patterns"); }
+            else if (parseNode.GetChildNode("auto_sync_schema_patterns") is { } nullNodeAutoSyncSchemaPatterns && nullNodeAutoSyncSchemaPatterns.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) AutoSyncSchemaPatterns = null;
+            if (parseNode.GetChildNode("client_secret") is null) { _explicitNullValueClientSecret = default!; _explicitNullProperties?.Remove("client_secret"); }
+            else if (parseNode.GetChildNode("client_secret") is { } nullNodeClientSecret && nullNodeClientSecret.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ClientSecret = null;
+            if (parseNode.GetChildNode("created_via") is null) { _explicitNullValueCreatedVia = default!; _explicitNullProperties?.Remove("created_via"); }
+            else if (parseNode.GetChildNode("created_via") is { } nullNodeCreatedVia && nullNodeCreatedVia.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CreatedVia = null;
+            if (parseNode.GetChildNode("description") is null) { _explicitNullValueDescription = default!; _explicitNullProperties?.Remove("description"); }
+            else if (parseNode.GetChildNode("description") is { } nullNodeDescription && nullNodeDescription.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Description = null;
+            if (parseNode.GetChildNode("direct_query_enabled") is null) { _explicitNullValueDirectQueryEnabled = default!; _explicitNullProperties?.Remove("direct_query_enabled"); }
+            else if (parseNode.GetChildNode("direct_query_enabled") is { } nullNodeDirectQueryEnabled && nullNodeDirectQueryEnabled.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) DirectQueryEnabled = null;
+            if (parseNode.GetChildNode("job_inputs") is null) { _explicitNullValueJobInputs = default!; _explicitNullProperties?.Remove("job_inputs"); }
+            else if (parseNode.GetChildNode("job_inputs") is { } nullNodeJobInputs && nullNodeJobInputs.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) JobInputs = null;
+            if (parseNode.GetChildNode("prefix") is null) { _explicitNullValuePrefix = default!; _explicitNullProperties?.Remove("prefix"); }
+            else if (parseNode.GetChildNode("prefix") is { } nullNodePrefix && nullNodePrefix.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Prefix = null;
         }
 
         /// <summary>* `warehouse` - warehouse* `direct` - direct</summary>
@@ -34,11 +43,11 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The account_id property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? AccountId { get => _explicitNullValueAccountId; set { _explicitNullValueAccountId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("account_id"); else _explicitNullProperties?.Remove("account_id"); } }
+        public string? AccountId { get => _explicitNullValueAccountId; set { _explicitNullValueAccountId = value; AdditionalData?.Remove("account_id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("account_id"); else _explicitNullProperties?.Remove("account_id"); } }
         private string? _explicitNullValueAccountId = default!;
 #nullable restore
 #else
-        public string AccountId { get => _explicitNullValueAccountId; set { _explicitNullValueAccountId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("account_id"); else _explicitNullProperties?.Remove("account_id"); } }
+        public string AccountId { get => _explicitNullValueAccountId; set { _explicitNullValueAccountId = value; AdditionalData?.Remove("account_id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("account_id"); else _explicitNullProperties?.Remove("account_id"); } }
         private string _explicitNullValueAccountId = default!;
 #endif
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -60,26 +69,26 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         public global::Soenneker.PostHog.OpenApiClient.Models.ExternalDataSourceApiVersionDeprecation ApiVersionDeprecation { get; private set; }
 #endif
         /// <summary>Automatically enable syncing for schemas discovered on this source after creation, on both the scheduled discovery pass and manual schema refreshes. Defaults to false. Not supported for direct-query sources.</summary>
-        public bool? AutoSyncNewSchemas { get => _explicitNullValueAutoSyncNewSchemas; set { _explicitNullValueAutoSyncNewSchemas = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("auto_sync_new_schemas"); else _explicitNullProperties?.Remove("auto_sync_new_schemas"); } }
+        public bool? AutoSyncNewSchemas { get => _explicitNullValueAutoSyncNewSchemas; set { _explicitNullValueAutoSyncNewSchemas = value; AdditionalData?.Remove("auto_sync_new_schemas"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("auto_sync_new_schemas"); else _explicitNullProperties?.Remove("auto_sync_new_schemas"); } }
         private bool? _explicitNullValueAutoSyncNewSchemas = default!;
         /// <summary>Optional fnmatch-style globs (`*` and `?` wildcards) restricting which newly discovered schema names auto-sync, matched case-insensitively against both the qualified and bare table name. Null or empty means every new schema qualifies. Only used when `auto_sync_new_schemas` is true.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<string>? AutoSyncSchemaPatterns { get => _explicitNullValueAutoSyncSchemaPatterns; set { _explicitNullValueAutoSyncSchemaPatterns = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("auto_sync_schema_patterns"); else _explicitNullProperties?.Remove("auto_sync_schema_patterns"); } }
+        public List<string>? AutoSyncSchemaPatterns { get => _explicitNullValueAutoSyncSchemaPatterns; set { _explicitNullValueAutoSyncSchemaPatterns = value; AdditionalData?.Remove("auto_sync_schema_patterns"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("auto_sync_schema_patterns"); else _explicitNullProperties?.Remove("auto_sync_schema_patterns"); } }
         private List<string>? _explicitNullValueAutoSyncSchemaPatterns = default!;
 #nullable restore
 #else
-        public List<string> AutoSyncSchemaPatterns { get => _explicitNullValueAutoSyncSchemaPatterns; set { _explicitNullValueAutoSyncSchemaPatterns = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("auto_sync_schema_patterns"); else _explicitNullProperties?.Remove("auto_sync_schema_patterns"); } }
+        public List<string> AutoSyncSchemaPatterns { get => _explicitNullValueAutoSyncSchemaPatterns; set { _explicitNullValueAutoSyncSchemaPatterns = value; AdditionalData?.Remove("auto_sync_schema_patterns"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("auto_sync_schema_patterns"); else _explicitNullProperties?.Remove("auto_sync_schema_patterns"); } }
         private List<string> _explicitNullValueAutoSyncSchemaPatterns = default!;
 #endif
         /// <summary>The client_secret property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? ClientSecret { get => _explicitNullValueClientSecret; set { _explicitNullValueClientSecret = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("client_secret"); else _explicitNullProperties?.Remove("client_secret"); } }
+        public string? ClientSecret { get => _explicitNullValueClientSecret; set { _explicitNullValueClientSecret = value; AdditionalData?.Remove("client_secret"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("client_secret"); else _explicitNullProperties?.Remove("client_secret"); } }
         private string? _explicitNullValueClientSecret = default!;
 #nullable restore
 #else
-        public string ClientSecret { get => _explicitNullValueClientSecret; set { _explicitNullValueClientSecret = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("client_secret"); else _explicitNullProperties?.Remove("client_secret"); } }
+        public string ClientSecret { get => _explicitNullValueClientSecret; set { _explicitNullValueClientSecret = value; AdditionalData?.Remove("client_secret"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("client_secret"); else _explicitNullProperties?.Remove("client_secret"); } }
         private string _explicitNullValueClientSecret = default!;
 #endif
         /// <summary>Set on an update response when the change was saved but the connection check from the API could not reach the database. Null otherwise.</summary>
@@ -103,44 +112,44 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>How this source was created. Defaults to `api` on create when omitted. `web` for the in-app UI, `api` for direct API callers, `mcp` for agent/MCP tool calls, `wizard` for the setup wizard and `self_driving` for the PostHog Desktop app (both derived server-side from the caller&apos;s user agent). Ignored on update.* `web` - web* `api` - api* `mcp` - mcp* `wizard` - wizard* `self_driving` - self_driving</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedExternalDataSourceSerializersCreatedVia? CreatedVia { get => _explicitNullValueCreatedVia; set { _explicitNullValueCreatedVia = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("created_via"); else _explicitNullProperties?.Remove("created_via"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.PatchedExternalDataSourceSerializersCreatedVia? _explicitNullValueCreatedVia = default!;
+        public global::Soenneker.PostHog.OpenApiClient.Models.ExternalDataSourceSerializersCreatedVia? CreatedVia { get => _explicitNullValueCreatedVia; set { _explicitNullValueCreatedVia = value; AdditionalData?.Remove("created_via"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("created_via"); else _explicitNullProperties?.Remove("created_via"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.ExternalDataSourceSerializersCreatedVia? _explicitNullValueCreatedVia = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedExternalDataSourceSerializersCreatedVia CreatedVia { get => _explicitNullValueCreatedVia; set { _explicitNullValueCreatedVia = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("created_via"); else _explicitNullProperties?.Remove("created_via"); } }
-        private global::Soenneker.PostHog.OpenApiClient.Models.PatchedExternalDataSourceSerializersCreatedVia _explicitNullValueCreatedVia = default!;
+        public global::Soenneker.PostHog.OpenApiClient.Models.ExternalDataSourceSerializersCreatedVia CreatedVia { get => _explicitNullValueCreatedVia; set { _explicitNullValueCreatedVia = value; AdditionalData?.Remove("created_via"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("created_via"); else _explicitNullProperties?.Remove("created_via"); } }
+        private global::Soenneker.PostHog.OpenApiClient.Models.ExternalDataSourceSerializersCreatedVia _explicitNullValueCreatedVia = default!;
 #endif
         /// <summary>The description property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Description { get => _explicitNullValueDescription; set { _explicitNullValueDescription = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("description"); else _explicitNullProperties?.Remove("description"); } }
+        public string? Description { get => _explicitNullValueDescription; set { _explicitNullValueDescription = value; AdditionalData?.Remove("description"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("description"); else _explicitNullProperties?.Remove("description"); } }
         private string? _explicitNullValueDescription = default!;
 #nullable restore
 #else
-        public string Description { get => _explicitNullValueDescription; set { _explicitNullValueDescription = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("description"); else _explicitNullProperties?.Remove("description"); } }
+        public string Description { get => _explicitNullValueDescription; set { _explicitNullValueDescription = value; AdditionalData?.Remove("description"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("description"); else _explicitNullProperties?.Remove("description"); } }
         private string _explicitNullValueDescription = default!;
 #endif
         /// <summary>Whether this synced source is also live-queryable via direct connection. Defaults to false for new sources; ignored for pure direct-query sources.</summary>
-        public bool? DirectQueryEnabled { get => _explicitNullValueDirectQueryEnabled; set { _explicitNullValueDirectQueryEnabled = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("direct_query_enabled"); else _explicitNullProperties?.Remove("direct_query_enabled"); } }
+        public bool? DirectQueryEnabled { get => _explicitNullValueDirectQueryEnabled; set { _explicitNullValueDirectQueryEnabled = value; AdditionalData?.Remove("direct_query_enabled"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("direct_query_enabled"); else _explicitNullProperties?.Remove("direct_query_enabled"); } }
         private bool? _explicitNullValueDirectQueryEnabled = default!;
         /// <summary>Backend engine detected for the direct connection.* `duckdb` - duckdb* `postgres` - postgres* `mysql` - mysql* `snowflake` - snowflake* `redshift` - redshift* `clickhouse` - clickhouse* `motherduck` - motherduck* `trino` - trino</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedExternalDataSourceSerializersEngine? Engine { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ExternalDataSourceSerializersEngine? Engine { get; private set; }
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.PatchedExternalDataSourceSerializersEngine Engine { get; private set; }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ExternalDataSourceSerializersEngine Engine { get; private set; }
 #endif
         /// <summary>The id property</summary>
         public Guid? Id { get; private set; }
         /// <summary>The job_inputs property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public UntypedNode? JobInputs { get => _explicitNullValueJobInputs; set { _explicitNullValueJobInputs = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("job_inputs"); else _explicitNullProperties?.Remove("job_inputs"); } }
+        public UntypedNode? JobInputs { get => _explicitNullValueJobInputs; set { _explicitNullValueJobInputs = value; AdditionalData?.Remove("job_inputs"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("job_inputs"); else _explicitNullProperties?.Remove("job_inputs"); } }
         private UntypedNode? _explicitNullValueJobInputs = default!;
 #nullable restore
 #else
-        public UntypedNode JobInputs { get => _explicitNullValueJobInputs; set { _explicitNullValueJobInputs = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("job_inputs"); else _explicitNullProperties?.Remove("job_inputs"); } }
+        public UntypedNode JobInputs { get => _explicitNullValueJobInputs; set { _explicitNullValueJobInputs = value; AdditionalData?.Remove("job_inputs"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("job_inputs"); else _explicitNullProperties?.Remove("job_inputs"); } }
         private UntypedNode _explicitNullValueJobInputs = default!;
 #endif
         /// <summary>The last_run_at property</summary>
@@ -162,11 +171,11 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>The prefix property</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? Prefix { get => _explicitNullValuePrefix; set { _explicitNullValuePrefix = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("prefix"); else _explicitNullProperties?.Remove("prefix"); } }
+        public string? Prefix { get => _explicitNullValuePrefix; set { _explicitNullValuePrefix = value; AdditionalData?.Remove("prefix"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("prefix"); else _explicitNullProperties?.Remove("prefix"); } }
         private string? _explicitNullValuePrefix = default!;
 #nullable restore
 #else
-        public string Prefix { get => _explicitNullValuePrefix; set { _explicitNullValuePrefix = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("prefix"); else _explicitNullProperties?.Remove("prefix"); } }
+        public string Prefix { get => _explicitNullValuePrefix; set { _explicitNullValuePrefix = value; AdditionalData?.Remove("prefix"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("prefix"); else _explicitNullProperties?.Remove("prefix"); } }
         private string _explicitNullValuePrefix = default!;
 #endif
         /// <summary>The revenue_analytics_config property</summary>
@@ -242,10 +251,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
                 { "connection_warning", n => { ConnectionWarning = n.GetStringValue(); } },
                 { "created_at", n => { CreatedAt = n.GetDateTimeOffsetValue(); } },
                 { "created_by", n => { CreatedBy = n.GetStringValue(); } },
-                { "created_via", n => { CreatedVia = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedExternalDataSourceSerializersCreatedVia>(global::Soenneker.PostHog.OpenApiClient.Models.PatchedExternalDataSourceSerializersCreatedVia.CreateFromDiscriminatorValue); } },
+                { "created_via", n => { CreatedVia = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExternalDataSourceSerializersCreatedVia>(global::Soenneker.PostHog.OpenApiClient.Models.ExternalDataSourceSerializersCreatedVia.CreateFromDiscriminatorValue); } },
                 { "description", n => { Description = n.GetStringValue(); } },
                 { "direct_query_enabled", n => { DirectQueryEnabled = n.GetBoolValue(); } },
-                { "engine", n => { Engine = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedExternalDataSourceSerializersEngine>(global::Soenneker.PostHog.OpenApiClient.Models.PatchedExternalDataSourceSerializersEngine.CreateFromDiscriminatorValue); } },
+                { "engine", n => { Engine = n.GetObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExternalDataSourceSerializersEngine>(global::Soenneker.PostHog.OpenApiClient.Models.ExternalDataSourceSerializersEngine.CreateFromDiscriminatorValue); } },
                 { "id", n => { Id = n.GetGuidValue(); } },
                 { "job_inputs", n => { JobInputs = n.GetObjectValue<UntypedNode>(UntypedNode.CreateFromDiscriminatorValue); } },
                 { "last_run_at", n => { LastRunAt = n.GetStringValue(); } },
@@ -271,7 +280,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             writer.WriteBoolValue("auto_sync_new_schemas", AutoSyncNewSchemas);
             writer.WriteCollectionOfPrimitiveValues<string>("auto_sync_schema_patterns", AutoSyncSchemaPatterns);
             writer.WriteStringValue("client_secret", ClientSecret);
-            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.PatchedExternalDataSourceSerializersCreatedVia>("created_via", CreatedVia);
+            writer.WriteObjectValue<global::Soenneker.PostHog.OpenApiClient.Models.ExternalDataSourceSerializersCreatedVia>("created_via", CreatedVia);
             writer.WriteStringValue("description", Description);
             writer.WriteBoolValue("direct_query_enabled", DirectQueryEnabled);
             writer.WriteObjectValue<UntypedNode>("job_inputs", JobInputs);

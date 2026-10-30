@@ -17,11 +17,16 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("object_id") is { } nullNodeObjectId && nullNodeObjectId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ObjectId = null;
-            if (parseNode.GetChildNode("object_kind") is { } nullNodeObjectKind && nullNodeObjectKind.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ObjectKind = null;
-            if (parseNode.GetChildNode("occurrence_count") is { } nullNodeOccurrenceCount && nullNodeOccurrenceCount.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) OccurrenceCount = null;
-            if (parseNode.GetChildNode("reference_type") is { } nullNodeReferenceType && nullNodeReferenceType.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ReferenceType = null;
-            if (parseNode.GetChildNode("source_message_ids") is { } nullNodeSourceMessageIds && nullNodeSourceMessageIds.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SourceMessageIds = null;
+            if (parseNode.GetChildNode("object_id") is null) { _explicitNullValueObjectId = default!; _explicitNullProperties?.Remove("object_id"); }
+            else if (parseNode.GetChildNode("object_id") is { } nullNodeObjectId && nullNodeObjectId.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ObjectId = null;
+            if (parseNode.GetChildNode("object_kind") is null) { _explicitNullValueObjectKind = default!; _explicitNullProperties?.Remove("object_kind"); }
+            else if (parseNode.GetChildNode("object_kind") is { } nullNodeObjectKind && nullNodeObjectKind.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ObjectKind = null;
+            if (parseNode.GetChildNode("occurrence_count") is null) { _explicitNullValueOccurrenceCount = default!; _explicitNullProperties?.Remove("occurrence_count"); }
+            else if (parseNode.GetChildNode("occurrence_count") is { } nullNodeOccurrenceCount && nullNodeOccurrenceCount.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) OccurrenceCount = null;
+            if (parseNode.GetChildNode("reference_type") is null) { _explicitNullValueReferenceType = default!; _explicitNullProperties?.Remove("reference_type"); }
+            else if (parseNode.GetChildNode("reference_type") is { } nullNodeReferenceType && nullNodeReferenceType.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ReferenceType = null;
+            if (parseNode.GetChildNode("source_message_ids") is null) { _explicitNullValueSourceMessageIds = default!; _explicitNullProperties?.Remove("source_message_ids"); }
+            else if (parseNode.GetChildNode("source_message_ids") is { } nullNodeSourceMessageIds && nullNodeSourceMessageIds.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) SourceMessageIds = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -29,30 +34,30 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Exact PostHog object identifier, flag key, event name, or SQL query.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? ObjectId { get => _explicitNullValueObjectId; set { _explicitNullValueObjectId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("object_id"); else _explicitNullProperties?.Remove("object_id"); } }
+        public string? ObjectId { get => _explicitNullValueObjectId; set { _explicitNullValueObjectId = value; AdditionalData?.Remove("object_id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("object_id"); else _explicitNullProperties?.Remove("object_id"); } }
         private string? _explicitNullValueObjectId = default!;
 #nullable restore
 #else
-        public string ObjectId { get => _explicitNullValueObjectId; set { _explicitNullValueObjectId = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("object_id"); else _explicitNullProperties?.Remove("object_id"); } }
+        public string ObjectId { get => _explicitNullValueObjectId; set { _explicitNullValueObjectId = value; AdditionalData?.Remove("object_id"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("object_id"); else _explicitNullProperties?.Remove("object_id"); } }
         private string _explicitNullValueObjectId = default!;
 #endif
         /// <summary>* `insight` - insight* `hogql` - hogql* `dashboard` - dashboard* `error` - error* `replay` - replay* `flag` - flag* `experiment` - experiment* `survey` - survey* `ticket` - ticket* `report` - report* `trace` - trace* `eval` - eval* `event` - event* `cohort` - cohort* `action` - action* `person` - person</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.TaskRunPostHogReferenceMetadataObjectKind? ObjectKind { get => _explicitNullValueObjectKind; set { _explicitNullValueObjectKind = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("object_kind"); else _explicitNullProperties?.Remove("object_kind"); } }
+        public global::Soenneker.PostHog.OpenApiClient.Models.TaskRunPostHogReferenceMetadataObjectKind? ObjectKind { get => _explicitNullValueObjectKind; set { _explicitNullValueObjectKind = value; AdditionalData?.Remove("object_kind"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("object_kind"); else _explicitNullProperties?.Remove("object_kind"); } }
         private global::Soenneker.PostHog.OpenApiClient.Models.TaskRunPostHogReferenceMetadataObjectKind? _explicitNullValueObjectKind = default!;
         /// <summary>Number of distinct completed assistant messages that referenced the object.</summary>
-        public int? OccurrenceCount { get => _explicitNullValueOccurrenceCount; set { _explicitNullValueOccurrenceCount = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("occurrence_count"); else _explicitNullProperties?.Remove("occurrence_count"); } }
+        public int? OccurrenceCount { get => _explicitNullValueOccurrenceCount; set { _explicitNullValueOccurrenceCount = value; AdditionalData?.Remove("occurrence_count"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("occurrence_count"); else _explicitNullProperties?.Remove("occurrence_count"); } }
         private int? _explicitNullValueOccurrenceCount = default!;
         /// <summary>* `posthog_object` - posthog_object</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.TaskRunPostHogReferenceMetadataReferenceType? ReferenceType { get => _explicitNullValueReferenceType; set { _explicitNullValueReferenceType = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("reference_type"); else _explicitNullProperties?.Remove("reference_type"); } }
+        public global::Soenneker.PostHog.OpenApiClient.Models.TaskRunPostHogReferenceMetadataReferenceType? ReferenceType { get => _explicitNullValueReferenceType; set { _explicitNullValueReferenceType = value; AdditionalData?.Remove("reference_type"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("reference_type"); else _explicitNullProperties?.Remove("reference_type"); } }
         private global::Soenneker.PostHog.OpenApiClient.Models.TaskRunPostHogReferenceMetadataReferenceType? _explicitNullValueReferenceType = default!;
         /// <summary>Completed assistant message identifiers that referenced the object.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<string>? SourceMessageIds { get => _explicitNullValueSourceMessageIds; set { _explicitNullValueSourceMessageIds = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("source_message_ids"); else _explicitNullProperties?.Remove("source_message_ids"); } }
+        public List<string>? SourceMessageIds { get => _explicitNullValueSourceMessageIds; set { _explicitNullValueSourceMessageIds = value; AdditionalData?.Remove("source_message_ids"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("source_message_ids"); else _explicitNullProperties?.Remove("source_message_ids"); } }
         private List<string>? _explicitNullValueSourceMessageIds = default!;
 #nullable restore
 #else
-        public List<string> SourceMessageIds { get => _explicitNullValueSourceMessageIds; set { _explicitNullValueSourceMessageIds = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("source_message_ids"); else _explicitNullProperties?.Remove("source_message_ids"); } }
+        public List<string> SourceMessageIds { get => _explicitNullValueSourceMessageIds; set { _explicitNullValueSourceMessageIds = value; AdditionalData?.Remove("source_message_ids"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("source_message_ids"); else _explicitNullProperties?.Remove("source_message_ids"); } }
         private List<string> _explicitNullValueSourceMessageIds = default!;
 #endif
         /// <summary>
@@ -81,9 +86,9 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             return new Dictionary<string, Action<IParseNode>>
             {
                 { "object_id", n => { ObjectId = n.GetStringValue(); } },
-                { "object_kind", n => { ObjectKind = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.TaskRunPostHogReferenceMetadataObjectKind>(); } },
+                { "object_kind", n => { var parsed = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.TaskRunPostHogReferenceMetadataObjectKind>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValueObjectKind = default; _explicitNullProperties?.Remove("object_kind"); AdditionalData["object_kind"] = unknown; } else { ObjectKind = parsed; AdditionalData.Remove("object_kind"); } } },
                 { "occurrence_count", n => { OccurrenceCount = n.GetIntValue(); } },
-                { "reference_type", n => { ReferenceType = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.TaskRunPostHogReferenceMetadataReferenceType>(); } },
+                { "reference_type", n => { var parsed = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.TaskRunPostHogReferenceMetadataReferenceType>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValueReferenceType = default; _explicitNullProperties?.Remove("reference_type"); AdditionalData["reference_type"] = unknown; } else { ReferenceType = parsed; AdditionalData.Remove("reference_type"); } } },
                 { "source_message_ids", n => { SourceMessageIds = n.GetCollectionOfPrimitiveValues<string>()?.AsList(); } },
             };
         }

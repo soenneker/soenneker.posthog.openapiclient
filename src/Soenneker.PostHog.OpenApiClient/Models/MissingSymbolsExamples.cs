@@ -17,31 +17,35 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("exceptions_loaded") is { } nullNodeExceptionsLoaded && nullNodeExceptionsLoaded.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ExceptionsLoaded = null;
-            if (parseNode.GetChildNode("lookback_hours") is { } nullNodeLookbackHours && nullNodeLookbackHours.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) LookbackHours = null;
-            if (parseNode.GetChildNode("platform") is { } nullNodePlatform && nullNodePlatform.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Platform = null;
-            if (parseNode.GetChildNode("results") is { } nullNodeResults && nullNodeResults.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Results = null;
+            if (parseNode.GetChildNode("exceptions_loaded") is null) { _explicitNullValueExceptionsLoaded = default!; _explicitNullProperties?.Remove("exceptions_loaded"); }
+            else if (parseNode.GetChildNode("exceptions_loaded") is { } nullNodeExceptionsLoaded && nullNodeExceptionsLoaded.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ExceptionsLoaded = null;
+            if (parseNode.GetChildNode("lookback_hours") is null) { _explicitNullValueLookbackHours = default!; _explicitNullProperties?.Remove("lookback_hours"); }
+            else if (parseNode.GetChildNode("lookback_hours") is { } nullNodeLookbackHours && nullNodeLookbackHours.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) LookbackHours = null;
+            if (parseNode.GetChildNode("platform") is null) { _explicitNullValuePlatform = default!; _explicitNullProperties?.Remove("platform"); }
+            else if (parseNode.GetChildNode("platform") is { } nullNodePlatform && nullNodePlatform.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Platform = null;
+            if (parseNode.GetChildNode("results") is null) { _explicitNullValueResults = default!; _explicitNullProperties?.Remove("results"); }
+            else if (parseNode.GetChildNode("results") is { } nullNodeResults && nullNodeResults.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Results = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>False when the exception lookup failed, so `issues` and `example_exception` are unknown, not empty.</summary>
-        public bool? ExceptionsLoaded { get => _explicitNullValueExceptionsLoaded; set { _explicitNullValueExceptionsLoaded = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("exceptions_loaded"); else _explicitNullProperties?.Remove("exceptions_loaded"); } }
+        public bool? ExceptionsLoaded { get => _explicitNullValueExceptionsLoaded; set { _explicitNullValueExceptionsLoaded = value; AdditionalData?.Remove("exceptions_loaded"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("exceptions_loaded"); else _explicitNullProperties?.Remove("exceptions_loaded"); } }
         private bool? _explicitNullValueExceptionsLoaded = default!;
         /// <summary>How many hours of recent stack frames the examples cover.</summary>
-        public int? LookbackHours { get => _explicitNullValueLookbackHours; set { _explicitNullValueLookbackHours = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("lookback_hours"); else _explicitNullProperties?.Remove("lookback_hours"); } }
+        public int? LookbackHours { get => _explicitNullValueLookbackHours; set { _explicitNullValueLookbackHours = value; AdditionalData?.Remove("lookback_hours"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("lookback_hours"); else _explicitNullProperties?.Remove("lookback_hours"); } }
         private int? _explicitNullValueLookbackHours = default!;
         /// <summary>* `javascript` - JavaScript* `java` - Android* `native` - iOS and native</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.MissingSymbolsExamplesPlatform? Platform { get => _explicitNullValuePlatform; set { _explicitNullValuePlatform = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("platform"); else _explicitNullProperties?.Remove("platform"); } }
+        public global::Soenneker.PostHog.OpenApiClient.Models.MissingSymbolsExamplesPlatform? Platform { get => _explicitNullValuePlatform; set { _explicitNullValuePlatform = value; AdditionalData?.Remove("platform"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("platform"); else _explicitNullProperties?.Remove("platform"); } }
         private global::Soenneker.PostHog.OpenApiClient.Models.MissingSymbolsExamplesPlatform? _explicitNullValuePlatform = default!;
         /// <summary>The files and builds with the most frames missing symbols, most frames first.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.MissingSymbolsExample>? Results { get => _explicitNullValueResults; set { _explicitNullValueResults = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("results"); else _explicitNullProperties?.Remove("results"); } }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.MissingSymbolsExample>? Results { get => _explicitNullValueResults; set { _explicitNullValueResults = value; AdditionalData?.Remove("results"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("results"); else _explicitNullProperties?.Remove("results"); } }
         private List<global::Soenneker.PostHog.OpenApiClient.Models.MissingSymbolsExample>? _explicitNullValueResults = default!;
 #nullable restore
 #else
-        public List<global::Soenneker.PostHog.OpenApiClient.Models.MissingSymbolsExample> Results { get => _explicitNullValueResults; set { _explicitNullValueResults = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("results"); else _explicitNullProperties?.Remove("results"); } }
+        public List<global::Soenneker.PostHog.OpenApiClient.Models.MissingSymbolsExample> Results { get => _explicitNullValueResults; set { _explicitNullValueResults = value; AdditionalData?.Remove("results"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("results"); else _explicitNullProperties?.Remove("results"); } }
         private List<global::Soenneker.PostHog.OpenApiClient.Models.MissingSymbolsExample> _explicitNullValueResults = default!;
 #endif
         /// <summary>
@@ -71,7 +75,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
             {
                 { "exceptions_loaded", n => { ExceptionsLoaded = n.GetBoolValue(); } },
                 { "lookback_hours", n => { LookbackHours = n.GetIntValue(); } },
-                { "platform", n => { Platform = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.MissingSymbolsExamplesPlatform>(); } },
+                { "platform", n => { var parsed = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.MissingSymbolsExamplesPlatform>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValuePlatform = default; _explicitNullProperties?.Remove("platform"); AdditionalData["platform"] = unknown; } else { Platform = parsed; AdditionalData.Remove("platform"); } } },
                 { "results", n => { Results = n.GetCollectionOfObjectValues<global::Soenneker.PostHog.OpenApiClient.Models.MissingSymbolsExample>(global::Soenneker.PostHog.OpenApiClient.Models.MissingSymbolsExample.CreateFromDiscriminatorValue)?.AsList(); } },
             };
         }

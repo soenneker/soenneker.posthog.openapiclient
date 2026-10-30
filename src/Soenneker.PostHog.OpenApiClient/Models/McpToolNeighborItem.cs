@@ -17,8 +17,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("co_occurrences") is { } nullNodeCoOccurrences && nullNodeCoOccurrences.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CoOccurrences = null;
-            if (parseNode.GetChildNode("neighbor_tool") is { } nullNodeNeighborTool && nullNodeNeighborTool.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) NeighborTool = null;
+            if (parseNode.GetChildNode("co_occurrences") is null) { _explicitNullValueCoOccurrences = default!; _explicitNullProperties?.Remove("co_occurrences"); }
+            else if (parseNode.GetChildNode("co_occurrences") is { } nullNodeCoOccurrences && nullNodeCoOccurrences.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) CoOccurrences = null;
+            if (parseNode.GetChildNode("neighbor_tool") is null) { _explicitNullValueNeighborTool = default!; _explicitNullProperties?.Remove("neighbor_tool"); }
+            else if (parseNode.GetChildNode("neighbor_tool") is { } nullNodeNeighborTool && nullNodeNeighborTool.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) NeighborTool = null;
         }
 
         /// <summary>The co_occurrences property</summary>

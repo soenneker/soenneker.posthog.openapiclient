@@ -17,8 +17,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("task_ids") is { } nullNodeTaskIds && nullNodeTaskIds.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TaskIds = null;
-            if (parseNode.GetChildNode("updates") is { } nullNodeUpdates && nullNodeUpdates.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Updates = null;
+            if (parseNode.GetChildNode("task_ids") is null) { _explicitNullValueTaskIds = default!; _explicitNullProperties?.Remove("task_ids"); }
+            else if (parseNode.GetChildNode("task_ids") is { } nullNodeTaskIds && nullNodeTaskIds.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) TaskIds = null;
+            if (parseNode.GetChildNode("updates") is null) { _explicitNullValueUpdates = default!; _explicitNullProperties?.Remove("updates"); }
+            else if (parseNode.GetChildNode("updates") is { } nullNodeUpdates && nullNodeUpdates.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Updates = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -26,21 +28,21 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>UUIDs of up to 100 tasks to update together.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<Guid?>? TaskIds { get => _explicitNullValueTaskIds; set { _explicitNullValueTaskIds = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("task_ids"); else _explicitNullProperties?.Remove("task_ids"); } }
+        public List<Guid?>? TaskIds { get => _explicitNullValueTaskIds; set { _explicitNullValueTaskIds = value; AdditionalData?.Remove("task_ids"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("task_ids"); else _explicitNullProperties?.Remove("task_ids"); } }
         private List<Guid?>? _explicitNullValueTaskIds = default!;
 #nullable restore
 #else
-        public List<Guid?> TaskIds { get => _explicitNullValueTaskIds; set { _explicitNullValueTaskIds = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("task_ids"); else _explicitNullProperties?.Remove("task_ids"); } }
+        public List<Guid?> TaskIds { get => _explicitNullValueTaskIds; set { _explicitNullValueTaskIds = value; AdditionalData?.Remove("task_ids"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("task_ids"); else _explicitNullProperties?.Remove("task_ids"); } }
         private List<Guid?> _explicitNullValueTaskIds = default!;
 #endif
         /// <summary>Changes to apply to every selected task.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.CustomerTaskBulkUpdateUpdates? Updates { get => _explicitNullValueUpdates; set { _explicitNullValueUpdates = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("updates"); else _explicitNullProperties?.Remove("updates"); } }
+        public global::Soenneker.PostHog.OpenApiClient.Models.CustomerTaskBulkUpdateUpdates? Updates { get => _explicitNullValueUpdates; set { _explicitNullValueUpdates = value; AdditionalData?.Remove("updates"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("updates"); else _explicitNullProperties?.Remove("updates"); } }
         private global::Soenneker.PostHog.OpenApiClient.Models.CustomerTaskBulkUpdateUpdates? _explicitNullValueUpdates = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.CustomerTaskBulkUpdateUpdates Updates { get => _explicitNullValueUpdates; set { _explicitNullValueUpdates = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("updates"); else _explicitNullProperties?.Remove("updates"); } }
+        public global::Soenneker.PostHog.OpenApiClient.Models.CustomerTaskBulkUpdateUpdates Updates { get => _explicitNullValueUpdates; set { _explicitNullValueUpdates = value; AdditionalData?.Remove("updates"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("updates"); else _explicitNullProperties?.Remove("updates"); } }
         private global::Soenneker.PostHog.OpenApiClient.Models.CustomerTaskBulkUpdateUpdates _explicitNullValueUpdates = default!;
 #endif
         /// <summary>

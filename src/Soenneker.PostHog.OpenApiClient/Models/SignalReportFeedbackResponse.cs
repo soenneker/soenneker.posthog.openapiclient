@@ -17,13 +17,14 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("forwarded") is { } nullNodeForwarded && nullNodeForwarded.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Forwarded = null;
+            if (parseNode.GetChildNode("forwarded") is null) { _explicitNullValueForwarded = default!; _explicitNullProperties?.Remove("forwarded"); }
+            else if (parseNode.GetChildNode("forwarded") is { } nullNodeForwarded && nullNodeForwarded.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Forwarded = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Whether the note was forwarded to the report&apos;s authoring scout as a steering note. False when the report has no resolvable authoring scout, or the caller lacks scout-steering access.</summary>
-        public bool? Forwarded { get => _explicitNullValueForwarded; set { _explicitNullValueForwarded = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("forwarded"); else _explicitNullProperties?.Remove("forwarded"); } }
+        public bool? Forwarded { get => _explicitNullValueForwarded; set { _explicitNullValueForwarded = value; AdditionalData?.Remove("forwarded"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("forwarded"); else _explicitNullProperties?.Remove("forwarded"); } }
         private bool? _explicitNullValueForwarded = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.SignalReportFeedbackResponse"/> and sets the default values.

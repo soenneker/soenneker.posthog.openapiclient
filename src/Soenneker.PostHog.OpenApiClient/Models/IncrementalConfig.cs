@@ -18,38 +18,42 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("enabled") is { } nullNodeEnabled && nullNodeEnabled.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Enabled = null;
-            if (parseNode.GetChildNode("incremental_key") is { } nullNodeIncrementalKey && nullNodeIncrementalKey.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) IncrementalKey = null;
-            if (parseNode.GetChildNode("lookback_seconds") is { } nullNodeLookbackSeconds && nullNodeLookbackSeconds.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) LookbackSeconds = null;
-            if (parseNode.GetChildNode("unique_key") is { } nullNodeUniqueKey && nullNodeUniqueKey.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) UniqueKey = null;
+            if (parseNode.GetChildNode("enabled") is null) { _explicitNullValueEnabled = default!; _explicitNullProperties?.Remove("enabled"); }
+            else if (parseNode.GetChildNode("enabled") is { } nullNodeEnabled && nullNodeEnabled.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Enabled = null;
+            if (parseNode.GetChildNode("incremental_key") is null) { _explicitNullValueIncrementalKey = default!; _explicitNullProperties?.Remove("incremental_key"); }
+            else if (parseNode.GetChildNode("incremental_key") is { } nullNodeIncrementalKey && nullNodeIncrementalKey.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) IncrementalKey = null;
+            if (parseNode.GetChildNode("lookback_seconds") is null) { _explicitNullValueLookbackSeconds = default!; _explicitNullProperties?.Remove("lookback_seconds"); }
+            else if (parseNode.GetChildNode("lookback_seconds") is { } nullNodeLookbackSeconds && nullNodeLookbackSeconds.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) LookbackSeconds = null;
+            if (parseNode.GetChildNode("unique_key") is null) { _explicitNullValueUniqueKey = default!; _explicitNullProperties?.Remove("unique_key"); }
+            else if (parseNode.GetChildNode("unique_key") is { } nullNodeUniqueKey && nullNodeUniqueKey.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) UniqueKey = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Whether runs update the table incrementally instead of rebuilding it.</summary>
-        public bool? Enabled { get => _explicitNullValueEnabled; set { _explicitNullValueEnabled = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("enabled"); else _explicitNullProperties?.Remove("enabled"); } }
+        public bool? Enabled { get => _explicitNullValueEnabled; set { _explicitNullValueEnabled = value; AdditionalData?.Remove("enabled"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("enabled"); else _explicitNullProperties?.Remove("enabled"); } }
         private bool? _explicitNullValueEnabled = default!;
         /// <summary>Output column whose advancing value marks rows as new. Each run reads only rows at or after the last run&apos;s highest value for it. When the query groups, this must be one of the grouped columns, so every group a run touches is recomputed in full.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? IncrementalKey { get => _explicitNullValueIncrementalKey; set { _explicitNullValueIncrementalKey = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("incremental_key"); else _explicitNullProperties?.Remove("incremental_key"); } }
+        public string? IncrementalKey { get => _explicitNullValueIncrementalKey; set { _explicitNullValueIncrementalKey = value; AdditionalData?.Remove("incremental_key"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("incremental_key"); else _explicitNullProperties?.Remove("incremental_key"); } }
         private string? _explicitNullValueIncrementalKey = default!;
 #nullable restore
 #else
-        public string IncrementalKey { get => _explicitNullValueIncrementalKey; set { _explicitNullValueIncrementalKey = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("incremental_key"); else _explicitNullProperties?.Remove("incremental_key"); } }
+        public string IncrementalKey { get => _explicitNullValueIncrementalKey; set { _explicitNullValueIncrementalKey = value; AdditionalData?.Remove("incremental_key"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("incremental_key"); else _explicitNullProperties?.Remove("incremental_key"); } }
         private string _explicitNullValueIncrementalKey = default!;
 #endif
         /// <summary>How far back before the last run&apos;s high point to re-read, so late-arriving data is picked up. Only applies when the incremental key is a date or time.</summary>
-        public int? LookbackSeconds { get => _explicitNullValueLookbackSeconds; set { _explicitNullValueLookbackSeconds = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("lookback_seconds"); else _explicitNullProperties?.Remove("lookback_seconds"); } }
+        public int? LookbackSeconds { get => _explicitNullValueLookbackSeconds; set { _explicitNullValueLookbackSeconds = value; AdditionalData?.Remove("lookback_seconds"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("lookback_seconds"); else _explicitNullProperties?.Remove("lookback_seconds"); } }
         private int? _explicitNullValueLookbackSeconds = default!;
         /// <summary>Output columns that identify a row, used to match recomputed rows against stored ones. Must include every GROUP BY column. These columns can never be null.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<string>? UniqueKey { get => _explicitNullValueUniqueKey; set { _explicitNullValueUniqueKey = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("unique_key"); else _explicitNullProperties?.Remove("unique_key"); } }
+        public List<string>? UniqueKey { get => _explicitNullValueUniqueKey; set { _explicitNullValueUniqueKey = value; AdditionalData?.Remove("unique_key"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("unique_key"); else _explicitNullProperties?.Remove("unique_key"); } }
         private List<string>? _explicitNullValueUniqueKey = default!;
 #nullable restore
 #else
-        public List<string> UniqueKey { get => _explicitNullValueUniqueKey; set { _explicitNullValueUniqueKey = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("unique_key"); else _explicitNullProperties?.Remove("unique_key"); } }
+        public List<string> UniqueKey { get => _explicitNullValueUniqueKey; set { _explicitNullValueUniqueKey = value; AdditionalData?.Remove("unique_key"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("unique_key"); else _explicitNullProperties?.Remove("unique_key"); } }
         private List<string> _explicitNullValueUniqueKey = default!;
 #endif
         /// <summary>

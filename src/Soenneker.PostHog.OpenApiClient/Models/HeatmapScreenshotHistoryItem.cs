@@ -18,7 +18,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("latest_request") is { } nullNodeLatestRequest && nullNodeLatestRequest.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) LatestRequest = null;
+            if (parseNode.GetChildNode("latest_request") is null) { _explicitNullValueLatestRequest = default!; _explicitNullProperties?.Remove("latest_request"); }
+            else if (parseNode.GetChildNode("latest_request") is { } nullNodeLatestRequest && nullNodeLatestRequest.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) LatestRequest = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -54,11 +55,11 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Latest attempt, independent of the available image.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.HeatmapCaptureRequest? LatestRequest { get => _explicitNullValueLatestRequest; set { _explicitNullValueLatestRequest = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("latest_request"); else _explicitNullProperties?.Remove("latest_request"); } }
+        public global::Soenneker.PostHog.OpenApiClient.Models.HeatmapCaptureRequest? LatestRequest { get => _explicitNullValueLatestRequest; set { _explicitNullValueLatestRequest = value; AdditionalData?.Remove("latest_request"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("latest_request"); else _explicitNullProperties?.Remove("latest_request"); } }
         private global::Soenneker.PostHog.OpenApiClient.Models.HeatmapCaptureRequest? _explicitNullValueLatestRequest = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.HeatmapCaptureRequest LatestRequest { get => _explicitNullValueLatestRequest; set { _explicitNullValueLatestRequest = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("latest_request"); else _explicitNullProperties?.Remove("latest_request"); } }
+        public global::Soenneker.PostHog.OpenApiClient.Models.HeatmapCaptureRequest LatestRequest { get => _explicitNullValueLatestRequest; set { _explicitNullValueLatestRequest = value; AdditionalData?.Remove("latest_request"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("latest_request"); else _explicitNullProperties?.Remove("latest_request"); } }
         private global::Soenneker.PostHog.OpenApiClient.Models.HeatmapCaptureRequest _explicitNullValueLatestRequest = default!;
 #endif
         /// <summary>The page_status property</summary>

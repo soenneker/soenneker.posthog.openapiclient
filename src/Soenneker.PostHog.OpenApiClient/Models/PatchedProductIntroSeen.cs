@@ -18,8 +18,10 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("product_key") is { } nullNodeProductKey && nullNodeProductKey.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ProductKey = null;
-            if (parseNode.GetChildNode("seen") is { } nullNodeSeen && nullNodeSeen.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Seen = null;
+            if (parseNode.GetChildNode("product_key") is null) { _explicitNullValueProductKey = default!; _explicitNullProperties?.Remove("product_key"); }
+            else if (parseNode.GetChildNode("product_key") is { } nullNodeProductKey && nullNodeProductKey.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ProductKey = null;
+            if (parseNode.GetChildNode("seen") is null) { _explicitNullValueSeen = default!; _explicitNullProperties?.Remove("seen"); }
+            else if (parseNode.GetChildNode("seen") is { } nullNodeSeen && nullNodeSeen.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Seen = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -27,15 +29,15 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Which key in `has_seen_product_intro_for` to set. Any string is accepted: besides the product keys, the map holds keys composed per team and keys for surfaces that are not products.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public string? ProductKey { get => _explicitNullValueProductKey; set { _explicitNullValueProductKey = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("product_key"); else _explicitNullProperties?.Remove("product_key"); } }
+        public string? ProductKey { get => _explicitNullValueProductKey; set { _explicitNullValueProductKey = value; AdditionalData?.Remove("product_key"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("product_key"); else _explicitNullProperties?.Remove("product_key"); } }
         private string? _explicitNullValueProductKey = default!;
 #nullable restore
 #else
-        public string ProductKey { get => _explicitNullValueProductKey; set { _explicitNullValueProductKey = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("product_key"); else _explicitNullProperties?.Remove("product_key"); } }
+        public string ProductKey { get => _explicitNullValueProductKey; set { _explicitNullValueProductKey = value; AdditionalData?.Remove("product_key"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("product_key"); else _explicitNullProperties?.Remove("product_key"); } }
         private string _explicitNullValueProductKey = default!;
 #endif
         /// <summary>Whether the intro counts as seen. Send false to show it again.</summary>
-        public bool? Seen { get => _explicitNullValueSeen; set { _explicitNullValueSeen = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("seen"); else _explicitNullProperties?.Remove("seen"); } }
+        public bool? Seen { get => _explicitNullValueSeen; set { _explicitNullValueSeen = value; AdditionalData?.Remove("seen"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("seen"); else _explicitNullProperties?.Remove("seen"); } }
         private bool? _explicitNullValueSeen = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.PatchedProductIntroSeen"/> and sets the default values.

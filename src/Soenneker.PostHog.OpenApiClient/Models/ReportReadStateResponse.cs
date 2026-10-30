@@ -17,7 +17,8 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("states") is { } nullNodeStates && nullNodeStates.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) States = null;
+            if (parseNode.GetChildNode("states") is null) { _explicitNullValueStates = default!; _explicitNullProperties?.Remove("states"); }
+            else if (parseNode.GetChildNode("states") is { } nullNodeStates && nullNodeStates.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) States = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
@@ -25,11 +26,11 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         /// <summary>Read state keyed by report UUID.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public global::Soenneker.PostHog.OpenApiClient.Models.ReportReadStateResponseStatesProperty? States { get => _explicitNullValueStates; set { _explicitNullValueStates = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("states"); else _explicitNullProperties?.Remove("states"); } }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ReportReadStateResponseStatesProperty? States { get => _explicitNullValueStates; set { _explicitNullValueStates = value; AdditionalData?.Remove("states"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("states"); else _explicitNullProperties?.Remove("states"); } }
         private global::Soenneker.PostHog.OpenApiClient.Models.ReportReadStateResponseStatesProperty? _explicitNullValueStates = default!;
 #nullable restore
 #else
-        public global::Soenneker.PostHog.OpenApiClient.Models.ReportReadStateResponseStatesProperty States { get => _explicitNullValueStates; set { _explicitNullValueStates = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("states"); else _explicitNullProperties?.Remove("states"); } }
+        public global::Soenneker.PostHog.OpenApiClient.Models.ReportReadStateResponseStatesProperty States { get => _explicitNullValueStates; set { _explicitNullValueStates = value; AdditionalData?.Remove("states"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("states"); else _explicitNullProperties?.Remove("states"); } }
         private global::Soenneker.PostHog.OpenApiClient.Models.ReportReadStateResponseStatesProperty _explicitNullValueStates = default!;
 #endif
         /// <summary>

@@ -17,23 +17,25 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("muted") is { } nullNodeMuted && nullNodeMuted.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Muted = null;
-            if (parseNode.GetChildNode("resolved_turns") is { } nullNodeResolvedTurns && nullNodeResolvedTurns.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ResolvedTurns = null;
+            if (parseNode.GetChildNode("muted") is null) { _explicitNullValueMuted = default!; _explicitNullProperties?.Remove("muted"); }
+            else if (parseNode.GetChildNode("muted") is { } nullNodeMuted && nullNodeMuted.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Muted = null;
+            if (parseNode.GetChildNode("resolved_turns") is null) { _explicitNullValueResolvedTurns = default!; _explicitNullProperties?.Remove("resolved_turns"); }
+            else if (parseNode.GetChildNode("resolved_turns") is { } nullNodeResolvedTurns && nullNodeResolvedTurns.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) ResolvedTurns = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>Whether the user dismissed a suggestion card in this conversation, which stops further cards.</summary>
-        public bool? Muted { get => _explicitNullValueMuted; set { _explicitNullValueMuted = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("muted"); else _explicitNullProperties?.Remove("muted"); } }
+        public bool? Muted { get => _explicitNullValueMuted; set { _explicitNullValueMuted = value; AdditionalData?.Remove("muted"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("muted"); else _explicitNullProperties?.Remove("muted"); } }
         private bool? _explicitNullValueMuted = default!;
         /// <summary>Zero-based indexes of the turns whose suggestion card the user already dismissed or accepted.</summary>
 #if NETSTANDARD2_1_OR_GREATER || NETCOREAPP3_1_OR_GREATER
 #nullable enable
-        public List<int?>? ResolvedTurns { get => _explicitNullValueResolvedTurns; set { _explicitNullValueResolvedTurns = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("resolved_turns"); else _explicitNullProperties?.Remove("resolved_turns"); } }
+        public List<int?>? ResolvedTurns { get => _explicitNullValueResolvedTurns; set { _explicitNullValueResolvedTurns = value; AdditionalData?.Remove("resolved_turns"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("resolved_turns"); else _explicitNullProperties?.Remove("resolved_turns"); } }
         private List<int?>? _explicitNullValueResolvedTurns = default!;
 #nullable restore
 #else
-        public List<int?> ResolvedTurns { get => _explicitNullValueResolvedTurns; set { _explicitNullValueResolvedTurns = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("resolved_turns"); else _explicitNullProperties?.Remove("resolved_turns"); } }
+        public List<int?> ResolvedTurns { get => _explicitNullValueResolvedTurns; set { _explicitNullValueResolvedTurns = value; AdditionalData?.Remove("resolved_turns"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("resolved_turns"); else _explicitNullProperties?.Remove("resolved_turns"); } }
         private List<int?> _explicitNullValueResolvedTurns = default!;
 #endif
         /// <summary>

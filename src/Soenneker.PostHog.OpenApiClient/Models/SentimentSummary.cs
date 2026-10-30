@@ -17,29 +17,34 @@ namespace Soenneker.PostHog.OpenApiClient.Models
 
         public virtual void CaptureExplicitNulls(global::Microsoft.Kiota.Abstractions.Serialization.IParseNode parseNode)
         {
-            if (parseNode.GetChildNode("kind") is { } nullNodeKind && nullNodeKind.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Kind = null;
-            if (parseNode.GetChildNode("negative") is { } nullNodeNegative && nullNodeNegative.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Negative = null;
-            if (parseNode.GetChildNode("neutral") is { } nullNodeNeutral && nullNodeNeutral.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Neutral = null;
-            if (parseNode.GetChildNode("positive") is { } nullNodePositive && nullNodePositive.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Positive = null;
-            if (parseNode.GetChildNode("previousNegativeShare") is { } nullNodePreviousNegativeShare && nullNodePreviousNegativeShare.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) PreviousNegativeShare = null;
+            if (parseNode.GetChildNode("kind") is null) { _explicitNullValueKind = default!; _explicitNullProperties?.Remove("kind"); }
+            else if (parseNode.GetChildNode("kind") is { } nullNodeKind && nullNodeKind.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Kind = null;
+            if (parseNode.GetChildNode("negative") is null) { _explicitNullValueNegative = default!; _explicitNullProperties?.Remove("negative"); }
+            else if (parseNode.GetChildNode("negative") is { } nullNodeNegative && nullNodeNegative.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Negative = null;
+            if (parseNode.GetChildNode("neutral") is null) { _explicitNullValueNeutral = default!; _explicitNullProperties?.Remove("neutral"); }
+            else if (parseNode.GetChildNode("neutral") is { } nullNodeNeutral && nullNodeNeutral.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Neutral = null;
+            if (parseNode.GetChildNode("positive") is null) { _explicitNullValuePositive = default!; _explicitNullProperties?.Remove("positive"); }
+            else if (parseNode.GetChildNode("positive") is { } nullNodePositive && nullNodePositive.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) Positive = null;
+            if (parseNode.GetChildNode("previousNegativeShare") is null) { _explicitNullValuePreviousNegativeShare = default!; _explicitNullProperties?.Remove("previousNegativeShare"); }
+            else if (parseNode.GetChildNode("previousNegativeShare") is { } nullNodePreviousNegativeShare && nullNodePreviousNegativeShare.GetObjectValue<global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode>(global::Microsoft.Kiota.Abstractions.Serialization.UntypedNode.CreateFromDiscriminatorValue) is null or global::Microsoft.Kiota.Abstractions.Serialization.UntypedNull) PreviousNegativeShare = null;
         }
 
         /// <summary>Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.</summary>
         public IDictionary<string, object> AdditionalData { get; set; }
         /// <summary>The kind property</summary>
-        public global::Soenneker.PostHog.OpenApiClient.Models.SentimentKind? Kind { get => _explicitNullValueKind; set { _explicitNullValueKind = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("kind"); else _explicitNullProperties?.Remove("kind"); } }
+        public global::Soenneker.PostHog.OpenApiClient.Models.SentimentKind? Kind { get => _explicitNullValueKind; set { _explicitNullValueKind = value; AdditionalData?.Remove("kind"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("kind"); else _explicitNullProperties?.Remove("kind"); } }
         private global::Soenneker.PostHog.OpenApiClient.Models.SentimentKind? _explicitNullValueKind = default!;
         /// <summary>The negative property</summary>
-        public int? Negative { get => _explicitNullValueNegative; set { _explicitNullValueNegative = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("negative"); else _explicitNullProperties?.Remove("negative"); } }
+        public int? Negative { get => _explicitNullValueNegative; set { _explicitNullValueNegative = value; AdditionalData?.Remove("negative"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("negative"); else _explicitNullProperties?.Remove("negative"); } }
         private int? _explicitNullValueNegative = default!;
         /// <summary>The neutral property</summary>
-        public int? Neutral { get => _explicitNullValueNeutral; set { _explicitNullValueNeutral = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("neutral"); else _explicitNullProperties?.Remove("neutral"); } }
+        public int? Neutral { get => _explicitNullValueNeutral; set { _explicitNullValueNeutral = value; AdditionalData?.Remove("neutral"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("neutral"); else _explicitNullProperties?.Remove("neutral"); } }
         private int? _explicitNullValueNeutral = default!;
         /// <summary>The positive property</summary>
-        public int? Positive { get => _explicitNullValuePositive; set { _explicitNullValuePositive = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("positive"); else _explicitNullProperties?.Remove("positive"); } }
+        public int? Positive { get => _explicitNullValuePositive; set { _explicitNullValuePositive = value; AdditionalData?.Remove("positive"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("positive"); else _explicitNullProperties?.Remove("positive"); } }
         private int? _explicitNullValuePositive = default!;
         /// <summary>The previousNegativeShare property</summary>
-        public double? PreviousNegativeShare { get => _explicitNullValuePreviousNegativeShare; set { _explicitNullValuePreviousNegativeShare = value; if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("previousNegativeShare"); else _explicitNullProperties?.Remove("previousNegativeShare"); } }
+        public double? PreviousNegativeShare { get => _explicitNullValuePreviousNegativeShare; set { _explicitNullValuePreviousNegativeShare = value; AdditionalData?.Remove("previousNegativeShare"); if (value is null) (_explicitNullProperties ??= new global::System.Collections.Generic.HashSet<string>()).Add("previousNegativeShare"); else _explicitNullProperties?.Remove("previousNegativeShare"); } }
         private double? _explicitNullValuePreviousNegativeShare = default!;
         /// <summary>
         /// Instantiates a new <see cref="global::Soenneker.PostHog.OpenApiClient.Models.SentimentSummary"/> and sets the default values.
@@ -66,7 +71,7 @@ namespace Soenneker.PostHog.OpenApiClient.Models
         {
             return new Dictionary<string, Action<IParseNode>>
             {
-                { "kind", n => { Kind = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.SentimentKind>(); } },
+                { "kind", n => { var parsed = n.GetEnumValue<global::Soenneker.PostHog.OpenApiClient.Models.SentimentKind>(); if (parsed == null && n.GetStringValue() is string unknown) { _explicitNullValueKind = default; _explicitNullProperties?.Remove("kind"); AdditionalData["kind"] = unknown; } else { Kind = parsed; AdditionalData.Remove("kind"); } } },
                 { "negative", n => { Negative = n.GetIntValue(); } },
                 { "neutral", n => { Neutral = n.GetIntValue(); } },
                 { "positive", n => { Positive = n.GetIntValue(); } },
